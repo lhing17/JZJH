@@ -149,7 +149,7 @@ function KeyInput takes nothing returns nothing
 
 	// 查看专属
 	if s == "ckzs" then
-		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF灵鹫：玉扳指，天山童姥10%爆，八荒加属性概率增加")
+		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF灵鹫：玉扳指，天山童姥20%爆，八荒加属性概率增加")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF峨眉：倚天剑，灭绝师太接任务，打死副本3张无忌；或者副本6东方不败爆")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF明教：屠龙刀，副本6东方不败爆")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF武当：真武剑，90级去挑战场挑战张三丰,太极拳主动使用永久加1绝学领悟，被动使用概率加绝学领悟")
@@ -254,7 +254,7 @@ function KeyInput takes nothing returns nothing
 			set loc = null
 		endif
 	endif
-	if s=="11" and GetUnitAbilityLevel(udg_hero[i],'A07W')>1 and IsUnitAliveBJ(udg_hero[i]) then
+	if s=="11" and GetUnitAbilityLevel(udg_hero[i],'A07W')>3 and IsUnitAliveBJ(udg_hero[i]) then
 		if RectContainsUnit(lh_r,udg_hero[i]) then
 			call DisplayTextToPlayer(p,0,0,"桃花岛不能创建飞行点")
 		else
@@ -267,7 +267,7 @@ function KeyInput takes nothing returns nothing
 			set loc = null
 		endif
 	endif
-	if s=="22" and GetUnitAbilityLevel(udg_hero[i],'A07W')>1 and IsUnitAliveBJ(udg_hero[i]) then
+	if s=="22" and GetUnitAbilityLevel(udg_hero[i],'A07W')>3 and IsUnitAliveBJ(udg_hero[i]) then
 		if qiankun2hao[i]==null then
 			call DisplayTextToPlayer(p,0,0,"你还没有设置飞行点，请输入聊天信息“11”来设置")
 		else
@@ -278,30 +278,30 @@ function KeyInput takes nothing returns nothing
 			set loc = null
 		endif
 	endif
-	if s=="111" and GetUnitAbilityLevel(udg_hero[i],'A07W')>2 and IsUnitAliveBJ(udg_hero[i]) then
-		if RectContainsUnit(lh_r,udg_hero[i]) then
-			call DisplayTextToPlayer(p,0,0,"桃花岛不能创建飞行点")
-		else
-			call RemoveUnit(qiankun3hao[i])
-			set loc = GetUnitLoc(udg_hero[i])
-			call CreateNUnitsAtLoc(1,1697656906,p,loc,bj_UNIT_FACING)
-			set qiankun3hao[i]=bj_lastCreatedUnit
-			call DisplayTextToPlayer(GetTriggerPlayer(),0,0,"创建飞行点")
-			call RemoveLocation(loc)
-			set loc = null
-		endif
-	endif
-	if s=="222" and GetUnitAbilityLevel(udg_hero[i],'A07W')>2 and IsUnitAliveBJ(udg_hero[i]) then
-		if qiankun3hao[i]==null then
-			call DisplayTextToPlayer(p,0,0,"你还没有设置飞行点，请输入聊天信息“111”来设置")
-		else
-			set loc = GetUnitLoc(qiankun3hao[i])
-			call SetUnitPositionLoc(udg_hero[i],loc)
-			call PanCameraToTimedLocForPlayer(p,loc,0)
-			call RemoveLocation(loc)
-			set loc = null
-		endif
-	endif
+	// if s=="111" and GetUnitAbilityLevel(udg_hero[i],'A07W')>2 and IsUnitAliveBJ(udg_hero[i]) then
+	// 	if RectContainsUnit(lh_r,udg_hero[i]) then
+	// 		call DisplayTextToPlayer(p,0,0,"桃花岛不能创建飞行点")
+	// 	else
+	// 		call RemoveUnit(qiankun3hao[i])
+	// 		set loc = GetUnitLoc(udg_hero[i])
+	// 		call CreateNUnitsAtLoc(1,1697656906,p,loc,bj_UNIT_FACING)
+	// 		set qiankun3hao[i]=bj_lastCreatedUnit
+	// 		call DisplayTextToPlayer(GetTriggerPlayer(),0,0,"创建飞行点")
+	// 		call RemoveLocation(loc)
+	// 		set loc = null
+	// 	endif
+	// endif
+	// if s=="222" and GetUnitAbilityLevel(udg_hero[i],'A07W')>2 and IsUnitAliveBJ(udg_hero[i]) then
+	// 	if qiankun3hao[i]==null then
+	// 		call DisplayTextToPlayer(p,0,0,"你还没有设置飞行点，请输入聊天信息“111”来设置")
+	// 	else
+	// 		set loc = GetUnitLoc(qiankun3hao[i])
+	// 		call SetUnitPositionLoc(udg_hero[i],loc)
+	// 		call PanCameraToTimedLocForPlayer(p,loc,0)
+	// 		call RemoveLocation(loc)
+	// 		set loc = null
+	// 	endif
+	// endif
 	//if s==GetVIPNum(p, LoadStr(YDHT, GetHandleId(p), GetHandleId(p)*2)) then
 	//	set udg_vip[i] = 1
 	//	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933感谢玩家"+GetPlayerName(p)+"对决战江湖的赞助|r")
@@ -330,167 +330,41 @@ function KeyInput takes nothing returns nothing
 		call DisplayTextToPlayer(p,0,0,"|cFF00FFFF您当前的移动速度为"+I2S(R2I(GetUnitMoveSpeedEx(udg_hero[i]))))
 	endif
 	if s=="-random" and udg_runamen[i]==0 and udg_hero[i]!=null then
-		if GetRandomInt(1, 100)<=90 then
-			if GetRandomInt(1, 15)<=11 then
-	    		set udg_runamen[i]=GetRandomInt(1,11)
-	    	else
-				// 衡山，男神龙，女神龙，泰山
-	    		set udg_runamen[i]=GetRandomInt(15,18)
-    		endif
-	    else
-			// 灵鹫、慕容、明教
-	    	set udg_runamen[i]=GetRandomInt(12,14)
-    	endif
-	    if udg_runamen[i]==11 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓自由门派〓|r")
-	        call SetPlayerName(p,"〓自由门派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        call AdjustPlayerStateBJ(60,p,PLAYER_STATE_RESOURCE_LUMBER)
-	        set udg_shuxing[i]=udg_shuxing[i]+5
-	    elseif udg_runamen[i]==14 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓明教〓|r")
-	        call SetPlayerName(p,"〓明教〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set wuxing[i]=(wuxing[i]+3)
-			set jingmai[i]=(jingmai[i]+2)
-			set fuyuan[i]=(fuyuan[i]+2)
-	    elseif udg_runamen[i]==16 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓神龙教〓|r")
-	        call SetPlayerName(p,"〓神龙教〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set gengu[i]=gengu[i]+2
-	    	set fuyuan[i] = fuyuan[i] + 2
-	    	set danpo[i] = danpo[i] + 1
-	    elseif udg_runamen[i]==17 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓神龙教〓|r")
-	        call SetPlayerName(p,"〓神龙教〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set gengu[i]=gengu[i]+2
-	    	set fuyuan[i] = fuyuan[i] + 2
-	    	set danpo[i] = danpo[i] + 1
-	    elseif udg_runamen[i]==18 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓泰山派〓|r")
-	        call SetPlayerName(p,"〓泰山派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set gengu[i] = gengu[i] + 3
-	    	set wuxing[i] = wuxing[i] + 1
-	    	set yishu[i] = yishu[i] + 1
-		elseif udg_runamen[i]==12 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓灵鹫宫〓|r")
-	        call SetPlayerName(p,"〓灵鹫宫〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set danpo[i]=(danpo[i]+2)
-			set jingmai[i]=(jingmai[i]+2)
-			set fuyuan[i]=(fuyuan[i]+1)
-		elseif udg_runamen[i]==13 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓姑苏慕容〓|r")
-	        call SetPlayerName(p,"〓姑苏慕容〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set udg_shuxing[i]=udg_shuxing[i]+5
-	    elseif udg_runamen[i]==1 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓少林派〓|r")
-	        call SetPlayerName(p,"〓少林派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set gengu[i]=(gengu[i]+3)
-	        set jingmai[i]=(jingmai[i]+2)
-	    elseif udg_runamen[i]==3 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓丐帮〓|r")
-	        call SetPlayerName(p,"〓丐帮〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set danpo[i]=(danpo[i]+3)
-			set jingmai[i]=(jingmai[i]+2)
-	    elseif udg_runamen[i]==4 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓华山派〓|r")
-	        call SetPlayerName(p,"〓华山派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set wuxing[i]=(wuxing[i]+3)
-			set danpo[i]=(danpo[i]+2)
-	    elseif udg_runamen[i]==5 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓全真教〓|r")
-	        call SetPlayerName(p,"〓全真教〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set jingmai[i]=(jingmai[i]+3)
-			set fuyuan[i]=(fuyuan[i]+2)
-	    elseif udg_runamen[i]==6 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓血刀门〓|r")
-	        call SetPlayerName(p,"〓血刀门〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set gengu[i]=(gengu[i]+2)
-			set danpo[i]=(danpo[i]+3)
-	    elseif udg_runamen[i]==7 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓恒山派〓|r")
-	        call SetPlayerName(p,"〓恒山派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set yishu[i]=(yishu[i]+3)
-	        set fuyuan[i]=(fuyuan[i]+2)
-	    elseif udg_runamen[i]==8 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓峨眉派〓|r")
-	        call SetPlayerName(p,"〓峨眉派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set yishu[i]=(yishu[i]+1)
-			set jingmai[i]=(jingmai[i]+1)
-			set fuyuan[i]=(fuyuan[i]+3)
-	    elseif udg_runamen[i]==10 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓星宿派〓|r")
-	        call SetPlayerName(p,"〓星宿派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set danpo[i]=(danpo[i]+2)
-			set yishu[i]=(yishu[i]+1)
-			set jingmai[i]=(jingmai[i]+2)
-	    elseif udg_runamen[i]==9 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓武当派〓|r")
-	        call SetPlayerName(p,"〓武当派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set gengu[i]=(gengu[i]+1)
-			set jingmai[i]=(jingmai[i]+2)
-			set fuyuan[i]=(fuyuan[i]+2)
-	    elseif udg_runamen[i]==2 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓古墓派〓|r")
-	        call SetPlayerName(p,"〓古墓派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set wuxing[i]=(wuxing[i]+2)
-			set jingmai[i]=(jingmai[i]+1)
-			set fuyuan[i]=(fuyuan[i]+2)
-		elseif udg_runamen[i]==15 then
-	        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓衡山派〓|r")
-	        call SetPlayerName(p,"〓衡山派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	        set wuxing[i]=(wuxing[i]+3)
-			set yishu[i]=(yishu[i]+2)
-	    endif
-	    call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933获得武功：凌波微步，你可以在主城和传送石之间任意传送了，请在NPC郭靖处选择副职")
-	    call UnitAddAbility(udg_hero[i],'A05R')
-	    call AddCharacterABuff(udg_hero[i], udg_xinggeA[i])
-        call AddCharacterBBuff(udg_hero[i], udg_xinggeB[i])
-	    if udg_vip[i]<2 and udg_elevenvip[i]<1 then
-	    	call UnitAddAbility(udg_hero[i],'A040')
-	    	call UnitAddAbility(udg_hero[i],'A041')
-	    	call UnitAddAbility(udg_hero[i],'A042')
-	    endif
-	    set I7[(((i-1)*20)+8)]='A05R'
-	    call UnitRemoveAbility(udg_hero[i],'Avul')
-	    set Q4=GetRandomLocInRect(He)
-	    call SetUnitPositionLoc(udg_hero[i],Q4)
-	    call PanCameraToTimedLocForPlayer(p,Q4,0)
-	    call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
-	    call AdjustPlayerStateBJ(50,p,PLAYER_STATE_RESOURCE_LUMBER)
-	    set P4[i]=bj_lastCreatedUnit
-
-	    call RemoveLocation(Q4)
-	    call UnitAddItemByIdSwapped(1227896394,udg_hero[i])
-
+	    call randomMenpai(p,1)
 	endif
 	if s=="www.juezhanjianghu.com" and udg_runamen[i]==0 and udg_hero[i]!=null then
-		set udg_runamen[i]=12
-		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"选择了隐藏门派〓灵鹫宫〓|r")
-	    call SetPlayerName(p,"〓灵鹫宫〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	    set danpo[i]=(danpo[i]+2)
-		set jingmai[i]=(jingmai[i]+2)
-		set fuyuan[i]=(fuyuan[i]+1)
-		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933获得武功：凌波微步，你可以在主城和传送石之间任意传送了")
-		call AddCharacterABuff(udg_hero[i], udg_xinggeA[i])
-        call AddCharacterBBuff(udg_hero[i], udg_xinggeB[i])
-	    call UnitAddAbility(udg_hero[i],'A05R')
-	    if udg_vip[i]<2 and udg_elevenvip[i]<1 then
-	    	call UnitAddAbility(udg_hero[i],'A040')
-	    	call UnitAddAbility(udg_hero[i],'A041')
-	    	call UnitAddAbility(udg_hero[i],'A042')
-	    endif
-	    set I7[(((i-1)*20)+8)]='A05R'
-	    call UnitRemoveAbility(udg_hero[i],'Avul')
-	    set Q4=GetRandomLocInRect(He)
-	    call SetUnitPositionLoc(udg_hero[i],Q4)
-	    call PanCameraToTimedLocForPlayer(p,Q4,0)
-	    call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
-	    set P4[i]=bj_lastCreatedUnit
-	    call RemoveLocation(Q4)
-	    call UnitAddItemByIdSwapped(1227896394,udg_hero[i])
+		call DisplayTextToPlayer(p,0,0,"|cFF00FFFF灵鹫宫已加入积分兑换，请输入hg选择自由门派后去基地左下方兑换")
 	endif
-	if s == "my gao v" and udg_vip[i] == 1 and udg_elevenvip[i] == 1 and udg_changevip[i] == 1 then
-		call DisplayTextToPlayer(p, 0, 0, I2S(NameProdVIP(LoadStr(YDHT, GetHandleId(p), GetHandleId(p)*2), 3)/10000))
-	endif
+	// if s=="www.juezhanjianghu.com" and udg_runamen[i]==0 and udg_hero[i]!=null then
+	// 	set udg_runamen[i]=12
+	// 	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"选择了隐藏门派〓灵鹫宫〓|r")
+	//     call SetPlayerName(p,"〓灵鹫宫〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
+	//     set danpo[i]=(danpo[i]+2)
+	// 	set jingmai[i]=(jingmai[i]+2)
+	// 	set fuyuan[i]=(fuyuan[i]+1)
+	// 	call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933获得武功：凌波微步，你可以在主城和传送石之间任意传送了")
+	// 	call AddCharacterABuff(udg_hero[i], udg_xinggeA[i])
+    //     call AddCharacterBBuff(udg_hero[i], udg_xinggeB[i])
+	//     call UnitAddAbility(udg_hero[i],'A05R')
+	//     if udg_vip[i]<2 and udg_elevenvip[i]<1 then
+	//     	call UnitAddAbility(udg_hero[i],'A040')
+	//     	call UnitAddAbility(udg_hero[i],'A041')
+	//     	call UnitAddAbility(udg_hero[i],'A042')
+	//     endif
+	//     set I7[(((i-1)*20)+8)]='A05R'
+	//     call UnitRemoveAbility(udg_hero[i],'Avul')
+	//     set Q4=GetRandomLocInRect(He)
+	//     call SetUnitPositionLoc(udg_hero[i],Q4)
+	//     call PanCameraToTimedLocForPlayer(p,Q4,0)
+	//     call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+	//     set P4[i]=bj_lastCreatedUnit
+	//     call RemoveLocation(Q4)
+	//     call UnitAddItemByIdSwapped(1227896394,udg_hero[i])
+	// endif
+
+	// if s == "my gao v" and udg_vip[i] == 1 and udg_elevenvip[i] == 1 and udg_changevip[i] == 1 then
+	// 	call DisplayTextToPlayer(p, 0, 0, I2S(NameProdVIP(LoadStr(YDHT, GetHandleId(p), GetHandleId(p)*2), 3)/10000))
+	// endif
 	//存青龙之戒
 	// if s == "saveql" and UnitHaveItem(udg_hero[i], 'I0CQ') then
 		// set str = GetPlayerName(p)
@@ -730,47 +604,56 @@ function KeyInput takes nothing returns nothing
 		set udg_shuxing[i]=udg_shuxing[i]+3000
 		set shoujiajf[i]=shoujiajf[i]+1000
 	endif
-	// if s=="ts" and testVersion then
-	// 	call unitadditembyidswapped('I0CI',udg_hero[i])
-	// 	call unitadditembyidswapped('I0CH',udg_hero[i])
-	// 	call unitadditembyidswapped('I0DO',udg_hero[i])
-	// 	call unitadditembyidswapped('I01X',udg_hero[i])
-	// 	call unitadditembyidswapped('I01P',udg_hero[i])
-	// 	call unitadditembyidswapped('I01C',udg_hero[i])
-	// 	call unitadditembyidswapped('I010',udg_hero[i])
-	// 	call unitadditembyidswapped('I00W',udg_hero[i])
-	// 	call unitadditembyidswapped('I06F',udg_hero[i])
-	// 	call unitadditembyidswapped('I03A',udg_hero[i])
-	// 	call unitadditembyidswapped('I00L',udg_hero[i])
-	// 	call unitadditembyidswapped('I08W',udg_hero[i])
-	// endif
-	// if s=="贼哥牛逼" and testVersion then
-	// 	if UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO) then
-	// 		call ModifyHeroStat(0, GetTriggerUnit(), 0, 100000)
-    //         call ModifyHeroStat(1, GetTriggerUnit(), 0, 100000)
-    //         call ModifyHeroStat(2, GetTriggerUnit(), 0, 100000)
-	// 	endif
-	// 	call AdjustPlayerStateBJ(1000000, p, PLAYER_STATE_RESOURCE_GOLD) // 奖励金钱
-	// 	call AdjustPlayerStateBJ(1000000,p,PLAYER_STATE_RESOURCE_LUMBER) // 木头
-	// 	call SetHeroLevel(udg_hero[i],GetHeroLevel(udg_hero[i])+5,true)
-	// 	set wuxuedian[i] = wuxuedian[i] + 500
-	// 	call unitadditembyidswapped(1227895642,udg_hero[i])
-	// 	call unitadditembyidswapped('I08V',udg_hero[i])
-	// 	call unitadditembyidswapped('I08W',udg_hero[i])
-	// 	call unitadditembyidswapped('I08X',udg_hero[i])
-	// 	call unitadditembyidswapped('I08Y',udg_hero[i])
-	// 	call unitadditembyidswapped('I08Z',udg_hero[i])
-	// 	call unitadditembyidswapped('I090',udg_hero[i])
-	// 	set shengwang[i]=shengwang[i]+50000
-	// 	set xiuxing[i] = 5
-	// 	set udg_lilianxishu[i]=udg_lilianxishu[i]+3
-	// 	set udg_shuxing[i]=udg_shuxing[i]+30000
-	// 	set shoujiajf[i]=shoujiajf[i]+10000
-	// endif
-	// if s == "next" and testVersion then
-	// 	set udg_boshu=udg_boshu+1
-	// 	call DisplayTextToPlayer(p,0,0,"|cFFFF0000已跳转至下一波")
-	// endif 
+	if s=="ts" and testVersion then
+		call unitadditembyidswapped('I0CI',udg_hero[i])
+		call unitadditembyidswapped('I0CH',udg_hero[i])
+		call unitadditembyidswapped('I0DO',udg_hero[i])
+		call unitadditembyidswapped('I01X',udg_hero[i])
+		call unitadditembyidswapped('I01P',udg_hero[i])
+		call unitadditembyidswapped('I01C',udg_hero[i])
+		call unitadditembyidswapped('I010',udg_hero[i])
+		call unitadditembyidswapped('I00W',udg_hero[i])
+		call unitadditembyidswapped('I06F',udg_hero[i])
+		call unitadditembyidswapped('I03A',udg_hero[i])
+		call unitadditembyidswapped('I00L',udg_hero[i])
+		call unitadditembyidswapped('I08W',udg_hero[i])
+	endif
+	if s=="九阴真人" and testVersion then
+		call unitadditembyidswapped('I02X',udg_hero[i])
+		call unitadditembyidswapped('I03I',udg_hero[i])
+		call unitadditembyidswapped('I09H',udg_hero[i])
+		call unitadditembyidswapped('I09I',udg_hero[i])
+		call unitadditembyidswapped('I09G',udg_hero[i])
+		call unitadditembyidswapped('I09J',udg_hero[i])
+		call unitadditembyidswapped('I09K',udg_hero[i])
+	endif
+	if s=="贼哥牛逼" and testVersion then
+		if UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO) then
+			call ModifyHeroStat(0, GetTriggerUnit(), 0, 100000)
+            call ModifyHeroStat(1, GetTriggerUnit(), 0, 100000)
+            call ModifyHeroStat(2, GetTriggerUnit(), 0, 100000)
+		endif
+		call AdjustPlayerStateBJ(1000000, p, PLAYER_STATE_RESOURCE_GOLD) // 奖励金钱
+		call AdjustPlayerStateBJ(1000000,p,PLAYER_STATE_RESOURCE_LUMBER) // 木头
+		call SetHeroLevel(udg_hero[i],GetHeroLevel(udg_hero[i])+5,true)
+		set wuxuedian[i] = wuxuedian[i] + 500
+		call unitadditembyidswapped(1227895642,udg_hero[i])
+		call unitadditembyidswapped('I08V',udg_hero[i])
+		call unitadditembyidswapped('I08W',udg_hero[i])
+		call unitadditembyidswapped('I08X',udg_hero[i])
+		call unitadditembyidswapped('I08Y',udg_hero[i])
+		call unitadditembyidswapped('I08Z',udg_hero[i])
+		call unitadditembyidswapped('I090',udg_hero[i])
+		set shengwang[i]=shengwang[i]+50000
+		set xiuxing[i] = 5
+		set udg_lilianxishu[i]=udg_lilianxishu[i]+3
+		set udg_shuxing[i]=udg_shuxing[i]+30000
+		set shoujiajf[i]=shoujiajf[i]+10000
+	endif
+	if s == "next" and testVersion then
+		set udg_boshu=udg_boshu+1
+		call DisplayTextToPlayer(p,0,0,"|cFFFF0000已跳转至下一波")
+	endif 
 	if s=="撸下一波" and udg_isTest[GetPlayerId(p)] then
 		set udg_boshu=udg_boshu+1
 		call DisplayTextToPlayer(p,0,0,"|cFFFF0000已跳转至下一波")

@@ -196,9 +196,16 @@ function LookForWuPin takes nothing returns nothing
 	if (xunwu[i]==0)then
 		if xiuxing[i]<=2 then
 			if GetRandomInt(1, 2)==1 then
-				set id = ZhuangBei[GetRandomInt(1, 6)]
+				// 6烈火衣去掉
+				set id = ZhuangBei[GetRandomInt(1, 5)]
 			else
-				set id = ShiPin[GetRandomInt(1, 18)]
+				// 12是霓云去掉，有点坑
+				if GetRandomInt(1,18) < 12 then
+					set id = ShiPin[GetRandomInt(1, 11)]
+				else
+					set id = ShiPin[GetRandomInt(13, 18)]
+				endif
+				
 			endif
 		elseif xiuxing[i]<=4 then
 			if GetRandomInt(1, 2)==1 then
@@ -269,9 +276,9 @@ function WanChengWuPin takes nothing returns nothing
 			call DisplayTextToPlayer(p,0,0,"|cFFFFCC00完成任务，奖励声望"+I2S(40 * (xiuxing[i]+1))+"点，经验"+I2S(15*GetHeroLevel(udg_hero[i])*GetHeroLevel(udg_hero[i])*(xiuxing[i]+1))+"点，九阳丹一颗|r\n")
 		endif
 		if Ce[i]==6 then
-			if udg_xbds[i]<9 then
+			if udg_xbds[i]<4 then
 				set udg_xbds[i] = udg_xbds[i]+1
-				call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您完成了"+I2S(udg_xbds[i])+"次寻宝任务，完成10次可获得寻宝大师哦")
+				call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您完成了"+I2S(udg_xbds[i])+"次寻宝任务，完成5次可获得寻宝大师哦")
 			else
 				if udg_xbdsbool[i] == false then
 					set udg_xbdsbool[i] = true
@@ -347,7 +354,7 @@ endfunction
 // ==============等级福利商店=====================//
 // 3级养精蓄锐令牌奖励I0D4、5级大雁I0D6、10级蓝魔I0D5、15级白虎符I0D7、20级续命I0D8、25级通犀I0D9、30级神木王鼎I0DA
 function IsLevelReward takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and (GetItemTypeId(GetManipulatedItem())=='I0D4' or GetItemTypeId(GetManipulatedItem())=='I0D5' or GetItemTypeId(GetManipulatedItem())=='I0D6' or GetItemTypeId(GetManipulatedItem())=='I0D7' or GetItemTypeId(GetManipulatedItem())=='I0D8' or GetItemTypeId(GetManipulatedItem())=='I0D9' or GetItemTypeId(GetManipulatedItem())=='I0DA'))
+	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and (GetItemTypeId(GetManipulatedItem())=='I0D4' or GetItemTypeId(GetManipulatedItem())=='I0D5' or GetItemTypeId(GetManipulatedItem())=='I0D6' or GetItemTypeId(GetManipulatedItem())=='I0D7' or GetItemTypeId(GetManipulatedItem())=='I0D8' or GetItemTypeId(GetManipulatedItem())=='I0D9' or GetItemTypeId(GetManipulatedItem())=='I0DA' or GetItemTypeId(GetManipulatedItem())=='I0EI'))
 endfunction
 function LevelReward takes nothing returns nothing
 	local unit u =GetTriggerUnit() // 触发单位
@@ -355,27 +362,30 @@ function LevelReward takes nothing returns nothing
 	local integer i=GetPlayerId(p)
 	// 获取玩家对应的地图等级
 	local integer level=DzAPI_Map_GetMapLevel(Player(i))
-	if (level >=3  and (GetItemTypeId(GetManipulatedItem())=='I0D4')) and not threereward[i] then
+	if (level >=3  and (GetItemTypeId(GetManipulatedItem())=='I0D4')) and not LoadBoolean(YDHT,i,StringHash("3级奖励")) then
 		call unitadditembyidswapped('I06H',u) // 养精蓄锐令牌
-		set threereward[i] = true
-	elseif (level >= 5 and (GetItemTypeId(GetManipulatedItem())=='I0D6')) and not fivereward[i] then
+		call SaveBoolean(YDHT,i,StringHash("3级奖励"),true)
+	elseif (level >= 5 and (GetItemTypeId(GetManipulatedItem())=='I0D6')) and not LoadBoolean(YDHT,i,StringHash("5级奖励")) then
 		call unitadditembyidswapped('I02T',u) // 大雁
-		set fivereward[i] = true
-	elseif (level >= 10 and (GetItemTypeId(GetManipulatedItem())=='I0D5')) and not tenreward[i] then
+		call SaveBoolean(YDHT,i,StringHash("5级奖励"),true)
+	elseif (level >= 10 and (GetItemTypeId(GetManipulatedItem())=='I0D5')) and not LoadBoolean(YDHT,i,StringHash("10级奖励")) then
 		call unitadditembyidswapped('I01A',u) // 蓝魔
-		set tenreward[i] = true
-	elseif (level >= 15 and (GetItemTypeId(GetManipulatedItem())=='I0D7')) and not fifteenreward[i] then
+		call SaveBoolean(YDHT,i,StringHash("10级奖励"),true)
+	elseif (level >= 15 and (GetItemTypeId(GetManipulatedItem())=='I0D7')) and not LoadBoolean(YDHT,i,StringHash("15级奖励")) then
 		call unitadditembyidswapped('I019',u) // 白虎符
-		set fifteenreward[i] = true
-	elseif (level >= 20 and (GetItemTypeId(GetManipulatedItem())=='I0D8')) and not twentyreward[i] then
+		call SaveBoolean(YDHT,i,StringHash("15级奖励"),true)
+	elseif (level >= 20 and (GetItemTypeId(GetManipulatedItem())=='I0D8')) and not LoadBoolean(YDHT,i,StringHash("20级奖励")) then
 		call unitadditembyidswapped('I06Z',u) // 续命
-		set twentyreward[i] = true
-	elseif (level >= 25 and (GetItemTypeId(GetManipulatedItem())=='I0D9')) and not twentyfivereward[i] then
+		call SaveBoolean(YDHT,i,StringHash("20级奖励"),true)
+	elseif (level >= 25 and (GetItemTypeId(GetManipulatedItem())=='I0D9')) and not LoadBoolean(YDHT,i,StringHash("25级奖励")) then
 		call unitadditembyidswapped('I070',u) // 通犀
-		set twentyfivereward[i] = true
-	elseif (level >= 30 and (GetItemTypeId(GetManipulatedItem())=='I0DA')) and not thirtyreward[i] then
+		call SaveBoolean(YDHT,i,StringHash("25级奖励"),true)
+	elseif (level >= 30 and (GetItemTypeId(GetManipulatedItem())=='I0DA')) and not LoadBoolean(YDHT,i,StringHash("30级奖励")) then
 		call unitadditembyidswapped('I0AM',u) // 神木王鼎
-		set thirtyreward[i] = true
+		call SaveBoolean(YDHT,i,StringHash("30级奖励"),true)
+	elseif (level >= 35 and (GetItemTypeId(GetManipulatedItem())=='I0EI')) and not LoadBoolean(YDHT,i,StringHash("35级奖励")) then
+		call AdjustPlayerStateBJ(50000, p, PLAYER_STATE_RESOURCE_GOLD) // 奖励5w金钱
+		call SaveBoolean(YDHT,i,StringHash("35级奖励"),true)
 	else
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|CFFFE890D可能你不符合条件或者已经领取过了哦！")
 	endif
@@ -392,6 +402,10 @@ function jfChange takes integer i,integer jf returns nothing
 	// 保存到服务器
 	call DzAPI_Map_StoreInteger(Player(i),"jf",udg_jf[i])
 endfunction
+
+globals
+	integer array jf_qiWu
+endglobals
 
 //============积分商店=============//
 // 随机一个AB性格加一:5积分；明教一局：20积分；精钢剑：4积分；随机一本奇武：4积分；桃花岛传送符（永久版）：4积分；重置门派称号：14积分；号令天下：10积分
@@ -447,10 +461,20 @@ function jfShop takes nothing returns nothing
 			call jfChange(i,jf2)
 		endif
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DE')) and udg_jf[i] >= jf3 and (jf_useMax[i]+jf3) <= jf_max then
-		// 随机一本奇武
-		call unitadditembyidswapped(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(42, 56), 1), u)
-		call jfChange(i,jf3)
-		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00B随机获取一本奇武，扣除4积分")
+		// 限定一局最多3本奇武
+		if jf_qiWu[i] >= 3 then
+			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|CFFFE890D一局游戏只能兑换3本奇武！")
+		else
+			// 随机一本奇武，去掉珍珑棋局49
+			if GetRandomInt(42,56) < 49 then
+				call unitadditembyidswapped(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(42, 48), 1), u)
+			else
+				call unitadditembyidswapped(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(50, 56), 1), u)
+			endif
+			call jfChange(i,jf3)
+			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00B随机获取一本奇武，扣除4积分")
+		endif
+		set jf_qiWu[i] = jf_qiWu[i] +1
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DF')) and udg_jf[i] >= jf4 and (jf_useMax[i]+jf4) <= jf_max then
 		// 桃花岛传送符，不限次数
 		call unitadditembyidswapped('I0DI',u) 
@@ -459,13 +483,20 @@ function jfShop takes nothing returns nothing
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DG')) and udg_jf[i] >= jf5 and (jf_useMax[i]+jf5) <= jf_max then
 		// 重置门派称号
 		set udg_zhangmen[i+1] = false
+		set udg_whichzhangmen[i+1] = 0
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00重置门派称号成功，扣除14积分")
 		call jfChange(i,jf5)
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DH')) and udg_jf[i] >= jf6 and (jf_useMax[i]+jf6) <= jf_max then
 		// 号令
-		call unitadditembyidswapped('I06F',u) 
-		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00获取号令天下令牌，扣除10积分")
-		call jfChange(i,jf6)
+		// call unitadditembyidswapped('I06F',u) 
+		if GetUnitLevel(udg_hero[i+1])<=2 then
+			call randomMenpai(p,2)
+			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00重选随机门派，扣除10积分")
+			call jfChange(i,jf6)
+		else
+			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC003级以下才能重新随机门派")
+		endif
+		
 	else
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
 	endif
@@ -501,7 +532,7 @@ function jfShop2 takes nothing returns nothing
 			// 伤害加成存档
 			call DzAPI_Map_StoreReal(Player(i),"wugong",bonus_wugong[i])
 			call DzAPI_Map_StoreReal(Player(i),"baoshang",bonus_baoshang[i])
-			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00武功伤害加5%，暴击伤害加5%")
+			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00武功伤害加10%，暴击伤害加10%")
 			// 扣除对应的积分
 			set udg_jf[i] = udg_jf[i] -jf7
 			// 保存到服务器
@@ -2051,71 +2082,69 @@ call FlushChildHashtable(YDHT,id*cx)
 endfunction
 // 完成高昌迷宫任务
 function xL takes nothing returns boolean
-return((UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(Td[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))]==1)and(Vd[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))]==$A)and(Ud[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))]==$A))
+	return((UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(Td[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))]==1)and(Vd[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))]==$A)and(Ud[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))]==$A))
 endfunction
 function yL takes nothing returns nothing
-local integer id=GetHandleId(GetTriggeringTrigger())
-local integer cx=LoadInteger(YDHT,id,-$3021938A)
-// 号令初始爆率
-local integer gailv = 15
-set cx=cx+3
-call SaveInteger(YDHT,id,-$3021938A,cx)
-call SaveInteger(YDHT,id,-$1317DA19,cx)
-call SaveInteger(YDHT,id*cx,-$5E9EB4B3,(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))))
-call SaveUnitHandle(YDHT,id*cx,-$2EC5CBA0,GetTriggerUnit())
-call PlaySoundOnUnitBJ(Hh,100,LoadUnitHandle(YDHT,id*cx,-$2EC5CBA0))
-if((GetRandomInt(1,50)<=fuyuan[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]))then
-call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,100)<=$A))then
-call createitemloc(1227896370,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,90)<=$A))then
-call createitemloc(1227896371,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,80)<=$A))then
-call createitemloc(1227896369,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,70)<=$A))then
-call createitemloc(1227896374,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,60)<=$A))then
-call createitemloc(1227896372,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,50)<=$A))then
-call createitemloc(1227896368,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,40)<=$A))then
-call createitemloc(1227896377,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,30)<=$A))then
-call createitemloc(1227896376,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-if((GetRandomInt(1,20)<=$A))then
-call createitemloc(1227896375,LoadLocationHandle(YDHT,id*cx,$1769D332))
-else
-call createitemloc('I065',LoadLocationHandle(YDHT,id*cx,$1769D332))
-endif
-endif
-endif
-endif
-endif
-endif
-endif
-endif
-endif
-call RemoveLocation(LoadLocationHandle(YDHT,id*cx,$1769D332))
-call DisplayTextToPlayer(Player(-1+(LoadInteger(YDHT,id*cx,-$5E9EB4B3))),0,0,"|CFF34FF00完成任务获得江湖声望+200和绝学隐藏招式残章一本\n")
-set Td[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=0
-else
+	local integer id=GetHandleId(GetTriggeringTrigger())
+	local integer cx=LoadInteger(YDHT,id,-$3021938A)
+	// 号令初始爆率
+	local integer gailv = 18
+	set cx=cx+3
+	call SaveInteger(YDHT,id,-$3021938A,cx)
+	call SaveInteger(YDHT,id,-$1317DA19,cx)
+	call SaveInteger(YDHT,id*cx,-$5E9EB4B3,(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))))
+	call SaveUnitHandle(YDHT,id*cx,-$2EC5CBA0,GetTriggerUnit())
+	call PlaySoundOnUnitBJ(Hh,100,LoadUnitHandle(YDHT,id*cx,-$2EC5CBA0))
 	// 自由号令爆率提高
 	if udg_runamen[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))] == 11 then
-		set gailv = gailv +15
+		set gailv = gailv +20
 	endif
-	// call BJDebugMsg("自由号令爆率为："+I2S(gailv))
-	if((GetRandomInt(1,50)<=gailv))then
+	if GetRandomInt(1,100) <= gailv + fuyuan[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))] then
 		// 号令I06F
 		call unitadditembyidswapped(1227896390,GetTriggerUnit())
-		call DisplayTextToPlayer(Player(-1+(LoadInteger(YDHT,id*cx,-$5E9EB4B3))),0,0,"|CFF34FF00完成任务获得江湖声望+200和号令天下令\n")
+		call DisplayTextToPlayer(Player(-1+(LoadInteger(YDHT,id*cx,-$5E9EB4B3))),0,0,"|CFF34FF00运气不错，送你一个号令天下令牌\n")
+	endif
+	if((GetRandomInt(1,50)<=fuyuan[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]))then
+		call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
+		if((GetRandomInt(1,100)<=$A))then
+			call createitemloc(1227896370,LoadLocationHandle(YDHT,id*cx,$1769D332))
+		else
+			if((GetRandomInt(1,90)<=$A))then
+				call createitemloc(1227896371,LoadLocationHandle(YDHT,id*cx,$1769D332))
+			else
+				if((GetRandomInt(1,80)<=$A))then
+					call createitemloc(1227896369,LoadLocationHandle(YDHT,id*cx,$1769D332))
+				else
+					if((GetRandomInt(1,70)<=$A))then
+						call createitemloc(1227896374,LoadLocationHandle(YDHT,id*cx,$1769D332))
+					else
+						if((GetRandomInt(1,60)<=$A))then
+							call createitemloc(1227896372,LoadLocationHandle(YDHT,id*cx,$1769D332))
+						else
+							if((GetRandomInt(1,50)<=$A))then
+								call createitemloc(1227896368,LoadLocationHandle(YDHT,id*cx,$1769D332))
+							else
+								if((GetRandomInt(1,40)<=$A))then
+									call createitemloc(1227896377,LoadLocationHandle(YDHT,id*cx,$1769D332))
+								else
+									if((GetRandomInt(1,30)<=$A))then
+										call createitemloc(1227896376,LoadLocationHandle(YDHT,id*cx,$1769D332))
+									else
+										if((GetRandomInt(1,20)<=$A))then
+											call createitemloc(1227896375,LoadLocationHandle(YDHT,id*cx,$1769D332))
+										else
+											call createitemloc('I065',LoadLocationHandle(YDHT,id*cx,$1769D332))
+										endif
+									endif
+								endif
+							endif
+						endif
+					endif
+				endif
+			endif
+		endif
+		call RemoveLocation(LoadLocationHandle(YDHT,id*cx,$1769D332))
+		call DisplayTextToPlayer(Player(-1+(LoadInteger(YDHT,id*cx,-$5E9EB4B3))),0,0,"|CFF34FF00完成任务获得江湖声望+200和绝学隐藏招式残章一本\n")
 		set Td[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=0
 	else
 		call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
@@ -2124,11 +2153,10 @@ else
 		call DisplayTextToPlayer(Player(-1+(LoadInteger(YDHT,id*cx,-$5E9EB4B3))),0,0,"|CFF34FF00完成任务获得江湖声望+200和古董一个")
 		set Td[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=0
 	endif
-endif
-set shengwang[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=(shengwang[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]+$C8)
-set Vd[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=0
-set Ud[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=0
-call FlushChildHashtable(YDHT,id*cx)
+		set shengwang[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=(shengwang[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]+$C8)
+		set Vd[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=0
+		set Ud[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=0
+	call FlushChildHashtable(YDHT,id*cx)
 endfunction
 //辽国第一先锋任务+拯救阿紫任务
 function AL takes nothing returns boolean

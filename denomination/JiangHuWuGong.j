@@ -60,8 +60,11 @@ function TanZhiShangHai_Action takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
 	local unit u=udg_hero[i]
     local unit uc=GetEnumUnit()
-    local real shxishu=1.
+    local real shxishu=1.+gengu[i]/20
     local real shanghai=0.
+	if dongxie[i] then
+		set shxishu=shxishu*5
+	endif
     set shanghai=ShangHaiGongShi(u,uc,30.8,30.8,shxishu,'A06H')
     call WuGongShangHai(u,uc,shanghai)
     set u=null
@@ -71,7 +74,7 @@ function TanZhiShangHai takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
 	local unit u=udg_hero[i]
     local unit uc=GetTriggerUnit()
-    local real shxishu=1.
+    local real shxishu=1. + gengu[i]/20
     local real shanghai=0.
     local location loc=GetUnitLoc(u)
     local location loc2=GetUnitLoc(uc)
@@ -90,7 +93,7 @@ function TanZhiShangHai takes nothing returns nothing
     set shanghai=ShangHaiGongShi(u,uc,30.8,30.8,shxishu,'A06H')
     call WuGongShangHai(u,uc,shanghai)
 
-    if((danpo[i]>=23)and(GetRandomReal(.0,100.)<=30.)and(UnitHasBuffBJ(uc,1110454328)==false))then
+    if((danpo[i]>=23) and(UnitHasBuffBJ(uc,1110454328)==false))then
         call WanBuff(u, uc, 11)
     endif
     if((GetUnitAbilityLevel(u,1093679152)!=0)and(UnitHasBuffBJ(uc,'Bcri')==false))then
@@ -132,6 +135,7 @@ function eF takes nothing returns nothing
     endloop
     set level = GetUnitAbilityLevel(uc, 'A07A')
     call YDWEPolledWaitNull(5.0)
+	// 5s后判断如果是赤练仙子，立刻重置cd
     if chilian[1+GetPlayerId(GetOwningPlayer(uc))]==true then
 	    call UnitRemoveAbility(uc, 'A07A')
 	    call UnitAddAbility(uc, 'A07A')
@@ -148,7 +152,7 @@ function hF takes nothing returns nothing
     local integer i=1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
 	local unit u=udg_hero[i]
     local unit uc=GetTriggerUnit()
-    local real shxishu=1.
+    local real shxishu=1. + yishu[i]/20
     local real shanghai=0.
     local location loc=GetUnitLoc(uc)
     if((GetUnitAbilityLevel(u,1093678932)!=0))then
@@ -325,7 +329,7 @@ function rF takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
 	local unit u=udg_hero[i]
     local unit uc=GetTriggerUnit()
-    local real shxishu=1.
+    local real shxishu=1. + wuxing[i]/20
     local real shanghai=0.
     if((GetUnitAbilityLevel(u,'A07J')!=0))then
         set shxishu=shxishu+.7
@@ -549,7 +553,7 @@ function EF takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
 	local unit u=udg_hero[i]
     local unit uc=GetTriggerUnit()
-    local real shxishu=1.
+    local real shxishu=1. + jingmai[i]/20
     local real shanghai=0.
     if((GetUnitAbilityLevel(u,'A07P')!=0))then
         set shxishu=shxishu+.6
@@ -602,7 +606,7 @@ function JF takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
 	local unit u=udg_hero[i]
     local unit uc=GetTriggerUnit()
-    local real shxishu=1.
+    local real shxishu=1. + gengu[i]/20
     local real shanghai=0.
     local location loc=GetUnitLoc(uc)
     local location loc2=null
@@ -642,7 +646,7 @@ function MF takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
 	local unit u=udg_hero[i]
     local unit uc=GetTriggerUnit()
-    local real shxishu=1.
+    local real shxishu=1. + jingmai[i]/20
     local real shanghai=0.
     local location loc=GetUnitLoc(uc)
     if((GetUnitAbilityLevel(u,'A06J')!=0))then
@@ -690,7 +694,7 @@ function QF takes nothing returns nothing
 	local unit uc=GetEnumUnit()
 	local location loc=GetUnitLoc(uc)
 	local integer i=1+GetPlayerId(GetOwningPlayer(u))
-	local real shxishu=1.
+	local real shxishu=1. + wuxing[i]/20
 	local real shanghai=0.
 	// 搭配吸星，伤害加50%
     if GetUnitAbilityLevel(u,'A07R')!=0 then
@@ -786,6 +790,7 @@ function UF takes nothing returns nothing
     local unit uc=GetTriggerUnit()
     local real shxishu=1.
     local real shanghai=0.
+	local integer level  = 0
     if((GetUnitAbilityLevel(u,1093678930)!=0))then
         set shxishu=shxishu+.5
     endif
@@ -801,6 +806,7 @@ function UF takes nothing returns nothing
     if((GetUnitAbilityLevel(u,1093679154)!=0))then
         set shxishu=shxishu+.6
     endif
+	// 九阴真人加成20倍
     if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
 	        set shxishu=shxishu*20
     endif
@@ -810,6 +816,21 @@ function UF takes nothing returns nothing
     set shanghai=ShangHaiGongShi(u,uc,36,36,shxishu,'A07N')
     call WuGongShangHai(u,uc,shanghai)
     call WuGongShengChong(GetEventDamageSource(),'A07N',3000.)
+	set level = GetUnitAbilityLevel(u, 'A07N')
+	// 3s后判断如果是九阴真人，立刻重置cd
+    if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
+		call YDWEPolledWaitNull(3.0)
+	    call UnitRemoveAbility(u, 'A07N')
+	    call UnitAddAbility(u, 'A07N')
+	    call SetUnitAbilityLevel(u, 'A07N', level)
+	endif
+	// 5s后判断如果是芷若，立刻重置cd
+    if zhiruo[1+GetPlayerId(GetOwningPlayer(u))] then
+		call YDWEPolledWaitNull(5.0)
+	    call UnitRemoveAbility(u, 'A07N')
+	    call UnitAddAbility(u, 'A07N')
+	    call SetUnitAbilityLevel(u, 'A07N', level)
+	endif
     set u=null
     set uc=null
 endfunction
@@ -838,7 +859,7 @@ function KongMing_Action takes nothing returns nothing
     if GetUnitAbilityLevel(u,'A07S')>=1 and GetUnitAbilityLevel(u,'A0D1')>=1 and GetUnitAbilityLevel(u,'A06P')!=0 and GetUnitAbilityLevel(u,'A07U')!=0 and GetUnitAbilityLevel(GetTriggerUnit(),'A018')!=0 then
     	set shxishu=shxishu*5*2
 	endif
-	if laowantong[i] then
+	if laowantong[i] or beixia[i] then
 	 	set shxishu = shxishu*5
 	endif
     set shanghai=ShangHaiGongShi(u,uc,10,8,shxishu,'A017')
@@ -859,9 +880,15 @@ function KongMingQuan takes nothing returns nothing
 	local player p=GetOwningPlayer(u)
 	local integer i=1+GetPlayerId(p)
 	local group g=CreateGroup()
+	local integer range = 1 // 
     call WuGongShengChong(u,'A017',1200.)
+	// 搭配双手，范围伤害
     if GetUnitAbilityLevel(u,'A07U')!=0 then
-	    call GroupEnumUnitsInRangeOfLoc(g,loc,400,Condition(function KongMing_Condition))
+		// 老顽童或者北侠称号，范围3倍
+		if laowantong[i] or beixia[i] then
+			set range = 3
+		endif
+	    call GroupEnumUnitsInRangeOfLoc(g,loc,400*range,Condition(function KongMing_Condition))
 	else
 	    call GroupAddUnit(g,uc)
     endif
@@ -910,7 +937,7 @@ function BiHai_Action takes nothing returns nothing
 	set yinlv[4]="徵!"
 	set yinlv[5]="羽!"
 	if dongxie[i] then
-		set shxishu=shxishu*5
+		set shxishu=shxishu*10
 	endif
 	if GetUnitAbilityLevel(u,'A06H')>=1 then
 	    set j=3

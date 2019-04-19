@@ -526,8 +526,9 @@ function J0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((w9[i]==false))then
+	if((w9[i]==false or udg_junzhu[i]==true))then
 		set w9[i]=true
+		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call UnitAddAbility(udg_hero[i],1093678923)
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC气血提升20000|r")
@@ -568,7 +569,7 @@ function P0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((x9[i]==false))then
+	if((x9[i]==false or udg_junzhu[i]==true))then
 		set x9[i]=true
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		set juexuelingwu[i]=(juexuelingwu[i]+1)
