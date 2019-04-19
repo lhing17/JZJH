@@ -343,7 +343,7 @@ function EMeiJiuYang_Action2 takes nothing returns nothing
 	local unit u=LoadUnitHandle(YDHT,p,0)
 	local unit uc=LoadUnitHandle(YDHT,p,1)
 	local real shanghai=0.
-	local real shxishu=1.+GetUnitState(u,UNIT_STATE_MAX_MANA)/200
+	local real shxishu=1.+GetUnitState(u,UNIT_STATE_MAX_MANA)/500
 	local unit ut=null
 	local location loc=GetUnitLoc(u)
     // local real 

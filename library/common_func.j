@@ -2605,7 +2605,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
             set udg_zhangmen[i]=true
             set udg_whichzhangmen[i]=21
 			call SaveBoolean(YDHT,GetHandleId(u),StringHash("小虾米"),true)
-		elseif GetUnitAbilityLevel(u, 'A07E') >= 5 and GetUnitAbilityLevel(u, 'A017') >= 5 and GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and udg_runamen[i] != 3 then
+		elseif GetUnitAbilityLevel(u, 'A07E') >= 5 and GetUnitAbilityLevel(u, 'A017') >= 5 and GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and udg_runamen[i] == 11 then
 			// 不能是丐帮，降龙5级、空明拳5级、九阴真经、双手互博
 			// 奖励招式300、内力500、真实300，降龙加3级，空明加3级
 			call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：郭大侠")

@@ -110,7 +110,7 @@ function XiaoLianHengChen takes nothing returns nothing
 	local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
 	if (GetRandomReal(.0,100.) <= 30. + fuyuan[i]/3 + GetUnitAbilityLevel(u, 'A056')*4 )then
 		//加爪子加范围
-	    call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(800+600*(GetUnitAbilityLevel(u,'A07N')),loc1,Condition(function XiaoLian_Condition)),function XiaoLian_Action)
+	    call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(800+200*(GetUnitAbilityLevel(u,'A07N')),loc1,Condition(function XiaoLian_Condition)),function XiaoLian_Action)
 	    // call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(500+500*(GetUnitAbilityLevel(u,'A07U')),loc1,Condition(function XiaoLian_Condition)),function XiaoLian_Action)
 	    call WuGongShengChong(u,'A056',900.)
 	    call WuGongShengChong(u,'A059',2500.)
