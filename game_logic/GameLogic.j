@@ -1815,7 +1815,7 @@ endfunction
 //怪物死后重新刷怪
 function EA takes nothing returns nothing
 	//圣兽死后不刷新
-	if GetTriggerUnit()!=udg_qinglong and GetTriggerUnit()!=udg_baihu and GetTriggerUnit()!=udg_zhuque and GetTriggerUnit()!=udg_xuanwu and GetTriggerUnit()!=gg_unit_n00M_0131 then
+	if GetTriggerUnit()!=gg_unit_n00M_0131 then
 		call YDWEPolledWaitNull(.02)
 		set s7=1
 		//call BJDebugMsg(GetUnitName(GetTriggerUnit()))

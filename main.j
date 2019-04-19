@@ -46,7 +46,6 @@
 #include "ZhenFa.j"
 #include "QiWu.j"
 
-#include "monster_come/monster_come.j"
 #include "zhangmen_skill/zhangmen_skill.j"
 #include "smelt_weapon/smelt_weapon.j"
 #include "CreateDestructables.j"

@@ -457,58 +457,47 @@ function Trig_Wild_Axes_aFunc026Func026A takes nothing returns nothing
 endfunction
 
 function Trig_Wild_Axes_aFunc026T takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local real array x
+    local real array y
     local group ydl_group
     local unit ydl_unit
-    call YDWESetLocalVariableRealArray( "x", 0, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x324AE96A) )
-    call YDWESetLocalVariableRealArray( "y", 0, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x058682B9) )
-    call YDWESetLocalVariableRealArray( "x", 1, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x2392447A) )
-    call YDWESetLocalVariableRealArray( "y", 1, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xB0897302) )
-    call YDWESetLocalVariableRealArray( "x", 2, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x41713DA3) )
-    call YDWESetLocalVariableRealArray( "y", 2, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x71CA3531) )
-    call YDWESetLocalVariableRealArray( "x", 3, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD310CF7A) )
-    call YDWESetLocalVariableRealArray( "y", 3, YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x7D73FF94) )
-    call YDWESetLocalVariableReal( "a", YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) )
-    call YDWESetLocalVariableReal( "b", ( 1.00 - YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) ) )
-    call SetUnitX( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B), ( ( YDWEGetLocalVariableRealArray("x", 0) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("a") ) ) + ( ( ( YDWEGetLocalVariableRealArray("x", 2) * 2.00 ) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("b") ) ) + ( YDWEGetLocalVariableRealArray("x", 1) * ( YDWEGetLocalVariableReal("b") * YDWEGetLocalVariableReal("b") ) ) ) ) )
-    call SetUnitY( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B), ( ( YDWEGetLocalVariableRealArray("y", 0) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("a") ) ) + ( ( ( YDWEGetLocalVariableRealArray("y", 2) * 2.00 ) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("b") ) ) + ( YDWEGetLocalVariableRealArray("y", 1) * ( YDWEGetLocalVariableReal("b") * YDWEGetLocalVariableReal("b") ) ) ) ) )
-    call SetUnitX( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54), ( ( YDWEGetLocalVariableRealArray("x", 0) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("a") ) ) + ( ( ( YDWEGetLocalVariableRealArray("x", 3) * 2.00 ) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("b") ) ) + ( YDWEGetLocalVariableRealArray("x", 1) * ( YDWEGetLocalVariableReal("b") * YDWEGetLocalVariableReal("b") ) ) ) ) )
-    call SetUnitY( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54), ( ( YDWEGetLocalVariableRealArray("y", 0) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("a") ) ) + ( ( ( YDWEGetLocalVariableRealArray("y", 3) * 2.00 ) * ( YDWEGetLocalVariableReal("a") * YDWEGetLocalVariableReal("b") ) ) + ( YDWEGetLocalVariableRealArray("y", 1) * ( YDWEGetLocalVariableReal("b") * YDWEGetLocalVariableReal("b") ) ) ) ) )
-    if ((GetUnitX(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B)) > ( GetRectMaxX(bj_mapInitialPlayableArea) - 50.00 ))) then
-        call SetUnitX( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B), ( GetRectMaxX(bj_mapInitialPlayableArea) - 50.00 ) )
-    else
-        if ((GetUnitX(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B)) < ( GetRectMinX(bj_mapInitialPlayableArea) + 50.00 ))) then
-            call SetUnitX( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B), ( GetRectMinX(bj_mapInitialPlayableArea) + 50.00 ) )
-        else
-            call DoNothing(  )
-        endif
+    local unit left
+    local unit right
+    local real a
+    local real b = 1 - a
+
+    call SetUnitX(left, x[0] * a * a + x[2] * 2 * a * b + x[1] * b * b)
+    call SetUnitY(left, y[0] * a * a + y[2] * 2 * a * b + y[1] * b * b)
+    call SetUnitX(right, x[0] * a * a + x[3] * 2 * a * b + x[1] * b * b)
+    call SetUnitY(right, y[0] * a * a + y[3] * 2 * a * b + y[1] * b * b)
+    if GetUnitX(left) > GetRectMaxX(bj_mapInitialPlayableArea) - 50 then
+        call SetUnitX(left, GetRectMaxX(bj_mapInitialPlayableArea) - 50)
     endif
-    if ((GetUnitY(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B)) > ( GetRectMaxY(bj_mapInitialPlayableArea) - 50.00 ))) then
-        call SetUnitY( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B), ( GetRectMaxY(bj_mapInitialPlayableArea) - 50.00 ) )
-    else
-        if ((GetUnitY(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B)) < ( GetRectMinY(bj_mapInitialPlayableArea) + 50.00 ))) then
-            call SetUnitY( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B), ( GetRectMinY(bj_mapInitialPlayableArea) + 50.00 ) )
-        else
-            call DoNothing(  )
-        endif
+    if GetUnitX(left) < GetRectMinX(bj_mapInitialPlayableArea) + 50 then
+        call SetUnitX(left, GetRectMinX(bj_mapInitialPlayableArea) + 50)
     endif
-    if ((GetUnitX(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54)) > ( GetRectMaxX(bj_mapInitialPlayableArea) - 50.00 ))) then
-        call SetUnitX( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54), ( GetRectMaxX(bj_mapInitialPlayableArea) - 50.00 ) )
-    else
-        if ((GetUnitX(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54)) < ( GetRectMinX(bj_mapInitialPlayableArea) + 50.00 ))) then
-            call SetUnitX( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54), ( GetRectMinX(bj_mapInitialPlayableArea) + 50.00 ) )
-        else
-            call DoNothing(  )
-        endif
+    if GetUnitY(left) > GetRectMaxY(bj_mapInitialPlayableArea) - 50 then
+        call SetUnitY(left, GetRectMaxY(bj_mapInitialPlayableArea) - 50)
     endif
-    if ((GetUnitY(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54)) > ( GetRectMaxY(bj_mapInitialPlayableArea) - 50.00 ))) then
-        call SetUnitY( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54), ( GetRectMaxY(bj_mapInitialPlayableArea) - 50.00 ) )
-    else
-        if ((GetUnitY(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54)) < ( GetRectMinY(bj_mapInitialPlayableArea) + 50.00 ))) then
-            call SetUnitY( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54), ( GetRectMinY(bj_mapInitialPlayableArea) + 50.00 ) )
-        else
-            call DoNothing(  )
-        endif
+    if GetUnitY(left) < GetRectMinY(bj_mapInitialPlayableArea) + 50 then
+        call SetUnitX(left, GetRectMinY(bj_mapInitialPlayableArea) + 50)
     endif
+
+    if GetUnitX(right) > GetRectMaxX(bj_mapInitialPlayableArea) - 50 then
+        call SetUnitX(right, GetRectMaxX(bj_mapInitialPlayableArea) - 50)
+    endif
+    if GetUnitX(right) < GetRectMinX(bj_mapInitialPlayableArea) + 50 then
+        call SetUnitX(right, GetRectMinX(bj_mapInitialPlayableArea) + 50)
+    endif
+    if GetUnitY(right) > GetRectMaxY(bj_mapInitialPlayableArea) - 50 then
+        call SetUnitY(right, GetRectMaxY(bj_mapInitialPlayableArea) - 50)
+    endif
+    if GetUnitY(right) < GetRectMinY(bj_mapInitialPlayableArea) + 50 then
+        call SetUnitX(right, GetRectMinY(bj_mapInitialPlayableArea) + 50)
+    endif
+
+
     call YDTriggerSetEx(location, YDTriggerH2I(GetExpiredTimer()), 0x247CC5E5, GetUnitLoc(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B)))
     call YDTriggerSetEx(location, YDTriggerH2I(GetExpiredTimer()), 0xF4C4BD37, GetUnitLoc(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54)))
     call YDWESetLocalVariableGroup( "L1", GetUnitsInRangeOfLocMatching(115.00, YDTriggerGetEx(location, YDTriggerH2I(GetExpiredTimer()), 0x247CC5E5), Condition(function Trig_Wild_Axes_aFunc026Func021002003)) )
@@ -560,60 +549,34 @@ function Trig_Wild_Axes_aFunc026T takes nothing returns nothing
 endfunction
 
 function FeiYanHuiXiang takes nothing returns nothing
-    local timer ydl_timer
-    local integer ydl_localvar_step = YDTriggerGetEx(integer, YDTriggerH2I(GetTriggeringTrigger()), 0xCFDE6C76)
+    local timer t = CreateTimer()
+    local real array x
+    local real array y
+    local real comp
+    local unit u = GetTriggerUnit()
+    local unit left
+    local unit right
+    local group leftGroup = CreateGroup()
+    local group rightGroup = CreateGroup()
     call WuGongShengChong(GetTriggerUnit(),'A054',300.)
     call WuGongShengChong(GetTriggerUnit(),'A059',1500.)
-    set ydl_localvar_step = ydl_localvar_step + 3
-    call YDTriggerSetEx(integer, YDTriggerH2I(GetTriggeringTrigger()), 0xCFDE6C76, ydl_localvar_step)
-    call YDTriggerSetEx(integer, YDTriggerH2I(GetTriggeringTrigger()), 0xECE825E7, ydl_localvar_step)
-    call YDWESetLocalVariableRealArray( "x", 0, GetUnitX(GetTriggerUnit()) )
-    call YDWESetLocalVariableRealArray( "y", 0, GetUnitY(GetTriggerUnit()) )
-    call YDWESetLocalVariableRealArray( "x", 1, GetSpellTargetX() )
-    call YDWESetLocalVariableRealArray( "y", 1, GetSpellTargetY() )
-    call YDTriggerSetEx(unit, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xB95F828C, GetTriggerUnit())
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x324AE96A, GetUnitX(GetTriggerUnit()))
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x058682B9, GetUnitY(GetTriggerUnit()))
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x2392447A, GetSpellTargetX())
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xB0897302, GetSpellTargetY())
-    call YDWESetLocalVariableReal( "comp", Atan2(( YDWEGetLocalVariableRealArray("y", 1) - YDWEGetLocalVariableRealArray("y", 0) ), ( YDWEGetLocalVariableRealArray("x", 1) - YDWEGetLocalVariableRealArray("x", 0) )) )
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x236B99A8, YDWEGetLocalVariableReal("comp"))
-    call YDWESetLocalVariableRealArray( "x", 2, ( YDWEGetLocalVariableRealArray("x", 0) + ( 300.00 * Cos(( YDWEGetLocalVariableReal("comp") + 45.00 )) ) ) )
-    call YDWESetLocalVariableRealArray( "y", 2, ( YDWEGetLocalVariableRealArray("y", 0) + ( 300.00 * Sin(( YDWEGetLocalVariableReal("comp") + 45.00 )) ) ) )
-    call YDWESetLocalVariableRealArray( "x", 3, ( YDWEGetLocalVariableRealArray("x", 0) + ( 300.00 * Cos(( YDWEGetLocalVariableReal("comp") - 45.00 )) ) ) )
-    call YDWESetLocalVariableRealArray( "y", 3, ( YDWEGetLocalVariableRealArray("y", 0) + ( 300.00 * Sin(( YDWEGetLocalVariableReal("comp") - 45.00 )) ) ) )
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x41713DA3, YDWEGetLocalVariableRealArray("x", 2))
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x71CA3531, YDWEGetLocalVariableRealArray("y", 2))
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xD310CF7A, YDWEGetLocalVariableRealArray("x", 3))
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x7D73FF94, YDWEGetLocalVariableRealArray("y", 3))
-    call YDTriggerSetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xD5CF2EF3, 1.00)
-    call YDTriggerSetEx(boolean, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xA32DA6CF, true)
-    call YDTriggerSetEx(unit, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x5FB96E0B, CreateUnit(GetTriggerPlayer(), 'h00L', YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x324AE96A), YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x058682B9), 270.00))
-    call YDTriggerSetEx(unit, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x3893EA54, CreateUnit(GetTriggerPlayer(), 'h00L', YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x324AE96A), YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x058682B9), 270.00))
-    call YDTriggerSetEx(group, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x93FE3865, CreateGroup())
-    call YDTriggerSetEx(group, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xF3DA78D7, CreateGroup())
-    set ydl_timer = CreateTimer()
-    call YDTriggerSetEx(boolean, YDTriggerH2I(ydl_timer), 0xA32DA6CF, YDTriggerGetEx(boolean, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xA32DA6CF))
-    call YDTriggerSetEx(unit, YDTriggerH2I(ydl_timer), 0xB95F828C, YDTriggerGetEx(unit, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xB95F828C))
-    call YDTriggerSetEx(group, YDTriggerH2I(ydl_timer), 0x93FE3865, YDTriggerGetEx(group, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x93FE3865))
-    call YDTriggerSetEx(group, YDTriggerH2I(ydl_timer), 0xF3DA78D7, YDTriggerGetEx(group, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xF3DA78D7))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0xD5CF2EF3, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xD5CF2EF3))
-    call YDTriggerSetEx(unit, YDTriggerH2I(ydl_timer), 0x5FB96E0B, YDTriggerGetEx(unit, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x5FB96E0B))
-    call YDTriggerSetEx(unit, YDTriggerH2I(ydl_timer), 0x3893EA54, YDTriggerGetEx(unit, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x3893EA54))
-    call YDTriggerSetEx(location, YDTriggerH2I(ydl_timer), 0x247CC5E5, YDTriggerGetEx(location, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x247CC5E5))
-    call YDTriggerSetEx(location, YDTriggerH2I(ydl_timer), 0xF4C4BD37, YDTriggerGetEx(location, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xF4C4BD37))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0x324AE96A, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x324AE96A))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0x2392447A, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x2392447A))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0x41713DA3, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x41713DA3))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0xD310CF7A, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xD310CF7A))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0x058682B9, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x058682B9))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0xB0897302, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0xB0897302))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0x71CA3531, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x71CA3531))
-    call YDTriggerSetEx(real, YDTriggerH2I(ydl_timer), 0x7D73FF94, YDTriggerGetEx(real, YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step, 0x7D73FF94))
-    // call TimerStart(ydl_timer, ( 0.25 / 10.00 ), true, function Trig_Wild_Axes_aFunc026T)
-    call TimerStart(ydl_timer, 0.25/10.00, true, function Trig_Wild_Axes_aFunc026T)
-    call YDTriggerClearTable(YDTriggerH2I(GetTriggeringTrigger())*ydl_localvar_step)
-    set ydl_timer = null
+    set x[0] = GetUnitX(u)
+    set y[0] = GetUnitY(u)
+    set x[1] = GetSpellTargetX()
+    set y[1] = GetSpellTargetY()
+    set comp = Atan2(y[1] - y[0], x[1] - x[0])
+    set x[2] = x[0] + 300 * Cos(comp + 45)
+    set y[2] = y[0] + 300 * Sin(comp + 45)
+    set x[3] = x[0] + 300 * Cos(comp - 45)
+    set y[3] = y[0] + 300 * Sin(comp - 45)
+    set left = CreateUnit(GetTriggerPlayer(), 'h00L', x[0], y[0], 270)
+    set right = CreateUnit(GetTriggerPlayer(), 'h00L', x[0], y[0], 270)
+    call TimerStart(t, 0.025, true, function Trig_Wild_Axes_aFunc026T)
+    set t = null
+    set left = null
+    set right = null
+    set leftGroup = null
+    set rightGroup = null
 endfunction
 
 //神龙八式

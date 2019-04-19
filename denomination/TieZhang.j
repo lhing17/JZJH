@@ -1,3 +1,7 @@
+// 铁掌帮武功：铁砂掌、毒蛇神掌、通背拳、水上漂
+
+
+
 /*
  * 铁砂掌 A06Y
  * 伤害系数：w1=7.2, w2=8.9
@@ -18,18 +22,23 @@ function TieSha_Condition takes nothing returns boolean
 endfunction
 
 function TieSha_Action takes nothing returns nothing
+	// 乾坤大挪移 +80%
 	local real shxishu = 1 + DamageCoefficientByAbility(GetAttacker(),'A07W', 0.8)
+	// 双手+中毒/深度中毒
 	if (UnitHasBuffBJ(GetEnumUnit(), 'BEsh') or UnitHasBuffBJ(GetEnumUnit(), 'B01J')) then
 		set shxishu = shxishu + DamageCoefficientByAbility(GetAttacker(),'A07U', 1.5)
 	endif
+	// 九阴+深度中毒
 	if (UnitHasBuffBJ(GetEnumUnit(), 'B01J')) then
 		set shxishu = shxishu + DamageCoefficientByAbility(GetAttacker(),'A07S', 2.0)
 	endif
+	// 一阳指或摧心掌=中毒
 	if ((GetUnitAbilityLevel(GetAttacker(), 'A06P')>=1 or GetUnitAbilityLevel(GetAttacker(), 'A0D3')>=1) and GetRandomInt(1, 100)<=30) then
 		if (UnitHasBuffBJ(GetEnumUnit(), 'BEsh')==false and UnitHasBuffBJ(GetEnumUnit(), 'B01J')==false) then
 			call WanBuff(GetAttacker(), GetEnumUnit(), 13)
 		endif
 	endif
+	// 九爪 中毒->深度中毒
 	if (GetUnitAbilityLevel(GetAttacker(), 'A07N')>=1 and UnitHasBuffBJ(GetEnumUnit(), 'BEsh') and GetRandomInt(1, 100)<=30) then
 		if (UnitHasBuffBJ(GetEnumUnit(), 'B01J')==false) then
 			call WanBuff(GetAttacker(), GetEnumUnit(), 14)
