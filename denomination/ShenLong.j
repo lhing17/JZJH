@@ -510,10 +510,10 @@ function birdFlying takes nothing returns nothing
 
     if (a <= 0 and front) then
         set front = false
-        set x[2] = x[0] + 300 * Cos(comp + 45)
-        set y[2] = y[0] + 300 * Sin(comp + 45)
-        set x[3] = x[0] + 300 * Cos(comp - 45)
-        set y[3] = y[0] + 300 * Sin(comp - 45)
+        set x[2] = x[0] + 300 * Cos(comp - 45)
+        set y[2] = y[0] + 300 * Sin(comp - 45)
+        set x[3] = x[0] + 300 * Cos(comp + 45)
+        set y[3] = y[0] + 300 * Sin(comp + 45)
         call SaveReal(YDHT, GetHandleId(t), 2, x[2])
         call SaveReal(YDHT, GetHandleId(t), 3, x[3])
         call SaveReal(YDHT, GetHandleId(t), 6, y[2])
