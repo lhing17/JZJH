@@ -2297,7 +2297,6 @@ function main1 takes nothing returns nothing
 	
 	call KeyInputSystem() //键盘输入系统
 	call SmeltingWeaponSystem()//决战江湖1.4之大辽金匠
-	call MonsterCome() //决战江湖1.52之圣兽来了
 	call CreateDestructables() //创建可破坏物
 	call Cuns() //存储装备属性
 	call CunWuGongS() //存储武功

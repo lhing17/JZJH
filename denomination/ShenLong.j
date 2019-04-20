@@ -387,33 +387,11 @@ function IsFeiYanHuiXiang takes nothing returns boolean
     return ((GetSpellAbilityId() == 'A054'))
 endfunction
 
-function Trig_Wild_Axes_aFunc026Func021002003 takes nothing returns boolean
-    return (((IsUnitType(GetFilterUnit(), UNIT_TYPE_STRUCTURE) == false) and ((IsUnitAliveBJ(GetFilterUnit()) == true) and ((IsUnitEnemy(GetFilterUnit(), GetOwningPlayer(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C))) == true) and (IsUnitInGroup(GetFilterUnit(), YDTriggerGetEx(group, YDTriggerH2I(GetExpiredTimer()), 0x93FE3865)) == false)))))
+function isBirdEnemy takes nothing returns boolean
+    return IsUnitAliveBJ(GetFilterUnit()) and IsUnitEnemy(GetFilterUnit(), GetOwningPlayer(LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 13)))
 endfunction
 
-function Trig_Wild_Axes_aFunc026Func022002003 takes nothing returns boolean
-    return (((IsUnitType(GetFilterUnit(), UNIT_TYPE_STRUCTURE) == false) and ((IsUnitAliveBJ(GetFilterUnit()) == true) and ((IsUnitEnemy(GetFilterUnit(), GetOwningPlayer(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C))) == true) and (IsUnitInGroup(GetFilterUnit(), YDTriggerGetEx(group, YDTriggerH2I(GetExpiredTimer()), 0xF3DA78D7)) == false)))))
-endfunction
-
-//function Trig_Wild_Axes_aFunc026Func023003 takes nothing returns nothing
-//    if (((GetDestructableTypeId(GetEnumDestructable()) != 'YTlb') and (GetDestructableTypeId(GetEnumDestructable()) != 'Ytlc'))) then
-//        call KillDestructable( GetEnumDestructable() )
-//    else
-//        call DoNothing(  )
-//    endif
-//endfunction
-
-//function Trig_Wild_Axes_aFunc026Func024003 takes nothing returns nothing
-//    if (((GetDestructableTypeId(GetEnumDestructable()) != 'YTlb') and (GetDestructableTypeId(GetEnumDestructable()) != 'Ytlc'))) then
-//        call KillDestructable( GetEnumDestructable() )
-//    else
-//        call DoNothing(  )
-//    endif
-//endfunction
-
-function Trig_Wild_Axes_aFunc026Func025A takes nothing returns nothing
-	local unit u = YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C)
-	local unit ut = GetEnumUnit()
+function birdDamage takes unit u, unit ut returns nothing
 	local real shxishu= 1
     local real shanghai=0.
     if((GetUnitAbilityLevel(u,'A07S')!=0))then//加九阴真经
@@ -438,34 +416,45 @@ function Trig_Wild_Axes_aFunc026Func025A takes nothing returns nothing
     endif
     set shanghai=ShangHaiGongShi(u,ut,60,40,shxishu,'A054')
     call WuGongShangHai(u,ut,shanghai)
-
-    call GroupAddUnit( YDTriggerGetEx(group, YDTriggerH2I(GetExpiredTimer()), 0x93FE3865), GetEnumUnit() )
-    //call UnitDamageTarget( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C), GetEnumUnit(), ( ( I2R(GetUnitAbilityLevel(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C), 'AUcs')) * 30.00 ) + 60.00 ), true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_METAL_MEDIUM_SLICE )
     call DestroyEffect( AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", GetEnumUnit(), "overhead") )
 endfunction
 
-function Trig_Wild_Axes_aFunc026Func026A takes nothing returns nothing
-	local unit u = YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C)
+
+function leftBirdDamage takes nothing returns nothing
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 9)
 	local unit ut = GetEnumUnit()
-	local real shxishu= 1
-    local real shanghai=0.
-    set shanghai=ShangHaiGongShi(u,ut,120,80,shxishu,'A054')
-    call WuGongShangHai(u,ut,shanghai)
-    call GroupAddUnit( YDTriggerGetEx(group, YDTriggerH2I(GetExpiredTimer()), 0xF3DA78D7), GetEnumUnit() )
-    //call UnitDamageTarget( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C), GetEnumUnit(), ( ( I2R(GetUnitAbilityLevel(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C), 'AUcs')) * 30.00 ) + 60.00 ), true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_METAL_MEDIUM_SLICE )
-    call DestroyEffect( AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", GetEnumUnit(), "overhead") )
+    call birdDamage(u, ut)
 endfunction
 
-function Trig_Wild_Axes_aFunc026T takes nothing returns nothing
+function rightBirdDamage takes nothing returns nothing
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 10)
+	local unit ut = GetEnumUnit()
+    call birdDamage(u, ut)
+endfunction
+
+function birdFlying takes nothing returns nothing
     local timer t = GetExpiredTimer()
     local real array x
     local real array y
-    local group ydl_group
-    local unit ydl_unit
-    local unit left
-    local unit right
-    local real a
+    local real comp = LoadReal(YDHT, GetHandleId(t), 8)
+    local unit left = LoadUnitHandle(YDHT, GetHandleId(t), 9)
+    local unit right = LoadUnitHandle(YDHT, GetHandleId(t), 10)
+    local group leftGroup = CreateGroup()
+    local group rightGroup = CreateGroup()
+    local real a = LoadReal(YDHT, GetHandleId(t), 11)
     local real b = 1 - a
+    local boolean front  = LoadBoolean(YDHT, GetHandleId(t), 12)
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 13)
+
+    set x[0] = LoadReal(YDHT, GetHandleId(t), 0)
+    set x[1] = LoadReal(YDHT, GetHandleId(t), 1)
+    set x[2] = LoadReal(YDHT, GetHandleId(t), 2)
+    set x[3] = LoadReal(YDHT, GetHandleId(t), 3)
+    set y[0] = LoadReal(YDHT, GetHandleId(t), 4)
+    set y[1] = LoadReal(YDHT, GetHandleId(t), 5)
+    set y[2] = LoadReal(YDHT, GetHandleId(t), 6)
+    set y[3] = LoadReal(YDHT, GetHandleId(t), 7)
+
 
     call SetUnitX(left, x[0] * a * a + x[2] * 2 * a * b + x[1] * b * b)
     call SetUnitY(left, y[0] * a * a + y[2] * 2 * a * b + y[1] * b * b)
@@ -497,55 +486,46 @@ function Trig_Wild_Axes_aFunc026T takes nothing returns nothing
         call SetUnitX(right, GetRectMinY(bj_mapInitialPlayableArea) + 50)
     endif
 
+    call GroupEnumUnitsInRange(leftGroup, GetUnitX(left), GetUnitY(left), 115, Condition(function isBirdEnemy))
+    call GroupEnumUnitsInRange(rightGroup, GetUnitX(right), GetUnitY(right), 115, Condition(function isBirdEnemy))
+    call ForGroup(leftGroup, function leftBirdDamage )
+    call ForGroup(leftGroup, function rightBirdDamage )
+    call DestroyGroup(leftGroup)
+    call DestroyGroup(rightGroup)
 
-    call YDTriggerSetEx(location, YDTriggerH2I(GetExpiredTimer()), 0x247CC5E5, GetUnitLoc(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B)))
-    call YDTriggerSetEx(location, YDTriggerH2I(GetExpiredTimer()), 0xF4C4BD37, GetUnitLoc(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54)))
-    call YDWESetLocalVariableGroup( "L1", GetUnitsInRangeOfLocMatching(115.00, YDTriggerGetEx(location, YDTriggerH2I(GetExpiredTimer()), 0x247CC5E5), Condition(function Trig_Wild_Axes_aFunc026Func021002003)) )
-    call YDWESetLocalVariableGroup( "L1", GetUnitsInRangeOfLocMatching(115.00, YDTriggerGetEx(location, YDTriggerH2I(GetExpiredTimer()), 0xF4C4BD37), Condition(function Trig_Wild_Axes_aFunc026Func022002003)) )
-    //call EnumDestructablesInCircleBJ( 115.00, YDTriggerGetEx(location, YDTriggerH2I(GetExpiredTimer()), 0x247CC5E5), function Trig_Wild_Axes_aFunc026Func023003 )
-    //call EnumDestructablesInCircleBJ( 115.00, YDTriggerGetEx(location, YDTriggerH2I(GetExpiredTimer()), 0xF4C4BD37), function Trig_Wild_Axes_aFunc026Func024003 )
-    call ForGroupBJ( YDWEGetLocalVariableGroup("L1"), function Trig_Wild_Axes_aFunc026Func025A )
-    call ForGroupBJ( YDWEGetLocalVariableGroup("L2"), function Trig_Wild_Axes_aFunc026Func026A )
-    call DestroyGroup( YDWEGetLocalVariableGroup("L1") )
-    call DestroyGroup( YDWEGetLocalVariableGroup("L2") )
-    if ((YDTriggerGetEx(boolean, YDTriggerH2I(GetExpiredTimer()), 0xA32DA6CF) == true)) then
-        // call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3, ( YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) - 0.02 ))
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3, ( YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) - 0.05 ))
+
+    if front then
+        set a = a - 0.05
+        call SaveReal(YDHT, GetHandleId(t), 11, a)
     else
-        call YDWESetLocalVariableRealArray( "x", 0, GetUnitX(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C)) )
-        call YDWESetLocalVariableRealArray( "y", 0, GetUnitY(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C)) )
-        // call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3, ( YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) + 0.02 ))
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3, ( YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) + 0.05 ))
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x324AE96A, GetUnitX(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C)))
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x058682B9, GetUnitY(YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0xB95F828C)))
-        call YDWESetLocalVariableReal( "comp", Atan2(( YDWEGetLocalVariableRealArray("y", 1) - YDWEGetLocalVariableRealArray("y", 0) ), ( YDWEGetLocalVariableRealArray("x", 1) - YDWEGetLocalVariableRealArray("x", 0) )) )
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x236B99A8, YDWEGetLocalVariableReal("comp"))
+        set x[0] = GetUnitX(u)
+        set y[0] = GetUnitY(u)
+        set a = a + 0.05
+        call SaveReal(YDHT, GetHandleId(t), 11, a)
+        call SaveReal(YDHT, GetHandleId(t), 0, x[0])
+        call SaveReal(YDHT, GetHandleId(t), 5, y[0])
+        set comp = Atan2(y[1] - y[0], x[1] - x[0])
+        call SaveReal(YDHT, GetHandleId(t), 8, comp)
     endif
-    if (((YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) <= 0.00) and (YDTriggerGetEx(boolean, YDTriggerH2I(GetExpiredTimer()), 0xA32DA6CF) == true))) then
-        call YDTriggerSetEx(boolean, YDTriggerH2I(GetExpiredTimer()), 0xA32DA6CF, false)
-        call YDWESetLocalVariableRealArray( "x", 2, ( YDWEGetLocalVariableRealArray("x", 0) + ( 300.00 * Cos(( YDWEGetLocalVariableReal("comp") - 45.00 )) ) ) )
-        call YDWESetLocalVariableRealArray( "y", 2, ( YDWEGetLocalVariableRealArray("y", 0) + ( 300.00 * Sin(( YDWEGetLocalVariableReal("comp") - 45.00 )) ) ) )
-        call YDWESetLocalVariableRealArray( "x", 3, ( YDWEGetLocalVariableRealArray("x", 0) + ( 300.00 * Cos(( YDWEGetLocalVariableReal("comp") + 45.00 )) ) ) )
-        call YDWESetLocalVariableRealArray( "y", 3, ( YDWEGetLocalVariableRealArray("y", 0) + ( 300.00 * Sin(( YDWEGetLocalVariableReal("comp") + 45.00 )) ) ) )
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x41713DA3, YDWEGetLocalVariableRealArray("x", 2))
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x71CA3531, YDWEGetLocalVariableRealArray("y", 2))
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD310CF7A, YDWEGetLocalVariableRealArray("x", 3))
-        call YDTriggerSetEx(real, YDTriggerH2I(GetExpiredTimer()), 0x7D73FF94, YDWEGetLocalVariableRealArray("y", 3))
-    else
+
+    if (a <= 0 and front) then
+        set front = false
+        set x[2] = x[0] + 300 * Cos(comp + 45)
+        set y[2] = y[0] + 300 * Sin(comp + 45)
+        set x[3] = x[0] + 300 * Cos(comp - 45)
+        set y[3] = y[0] + 300 * Sin(comp - 45)
+        call SaveReal(YDHT, GetHandleId(t), 2, x[2])
+        call SaveReal(YDHT, GetHandleId(t), 3, x[3])
+        call SaveReal(YDHT, GetHandleId(t), 6, y[2])
+        call SaveReal(YDHT, GetHandleId(t), 7, y[3])
     endif
-    if (((YDTriggerGetEx(real, YDTriggerH2I(GetExpiredTimer()), 0xD5CF2EF3) >= 1.00) and (YDTriggerGetEx(boolean, YDTriggerH2I(GetExpiredTimer()), 0xA32DA6CF) == false))) then
-        call RemoveLocation( YDWEGetLocalVariableLocation("point3") )
-        call RemoveLocation( YDWEGetLocalVariableLocation("point4") )
-        call RemoveUnit( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x5FB96E0B) )
-        call RemoveUnit( YDTriggerGetEx(unit, YDTriggerH2I(GetExpiredTimer()), 0x3893EA54) )
-        call DestroyGroup( YDTriggerGetEx(group, YDTriggerH2I(GetExpiredTimer()), 0x93FE3865) )
-        call DestroyGroup( YDTriggerGetEx(group, YDTriggerH2I(GetExpiredTimer()), 0xF3DA78D7) )
-        call YDTriggerClearTable(YDTriggerH2I(GetExpiredTimer()))
-        call DestroyTimer(GetExpiredTimer())
-    else
+
+    if (a >= 1 and not false) then
+        call RemoveUnit(left)
+        call RemoveUnit(right)
+        call DestroyTimer(t)
     endif
-    set ydl_group = null
-    set ydl_unit = null
+
 endfunction
 
 function FeiYanHuiXiang takes nothing returns nothing
@@ -556,10 +536,8 @@ function FeiYanHuiXiang takes nothing returns nothing
     local unit u = GetTriggerUnit()
     local unit left
     local unit right
-    local group leftGroup = CreateGroup()
-    local group rightGroup = CreateGroup()
-    call WuGongShengChong(GetTriggerUnit(),'A054',300.)
-    call WuGongShengChong(GetTriggerUnit(),'A059',1500.)
+    call WuGongShengChong(u,'A054',300.)
+    call WuGongShengChong(u,'A059',1500.)
     set x[0] = GetUnitX(u)
     set y[0] = GetUnitY(u)
     set x[1] = GetSpellTargetX()
@@ -571,12 +549,28 @@ function FeiYanHuiXiang takes nothing returns nothing
     set y[3] = y[0] + 300 * Sin(comp - 45)
     set left = CreateUnit(GetTriggerPlayer(), 'h00L', x[0], y[0], 270)
     set right = CreateUnit(GetTriggerPlayer(), 'h00L', x[0], y[0], 270)
-    call TimerStart(t, 0.025, true, function Trig_Wild_Axes_aFunc026T)
+
+    // 下标0是单位所在位置，1是目标位置，2是左鸟位置，3是右鸟位置
+    call SaveReal(YDHT, GetHandleId(t), 0, x[0])
+    call SaveReal(YDHT, GetHandleId(t), 1, x[1])
+    call SaveReal(YDHT, GetHandleId(t), 2, x[2])
+    call SaveReal(YDHT, GetHandleId(t), 3, x[3])
+    call SaveReal(YDHT, GetHandleId(t), 4, y[0])
+    call SaveReal(YDHT, GetHandleId(t), 5, y[1])
+    call SaveReal(YDHT, GetHandleId(t), 6, y[2])
+    call SaveReal(YDHT, GetHandleId(t), 7, y[3])
+    call SaveReal(YDHT, GetHandleId(t), 8, comp)
+    call SaveUnitHandle(YDHT, GetHandleId(t), 9, left)
+    call SaveUnitHandle(YDHT, GetHandleId(t), 10, right)
+    call SaveReal(YDHT, GetHandleId(t), 11, 1)
+    call SaveBoolean(YDHT, GetHandleId(t), 12, true)
+    call SaveUnitHandle(YDHT, GetHandleId(t), 13, u)
+
+    call TimerStart(t, 0.025, true, function birdFlying)
     set t = null
+    set u = null
     set left = null
     set right = null
-    set leftGroup = null
-    set rightGroup = null
 endfunction
 
 //神龙八式
