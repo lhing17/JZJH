@@ -22,5 +22,7 @@ require 'util.general_buff'
 require 'logic.globals'
 require 'ui.init'
 
+require 'kungfu.init'
+
 
 
