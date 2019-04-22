@@ -3,7 +3,7 @@
 //键盘输入系统
 //========================================================================
 
-#include "library/common_func.j"
+#include "../library/common_func.j"
 
 function KeyInput takes nothing returns nothing
 	local string s=GetEventPlayerChatString()

@@ -1,4 +1,4 @@
-#include "library/common_func.j"
+#include "../library/common_func.j"
 
 //--------少林开始--------//
 //韦陀棍法
