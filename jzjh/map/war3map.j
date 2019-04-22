@@ -1,15 +1,15 @@
 globals
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed__USE_TABLE= true
-constant boolean MaxSpeed__NEW_TABLE= true
+constant boolean MaxSpeed___USE_TABLE= true
+constant boolean MaxSpeed___NEW_TABLE= true
          // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed__TEST_MODE= false
-constant real MaxSpeed__PERIOD= 0.03125
+constant boolean MaxSpeed___TEST_MODE= false
+constant real MaxSpeed___PERIOD= 0.03125
         //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed__MAX_SPEED= 1400.0
+constant real MaxSpeed___MAX_SPEED= 1400.0
          // 最大速度限定，超出视为传送。
-constant real MaxSpeed__MIN_SPEED= 500.0
+constant real MaxSpeed___MIN_SPEED= 500.0
          // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
         // 测试最大为500刚出头，与522还有些差距
 //endglobals from MaxSpeed
@@ -241,6 +241,7 @@ boolean array udg_HuanZhuangCD
     // Generated
 trigger gg_trg____________________001= null
 trigger gg_trg____________________004= null
+trigger gg_trg____________________006= null
 trigger gg_trg____________________005= null
 trigger gg_trg____________________002= null
 trigger gg_trg____________________003= null
@@ -263,7 +264,6 @@ unit gg_unit_nvl2_0005= null
 unit gg_unit_N00I_0116= null
 unit gg_unit_n00E_0066= null
 unit gg_unit_n00N_0132= null
-trigger gg_trg____________________006= null
 	
 	 //globals from DzAPI:
 constant boolean LIBRARY_DzAPI=true
@@ -1732,6 +1732,111 @@ string f__result_string
 integer f__result_integer
 
 endglobals
+native DzGetMouseTerrainX takes nothing returns real
+native DzGetMouseTerrainY takes nothing returns real
+native DzGetMouseTerrainZ takes nothing returns real
+native DzIsMouseOverUI takes nothing returns boolean
+native DzGetMouseX takes nothing returns integer
+native DzGetMouseY takes nothing returns integer
+native DzGetMouseXRelative takes nothing returns integer
+native DzGetMouseYRelative takes nothing returns integer
+native DzSetMousePos takes integer x, integer y returns nothing
+native DzTriggerRegisterMouseEvent takes trigger trig, integer btn, integer status, boolean sync, string func returns nothing
+native DzTriggerRegisterMouseEventByCode takes trigger trig, integer btn, integer status, boolean sync, code funcHandle returns nothing
+native DzTriggerRegisterKeyEvent takes trigger trig, integer key, integer status, boolean sync, string func returns nothing
+native DzTriggerRegisterKeyEventByCode takes trigger trig, integer key, integer status, boolean sync, code funcHandle returns nothing
+native DzTriggerRegisterMouseWheelEvent takes trigger trig, boolean sync, string func returns nothing
+native DzTriggerRegisterMouseWheelEventByCode takes trigger trig, boolean sync, code funcHandle returns nothing
+native DzTriggerRegisterMouseMoveEvent takes trigger trig, boolean sync, string func returns nothing
+native DzTriggerRegisterMouseMoveEventByCode takes trigger trig, boolean sync, code funcHandle returns nothing
+native DzGetTriggerKey takes nothing returns integer
+native DzGetWheelDelta takes nothing returns integer
+native DzIsKeyDown takes integer iKey returns boolean
+native DzGetTriggerKeyPlayer takes nothing returns player
+native DzGetWindowWidth takes nothing returns integer
+native DzGetWindowHeight takes nothing returns integer
+native DzGetWindowX takes nothing returns integer
+native DzGetWindowY takes nothing returns integer
+native DzTriggerRegisterWindowResizeEvent takes trigger trig, boolean sync, string func returns nothing
+native DzTriggerRegisterWindowResizeEventByCode takes trigger trig, boolean sync, code funcHandle returns nothing
+native DzIsWindowActive takes nothing returns boolean
+native DzDestructablePosition takes destructable d, real x, real y returns nothing
+native DzSetUnitPosition takes unit whichUnit, real x, real y returns nothing
+native DzExecuteFunc takes string funcName returns nothing
+native DzGetUnitUnderMouse takes nothing returns unit
+native DzSetUnitTexture takes unit whichUnit, string path, integer texId returns nothing
+native DzSetMemory takes integer address, real value returns nothing
+native DzSetUnitID takes unit whichUnit, integer id returns nothing
+native DzSetUnitModel takes unit whichUnit, string path returns nothing
+native DzSetWar3MapMap takes string map returns nothing
+native DzTriggerRegisterSyncData takes trigger trig, string prefix, boolean server returns nothing
+native DzSyncData takes string prefix, string data returns nothing
+native DzGetTriggerSyncData takes nothing returns string
+native DzGetTriggerSyncPlayer takes nothing returns player
+native DzFrameHideInterface takes nothing returns nothing
+native DzFrameEditBlackBorders takes real upperHeight, real bottomHeight returns nothing
+native DzFrameGetPortrait takes nothing returns integer
+native DzFrameGetMinimap takes nothing returns integer
+native DzFrameGetCommandBarButton takes integer row, integer column returns integer
+native DzFrameGetHeroBarButton takes integer buttonId returns integer
+native DzFrameGetHeroHPBar takes integer buttonId returns integer
+native DzFrameGetHeroManaBar takes integer buttonId returns integer
+native DzFrameGetItemBarButton takes integer buttonId returns integer
+native DzFrameGetMinimapButton takes integer buttonId returns integer
+native DzFrameGetUpperButtonBarButton takes integer buttonId returns integer
+native DzFrameGetTooltip takes nothing returns integer 
+native DzFrameGetChatMessage takes nothing returns integer 
+native DzFrameGetUnitMessage takes nothing returns integer 
+native DzFrameGetTopMessage takes nothing returns integer 
+native DzGetColor takes integer r, integer g, integer b, integer a returns integer
+native DzFrameSetUpdateCallback takes string func returns nothing
+native DzFrameSetUpdateCallbackByCode takes code funcHandle returns nothing
+native DzFrameShow takes integer frame, boolean enable returns nothing
+native DzCreateFrame takes string frame, integer parent, integer id returns integer
+native DzCreateSimpleFrame takes string frame, integer parent, integer id returns integer
+native DzDestroyFrame takes integer frame returns nothing
+native DzLoadToc takes string fileName returns nothing
+native DzFrameSetPoint takes integer frame, integer point, integer relativeFrame, integer relativePoint, real x, real y returns nothing
+native DzFrameSetAbsolutePoint takes integer frame, integer point, real x, real y returns nothing
+native DzFrameClearAllPoints takes integer frame returns nothing
+native DzFrameSetEnable takes integer name, boolean enable returns nothing
+native DzFrameSetScript takes integer frame, integer eventId, string func, boolean sync returns nothing
+native DzFrameSetScriptByCode takes integer frame, integer eventId, code funcHandle, boolean sync returns nothing
+native DzGetTriggerUIEventPlayer takes nothing returns player
+native DzGetTriggerUIEventFrame takes nothing returns integer
+native DzFrameFindByName takes string name, integer id returns integer
+native DzSimpleFrameFindByName takes string name, integer id returns integer
+native DzSimpleFontStringFindByName takes string name, integer id returns integer
+native DzSimpleTextureFindByName takes string name, integer id returns integer
+native DzGetGameUI takes nothing returns integer
+native DzClickFrame takes integer frame returns nothing
+native DzSetCustomFovFix takes real value returns nothing
+native DzEnableWideScreen takes boolean enable returns nothing
+native DzFrameSetText takes integer frame, string text returns nothing
+native DzFrameGetText takes integer frame returns string
+native DzFrameSetTextSizeLimit takes integer frame, integer size returns nothing
+native DzFrameGetTextSizeLimit takes integer frame returns integer
+native DzFrameSetTextColor takes integer frame, integer color returns nothing
+native DzGetMouseFocus takes nothing returns integer
+native DzFrameSetAllPoints takes integer frame, integer relativeFrame returns boolean
+native DzFrameSetFocus takes integer frame, boolean enable returns boolean
+native DzFrameSetModel takes integer frame, string modelFile, integer modelType, integer flag returns nothing
+native DzFrameGetEnable takes integer frame returns boolean
+native DzFrameSetAlpha takes integer frame, integer alpha returns nothing
+native DzFrameGetAlpha takes integer frame returns integer
+native DzFrameSetAnimate takes integer frame, integer animId, boolean autocast returns nothing
+native DzFrameSetAnimateOffset takes integer frame, real offset returns nothing
+native DzFrameSetTexture takes integer frame, string texture, integer flag returns nothing
+native DzFrameSetScale takes integer frame, real scale returns nothing
+native DzFrameSetTooltip takes integer frame, integer tooltip returns nothing
+native DzFrameCageMouse takes integer frame, boolean enable returns nothing
+native DzFrameGetValue takes integer frame returns real
+native DzFrameSetMinMaxValue takes integer frame, real minValue, real maxValue returns nothing
+native DzFrameSetStepValue takes integer frame, real step returns nothing
+native DzFrameSetValue takes integer frame, real value returns nothing
+native DzFrameSetSize takes integer frame, real w, real h returns nothing
+native DzCreateFrameByTagName takes string frameType, string name, integer parent, string template, integer id returns integer
+native DzFrameSetVertexColor takes integer frame, integer color returns nothing
 native DzAPI_Map_SaveServerValue takes player whichPlayer, string key, string value returns boolean
 native DzAPI_Map_GetServerValue takes player whichPlayer, string key returns string
 native DzAPI_Map_Ladder_SetStat takes player whichPlayer, string key, string value returns nothing
@@ -2198,8 +2303,8 @@ endfunction
              set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
              set s__ModSpeed_lastX[this]=s__ModSpeed_x
              set s__ModSpeed_lastY[this]=s__ModSpeed_y
-             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
-             if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
+             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
+             if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
                  set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                  set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                  set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -2279,7 +2384,7 @@ endfunction
                      set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                  endif
                  if ( s__ModSpeed_next[(0)] == 0 ) then
-                     call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
+                     call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -2298,7 +2403,7 @@ endfunction
 
 
              endif
-             set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
+             set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
              set s__ModSpeed_lastX[this]=GetUnitX(u)
              set s__ModSpeed_lastY[this]=GetUnitY(u)
              set s__ModSpeed_speed[this]=amount
@@ -6472,7 +6577,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Mon Apr 22 13:45:42 2019
+//   Date: Mon Apr 22 14:06:22 2019
 //   Map Author: 云杨 zei_kale
 // 
 //===========================================================================
@@ -6686,6 +6791,216 @@ endfunction
 //TESH.scrollpos=0
 //TESH.alwaysfold=0
 //#include "./YDWELocalVariable.j"
+//hardware
+//获取鼠标在游戏内的坐标X
+
+//获取鼠标在游戏内的坐标Y
+
+//获取鼠标在游戏内的坐标Z
+
+//鼠标是否在游戏内
+
+//获取鼠标屏幕坐标X
+
+//获取鼠标屏幕坐标Y
+
+//获取鼠标游戏窗口坐标X
+
+//获取鼠标游戏窗口坐标Y
+
+//设置鼠标位置
+
+//注册鼠标点击触发（sync为true时，调用TriggerExecute。为false时，直接运行action函数，可以异步不掉线，action里不要有同步操作）
+
+
+//注册键盘点击触发
+
+
+//注册鼠标滚轮触发
+
+
+//注册鼠标移动触发
+
+
+//获取触发器的按键码
+
+//获取滚轮delta
+
+//判断按键是否按下
+
+//获取触发key的玩家
+
+//获取war3窗口宽度
+
+//获取war3窗口高度
+
+//获取war3窗口X坐标
+
+//获取war3窗口Y坐标
+
+//注册war3窗口大小变化事件
+
+
+//判断窗口是否激活
+
+//plus
+//设置可摧毁物位置
+
+//设置单位位置-本地调用
+
+//异步执行函数
+
+//取鼠标指向的unit
+
+//设置unit的贴图
+
+//设置内存数值
+
+//设置单位ID
+
+//设置单位模型
+
+//设置小地图背景图片
+
+//sync
+//注册数据同步trigger
+
+//同步游戏数据
+
+//获取同步的数据
+
+//获取同步数据的玩家
+
+//gui
+/////////////////////////////// 原生UI修改
+//隐藏界面元素
+
+//修改游戏世界窗口位置
+
+//头像
+
+//小地图
+
+//技能按钮
+
+//英雄按钮
+
+//英雄血条
+
+//英雄蓝条
+
+//道具按钮
+
+//小地图按钮
+
+//左上菜单按钮
+
+//鼠标提示
+
+//聊天信息
+
+//unit message
+
+//top message
+
+///////////////////////////////
+//取rgba色值
+
+//设置界面更新回调（非同步）
+
+
+//显示/隐藏Frame
+
+//创建frame
+
+//创建SimpleFrame
+
+//销毁frame
+
+//加载toc
+
+//设置frame相对位置
+
+//设置frame绝对位置
+
+//清空frame锚点
+
+//设置frame禁用/启用
+
+//注册UI事件回调
+
+
+//获取触发ui的玩家
+
+//获取触发的Frame
+
+//查找frame
+
+//查找SimpleFrame
+
+//查找String
+
+//查找Texture
+
+//获取game ui
+
+//点击frame
+
+//自定义屏幕比例
+
+//使用宽屏模式
+
+//设置文字（支持EditBox, TextFrame, TextArea, SimpleFontString、GlueEditBoxWar3、SlashChatBox、TimerTextFrame、TextButtonFrame、GlueTextButton）
+
+//获取文字（支持EditBox, TextFrame, TextArea, SimpleFontString）
+
+//设置字数限制（支持EditBox）
+
+//获取字数限制（支持EditBox）
+
+//设置文字颜色（支持TextFrame, EditBox）
+
+//获取鼠标所在位置的ui控件指针
+
+//设置所有锚点到目标frame上
+
+//设置焦点
+
+//设置模型（支持Sprite、Model、StatusBar）
+
+//获取控件是否启用
+
+//设置透明度（0-255）
+
+//获取透明度
+
+//设置动画
+
+//设置动画进度（autocast为false是可用）
+
+//设置texture（支持Backdrop、SimpleStatusBar）
+
+//设置缩放
+
+//设置tooltip
+
+//鼠标限制在ui内
+
+//获取当前值（支持Slider、SimpleStatusBar、StatusBar）
+
+//设置最大最小值（支持Slider、SimpleStatusBar、StatusBar）
+
+//设置Step值（支持Slider）
+
+//设置当前值（支持Slider、SimpleStatusBar、StatusBar）
+
+//设置frame大小
+
+//根据tag创建frame
+
+//设置颜色（支持SimpleStatusBar）
+
+
 
 
 
@@ -48168,6 +48483,18 @@ function InitTrig____________________004 takes nothing returns nothing
     call TriggerAddAction(gg_trg____________________004, function Trig____________________004Actions)
 endfunction
 //===========================================================================
+// Trigger: 未命名触发器 006
+//===========================================================================
+function Trig____________________006Actions takes nothing returns nothing
+    call Cheat("exec-lua:scripts.main")
+endfunction
+//===========================================================================
+function InitTrig____________________006 takes nothing returns nothing
+    set gg_trg____________________006=CreateTrigger()
+    call TriggerRegisterTimerEventSingle(gg_trg____________________006, 0.10)
+    call TriggerAddAction(gg_trg____________________006, function Trig____________________006Actions)
+endfunction
+//===========================================================================
 // Trigger: 未命名触发器 005
 //===========================================================================
 //TESH.scrollpos=0
@@ -48574,21 +48901,10 @@ function InitTrig_AM_2 takes nothing returns nothing
     call TriggerAddAction(gg_trg_AM_2, function Trig_AM_2Actions)
 endfunction
 //===========================================================================
-// Trigger: 未命名触发器 006
-//===========================================================================
-function Trig____________________006Actions takes nothing returns nothing
-    call Cheat("exec-lua:scripts.main")
-endfunction
-//===========================================================================
-function InitTrig____________________006 takes nothing returns nothing
-    set gg_trg____________________006=CreateTrigger()
-    call TriggerRegisterTimerEventSingle(gg_trg____________________006, 0.10)
-    call TriggerAddAction(gg_trg____________________006, function Trig____________________006Actions)
-endfunction
-//===========================================================================
 function InitCustomTriggers takes nothing returns nothing
     call InitTrig____________________001()
     call InitTrig____________________004()
+    call InitTrig____________________006()
     call InitTrig____________________005()
     call InitTrig____________________002()
     call InitTrig____________________003()
@@ -48604,7 +48920,6 @@ function InitCustomTriggers takes nothing returns nothing
     call InitTrig_SH()
     call InitTrig_AM_1()
     call InitTrig_AM_2()
-    call InitTrig____________________006()
 endfunction
 //===========================================================================
 function RunInitializationTriggers takes nothing returns nothing
@@ -48821,7 +49136,7 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs87484703")
+call ExecuteFunc("jasshelper__initstructs88724937")
 call ExecuteFunc("UniMissileSystem3D___Init")
 call ExecuteFunc("init")
 call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
@@ -48867,10 +49182,10 @@ function config takes nothing returns nothing
     call InitAllyPriorities()
 endfunction
 //===========================================================================
+//修改生命
+//===========================================================================
+//===========================================================================
 //��Ծϵͳ 
-//===========================================================================
-//===========================================================================
-//ϵͳ-TimerSystem
 //===========================================================================
 //===========================================================================  
 //===========================================================================  
@@ -48878,7 +49193,7 @@ endfunction
 //===========================================================================
 //===========================================================================   
 //===========================================================================
-//修改生命
+//ϵͳ-TimerSystem
 //===========================================================================
      
  
@@ -49015,7 +49330,7 @@ function sa___prototype3_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs87484703 takes nothing returns nothing
+function jasshelper__initstructs88724937 takes nothing returns nothing
     set st__ShopWeapon_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__ShopWeapon_onDestroy,Condition( function sa__ShopWeapon_onDestroy))
     set st__ShopWeapon_PickUpWeapon=CreateTrigger()
