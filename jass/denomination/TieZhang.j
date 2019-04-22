@@ -275,7 +275,7 @@ function Fly takes unit u,real speed,real height,real angle,real time returns no
     local real x=GetUnitX(u)
     local real y=GetUnitY(u)
     local real n=time*100
-    local real distance=speed/n
+    local real distance=speed/100
     local real a=-4*height/(n*n)
     local real b=4*height/n
     if height>0 then
@@ -300,7 +300,7 @@ function ShuiShangPiao takes nothing returns nothing
 	local location source = GetUnitLoc(GetTriggerUnit())
 	local location destination = GetSpellTargetLoc()
 	local real angle = AngleBetweenPoints(source, destination)
-	local real speed = 500.
+	local real speed = 500. + 50 * GetUnitAbilityLevel(GetTriggerUnit(), 'A07Y')
 	local real height = 200.
 	local timer t = CreateTimer()
 	local real lastTime = RMinBJ(DistanceBetweenPoints(source, destination)/speed, 2.) //轻功持续时间
