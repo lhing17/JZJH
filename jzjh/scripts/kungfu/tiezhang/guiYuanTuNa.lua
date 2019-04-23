@@ -4,4 +4,83 @@
 --- DateTime: 2019/4/22 16:46
 ---
 
+local g = require 'jass.globals'
+local jass = require 'jass.common'
+
+local attr = {
+    wuxing = '悟性',
+    gengu = '根骨',
+    fuyuan = '福缘',
+    yishu = '医术',
+    danpo = '胆魄',
+    jingmai = '经脉'
+}
+local chat_lookup = {
+    jfy = 'fuyuan',
+    jwx = 'wuxing',
+    jgg = 'gengu',
+    jys = 'yishu',
+    jdp = 'danpo',
+    jjm = 'jingmai',
+    jsj = 'random'
+}
+local selected_attr = {}
+
+--- @param i number 玩家下标
+--- @return string 哪种属性
+local function getRealAttr(i)
+    local real_attr
+    if not selected_attr[i] or selected_attr[i] == 'random' then
+        real_attr = base.getRandomKey(attr)
+    else
+        real_attr = selected_attr[i]
+    end
+end
+
+--- 临时增加某项属性
+--- @param i number 玩家下标
+--- @param coefficient number 系数
+--- @param time number 临时增加时间（秒）
+local function addRealAttrTemp(i, coefficient, time)
+    local value = jass.GetUnitAbilityLevel(g.udg_hero[i], base.string2id('A0DP')) * coefficient
+    local real_attr = getRealAttr(i)
+    g[real_attr][i] = g[real_attr][i] + value
+    et.wait((time or 30) * 1000, function()
+        g[real_attr][i] = g[real_attr][i] - value
+    end)
+end
+
 --- 铁掌帮 归元吐纳功
+et.loop(30 * 1000, function()
+    for i = 1, 5 do
+        if et.player[i]:is_player() and jass.GetUnitAbilityLevel(g.udg_hero[i], base.string2id('A0DP')) >= 1 then
+            -- 加成为技能等级 * 5
+            addRealAttrTemp(i, 5)
+        end
+    end
+end)
+
+--- 加七伤拳可以选择增加属性的种类
+--- @param p player 聊天的玩家
+--- @param s string 输入的字符串
+et.game:event '玩家-聊天'(function(self, p, s)
+    --- @type unit
+    local u = et.unit(g.udg_hero[p:get()])
+    if chat_lookup[s] and u:has_all_abilities('A07M', 'A0DP') then
+        selected_attr[p:get()] = chat_lookup[s]
+    end
+end)
+
+--- @param source unit 攻击者
+--- @param target unit 受攻击者
+et.game:event '单位-受攻击'(function(self, source, target)
+    local i = source:get_owner():get()
+    --- +乾坤大挪移 攻击时增加六围，数量为技能等级
+    if source:has_all_abilities('A0DP', 'A07W') and base.random(0, 100) <= 15 then
+        addRealAttrTemp(i, 1)
+    end
+    --- +葵花宝典 被攻击时增加六围，数量为技能等级
+    if target:has_all_abilities('A0DP', 'A07T') and base.random(0, 500) <= 15 then
+        addRealAttrTemp(i, 1)
+    end
+end)

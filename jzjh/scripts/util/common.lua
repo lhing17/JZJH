@@ -1,5 +1,6 @@
 base = base or {}
 local jass = require 'jass.common'
+require 'util.table_util'
 
 --- 根据掉落表获取随机掉落的物品ID
 --- @param drop_table table<string|table, number> 掉落表
@@ -65,17 +66,7 @@ function base.triggerPassive(params)
     return false
 end
 
---- 判断值是否存在于表中
---- @param value any
---- @param tab table
-function base.is_include(value, tab)
-    for _, v in ipairs(tab) do
-        if v == value then
-            return true
-        end
-    end
-    return false
-end
+
 
 --- 获取某玩家奥义对某技能的加成
 --- @param p player 某玩家

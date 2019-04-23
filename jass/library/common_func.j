@@ -2031,6 +2031,14 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
 		    call IncUnitAbilityLevel(u, id)
 		    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
             call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
+			if id == 'A0DP' then // 归元吐纳功
+				fuyuan[i] = fuyuan[i] + 2
+				gengu[i] = gengu[i] + 2
+				wuxing[i] = wuxing[i] + 2
+				jingmai[i] = jingmai[i] + 2
+				danpo[i] = danpo[i] + 2
+				yishu[i] = yishu[i] + 2
+			endif
         endif
     elseif level > 0 and level < 9 then
         if ( GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 1 + 0.6 * udg_jwjs[i] ) ) or ( UnitHasBuffBJ(u, 'B010') and GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 2 + 0.3 * GetUnitAbilityLevel(u, 'A02V') + 0.6 * udg_jwjs[i] ) ) then
@@ -2071,6 +2079,14 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
 		            call IncUnitAbilityLevel(u, id)
 		            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
                     call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
+					if id == 'A0DP' then // 归元吐纳功
+						fuyuan[i] = fuyuan[i] + 2
+						gengu[i] = gengu[i] + 2
+						wuxing[i] = wuxing[i] + 2
+						jingmai[i] = jingmai[i] + 2
+						danpo[i] = danpo[i] + 2
+						yishu[i] = yishu[i] + 2
+					endif
                     if level + 1 == 9 and Ce[i] == 8 then
 						set wuxuedian[i]=wuxuedian[i] + 2
 						call DisplayTextToPlayer(p, 0, 0, "|cff66ff00精武师有技能升级到九重，获得两个自创武学点")

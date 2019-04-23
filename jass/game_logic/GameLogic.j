@@ -3544,6 +3544,7 @@ function ForgetAbility takes nothing returns nothing
 endfunction
 function Forget takes player p, integer num returns nothing
 	local integer i = 1 + GetPlayerId(p)
+	local integer level = 0
 	if I7[(i-1)*20+num]=='A03N' and UnitHasBuffBJ(udg_hero[i], 'BOwk') then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|CFFFF9933"+GetObjectName(I7[(i-1)*20+num])+"施展期间不能遗忘！！！")
 	else
@@ -3569,6 +3570,15 @@ function Forget takes player p, integer num returns nothing
 		endif
 		if I7[20*(i-1)+num] == 'A02B' then
 			set udg_zhemei[i] = 0
+		endif
+		if I7[20*(i-1)+num] == 'A0DP' then // 归元吐纳功
+			set level = GetUnitAbilityLevel(udg_hero[i], I7[20*(i-1)+num])
+			fuyuan[i] = fuyuan[i] - 2 * level
+			gengu[i] = gengu[i] - 2 * level
+			wuxing[i] = wuxing[i] - 2 * level
+			jingmai[i] = jingmai[i] - 2 * level
+			danpo[i] = danpo[i] - 2 * level
+			yishu[i] = yishu[i] - 2 * level
 		endif
 		set I7[20*(i-1)+num]='AEfk'
 		call RemoveItem(FetchUnitItem(P4[i],'I06K'))
@@ -4100,6 +4110,14 @@ function LearnNeiGong takes nothing returns nothing
         	call IncUnitAbilityLevel(u, P8[id])
         else
         	call UnitAddAbility(u,P8[id])
+			if P8[id] == 'A0DP' then // 归元吐纳功
+				fuyuan[i] = fuyuan[i] + 2
+				gengu[i] = gengu[i] + 2
+				wuxing[i] = wuxing[i] + 2
+				jingmai[i] = jingmai[i] + 2
+				danpo[i] = danpo[i] + 2
+				yishu[i] = yishu[i] + 2
+			endif
         	call UnitMakeAbilityPermanent(u, true, P8[id])
         	set L7[i]=1
         	loop
