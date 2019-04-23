@@ -2513,7 +2513,23 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
             	call SetPlayerName(p, "〓教主夫人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				call SaveBoolean(YDHT,GetHandleId(u),StringHash("教主夫人"),true)
         	endif
-        elseif GetUnitAbilityLevel(u, 'A030') >= 6 and GetUnitAbilityLevel(u, 'A032') >= 6 and GetUnitAbilityLevel(u, 'A06R') >= 6 and ( GetUnitAbilityLevel(u, 'A034') >= 6 or GetUnitAbilityLevel(u, 'A07W') >= 4 ) then
+        elseif GetUnitAbilityLevel(u, 'A06Y') >= 6 and GetUnitAbilityLevel(u, 'A06Z') >= 6 and GetUnitAbilityLevel(u, 'A070') >= 6 and ( GetUnitAbilityLevel(u, 'A06Y') >= 6 or GetUnitAbilityLevel(u, 'A0DP') >= 6 ) then
+        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：铁掌帮主")
+            call ModifyHeroStat(0, u, 0, 300)
+            call ModifyHeroStat(2, u, 0, 225)
+            call SetPlayerName(p, "〓铁掌帮主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            set udg_zhangmen[i]=true
+            set udg_whichzhangmen[i]=27
+			// 学乾坤+双手，铁掌水上漂
+			if GetUnitAbilityLevel(u, 'A07W') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 then
+	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：铁掌水上漂")
+            	call ModifyHeroStat(0, u, 0, 300)
+				call ModifyHeroStat(1, u, 0, 200)
+				call ModifyHeroStat(2, u, 0, 100)
+            	call SetPlayerName(p, "〓铁掌水上漂〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+				call SaveBoolean(YDHT,GetHandleId(u),StringHash("铁掌水上漂"),true)
+        	endif
+		elseif GetUnitAbilityLevel(u, 'A030') >= 6 and GetUnitAbilityLevel(u, 'A032') >= 6 and GetUnitAbilityLevel(u, 'A06R') >= 6 and ( GetUnitAbilityLevel(u, 'A034') >= 6 or GetUnitAbilityLevel(u, 'A07W') >= 4 ) then
             call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：明教教主")
             call ModifyHeroStat(0, u, 0, 210)
             call ModifyHeroStat(1, u, 0, 310)

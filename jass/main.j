@@ -1693,7 +1693,7 @@ function InitDenominationSkills takes nothing returns nothing
 	set Z7[19]='A06Z'
 	set Y7[19]='A070'
 	set Q8[19]='A07Y'
-	set P8[19]='A07Y'
+	set P8[19]='A0DP'
 endfunction
 
 function InitSkillBooks takes nothing returns nothing

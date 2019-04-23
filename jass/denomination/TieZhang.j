@@ -196,6 +196,18 @@ function TongBeiQuan takes nothing returns nothing
 	set loc = null
 endfunction
 
+function IsGuiYuan takes nothing returns boolean
+	return PassiveWuGongCondition(GetAttacker(), GetTriggerUnit(), 'A0DP')
+endfunction
+
+function GuiYuanTuNa takes nothing returns nothing
+    local unit u = GetAttacker()
+	if GetRandomInt(0, 100) <= 15 then
+		call WuGongShengChong(u,'A070',800)
+	endif
+
+endfunction
+
 /*
  * 水上漂 A07Y
  * 		铁掌帮绝顶轻功，可以快速到达目标地点
@@ -355,6 +367,14 @@ function TieZhang_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_SPELL_EFFECT)
 	call TriggerAddCondition(t,Condition(function IsShuiShangPiao))
     call TriggerAddAction(t,function ShuiShangPiao)
+
+	/*
+	 * 归元吐纳功升重触发器
+	 */
+	set t=CreateTrigger()
+	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_ATTACKED)
+	call TriggerAddCondition(t,Condition(function IsGuiYuan))
+	call TriggerAddAction(t,function GuiYuanTuNa)
 
 	set t =null
 endfunction
