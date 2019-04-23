@@ -134,15 +134,21 @@ endfunction
 
 function DuSheShenZhang takes nothing returns nothing
 	local timer t = CreateTimer()
+	local group g = CreateGroup()
+	local location loc = GetSpellTargetLoc()
+	call GroupEnumUnitsInRangeOfLoc(g, loc, 800, Condition(function IsDuSheEnemy))
 	call SaveUnitHandle(YDHT, GetHandleId(t), 0, GetTriggerUnit())
-	call SaveUnitHandle(YDHT, GetHandleId(t), 1, GetSpellTargetUnit())
+	call SaveUnitHandle(YDHT, GetHandleId(t), 1, GroupPickRandomUnit(g))
 	call SaveLocationHandle(YDHT, GetHandleId(t), 2, GetUnitLoc(GetTriggerUnit()))
-	call SaveLocationHandle(YDHT, GetHandleId(t), 3, GetUnitLoc(GetSpellTargetUnit()))
+	call SaveLocationHandle(YDHT, GetHandleId(t), 3, loc)
 	call CreateNUnitsAtLocFacingLocBJ(1, 'e01E', GetOwningPlayer(GetTriggerUnit()), GetUnitLoc(GetTriggerUnit()), GetUnitLoc(GetSpellTargetUnit()))
 	call SaveUnitHandle(YDHT, GetHandleId(t), 4, bj_lastCreatedUnit)
 	call WuGongShengChong(GetTriggerUnit(),'A06Z',200)
 	call TimerStart(t, 0.02, true, function DuSheMove)
+	call DestroyGroup(g)
 	set t = null
+	set g = null
+	set loc = null
 endfunction
 
 /*
