@@ -44,6 +44,11 @@ function TieSha_Action takes nothing returns nothing
 			call WanBuff(GetAttacker(), GetEnumUnit(), 14)
 		endif
 	endif
+
+	// 专属
+	if UnitHaveItem(GetAttacker(), 'I0EJ') then
+	    set shxishu = shxishu * 2
+    endif
 	call PassiveWuGongEffectAndDamage(GetAttacker(), GetEnumUnit(), "Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", 7.2, 8.9, shxishu, 'A06Y')
 endfunction
 
@@ -84,6 +89,11 @@ function DuSheMove takes nothing returns nothing
 	if (UnitHasBuffBJ(ut, 'BEsh') or UnitHasBuffBJ(ut, 'B01J')) then
 		set shxishu = shxishu + 1.
 	endif
+
+	// 专属
+	if UnitHaveItem(u, 'I0EJ') then
+	    set shxishu = shxishu * 2
+    endif
 	if (counter>=maxCount) then
 		call FlushChildHashtable(YDHT, GetHandleId(t))
 		call PauseTimer(t)
@@ -175,6 +185,10 @@ function TongBeiQuan takes nothing returns nothing
 	if (GetUnitAbilityLevel(u, 'A089')>=1) then
 		set coefficient = 1
 	endif
+	// 专属
+	if UnitHaveItem(u, 'I0EJ') then
+	    set shxishu = shxishu * 2
+    endif
 	if (GetRandomInt(1, 100)<=fuyuan[i]/5+15) then
 		//+蛤蟆功 A084 召唤一个会通背拳的铁掌帮长老协助战斗 此处概率有待平衡 TODO
 		if (GetUnitAbilityLevel(u, 'A084')>=1 and GetRandomInt(1, 100)<=7) then
