@@ -31,6 +31,8 @@ runtime.error_handle = function(msg)
     console.write("---------------------------------------")
 end
 
+runtime.debugger = 4279
+
 --测试版本和发布版本的脚本路径
 --if base.release then
 package.path = package.path .. [[;Poi\]] .. base.version .. [[\?.lua;scripts\?.lua]]

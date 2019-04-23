@@ -22,15 +22,35 @@ function base.getRandomDropFromTable(drop_table)
     end
     return 0
 end
-local drop_table = {
-    I01Z = 25,
-    I020 = 25,
-    I021 = 25,
-    I022 = 25
+
+function base.random_int(m, n)
+    return math.random(m, n)
+end
+
+function base.getRandomValueInList(list)
+    local rand = base.random_int(1, #list)
+    return list[rand]
+end
+
+--- 获取哈希表中随机的键
+--- @generic K, V 表的键和值
+--- @param tab table<K, V>
+--- @return K
+function base.getRandomKey(tab)
+    local temp = {}
+    for k, _ in pairs(tab) do
+        table.insert(temp, k)
+    end
+    return base.getRandomValueInList(temp)
+end
+
+local attr = {
+    wuxing = '悟性',
+    gengu = '根骨',
+    fuyuan = '福缘',
+    yishu = '医术',
+    danpo = '胆魄',
+    jingmai = '经脉'
 }
 
-local result = base.getRandomDropFromTable(drop_table)
-print(result)
-
-local i = 0xD026B
-print(i)
+print(base.getRandomKey(attr))

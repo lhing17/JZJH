@@ -2032,12 +2032,12 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
 		    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
             call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
 			if id == 'A0DP' then // 归元吐纳功
-				fuyuan[i] = fuyuan[i] + 2
-				gengu[i] = gengu[i] + 2
-				wuxing[i] = wuxing[i] + 2
-				jingmai[i] = jingmai[i] + 2
-				danpo[i] = danpo[i] + 2
-				yishu[i] = yishu[i] + 2
+				set fuyuan[i] = fuyuan[i] + 2
+				set gengu[i] = gengu[i] + 2
+				set wuxing[i] = wuxing[i] + 2
+				set jingmai[i] = jingmai[i] + 2
+				set danpo[i] = danpo[i] + 2
+				set yishu[i] = yishu[i] + 2
 			endif
         endif
     elseif level > 0 and level < 9 then
@@ -2080,12 +2080,12 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
 		            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
                     call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
 					if id == 'A0DP' then // 归元吐纳功
-						fuyuan[i] = fuyuan[i] + 2
-						gengu[i] = gengu[i] + 2
-						wuxing[i] = wuxing[i] + 2
-						jingmai[i] = jingmai[i] + 2
-						danpo[i] = danpo[i] + 2
-						yishu[i] = yishu[i] + 2
+						set fuyuan[i] = fuyuan[i] + 2
+						set gengu[i] = gengu[i] + 2
+						set wuxing[i] = wuxing[i] + 2
+						set jingmai[i] = jingmai[i] + 2
+						set danpo[i] = danpo[i] + 2
+						set yishu[i] = yishu[i] + 2
 					endif
                     if level + 1 == 9 and Ce[i] == 8 then
 						set wuxuedian[i]=wuxuedian[i] + 2

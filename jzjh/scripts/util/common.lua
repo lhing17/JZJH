@@ -1,6 +1,6 @@
 base = base or {}
 local jass = require 'jass.common'
-require 'util.table_util'
+
 
 --- 根据掉落表获取随机掉落的物品ID
 --- @param drop_table table<string|table, number> 掉落表
@@ -163,7 +163,4 @@ function base.passiveRangeDamage(params)
     end
 end
 
-
-
-
-
+require 'util.table_util'

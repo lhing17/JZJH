@@ -13,7 +13,7 @@ function tag.create(text, point, size, zOffset, r, g, b, transparency, time, spe
     jass.SetTextTagVisibility(last, true)
     jass.SetTextTagText(last, text, height)
     jass.SetTextTagPos(last, point[1], point[2], zOffset)
-    jass.SetTextTagColor(last, r / 100 * 255, g / 100 * 255, b / 100 * 255, (100 - transparency) / 100 * 255)
+    jass.SetTextTagColor(last, math.floor(r / 100 * 255), math.floor(g / 100 * 255), math.floor(b / 100 * 255),  math.floor((100 - transparency) / 100 * 255))
     if time then
         time = time <= 0 and time or 0.01
         jass.SetTextTagPermanent(last, false)

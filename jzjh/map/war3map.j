@@ -159,7 +159,7 @@ constant boolean LIBRARY_YDWEUnitHasItemOfTypeBJNull=true
 //endglobals from YDWEUnitHasItemOfTypeBJNull
 //globals from YDWEJumpTimer:
 constant boolean LIBRARY_YDWEJumpTimer=true
-//ÌøÔ¾ÏµÍ³ÓÅÏÈ¼¶
+//ï¿½ï¿½Ô¾ÏµÍ³ï¿½ï¿½ï¿½È¼ï¿½
 integer MoveMoreLevel_JumpTimer=3
 //endglobals from YDWEJumpTimer
 //globals from YDWELocalVariable:
@@ -168,8 +168,8 @@ constant boolean LIBRARY_YDWELocalVariable=true
 //globals from YDWEPreloadSL:
 constant boolean LIBRARY_YDWEPreloadSL=true
     ///
-    /// Ã¿¸öÍæ¼ÒÕ¼ÓÃµÄ¿Õ¼ä[500*id, 500*(id-1))
-    /// ÏÂ±êÔ½½çÃ»ÓÐ½øÐÐ¼ì²é£¬ËÆºõÃ»Õâ¸ö±ØÒª£¬Ë­ÒªÊÇÓÃ³¬¹ý500...¾ÍÈ¥ËÀ°É- -
+    /// Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ÃµÄ¿Õ¼ï¿½[500*id, 500*(id-1))
+    /// ï¿½Â±ï¿½Ô½ï¿½ï¿½Ã»ï¿½Ð½ï¿½ï¿½Ð¼ï¿½é£¬ï¿½Æºï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ë­Òªï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½500...ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½- -
     /// 
 integer array YDWEPreloadSL___Code
 integer array YDWEPreloadSL___CodeHI
@@ -4619,7 +4619,7 @@ endfunction
 //library YDWETriggerEvent:
 	
 //===========================================================================  
-//ÈÎÒâµ¥Î»ÉËº¦ÊÂ¼þ 
+//ï¿½ï¿½ï¿½âµ¥Î»ï¿½Ëºï¿½ï¿½Â¼ï¿½ 
 //===========================================================================
 function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -4666,7 +4666,7 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
     set YDWETriggerEvent___DamageEventNumber=YDWETriggerEvent___DamageEventNumber + 1
 endfunction
 //===========================================================================  
-//ÒÆ¶¯ÎïÆ·ÊÂ¼þ 
+//ï¿½Æ¶ï¿½ï¿½ï¿½Æ·ï¿½Â¼ï¿½ 
 //===========================================================================  
 function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -5232,8 +5232,8 @@ function YDWE_PreloadSL_GetMask takes player p returns integer
     return value - 'YDWE'
 endfunction
 ///
-/// ×¢ÖØÐ§ÂÊ¶ø²»ÊÇ°²È«µÄÒÆ¶¯£¬»°Ëµ°²È«ÓÐÒâÒåÂð...
-/// ÁíÒ»¸öÒÆ¶¯º¯ÊýµÄÄæÔËËã
+/// ×¢ï¿½ï¿½Ð§ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½Ç°ï¿½È«ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...
+/// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ///
 function YDWE_PreloadSL_Unmove takes integer beg,integer n,integer key returns nothing
     local integer value
@@ -5377,8 +5377,8 @@ function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer 
     endloop
 endfunction
 ///
-/// ×¢ÖØÐ§ÂÊ¶ø²»ÊÇ°²È«µÄÒÆ¶¯£¬»°Ëµ°²È«ÓÐÒâÒåÂð...
-/// ÒÆ¶¯º¯Êý£¬ÉõÖÁ¿ÉÒÔ²»Òª...
+/// ×¢ï¿½ï¿½Ð§ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½Ç°ï¿½È«ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...
+/// ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½Òª...
 ///
 function YDWE_PreloadSL_Move takes integer beg,integer n,integer key returns nothing
     local integer value
@@ -5422,8 +5422,8 @@ function YDWE_PreloadSL_Encode takes player p,integer n,integer mask returns not
     call YDWE_PreloadSL_Move(beg , n , key)
 endfunction 
 /// 
-/// Í¬²½Íæ¼ÒÊý¾Ý
-/// Í¬Ò»Ê±¼ä²»ÒªÍ¬²½Ò»¸öÒÔÉÏµÄÍæ¼ÒÊý¾Ý
+/// Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/// Í¬Ò»Ê±ï¿½ä²»ÒªÍ¬ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ///
 function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
     local integer index
@@ -5504,7 +5504,7 @@ function GetLastCombinedItem takes nothing returns item
     return bj_lastCombinedItem
 endfunction
 //===========================================================================
-//ÎïÆ·ºÏ³É
+//ï¿½ï¿½Æ·ï¿½Ï³ï¿½
 function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
  local integer i= 0
     loop
@@ -5517,7 +5517,7 @@ function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
 endfunction
 //GetLastMovedItemInItemSlot 
 //===========================================================================  
-//ÎïÆ·ºÏ³ÉÊÂ¼þ 
+//ï¿½ï¿½Æ·ï¿½Ï³ï¿½ï¿½Â¼ï¿½ 
 //===========================================================================  
 function YDWESyStemItemCombineRegistTrigger takes trigger trg returns nothing
 	set YDWEStringFormula___ItemCombineEventQueue[YDWEStringFormula___ItemCombineEventNumber]=trg
@@ -5648,7 +5648,7 @@ endfunction
             set s__YDWEStringFormula___FormulaMatrix_segmLen[this]=lingth
             
             set s__YDWEStringFormula___FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
-set s__YDWEStringFormula___FormulaMatrix_message[this]=null //"|cff00ff00ÄãºÏ³ÉÁË£º|r" 
+set s__YDWEStringFormula___FormulaMatrix_message[this]=null //"|cff00ff00ï¿½ï¿½Ï³ï¿½ï¿½Ë£ï¿½|r" 
 set s__YDWEStringFormula___FormulaMatrix_chance[this]=100
             set s__YDWEStringFormula___FormulaMatrix_delete[this]=false
             call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
@@ -5992,9 +5992,9 @@ endfunction
 //library YDWEStringFormula ends
 //library YDWETimerPattern:
 //***************************************************
-//* ¡Æ - Matrix ÍòÄÜÄ£°åº¯Êý
+//* ï¿½ï¿½ - Matrix ï¿½ï¿½ï¿½ï¿½Ä£ï¿½åº¯ï¿½ï¿½
 //*--------------------
-//* ×÷Õß£ºWarft_TigerCN  ´úÂëÓÅ»¯£ºFetrix_sai
+//* ï¿½ï¿½ï¿½ß£ï¿½Warft_TigerCN  ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½Fetrix_sai
 //***************************************************
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //                                       Timer Pattern Union                                              //
@@ -6371,7 +6371,7 @@ function YDWETimerSystem___DeleteTaskIndex takes integer index returns nothing
 	set YDWETimerSystem___TaskListIdle[index]=YDWETimerSystem___TaskListIdleHead
 	set YDWETimerSystem___TaskListIdleHead=index
 endfunction
-//¸Ãº¯ÊýÐòÁÐ´¦Àí
+//ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½
 function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
  local integer index= YDWETimerSystem___NewTaskIndex()
  local integer h= YDWETimerSystem___TaskListHead
@@ -6397,7 +6397,7 @@ endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
 	return YDWETimerSystem___CurrentIndex
 endfunction
-//É¾³ýµ¥Î»
+//É¾ï¿½ï¿½ï¿½ï¿½Î»
 function YDWETimerSystem___RemoveUnit_CallBack takes nothing returns nothing
     call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
@@ -6405,7 +6405,7 @@ endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
     call SaveUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveUnit), u)
 endfunction
-//´Ý»Ù¼ÆÊ±Æ÷
+//ï¿½Ý»Ù¼ï¿½Ê±ï¿½ï¿½
 function YDWETimerSystem___DestroyTimer_CallBack takes nothing returns nothing
     call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
@@ -6413,7 +6413,7 @@ endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
     call SaveTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyTimer), t)
 endfunction
-//É¾³ýÎïÆ·
+//É¾ï¿½ï¿½ï¿½ï¿½Æ·
 function YDWETimerSystem___RemoveItem_CallBack takes nothing returns nothing
     call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
@@ -6421,7 +6421,7 @@ endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
     call SaveItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveItem), it)
 endfunction
-//É¾³ýÌØÐ§
+//É¾ï¿½ï¿½ï¿½ï¿½Ð§
 function YDWETimerSystem___DestroyEffect_CallBack takes nothing returns nothing
     call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
@@ -6429,7 +6429,7 @@ endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
     call SaveEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyEffect), e)
 endfunction
-//É¾³ýÉÁµçÌØÐ§
+//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
 function YDWETimerSystem___DestroyLightning_CallBack takes nothing returns nothing
     call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
@@ -6438,7 +6438,7 @@ function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
  local integer i= YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyLightning)
     call SaveLightningHandle(YDHT, YDWETimerSystem___TimerHandle, i, lt)
 endfunction
-//ÔËÐÐ´¥·¢Æ÷
+//ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½
 function YDWETimerSystem___RunTrigger_CallBack takes nothing returns nothing
     call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
@@ -6446,7 +6446,7 @@ endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
     call SaveTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRunTrigger), trg)
 endfunction
-//É¾³ýÆ¯¸¡ÎÄ×Ö
+//É¾ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     local integer N=0
     local integer i=0
@@ -6457,7 +6457,7 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagLifespan(tt, time)
     call SetTextTagFadepoint(tt, time)
 endfunction
-//ÖÐÐÄ¼ÆÊ±Æ÷Ö÷º¯Êý
+//ï¿½ï¿½ï¿½Ä¼ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function YDWETimerSystem___Main takes nothing returns nothing
  local integer h= YDWETimerSystem___TaskListHead
  local integer p
@@ -6471,7 +6471,7 @@ function YDWETimerSystem___Main takes nothing returns nothing
 	endloop
 	set YDWETimerSystem___CurrentTime=YDWETimerSystem___CurrentTime + 1
 endfunction
-//³õÊ¼»¯º¯Êý
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function YDWETimerSystem___Init takes nothing returns nothing
     set YDWETimerSystem___Timer=CreateTimer()
 	set YDWETimerSystem___TimerHandle=GetHandleId(YDWETimerSystem___Timer)
@@ -6497,7 +6497,7 @@ function YDWETimerSystem___Init takes nothing returns nothing
 	
     call TimerStart(YDWETimerSystem___Timer, 0.01, true, function YDWETimerSystem___Main)
 endfunction
-//Ñ­»·ÀàÈÔÓÃ¶ÀÁ¢¼ÆÊ±Æ÷
+//Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 function YDWETimerSystemGetRunIndex takes nothing returns integer
     return YDWETimerSystem___TimerSystem_RunIndex
 endfunction
@@ -47830,7 +47830,7 @@ set X7[19]='A06Y'
 	set Z7[19]='A06Z'
 	set Y7[19]='A070'
 	set Q8[19]='A07Y'
-	set P8[19]='A07Y'
+	set P8[19]='A0DP'
 endfunction
 function InitSkillBooks takes nothing returns nothing
 	set udg_jianghu[1]='I03J'
@@ -49185,11 +49185,11 @@ endfunction
 //ä¿®æ”¹ç”Ÿå‘½
 //===========================================================================
 //===========================================================================
-//ÌøÔ¾ÏµÍ³ 
+//ï¿½ï¿½Ô¾ÏµÍ³ 
 //===========================================================================
 //===========================================================================  
 //===========================================================================  
-//×Ô¶¨ÒåÊÂ¼þ 
+//ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ 
 //===========================================================================
 //===========================================================================   
 //===========================================================================

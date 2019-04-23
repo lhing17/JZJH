@@ -44,9 +44,14 @@ end
 local function addRealAttrTemp(i, coefficient, time)
     local value = jass.GetUnitAbilityLevel(g.udg_hero[i], base.string2id('A0DP')) * coefficient
     local real_attr = getRealAttr(i)
+    print(real_attr)
+    local u = et.unit(g.udg_hero[i])
     g[real_attr][i] = g[real_attr][i] + value
+    et.effect.add_to_unit("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", u, 'overhead'):destroy()
+    et.tag.create(attr[real_attr]..'+'..value, u:get_point(), 14, 0, 255, 0, 0, 30, 0.65, 400, base.random(80, 100))
     et.wait((time or 30) * 1000, function()
         g[real_attr][i] = g[real_attr][i] - value
+        et.tag.create(attr[real_attr]..'-'..value, u:get_point(), 14, 0, 255, 0, 0, 30, 0.65, 400, base.random(80, 100))
     end)
 end
 
