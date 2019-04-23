@@ -119,7 +119,7 @@ end
 --- @param critical boolean
 function base.apply_damage(source, target, damage, critical)
     if damage == 0 then
-        et.tag.create("MISS", target:get_point(), 11, 0, 255, 0, 0, 30, 0.65, 400, base.random(80, 100))
+        et.tag.create("MISS", target:get_point(), 11, 0, 100, 0, 0, 30, 0.65, 400, base.random(80, 100))
         return
     end
     if critical then

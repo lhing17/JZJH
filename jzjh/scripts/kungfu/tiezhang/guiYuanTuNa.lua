@@ -35,6 +35,7 @@ local function getRealAttr(i)
     else
         real_attr = selected_attr[i]
     end
+    return real_attr
 end
 
 --- 临时增加某项属性
@@ -48,10 +49,11 @@ local function addRealAttrTemp(i, coefficient, time)
     local u = et.unit(g.udg_hero[i])
     g[real_attr][i] = g[real_attr][i] + value
     et.effect.add_to_unit("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", u, 'overhead'):destroy()
-    et.tag.create(attr[real_attr]..'+'..value, u:get_point(), 14, 0, 255, 0, 0, 30, 0.65, 400, base.random(80, 100))
+    --CreateTextTagLocBJ(attr[real_attr]..'+'..value, jass.GetUnitLoc(u.handle), 60, 14, 100, 0, 0, 30)
+    et.tag.create(attr[real_attr]..'+'..value, u:get_point(), 14, 60, 100, 0, 0, 30, 3, 400, base.random(80, 100))
     et.wait((time or 30) * 1000, function()
         g[real_attr][i] = g[real_attr][i] - value
-        et.tag.create(attr[real_attr]..'-'..value, u:get_point(), 14, 0, 255, 0, 0, 30, 0.65, 400, base.random(80, 100))
+        et.tag.create(attr[real_attr]..'-'..value, u:get_point(), 14, 60, 100, 0, 0, 30, 3, 400, base.random(80, 100))
     end)
 end
 

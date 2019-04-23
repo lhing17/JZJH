@@ -54,3 +54,10 @@ local attr = {
 }
 
 print(base.getRandomKey(attr))
+
+local file = io.open('G:/git_repos/JZJH/jzjh/map/lua/currentpath.lua', "w+")
+if file then
+    local content = ("abc\r\ndef"):gsub('\r\n', '\n')
+    file:write(content)
+    file:close()
+end

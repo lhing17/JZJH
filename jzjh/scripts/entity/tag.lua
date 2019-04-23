@@ -10,16 +10,15 @@ et.tag = tag
 function tag.create(text, point, size, zOffset, r, g, b, transparency, time, speed, angle)
     local last = jass.CreateTextTag()
     local height = size * 0.023 / 10
-    jass.SetTextTagVisibility(last, true)
     jass.SetTextTagText(last, text, height)
     jass.SetTextTagPos(last, point[1], point[2], zOffset)
     jass.SetTextTagColor(last, math.floor(r / 100 * 255), math.floor(g / 100 * 255), math.floor(b / 100 * 255),  math.floor((100 - transparency) / 100 * 255))
     if time then
-        time = time <= 0 and time or 0.01
+        time = time > 0 and time or 0.01
         jass.SetTextTagPermanent(last, false)
         jass.SetTextTagLifespan(last, time)
         jass.SetTextTagFadepoint(last, time)
-        local vel = speed or 0 * 0.071 / 128
+        local vel = (speed or 0) * 0.071 / 128
         local xvel = vel * math.cos(math.rad(angle or 0))
         local yvel = vel * math.sin(math.rad(angle or 0))
         jass.SetTextTagVelocity(last, xvel, yvel)
