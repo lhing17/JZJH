@@ -222,6 +222,7 @@ globals
 	integer array w4
 	trigger array x4
 	integer array qiuhun
+	integer array xidujuexue
 	integer array zhaoyangguo
 	integer array linganran
 	integer array touxiao

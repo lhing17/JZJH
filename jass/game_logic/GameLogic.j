@@ -4941,9 +4941,14 @@ function Ya takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))
 	local real x
 	local real y
-	set shengwang[i] = shengwang[i]+udg_boshu/7+1
+	local integer coeff = 1
+	// 天赋：冲州过府：增加每次杀怪获取的声望值
+	if (UnitHasBuffBJ(u, 'B01U')) then
+	    set coeff = coeff * 2
+	endif
+	set shengwang[i] = shengwang[i]+(udg_boshu/7+1) * coeff
 	if (ModuloInteger(GetUnitPointValue(u),$A)==1) then
-		set shengwang[i]=shengwang[i]+8
+		set shengwang[i]=shengwang[i]+8 * coeff
 	endif
 	if (p==Player(6)) then
 		set zd=zd+GetRandomInt(1,2)

@@ -2021,10 +2021,13 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
 		set jingyan = ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 4 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40
 		// 慕容家训
 		if UnitHasBuffBJ(u, 'B010') then
-			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 5 + GetUnitAbilityLevel(u, 'A02V') / 2 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40)
-		else
-			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 4 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40)
+		    set jingyan = ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 5 + GetUnitAbilityLevel(u, 'A02V') / 2 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40
 		endif
+		// 天赋：天纵奇才 增加升重速度
+		if UnitHasBuffBJ(u, 'B01O') then
+		    set jingyan = jingyan * 2
+		endif
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + jingyan)
 		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(u)), id * 2, I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id)) + "/" + I2S(R2I(r * level)))
 		if LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) > R2I(r) * level then
 		    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, 0)
@@ -2041,7 +2044,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
 			endif
         endif
     elseif level > 0 and level < 9 then
-        if ( GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 1 + 0.6 * udg_jwjs[i] ) ) or ( UnitHasBuffBJ(u, 'B010') and GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 2 + 0.3 * GetUnitAbilityLevel(u, 'A02V') + 0.6 * udg_jwjs[i] ) ) then
+        if ( GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 1 + 0.6 * udg_jwjs[i] ) ) or ( (UnitHasBuffBJ(u, 'B010') or UnitHasBuffBJ(u, 'B01O')) and GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 2 + 0.3 * GetUnitAbilityLevel(u, 'A02V') + 0.6 * udg_jwjs[i] ) ) then
        		if id != 'A07W' then
 	        	call IncUnitAbilityLevel(u, id)
 	        	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
@@ -2068,10 +2071,15 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
             if udg_xinggeB[i] >= 4 or UnitHaveItem(u , 'I01J') or UnitHaveItem(u , 'I0DB') or JYd[i] == 1 then
 	            if id != 'A07W' then
 	            	if UnitHasBuffBJ(u, 'B010') then
-	            		call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + GetUnitAbilityLevel(u, 'A02V') / 4 + udg_jwjs[i] ) / 3 * 2)
+	            	    set jingyan = LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + GetUnitAbilityLevel(u, 'A02V') / 4 + udg_jwjs[i] ) / 3 * 2
 	            	else
-	            		call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + udg_jwjs[i] ) / 3 * 2)
+	            	    set jingyan = LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + udg_jwjs[i] ) / 3 * 2
             		endif
+            		// 天赋：天纵奇才 增加升重速度
+                    if UnitHasBuffBJ(u, 'B01O') then
+                        set jingyan = jingyan * 2
+                    endif
+	            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, jingyan)
         		endif
 		        call SaveStr(YDHT, GetHandleId(GetOwningPlayer(u)), id * 2, I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id)) + "/" + I2S(R2I(r * level)))
 		        if LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) > R2I(r) * level then

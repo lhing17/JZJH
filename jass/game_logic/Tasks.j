@@ -972,7 +972,7 @@ function WanChengYangShou takes nothing returns nothing
 endfunction
 //帮郭靖求婚任务、偷玉箫任务、寻找杨过
 function IsQiuHun takes nothing returns boolean
-	return(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())=='I09T' or GetItemTypeId(GetManipulatedItem())=='I09U' or GetItemTypeId(GetManipulatedItem())=='I09L' or GetItemTypeId(GetManipulatedItem())=='I09M' or GetItemTypeId(GetManipulatedItem())=='I0AW' or GetItemTypeId(GetManipulatedItem())=='I0AT' or GetItemTypeId(GetManipulatedItem())=='I0AV')
+	return(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())=='I09T' or GetItemTypeId(GetManipulatedItem())=='I09U' or GetItemTypeId(GetManipulatedItem())=='I09L' or GetItemTypeId(GetManipulatedItem())=='I09M' or GetItemTypeId(GetManipulatedItem())=='I0AW' or GetItemTypeId(GetManipulatedItem())=='I0AT' or GetItemTypeId(GetManipulatedItem())=='I0AV' or GetItemTypeId(GetManipulatedItem()) == 'I0EK')
 endfunction
 function QiuHun_Action takes nothing returns nothing
 	local unit u=GetTriggerUnit()
@@ -987,6 +987,15 @@ function QiuHun_Action takes nothing returns nothing
 			call PlaySoundOnUnitBJ(bh,100,u)
 			call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC帮我找到经书了吗|r\n|cFFFFCC00提示：|r |cFF99FFCC帮助周伯通寻找|cFFADFF2F九阴真经上下卷（九阴真经和九阴白骨爪）|r\n")
 		endif
+	elseif GetItemTypeId(GetManipulatedItem())=='I0EK' then
+	    if(xidujuexue[i]==0)then
+            set xidujuexue[i]=1
+            call PlaySoundOnUnitBJ(bh,100,u)
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC我听说老毒物把他的绝学西毒棍法和蛤蟆功整理成书了，你能帮我找来么？|r\n|cFFFFCC00提示：|r |cFF99FFCC帮助周伯通寻找|cFFADFF2F蛤蟆功和西毒棍法|r\n")
+        else
+            call PlaySoundOnUnitBJ(bh,100,u)
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC我听说老毒物把他的绝学西毒棍法和蛤蟆功整理成书了，你能帮我找来么？|r\n|cFFFFCC00提示：|r |cFF99FFCC帮助周伯通寻找|cFFADFF2FcFFADFF2F蛤蟆功和西毒棍法|r\n")
+        endif
 	elseif GetItemTypeId(GetManipulatedItem())=='I0AT' and udg_runamen[i]==2 then
 		if(zhaoyangguo[i]==0)then
 			set zhaoyangguo[i]=1
@@ -1065,7 +1074,7 @@ function QiuHun_Action takes nothing returns nothing
 	set p=null
 endfunction
 function IsQiuHunWan takes nothing returns boolean
-	return(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER) and ((qiuhun[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I02X') and UnitHaveItem(GetTriggerUnit(),'I03I'))or (touxiao[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I0A1')))
+	return(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER) and ((qiuhun[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I02X') and UnitHaveItem(GetTriggerUnit(),'I03I'))or (touxiao[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I0A1'))or (xidujuexue[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I03C') and UnitHaveItem(GetTriggerUnit(),'I03O')))
 endfunction
 function QiuHunWanCheng takes nothing returns nothing
 	local unit u=GetTriggerUnit()
@@ -1097,6 +1106,11 @@ function QiuHunWanCheng takes nothing returns nothing
 			endif
 			set L7[i] = L7[i] + 1
 		endloop
+	elseif xidujuexue[i]==1 and UnitHaveItem(u,'I03C') and UnitHaveItem(u,'I03O') then
+	    set xidujuexue[i]=0
+        call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC不错小子，居然被找到了|r\n")
+        call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC这个铁掌令是我上次和裘千仞老儿过招的时候得到的，就送给你了吧|r\n")
+        call unitadditembyidswapped('I0EJ',u)
 	elseif touxiao[i]==1 and UnitHaveItem(u,'I0A1') then
 		set L7[i] = 1
 		loop

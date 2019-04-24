@@ -1,5 +1,6 @@
 事件
-    MapInitializationEvent
+    TriggerRegisterTimerEventSingle
+        常量: 0.00
 条件
 动作
     SetPlayerState

@@ -6,10 +6,10 @@ function IsXueZhan takes nothing returns boolean
 	return ( ( GetSpellAbilityId() == 'A0CN' ) )
 endfunction
 function XueZhan_Condition takes nothing returns boolean
-	return IsUnitEnemy(GetFilterUnit(),GetOwningPlayer(udg_xuezhandanwei)) and IsUnitAliveBJ(GetFilterUnit())
+	return IsUnitEnemy(GetFilterUnit(),GetOwningPlayer(LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 3))) and IsUnitAliveBJ(GetFilterUnit())
 endfunction
 function XueZhan_Action takes nothing returns nothing
-    local unit u=udg_xuezhandanwei
+    local unit u=LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 3)
 	local unit uc=GetEnumUnit()
 	local real shxishu=1.
 	local real shanghai=0.
@@ -38,9 +38,9 @@ function XueZhanDao_2 takes nothing returns nothing
 	local timer t=GetExpiredTimer()
 	local integer w=GetHandleId(t)
 	local group g=CreateGroup()
-	local unit u=udg_xuezhandanwei
     local integer j=LoadInteger(YDHT,w,1)
     local location loc=LoadLocationHandle(YDHT,w,2)
+	local unit u=LoadUnitHandle(YDHT, w, 3)
     local integer jmax=10+GetUnitAbilityLevel(u,'A0CN')
     local real r=.3
     local real range=600.
@@ -85,13 +85,13 @@ function XueZhanDao takes nothing returns nothing
     local timer t=CreateTimer()
     local integer w=GetHandleId(t)
     local real r=0.3
-    set udg_xuezhandanwei=u
     if GetUnitAbilityLevel(u,'A07T')>=1 then
 	    set r=r-.2
     endif
     call WuGongShengChong(u,'A0CN',120.)
     call SaveInteger(YDHT,w,1,0)
     call SaveLocationHandle(YDHT,w,2,GetSpellTargetLoc())
+    call SaveUnitHandle(YDHT, w, 3, u)
     call TimerStart(t,r,true,function XueZhanDao_2)
     set u=null
     set t=null

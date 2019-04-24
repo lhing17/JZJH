@@ -36,6 +36,9 @@ mt.max_damage = 0
 --- 玩家福缘
 mt.luck = 0
 
+--- 玩家天赋
+mt.talent = 0
+
 -- 获取玩家id
 function mt:get()
     return self.id

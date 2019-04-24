@@ -1,6 +1,6 @@
 事件
     TriggerRegisterTimerEventSingle
-        常量: 0.00
+        常量: 0.05
 条件
 动作
     CustomScriptCode

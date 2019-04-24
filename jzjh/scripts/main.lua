@@ -19,7 +19,7 @@ require 'entity.init'
 require 'util.general_bonus'
 require 'util.general_buff'
 
-require 'logic.globals'
+require 'logic.init'
 require 'ui.init'
 
 require 'kungfu.init'
