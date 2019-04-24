@@ -48,8 +48,7 @@ local function addRealAttrTemp(i, coefficient, time)
     print(real_attr)
     local u = et.unit(g.udg_hero[i])
     g[real_attr][i] = g[real_attr][i] + value
-    et.effect.add_to_unit("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", u, 'overhead'):destroy()
-    --CreateTextTagLocBJ(attr[real_attr]..'+'..value, jass.GetUnitLoc(u.handle), 60, 14, 100, 0, 0, 30)
+    et.effect.add_to_unit("war3mapImported\\frozenarmor.mdx", u, 'overhead'):destroy()
     et.tag.create(attr[real_attr]..'+'..value, u:get_point(), 14, 60, 100, 0, 0, 30, 3, 400, base.random(80, 100))
     et.wait((time or 30) * 1000, function()
         g[real_attr][i] = g[real_attr][i] - value
