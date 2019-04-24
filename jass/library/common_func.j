@@ -34,6 +34,7 @@ native DzAPI_Map_GetMapLevel takes player whichPlayer returns integer
 native DzAPI_Map_MissionComplete takes player whichPlayer, string key, string value returns nothing
 native DzAPI_Map_GetActivityData takes nothing returns string
 native DzAPI_Map_GetMapConfig takes string key returns string
+native DzAPI_Map_HasMallItem takes player whichPlayer, string key returns boolean
 
 // function DzAPI_Map_SaveServerValue takes player whichPlayer, string key, string value returns boolean
 // 	return true

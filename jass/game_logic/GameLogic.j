@@ -460,6 +460,24 @@ function JiaRuMenPai takes nothing returns nothing
 					call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00积分不足10，不能选择灵鹫宫")
 				endif
 			endif
+
+			// 自由改投铁掌帮
+            if GetItemTypeId(GetManipulatedItem())=='I0E1' then
+                if DzAPI_Map_HasMallItem(p, "A198FYU9ME") then
+                    set gengu[i] = gengu[i] + 3
+                    set danpo[i] = danpo[i] + 2
+                    set udg_runamen[i]=19
+                    call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"改拜入了〓铁掌帮〓，大家一起膜拜他|r")
+                    call SetPlayerName(p,"〓铁掌帮〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
+
+                    set udg_shuxing[i]=udg_shuxing[i]-5
+                    call AdjustPlayerStateBJ(-60, p, PLAYER_STATE_RESOURCE_LUMBER)
+                    call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00选择铁掌帮")
+                else
+                    call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00尚未解锁，不能选择铁掌帮")
+                endif
+            endif
+
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff0000你已经加过门派了|r")
 		endif

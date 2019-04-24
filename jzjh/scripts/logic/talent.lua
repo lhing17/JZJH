@@ -5,13 +5,18 @@
 ---
 
 local g = require 'jass.globals'
+
+local japi = require 'jass.japi'
+local hasMallItem = japi.DzAPI_Map_HasMallItem -- dzapi获取商城道具
+local PROPERTY_TALENT = 'AR98FE7J3P' -- 天赋的道具
+
 local TALENT_LOOKUP = {
     { name = '天纵奇才', level = 1, buff = 'B01O' }, -- 天纵奇才：增加升重速度
     { name = '天降鸿福', level = 2, buff = 'B01P' }, -- 天降鸿福：每2分钟增加1点福缘
     { name = '天赋异禀', level = 3, buff = 'B01S' }, -- 天赋异禀：每2分钟增加1点经脉
     { name = '醍醐灌顶', level = 4, buff = 'B01T' }, -- 醍醐灌顶：每2分钟增加1点悟性
     { name = '骨骼精奇', level = 5, buff = 'B01R' }, -- 骨骼精奇：每2分钟增加1点根骨
-    { name = '飞来横财', level = 6, buff = 'B01Q' }, -- 飞来横财：每2分钟增加5000金钱和10珍稀币
+    { name = '飞来横财', level = 6, buff = 'B01Q' }, -- 飞来横财：每2分钟增加5000金钱和20珍稀币
     { name = '冲州过府', level = 7, buff = 'B01U' }, -- 冲州过府：增加每次杀怪获取的声望值
 }
 
@@ -19,12 +24,14 @@ local TALENT_LOOKUP = {
 --- @param i number 玩家下标
 --- @param t number 天赋下标，见上面的查询表
 local function add_talent(i, t)
-    --- @type unit
-    local u = et.unit(g.udg_hero[i])
-    u:add_ability('A08M')
-    jass.SetPlayerAbilityAvailable(u:get_owner().handle, 'A067', false)
-    u:set_ability_level('A08L', t)
-    u:get_owner().talent = t
+    if (g.udg_hero[i] ~= nil) then
+        --- @type unit
+        local u = et.unit(g.udg_hero[i])
+        u:add_ability('A08M')
+        jass.SetPlayerAbilityAvailable(u:get_owner().handle, base.string2id('A08M'), false)
+        u:set_ability_level('A08L', t)
+        u:get_owner().talent = t
+    end
 end
 
 
@@ -33,17 +40,17 @@ local function talent_effect()
 
     -- 判断玩家是否购买
     et.loop(1 * 1000, function()
-        for i = 1, player.countAlive() do
+        for i = 1, et.player.countAlive() do
             local p = et.player[i]
             --- 随机天赋
-            if p.talent == 0 then
+            if p.talent == 0 and hasMallItem and hasMallItem(p.handle, PROPERTY_TALENT) then
                 add_talent(i, base.random_int(1, #TALENT_LOOKUP))
             end
         end
     end)
 
     et.loop(120 * 1000, function()
-        for i = 1, player.countAlive() do
+        for i = 1, et.player.countAlive() do
             local p = et.player[i]
             -- 天降鸿福：每2分钟增加1点福缘
             if p.talent == 2 then
