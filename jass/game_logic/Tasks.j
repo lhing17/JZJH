@@ -405,6 +405,7 @@ endfunction
 
 globals
 	integer array jf_qiWu
+	integer array bigTalent
 endglobals
 
 //============积分商店=============//
@@ -416,18 +417,23 @@ function jfShop takes nothing returns nothing
 	local unit u =GetTriggerUnit() // 触发单位
 	local player p=GetOwningPlayer(u) // 单位所有者
 	local integer i=GetPlayerId(p)
-	// 精钢剑4积分、随机性格5积分、随机奇武4积分、桃花岛传送4积分、重置门派称号14积分、号令天下10积分
+	// 精钢剑4积分、随机性格5积分、随机奇武4积分、桃花岛传送4积分、重置门派称号14积分、号令天下10积分、加强天赋15积分
 	local integer jf1 = 4
 	local integer jf2 = 5
 	local integer jf3 = 4
 	local integer jf4 = 4
 	local integer jf5 = 14
 	local integer jf6 = 10
+	local integer jf7 = 15
 
 	if ((GetItemTypeId(GetManipulatedItem())=='I0DC')) and udg_jf[i] >= jf1 and (jf_useMax[i]+jf1) <= jf_max then
 		call unitadditembyidswapped('I01L',u) // 创建精钢剑给玩家
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00获取精钢剑，扣除4积分")
 		call jfChange(i,jf1)
+    elseif ((GetItemTypeId(GetManipulatedItem())=='I0EL')) and udg_jf[i] >= jf7 and (jf_useMax[i]+jf7) <= jf_max then
+        set bigTalent[i] = 1
+        call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00激活加强天赋系统")
+        call jfChange(i,jf7)
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DD')) and udg_jf[i] >= jf2 and (jf_useMax[i]+jf2) <= jf_max then
 		if udg_xinggeA[i+1] ==5 and udg_xinggeB[i+1] == 5 then
 			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00AB性格已经满级，不扣除积分")

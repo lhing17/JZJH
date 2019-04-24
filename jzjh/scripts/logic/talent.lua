@@ -34,8 +34,6 @@ local function add_talent(i, t)
     end
 end
 
-
-
 local function talent_effect()
 
     -- 判断玩家是否购买
@@ -54,20 +52,20 @@ local function talent_effect()
             local p = et.player[i]
             -- 天降鸿福：每2分钟增加1点福缘
             if p.talent == 2 then
-                g.fuyuan[i] = g.fuyuan[i] + 1
+                g.fuyuan[i] = g.fuyuan[i] + 1 + (g.bigTalent[i] or 0)
                 -- 天赋异禀：每2分钟增加1点经脉
             elseif p.talent == 3 then
-                g.jingmai[i] = g.jingmai[i] + 1
+                g.jingmai[i] = g.jingmai[i] + 1 + (g.bigTalent[i] or 0)
                 --  醍醐灌顶：每2分钟增加1点悟性
             elseif p.talent == 4 then
-                g.wuxing[i] = g.wuxing[i] + 1
+                g.wuxing[i] = g.wuxing[i] + 1 + (g.bigTalent[i] or 0)
                 -- 骨骼精奇：每2分钟增加1点根骨
             elseif p.talent == 5 then
-                g.gengu[i] = g.gengu[i] + 1
+                g.gengu[i] = g.gengu[i] + 1 + (g.bigTalent[i] or 0)
                 -- 飞来横财：每2分钟增加5000金钱和20珍稀币
             elseif p.talent == 6 then
-                p.add_gold(5000)
-                p.add_lumber(20)
+                p.add_gold(5000 + 5000 * (g.bigTalent[i] or 0))
+                p.add_lumber(20 + 20 * (g.bigTalent[i] or 0))
             end
         end
     end)

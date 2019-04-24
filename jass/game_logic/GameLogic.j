@@ -4962,7 +4962,7 @@ function Ya takes nothing returns nothing
 	local integer coeff = 1
 	// 天赋：冲州过府：增加每次杀怪获取的声望值
 	if (UnitHasBuffBJ(u, 'B01U')) then
-	    set coeff = coeff * 2
+	    set coeff = coeff * (2 + bigTalent[i])
 	endif
 	set shengwang[i] = shengwang[i]+(udg_boshu/7+1) * coeff
 	if (ModuloInteger(GetUnitPointValue(u),$A)==1) then

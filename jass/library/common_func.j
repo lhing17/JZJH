@@ -2026,7 +2026,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
 		endif
 		// 天赋：天纵奇才 增加升重速度
 		if UnitHasBuffBJ(u, 'B01O') then
-		    set jingyan = jingyan * 2
+		    set jingyan = jingyan * (2 + bigTalent[i])
 		endif
         call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + jingyan)
 		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(u)), id * 2, I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id)) + "/" + I2S(R2I(r * level)))
@@ -2078,7 +2078,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
             		endif
             		// 天赋：天纵奇才 增加升重速度
                     if UnitHasBuffBJ(u, 'B01O') then
-                        set jingyan = jingyan * 2
+                        set jingyan = jingyan * (2 + bigTalent[i])
                     endif
 	            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, jingyan)
         		endif
