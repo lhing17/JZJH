@@ -10,7 +10,7 @@ function IsSiXiang takes nothing returns boolean
     return (GetRandomReal(0.,100.)<15+r/5) and ((GetUnitAbilityLevel(GetAttacker(),'A0C7')>=1)and(IsUnitEnemy(GetTriggerUnit(),GetOwningPlayer(GetAttacker()))))
 endfunction
 function SiXiang_Condition takes nothing returns boolean
-    return(IsUnitEnemy(GetFilterUnit(),GetOwningPlayer(GetAttacker()))==true) and IsUnitAliveBJ(GetFilterUnit())
+    return IsUnitEnemy(GetFilterUnit(),GetOwningPlayer(GetAttacker())) and IsUnitAliveBJ(GetFilterUnit())
 endfunction
 function SiXiang2 takes nothing returns nothing
     local player p=GetOwningPlayer(udg_sixiangdanwei)
@@ -38,7 +38,9 @@ function SiXiangZhang takes nothing returns nothing
     local integer imax=0
     local location loc=GetUnitLoc(u)
     local location loc2=GetUnitLoc(GetTriggerUnit())
-    local location array loc3
+    local real x = GetUnitX(u)
+    local real y = GetUnitY(u)
+    local string s = "Abilities\\Weapons\\RedDragonBreath\\RedDragonMissile.mdl"
     if GetUnitAbilityLevel(u,'A07W')>=1 then
 	    set imax=8
 	else
@@ -47,44 +49,13 @@ function SiXiangZhang takes nothing returns nothing
     set i = 1
     loop
     	exitwhen i > imax
-
-    	set loc3[i] = PolarProjectionBJ(loc,(100.00*I2R(i)),0)
-    	set loc3[i+imax]=PolarProjectionBJ(loc,(100.00*I2R(i)),90.00)
-    	set loc3[i+2*imax]=PolarProjectionBJ(loc,(100.00*I2R(i)),180.00)
-    	set loc3[i+3*imax]=PolarProjectionBJ(loc,(100.00*I2R(i)),270.00)
-
+        call DestroyEffect(AddSpecialEffect(s, x + 100 * i, y))
+        call DestroyEffect(AddSpecialEffect(s, x - 100 * i, y))
+        call DestroyEffect(AddSpecialEffect(s, x, y + 100 * i))
+        call DestroyEffect(AddSpecialEffect(s, x, y - 100 * i))
     	set i=i+1
     endloop
-    set i=1
-    loop
-        exitwhen i>imax
-        call CreateNUnitsAtLocFacingLocBJ(1,'h00B',p,loc3[i],loc)
-        call UnitApplyTimedLife(bj_lastCreatedUnit,'BTLF',0.50)
-        set i=i+1
-    endloop
-    set i=1
-    loop
-        exitwhen i>imax
-        call CreateNUnitsAtLocFacingLocBJ(1,'h00B',p,loc3[i+imax],loc)
-        call UnitApplyTimedLife(bj_lastCreatedUnit,'BTLF',0.50)
-        set i=i+1
-    endloop
-    set i=1
-    loop
-        exitwhen i>imax
-        call CreateNUnitsAtLocFacingLocBJ(1,'h00B',p,loc3[i+2*imax],loc)
-        call UnitApplyTimedLife(bj_lastCreatedUnit,'BTLF',0.50)
-        set i=i+1
-    endloop
-    set i=1
-    loop
-        exitwhen i>imax
-        call CreateNUnitsAtLocFacingLocBJ(1,'h00B',p,loc3[i+3*imax],loc)
-        call UnitApplyTimedLife(bj_lastCreatedUnit,'BTLF',0.50)
-        set i=i+1
-    endloop
-
-     call WuGongShengChong(u,'A0C7',900.)
+    call WuGongShengChong(u,'A0C7',900.)
     set udg_sixiangdanwei=GetAttacker()
     call GroupEnumUnitsInRangeOfLoc(udg_shanghaidanweizu,loc,imax*100.00,Condition(function SiXiang_Condition))
    // call ForGroupBJ(GetUnitsInRangeOfLocMatching(imax*100.00,loc2,Condition(function SiXiang_Condition)),function SiXiang)
@@ -93,12 +64,6 @@ function SiXiangZhang takes nothing returns nothing
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
     set i = 1
-    loop
-    	exitwhen i >= 4*imax
-    	call RemoveLocation(loc3[i])
-    	set loc3[i]=null
-    	set i = i + 1
-    endloop
     set u=null
     set p=null
     set loc=null

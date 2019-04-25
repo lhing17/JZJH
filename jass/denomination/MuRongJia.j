@@ -121,7 +121,7 @@ function XiuZhongZhi takes nothing returns nothing
 		endif
 		call WuGongShangHai(u, uc, shanghai)
 		call WuGongShengChong(u, 'A0CC', 600)
-		call SetUnitAnimation(u, "attack, slam")
+		//call SetUnitAnimation(u, "attack, slam")
 		call DestroyEffect(AddSpecialEffectLocBJ(loc,"Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl"))
 		// 真斗转加内力改成慕容龙城称号加内力
 		if muronglc[i] then

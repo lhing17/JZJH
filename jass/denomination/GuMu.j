@@ -256,70 +256,70 @@ function VE takes nothing returns boolean
 	return((GetUnitAbilityLevel(GetAttacker(),'A09U')>=1)and(GetRandomReal(0,1.)<=(.1+(.01*I2R(GetUnitAbilityLevel(GetAttacker(),'A09U')))))and(IsUnitEnemy(GetTriggerUnit(),GetOwningPlayer(GetAttacker()))))
 endfunction
 function WE takes nothing returns nothing
-local integer id=GetHandleId(GetTriggeringTrigger())
-local integer cx=LoadInteger(YDHT,id,-$3021938A)
-set cx=cx+3
-call SaveInteger(YDHT,id,-$3021938A,cx)
-call SaveInteger(YDHT,id,-$1317DA19,cx)
-call SaveUnitHandle(YDHT,id*cx,$59BEA0CB,udg_hero[(1+GetPlayerId(GetOwningPlayer(GetAttacker())))])
-call SaveInteger(YDHT,id*cx,-$2A41B3A3,'A09U')
-call YDWESetLocalVariableLocation("jn1",GetUnitLoc(GetAttacker()))
-call YDWESetLocalVariableLocation("jn2",pu(YDWEGetLocalVariableLocation("jn1"),GetRandomReal(200.,400.),GetRandomReal(0,360.)))
-if((GetUnitTypeId(GetAttacker())=='O004'))then
-call SaveInteger(YDHT,id*cx,-$2A11C165,1747988533)
-elseif((GetUnitTypeId(GetAttacker())=='O001'))then
-call SaveInteger(YDHT,id*cx,-$2A11C165,1747988535)
-elseif((GetUnitTypeId(GetAttacker())=='O002'))then
-call SaveInteger(YDHT,id*cx,-$2A11C165,1747988536)
-elseif((GetUnitTypeId(GetAttacker())=='O003'))then
-call SaveInteger(YDHT,id*cx,-$2A11C165,1747988537)
-elseif((GetUnitTypeId(GetAttacker())=='O000'))then
-call SaveInteger(YDHT,id*cx,-$2A11C165,1747988534)
-elseif((GetUnitTypeId(GetAttacker())=='O023' or GetUnitTypeId(GetAttacker())=='O02H' or GetUnitTypeId(GetAttacker())=='O02I'))then
-call SaveInteger(YDHT,id*cx,-$2A11C165,'h00I')
-elseif((GetUnitTypeId(GetAttacker())=='O02J'))then
-call SaveInteger(YDHT,id*cx,-$2A11C165,'h00K')
-endif
-call CreateNUnitsAtLoc(1,LoadInteger(YDHT,id*cx,-$2A11C165),GetOwningPlayer(GetAttacker()),YDWEGetLocalVariableLocation("jn2"),bj_UNIT_FACING)
-call SetUnitVertexColorBJ(bj_lastCreatedUnit,GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,60.))
-call UnitAddAbility(bj_lastCreatedUnit,'Aloc')
-call UnitAddAbility(bj_lastCreatedUnit,'A09E')
-if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),1093678935)!=0))then
-call zw(bj_lastCreatedUnit,GetAttacker(),1.,250.,1000.,1500.,75)
-endif
-if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A06J')!=0))then
-call UnitAddAbility(bj_lastCreatedUnit,'A09V')
-endif
-if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A07S')!=0))then
-call Gw(20.,bj_lastCreatedUnit)
-else
-call Gw(10.,bj_lastCreatedUnit)
-endif
-call RemoveLocation(YDWEGetLocalVariableLocation("jn1"))
-call RemoveLocation(YDWEGetLocalVariableLocation("jn2"))
-if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A07U')!=0))then
-call YDWESetLocalVariableLocation("jn1",GetUnitLoc(GetAttacker()))
-call YDWESetLocalVariableLocation("jn2",pu(YDWEGetLocalVariableLocation("jn1"),GetRandomReal(200.,400.),GetRandomReal(0,360.)))
-call CreateNUnitsAtLoc(1,GetUnitTypeId(GetAttacker()),GetOwningPlayer(GetAttacker()),YDWEGetLocalVariableLocation("jn2"),bj_UNIT_FACING)
-call SetUnitVertexColorBJ(bj_lastCreatedUnit,GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,60.))
-call UnitAddAbility(bj_lastCreatedUnit,'Aloc')
-call UnitAddAbility(bj_lastCreatedUnit,'A09E')
-if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),1093678935)!=0))then
-call zw(bj_lastCreatedUnit,LoadUnitHandle(YDHT,id*cx,$59BEA0CB),1.,250.,1000.,1500.,75)
-endif
-if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A07S')!=0))then
-call Gw(20.,bj_lastCreatedUnit)
-else
-call Gw(10.,bj_lastCreatedUnit)
-endif
-if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A06J')!=0))then
-call UnitAddAbility(bj_lastCreatedUnit,'A09V')
-endif
-call RemoveLocation(YDWEGetLocalVariableLocation("jn1"))
-call RemoveLocation(YDWEGetLocalVariableLocation("jn2"))
-endif
-call WuGongShengChong(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetAttacker())))],'A09U',650.)
-call FlushChildHashtable(YDHT,id*cx)
+    local integer id=GetHandleId(GetTriggeringTrigger())
+    local integer cx=LoadInteger(YDHT,id,-$3021938A)
+    set cx=cx+3
+    call SaveInteger(YDHT,id,-$3021938A,cx)
+    call SaveInteger(YDHT,id,-$1317DA19,cx)
+    call SaveUnitHandle(YDHT,id*cx,$59BEA0CB,udg_hero[(1+GetPlayerId(GetOwningPlayer(GetAttacker())))])
+    call SaveInteger(YDHT,id*cx,-$2A41B3A3,'A09U')
+    call YDWESetLocalVariableLocation("jn1",GetUnitLoc(GetAttacker()))
+    call YDWESetLocalVariableLocation("jn2",pu(YDWEGetLocalVariableLocation("jn1"),GetRandomReal(200.,400.),GetRandomReal(0,360.)))
+    if((GetUnitTypeId(GetAttacker())=='O004'))then
+        call SaveInteger(YDHT,id*cx,-$2A11C165,1747988533)
+    elseif((GetUnitTypeId(GetAttacker())=='O001'))then
+        call SaveInteger(YDHT,id*cx,-$2A11C165,1747988535)
+    elseif((GetUnitTypeId(GetAttacker())=='O002'))then
+        call SaveInteger(YDHT,id*cx,-$2A11C165,1747988536)
+    elseif((GetUnitTypeId(GetAttacker())=='O003'))then
+        call SaveInteger(YDHT,id*cx,-$2A11C165,1747988537)
+    elseif((GetUnitTypeId(GetAttacker())=='O000'))then
+        call SaveInteger(YDHT,id*cx,-$2A11C165,1747988534)
+    elseif((GetUnitTypeId(GetAttacker())=='O023' or GetUnitTypeId(GetAttacker())=='O02H' or GetUnitTypeId(GetAttacker())=='O02I'))then
+        call SaveInteger(YDHT,id*cx,-$2A11C165,'h00I')
+    elseif((GetUnitTypeId(GetAttacker())=='O02J'))then
+        call SaveInteger(YDHT,id*cx,-$2A11C165,'h00K')
+    endif
+    call CreateNUnitsAtLoc(1,LoadInteger(YDHT,id*cx,-$2A11C165),GetOwningPlayer(GetAttacker()),YDWEGetLocalVariableLocation("jn2"),bj_UNIT_FACING)
+    call SetUnitVertexColorBJ(bj_lastCreatedUnit,GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,60.))
+    call UnitAddAbility(bj_lastCreatedUnit,'Aloc')
+    call UnitAddAbility(bj_lastCreatedUnit,'A09E')
+    if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),1093678935)!=0))then
+        call zw(bj_lastCreatedUnit,GetAttacker(),1.,250.,1000.,1500.,75)
+    endif
+    if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A06J')!=0))then
+        call UnitAddAbility(bj_lastCreatedUnit,'A09V')
+    endif
+    if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A07S')!=0))then
+        call Gw(20.,bj_lastCreatedUnit)
+    else
+        call Gw(10.,bj_lastCreatedUnit)
+    endif
+    call RemoveLocation(YDWEGetLocalVariableLocation("jn1"))
+    call RemoveLocation(YDWEGetLocalVariableLocation("jn2"))
+    if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A07U')!=0))then
+        call YDWESetLocalVariableLocation("jn1",GetUnitLoc(GetAttacker()))
+        call YDWESetLocalVariableLocation("jn2",pu(YDWEGetLocalVariableLocation("jn1"),GetRandomReal(200.,400.),GetRandomReal(0,360.)))
+        call CreateNUnitsAtLoc(1,LoadInteger(YDHT,id*cx,-$2A11C165),GetOwningPlayer(GetAttacker()),YDWEGetLocalVariableLocation("jn2"),bj_UNIT_FACING)
+        call SetUnitVertexColorBJ(bj_lastCreatedUnit,GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,60.))
+        call UnitAddAbility(bj_lastCreatedUnit,'Aloc')
+        call UnitAddAbility(bj_lastCreatedUnit,'A09E')
+        if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),1093678935)!=0))then
+            call zw(bj_lastCreatedUnit,LoadUnitHandle(YDHT,id*cx,$59BEA0CB),1.,250.,1000.,1500.,75)
+        endif
+        if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A07S')!=0))then
+            call Gw(20.,bj_lastCreatedUnit)
+        else
+            call Gw(10.,bj_lastCreatedUnit)
+        endif
+        if((GetUnitAbilityLevel(LoadUnitHandle(YDHT,id*cx,$59BEA0CB),'A06J')!=0))then
+            call UnitAddAbility(bj_lastCreatedUnit,'A09V')
+        endif
+        call RemoveLocation(YDWEGetLocalVariableLocation("jn1"))
+        call RemoveLocation(YDWEGetLocalVariableLocation("jn2"))
+        endif
+    call WuGongShengChong(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetAttacker())))],'A09U',650.)
+    call FlushChildHashtable(YDHT,id*cx)
 endfunction
 function YE takes nothing returns boolean
 return((GetUnitAbilityLevel(GetAttacker(),'A09V')>=1)and(GetRandomReal(0,1.)<=.13)and(IsUnitEnemy(GetTriggerUnit(),GetOwningPlayer(GetAttacker()))))
