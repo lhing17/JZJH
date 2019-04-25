@@ -33,8 +33,9 @@ zei
 1. 重写飞燕回翔和药王神篇的代码，修复YDWE1.30以上版本不能正确保存地图的BUG。
 
 TODO
-- 专属获取方式
+- 专属获取方式说明 ckzs
 - 商城的函数在jass中值为false，在lua中值为true
+- 通背拳图标
 
 TODO OR NOT TODO
 - 更新文档，美化地形和UI

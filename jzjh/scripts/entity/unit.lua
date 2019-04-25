@@ -1510,7 +1510,9 @@ function unit.init()
         local source = unit.j_unit(jass.GetEventDamageSource())
         local target = unit.j_unit(jass.GetTriggerUnit())
         local damage = jass.GetEventDamage()
-        source:event_notify('单位-造成伤害', source, target, damage)
+        if source then
+            source:event_notify('单位-造成伤害', source, target, damage)
+        end
         target:event_notify('单位-受到伤害', source, target, damage)
     end)
     --每个单位创建时加入捕捉

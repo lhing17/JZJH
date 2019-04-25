@@ -9,6 +9,10 @@
 // 7. 刷怪相关
 //---------------------------------
 
+globals
+    integer array tiezhang_flag
+endglobals
+
 /*
  * 1. 基地保护机制
  */
@@ -463,7 +467,7 @@ function JiaRuMenPai takes nothing returns nothing
 
 			// 自由改投铁掌帮
             if GetItemTypeId(GetManipulatedItem())=='I0E1' then
-                if DzAPI_Map_HasMallItem(p, "A198FYU9ME") then
+                if tiezhang_flag[i] == 1 then
                     set gengu[i] = gengu[i] + 3
                     set danpo[i] = danpo[i] + 2
                     set udg_runamen[i]=19
@@ -875,30 +879,6 @@ function JiaRuMenPai takes nothing returns nothing
 	    else
 	        call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff0000你的角色不能加入该门派")
 		endif
-	elseif((GetItemTypeId(GetManipulatedItem())=='I0E1'))then
-		set udg_runamen[i]=19
-		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933恭喜加入〓铁掌帮〓，请在NPC郭靖处选择副职|r")
-		call SetPlayerName(p,"〓铁掌帮〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933获得武功：凌波微步（可以在主城和传送石之间任意传送了）\n获得新手大礼包（可以在背包中打开获得惊喜哦）")
-		call UnitAddAbility(u,'A05R')
-		call AddCharacterABuff(udg_hero[i], udg_xinggeA[i])
-		call AddCharacterBBuff(udg_hero[i], udg_xinggeB[i])
-		if udg_vip[i]<2 and udg_elevenvip[i]<1 then
-			call UnitAddAbility(u,'A040')
-			call UnitAddAbility(u,'A041')
-			call UnitAddAbility(u,'A042')
-		endif
-		set I7[(((i-1)*20)+8)]='A05R'
-		call UnitRemoveAbility(u,'Avul')
-		set Q4=GetRandomLocInRect(He)
-		call SetUnitPositionLoc(u,Q4)
-		call PanCameraToTimedLocForPlayer(p,Q4,0)
-		call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
-		set P4[i]=bj_lastCreatedUnit
-		set gengu[i] = gengu[i] + 3
-		set danpo[i] = danpo[i] + 2
-		call RemoveLocation(Q4)
-		call UnitAddItemByIdSwapped(1227896394,u)
 	endif
 	set p=null
 	set u=null
@@ -5376,6 +5356,14 @@ endfunction
  
 function GameLogic_Trigger takes nothing returns nothing
 	local trigger t = CreateTrigger()
+
+	set tiezhang_flag[1] = 0
+	set tiezhang_flag[2] = 0
+	set tiezhang_flag[3] = 0
+	set tiezhang_flag[4] = 0
+	set tiezhang_flag[5] = 0
+
+
 	//选择英雄
 	set Jh=CreateTrigger()
 	call TriggerRegisterPlayerSelectionEventBJ(Jh,Player(0),true)

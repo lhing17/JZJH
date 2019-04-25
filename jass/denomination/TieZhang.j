@@ -4,7 +4,7 @@
 
 /*
  * 铁砂掌 A06Y
- * 伤害系数：w1=7.2, w2=8.9
+ * 伤害系数：w1=14, w2=18
  * 伤害搭配：
  *		+乾坤大挪移 A07W 伤害+80%
  *		+一阳指 A06P 几率中毒
@@ -49,16 +49,16 @@ function TieSha_Action takes nothing returns nothing
 	if UnitHaveItem(GetAttacker(), 'I0EJ') then
 	    set shxishu = shxishu * 2
     endif
-	call PassiveWuGongEffectAndDamage(GetAttacker(), GetEnumUnit(), "Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", 7.2, 8.9, shxishu, 'A06Y')
+	call PassiveWuGongEffectAndDamage(GetAttacker(), GetEnumUnit(), "Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", 14, 18, shxishu, 'A06Y')
 endfunction
 
 function TieShaZhang takes nothing returns nothing
-	call PassiveWuGongAction(GetAttacker(), GetTriggerUnit(), 15, 500, Condition(function TieSha_Condition), function TieSha_Action, 'A06Y', 1200.)
+	call PassiveWuGongAction(GetAttacker(), GetTriggerUnit(), 18, 600, Condition(function TieSha_Condition), function TieSha_Action, 'A06Y', 900.)
 endfunction
 
 /*
  * 毒蛇神掌 A06Z
- * 伤害系数：w1=15, w2=15
+ * 伤害系数：w1=60, w2=60
  * 伤害搭配：
  * 		+弹指神通 A06H：增加最大伤害数量，与弹指等级有关
  * 		+蛇杖 I09B：伤害增加300%
@@ -72,7 +72,7 @@ endfunction
 
 function IsDuSheEnemy takes nothing returns boolean
 	//不是玩家的单位且不无敌
-	return GetPlayerController(GetOwningPlayer(GetFilterUnit()))!=MAP_CONTROL_USER and GetUnitAbilityLevel(GetFilterUnit(),'Avul')==0 and IsUnitAliveBJ(GetFilterUnit())
+	return IsUnitEnemy(GetFilterUnit(), Player(0)) and GetUnitAbilityLevel(GetFilterUnit(),'Avul')==0 and IsUnitAliveBJ(GetFilterUnit())
 endfunction
 function DuSheMove takes nothing returns nothing
 	local timer t = GetExpiredTimer()
@@ -82,7 +82,7 @@ function DuSheMove takes nothing returns nothing
 	local location destination = LoadLocationHandle(YDHT, GetHandleId(t), 3)
 	local unit majia = LoadUnitHandle(YDHT, GetHandleId(t), 4)
 	local integer counter = LoadInteger(YDHT, GetHandleId(t), 5)
-	local integer maxCount = 15 + GetUnitAbilityLevel(u, 'A07U') * 10 + GetUnitAbilityLevel(u, 'A06H') * 3
+	local integer maxCount = 40 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 6
 	local real angle = AngleBetweenPoints(source, destination)
 	local group g = null
 	local real shxishu = 1 + DamageCoefficientByItem(u, 'I09B', 3.)
@@ -106,7 +106,7 @@ function DuSheMove takes nothing returns nothing
 			//设置下一个源地点
 			call SaveLocationHandle(YDHT, GetHandleId(t), 2, destination)
 			//造成伤害 伤害单位个数加1
-			call PassiveWuGongEffectAndDamage(u, ut, "Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl", 15, 15, shxishu, 'A06Z')
+			call PassiveWuGongEffectAndDamage(u, ut, "Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl", 60, 60, shxishu, 'A06Z')
 			if ((UnitHasBuffBJ(ut, 'BEsh') or UnitHasBuffBJ(ut, 'B01J')) and GetUnitAbilityLevel(u, 'A07S')>=1) then
 				call WanBuff(u, ut, 7)
 			endif
@@ -120,10 +120,20 @@ function DuSheMove takes nothing returns nothing
 				call SaveLocationHandle(YDHT, GetHandleId(t), 3, GetUnitLoc(ut))
 				//call RemoveLocation(destination)
 			else
-				call FlushChildHashtable(YDHT, GetHandleId(t))
-				call PauseTimer(t)
-				call DestroyTimer(t)
-				call RemoveUnit(majia)
+				
+				set g = GetUnitsInRangeOfLocMatching(1500, destination, Condition(function IsDuSheEnemy))
+				if(CountUnitsInGroup(g)>0) then
+					set ut = GroupPickRandomUnit(g)
+					call SaveUnitHandle(YDHT, GetHandleId(t), 1, ut)
+					//设置下一个目标地点
+					call SaveLocationHandle(YDHT, GetHandleId(t), 3, GetUnitLoc(ut))
+					//call RemoveLocation(destination)
+				else
+					call FlushChildHashtable(YDHT, GetHandleId(t))
+					call PauseTimer(t)
+					call DestroyTimer(t)
+					call RemoveUnit(majia)
+				endif
 			endif
 		else
 			//毒蛇马甲向目标移动
@@ -146,7 +156,7 @@ function DuSheShenZhang takes nothing returns nothing
 	local timer t = CreateTimer()
 	local group g = CreateGroup()
 	local location loc = GetSpellTargetLoc()
-	call GroupEnumUnitsInRangeOfLoc(g, loc, 800, Condition(function IsDuSheEnemy))
+	call GroupEnumUnitsInRangeOfLoc(g, loc, 1500, Condition(function IsDuSheEnemy))
 	call SaveUnitHandle(YDHT, GetHandleId(t), 0, GetTriggerUnit())
 	call SaveUnitHandle(YDHT, GetHandleId(t), 1, GroupPickRandomUnit(g))
 	call SaveLocationHandle(YDHT, GetHandleId(t), 2, GetUnitLoc(GetTriggerUnit()))
@@ -164,7 +174,7 @@ endfunction
 /*
  * 通背拳 A070
  * 		几率对单体单位造成伤害并使单位中毒，如果单位已经中毒则使其中毒加深，如果单位已经深度中毒，则每次触发比上次触发造成额外伤害
- * 伤害系数：w1=75, w2=75
+ * 伤害系数：w1=120, w2=120
  * 伤害搭配：
  * 		+乾坤大挪移 A07W 伤害+70%
  *		+九阴真经·摧心掌 A0D3 伤害+90%
@@ -198,7 +208,8 @@ function TongBeiQuan takes nothing returns nothing
 		endif
 		call WuGongShengChong(u,'A070',800)
 		if (UnitHasBuffBJ(ut, 'BEsh')) then //已中毒则使之中毒加深
-			call SaveReal(YDHT, GetHandleId(ut), StringHash("TongBei"), 0.)
+			call SaveReal(YDHT, GetHandleId(ut), StringHash("TongBei"), 1.)
+			set shxishu = shxishu + LoadReal(YDHT, GetHandleId(ut), StringHash("TongBei"))
 			call WanBuff(u, ut, 14)
 		elseif (UnitHasBuffBJ(ut, 'B01J')) then //已深度中毒则造成额外伤害
 			call SaveReal(YDHT, GetHandleId(ut), StringHash("TongBei"), LoadReal(YDHT, GetHandleId(ut), StringHash("TongBei"))+coefficient)
@@ -208,7 +219,7 @@ function TongBeiQuan takes nothing returns nothing
 			call SaveReal(YDHT, GetHandleId(ut), StringHash("TongBei"), 0.)
 			call WanBuff(u, ut, 13)
 		endif
-		call PassiveWuGongEffectAndDamage(u, ut, "Abilities\\Spells\\NightElf\\EntanglingRoots\\EntanglingRootsTarget.mdl", 75, 75, shxishu, 'A070')
+		call PassiveWuGongEffectAndDamage(u, ut, "Abilities\\Spells\\NightElf\\EntanglingRoots\\EntanglingRootsTarget.mdl", 120, 120, shxishu, 'A070')
 	endif
 	call RemoveLocation(loc)
 	set u = null
@@ -336,6 +347,9 @@ function ShuiShangPiao takes nothing returns nothing
 	local real height = 200.
 	local timer t = CreateTimer()
 	local real lastTime = RMinBJ(DistanceBetweenPoints(source, destination)/speed, 2.) //轻功持续时间
+	if GetUnitAbilityLevel(GetTriggerUnit(), 'A07W') >= 1 then // 乾坤大挪移
+		set speed = speed * 2
+	endif
 	call WuGongShengChong(GetTriggerUnit(), 'A07Y', 200)
 	call SetUnitFacing( GetTriggerUnit(), angle)
 	call DestroyEffect(AddSpecialEffectTargetUnitBJ("origin",GetTriggerUnit(),"Abilities\\Weapons\\PhoenixMissile\\Phoenix_Missile.mdl"))

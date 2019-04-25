@@ -9,6 +9,7 @@ local g = require 'jass.globals'
 local japi = require 'jass.japi'
 local hasMallItem = japi.DzAPI_Map_HasMallItem -- dzapi获取商城道具
 local PROPERTY_TALENT = 'AR98FE7J3P' -- 天赋的道具
+local PROPERTY_DENOMINATION = 'A198FYU9ME' -- 解锁铁掌帮的道具
 
 local TALENT_LOOKUP = {
     { name = '天纵奇才', level = 1, buff = 'B01O' }, -- 天纵奇才：增加升重速度
@@ -43,6 +44,9 @@ local function talent_effect()
             --- 随机天赋
             if p.talent == 0 and hasMallItem and hasMallItem(p.handle, PROPERTY_TALENT) then
                 add_talent(i, base.random_int(1, #TALENT_LOOKUP))
+            end
+            if hasMallItem and hasMallItem(p.handle, PROPERTY_DENOMINATION) and g.tiezhang_flag[i] ~= 1 then
+                g.tiezhang_flag[i] = 1
             end
         end
     end)
