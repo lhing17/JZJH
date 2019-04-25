@@ -166,6 +166,7 @@ function KeyInput takes nothing returns nothing
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF星宿：神木王鼎，乔峰接任务，副本1杀丁春秋杀阿紫")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF血刀：血刀，90级挑战场挑战血刀老祖")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF自由：十四天书，具体合成请看基地右边NPC随风")
+		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF铁掌：铁掌令，老顽童处任务")
 	endif
 
 	if s == "cx" or s == "CX" then

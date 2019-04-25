@@ -11,6 +11,10 @@ local hasMallItem = japi.DzAPI_Map_HasMallItem -- dzapi获取商城道具
 local PROPERTY_TALENT = 'AR98FE7J3P' -- 天赋的道具
 local PROPERTY_DENOMINATION = 'A198FYU9ME' -- 解锁铁掌帮的道具
 
+local VIP = {
+    "WorldEdit", "zeikale", "风陵夜梦", "非我莫属xq", "苍穹而降", "晓窗临风", "沫Mu"
+}
+
 local TALENT_LOOKUP = {
     { name = '天纵奇才', level = 1, buff = 'B01O' }, -- 天纵奇才：增加升重速度
     { name = '天降鸿福', level = 2, buff = 'B01P' }, -- 天降鸿福：每2分钟增加1点福缘
@@ -48,6 +52,20 @@ local function talent_effect()
             if hasMallItem and hasMallItem(p.handle, PROPERTY_DENOMINATION) and g.tiezhang_flag[i] ~= 1 then
                 g.tiezhang_flag[i] = 1
             end
+        end
+    end)
+
+    --- @param p player
+    --- @param s string
+    et.game:event '玩家-聊天'(function(self, p, s)
+        if base.is_include(p:get_base_name(), VIP) and s == '风陵夜梦长不长' then
+            local i = p.id
+            local result, message = pcall(add_talent, i, base.random_int(1, #TALENT_LOOKUP))
+            if not result then
+                log.error('输入VIP码出错'..message)
+            end
+            g.tiezhang_flag[i] = 1
+            p:send_message("开启了天赋和铁掌帮的权限")
         end
     end)
 

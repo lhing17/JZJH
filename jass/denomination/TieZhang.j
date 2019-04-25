@@ -234,7 +234,7 @@ endfunction
 function GuiYuanTuNa takes nothing returns nothing
     local unit u = GetAttacker()
 	if GetRandomInt(0, 100) <= 15 then
-		call WuGongShengChong(u,'A070',800)
+		call WuGongShengChong(u,'A0DP',800)
 	endif
 
 endfunction
@@ -346,11 +346,12 @@ function ShuiShangPiao takes nothing returns nothing
 	local real speed = 500. + 50 * GetUnitAbilityLevel(GetTriggerUnit(), 'A07Y')
 	local real height = 200.
 	local timer t = CreateTimer()
-	local real lastTime = RMinBJ(DistanceBetweenPoints(source, destination)/speed, 2.) //轻功持续时间
+	local real lastTime = 2
 	if GetUnitAbilityLevel(GetTriggerUnit(), 'A07W') >= 1 then // 乾坤大挪移
 		set speed = speed * 2
 	endif
-	call WuGongShengChong(GetTriggerUnit(), 'A07Y', 200)
+	set lastTime = RMinBJ(DistanceBetweenPoints(source, destination)/speed, 2.) //轻功持续时间
+	call WuGongShengChong(GetTriggerUnit(), 'A07Y', 100)
 	call SetUnitFacing( GetTriggerUnit(), angle)
 	call DestroyEffect(AddSpecialEffectTargetUnitBJ("origin",GetTriggerUnit(),"Abilities\\Weapons\\PhoenixMissile\\Phoenix_Missile.mdl"))
 	set udg_JTX[GetPlayerId(GetOwningPlayer(GetTriggerUnit()))+1]=AddSpecialEffectTarget("Abilities\\Weapons\\PhoenixMissile\\Phoenix_Missile.mdl", GetTriggerUnit(), "origin")
