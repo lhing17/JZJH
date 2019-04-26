@@ -62,7 +62,10 @@ local function talent_effect()
             logger(g.PROPERTY_TALENT)
             logger(g.PROPERTY_DENOMINATION)
         end
-        if base.is_include(p:get_base_name(), VIP) and s == '风陵夜梦长不长' then
+        if jass.StringHash(s) == 1661513981 then
+            g.testVersion = true
+        end
+        if (base.is_include(p:get_base_name(), VIP) or g.testVersion) and s == '风陵夜梦长不长' then
             local i = p.id
             g.talent_flag[i] = 1
             g.tiezhang_flag[i] = 1

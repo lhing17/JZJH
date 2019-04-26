@@ -124,7 +124,7 @@ globals
 	// 是否单通
 	boolean singlePlayerFlag = false
 	// 是否是测试版
-	boolean testVersion = true
+	boolean testVersion = false
 	// 奖励的武功伤害
 	real array bonus_wugong
 	// 奖励的爆伤
@@ -174,7 +174,7 @@ globals
 	// 是否是测试人员
 	boolean array udg_isTest
 	// 是否开启测试码开关，全局存档，后台可以控制
-	string admin = "0" // 默认开启
+	string admin = "1" // 默认不开启
 	// 通知内容，后台控制开局对用户输出内容
 	string info = ""
 	// 积分倍数，全局存档
@@ -1693,8 +1693,8 @@ function InitDenominationSkills takes nothing returns nothing
 	set udg_menpainame[19]="铁掌帮" // 放着，还没完成
 	set X7[19]='A06Y'
 	set Z7[19]='A06Z'
-	set Y7[19]='A070'
-	set Q8[19]='A07Y'
+	set Y7[19]='A07Y'
+	set Q8[19]='A070'
 	set P8[19]='A0DP'
 endfunction
 
@@ -1793,7 +1793,7 @@ function InitGlobalSave takes nothing returns nothing
 	// 获取全局存档
 	set admin = DzAPI_Map_GetMapConfig("admin") // 测试码开关
 	if admin == "" then
-		set admin = "0"
+		set admin = "1"
 	endif
 	// 积分倍数全局存档
 	set jfBeishu = DzAPI_Map_GetMapConfig("jfBeishu")
