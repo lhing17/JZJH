@@ -9,9 +9,7 @@
 // 7. 刷怪相关
 //---------------------------------
 
-globals
-    integer array tiezhang_flag
-endglobals
+
 
 /*
  * 1. 基地保护机制
@@ -5357,11 +5355,6 @@ endfunction
 function GameLogic_Trigger takes nothing returns nothing
 	local trigger t = CreateTrigger()
 
-	set tiezhang_flag[1] = 0
-	set tiezhang_flag[2] = 0
-	set tiezhang_flag[3] = 0
-	set tiezhang_flag[4] = 0
-	set tiezhang_flag[5] = 0
 
 
 	//选择英雄

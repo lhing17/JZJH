@@ -466,6 +466,20 @@ function KeyInput takes nothing returns nothing
 	if s=="cksx" then
 		call DisplayTextToPlayer(p,0,0,"|cFFFF0000剩余属性点："+I2S(udg_shuxing[i]))
 	endif
+	if s=="testMall" then
+        call DisplayTextToPlayer(p,0,0,"|cFFFF0000天赋道具ID为："+PROPERTY_TALENT)
+        call DisplayTextToPlayer(p,0,0,"|cFFFF0000门派道具ID为："+PROPERTY_DENOMINATION)
+	    if DzAPI_Map_HasMallItem(p, PROPERTY_TALENT) then
+	        call DisplayTextToPlayer(p,0,0,"|cFFFF0000拥有天赋道具")
+	    else
+	        call DisplayTextToPlayer(p,0,0,"|cFFFF0000未拥有天赋道具")
+	    endif
+	    if DzAPI_Map_HasMallItem(p, PROPERTY_DENOMINATION) then
+            call DisplayTextToPlayer(p,0,0,"|cFFFF0000拥有门派道具")
+        else
+            call DisplayTextToPlayer(p,0,0,"|cFFFF0000未拥有门派道具")
+        endif
+    endif
 	if s=="ckjf" then
 		call DisplayTextToPlayer(p,0,0,"|cFFFF0000剩余守家积分："+I2S(shoujiajf[i]))
 	endif

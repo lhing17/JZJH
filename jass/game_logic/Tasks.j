@@ -411,7 +411,7 @@ endglobals
 //============积分商店=============//
 // 随机一个AB性格加一:5积分；明教一局：20积分；精钢剑：4积分；随机一本奇武：4积分；桃花岛传送符（永久版）：4积分；重置门派称号：14积分；号令天下：10积分
 function isJfShop takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and (GetItemTypeId(GetManipulatedItem())=='I0DC' or GetItemTypeId(GetManipulatedItem())=='I0DD' or GetItemTypeId(GetManipulatedItem())=='I0DE' or GetItemTypeId(GetManipulatedItem())=='I0DF' or GetItemTypeId(GetManipulatedItem())=='I0DG' or GetItemTypeId(GetManipulatedItem())=='I0DH'))
+	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and (GetItemTypeId(GetManipulatedItem())=='I0DC' or GetItemTypeId(GetManipulatedItem())=='I0DD' or GetItemTypeId(GetManipulatedItem())=='I0DE' or GetItemTypeId(GetManipulatedItem())=='I0DF' or GetItemTypeId(GetManipulatedItem())=='I0DG' or GetItemTypeId(GetManipulatedItem())=='I0DH' or GetItemTypeId(GetManipulatedItem())=='I0EL'))
 endfunction
 function jfShop takes nothing returns nothing
 	local unit u =GetTriggerUnit() // 触发单位
@@ -431,9 +431,17 @@ function jfShop takes nothing returns nothing
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00获取精钢剑，扣除4积分")
 		call jfChange(i,jf1)
     elseif ((GetItemTypeId(GetManipulatedItem())=='I0EL')) and udg_jf[i] >= jf7 and (jf_useMax[i]+jf7) <= jf_max then
-        set bigTalent[i] = 1
-        call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00激活加强天赋系统")
-        call jfChange(i,jf7)
+		if bigTalent[i+1] != 1 and talent_flag[i+1] == 1 then
+        	set bigTalent[i+1] = 1
+        	call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00激活加强天赋系统")
+        	call jfChange(i,jf7)
+		else
+			if talent_flag[i+1] != 1 then
+				call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00激活失败，尚未解锁天赋系统")
+			else
+				call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00已经激活，不能重复激活")
+			endif
+		endif
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DD')) and udg_jf[i] >= jf2 and (jf_useMax[i]+jf2) <= jf_max then
 		if udg_xinggeA[i+1] ==5 and udg_xinggeB[i+1] == 5 then
 			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00AB性格已经满级，不扣除积分")
@@ -2290,6 +2298,14 @@ endfunction
 
 function Tasks_Trigger takes nothing returns nothing
 	local trigger t = CreateTrigger()
+
+
+	set bigTalent[1] = 0
+	set bigTalent[2] = 0
+	set bigTalent[3] = 0
+	set bigTalent[4] = 0
+	set bigTalent[5] = 0
+
 	set Fo=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(Fo,EVENT_PLAYER_UNIT_PICKUP_ITEM)
 	call TriggerAddCondition(Fo,Condition(function IJ))

@@ -34,6 +34,7 @@ zei
 
 TODO
 - 商城的函数在jass中值为false，在lua中值为true
+- 官方平台上dzapi不在japi中，因此必须在jass中调用
 
 TODO OR NOT TODO
 - 更新文档，美化地形和UI

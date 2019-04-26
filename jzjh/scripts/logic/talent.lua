@@ -6,13 +6,9 @@
 
 local g = require 'jass.globals'
 
-local japi = require 'jass.japi'
-local hasMallItem = japi.DzAPI_Map_HasMallItem -- dzapi获取商城道具
-local PROPERTY_TALENT = 'AR98FE7J3P' -- 天赋的道具
-local PROPERTY_DENOMINATION = 'A198FYU9ME' -- 解锁铁掌帮的道具
 
 local VIP = {
-    "WorldEdit", "zeikale", "风陵夜梦", "非我莫属xq", "苍穹而降", "晓窗临风", "沫Mu"
+    "WorldEdit", "zeikale", "zeikala", "非我莫属xq", "苍穹而降", "晓窗临风", "沫Mu"
 }
 
 local TALENT_LOOKUP = {
@@ -29,6 +25,7 @@ local TALENT_LOOKUP = {
 --- @param i number 玩家下标
 --- @param t number 天赋下标，见上面的查询表
 local function add_talent(i, t)
+    log.info(('为玩家%s增加天赋%s'):format(i, TALENT_LOOKUP[t].name))
     if (g.udg_hero[i] ~= nil) then
         --- @type unit
         local u = et.unit(g.udg_hero[i])
@@ -46,11 +43,8 @@ local function talent_effect()
         for i = 1, et.player.countAlive() do
             local p = et.player[i]
             --- 随机天赋
-            if p.talent == 0 and hasMallItem and hasMallItem(p.handle, PROPERTY_TALENT) then
+            if p.talent == 0 and g.talent_flag[i] == 1 then
                 add_talent(i, base.random_int(1, #TALENT_LOOKUP))
-            end
-            if hasMallItem and hasMallItem(p.handle, PROPERTY_DENOMINATION) and g.tiezhang_flag[i] ~= 1 then
-                g.tiezhang_flag[i] = 1
             end
         end
     end)
@@ -58,12 +52,19 @@ local function talent_effect()
     --- @param p player
     --- @param s string
     et.game:event '玩家-聊天'(function(self, p, s)
+        if s == 'testme2' then
+            local logger = function(text)
+                log.info(text)
+                p:send_message(text)
+            end
+            logger(('玩家名字为%s'):format(p:get_base_name()))
+            logger(('hasMallItem是否存在：%s'):format(not not hasMallItem))
+            logger(g.PROPERTY_TALENT)
+            logger(g.PROPERTY_DENOMINATION)
+        end
         if base.is_include(p:get_base_name(), VIP) and s == '风陵夜梦长不长' then
             local i = p.id
-            local result, message = pcall(add_talent, i, base.random_int(1, #TALENT_LOOKUP))
-            if not result then
-                log.error('输入VIP码出错'..message)
-            end
+            g.talent_flag[i] = 1
             g.tiezhang_flag[i] = 1
             p:send_message("开启了天赋和铁掌帮的权限")
         end

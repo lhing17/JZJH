@@ -4,6 +4,7 @@
 #include "library/common_func.j"
 #include "library/UniMissileSystem.j"
 
+#include "game_logic/Mall.j"
 #include "game_logic/GameLogic.j"
 #include "game_logic/GameDetail.j"
 #include "game_logic/Equipment.j"
@@ -2306,6 +2307,7 @@ function main1 takes nothing returns nothing
 endfunction
 
 function main2 takes nothing returns nothing
+    call mallInit() // 商城逻辑初始化
 	call GameLogic_Trigger() // 游戏逻辑触发器
 	call GameDetail_Trigger() // 游戏细节处理
 	// call VIP_Trigger() // VIP系统
