@@ -1839,7 +1839,7 @@ function InitPriv takes nothing returns nothing
 	loop
 		exitwhen i>4
 			if GetPlayerName(Player(i))=="WorldEdit" or GetPlayerName(Player(i))=="zeikale" or GetPlayerName(Player(i))=="风陵夜梦长" or GetPlayerName(Player(i))=="非我莫属xq" or GetPlayerName(Player(i))=="苍穹而降" or GetPlayerName(Player(i))=="晓窗临风" or GetPlayerName(Player(i))=="沫Mu"  then
-				if admin == "0" then
+				if admin == "0" or testVersion then
 					set udg_isTest[i] = true
 				endif
 			endif
