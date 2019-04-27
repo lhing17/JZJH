@@ -343,7 +343,7 @@ function ShuiShangPiao takes nothing returns nothing
 	local location source = GetUnitLoc(GetTriggerUnit())
 	local location destination = GetSpellTargetLoc()
 	local real angle = AngleBetweenPoints(source, destination)
-	local real speed = 500. + 50 * GetUnitAbilityLevel(GetTriggerUnit(), 'A07Y')
+	local real speed = 800. + 50 * GetUnitAbilityLevel(GetTriggerUnit(), 'A07Y')
 	local real height = 200.
 	local timer t = CreateTimer()
 	local real lastTime = 2

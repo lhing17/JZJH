@@ -2522,7 +2522,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
             	call SetPlayerName(p, "〓教主夫人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				call SaveBoolean(YDHT,GetHandleId(u),StringHash("教主夫人"),true)
         	endif
-        elseif GetUnitAbilityLevel(u, 'A06Y') >= 6 and GetUnitAbilityLevel(u, 'A06Z') >= 6 and GetUnitAbilityLevel(u, 'A070') >= 6 and ( GetUnitAbilityLevel(u, 'A06Y') >= 6 or GetUnitAbilityLevel(u, 'A0DP') >= 6 ) then
+        elseif GetUnitAbilityLevel(u, 'A06Y') >= 6 and GetUnitAbilityLevel(u, 'A06Z') >= 6 and GetUnitAbilityLevel(u, 'A07Y') >= 6 and ( GetUnitAbilityLevel(u, 'A070') >= 6 or GetUnitAbilityLevel(u, 'A0DP') >= 6 ) then
         	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：铁掌帮主")
             call ModifyHeroStat(0, u, 0, 300)
             call ModifyHeroStat(2, u, 0, 225)

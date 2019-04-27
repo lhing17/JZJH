@@ -470,7 +470,7 @@ function birdFlying takes nothing returns nothing
         call SetUnitY(left, GetRectMaxY(bj_mapInitialPlayableArea) - 50)
     endif
     if GetUnitY(left) < GetRectMinY(bj_mapInitialPlayableArea) + 50 then
-        call SetUnitX(left, GetRectMinY(bj_mapInitialPlayableArea) + 50)
+        call SetUnitY(left, GetRectMinY(bj_mapInitialPlayableArea) + 50)
     endif
 
     if GetUnitX(right) > GetRectMaxX(bj_mapInitialPlayableArea) - 50 then
@@ -483,7 +483,7 @@ function birdFlying takes nothing returns nothing
         call SetUnitY(right, GetRectMaxY(bj_mapInitialPlayableArea) - 50)
     endif
     if GetUnitY(right) < GetRectMinY(bj_mapInitialPlayableArea) + 50 then
-        call SetUnitX(right, GetRectMinY(bj_mapInitialPlayableArea) + 50)
+        call SetUnitY(right, GetRectMinY(bj_mapInitialPlayableArea) + 50)
     endif
 
     call GroupEnumUnitsInRange(leftGroup, GetUnitX(left), GetUnitY(left), 115, Condition(function isBirdEnemy))
@@ -503,13 +503,14 @@ function birdFlying takes nothing returns nothing
         set a = a + 0.05
         call SaveReal(YDHT, GetHandleId(t), 11, a)
         call SaveReal(YDHT, GetHandleId(t), 0, x[0])
-        call SaveReal(YDHT, GetHandleId(t), 5, y[0])
+        call SaveReal(YDHT, GetHandleId(t), 4, y[0])
         set comp = Atan2(y[1] - y[0], x[1] - x[0])
         call SaveReal(YDHT, GetHandleId(t), 8, comp)
     endif
 
     if (a <= 0 and front) then
         set front = false
+        call SaveBoolean(YDHT, GetHandleId(t), 12, front)
         set x[2] = x[0] + 300 * Cos(comp - 45)
         set y[2] = y[0] + 300 * Sin(comp - 45)
         set x[3] = x[0] + 300 * Cos(comp + 45)
@@ -520,7 +521,7 @@ function birdFlying takes nothing returns nothing
         call SaveReal(YDHT, GetHandleId(t), 7, y[3])
     endif
 
-    if (a >= 1 and not false) then
+    if (a >= 1 and not front) then
         call RemoveUnit(left)
         call RemoveUnit(right)
         call DestroyTimer(t)
