@@ -1216,8 +1216,8 @@ local function init_unit(handle, p)
     u:remove_ability 'Arav'
 
     --忽略警戒点
-    jass.RemoveGuardPosition(u.handle)
-    jass.SetUnitCreepGuard(u.handle, true)
+    --jass.RemoveGuardPosition(u.handle)
+    --jass.SetUnitCreepGuard(u.handle, true)
 
     --设置高度
     u:set_height(u:get_slk('moveHeight', 0))
