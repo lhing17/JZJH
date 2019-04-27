@@ -1212,19 +1212,19 @@ local function init_unit(handle, p)
     unit.all_units[handle] = u
 
     --令物体可以飞行
-    u:add_ability 'Arav'
-    u:remove_ability 'Arav'
+    --u:add_ability 'Arav'
+    --u:remove_ability 'Arav'
 
     --忽略警戒点
     --jass.RemoveGuardPosition(u.handle)
     --jass.SetUnitCreepGuard(u.handle, true)
 
     --设置高度
-    u:set_height(u:get_slk('moveHeight', 0))
-
-    if u:get_ability_level 'Aloc' ~= 0 then
-        u:set_class '马甲'
-    end
+    --u:set_height(u:get_slk('moveHeight', 0))
+    --
+    --if u:get_ability_level 'Aloc' ~= 0 then
+    --    u:set_class '马甲'
+    --end
 
     return u
 end

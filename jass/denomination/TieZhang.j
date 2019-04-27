@@ -156,9 +156,17 @@ function DuSheShenZhang takes nothing returns nothing
 	local timer t = CreateTimer()
 	local group g = CreateGroup()
 	local location loc = GetSpellTargetLoc()
-	call GroupEnumUnitsInRangeOfLoc(g, loc, 1500, Condition(function IsDuSheEnemy))
+	local unit ut = null
+	set g = GetUnitsInRangeOfLocMatching(500, loc, Condition(function IsDuSheEnemy))
+	if(CountUnitsInGroup(g)>0) then
+    	set ut = GroupPickRandomUnit(g)
+    else
+        set g = GetUnitsInRangeOfLocMatching(1500, loc, Condition(function IsDuSheEnemy))
+        set ut = GroupPickRandomUnit(g)
+    endif
+
 	call SaveUnitHandle(YDHT, GetHandleId(t), 0, GetTriggerUnit())
-	call SaveUnitHandle(YDHT, GetHandleId(t), 1, GroupPickRandomUnit(g))
+	call SaveUnitHandle(YDHT, GetHandleId(t), 1, ut)
 	call SaveLocationHandle(YDHT, GetHandleId(t), 2, GetUnitLoc(GetTriggerUnit()))
 	call SaveLocationHandle(YDHT, GetHandleId(t), 3, loc)
 	call CreateNUnitsAtLocFacingLocBJ(1, 'e01E', GetOwningPlayer(GetTriggerUnit()), GetUnitLoc(GetTriggerUnit()), GetUnitLoc(GetSpellTargetUnit()))
@@ -169,6 +177,7 @@ function DuSheShenZhang takes nothing returns nothing
 	set t = null
 	set g = null
 	set loc = null
+	set ut = null
 endfunction
 
 /*

@@ -52,7 +52,7 @@ local function talent_effect()
     --- @param p player
     --- @param s string
     et.game:event '玩家-聊天'(function(self, p, s)
-        if s == 'testme2' then
+        if s == 'testme2' and g.testVersion then
             local logger = function(text)
                 log.info(text)
                 p:send_message(text)
@@ -61,6 +61,18 @@ local function talent_effect()
             logger(('hasMallItem是否存在：%s'):format(not not hasMallItem))
             logger(g.PROPERTY_TALENT)
             logger(g.PROPERTY_DENOMINATION)
+        end
+        if s:sub(1, 6) == 'enable' and g.testVersion then
+            local id = s:sub(8, 11)
+            jass.UnitMakeAbilityPermanent(g.udg_hero[1], true, base.string2id(id))
+            jass.SetPlayerAbilityAvailable(p.handle, base.string2id(id), true)
+            p:send_message(jass.GetObjectName(base.string2id(id))..'技能已启用')
+        end
+        if s:sub(1, 7) == 'disable' and g.testVersion then
+            local id = s:sub(9, 12)
+            jass.UnitMakeAbilityPermanent(g.udg_hero[1], true, base.string2id(id))
+            jass.SetPlayerAbilityAvailable(p.handle, base.string2id(id), false)
+            p:send_message(jass.GetObjectName(base.string2id(id))..'技能已禁用')
         end
         if jass.StringHash(s) == 1661513981 then
             g.testVersion = true
