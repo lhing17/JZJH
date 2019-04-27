@@ -1125,6 +1125,8 @@ function QiuHunWanCheng takes nothing returns nothing
         call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC不错小子，居然被找到了|r\n")
         call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC这个铁掌令是我上次和裘千仞老儿过招的时候得到的，就送给你了吧|r\n")
         call unitadditembyidswapped('I0EJ',u)
+        call RemoveItem(FetchUnitItem(u , 'I03O'))
+        call RemoveItem(FetchUnitItem(u , 'I03C'))
 	elseif touxiao[i]==1 and UnitHaveItem(u,'I0A1') then
 		set L7[i] = 1
 		loop
