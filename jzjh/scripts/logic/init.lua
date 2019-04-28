@@ -7,3 +7,4 @@
 require 'logic.globals'
 require 'logic.talent'
 require 'logic.npcHint'
+require 'logic.showHealthPoint'

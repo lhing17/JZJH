@@ -1632,6 +1632,26 @@ function unit.register_jass_triggers()
         jass.TriggerRegisterPlayerUnitEvent(j_trg, player[i].handle, jass.EVENT_PLAYER_UNIT_SPELL_CAST, nil)
     end
 
+    j_trg = base.CreateTrigger(function()
+        local u = unit(jass.GetTriggerUnit()) -- 被选中的单位
+        local p = player[jass.GetTriggerPlayer()] -- 选择单位的玩家
+        u:event_notify('单位-被选中', u, p)
+    end)
+
+    for i = 1, 16 do
+        jass.TriggerRegisterPlayerUnitEvent(j_trg, player[i].handle, jass.EVENT_PLAYER_UNIT_SELECTED, nil)
+    end
+
+    j_trg = base.CreateTrigger(function()
+        local u = unit(jass.GetTriggerUnit()) -- 被取消选中的单位
+        local p = player[jass.GetTriggerPlayer()] -- 选择单位的玩家
+        u:event_notify('单位-取消选中', u, p)
+    end)
+
+    for i = 1, 16 do
+        jass.TriggerRegisterPlayerUnitEvent(j_trg, player[i].handle, jass.EVENT_PLAYER_UNIT_DESELECTED, nil)
+    end
+
 
 end
 
