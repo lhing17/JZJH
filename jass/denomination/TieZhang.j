@@ -22,8 +22,9 @@ function TieSha_Condition takes nothing returns boolean
 endfunction
 
 function TieSha_Action takes nothing returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
 	// 乾坤大挪移 +80%
-	local real shxishu = 1 + DamageCoefficientByAbility(GetAttacker(),'A07W', 0.8)
+	local real shxishu = RMinBJ(1. + I2R(jingmai[i])/30., 15.) + DamageCoefficientByAbility(GetAttacker(),'A07W', 0.8)
 	// 双手+中毒/深度中毒
 	if (UnitHasBuffBJ(GetEnumUnit(), 'BEsh') or UnitHasBuffBJ(GetEnumUnit(), 'B01J')) then
 		set shxishu = shxishu + DamageCoefficientByAbility(GetAttacker(),'A07U', 1.5)
@@ -53,7 +54,8 @@ function TieSha_Action takes nothing returns nothing
 endfunction
 
 function TieShaZhang takes nothing returns nothing
-	call PassiveWuGongAction(GetAttacker(), GetTriggerUnit(), 18, 600, Condition(function TieSha_Condition), function TieSha_Action, 'A06Y', 900.)
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
+	call PassiveWuGongAction(GetAttacker(), GetTriggerUnit(), 18, 600 + danpo[i] * 10, Condition(function TieSha_Condition), function TieSha_Action, 'A06Y', 900.)
 endfunction
 
 /*
@@ -82,7 +84,7 @@ function DuSheMove takes nothing returns nothing
 	local location destination = LoadLocationHandle(YDHT, GetHandleId(t), 3)
 	local unit majia = LoadUnitHandle(YDHT, GetHandleId(t), 4)
 	local integer counter = LoadInteger(YDHT, GetHandleId(t), 5)
-	local integer maxCount = 40 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 6
+	local integer maxCount = 30 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 6
 	local real angle = AngleBetweenPoints(source, destination)
 	local group g = null
 	local real shxishu = 1 + DamageCoefficientByItem(u, 'I09B', 3.)
@@ -252,7 +254,7 @@ endfunction
  * 水上漂 A07Y
  * 		铁掌帮绝顶轻功，可以快速到达目标地点
  * 伤害系数：w1=, w2=
- * 伤害搭配：
+ * 伤害搭配：+乾坤 速度加倍
  */
 function IsShuiShangPiao takes nothing returns boolean
 	return GetSpellAbilityId()=='A07Y'

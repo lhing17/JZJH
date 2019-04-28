@@ -405,7 +405,7 @@ function YuanYangDaoFa takes nothing returns nothing
 	local integer j = 1
 	local real lasttime = 5.
 	call YDWEJumpTimer( u, AngleBetweenPoints(loc, loc2), DistanceBetweenPoints(loc, loc2), time, 0.01, 0.)
-	call PolledWait(time)
+	call YDWEPolledWaitNull(time)
 	call UnitAddAbility(u, 'A04S')
 	call SetPlayerAbilityAvailableBJ( false, 'A04S', GetOwningPlayer(u) )
 	if IsUnitAlly(ut, GetOwningPlayer(u)) then
@@ -440,7 +440,7 @@ function YuanYangDaoFa takes nothing returns nothing
 	if GetUnitAbilityLevel(u,'A09D')>=1 then
 		set lasttime = 10.
 	endif
-	call PolledWait(lasttime)
+	call YDWEPolledWaitNull(lasttime)
 	call UnitRemoveAbility(u, 'A04S')
 	if GetUnitAbilityLevel(u, 'A04S') >=1 then
 		call UnitRemoveAbility(ut, 'A04S')

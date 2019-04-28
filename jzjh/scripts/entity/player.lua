@@ -338,7 +338,7 @@ local function init()
     -- 本地玩家
     -- player.localplayer = et.player(1)
     player.localplayer = et.player[jass.GetLocalPlayer()]
-    print(et.player[jass.GetLocalPlayer()])
+    -- print(et.player[jass.GetLocalPlayer()])
     log.debug(('本地玩家[%s][%s]'):format(player.localplayer:get(), player.localplayer:get_name()))
 
     --注册常用事件

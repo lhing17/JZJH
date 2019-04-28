@@ -102,8 +102,8 @@ local function talent_effect()
                 g.gengu[i] = g.gengu[i] + 1 + (g.bigTalent[i] or 0)
                 -- 飞来横财：每2分钟增加5000金钱和20珍稀币
             elseif p.talent == 6 then
-                p.add_gold(5000 + 5000 * (g.bigTalent[i] or 0))
-                p.add_lumber(20 + 20 * (g.bigTalent[i] or 0))
+                p:add_gold(5000 + 5000 * (g.bigTalent[i] or 0))
+                p:add_lumber(20 + 20 * (g.bigTalent[i] or 0))
             end
         end
     end)
