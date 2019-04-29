@@ -13,7 +13,7 @@
 #include "game_logic/Tasks.j"
 
 #include "systems/ElixirSystem.j"
-#include "systems/Vip.j"
+#include "systems/Activity.j"
 
 #include "test/najitest.j"
 #include "test/KeyInput.j"
@@ -60,9 +60,8 @@
 
 
 globals
-	
+	unit array vipbanlv
 	item yd_NullTempItem
-	//group yd_NullTempGroup
 	unit w=null
 	unit z=null
 	unit A=null
@@ -1358,7 +1357,7 @@ function Zw takes nothing returns nothing
 	// call CreateTextTagLocBJ("新手教官",Location(420,-597),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("地图等级福利",Location(-1500,-113),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("积分商店",Location(-1500,-1344),120.0,15.,100.,100.,.0,50.)
-	call CreateTextTagLocBJ("决战江湖1.68名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
+	call CreateTextTagLocBJ("决战江湖1.69名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
 	set v7[1]=GetRectCenter(Ie)
 	set v7[2]=GetRectCenter(le)
 	set v7[3]=GetRectCenter(Je)
@@ -1401,7 +1400,7 @@ function Zw takes nothing returns nothing
 	call CreateTimerDialogBJ(bj_lastStartedTimer,"邪教进攻倒计时：")
 	call TimerDialogDisplay(bj_lastCreatedTimerDialog,true)
 	set z7[3]=bj_lastCreatedTimerDialog
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.68|r")
+	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.69|r")
 	// 获取服务器全局存档，信息提示
 	set info = DzAPI_Map_GetMapConfig("info")
 	if info != "无" then
@@ -2074,12 +2073,6 @@ function main1 takes nothing returns nothing
 		set udg_whichzhangmen[i]=0
 		set wugongshu[i]=11 // 11格
 		set udg_zhemei[i]=0
-		set vipnum_1[i] = ""
-		set vipnum_2[i] = "B"
-		set vipnum_3[i] = "BB"
-		set vipnum_4[i] = "BBB"
-		set vipnum_5[i] = "BBBB"
-		set vipnum_6[i] = "BBBBB"
 		set wuxing[i]=9
 		set jingmai[i]=9
 		set gengu[i]=9
@@ -2324,5 +2317,6 @@ function main2 takes nothing returns nothing
 	call Instances_Trigger() //副本和任务系统
 	call Experiences_Trigger() //历练系统
 	call ElixirSystem_Trigger() //丹药系统
-	call Tasks_Trigger() //任务系统 
+	call Tasks_Trigger() //任务系统
+	call checkActivityAddition() // 判断是否在活动期间
 endfunction

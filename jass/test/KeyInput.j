@@ -303,30 +303,6 @@ function KeyInput takes nothing returns nothing
 	// 		set loc = null
 	// 	endif
 	// endif
-	//if s==GetVIPNum(p, LoadStr(YDHT, GetHandleId(p), GetHandleId(p)*2)) then
-	//	set udg_vip[i] = 1
-	//	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933感谢玩家"+GetPlayerName(p)+"对决战江湖的赞助|r")
-	//endif
-	//if s=="我是赞助者" and udg_vip[i]==0 and vipbanlvbool[i]==false then
-	//	set vipbanlv[i] = CreateUnit(p,'n00G',1860,-4140,254.7)
-	//	set vipbanlvbool[i] = true
-	//endif
-	//if SubStringBJ(s,1,3)=="VIP" then
-	//	set s = SubStringBJ(s, 4, 50)
-	//	//call BJDebugMsg(s)
-	//	//call BJDebugMsg(I2S(StringLength(s)))
-	//	//call BJDebugMsg(I2S(IAbsBJ(StringHash(s))))
-	//	set s = I2S(IAbsBJ(StringHash(s)))
-	//	if StringLength(s) >= 6 then
-	//		if StringLength(s) == 10 then
-	//			call BJDebugMsg("您的VIP激活码是："+SubStringBJ(s, 5, 10))
-	//		else
-	//			call BJDebugMsg("您的VIP激活码是："+SubStringBJ(s, 1, 6))
-	//		endif
-	//	else
-	//		call BJDebugMsg("您的VIP激活码是："+SubStringBJ(s+"013478", 1, 6))
-	//	endif
-	//endif
 	if s=="-ms" then
 		call DisplayTextToPlayer(p,0,0,"|cFF00FFFF您当前的移动速度为"+I2S(R2I(GetUnitMoveSpeedEx(udg_hero[i]))))
 	endif
