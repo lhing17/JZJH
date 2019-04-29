@@ -82,11 +82,11 @@ end)
 et.game:event '单位-受攻击'(function(self, source, target)
     local i = source:get_owner():get()
     --- +乾坤大挪移 攻击时增加六围，数量为技能等级
-    if source:has_all_abilities('A0DP', 'A07W') and base.random(0, 100) <= 15 then
+    if source:has_all_abilities('A0DP', 'A07W') and base.random_int(0, 100) <= 15 then
         addRealAttrTemp(i, 1)
     end
     --- +葵花宝典 被攻击时增加六围，数量为技能等级
-    if target:has_all_abilities('A0DP', 'A07T') and base.random(0, 500) <= 15 then
+    if target:has_all_abilities('A0DP', 'A07T') and base.random_int(0, 500) <= 15 then
         addRealAttrTemp(i, 1)
     end
 end)
