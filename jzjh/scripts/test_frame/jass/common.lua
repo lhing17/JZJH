@@ -2446,6 +2446,11 @@ end
 --constant native GetEnumDestructable     takes nothing returns destructable
 --constant native GetFilterItem           takes nothing returns item
 --constant native GetEnumItem             takes nothing returns item
+-- FIXME
+--- @return j_item
+function jass.GetEnumItem()
+    return nil
+end
 --constant native GetFilterPlayer     takes nothing returns player
 function jass.GetFilterPlayer()
     return force.filter_player
@@ -3144,6 +3149,11 @@ end
 --native          IsItemIdSellable takes integer itemId returns boolean
 --native          IsItemIdPawnable takes integer itemId returns boolean
 --native          EnumItemsInRect     takes rect r, boolexpr filter, code actionFunc returns nothing
+--- @param r j_rect
+--- @param func function
+function jass.EnumItemsInRect(r, filter, func)
+    -- FIXME
+end
 --native          GetItemLevel    takes item whichItem returns
 function jass.GetItemLevel(it)
     return it:get_level()

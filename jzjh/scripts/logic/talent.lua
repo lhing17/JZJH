@@ -40,10 +40,10 @@ local function talent_effect()
 
     -- 判断玩家是否购买
     et.loop(1 * 1000, function()
-        for i = 1, et.player.countAlive() do
+        for i = 1, 5 do
             local p = et.player[i]
             --- 随机天赋
-            if p.talent == 0 and g.talent_flag[i] == 1 then
+            if p:is_player() and p.talent == 0 and g.talent_flag[i] == 1 then
                 add_talent(i, base.random_int(1, #TALENT_LOOKUP))
             end
         end
