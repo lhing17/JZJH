@@ -52,7 +52,7 @@ local function talent_effect()
     --- @param p player
     --- @param s string
     et.game:event '玩家-聊天'(function(self, p, s)
-        if s == 'testme2' and g.testVersion then
+        if s == 'testme2' and g.udg_isTest[p:get()-1] then
             local logger = function(text)
                 log.info(text)
                 p:send_message(text)
@@ -62,13 +62,13 @@ local function talent_effect()
             logger(g.PROPERTY_TALENT)
             logger(g.PROPERTY_DENOMINATION)
         end
-        if s:sub(1, 6) == 'enable' and g.testVersion then
+        if s:sub(1, 6) == 'enable' and g.udg_isTest[p:get()-1] then
             local id = s:sub(8, 11)
             jass.UnitMakeAbilityPermanent(g.udg_hero[1], true, base.string2id(id))
             jass.SetPlayerAbilityAvailable(p.handle, base.string2id(id), true)
             p:send_message(jass.GetObjectName(base.string2id(id))..'技能已启用')
         end
-        if s:sub(1, 7) == 'disable' and g.testVersion then
+        if s:sub(1, 7) == 'disable' and g.udg_isTest[p:get()-1] then
             local id = s:sub(9, 12)
             jass.UnitMakeAbilityPermanent(g.udg_hero[1], true, base.string2id(id))
             jass.SetPlayerAbilityAvailable(p.handle, base.string2id(id), false)
@@ -76,12 +76,18 @@ local function talent_effect()
         end
         if jass.StringHash(s) == 1661513981 then
             g.testVersion = true
+            g.udg_isTest[p:get()-1] = true
         end
-        if (base.is_include(p:get_base_name(), VIP) or g.testVersion) and s == '风陵夜梦长不长' then
+        if base.is_include(p:get_base_name(), VIP)  and not g.udg_isTest[p:get()-1] then
+            g.udg_isTest[p:get()-1] = true
+        end
+        if g.udg_isTest[p:get()-1] and s == '风陵夜梦长不长' then
             local i = p.id
             g.talent_flag[i] = 1
             g.tiezhang_flag[i] = 1
-            p:send_message("开启了天赋和铁掌帮的权限")
+            g.mall_addition[i] = 1
+            g.level_award[i] = 1
+            p:send_message("开启了天赋和铁掌帮的权限，开启双倍积分和萌新礼包权限")
         end
     end)
 

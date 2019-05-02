@@ -595,7 +595,7 @@ function KeyInput takes nothing returns nothing
 		set udg_shuxing[i]=udg_shuxing[i]+3000
 		set shoujiajf[i]=shoujiajf[i]+1000
 	endif
-	if s=="ts" and testVersion then
+	if s=="ts" and udg_isTest[GetPlayerId(p)] then
 		call unitadditembyidswapped('I0CI',udg_hero[i])
 		call unitadditembyidswapped('I0CH',udg_hero[i])
 		call unitadditembyidswapped('I0DO',udg_hero[i])
@@ -609,7 +609,7 @@ function KeyInput takes nothing returns nothing
 		call unitadditembyidswapped('I00L',udg_hero[i])
 		call unitadditembyidswapped('I08W',udg_hero[i])
 	endif
-	if s=="九阴真人" and testVersion then
+	if s=="九阴真人" and udg_isTest[GetPlayerId(p)] then
 		call unitadditembyidswapped('I02X',udg_hero[i])
 		call unitadditembyidswapped('I03I',udg_hero[i])
 		call unitadditembyidswapped('I09H',udg_hero[i])
@@ -618,7 +618,7 @@ function KeyInput takes nothing returns nothing
 		call unitadditembyidswapped('I09J',udg_hero[i])
 		call unitadditembyidswapped('I09K',udg_hero[i])
 	endif
-	if s=="贼哥牛逼" and testVersion then
+	if s=="贼哥牛逼" and udg_isTest[GetPlayerId(p)] then
 		if UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO) then
 			call ModifyHeroStat(0, GetTriggerUnit(), 0, 100000)
             call ModifyHeroStat(1, GetTriggerUnit(), 0, 100000)
@@ -641,7 +641,7 @@ function KeyInput takes nothing returns nothing
 		set udg_shuxing[i]=udg_shuxing[i]+30000
 		set shoujiajf[i]=shoujiajf[i]+10000
 	endif
-	if s == "next" and testVersion then
+	if s == "next" and udg_isTest[GetPlayerId(p)] then
 		set udg_boshu=udg_boshu+1
 		call DisplayTextToPlayer(p,0,0,"|cFFFF0000已跳转至下一波")
 	endif 

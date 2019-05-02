@@ -10,7 +10,7 @@ base = {}
 base.release = true
 
 --- 游戏版本
-base.version = "1.6.11"
+base.version = "1.6.12"
 
 --打开控制台
 if not base.release then

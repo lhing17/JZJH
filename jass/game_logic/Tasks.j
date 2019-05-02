@@ -362,33 +362,33 @@ function LevelReward takes nothing returns nothing
 	local integer i=GetPlayerId(p)
 	// 获取玩家对应的地图等级
 	local integer level=DzAPI_Map_GetMapLevel(Player(i))
-	if (level >=3  and (GetItemTypeId(GetManipulatedItem())=='I0D4')) and not LoadBoolean(YDHT,i,StringHash("3级奖励")) then
-		call unitadditembyidswapped('I06H',u) // 养精蓄锐令牌
-		call SaveBoolean(YDHT,i,StringHash("3级奖励"),true)
-	elseif (level >= 5 and (GetItemTypeId(GetManipulatedItem())=='I0D6')) and not LoadBoolean(YDHT,i,StringHash("5级奖励")) then
-		call unitadditembyidswapped('I02T',u) // 大雁
-		call SaveBoolean(YDHT,i,StringHash("5级奖励"),true)
-	elseif (level >= 10 and (GetItemTypeId(GetManipulatedItem())=='I0D5')) and not LoadBoolean(YDHT,i,StringHash("10级奖励")) then
-		call unitadditembyidswapped('I01A',u) // 蓝魔
-		call SaveBoolean(YDHT,i,StringHash("10级奖励"),true)
-	elseif (level >= 15 and (GetItemTypeId(GetManipulatedItem())=='I0D7')) and not LoadBoolean(YDHT,i,StringHash("15级奖励")) then
-		call unitadditembyidswapped('I019',u) // 白虎符
-		call SaveBoolean(YDHT,i,StringHash("15级奖励"),true)
-	elseif (level >= 20 and (GetItemTypeId(GetManipulatedItem())=='I0D8')) and not LoadBoolean(YDHT,i,StringHash("20级奖励")) then
-		call unitadditembyidswapped('I06Z',u) // 续命
-		call SaveBoolean(YDHT,i,StringHash("20级奖励"),true)
-	elseif (level >= 25 and (GetItemTypeId(GetManipulatedItem())=='I0D9')) and not LoadBoolean(YDHT,i,StringHash("25级奖励")) then
-		call unitadditembyidswapped('I070',u) // 通犀
-		call SaveBoolean(YDHT,i,StringHash("25级奖励"),true)
-	elseif (level >= 30 and (GetItemTypeId(GetManipulatedItem())=='I0DA')) and not LoadBoolean(YDHT,i,StringHash("30级奖励")) then
-		call unitadditembyidswapped('I0AM',u) // 神木王鼎
-		call SaveBoolean(YDHT,i,StringHash("30级奖励"),true)
-	elseif (level >= 35 and (GetItemTypeId(GetManipulatedItem())=='I0EI')) and not LoadBoolean(YDHT,i,StringHash("35级奖励")) then
-		call AdjustPlayerStateBJ(50000, p, PLAYER_STATE_RESOURCE_GOLD) // 奖励5w金钱
-		call SaveBoolean(YDHT,i,StringHash("35级奖励"),true)
-	else
-		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|CFFFE890D可能你不符合条件或者已经领取过了哦！")
-	endif
+	if ( (level >= 3 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D4' ) ) and not LoadBoolean(YDHT, i, StringHash("3级奖励")) then
+        call unitadditembyidswapped('I06H' , u) // 养精蓄锐令牌
+        call SaveBoolean(YDHT, i, StringHash("3级奖励"), true)
+    elseif ( (level >= 5 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D6' ) ) and not LoadBoolean(YDHT, i, StringHash("5级奖励")) then
+        call unitadditembyidswapped('I02T' , u) // 大雁
+        call SaveBoolean(YDHT, i, StringHash("5级奖励"), true)
+    elseif ( (level >= 10 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D5' ) ) and not LoadBoolean(YDHT, i, StringHash("10级奖励")) then
+        call unitadditembyidswapped('I01A' , u) // 蓝魔
+        call SaveBoolean(YDHT, i, StringHash("10级奖励"), true)
+    elseif ( (level >= 15 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D7' ) ) and not LoadBoolean(YDHT, i, StringHash("15级奖励")) then
+        call unitadditembyidswapped('I019' , u) // 白虎符
+        call SaveBoolean(YDHT, i, StringHash("15级奖励"), true)
+    elseif ( (level >= 20 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D8' ) ) and not LoadBoolean(YDHT, i, StringHash("20级奖励")) then
+        call unitadditembyidswapped('I06Z' , u) // 续命
+        call SaveBoolean(YDHT, i, StringHash("20级奖励"), true)
+    elseif ( (level >= 25 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D9' ) ) and not LoadBoolean(YDHT, i, StringHash("25级奖励")) then
+        call unitadditembyidswapped('I070' , u) // 通犀
+        call SaveBoolean(YDHT, i, StringHash("25级奖励"), true)
+    elseif ( (level >= 30 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0DA' ) ) and not LoadBoolean(YDHT, i, StringHash("30级奖励")) then
+        call unitadditembyidswapped('I0AM' , u) // 神木王鼎
+        call SaveBoolean(YDHT, i, StringHash("30级奖励"), true)
+    elseif ( (level >= 35 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0EI' ) ) and not LoadBoolean(YDHT, i, StringHash("35级奖励")) then
+        call AdjustPlayerStateBJ(50000, p, PLAYER_STATE_RESOURCE_GOLD) // 奖励5w金钱
+        call SaveBoolean(YDHT, i, StringHash("35级奖励"), true)
+    else
+        call DisplayTimedTextToPlayer(Player(i), 0, 0, 5, "|CFFFE890D可能你不符合条件或者已经领取过了哦！")
+    endif
 	set u = null
 	set p = null
 endfunction

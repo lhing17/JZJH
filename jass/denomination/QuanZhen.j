@@ -57,7 +57,7 @@ function QuanZhenJian takes nothing returns nothing
     if GetRandomReal(0,100)<=20+chance/5 then
         call WuGongShengChong(u,'A0CF',1100.)
         if danpo[i]>=15 then
-	        call GroupEnumUnitsInRangeOfLoc(g,loc,danpo[i]*20,Condition(function QuanZhen_Condition))
+	        call GroupEnumUnitsInRangeOfLoc(g,loc,RMinBJ(danpo[i]*20, 3000),Condition(function QuanZhen_Condition))
 	    else
 	        call GroupAddUnit(g,uc)
         endif

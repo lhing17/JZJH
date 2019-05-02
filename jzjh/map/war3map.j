@@ -159,7 +159,7 @@ constant boolean LIBRARY_YDWEUnitHasItemOfTypeBJNull=true
 //endglobals from YDWEUnitHasItemOfTypeBJNull
 //globals from YDWEJumpTimer:
 constant boolean LIBRARY_YDWEJumpTimer=true
-//��Ծϵͳ���ȼ�
+//��Ծϵͳ���ȼ�
 integer MoveMoreLevel_JumpTimer=3
 //endglobals from YDWEJumpTimer
 //globals from YDWELocalVariable:
@@ -168,8 +168,8 @@ constant boolean LIBRARY_YDWELocalVariable=true
 //globals from YDWEPreloadSL:
 constant boolean LIBRARY_YDWEPreloadSL=true
     ///
-    /// ÿ�����ռ�õĿռ�[500*id, 500*(id-1))
-    /// �±�Խ��û�н��м�飬�ƺ�û�����Ҫ��˭Ҫ���ó���500...��ȥ����- -
+    /// ÿ�����ռ�õĿռ�[500*id, 500*(id-1))
+    /// �±�Խ��û�н��м�飬�ƺ�û�����Ҫ��˭Ҫ���ó���500...��ȥ����- -
     /// 
 integer array YDWEPreloadSL__Code
 integer array YDWEPreloadSL__CodeHI
@@ -274,10 +274,12 @@ constant integer MAX_BAN_LV_NUM= 14
 integer array tiezhang_flag
 integer array talent_flag
 integer array mall_addition
+integer array level_award
 // A 永久性道具 B 计时性道具
 string PROPERTY_TALENT= "AR98FE7J3P"
 string PROPERTY_DENOMINATION= "A198FYU9ME"
 string PROPERTY_DOUBLE_POINT= "BC98FNY5L9"
+string PROPERTY_LEVEL_AWARD= "BYOUARES13"
 boolean moshiFlag= false
 integer nanduFlag= 0
 boolean tiaoZhanFlag= false
@@ -4639,7 +4641,7 @@ endfunction
 //library YDWETriggerEvent:
 	
 //===========================================================================  
-//���ⵥλ�˺��¼� 
+//���ⵥλ�˺��¼� 
 //===========================================================================
 function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -4686,7 +4688,7 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
     set YDWETriggerEvent__DamageEventNumber=YDWETriggerEvent__DamageEventNumber + 1
 endfunction
 //===========================================================================  
-//�ƶ���Ʒ�¼� 
+//�ƶ���Ʒ�¼� 
 //===========================================================================  
 function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -5252,8 +5254,8 @@ function YDWE_PreloadSL_GetMask takes player p returns integer
     return value - 'YDWE'
 endfunction
 ///
-/// ע��Ч�ʶ����ǰ�ȫ���ƶ�����˵��ȫ��������...
-/// ��һ���ƶ�������������
+/// ע��Ч�ʶ����ǰ�ȫ���ƶ�����˵��ȫ��������...
+/// ��һ���ƶ�������������
 ///
 function YDWE_PreloadSL_Unmove takes integer beg,integer n,integer key returns nothing
     local integer value
@@ -5397,8 +5399,8 @@ function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer 
     endloop
 endfunction
 ///
-/// ע��Ч�ʶ����ǰ�ȫ���ƶ�����˵��ȫ��������...
-/// �ƶ��������������Բ�Ҫ...
+/// ע��Ч�ʶ����ǰ�ȫ���ƶ�����˵��ȫ��������...
+/// �ƶ��������������Բ�Ҫ...
 ///
 function YDWE_PreloadSL_Move takes integer beg,integer n,integer key returns nothing
     local integer value
@@ -5442,8 +5444,8 @@ function YDWE_PreloadSL_Encode takes player p,integer n,integer mask returns not
     call YDWE_PreloadSL_Move(beg , n , key)
 endfunction 
 /// 
-/// ͬ���������
-/// ͬһʱ�䲻Ҫͬ��һ�����ϵ��������
+/// ͬ���������
+/// ͬһʱ�䲻Ҫͬ��һ�����ϵ��������
 ///
 function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
     local integer index
@@ -5524,7 +5526,7 @@ function GetLastCombinedItem takes nothing returns item
     return bj_lastCombinedItem
 endfunction
 //===========================================================================
-//��Ʒ�ϳ�
+//��Ʒ�ϳ�
 function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
  local integer i= 0
     loop
@@ -5537,7 +5539,7 @@ function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
 endfunction
 //GetLastMovedItemInItemSlot 
 //===========================================================================  
-//��Ʒ�ϳ��¼� 
+//��Ʒ�ϳ��¼� 
 //===========================================================================  
 function YDWESyStemItemCombineRegistTrigger takes trigger trg returns nothing
 	set YDWEStringFormula__ItemCombineEventQueue[YDWEStringFormula__ItemCombineEventNumber]=trg
@@ -5668,7 +5670,7 @@ endfunction
             set s__YDWEStringFormula__FormulaMatrix_segmLen[this]=lingth
             
             set s__YDWEStringFormula__FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
-set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
+set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
 set s__YDWEStringFormula__FormulaMatrix_chance[this]=100
             set s__YDWEStringFormula__FormulaMatrix_delete[this]=false
             call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
@@ -6012,9 +6014,9 @@ endfunction
 //library YDWEStringFormula ends
 //library YDWETimerPattern:
 //***************************************************
-//* �� - Matrix ����ģ�庯��
+//* �� - Matrix ����ģ�庯��
 //*--------------------
-//* ���ߣ�Warft_TigerCN  �����Ż���Fetrix_sai
+//* ���ߣ�Warft_TigerCN  �����Ż���Fetrix_sai
 //***************************************************
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //                                       Timer Pattern Union                                              //
@@ -6391,7 +6393,7 @@ function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
 	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
 	set YDWETimerSystem__TaskListIdleHead=index
 endfunction
-//�ú������д���
+//�ú������д���
 function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
  local integer index= YDWETimerSystem__NewTaskIndex()
  local integer h= YDWETimerSystem__TaskListHead
@@ -6417,7 +6419,7 @@ endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
 	return YDWETimerSystem__CurrentIndex
 endfunction
-//ɾ����λ
+//ɾ����λ
 function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
     call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6425,7 +6427,7 @@ endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
     call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
 endfunction
-//�ݻټ�ʱ��
+//�ݻټ�ʱ��
 function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
     call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6433,7 +6435,7 @@ endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
     call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
 endfunction
-//ɾ����Ʒ
+//ɾ����Ʒ
 function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
     call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6441,7 +6443,7 @@ endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
     call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
 endfunction
-//ɾ����Ч
+//ɾ����Ч
 function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
     call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6449,7 +6451,7 @@ endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
     call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
 endfunction
-//ɾ��������Ч
+//ɾ��������Ч
 function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
     call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6458,7 +6460,7 @@ function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
  local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
     call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
 endfunction
-//���д�����
+//���д�����
 function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
     call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6466,7 +6468,7 @@ endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
     call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
 endfunction
-//ɾ��Ư������
+//ɾ��Ư������
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     local integer N=0
     local integer i=0
@@ -6477,7 +6479,7 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagLifespan(tt, time)
     call SetTextTagFadepoint(tt, time)
 endfunction
-//���ļ�ʱ��������
+//���ļ�ʱ��������
 function YDWETimerSystem__Main takes nothing returns nothing
  local integer h= YDWETimerSystem__TaskListHead
  local integer p
@@ -6491,7 +6493,7 @@ function YDWETimerSystem__Main takes nothing returns nothing
 	endloop
 	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
 endfunction
-//��ʼ������
+//��ʼ������
 function YDWETimerSystem__Init takes nothing returns nothing
     set YDWETimerSystem__Timer=CreateTimer()
 	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
@@ -6517,7 +6519,7 @@ function YDWETimerSystem__Init takes nothing returns nothing
 	
     call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
 endfunction
-//ѭ�������ö�����ʱ��
+//ѭ�������ö�����ʱ��
 function YDWETimerSystemGetRunIndex takes nothing returns integer
     return YDWETimerSystem__TimerSystem_RunIndex
 endfunction
@@ -6593,11 +6595,11 @@ endfunction
 //library YDWETimerSystem ends
 //===========================================================================
 // 
-// 决战江湖1.6.11正式版
+// 决战江湖1.6.12正式版
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Thu May 02 13:59:11 2019
+//   Date: Thu May 02 22:52:39 2019
 //   Map Author: 云杨 zei_kale
 // 
 //===========================================================================
@@ -9805,6 +9807,9 @@ function checkPurchase takes nothing returns nothing
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_DOUBLE_POINT) then
             set mall_addition[i]=1
         endif
+        if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_LEVEL_AWARD) then
+            set level_award[i]=1
+        endif
         set i=i + 1
     endloop
 endfunction
@@ -9816,6 +9821,7 @@ function mallInit takes nothing returns nothing
         set tiezhang_flag[i]=0
         set talent_flag[i]=0
         set mall_addition[i]=0
+        set level_award[i]=0
         set i=i + 1
     endloop
     call TimerStart(t, 1, true, function checkPurchase)
@@ -11290,7 +11296,7 @@ else
 	endloop
 	// 获胜标识
 	set is_victory=true
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.11的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.12的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT, id * cx, - $5E9EB4B3, 40.)
@@ -11305,7 +11311,7 @@ else
 	call TimerStart(ky, .04, true, function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT, id, - $1317DA19, cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.11的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.12的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT, id, - $1317DA19, cx)
@@ -11320,7 +11326,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
  local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.11的游戏总评分：" + ( I2S(ae) + "分（战败）" ) ))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.12的游戏总评分：" + ( I2S(ae) + "分（战败）" ) ))
 	set i=1
 	loop
 		exitwhen i >= 6
@@ -22208,33 +22214,33 @@ local player p=GetOwningPlayer(u)
 local integer i=GetPlayerId(p)
 	// 获取玩家对应的地图等级
  local integer level=DzAPI_Map_GetMapLevel(Player(i))
-	if ( level >= 3 and ( GetItemTypeId(GetManipulatedItem()) == 'I0D4' ) ) and not LoadBoolean(YDHT, i, StringHash("3级奖励")) then
-		call unitadditembyidswapped('I06H' , u) // 养精蓄锐令牌
+	if ( ( level >= 3 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D4' ) ) and not LoadBoolean(YDHT, i, StringHash("3级奖励")) then
+        call unitadditembyidswapped('I06H' , u) // 养精蓄锐令牌
 call SaveBoolean(YDHT, i, StringHash("3级奖励"), true)
-	elseif ( level >= 5 and ( GetItemTypeId(GetManipulatedItem()) == 'I0D6' ) ) and not LoadBoolean(YDHT, i, StringHash("5级奖励")) then
-		call unitadditembyidswapped('I02T' , u) // 大雁
+    elseif ( ( level >= 5 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D6' ) ) and not LoadBoolean(YDHT, i, StringHash("5级奖励")) then
+        call unitadditembyidswapped('I02T' , u) // 大雁
 call SaveBoolean(YDHT, i, StringHash("5级奖励"), true)
-	elseif ( level >= 10 and ( GetItemTypeId(GetManipulatedItem()) == 'I0D5' ) ) and not LoadBoolean(YDHT, i, StringHash("10级奖励")) then
-		call unitadditembyidswapped('I01A' , u) // 蓝魔
+    elseif ( ( level >= 10 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D5' ) ) and not LoadBoolean(YDHT, i, StringHash("10级奖励")) then
+        call unitadditembyidswapped('I01A' , u) // 蓝魔
 call SaveBoolean(YDHT, i, StringHash("10级奖励"), true)
-	elseif ( level >= 15 and ( GetItemTypeId(GetManipulatedItem()) == 'I0D7' ) ) and not LoadBoolean(YDHT, i, StringHash("15级奖励")) then
-		call unitadditembyidswapped('I019' , u) // 白虎符
+    elseif ( ( level >= 15 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D7' ) ) and not LoadBoolean(YDHT, i, StringHash("15级奖励")) then
+        call unitadditembyidswapped('I019' , u) // 白虎符
 call SaveBoolean(YDHT, i, StringHash("15级奖励"), true)
-	elseif ( level >= 20 and ( GetItemTypeId(GetManipulatedItem()) == 'I0D8' ) ) and not LoadBoolean(YDHT, i, StringHash("20级奖励")) then
-		call unitadditembyidswapped('I06Z' , u) // 续命
+    elseif ( ( level >= 20 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D8' ) ) and not LoadBoolean(YDHT, i, StringHash("20级奖励")) then
+        call unitadditembyidswapped('I06Z' , u) // 续命
 call SaveBoolean(YDHT, i, StringHash("20级奖励"), true)
-	elseif ( level >= 25 and ( GetItemTypeId(GetManipulatedItem()) == 'I0D9' ) ) and not LoadBoolean(YDHT, i, StringHash("25级奖励")) then
-		call unitadditembyidswapped('I070' , u) // 通犀
+    elseif ( ( level >= 25 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D9' ) ) and not LoadBoolean(YDHT, i, StringHash("25级奖励")) then
+        call unitadditembyidswapped('I070' , u) // 通犀
 call SaveBoolean(YDHT, i, StringHash("25级奖励"), true)
-	elseif ( level >= 30 and ( GetItemTypeId(GetManipulatedItem()) == 'I0DA' ) ) and not LoadBoolean(YDHT, i, StringHash("30级奖励")) then
-		call unitadditembyidswapped('I0AM' , u) // 神木王鼎
+    elseif ( ( level >= 30 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0DA' ) ) and not LoadBoolean(YDHT, i, StringHash("30级奖励")) then
+        call unitadditembyidswapped('I0AM' , u) // 神木王鼎
 call SaveBoolean(YDHT, i, StringHash("30级奖励"), true)
-	elseif ( level >= 35 and ( GetItemTypeId(GetManipulatedItem()) == 'I0EI' ) ) and not LoadBoolean(YDHT, i, StringHash("35级奖励")) then
-		call AdjustPlayerStateBJ(50000, p, PLAYER_STATE_RESOURCE_GOLD) // 奖励5w金钱
+    elseif ( ( level >= 35 or level_award[i + 1] == 1 ) and ( GetItemTypeId(GetManipulatedItem()) == 'I0EI' ) ) and not LoadBoolean(YDHT, i, StringHash("35级奖励")) then
+        call AdjustPlayerStateBJ(50000, p, PLAYER_STATE_RESOURCE_GOLD) // 奖励5w金钱
 call SaveBoolean(YDHT, i, StringHash("35级奖励"), true)
-	else
-		call DisplayTimedTextToPlayer(Player(i), 0, 0, 5, "|CFFFE890D可能你不符合条件或者已经领取过了哦！")
-	endif
+    else
+        call DisplayTimedTextToPlayer(Player(i), 0, 0, 5, "|CFFFE890D可能你不符合条件或者已经领取过了哦！")
+    endif
 	set u=null
 	set p=null
 endfunction
@@ -25142,6 +25148,11 @@ function QiuJiao takes player p,integer num returns nothing
 	set L7[i]=1
 	loop
 	exitwhen L7[i] > wugongshu[i]
+	if I7[te[i] * 20 + num] == 'A0DP' then
+	    call unitadditembyidswapped(1227896625 , P4[i])
+    	call DisplayTextToPlayer(p, 0, 0, "|CFFFF0033这个武功太高深了，看起来学不会的样子")
+    	return
+	endif
 	if ( I7[( i - 1 ) * 20 + L7[i]] != 'AEfk' ) then
 		if ( L7[i] == wugongshu[i] ) then
 			call unitadditembyidswapped(1227896625 , P4[i])
@@ -28942,7 +28953,7 @@ function KeyInput takes nothing returns nothing
 		set udg_shuxing[i]=udg_shuxing[i] + 3000
 		set shoujiajf[i]=shoujiajf[i] + 1000
 	endif
-	if s == "ts" and testVersion then
+	if s == "ts" and udg_isTest[GetPlayerId(p)] then
 		call unitadditembyidswapped('I0CI' , udg_hero[i])
 		call unitadditembyidswapped('I0CH' , udg_hero[i])
 		call unitadditembyidswapped('I0DO' , udg_hero[i])
@@ -28956,7 +28967,7 @@ function KeyInput takes nothing returns nothing
 		call unitadditembyidswapped('I00L' , udg_hero[i])
 		call unitadditembyidswapped('I08W' , udg_hero[i])
 	endif
-	if s == "九阴真人" and testVersion then
+	if s == "九阴真人" and udg_isTest[GetPlayerId(p)] then
 		call unitadditembyidswapped('I02X' , udg_hero[i])
 		call unitadditembyidswapped('I03I' , udg_hero[i])
 		call unitadditembyidswapped('I09H' , udg_hero[i])
@@ -28965,7 +28976,7 @@ function KeyInput takes nothing returns nothing
 		call unitadditembyidswapped('I09J' , udg_hero[i])
 		call unitadditembyidswapped('I09K' , udg_hero[i])
 	endif
-	if s == "贼哥牛逼" and testVersion then
+	if s == "贼哥牛逼" and udg_isTest[GetPlayerId(p)] then
 		if (IsUnitType((GetTriggerUnit() ), ( UNIT_TYPE_HERO)) != null) then // INLINED!!
 			call ModifyHeroStat(0, GetTriggerUnit(), 0, 100000)
             call ModifyHeroStat(1, GetTriggerUnit(), 0, 100000)
@@ -28988,7 +28999,7 @@ call SetHeroLevel(udg_hero[i], GetHeroLevel(udg_hero[i]) + 5, true)
 		set udg_shuxing[i]=udg_shuxing[i] + 30000
 		set shoujiajf[i]=shoujiajf[i] + 10000
 	endif
-	if s == "next" and testVersion then
+	if s == "next" and udg_isTest[GetPlayerId(p)] then
 		set udg_boshu=udg_boshu + 1
 		call DisplayTextToPlayer(p, 0, 0, "|cFFFF0000已跳转至下一波")
 	endif
@@ -36390,7 +36401,7 @@ function QuanZhenJian takes nothing returns nothing
     if GetRandomReal(0, 100) <= 20 + chance / 5 then
         call WuGongShengChong(u , 'A0CF' , 1100.)
         if danpo[i] >= 15 then
-	        call GroupEnumUnitsInRangeOfLoc(g, loc, danpo[i] * 20, Condition(function QuanZhen_Condition))
+	        call GroupEnumUnitsInRangeOfLoc(g, loc, RMinBJ(danpo[i] * 20, 3000), Condition(function QuanZhen_Condition))
 	    else
 	        call GroupAddUnit(g, uc)
         endif
@@ -47174,7 +47185,7 @@ function Zw takes nothing returns nothing
 	// call CreateTextTagLocBJ("新手教官",Location(420,-597),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("地图等级福利",Location(-1500,-113),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("积分商店",Location(-1500,-1344),120.0,15.,100.,100.,.0,50.)
-	call CreateTextTagLocBJ("决战江湖1.6.11名人榜", GetRectCenter(uh), 100., $A, 100, 100, .0, 50.)
+	call CreateTextTagLocBJ("决战江湖1.6.12名人榜", GetRectCenter(uh), 100., $A, 100, 100, .0, 50.)
 	set v7[1]=GetRectCenter(Ie)
 	set v7[2]=GetRectCenter(le)
 	set v7[3]=GetRectCenter(Je)
@@ -47217,7 +47228,7 @@ function Zw takes nothing returns nothing
 	call CreateTimerDialogBJ(bj_lastStartedTimer, "邪教进攻倒计时：")
 	call TimerDialogDisplay(bj_lastCreatedTimerDialog, true)
 	set z7[3]=bj_lastCreatedTimerDialog
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, "|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.11|r")
+	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, "|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.12|r")
 	// 获取服务器全局存档，信息提示
 	set info=DzAPI_Map_GetMapConfig("info")
 	if info != "无" then
@@ -47641,7 +47652,7 @@ function InitPriv takes nothing returns nothing
  local integer i= 0
 	loop
 		exitwhen i > 4
-			if GetPlayerName(Player(i)) == "WorldEdit" or GetPlayerName(Player(i)) == "zeikale" or GetPlayerName(Player(i)) == "风陵夜梦长" or GetPlayerName(Player(i)) == "非我莫属xq" or GetPlayerName(Player(i)) == "苍穹而降" or GetPlayerName(Player(i)) == "晓窗临风" or GetPlayerName(Player(i)) == "沫Mu" then
+			if GetPlayerName(Player(i)) == "WorldEdit" or GetPlayerName(Player(i)) == "zeikale" or GetPlayerName(Player(i)) == "zeikala" or GetPlayerName(Player(i)) == "非我莫属xq" or GetPlayerName(Player(i)) == "苍穹而降" or GetPlayerName(Player(i)) == "晓窗临风" or GetPlayerName(Player(i)) == "沫Mu" then
 				if admin == "0" or testVersion then
 					set udg_isTest[i]=true
 				endif
@@ -48808,7 +48819,7 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs72995859")
+call ExecuteFunc("jasshelper__initstructs20677281")
 call ExecuteFunc("UniMissileSystem3D__Init")
 call ExecuteFunc("init")
 call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
@@ -48832,7 +48843,7 @@ endfunction
 //*
 //***************************************************************************
 function config takes nothing returns nothing
-    call SetMapName("决战江湖1.6.11正式版")
+    call SetMapName("决战江湖1.6.12正式版")
     call SetMapDescription("|cFFFF00FF当你打开这个游戏的时候，你的江湖已经开始了.....|r")
     call SetPlayers(9)
     call SetTeams(9)
@@ -48851,19 +48862,19 @@ function config takes nothing returns nothing
     call InitCustomTeams()
     call InitAllyPriorities()
 endfunction
-//===========================================================================
-//修改生命
-//===========================================================================
 //===========================================================================  
 //===========================================================================  
-//�Զ����¼� 
+//�Զ����¼� 
 //===========================================================================
 //===========================================================================   
+//===========================================================================
+//��Ծϵͳ 
+//===========================================================================
      
  
                  
 //===========================================================================
-//��Ծϵͳ 
+//修改生命
 //===========================================================================
 //===========================================================================
 //ϵͳ-TimerSystem
@@ -49000,7 +49011,7 @@ function sa___prototype3_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs72995859 takes nothing returns nothing
+function jasshelper__initstructs20677281 takes nothing returns nothing
     set st__ShopWeapon_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__ShopWeapon_onDestroy,Condition( function sa__ShopWeapon_onDestroy))
     set st__ShopWeapon_PickUpWeapon=CreateTrigger()
@@ -49027,7 +49038,7 @@ function jasshelper__initstructs72995859 takes nothing returns nothing
     call TriggerAddAction(st___prototype3[1],function sa___prototype3_SetUnitMoveSpeedEx)
     call TriggerAddCondition(st___prototype3[1],Condition(function sa___prototype3_SetUnitMoveSpeedEx))
 
-call ExecuteFunc("s__ModSpeed_Init___onInit")
+call ExecuteFunc("s__ModSpeed_Init__onInit")
 
 
 
