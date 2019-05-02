@@ -51,7 +51,7 @@ local function addRealAttrTemp(i, coefficient, time)
     g[real_attr][i] = g[real_attr][i] + value
     et.effect.add_to_unit("war3mapImported\\frozenarmor.mdx", u, 'overhead'):destroy()
     et.tag.create(attr[real_attr]..'+'..value, u:get_point(), 14, 60, 100, 0, 0, 30, 3, 400, base.random(80, 100))
-    if (not u:has_ability('S002')) or base.random_int(1, 10) <= 8 then
+    if (not u:has_ability('S002')) or base.random_int(1, 10) <= 9 then
         et.wait((time or 30) * 1000, function()
             g[real_attr][i] = g[real_attr][i] - value
             et.tag.create(attr[real_attr]..'-'..value, u:get_point(), 14, 60, 100, 0, 0, 30, 3, 400, base.random(80, 100))
