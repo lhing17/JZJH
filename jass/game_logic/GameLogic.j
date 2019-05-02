@@ -38,21 +38,13 @@ endfunction
 
 //买基地无敌
 function BuyJiDiWuDi takes nothing returns boolean
-	return((GetItemTypeId(GetManipulatedItem())=='I07X'))
+	return GetItemTypeId(GetManipulatedItem())=='I07X'
 endfunction
 function JiDiWuDi takes nothing returns nothing
-	local integer id=GetHandleId(GetTriggeringTrigger())
-	local integer cx=LoadInteger(YDHT,id,-$3021938A)
-	set cx=cx+3
-	call SaveInteger(YDHT,id,-$3021938A,cx)
-	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call SaveUnitHandle(YDHT,id*cx,$32A9E4C8,udg_ZhengPaiWL)
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00ff33在正义之士的庇护下，武林暂时无敌了（20秒后解除）")
-	call SetUnitInvulnerable(LoadUnitHandle(YDHT,id*cx,$32A9E4C8),true)
+	call SetUnitInvulnerable(udg_ZhengPaiWL,true)
 	call YDWEPolledWaitNull(20.)
-	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call SetUnitInvulnerable(LoadUnitHandle(YDHT,id*cx,$32A9E4C8),false)
-	call FlushChildHashtable(YDHT,id*cx)
+	call SetUnitInvulnerable(udg_ZhengPaiWL,false)
 endfunction
 //基地挨打
 function JiDiAiDa_Conditions takes nothing returns boolean
@@ -66,26 +58,23 @@ function JiDiAiDa_Actions takes nothing returns nothing
 	//==============反仇恨机制定义单位组==============
 	local group g=CreateGroup()
 	//==============反仇恨机制定义单位组==============
-	call PingMinimapLocForForce(GetPlayersAll(),GetUnitLoc(udg_ZhengPaiWL),1)
-        if(GetRandomInt(30,50)==48)then
-            call DisplayTextToForce(GetPlayersAll(),"|CFFCCFF00正派武林受到攻击，请赶紧回防")
-        endif
-        if(GetRandomInt(30,50)==45)then
-            call SetUnitPositionLoc(GetAttacker(),GetRectCenter(udg_jail))
-            call DisplayTextToForce(GetPlayersAll(),"|CFFCCFFCC正派武林将攻击单位抓进了监狱")
-        endif
-   //==========反仇恨机制，按云大建议去掉==============
-    call GroupEnumUnitsInRangeOfLoc( g, GetUnitLoc(udg_ZhengPaiWL), 800, Condition(function laojiayouren) )
+    if GetRandomInt(30,50) == 48 then
+	    call PingMinimapForForce(bj_FORCE_ALL_PLAYERS,GetUnitX(udg_ZhengPaiWL),GetUnitY(udg_ZhengPaiWL),1)
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFCCFF00正派武林受到攻击，请赶紧回防")
+    endif
+    // 魔教教主不可以被关进监狱
+    if GetRandomInt(30,50) == 45 and GetUnitTypeId(GetAttacker()) != 'nbds' then
+        call SetUnitPosition(GetAttacker(), GetRectCenterX(udg_jail), GetRectCenterY(udg_jail))
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFCCFFCC正派武林将攻击单位抓进了监狱")
+    endif
+    call GroupEnumUnitsInRange( g, GetUnitX(udg_ZhengPaiWL), GetUnitY(udg_ZhengPaiWL), 800, Condition(function laojiayouren) )
     if ((IsUnitGroupEmptyBJ(g) == false)) then
 	    call UnitAddAbility(udg_ZhengPaiWL,'A00S')
-    //call SetUnitInvulnerable(udg_ZhengPaiWL,true)
-   		call GroupClear( g )
     	call YDWEPolledWaitNull(5.00)
-    //call SetUnitInvulnerable(udg_ZhengPaiWL,false)
     	call UnitRemoveAbility(udg_ZhengPaiWL,'A00S')
-    	set g=null
     endif
-   //==========反仇恨机制，按云大建议去掉==============
+    call DestroyGroup(g)
+    set g=null
 endfunction
 
 //购买城防
@@ -93,12 +82,11 @@ function BuyChengFang takes nothing returns boolean
 	return((GetItemTypeId(GetManipulatedItem())==1227896147))
 endfunction
 function ShengChengFang takes nothing returns nothing
-	local integer id=GetHandleId(GetTriggeringTrigger())
-	call SaveInteger(YDHT,id*LoadInteger(YDHT,id,-$1317DA19),-$5E9EB4B3,(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))))
+    local integer i = 1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))
 	if((GetPlayerTechCountSimple('R000',Player(5))<=29))then
 		call SetPlayerTechResearchedSwap('R000',(GetPlayerTechCountSimple('R000',Player(5))+1),Player(5))
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|cFFFFD700在玩家："+(GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"的无私奉献下，正派武林的城防得到加强了")))
-		set shoujiajf[LoadInteger(YDHT,id*LoadInteger(YDHT,id,-$1317DA19),-$5E9EB4B3)]=(shoujiajf[LoadInteger(YDHT,id*LoadInteger(YDHT,id,-$1317DA19),-$5E9EB4B3)]+$F)
+		set shoujiajf[i] = shoujiajf[i] + $F
 		call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,"|CFF34FF00守家积分+15")
 	else
 		call AdjustPlayerStateBJ($4E20,GetOwningPlayer(GetTriggerUnit()),PLAYER_STATE_RESOURCE_GOLD)
@@ -110,13 +98,12 @@ function BuyGaoChengFang takes nothing returns boolean
 	return((GetItemTypeId(GetManipulatedItem())==1227896917))
 endfunction
 function ShengGaoChengFang takes nothing returns nothing
-	local integer id=GetHandleId(GetTriggeringTrigger())
-	call SaveInteger(YDHT,id*LoadInteger(YDHT,id,-$1317DA19),-$5E9EB4B3,(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))))
+    local integer i = 1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))
 	if((udg_boshu>=18))then
 		if((GetPlayerTechCountSimple('R002',Player(5))<=9))then
 			call SetPlayerTechResearchedSwap('R002',(GetPlayerTechCountSimple('R002',Player(5))+1),Player(5))
 			call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|cFFFFD700在玩家："+(GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"的无私奉献下，正派武林的高级城防得到加强了")))
-			set shoujiajf[LoadInteger(YDHT,id*LoadInteger(YDHT,id,-$1317DA19),-$5E9EB4B3)]=(shoujiajf[LoadInteger(YDHT,id*LoadInteger(YDHT,id,-$1317DA19),-$5E9EB4B3)]+25)
+			set shoujiajf[i] = shoujiajf[i] + 25
 			call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,"|CFF34FF00守家积分+25")
 		else
 			call AdjustPlayerStateBJ($C350,GetOwningPlayer(GetTriggerUnit()),PLAYER_STATE_RESOURCE_GOLD)
@@ -155,15 +142,6 @@ function SelectHero takes nothing returns nothing
 			set fuyuan[i]=fuyuan[i]+2
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
-			//call RemoveUnit(K4[6])
-
-			// 原先的初始属性
-			// set wuxing[i]=wuxing[i]+5
-            // set fuyuan[i]=fuyuan[i]+2
-            // set yishu[i]=yishu[i]+3
-            // set udg_xinggeA[i]=GetRandomInt(3,5)
-            // set udg_xinggeB[i]=GetRandomInt(3,5)
-            // call RemoveUnit(K4[1])
 	        call RemoveUnit(vipbanlv[i])
         elseif(u==K4[2])then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00潇侠|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC少林 古墓 丐帮 华山 全真 峨眉 武当 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊） 神龙教（男）|r\n")
@@ -175,15 +153,6 @@ function SelectHero takes nothing returns nothing
 			set fuyuan[i]=fuyuan[i]+8
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
-			//call RemoveUnit(K4[6])
-
-			// set wuxing[i]=(wuxing[i]+2)
-            // set gengu[i]=(gengu[i]+2)
-            // set danpo[i]=(danpo[i]+1)
-            // set fuyuan[i]=(fuyuan[i]+5)
-            // set udg_xinggeA[i]=GetRandomInt(3,5)
-            // set udg_xinggeB[i]=GetRandomInt(3,5)
-            // call RemoveUnit(K4[2])
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[3]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00莫言|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC古墓 丐帮 华山 血刀 恒山 峨眉 星宿 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊）  神龙教（女）|r\n")
@@ -195,15 +164,6 @@ function SelectHero takes nothing returns nothing
 			set fuyuan[i]=fuyuan[i]+2
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
-			//call RemoveUnit(K4[6])
-
-			// set wuxing[i]=(wuxing[i]+2)
-            // set danpo[i]=(danpo[i]+5)
-            // set jingmai[i]=(jingmai[i]+1)
-            // set yishu[i]=(yishu[i]+2)
-            // set udg_xinggeA[i]=GetRandomInt(3,5)
-            // set udg_xinggeB[i]=GetRandomInt(1,3)
-            // call RemoveUnit(K4[3])
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[4]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00浪云|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC少林 古墓 丐帮 华山 血刀 武当 星宿 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊）  神龙教（男）|r\n")
@@ -215,14 +175,6 @@ function SelectHero takes nothing returns nothing
 			set fuyuan[i]=fuyuan[i]+2
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
-			//call RemoveUnit(K4[6])
-
-			// set gengu[i]=(gengu[i]+3)
-            // set jingmai[i]=(jingmai[i]+5)
-            // set yishu[i]=(yishu[i]+2)
-            // set udg_xinggeA[i]=GetRandomInt(3,5)
-            // set udg_xinggeB[i]=GetRandomInt(3,5)
-            // call RemoveUnit(K4[4])
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[5]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00魔君|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC少林 华山 全真 血刀 峨眉 武当 星宿 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊）  神龙教（男）|r\n")
@@ -234,47 +186,29 @@ function SelectHero takes nothing returns nothing
 			set fuyuan[i]=fuyuan[i]+2
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
-			//call RemoveUnit(K4[6])
-
-			// set gengu[i]=(gengu[i]+5)
-            // set danpo[i]=(danpo[i]+2)
-            // set jingmai[i]=(jingmai[i]+3)
-            // set udg_xinggeA[i]=GetRandomInt(3,5)
-            // set udg_xinggeB[i]=GetRandomInt(3,5)
-            // call RemoveUnit(K4[5])
 	        call RemoveUnit(vipbanlv[i])
         elseif (u==K4[6]) then
-        	if udg_vip[i] <= 0 then
-	        	call DisplayTimedTextToPlayer(p,0,0,15.,"该角色为赞助游戏者特别制作，暂不对普通玩家开放")
-	        else
-	        	call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00兰馨|r\n请选择任意门派后开启江湖之旅|r\n")
-	        	set gengu[i]=(gengu[i]+3)
-            	set danpo[i]=(danpo[i]+3)
-            	set jingmai[i]=(jingmai[i]+3)
-            	set wuxing[i]=wuxing[i]+3
-            	set yishu[i]=yishu[i]+3
-            	set fuyuan[i]=fuyuan[i]+3
-            	set udg_xinggeA[i]=GetRandomInt(3,5)
-            	set udg_xinggeB[i]=GetRandomInt(3,5)
-            	//call RemoveUnit(K4[6])
-            	call RemoveUnit(vipbanlv[i])
-        	endif
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00兰馨|r\n请选择任意门派后开启江湖之旅|r\n")
+            set gengu[i]=(gengu[i]+3)
+            set danpo[i]=(danpo[i]+3)
+            set jingmai[i]=(jingmai[i]+3)
+            set wuxing[i]=wuxing[i]+3
+            set yishu[i]=yishu[i]+3
+            set fuyuan[i]=fuyuan[i]+3
+            set udg_xinggeA[i]=GetRandomInt(3,5)
+            set udg_xinggeB[i]=GetRandomInt(3,5)
+            call RemoveUnit(vipbanlv[i])
         elseif (u==K4[7]) then
-        	if udg_vip[i] <= 1 and udg_changevip[i] <= 0 then
-	        	call DisplayTimedTextToPlayer(p,0,0,15.,"该角色为赞助游戏者特别制作，暂不对普通玩家开放")
-	        else
-	        	call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00瑾轩|r\n请选择任意门派后开启江湖之旅|r\n")
-	        	set gengu[i]=(gengu[i]+3)
-            	set danpo[i]=(danpo[i]+3)
-            	set jingmai[i]=(jingmai[i]+3)
-            	set wuxing[i]=wuxing[i]+3
-            	set yishu[i]=yishu[i]+3
-            	set fuyuan[i]=fuyuan[i]+3
-            	set udg_xinggeA[i]=GetRandomInt(3,5)
-            	set udg_xinggeB[i]=GetRandomInt(3,5)
-            	//call RemoveUnit(K4[6])
-            	call RemoveUnit(vipbanlv[i])
-        	endif
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00瑾轩|r\n请选择任意门派后开启江湖之旅|r\n")
+            set gengu[i]=(gengu[i]+3)
+            set danpo[i]=(danpo[i]+3)
+            set jingmai[i]=(jingmai[i]+3)
+            set wuxing[i]=wuxing[i]+3
+            set yishu[i]=yishu[i]+3
+            set fuyuan[i]=fuyuan[i]+3
+            set udg_xinggeA[i]=GetRandomInt(3,5)
+            set udg_xinggeB[i]=GetRandomInt(3,5)
+            call RemoveUnit(vipbanlv[i])
         endif
         if u==K4[1] or u==K4[2] or u==K4[3] or u==K4[4] or u==K4[5] or (u==K4[6] and udg_vip[i] > 0)  or (u==K4[7] and (udg_changevip[i]>0 or udg_vip[i] == 2))  then
         	call SelectUnitRemoveForPlayer(u,p)
@@ -1591,7 +1525,7 @@ function Victory takes nothing returns nothing
 	// 获胜标识
 	set is_victory = true
 
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.10的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.11的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT,id*cx,-$5E9EB4B3,40.)
@@ -1606,7 +1540,7 @@ function Victory takes nothing returns nothing
 	call TimerStart(ky,.04,true,function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.10的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.11的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
@@ -1621,7 +1555,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
 	local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.10的游戏总评分："+(I2S(ae)+"分（战败）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.11的游戏总评分："+(I2S(ae)+"分（战败）")))
 	set i = 1
 	loop
 		exitwhen i >= 6
@@ -1901,10 +1835,7 @@ function LevelGuoGao takes nothing returns boolean
         endif
 		set i = i + 1
 	endloop
-	if   udg_teshushijian and I2R(totallevel)>udg_boshu*4*I2R(GetNumPlayer()) then
-		return true
-	endif
-	return false
+	return udg_teshushijian and I2R(totallevel)>udg_boshu*4*I2R(GetNumPlayer())
 endfunction
 
 
@@ -2671,7 +2602,7 @@ endfunction
 function nB takes nothing returns nothing
 	call SetUnitPosition(GetTriggerUnit(),9631,1139)
 	call PanCameraToTimedForPlayer(GetOwningPlayer(GetTriggerUnit()),9631,1139,0)
-	call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,"|cFFFFCC00进入桃花岛")
+	call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,"|cFFFFCC00进入Star桃花岛")
 	call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,"|cFFFFCC00”源思英年,巴巴西洛普,雪陆文出；源思英年,巴巴西洛普,雪陆文出！“")
 endfunction
 

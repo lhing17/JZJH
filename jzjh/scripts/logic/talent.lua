@@ -86,7 +86,7 @@ local function talent_effect()
     end)
 
     et.loop(120 * 1000, function()
-        for i = 1, et.player.countAlive() do
+        for i = 1, 5 do
             local p = et.player[i]
             -- 天降鸿福：每2分钟增加1点福缘
             if p.talent == 2 then

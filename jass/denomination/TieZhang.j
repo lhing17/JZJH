@@ -24,38 +24,37 @@ endfunction
 function TieSha_Action takes nothing returns nothing
     local integer i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
 	// 乾坤大挪移 +80%
-	local real shxishu = RMinBJ(1. + I2R(jingmai[i])/30., 15.) + DamageCoefficientByAbility(GetAttacker(),'A07W', 0.8)
-	// 双手+中毒/深度中毒
-	if (UnitHasBuffBJ(GetEnumUnit(), 'BEsh') or UnitHasBuffBJ(GetEnumUnit(), 'B01J')) then
+	local real shxishu = 1. + I2R(jingmai[i])/15. + DamageCoefficientByAbility(GetAttacker(),'A07W', 0.8)
+	if UnitHasBuffBJ(GetEnumUnit(), 'BEsh') then
+	    // 双手+中毒
 		set shxishu = shxishu + DamageCoefficientByAbility(GetAttacker(),'A07U', 1.5)
-	endif
-	// 九阴+深度中毒
-	if (UnitHasBuffBJ(GetEnumUnit(), 'B01J')) then
+	    // 九阴+中毒
 		set shxishu = shxishu + DamageCoefficientByAbility(GetAttacker(),'A07S', 2.0)
+	    // 九爪+中毒
+        set shxishu = shxishu + DamageCoefficientByAbility(GetAttacker(),'A07N', 1.5)
 	endif
-	// 一阳指或摧心掌=中毒
-	if ((GetUnitAbilityLevel(GetAttacker(), 'A06P')>=1 or GetUnitAbilityLevel(GetAttacker(), 'A0D3')>=1) and GetRandomInt(1, 100)<=30) then
-		if (UnitHasBuffBJ(GetEnumUnit(), 'BEsh')==false and UnitHasBuffBJ(GetEnumUnit(), 'B01J')==false) then
+	// 一阳指=破防
+	if GetUnitAbilityLevel(GetAttacker(), 'A06P')>=1 and GetRandomInt(1, 100)<=60 then
+    	call WanBuff(GetAttacker(), GetEnumUnit(), 9)
+    endif
+    //摧心掌=中毒
+	if GetUnitAbilityLevel(GetAttacker(), 'A0D3')>=1 and GetRandomInt(1, 100)<=60 then
+		if (UnitHasBuffBJ(GetEnumUnit(), 'BEsh')==false) then
 			call WanBuff(GetAttacker(), GetEnumUnit(), 13)
 		endif
 	endif
-	// 九爪 中毒->深度中毒
-	if (GetUnitAbilityLevel(GetAttacker(), 'A07N')>=1 and UnitHasBuffBJ(GetEnumUnit(), 'BEsh') and GetRandomInt(1, 100)<=30) then
-		if (UnitHasBuffBJ(GetEnumUnit(), 'B01J')==false) then
-			call WanBuff(GetAttacker(), GetEnumUnit(), 14)
-		endif
-	endif
+
 
 	// 专属
 	if UnitHaveItem(GetAttacker(), 'I0EJ') then
-	    set shxishu = shxishu * 2
+	    set shxishu = shxishu * 4
     endif
 	call PassiveWuGongEffectAndDamage(GetAttacker(), GetEnumUnit(), "Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", 14, 18, shxishu, 'A06Y')
 endfunction
 
 function TieShaZhang takes nothing returns nothing
     local integer i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
-	call PassiveWuGongAction(GetAttacker(), GetTriggerUnit(), 18, RMinBJ(600 + danpo[i] * 10, 3000), Condition(function TieSha_Condition), function TieSha_Action, 'A06Y', 900.)
+	call PassiveWuGongAction(GetAttacker(), GetTriggerUnit(), 18 + fuyuan[i] * 0.2, RMinBJ(600 + danpo[i] * 10, 5000), Condition(function TieSha_Condition), function TieSha_Action, 'A06Y', 900.)
 endfunction
 
 /*
@@ -94,7 +93,7 @@ function DuSheMove takes nothing returns nothing
 
 	// 专属
 	if UnitHaveItem(u, 'I0EJ') then
-	    set shxishu = shxishu * 2
+	    set shxishu = shxishu * 4
     endif
 	if (counter>=maxCount) then
 		call FlushChildHashtable(YDHT, GetHandleId(t))
@@ -208,7 +207,7 @@ function TongBeiQuan takes nothing returns nothing
 	endif
 	// 专属
 	if UnitHaveItem(u, 'I0EJ') then
-	    set shxishu = shxishu * 2
+	    set shxishu = shxishu * 4
     endif
 	if (GetRandomInt(1, 100)<=fuyuan[i]/5+15) then
 		//+蛤蟆功 A084 召唤一个会通背拳的铁掌帮长老协助战斗 此处概率有待平衡 TODO
@@ -244,9 +243,11 @@ endfunction
 
 function GuiYuanTuNa takes nothing returns nothing
     local unit u = GetAttacker()
-	if GetRandomInt(0, 100) <= 15 then
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
+	if GetRandomInt(0, 100) <= 15 + fuyuan[i] / 5 then
 		call WuGongShengChong(u,'A0DP',800)
 	endif
+	set u = null
 
 endfunction
 

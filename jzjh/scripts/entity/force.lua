@@ -20,7 +20,7 @@ end
 
 
 function force.victory()
-    for i = 1, et.player.countAlive() do
+    for i = 1, 16 do
         if not jass.IsNoVictoryCheat() then
             local p = et.player(i)
             jass.RemovePlayer(p.handle, jass.PLAYER_GAME_RESULT_VICTORY)
@@ -34,7 +34,7 @@ function force.victory()
 end
 
 function force.fail()
-    for i = 1, et.player.countAlive() do
+    for i = 1, 16 do
         CustomDefeatBJ(et.player[i].handle, "你输了~请重新来过!")
     end
 end
