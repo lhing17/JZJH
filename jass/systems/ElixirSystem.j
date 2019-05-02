@@ -754,6 +754,11 @@ function QiuJiao takes player p, integer num returns nothing
 	set L7[i]=1
 	loop
 	exitwhen L7[i]>wugongshu[i]
+	if I7[te[i]*20+num] == 'A0DP' then
+	    call unitadditembyidswapped(1227896625,P4[i])
+    	call DisplayTextToPlayer(p,0,0,"|CFFFF0033这个武功太高深了，看起来学不会的样子")
+    	return
+	endif
 	if (I7[(i-1)*20+L7[i]]!='AEfk') then
 		if (L7[i]==wugongshu[i])then
 			call unitadditembyidswapped(1227896625,P4[i])
