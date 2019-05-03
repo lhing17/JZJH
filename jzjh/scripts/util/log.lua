@@ -1,6 +1,10 @@
 
 log = require 'jass.log'
+
 local log = log
+
+local runtime = require 'jass.runtime'
+local debug = debug
 
 local function split(str, p)
 	local rt = {}
@@ -29,4 +33,15 @@ function log.error(...)
 	log_error(trc)
 	std_print(...)
 	std_print(trc)
+end
+
+local error_handle = runtime.error_handle
+runtime.error_handle = function(msg)
+	error_handle(msg)
+	log_error("---------------------------------------")
+	log_error("              LUA ERROR!!              ")
+	log_error("---------------------------------------")
+	log_error(tostring(msg) .. "\n")
+	log_error(debug.traceback())
+	log_error("---------------------------------------")
 end

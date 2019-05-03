@@ -91,6 +91,14 @@ function mt:get_base_name()
     return self.base_name
 end
 
+function mt:enable_ability(id)
+    jass.SetPlayerAbilityAvailable(self.handle, base.string2id(id), true)
+end
+
+function mt:disable_ability(id)
+    jass.SetPlayerAbilityAvailable(self.handle, base.string2id(id), false)
+end
+
 -- 设置玩家名字
 function mt:set_name(name)
     jass.SetPlayerName(self.handle, name)

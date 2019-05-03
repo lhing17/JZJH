@@ -6,7 +6,8 @@
             "type": "lua",
             "request": "attach",
             "stopOnEntry": false,
-            "debugServer" : 4278
+            "ip": "127.0.0.1",
+            "port": 4278,
         },
         {
             "name": "test-lni-loader",

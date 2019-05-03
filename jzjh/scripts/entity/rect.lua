@@ -36,6 +36,16 @@ function mt:get_max_y()
     return self.max_y
 end
 
+function mt:get()
+    return self.min_x, self.min_y, self.max_x, self.max_y
+end
+
+--- @param name string 事件名称
+--- @return function
+function mt:event(name)
+    return et.event_register(self, name)
+end
+
 --- 事件通知
 function mt:event_notify(name, ...)
     et.event_notify(self, name, ...)
@@ -79,8 +89,7 @@ function rect.j_rect(j_rect)
         rect[j_rect].handle = j_rect
         local j_trg = base.CreateTrigger(function()
             local u = et.unit(jass.GetEnteringUnit())
-            local r = rect[j_rect]
-            rect[j_rect]:event_notify('单位-进入区域', u, r)
+            rect[j_rect]:event_notify('单位-进入区域', u)
         end)
         local j_region = jass.CreateRegion()
         jass.RegionAddRect(j_region, j_rect)

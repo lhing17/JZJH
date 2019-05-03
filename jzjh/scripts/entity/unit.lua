@@ -231,20 +231,8 @@ function mt:kill(killer)
         self:event_notify('单位-死亡', killer, self)
     end
 
-    --打断施法
-    self:cast_stop()
     --删除Buff
-    if self.buffs then
-        local buffs = {}
-        for bff in pairs(self.buffs) do
-            if not bff.keep then
-                buffs[#buffs + 1] = bff
-            end
-        end
-        for i = 1, #buffs do
-            buffs[i]:remove()
-        end
-    end
+
     if self:is_illusion() then
         self:remove()
     elseif not self:is_hero() then
@@ -262,39 +250,6 @@ function mt:remove()
 
     self._last_point = et.point(jass.GetUnitX(self.handle), jass.GetUnitY(self.handle))
     self:event_notify('单位-移除', self)
-
-    --    self:removeAllEffects()
-
-    --移除单位的所有Buff
-    if self.buffs then
-        local buffs = {}
-        for bff in pairs(self.buffs) do
-            buffs[#buffs + 1] = bff
-        end
-        for i = 1, #buffs do
-            buffs[i]:remove()
-        end
-    end
-
-    ----移除单位的所有技能
-    --for skill in self:each_skill() do
-    --    skill:remove()
-    --end
-
-    --移除单位身上的物品
-    --for i = 1, 6 do
-    --    local it = self:find_skill(i, '物品')
-    --    if it then
-    --        it:remove()
-    --    end
-    --end
-
-    --移除单位身上的计时器
-    if self._timers then
-        for i, t in ipairs(self._timers) do
-            t:remove()
-        end
-    end
 
     ignore_flag = true
     jass.RemoveUnit(self.handle)
@@ -356,10 +311,6 @@ function mt:getY()
     return jass.GetUnitY(self.handle)
 end
 
-function mt:has_restriction(restriction)
-    return false
-end
-
 function mt:in_rect(rect)
     local x, y = self:get_point():get()
     return x > rect:get_min_x() and x < rect:get_max_x() and y > rect:get_min_y() and y < rect:get_max_y()
@@ -386,7 +337,7 @@ function mt:set_position(where, path, super)
         return false
     end
     local x, y = where:get_point():get()
-    local x1, y1, x2, y2 = rect.map:get()
+    local x1, y1, x2, y2 = GLOBALS.MAP_AREA:get()
     if x < x1 then
         x = x1
     elseif x > x2 then
@@ -1477,6 +1428,7 @@ function unit.init()
     unit.all_units = {}
     unit.removed_units = setmetatable({}, { __mode = 'kv' })
 
+    -- unit.saveDefaultUnits()
     --注册单位的jass事件
     unit.register_jass_triggers()
 
@@ -1536,25 +1488,7 @@ end
 function unit.register_jass_triggers()
 
     ---- 单位被攻击事件
-    --local j_trg = base.CreateTrigger(function()
-    --    local source = unit.j_unit(jass.GetAttacker())
-    --    local target = unit.j_unit(jass.GetTriggerUnit())
-    --    local dmg = source:get '攻击'
-    --    source.last_attack_damage = {
-    --        source = source,
-    --        target = target,
-    --        attack = true,
-    --        common_attack = true,
-    --        damage = dmg,
-    --        skill = false,
-    --    }
-    --    setmetatable(source.last_attack_damage, damage)
-    --    source.last_attack_damage:on_attribute_attack()
-    --    source:event_notify('单位-攻击开始', source.last_attack_damage)
-    --end)
-    --for i = 1, 16 do
-    --    jass.TriggerRegisterPlayerUnitEvent(j_trg, player[i].handle, jass.EVENT_PLAYER_UNIT_ATTACKED, nil)
-    --end
+
 
     local j_trg = base.CreateTrigger(function()
         local source = unit(jass.GetAttacker())

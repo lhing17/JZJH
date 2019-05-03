@@ -4,6 +4,14 @@
 --- DateTime: 2019/4/22 16:27
 ---
 
+local g = require 'jass.globals'
+local rect = require 'entity.rect'
+
 CONFIG = {
     USE_NEW_UI = false,
+}
+
+GLOBALS = {
+    MAP_AREA = rect.j_rect(g.bj_mapInitialPlayableArea)
+
 }

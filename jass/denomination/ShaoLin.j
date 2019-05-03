@@ -40,14 +40,15 @@ function WeiTuoGun takes nothing returns nothing
 	local location loc1=GetUnitLoc(u)
 	local location loc2=GetUnitLoc(uc)
 	local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+	local real range = RMinBJ(300.+ I2R(jingmai[(1+GetPlayerId(GetOwningPlayer(u)))])*8., 3000)
 	if((UnitHasBuffBJ(u,'Bblo'))) then
-	    call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(300.+(I2R(jingmai[(1+GetPlayerId(GetOwningPlayer(u)))])*8.),loc1,Condition(function WeiTuo_Condition)),function WeiTuo_Action)
+	    call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(range, loc1,Condition(function WeiTuo_Condition)),function WeiTuo_Action)
 	    if((GetUnitAbilityLevel(u,'A0DN')!=0))then
 	        call SetWidgetLife(u,(GetUnitState(u,UNIT_STATE_LIFE)+(.02*GetUnitState(u,UNIT_STATE_MAX_LIFE))))
 	    endif
 	else
 	    if (GetRandomReal(.0,100.) <= 22. + fuyuan[i]/3 )then
-	        call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(300.+(I2R(jingmai[(1+GetPlayerId(GetOwningPlayer(u)))])*8.),loc1,Condition(function WeiTuo_Condition)),function WeiTuo_Action)
+	        call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(range,loc1,Condition(function WeiTuo_Condition)),function WeiTuo_Action)
 	        if((GetUnitAbilityLevel(u,'A0DN')!=0))then
 	            call SetWidgetLife(u,(GetUnitState(u,UNIT_STATE_LIFE)+(.02*GetUnitState(u,UNIT_STATE_MAX_LIFE))))
 	        endif

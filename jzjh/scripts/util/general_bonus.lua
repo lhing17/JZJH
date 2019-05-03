@@ -43,7 +43,7 @@ function unit:clear_bonus(type)
 end
 
 function unit:set_max_state(type, value)
-    if not is_in(type, { 'mana', 'life' }) then
+    if not base.is_include(type, { 'mana', 'life' }) then
         return false
     end
     if value > MAX_BONUS[type] or value <= 0 then
@@ -70,11 +70,11 @@ function unit:set_bonus(type, value)
         self:clear_bonus(type)
         return false
     end
-    print(type, value)
+    -- log.debug(type, value)
     if value > MAX_BONUS[type] or value <= 0 then
         return false
     end
-    if not is_in(type, table.keys(bonus_abilities)) then
+    if not base.is_include(type, table.keys(bonus_abilities)) then
         return false
     end
     self.bonus = self.bonus or {}
@@ -87,10 +87,10 @@ function unit:set_bonus(type, value)
     end
     for i = #bonus_abilities[type] - 2, 0, -1 do
         if value >= 2 ^ i then
-            self:add_ability(bonus_abilities[i + 1])
+            self:add_ability(bonus_abilities[type][i + 1])
             value = value - 2 ^ i
         else
-            self:remove_ability(bonus_abilities[i + 1])
+            self:remove_ability(bonus_abilities[type][i + 1])
         end
     end
     return true

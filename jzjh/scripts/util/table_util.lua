@@ -34,3 +34,15 @@ function base.getRandomKey(tab)
     end
     return base.getRandomValueInList(temp)
 end
+
+--- 获取哈希表中所有的键
+--- @generic K, V 表的键和值
+--- @param tab table<K, V>
+--- @return table<number, K>
+function table.keys(tab)
+    local keys = {}
+    for k, _ in pairs(tab) do
+        table.insert(keys, k)
+    end
+    return keys
+end

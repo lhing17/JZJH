@@ -999,7 +999,7 @@ function ChooseNanDu_Auto takes nothing returns nothing
 		call SetPlayerTechResearched(Player(12),'R001',50)
 		call SetPlayerTechResearched(Player(6),'R001',50)
 		call SetPlayerTechResearched(Player(15),'R001',50)
-		call setDifficultyAndExpRate(7) 
+		call setDifficultyAndExpRate(6)
 		if udg_boshu < 5 then
 			set get_zdl = 7
 		else
@@ -1034,7 +1034,7 @@ function ChooseNanDu takes nothing returns nothing
         if udg_nandu<=5 then
 			set udg_nan5=DialogAddButtonBJ(udg_nan,"|cFFFF0000独孤求败")
         endif
-		if udg_nandu <= 7 then
+		if udg_nandu <= 6 then
 			set udg_nan7=DialogAddButtonBJ(udg_nan,"|cFF999900决战江湖")
         endif
 		call DialogDisplayBJ(true,udg_nan,Player(0))
@@ -1123,7 +1123,7 @@ function ChooseNanDu_Action takes nothing returns nothing
         call SetPlayerTechResearched(Player(12),'R001',50)
         call SetPlayerTechResearched(Player(6),'R001',50)
         call SetPlayerTechResearched(Player(15),'R001',50)
-		call setDifficultyAndExpRate(7) 
+		call setDifficultyAndExpRate(6)
 		if udg_boshu < 5 then
 			set get_zdl = 7
 		else
@@ -4733,12 +4733,12 @@ function ChouXie_Condition takes nothing returns boolean
 endfunction
 function ChouXie_Action takes nothing returns nothing
 	// 难6
-	if udg_nandu == 6 then
+	if udg_nandu == 5 then
 		if GetRandomInt(1, 100)<=20 then
 			call SetUnitLifePercentBJ(GetTriggerUnit(), GetUnitLifePercent(GetTriggerUnit())-6.)
 		endif
 	// 难7
-	elseif udg_nandu == 7 then
+	elseif udg_nandu == 6 then
 		if GetRandomInt(1, 100)<=60 then
 			call SetUnitLifePercentBJ(GetTriggerUnit(), GetUnitLifePercent(GetTriggerUnit())-6.)
 		endif
