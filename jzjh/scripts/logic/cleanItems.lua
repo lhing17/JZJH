@@ -9,7 +9,7 @@ local g = require 'jass.globals'
 --- @param p player
 --- @param s string
 et.game:event '玩家-聊天' (function (self, p, s)
-    if s == '-clean' then
+    if s == '-clean' or s == '-clear' then
         if not p.readyToClear then
             p:send_message("|cffff0000请确保地图上没有有用的物品，然后再次输入-clean")
             p.readyToClear = true

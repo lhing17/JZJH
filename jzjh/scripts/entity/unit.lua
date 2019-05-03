@@ -730,8 +730,8 @@ function mt:makePermanent(ability_id)
     if not ability_id then
         return
     end
-    local ability_id = base.string2id(ability_id)
-    jass.UnitMakeAbilityPermanent(self.handle, true, ability_id)
+    local id = base.string2id(ability_id)
+    jass.UnitMakeAbilityPermanent(self.handle, true, id)
 end
 
 local id2order = setmetatable({}, { __index = function(self, k)

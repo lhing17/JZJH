@@ -1357,7 +1357,7 @@ function Zw takes nothing returns nothing
 	// call CreateTextTagLocBJ("新手教官",Location(420,-597),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("地图等级福利",Location(-1500,-113),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("积分商店",Location(-1500,-1344),120.0,15.,100.,100.,.0,50.)
-	call CreateTextTagLocBJ("决战江湖1.6.12名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
+	call CreateTextTagLocBJ("决战江湖1.6.13名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
 	set v7[1]=GetRectCenter(Ie)
 	set v7[2]=GetRectCenter(le)
 	set v7[3]=GetRectCenter(Je)
@@ -1400,7 +1400,7 @@ function Zw takes nothing returns nothing
 	call CreateTimerDialogBJ(bj_lastStartedTimer,"邪教进攻倒计时：")
 	call TimerDialogDisplay(bj_lastCreatedTimerDialog,true)
 	set z7[3]=bj_lastCreatedTimerDialog
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.12|r")
+	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.13|r")
 	// 获取服务器全局存档，信息提示
 	set info = DzAPI_Map_GetMapConfig("info")
 	if info != "无" then
@@ -1951,6 +1951,7 @@ function main1 takes nothing returns nothing
 		set i=i+1
 	endloop
 	set cu=0
+	// FIXME
 	loop
 	exitwhen cu==16
 	set bj_FORCE_PLAYER[cu]=CreateForce()
@@ -1963,6 +1964,7 @@ function main1 takes nothing returns nothing
 	set bj_cineModePriorFogSetting=IsFogEnabled()
 	set bj_cineModePriorMaskSetting=IsFogMaskEnabled()
 	set cu=0
+	// FIXME
 	loop
 	exitwhen cu>=bj_MAX_QUEUED_TRIGGERS
 	set bj_queuedExecTriggers[cu]=null

@@ -94,6 +94,7 @@ function jl takes nothing returns nothing
 	elseif (GetUnitTypeId(GetTriggerUnit())=='otau') then
 		call BaoWuDiaoLuo(GetKillingUnit(), GetTriggerUnit() , 100, 'I02Z', 'I03D', 0, 0, 0, 0)
 		if GetRandomReal(1, 100)<=3. or (GetRandomReal(1, 100)<=6. and Ce[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==8) then
+		    // FIXME leak
 			call createitemloc('I0C5',GetUnitLoc(GetKillingUnit()))
 		endif
 	elseif (GetUnitTypeId(GetTriggerUnit())=='odkt') then
@@ -102,6 +103,7 @@ function jl takes nothing returns nothing
 	elseif (GetUnitTypeId(GetTriggerUnit())=='uaco') then
 		call BaoWuDiaoLuo(GetKillingUnit(), GetTriggerUnit() , 100, 'I02L', 'I02N', 'I02K', 0, 0, 0)
 		if GetRandomReal(1, 100)<=50. or Ce[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==8 then
+		    // FIXME leak
 			call createitemloc('I0CB',GetUnitLoc(GetKillingUnit()))
 		endif
 	endif
@@ -1666,6 +1668,7 @@ endfunction
 //-------各种副本开始-------//
 //韦小宝赌博
 function NL takes nothing returns boolean
+    // FIXME leak
 	return((GetUnitTypeId(GetTriggerUnit())==1865429068)and(DistanceBetweenPoints(GetUnitLoc(GetTriggerUnit()),GetUnitLoc(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))]))<=250.))
 endfunction
 function OL takes nothing returns nothing
@@ -1706,6 +1709,7 @@ function RL takes nothing returns nothing
 		call SetPlayerStateBJ(p,PLAYER_STATE_RESOURCE_GOLD,0)
 		call DisplayTextToPlayer(p,0,0,"赌输了！！")
 		if GetRandomInt(1, 100)<=50 or Ce[i]==8 then
+		// FIXME leak
 			call createitemloc('I0C2',GetUnitLoc(udg_hero[i]))
 		endif
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFF66FF00有玩家和韦小宝输得一踏糊涂，大家祈祷吧")
@@ -1742,6 +1746,7 @@ function UL takes nothing returns nothing
 		call SetPlayerStateBJ(p,PLAYER_STATE_RESOURCE_GOLD,(GetPlayerState(p,PLAYER_STATE_RESOURCE_GOLD)*3/4))
 		call DisplayTextToPlayer(p,0,0,"赌输了！！")
 		if GetRandomInt(1, 100)<=50 or Ce[i]==8 then
+		// FIXME leak
 			call createitemloc('I0C2',GetUnitLoc(udg_hero[i]))
 		endif
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFF66FF00有玩家和韦小宝输得一踏糊涂，大家祈祷吧")
@@ -1778,6 +1783,7 @@ function XL takes nothing returns nothing
 		call SetPlayerStateBJ(p,PLAYER_STATE_RESOURCE_GOLD,(GetPlayerState(p,PLAYER_STATE_RESOURCE_GOLD)/2))
 		call DisplayTextToPlayer(p,0,0,"赌输了！！")
 		if GetRandomInt(1, 100)<=50 or Ce[i]==8 then
+		// FIXME leak
 			call createitemloc('I0C2',GetUnitLoc(udg_hero[i]))
 		endif
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFF66FF00有玩家和韦小宝输得一踏糊涂，大家祈祷吧")

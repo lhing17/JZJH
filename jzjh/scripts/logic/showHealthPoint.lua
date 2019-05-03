@@ -17,6 +17,9 @@ et.game:event '单位-被选中'(function(self, u, p)
     if u:get_max_life() > 999999 and p.showHint then
         p:send_message(('单位%s|r的血量为%s / %s'):format(u:get_name(), u:get_life(), u:get_max_life()))
     end
+    if u.shield_percent and p.showHint then
+        p:send_message(('单位%s|r的护盾百分比为%s%%'):format(u:get_name(), u.shield_percent))
+    end
 end)
 
 et.game:event '玩家-聊天' (function(self, p, s)
