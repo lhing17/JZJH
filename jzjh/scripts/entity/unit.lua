@@ -1546,7 +1546,7 @@ function unit.register_jass_triggers()
 
     j_trg = base.CreateTrigger(function()
         local u = unit(jass.GetTriggerUnit())
-        local id = jass.GetSpellAbilityId()
+        local id = base.id2string(jass.GetSpellAbilityId())
         local target = et.unit(jass.GetSpellTargetUnit()) or et.item:get(jass.GetSpellTargetItem()) or et.point(jass.GetSpellTargetX(), jass.GetSpellTargetY())
         u:event_notify('单位-技能生效', u, id, target)
     end)

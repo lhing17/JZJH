@@ -20,6 +20,8 @@ mt.max_x = 0
 mt.min_y = 0
 mt.max_y = 0
 
+mt.handle = 0
+
 function mt:get_min_x()
     return self.min_x
 end

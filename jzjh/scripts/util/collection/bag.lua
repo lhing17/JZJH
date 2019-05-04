@@ -7,12 +7,20 @@
 --- @class bag
 local bag = {}
 
-function bag:new()
+--- @generic V
+--- @param list table<number, V>
+function bag:new(list)
     local b = {}
+    if list then
+        for _, v in ipairs(list) do
+            b[v] = (b[v] or 0) + 1
+        end
+    end
     setmetatable(b, self)
     self.__index = self
     return b
 end
+
 
 function bag:insert(element)
     self[element] = (self[element] or 0) + 1
@@ -34,6 +42,25 @@ end
 --- @param count number
 function bag:set_count(element, count)
     self[element] = count > 0 and count or nil
+end
+
+--- 判断一个背包是否包含另一个背包
+--- @param childBag bag
+function bag:containsAll(childBag)
+    for k, _ in pairs(childBag) do
+        if self:count(k) < childBag:count(k) then
+            return false
+        end
+    end
+    return true
+end
+
+--- 将一个子背包里所有的元素从另一个背包里移除
+--- @param childBag bag
+function bag:removesAll(childBag)
+    for k, v in pairs(childBag) do
+        self:set_count(k, self:count(k) - v)
+    end
 end
 
 return bag

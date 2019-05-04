@@ -15,7 +15,7 @@ et.item = item
 item.handle = 0
 
 -- item的id
---- @type number
+--- @type string
 item.id = 0
 
 item.x = 0
@@ -40,7 +40,7 @@ item.special = nil
 --- @type table 存储一些自定义数据
 item.data = nil
 
---- @param item_id number 物品id
+--- @param item_id number|string 物品id
 --- @param x number 创建位置x
 --- @param y number 创建位置y
 --- @return item
@@ -48,6 +48,9 @@ function item:new(item_id, x, y)
     log.debug('创建物品' .. item_id .. ('位置为(%s, %s)'):format(x, y))
     local it = setmetatable({}, self)
     self.__index = self
+    if type(item_id) == 'string' then
+        item_id = base.string2id(item_id)
+    end
     it.handle = jass.CreateItem(item_id, x, y)
     it.x = x or 0
     it.y = y or 0
@@ -57,6 +60,12 @@ function item:new(item_id, x, y)
     --it:set_type()
     self[it.handle] = it
     return it
+end
+
+--- 移除物品
+function item:remove()
+    item[self.handle] = nil
+    jass.RemoveItem(self.handle)
 end
 
 --- @return string 物品四圣的特殊属性
@@ -82,7 +91,7 @@ function item:get(j_item)
     local it = setmetatable({}, self)
     self.__index = self
     it.handle = j_item
-    it.id = jass.GetItemTypeId(j_item)
+    it.id = base.id2string(jass.GetItemTypeId(j_item))
     it.bonus_table = it.bonus_table or {}
     it.data = it.data or {}
     --it:set_type()
@@ -90,14 +99,14 @@ function item:get(j_item)
     return it
 end
 
---- @return number 物品类型ID
+--- @return string 物品类型ID
 function item:get_id()
     return self.id
 end
 
 --- @return string 物品名称
 function item:get_name()
-    return jass.GetObjectName(self.id)
+    return jass.GetObjectName(base.string2id(self.id))
 end
 
 --- 设置物品的种类
