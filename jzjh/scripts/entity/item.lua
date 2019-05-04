@@ -54,7 +54,7 @@ function item:new(item_id, x, y)
     it.handle = jass.CreateItem(item_id, x, y)
     it.x = x or 0
     it.y = y or 0
-    it.id = item_id
+    it.id = base.id2string(item_id)
     it.bonus_table = {}
     it.data = {}
     --it:set_type()

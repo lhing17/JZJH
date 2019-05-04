@@ -15,7 +15,12 @@ end
 for k, v in pairs(log) do
 	print(k, v)
 end
-log.level = 'debug'
+
+if base.release then
+	log.level = 'info'
+else
+	log.level = 'debug'
+end
 --log.path = 'F:\\jzjh\\logs\\' .. split(log.path, '\\')[2]
 print(log.path)
 log.debug '日志系统装载完毕,向着星辰大海出击!'

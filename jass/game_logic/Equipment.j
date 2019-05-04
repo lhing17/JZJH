@@ -897,26 +897,37 @@ function YangWuJianXiaoGuo takes nothing returns nothing
 endfunction
 //穿武器或衣服
 function Mz takes nothing returns boolean
-	return(((GetItemType(GetManipulatedItem())==ITEM_TYPE_ARTIFACT)or(GetItemType(GetManipulatedItem())==ITEM_TYPE_PURCHASABLE))and(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO)))
+	return(( (GetItemType(GetManipulatedItem())==ITEM_TYPE_ARTIFACT) or GetItemTypeId(GetManipulatedItem()) == 'I0DB' or  GetItemTypeId(GetManipulatedItem()) == 'I0DJ' or GetItemTypeId(GetManipulatedItem()) == 'I0DL' or(GetItemType(GetManipulatedItem())==ITEM_TYPE_PURCHASABLE))and(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO)))
 endfunction
 function ItemChongFu takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1+GetPlayerId(p)
+	local integer newbee_counter = 0
 	set E8=1
 	set udg_wuqishu[i]=0
 	set udg_yifushu[i]=0
 	loop
 		exitwhen E8>6
-		if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_ARTIFACT) then
-			set udg_wuqishu[i]=udg_wuqishu[i]+1
-		endif
-		if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_PURCHASABLE) then
-			set udg_yifushu[i]=udg_yifushu[i]+1
-		endif
-		if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and Ce[i]!=7 and LoadBoolean(YDHT,GetHandleId(u),StringHash("君子剑岳不群")) == false) then
-			call UnitRemoveItemSwapped(UnitItemInSlotBJ(u,E8),u)
-			call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000非丫鬟角色最多只能携带一件武器和衣服")
+		if (GetItemTypeId(UnitItemInSlotBJ(u,E8)) == 'I0DB' or GetItemTypeId(UnitItemInSlotBJ(u,E8)) == 'I0DJ' or GetItemTypeId(UnitItemInSlotBJ(u,E8)) == 'I0DL') then
+		    set newbee_counter = newbee_counter + 1
+		    if newbee_counter >= 2 then
+                call UnitRemoveItem(u, GetManipulatedItem())
+                call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000最多只能携带一件新手神器")
+                exitwhen true
+            endif
+        else
+            if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_ARTIFACT) then
+                set udg_wuqishu[i]=udg_wuqishu[i]+1
+            endif
+            if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_PURCHASABLE) then
+                set udg_yifushu[i]=udg_yifushu[i]+1
+            endif
+
+            if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and Ce[i]!=7 and LoadBoolean(YDHT,GetHandleId(u),StringHash("君子剑岳不群")) == false) then
+                call UnitRemoveItemSwapped(UnitItemInSlotBJ(u,E8),u)
+                call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000非丫鬟角色最多只能携带一件武器和衣服")
+            endif
 		endif
 		set E8=E8+1
 	endloop
