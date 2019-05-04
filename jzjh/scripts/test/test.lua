@@ -15,3 +15,11 @@ local t = {
 for i, v in ipairs(t) do
     print(base.id2string(v))
 end
+
+local s = {
+    'o00A'
+}
+
+for i, v in ipairs(s) do
+    print(base.string2id(v))
+end

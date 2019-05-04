@@ -847,7 +847,7 @@ function ChooseMoShi takes nothing returns nothing
     if(Trig_____________u_Func002C())then
         call DialogClear(udg_index)
         call DialogSetMessage(udg_index,"请选择游戏模式，20秒时间")
-        set udg_index0=DialogAddButtonBJ(udg_index,"|cFF00CC00普通模式")
+        set udg_index0=DialogAddButtonBJ(udg_index,"|cFF00CC00普通模式（无积分）")
         set udg_index1=DialogAddButtonBJ(udg_index,"|cFFCC0066特殊事件模式（推荐）")
         set udg_index2=DialogAddButtonBJ(udg_index,"|cFFFF6600生存模式")
         set udg_index3 = DialogAddButtonBJ(udg_index,"|cFF6600FF挑战模式（3倍积分）")
@@ -920,7 +920,7 @@ endfunction
 
 function ChooseMoShi_Action takes nothing returns nothing
     if GetClickedButton()==udg_index0 then
-        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了普通模式")
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了普通模式（无积分）")
         set udg_teshushijian=false
         set udg_shengchun=false
     endif
