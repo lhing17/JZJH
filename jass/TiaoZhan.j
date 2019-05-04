@@ -18,12 +18,7 @@
 
 	endglobals
 	function IsTiaoZhan takes nothing returns boolean
-		local player p=GetOwningPlayer(GetTriggerUnit())
-		local integer i=1+GetPlayerId(p)
-		if GetItemTypeId(GetManipulatedItem())=='I09O' and (IsUnitType(GetTriggerUnit(),UNIT_TYPE_HERO)) then
-			return true
-		endif
-        return	false
+		return GetItemTypeId(GetManipulatedItem())=='I09O' and (IsUnitType(GetTriggerUnit(),UNIT_TYPE_HERO))
 	endfunction
     function TiaoZhan takes nothing returns nothing
         local unit u=GetTriggerUnit()

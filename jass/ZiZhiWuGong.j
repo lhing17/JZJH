@@ -155,6 +155,8 @@ function ZiZhi takes nothing returns nothing
     call GroupClear(g)
     call DestroyGroup(g)
     set g=null
+    set u = null
+    set p = null
 endfunction
 function IsAllocateWuXueDian takes nothing returns boolean
 	return (UnitTypeNotNull(GetTriggerUnit(), UNIT_TYPE_HERO) and (GetItemTypeId(GetManipulatedItem())=='I0BN' or GetItemTypeId(GetManipulatedItem())=='I0BI' or GetItemTypeId(GetManipulatedItem())=='I0BJ' or GetItemTypeId(GetManipulatedItem())=='I0BK' or GetItemTypeId(GetManipulatedItem())=='I0BL'))

@@ -852,6 +852,8 @@ function InitEnvironment takes nothing returns nothing
 	call createitem(1227897138,-1772.9,-1919.8)
 	call createitem(1227897138,-1894.2,-1812.9)
 	call createitem(1227897138,-1799.6,-1810.2)
+	set we = null
+	set d = null
 endfunction
 function MapStartCreateUnitsAndInitEnvironments takes nothing returns nothing
 	call CreateUnitsForPlayer_5()

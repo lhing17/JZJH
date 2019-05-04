@@ -62,8 +62,10 @@ function WanHuaMaJia takes nothing returns nothing
     endif
     set shanghai=ShangHaiGongShi(u,uc,2.,2.,shxishu,'A021')
     call WuGongShangHai(u,uc,shanghai)
+    call RemoveLocation(loc2)
     set u=null
     set uc=null
+    set loc2 = null
 endfunction
 //拂尘功 8级技
 function IsFuChen takes nothing returns boolean

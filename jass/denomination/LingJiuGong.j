@@ -98,6 +98,10 @@ function XinZheMeiShou_Action takes nothing returns nothing
 		call WanBuff(u, uc, 11)
 	endif
 	call RemoveLocation(loc)
+	set t = null
+	set u = null
+	set uc = null
+	set loc = null
 endfunction
 
 //月影舞步
@@ -185,6 +189,9 @@ function YueYingBu takes nothing returns nothing
 			call UnitRemoveAbility(u, 'A02D')
 		endif
 	endif
+	set u = null
+	set loc = null
+	set loc2 = null
 endfunction
 function IsYueYingBeiDong takes nothing returns boolean
 	return GetUnitAbilityLevel(GetAttacker(),'A02C')>=1 and  GetUnitAbilityLevel(GetAttacker(),'A02H')>=1 and GetRandomInt(1,100)<=15 and GetUnitAbilityLevel(GetAttacker(),'A02E')==0
@@ -463,6 +470,7 @@ function xuZhuBeiMing takes nothing returns nothing
 		set beiMingShaGuai[i]=beiMingShaGuai[i]-100
 		call ModifyHeroStat(1,GetKillingUnit(),0,20)
 	endif
+	set u = null
 endfunction
 function LingJiuGong_Trigger takes nothing returns nothing
 	local trigger t=CreateTrigger()

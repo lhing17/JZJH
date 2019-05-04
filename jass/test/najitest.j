@@ -380,6 +380,7 @@ function TestA79_naji takes nothing returns nothing
     call DestroyGroup(g_naji)
     set g_naji=null
     set u_naji=null
+    set it_naji = null
 endfunction
 function TestA78_naji takes nothing returns nothing
     local group g_naji=CreateGroup()
@@ -502,6 +503,7 @@ function TestA76_naji takes nothing returns nothing
     endif
     call RemoveLocation(p_naji)
     set p_naji=null
+    set u_naji = null
 endfunction
 function TestA75_naji takes nothing returns nothing
     call RestartGame(true)
@@ -656,6 +658,7 @@ function TestA67_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA66_naji takes nothing returns nothing
     local integer i_naji
@@ -768,6 +771,7 @@ function TestA60_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA59_naji takes nothing returns nothing
     local group g_naji=CreateGroup()
@@ -786,6 +790,7 @@ function TestA59_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA58_naji takes nothing returns nothing
     local integer i_naji=0
@@ -878,6 +883,7 @@ function TestA55_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA54_naji takes nothing returns nothing
     local real r_naji=S2R(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -912,6 +918,7 @@ function TestA53_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA52_naji takes nothing returns nothing
     local integer i_naji=S2I(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))-1
@@ -1024,6 +1031,7 @@ function TestA50_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA49_naji takes nothing returns nothing
     local real array r_naji
@@ -1080,6 +1088,7 @@ function TestA47_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA46_naji takes nothing returns nothing
     local integer i_naji=S2I(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -1105,6 +1114,7 @@ function TestA46_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA45_naji takes nothing returns nothing
     local integer i_naji=S2I(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -1130,6 +1140,7 @@ function TestA45_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA44_naji takes nothing returns nothing
     local integer i_naji=S2I(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -1155,6 +1166,7 @@ function TestA44_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA43_naji takes nothing returns nothing
     local integer i_naji=S2I(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -1180,6 +1192,7 @@ function TestA43_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA42_naji takes nothing returns nothing
     local real r_naji=S2R(SubString(GetEventPlayerChatString(),4,StringLength(GetEventPlayerChatString())))
@@ -1202,6 +1215,7 @@ function TestA42_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA41_naji takes nothing returns nothing
     local real r_naji=S2R(SubString(GetEventPlayerChatString(),4,StringLength(GetEventPlayerChatString())))
@@ -1231,6 +1245,7 @@ function TestA41_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA40_naji takes nothing returns nothing
     local real r_naji=S2R(SubString(GetEventPlayerChatString(),4,StringLength(GetEventPlayerChatString())))
@@ -1260,6 +1275,7 @@ function TestA40_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA39_naji takes nothing returns nothing
     local real r_naji=S2R(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -1289,6 +1305,7 @@ function TestA39_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA38_naji takes nothing returns nothing
     local real r_naji=S2R(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -1343,6 +1360,7 @@ function TestA36_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA35_naji takes nothing returns nothing
     loop
@@ -1417,6 +1435,7 @@ function TestA30_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA29_naji takes nothing returns nothing
     local texttag tt
@@ -1512,6 +1531,7 @@ function TestA25_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA24_naji takes nothing returns nothing
     local integer array i_naji
@@ -1560,6 +1580,7 @@ function TestA24_naji takes nothing returns nothing
     else
         call DisplayTextToPlayer(GetTriggerPlayer(),0,0,"|cffFF0000输入数值错误！请输入|cffFFFF000~255|cffFF0000之间的整数|r")
     endif
+    set u_naji = null
 endfunction
 function TestA23_naji takes nothing returns nothing
     local integer i_naji=S2I(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))-1
@@ -1855,6 +1876,7 @@ function TestA16_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA15_naji takes nothing returns nothing
     local real r_naji=S2R(SubString(GetEventPlayerChatString(),3,StringLength(GetEventPlayerChatString())))
@@ -1890,6 +1912,7 @@ function TestA14_naji takes nothing returns nothing
     else
         call DisplayTextToPlayer(GetTriggerPlayer(),0,0,"|cffFF0000输入数值错误！请输入|cffFFFF00大于0|cffFF0000的数值|r")
     endif
+    set u_naji = null
 endfunction
 function TestA13_naji takes nothing returns nothing
     if Bfog_naji then
@@ -1930,6 +1953,7 @@ function TestA12_naji takes nothing returns nothing
         endif
         call DestroyGroup(g_naji)
         set g_naji=null
+        set u_naji = null
     else
         call DisplayTextToPlayer(GetTriggerPlayer(),0,0,"|cffFF0000输入数值错误！请输入|cffFFFF00大于1|cffFF0000的数值|r")
     endif
@@ -2029,6 +2053,7 @@ function TestA7_naji takes nothing returns nothing
     endif
     call DestroyGroup(g_naji)
     set g_naji=null
+    set u_naji = null
 endfunction
 function TestA6_naji takes nothing returns nothing
     local timer t_naji=GetExpiredTimer()
@@ -2243,6 +2268,7 @@ function TestA4_naji takes nothing returns nothing
         call DialogResetA2_naji()
         call DialogDisplay(GetTriggerPlayer(),Dnaji_naji[1],true)
     endif
+    set u_naji = null
 endfunction
 function TestA2_naji takes nothing returns nothing
     call DialogResetA_naji()

@@ -510,6 +510,7 @@ library WuQiQiHeSystem initializer init
 
         set u=null
         set it=null
+        set p = null
 	endfunction
 	//商店购买武器减耐久度
 	function BuyWeapon_Condition takes nothing returns boolean
@@ -801,6 +802,7 @@ function YaoXing takes nothing returns nothing
 	endloop
 	call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,10.,("|cff00ff33总药性（阴）："+I2S(yin)))
 	call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,10.,("|cff00ff33总药性（阳）："+I2S(yang)))
+	set p = null
 endfunction
 //转化剑意
 function TransferJY takes nothing returns nothing
@@ -844,6 +846,7 @@ function TransferJY takes nothing returns nothing
 			set Ad[i]=true
 		endif
 	endif
+	set p = null
 endfunction
 
 function GetGeoNormRandomReal takes real r1, real r2 returns real

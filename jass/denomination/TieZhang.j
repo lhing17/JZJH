@@ -376,6 +376,7 @@ function ShuiShangPiao takes nothing returns nothing
 	call RemoveLocation(destination)
 	set source = null
 	set destination = null
+	set t = null
 endfunction
 
 /*

@@ -120,6 +120,10 @@ function XiaoLianHengChen takes nothing returns nothing
 	endif
 	call RemoveLocation(loc1)
 	call RemoveLocation(loc2)
+	set u = null
+	set uc = null
+	set loc1 = null
+	set loc2 = null
 endfunction
 
 //贵妃回眸
@@ -298,6 +302,7 @@ function DiQingXiangLongCai takes nothing returns nothing
 	set t = null
 	set u = null
 	set ut = null
+	set loc = null
 endfunction
 function DiQingXiaoWu takes nothing returns nothing
 	local timer t = GetExpiredTimer()
@@ -421,15 +426,11 @@ endfunction
 
 
 function leftBirdDamage takes nothing returns nothing
-    local unit u = LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 9)
-	local unit ut = GetEnumUnit()
-    call birdDamage(u, ut)
+    call birdDamage(LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 9), GetEnumUnit())
 endfunction
 
 function rightBirdDamage takes nothing returns nothing
-    local unit u = LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 10)
-	local unit ut = GetEnumUnit()
-    call birdDamage(u, ut)
+    call birdDamage(LoadUnitHandle(YDHT, GetHandleId(GetExpiredTimer()), 10), GetEnumUnit())
 endfunction
 
 function birdFlying takes nothing returns nothing
@@ -527,6 +528,13 @@ function birdFlying takes nothing returns nothing
         call DestroyTimer(t)
     endif
 
+    set t = null
+    set left = null
+    set right = null
+    set leftGroup = null
+    set rightGroup = null
+    set u = null
+
 endfunction
 
 function FeiYanHuiXiang takes nothing returns nothing
@@ -586,6 +594,7 @@ function Trig_ciZhenSaoSheFunc007Func001Func002Func007T takes nothing returns no
 	    //call BJDebugMsg(I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 20000)))
     endif
     call DestroyTimer(GetExpiredTimer())
+    set u = null
 endfunction
 
 function Trig_ciZhenSaoSheFunc007Conditions takes nothing returns boolean
@@ -623,7 +632,6 @@ function Trig_ciZhenSaoSheFunc007Conditions takes nothing returns boolean
             set ydl_timer = CreateTimer()
             call SaveUnitHandle(YDHT, GetHandleId(ydl_timer), 0, u)
             call TimerStart(ydl_timer, 14.00, false, function Trig_ciZhenSaoSheFunc007Func001Func002Func007T)
-        else
         endif
     endif
     // 专属加成
@@ -639,6 +647,8 @@ function Trig_ciZhenSaoSheFunc007Conditions takes nothing returns boolean
         set shxishu = shxishu * 2
     endif
     set ydl_timer = null
+    set u = null
+    set ut = null
     return false
 endfunction
 
@@ -654,6 +664,7 @@ function Trig_ciZhenSaoSheActions takes nothing returns nothing
     	call TriggerAddCondition(ydl_trigger, Condition(function Trig_ciZhenSaoSheFunc007Conditions))
 	endif
     set ydl_trigger = null
+    set u = null
 endfunction
 
 //function IsShenLongBaShiSH takes nothing returns boolean

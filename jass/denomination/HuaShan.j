@@ -280,6 +280,7 @@ function Trig_arc_Actions takes nothing returns nothing
     call YDWESaveRealByString( "real", I2S(YDWEGetTimerID(t)), 0 )
     call TimerStart(t,0.02,TRUE,function arc_Actions1)
     set t = null
+    set u = null
 endfunction
 
 //===========================================================================
@@ -734,4 +735,6 @@ function HuaShan_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_SPELL_EFFECT)
 	call TriggerAddCondition(t,Condition(function BE))
 	call TriggerAddAction(t,function cE)
+
+	set t = null
 endfunction

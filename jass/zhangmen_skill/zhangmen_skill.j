@@ -186,6 +186,7 @@ function RuLaiShenZhang_Actions takes nothing returns nothing
     set r1 = 0.00
     set r2 = 0.00
     set ppl = null
+    set ut = null
 endfunction
 function IsRuLaiShenZhang takes nothing returns boolean
 	return (GetEventDamage()==5.17) and (GetUnitAbilityLevel(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetEventDamageSource())))], 'A04L')>=1)

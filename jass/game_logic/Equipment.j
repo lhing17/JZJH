@@ -1211,6 +1211,7 @@ function DoHaveZhenYao takes unit uc, unit ut returns boolean
 			return true
 		endif
 	endif
+	set u = null
 	return false
 endfunction
 function Vz takes nothing returns boolean
@@ -1238,6 +1239,7 @@ function Wz takes nothing returns nothing
 	call ZhenYaoLevelUp(u, 'I02M', 'I02Q', 500)
 	call ZhenYaoLevelUp(u, 'I02Q', 'I02R', 800)
 	call ZhenYaoLevelUp(u, 'I02R', 'I02P', 1200)
+	set u = null
 endfunction
 //-------镶嵌宝石系统开始-------//
 function IsXiangQian takes item it, unit u returns boolean

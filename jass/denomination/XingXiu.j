@@ -241,6 +241,11 @@ function ShenDingSanYin_1 takes nothing returns nothing
 	endif
 	call RemoveLocation(loc)
 	call RemoveLocation(loc2)
+	set t = null
+	set u = null
+	set p = null
+	set loc = null
+	set loc2 = null
 endfunction
 function ShenDingSanYin takes nothing returns nothing
 	local unit u = GetTriggerUnit()

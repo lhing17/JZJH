@@ -4145,6 +4145,7 @@ function qR takes nothing returns nothing
 	call FlushChildHashtable(YDHT,id*cx)
 	set b1=null
 	set b2=null
+	set t = null
 endfunction
 function IsMuRongNeiGong takes nothing returns boolean
 	return((UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())=='I09F'))

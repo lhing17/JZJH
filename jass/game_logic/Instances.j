@@ -2697,7 +2697,8 @@ function stealSuccess takes nothing returns nothing
 	call PauseTimer(jiuyangTimer1)
 	call DestroyTimer(jiuyangTimer1)
 	call DestroyTimerDialog(jiuyangTimerDialog1)
-
+    set ykx = null
+    set xxz = null
 endfunction
 function stealJiuYang takes nothing returns nothing
 	local unit ykx = null
@@ -2715,6 +2716,8 @@ function stealJiuYang takes nothing returns nothing
 	call SaveUnitHandle(YDHT, GetHandleId(jiuyangTimer1), 1, xxz)
 	call TimerStart(jiuyangTimer1, GetRandomInt(600, 1500),false, function stealSuccess)
 	set jiuyangTimerDialog1 = createTimerDialog(jiuyangTimer1, "二杰盗经书")
+	set ykx = null
+	set xxz = null
 endfunction
 //击杀尹克西和潇湘子后几率获得奇武：潇湘子的《寿木长生功》或尹克西的《黄沙万里鞭法》，江湖声望+1000
 function isKillStealer takes nothing returns boolean
@@ -2760,6 +2763,8 @@ function seekSuccess takes nothing returns nothing
 	call RemoveUnit(jyds)
 	call RemoveUnit(zjb)
 	call DestroyQuest(defeatSeeker)
+	set jyds = null
+	set zjb = null
 endfunction
 
 
@@ -2789,7 +2794,10 @@ function seekStealers takes nothing returns nothing
 	call SaveUnitHandle(YDHT, GetHandleId(jiuyangTimer2), 1, zjb)
 	call TimerStart(jiuyangTimer2, GetRandomInt(600, 1500),false, function seekSuccess)
 	set jiuyangTimerDialog2 = createTimerDialog(jiuyangTimer2, "追回经书")
-
+	set ykx = null
+	set xxz = null
+	set jyds = null
+	set zjb = null
 endfunction
 //若打败觉远大师和张君宝，可几率获得奇武《九阳真经散篇》，江湖声望-1000
 function isKillSeeker takes nothing returns boolean

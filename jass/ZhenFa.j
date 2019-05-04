@@ -205,6 +205,8 @@ function JinGangFuMo takes nothing returns nothing
     set tt1 = null
     set tt2 = null
     set tt3 = null
+    set tt4 = null
+    set g = null
 endfunction
 //伏魔圈伤害
 function IsFuMoShangHai takes nothing returns boolean

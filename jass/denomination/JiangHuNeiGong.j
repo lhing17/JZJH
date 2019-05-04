@@ -341,6 +341,8 @@ function YiLiaoPian takes nothing returns nothing
     if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
 	    call SetWidgetLife(uc,GetWidgetLife(u)+380000)
     endif
+    set u = null
+    set uc = null
 endfunction
 
 

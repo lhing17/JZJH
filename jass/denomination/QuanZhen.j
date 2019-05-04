@@ -301,6 +301,8 @@ function JinYanGong takes nothing returns nothing
     set uc=null
     set g=null
     set loc=null
+    set ut = null
+    set loc2 = null
 endfunction
 
 //先天功

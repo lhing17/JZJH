@@ -17,6 +17,10 @@ function HanBingZhenQi takes nothing returns nothing
 		call IncUnitAbilityLevel(bj_lastCreatedUnit, 'A038')
 	endif
 	call IssueTargetOrderById(bj_lastCreatedUnit,$D0101,ut)
+	set u = null
+	set ut = null
+	set p = null
+	set loc = null
 endfunction
 //百步神拳
 //无相劫指
@@ -72,6 +76,7 @@ function WuXiangShangHai takes nothing returns nothing
 	endif
 	set u=null
     set uc=null
+    set ut = null
 endfunction
 //神行百变
 globals
@@ -97,6 +102,8 @@ function ShenXingBaiBian_2 takes nothing returns nothing
             set udg_shenxingpoyin[1+GetPlayerId(GetOwningPlayer(u))] = udg_shenxingpoyin[1+GetPlayerId(GetOwningPlayer(u))]-0.01
         endif
     endif
+    set t = null
+    set u = null
 endfunction
 
 function ShenXingBaiBian_1 takes nothing returns nothing
@@ -265,6 +272,7 @@ function MiaoShouKongKong takes nothing returns nothing
     	call TriggerAddCondition(t, Condition(function MiaoShouKongKong_1))
 	endif
     set t = null
+    set u = null
 endfunction
 //龟息功
 globals
@@ -470,6 +478,10 @@ function shouMu takes nothing returns nothing
 	call ShowUnitHide(bj_lastCreatedUnit)
 	call UnitAddAbility(bj_lastCreatedUnit,'A06U')
 	call IssueTargetOrderById(bj_lastCreatedUnit,$D00DD,u)
+
+	set u = null
+	set p = null
+	set loc = null
 endfunction
 //黄沙万里鞭法
 function isHuangSha takes nothing returns boolean

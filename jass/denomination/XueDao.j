@@ -185,6 +185,7 @@ function XueDaoDao takes nothing returns nothing
 	set loc=null
 	set p=null
 	set t=null
+	set g = null
 endfunction
 //血魔刀法
 function IsXueMo takes nothing returns boolean
@@ -478,6 +479,7 @@ function XueDaoJing takes nothing returns nothing
     set uc=null
     set ut=null
     set loc=null
+    set t = null
 endfunction
 function XueDaoJing_Condition takes nothing returns boolean
 	return GetUnitTypeId(GetAttacker())=='o01U'

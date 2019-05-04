@@ -49,6 +49,7 @@ function TanZhiBeiDong takes nothing returns nothing
 	set u = null
 	set ut = null
 	set p = null
+	set loc = null
 endfunction
 function IsTanZhiShangHai takes nothing returns boolean
 	return((GetEventDamage()==.21))
@@ -430,9 +431,10 @@ function yF takes nothing returns nothing
 	set u=null
 	set uc = null
 	set ut = null
-	set p=null
+	set p = null
 	set loc=null
 	set loc2 = null
+	set t = null
 endfunction
 //化骨伤害
 function AF takes nothing returns boolean
@@ -1015,6 +1017,7 @@ function BiHaiChaoSheng takes nothing returns nothing
     set u=null
     set g=null
     set loc=null
+    set sd = null
 endfunction
 //-------碧海潮生曲结束-------//
 //------------江湖武功结束------------

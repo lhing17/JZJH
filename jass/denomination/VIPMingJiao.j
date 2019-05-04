@@ -612,6 +612,9 @@ function ShiZiHou takes nothing returns nothing
 		call UnitAddAbility(u,'A06R')
 		call SetUnitAbilityLevel(u,'A06R',level)
 	endif
+	set u = null
+	set loc = null
+	set g = null
 endfunction
 
 //圣火令神功 25级技1
@@ -706,6 +709,8 @@ function ShengHuoLing takes nothing returns nothing
 	call IssueImmediateOrderById(bj_lastCreatedUnit,$D00D1)
 	call ZhuanQuan(shenghuoling_3, u, 1., 0.)
 	set ling3zhuan = true
+	set u = null
+	set loc = null
 endfunction
 function IsRengShengHuo takes nothing returns boolean
 	return GetSpellAbilityId()=='A035'
@@ -793,6 +798,7 @@ function RengShengHuoLing takes nothing returns nothing
     set uc=null
     set ut=null
     set loc=null
+    set t = null
 endfunction
 //乾坤大挪移 25级技2
 function IsQianKunTan takes nothing returns boolean

@@ -474,4 +474,6 @@ function GaiBang_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_SPELL_EFFECT)
 	call TriggerAddCondition(t, Condition(function IsYeCha))
 	call TriggerAddAction(t, function YeChaGun)
+
+	set t = null
 endfunction

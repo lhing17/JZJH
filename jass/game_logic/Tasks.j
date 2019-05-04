@@ -1793,31 +1793,34 @@ function IK takes nothing returns nothing
 	local player p=GetOwningPlayer(u)
 	local integer i=1+GetPlayerId(p)
 	local location loc=null
-if GetItemTypeId(GetManipulatedItem())==1227896132 then
-	if((rd[i]==0))then
-		set loc=GetRectCenter(Nf)
-		set rd[i]=1
-		call PlaySoundOnUnitBJ(bh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00胡斐：|r |cFF99FFCC这一代时常有熊出没，能搞点熊皮来的话应该可以卖个好价钱|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F30只熊|r\n")
-		call PingMinimapLocForForce(ov(p),loc,5.)
-		call RemoveLocation(loc)
-	elseif((rd[i]==1))then
-		set loc=GetRectCenter(Nf)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00胡斐：|r |cFF99FFCC这一代时常有熊出没，能搞点熊皮来的话应该可以卖个好价钱|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F30只熊|r\n")
-		call PingMinimapLocForForce(ov(p),loc,5.)
-		call RemoveLocation(loc)
-	elseif((rd[i]==2))then
-		call DisplayTextToPlayer(p,0,0,"|cFfff0000这个任务你已经完成过了")
-	endif
-elseif GetItemTypeId(GetManipulatedItem())=='I09W' then
-	if((LoadInteger(YDHT,StringHash("哑仆任务"),i)==0))then
-		call SaveInteger(YDHT,StringHash("哑仆任务"),i,1)
-		call PlaySoundOnUnitBJ(bh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC黄老邪把我腿打断的时候，桃花岛上的哑仆一直欺负我，你能帮我杀掉十个哑仆吗|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F十个哑仆|r\n")
-	elseif((LoadInteger(YDHT,StringHash("哑仆任务"),i)==1))then
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC杀掉十个哑仆了吗|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F十个哑仆|r\n")
-	endif
-endif
+    if GetItemTypeId(GetManipulatedItem())==1227896132 then
+        if((rd[i]==0))then
+            set loc=GetRectCenter(Nf)
+            set rd[i]=1
+            call PlaySoundOnUnitBJ(bh,100,u)
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00胡斐：|r |cFF99FFCC这一代时常有熊出没，能搞点熊皮来的话应该可以卖个好价钱|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F30只熊|r\n")
+            call PingMinimapLocForForce(ov(p),loc,5.)
+            call RemoveLocation(loc)
+        elseif((rd[i]==1))then
+            set loc=GetRectCenter(Nf)
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00胡斐：|r |cFF99FFCC这一代时常有熊出没，能搞点熊皮来的话应该可以卖个好价钱|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F30只熊|r\n")
+            call PingMinimapLocForForce(ov(p),loc,5.)
+            call RemoveLocation(loc)
+        elseif((rd[i]==2))then
+            call DisplayTextToPlayer(p,0,0,"|cFfff0000这个任务你已经完成过了")
+        endif
+    elseif GetItemTypeId(GetManipulatedItem())=='I09W' then
+        if((LoadInteger(YDHT,StringHash("哑仆任务"),i)==0))then
+            call SaveInteger(YDHT,StringHash("哑仆任务"),i,1)
+            call PlaySoundOnUnitBJ(bh,100,u)
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC黄老邪把我腿打断的时候，桃花岛上的哑仆一直欺负我，你能帮我杀掉十个哑仆吗|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F十个哑仆|r\n")
+        elseif((LoadInteger(YDHT,StringHash("哑仆任务"),i)==1))then
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC杀掉十个哑仆了吗|r\n|cFFFFCC00提示：|r |cFF99FFCC杀死|cFFADFF2F十个哑仆|r\n")
+        endif
+    endif
+    set u = null
+    set p = null
+    set loc = null
 endfunction
 
 //升10级自动奖励丹药
@@ -2220,6 +2223,8 @@ function aL takes nothing returns nothing
 			call DisplayTextToPlayer(GetOwningPlayer(u),0,0,"|cFFFFCC00乔峰：|r |cFF99FFCC你已完成任务|r\n")
 		endif
 	endif
+	set u = null
+	set loc = null
 endfunction
 function bL takes nothing returns boolean
 	return((GetUnitTypeId(GetTriggerUnit())==1751543663) or (GetUnitTypeId(GetTriggerUnit())=='odkt') or (GetUnitTypeId(GetTriggerUnit())=='h00J'))

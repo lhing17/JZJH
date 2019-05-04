@@ -70,6 +70,8 @@
 	set t = null
 	set u = null
 	set loc = null
+	set g = null
+	set ut = null
  endfunction
  
  /*
@@ -131,6 +133,7 @@ function removeDaiZongBuff takes nothing returns nothing
 	//停止计时器
 	call clearTimer(t)
 	set t = null
+	set u = null
 endfunction
 
 // 向目标施放岱宗如何

@@ -2299,6 +2299,9 @@ function main1 takes nothing returns nothing
 	call Cuns() //存储装备属性
 	call CunWuGongS() //存储武功
 	call najitest() //纳吉的测试代码
+
+	set t = null
+	set v = null
 endfunction
 
 function main2 takes nothing returns nothing

@@ -429,6 +429,7 @@ function Trig_Number14_1Func001A takes nothing returns nothing
    		call WuGongShangHai(u,GetEnumUnit(),shanghai)
 	endif
     set loc=null
+    set u = null
     //call FlushChildHashtable(YDHT,StringHash("泉鸣"))
 endfunction
 
@@ -489,5 +490,7 @@ function HengShan2_Trigger takes nothing returns nothing
     call TriggerRegisterAnyUnitEventBJ( gg_trg_Number14_0, EVENT_PLAYER_UNIT_SPELL_EFFECT )
     call TriggerAddCondition(gg_trg_Number14_0, Condition(function QuanMing_Conditions))
     call TriggerAddAction(gg_trg_Number14_0, function QuanMing_Actions)
+
+    set t = null
 endfunction
 

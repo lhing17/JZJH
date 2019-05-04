@@ -479,4 +479,6 @@ function WuDang_Trigger takes nothing returns nothing
 	call YDWESyStemAnyUnitDamagedRegistTrigger(t)
 	call TriggerAddCondition(t,Condition(function MD))
 	call TriggerAddAction(t,function ND)
+
+	set t = null
 endfunction

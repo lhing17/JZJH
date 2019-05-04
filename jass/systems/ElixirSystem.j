@@ -823,6 +823,8 @@ function qP takes nothing returns nothing
 		call unitadditembyidswapped(1227896625,P4[i])
 	endif
 	call DialogClear(je[i])
+	set u = null
+	set p = null
 endfunction
 //十香软筋散
 function sP takes nothing returns boolean
