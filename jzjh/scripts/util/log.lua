@@ -12,9 +12,9 @@ local function split(str, p)
 	return rt
 end
 
-for k, v in pairs(log) do
-	print(k, v)
-end
+--for k, v in pairs(log) do
+--	print(k, v)
+--end
 
 if base.release then
 	log.level = 'info'

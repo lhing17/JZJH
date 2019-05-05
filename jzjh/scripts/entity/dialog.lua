@@ -23,7 +23,7 @@ function dialog.create(player, message, buttons)
     d.handle = jass.DialogCreate()
     d.buttons = {}
     jass.DialogSetMessage(d.handle, message)
-    for _, name in pairs(buttons) do
+    for _, name in ipairs(buttons) do
         local b = jass.DialogAddButton(d.handle, name, 0)
         local trg = base.CreateTrigger(function()
             et.game:event_notify('对话框-按钮点击', b, d, player)

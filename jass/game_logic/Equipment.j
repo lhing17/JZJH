@@ -923,11 +923,13 @@ function ItemChongFu takes nothing returns nothing
             if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_PURCHASABLE) then
                 set udg_yifushu[i]=udg_yifushu[i]+1
             endif
-
-            if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and Ce[i]!=7 and LoadBoolean(YDHT,GetHandleId(u),StringHash("君子剑岳不群")) == false) then
-                call UnitRemoveItemSwapped(UnitItemInSlotBJ(u,E8),u)
-                call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000非丫鬟角色最多只能携带一件武器和衣服")
+            if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_ARTIFACT or GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_PURCHASABLE) then
+                if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and Ce[i]!=7 and LoadBoolean(YDHT,GetHandleId(u),StringHash("君子剑岳不群")) == false) then
+                    call UnitRemoveItemSwapped(UnitItemInSlotBJ(u,E8),u)
+                    call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000非丫鬟角色最多只能携带一件武器和衣服")
+                endif
             endif
+
 		endif
 		set E8=E8+1
 	endloop

@@ -7,7 +7,7 @@ local debug = debug
 base = {}
 --判断是否是发布版本
 -- base.release = not pcall(require, 'lua.currentpath')
-base.release = false
+base.release = true
 
 --- 游戏版本
 base.version = "1.6.13"

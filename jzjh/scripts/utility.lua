@@ -55,3 +55,77 @@ function _loop_()
         return true
     end
 end
+
+
+local rawpairs = pairs
+-------------------------------------------
+---
+-- 可以按指定顺序遍历的map迭代器
+--- @param tbl table  要迭代的表
+--- @param func  function 比较函数
+--- @return function
+--      for k,v in pairs(tbl,defaultComp) do print(k,v) end
+function pairs(tbl, func)
+    if func == nil then
+        return rawpairs(tbl)
+    end
+
+    -- 为tbl创建一个对key排序的数组
+    -- 自己实现插入排序，table.sort遇到nil时会失效
+    local ary = {}
+    local lastUsed = 0
+    for key --[[, val--]] in rawpairs(tbl) do
+        if (lastUsed == 0) then
+            ary[1] = key
+        else
+            local done = false
+            for j=1,lastUsed do  -- 进行插入排序
+                if (func(key, ary[j]) == true) then
+                    table.insert( ary, j, key )
+                    done = true
+                    break
+                end
+            end
+            if (done == false) then
+                ary[lastUsed + 1] = key
+            end
+        end
+        lastUsed = lastUsed + 1
+    end
+
+    -- 定义并返回迭代器
+    local i = 0
+    local iter = function ()
+        i = i + 1
+        if ary[i] == nil then
+            return nil
+        else
+            return ary[i], tbl[ary[i]]
+        end
+    end
+    return iter
+end
+
+--------------------------------
+-- 通用比较器(Comparator)
+-- @return 对比结果
+function defaultComp( op1, op2 )
+    local type1, type2 = type(op1), type(op2)
+    local num1,  num2  = tonumber(op1), tonumber(op2)
+
+    if ( num1 ~= nil) and (num2 ~= nil) then
+        return  num1 < num2
+    elseif type1 ~= type2 then
+        return type1 < type2
+    elseif type1 == "string"  then
+        return op1 < op2
+    elseif type1 == "boolean" then
+        return op1
+        -- 以上处理: number, string, boolean
+    elseif type1 == "userdata" then
+        return jass.GetHandleId(op1) < jass.GetHandleId(op2)
+        -- 处理剩下的:  function, table, thread, userdata
+    else
+        return tostring(op1) < tostring(op2)  -- tostring后比较字符串
+    end
+end

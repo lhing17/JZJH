@@ -1435,11 +1435,11 @@ function unit.init()
     --更新数据
     unit.frame = 8
 
-    et.loop(1000 / unit.frame, function()
-        for _, u in pairs(unit.all_units) do
-            u:update()
-        end
-    end)
+    --et.loop(1000 / unit.frame, function()
+    --    for _, u in pairs(unit.all_units) do
+    --        u:update()
+    --    end
+    --end)
 
     --单位移除队列
     unit.wait_to_remove_table1 = {}

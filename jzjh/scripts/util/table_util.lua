@@ -23,26 +23,26 @@ function base.getRandomValueInList(list)
     return list[rand]
 end
 
---- 获取哈希表中随机的键
---- @generic K, V 表的键和值
---- @param tab table<K, V>
---- @return K
-function base.getRandomKey(tab)
-    local temp = {}
-    for k, _ in pairs(tab) do
-        table.insert(temp, k)
-    end
-    return base.getRandomValueInList(temp)
-end
+
 
 --- 获取哈希表中所有的键
 --- @generic K, V 表的键和值
 --- @param tab table<K, V>
 --- @return table<number, K>
-function table.keys(tab)
+function table.keys(tab, comp)
     local keys = {}
-    for k, _ in pairs(tab) do
+    for k, _ in pairs(tab, comp or defaultComp) do
         table.insert(keys, k)
     end
     return keys
+end
+
+--- 获取哈希表中随机的键
+--- @generic K, V 表的键和值
+--- @param tab table<K, V>
+--- @param comp function 比较器
+--- @return K
+function base.getRandomKey(tab, comp)
+    local temp = table.keys(tab, comp)
+    return base.getRandomValueInList(temp)
 end

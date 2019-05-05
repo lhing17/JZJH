@@ -14,10 +14,10 @@ local npc = {
     feini = { name = '练功木桩', loc = et.point(-35, -104), adjust = { -50, 0 } },
     fuben = { name = '副本传送', loc = et.point(-1321, -1888), adjust = { -50, 0 } },
     zeige = { name = '贼哥', loc = et.point(-1462, -470), adjust = { -50, 0 } },
-    pingyizhi = { name = '炼制丹药', loc = et.point(-2032.3,-1442.2), adjust = { -50, 0 } },
-    shipotian = { name = '历练传送', loc = et.point(-2081.6,-1962.8), adjust = { -50, 0 } },
-    baoshi = { name = '宝石商人', loc = et.point(598.6,-2015.8), adjust = { -50, 0 } },
-    guojing = { name = '选择副职', loc = et.point(-2053.7,-339.5), adjust = { -50, 0 } },
+    pingyizhi = { name = '炼制丹药', loc = et.point(-2032.3, -1442.2), adjust = { -50, 0 } },
+    shipotian = { name = '历练传送', loc = et.point(-2081.6, -1962.8), adjust = { -50, 0 } },
+    baoshi = { name = '宝石商人', loc = et.point(598.6, -2015.8), adjust = { -50, 0 } },
+    guojing = { name = '选择副职', loc = et.point(-2053.7, -339.5), adjust = { -50, 0 } },
 }
 
 local function createHint(tab)
@@ -25,6 +25,7 @@ local function createHint(tab)
     et.tag.create(tab.name, loc, 13, 100, 100, 100, 0, 50)
 end
 
-for _, v in pairs(npc) do
+for k, v in pairs(npc, defaultComp) do
+    log.debug(k, v)
     createHint(v)
 end

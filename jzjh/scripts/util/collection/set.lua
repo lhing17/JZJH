@@ -36,7 +36,6 @@ end
 --- 返回set中一个随机元素
 --- @return any
 function set:random()
-    require 'util.commonutil'
     local keys = table.keys(self)
     local rand = math.random(1, #keys)
     local i = 1
