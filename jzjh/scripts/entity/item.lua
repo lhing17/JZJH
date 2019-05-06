@@ -109,33 +109,6 @@ function item:get_name()
     return jass.GetObjectName(base.string2id(self.id))
 end
 
---- 设置物品的种类
---- @param tp string
---function item:set_type(tp)
---    if tp then
---        self.type = tp
---        return
---    end
---    local j_type = jass.GetItemType(self.handle)
---    if j_type == jass.ITEM_TYPE_ARTIFACT then
---        self.type = 'weapon'
---    elseif j_type == jass.ITEM_TYPE_PURCHASABLE then
---        self.type = 'clothes'
---    elseif j_type == jass.ITEM_TYPE_CHARGED then
---        if et.lni.helmet[self.id] then
---            self.type = 'helmet'
---        elseif et.lni.shoe[self.id] then
---            self.type = 'shoe'
---        elseif et.lni.deputy[self.id] then
---            self.type = 'deputy'
---        elseif et.lni.accessory[self.id] then
---            self.type = 'accessory'
---        end
---    elseif et.lni.herb and et.lni.herb[self.id] then
---        self.type = 'herb'
---    end
---end
-
 --- @return string
 function item:get_type()
     return self.type

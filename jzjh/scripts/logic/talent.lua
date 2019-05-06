@@ -81,7 +81,7 @@ local function talent_effect()
         if base.is_include(p:get_base_name(), VIP)  and not g.udg_isTest[p:get()-1] then
             g.udg_isTest[p:get()-1] = true
         end
-        if g.udg_isTest[p:get()-1] and s == '风陵夜梦长不长' then
+        if g.udg_isTest[p:get()-1] then
             local i = p.id
             g.talent_flag[i] = 1
             g.tiezhang_flag[i] = 1

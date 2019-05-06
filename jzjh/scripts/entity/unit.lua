@@ -1207,18 +1207,6 @@ function unit.init_unit(handle, p)
     if u:get_ability_level 'Aloc' == 0 then
         u:event_notify('单位-创建', u)
     end
-    if data then
-        if data.hero_skill then
-            for _, skl in ipairs(data.hero_skill) do
-                u:add_skill(skl, '英雄')
-            end
-        end
-        if data.hide_skill then
-            for _, skl in ipairs(data.hide_skill) do
-                u:add_skill(skl, '隐藏')
-            end
-        end
-    end
 
     return u
 end
@@ -1435,11 +1423,6 @@ function unit.init()
     --更新数据
     unit.frame = 8
 
-    --et.loop(1000 / unit.frame, function()
-    --    for _, u in pairs(unit.all_units) do
-    --        u:update()
-    --    end
-    --end)
 
     --单位移除队列
     unit.wait_to_remove_table1 = {}

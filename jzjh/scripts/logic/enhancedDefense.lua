@@ -21,7 +21,7 @@ local bosses = { 'ncer', 'nhea', 'nlkl', 'nele', 'nenp', 'nbda', 'n002', 'nbds',
 et.game:event '玩家-聊天'(function(self, p, s)
     if g.udg_isTest[p:get() - 1] and s == 'showJapi' then
         for k, v in pairs(japi) do
-            log.debug(k, v)
+            log.info(k, v)
         end
     end
     if g.udg_isTest[p:get() - 1] and s == 'maxDiff' then

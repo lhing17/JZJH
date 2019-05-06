@@ -39,7 +39,7 @@ function set:random()
     local keys = table.keys(self)
     local rand = math.random(1, #keys)
     local i = 1
-    for k, _ in pairs(self) do
+    for k, _ in pairs(self, defaultComp) do
         if i == rand then
             return k
         end

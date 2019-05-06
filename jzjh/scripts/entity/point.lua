@@ -31,6 +31,7 @@ function mt:get(getz)
     return self[1], self[2], getz and self:getZ() or self[3]
 end
 
+--- 注意：在地形变化之处获取Z轴容易引起不同步
 --计算地面的z轴坐标
 function mt:getZ()
     jass.MoveLocation(point.dummy, self[1], self[2])
