@@ -159,7 +159,7 @@ constant boolean LIBRARY_YDWEUnitHasItemOfTypeBJNull=true
 //endglobals from YDWEUnitHasItemOfTypeBJNull
 //globals from YDWEJumpTimer:
 constant boolean LIBRARY_YDWEJumpTimer=true
-//ÔøΩÔøΩ‘æœµÕ≥ÔøΩÔøΩÔøΩ»ºÔøΩ
+//Ã¯‘æœµÕ≥”≈œ»º∂
 integer MoveMoreLevel_JumpTimer=3
 //endglobals from YDWEJumpTimer
 //globals from YDWELocalVariable:
@@ -168,8 +168,8 @@ constant boolean LIBRARY_YDWELocalVariable=true
 //globals from YDWEPreloadSL:
 constant boolean LIBRARY_YDWEPreloadSL=true
     ///
-    /// √øÔøΩÔøΩÔøΩÔøΩÔøΩ’ºÔøΩ√µƒø’ºÔøΩ[500*id, 500*(id-1))
-    /// ÔøΩ¬±ÔøΩ‘ΩÔøΩÔøΩ√ªÔøΩ–ΩÔøΩÔøΩ–ºÔøΩÈ£¨ÔøΩ∆∫ÔøΩ√ªÔøΩÔøΩÔøΩÔøΩÔøΩ“™ÔøΩÔøΩÀ≠“™ÔøΩÔøΩÔøΩ√≥ÔøΩÔøΩÔøΩ500...ÔøΩÔøΩ»•ÔøΩÔøΩÔøΩÔøΩ- -
+    /// √ø∏ˆÕÊº“’º”√µƒø’º‰[500*id, 500*(id-1))
+    /// œ¬±Í‘ΩΩÁ√ª”–Ω¯––ºÏ≤È£¨À∆∫ı√ª’‚∏ˆ±ÿ“™£¨À≠“™ «”√≥¨π˝500...æÕ»•À¿∞…- -
     /// 
 integer array YDWEPreloadSL__Code
 integer array YDWEPreloadSL__CodeHI
@@ -459,8 +459,8 @@ boolean array muronglc
 integer array udg_zdl
 	// ÁßØÂàÜÊï∞ÁªÑ
 integer array udg_jf
-	// ÊØèÂ±ÄÂèØÁî®ÁßØÂàÜ50ÂàÜ
-integer jf_max= 50
+	// ÊØèÂ±ÄÂèØÁî®ÁßØÂàÜ80ÂàÜ
+integer jf_max= 80
 	// ÊØèÂ±ÄÂ∑≤Áî®ÁßØÂàÜ
 integer array jf_useMax
 	// ÈÄöÂÖ≥Ê¨°Êï∞Êï∞ÁªÑ
@@ -4642,7 +4642,7 @@ endfunction
 //library YDWETriggerEvent:
 	
 //===========================================================================  
-//ÔøΩÔøΩÔøΩ‚µ•ŒªÔøΩÀ∫ÔøΩÔøΩ¬ºÔøΩ 
+//»Œ“‚µ•Œª…À∫¶ ¬º˛ 
 //===========================================================================
 function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -4689,7 +4689,7 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
     set YDWETriggerEvent__DamageEventNumber=YDWETriggerEvent__DamageEventNumber + 1
 endfunction
 //===========================================================================  
-//ÔøΩ∆∂ÔøΩÔøΩÔøΩ∆∑ÔøΩ¬ºÔøΩ 
+//“∆∂ØŒÔ∆∑ ¬º˛ 
 //===========================================================================  
 function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -5255,8 +5255,8 @@ function YDWE_PreloadSL_GetMask takes player p returns integer
     return value - 'YDWE'
 endfunction
 ///
-/// ◊¢ÔøΩÔøΩ–ßÔøΩ ∂ÔøΩÔøΩÔøΩÔøΩ«∞ÔøΩ»´ÔøΩÔøΩÔøΩ∆∂ÔøΩÔøΩÔøΩÔøΩÔøΩÀµÔøΩÔøΩ»´ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ...
-/// ÔøΩÔøΩ“ªÔøΩÔøΩÔøΩ∆∂ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+/// ◊¢÷ÿ–ß¬ ∂¯≤ª «∞≤»´µƒ“∆∂Ø£¨ª∞Àµ∞≤»´”–“‚“Â¬...
+/// ¡Ì“ª∏ˆ“∆∂Ø∫Ø ˝µƒƒÊ‘ÀÀ„
 ///
 function YDWE_PreloadSL_Unmove takes integer beg,integer n,integer key returns nothing
     local integer value
@@ -5400,8 +5400,8 @@ function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer 
     endloop
 endfunction
 ///
-/// ◊¢ÔøΩÔøΩ–ßÔøΩ ∂ÔøΩÔøΩÔøΩÔøΩ«∞ÔøΩ»´ÔøΩÔøΩÔøΩ∆∂ÔøΩÔøΩÔøΩÔøΩÔøΩÀµÔøΩÔøΩ»´ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ...
-/// ÔøΩ∆∂ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ‘≤ÔøΩ“™...
+/// ◊¢÷ÿ–ß¬ ∂¯≤ª «∞≤»´µƒ“∆∂Ø£¨ª∞Àµ∞≤»´”–“‚“Â¬...
+/// “∆∂Ø∫Ø ˝£¨…ı÷¡ø…“‘≤ª“™...
 ///
 function YDWE_PreloadSL_Move takes integer beg,integer n,integer key returns nothing
     local integer value
@@ -5445,8 +5445,8 @@ function YDWE_PreloadSL_Encode takes player p,integer n,integer mask returns not
     call YDWE_PreloadSL_Move(beg , n , key)
 endfunction 
 /// 
-/// Õ¨ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
-/// Õ¨“ª ±ÔøΩ‰≤ª“™Õ¨ÔøΩÔøΩ“ªÔøΩÔøΩÔøΩÔøΩÔøΩœµÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+/// Õ¨≤ΩÕÊº“ ˝æ›
+/// Õ¨“ª ±º‰≤ª“™Õ¨≤Ω“ª∏ˆ“‘…œµƒÕÊº“ ˝æ›
 ///
 function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
     local integer index
@@ -5527,7 +5527,7 @@ function GetLastCombinedItem takes nothing returns item
     return bj_lastCombinedItem
 endfunction
 //===========================================================================
-//ÔøΩÔøΩ∆∑ÔøΩœ≥ÔøΩ
+//ŒÔ∆∑∫œ≥…
 function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
  local integer i= 0
     loop
@@ -5540,7 +5540,7 @@ function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
 endfunction
 //GetLastMovedItemInItemSlot 
 //===========================================================================  
-//ÔøΩÔøΩ∆∑ÔøΩœ≥ÔøΩÔøΩ¬ºÔøΩ 
+//ŒÔ∆∑∫œ≥… ¬º˛ 
 //===========================================================================  
 function YDWESyStemItemCombineRegistTrigger takes trigger trg returns nothing
 	set YDWEStringFormula__ItemCombineEventQueue[YDWEStringFormula__ItemCombineEventNumber]=trg
@@ -5671,7 +5671,7 @@ endfunction
             set s__YDWEStringFormula__FormulaMatrix_segmLen[this]=lingth
             
             set s__YDWEStringFormula__FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
-set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00ÔøΩÔøΩœ≥ÔøΩÔøΩÀ£ÔøΩ|r" 
+set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00ƒ„∫œ≥…¡À£∫|r" 
 set s__YDWEStringFormula__FormulaMatrix_chance[this]=100
             set s__YDWEStringFormula__FormulaMatrix_delete[this]=false
             call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
@@ -6015,9 +6015,9 @@ endfunction
 //library YDWEStringFormula ends
 //library YDWETimerPattern:
 //***************************************************
-//* ÔøΩÔøΩ - Matrix ÔøΩÔøΩÔøΩÔøΩƒ£ÔøΩÂ∫ØÔøΩÔøΩ
+//* °∆ - Matrix ÕÚƒ‹ƒ£∞Â∫Ø ˝
 //*--------------------
-//* ÔøΩÔøΩÔøΩﬂ£ÔøΩWarft_TigerCN  ÔøΩÔøΩÔøΩÔøΩÔøΩ≈ªÔøΩÔøΩÔøΩFetrix_sai
+//* ◊˜’ﬂ£∫Warft_TigerCN  ¥˙¬Î”≈ªØ£∫Fetrix_sai
 //***************************************************
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //                                       Timer Pattern Union                                              //
@@ -6394,7 +6394,7 @@ function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
 	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
 	set YDWETimerSystem__TaskListIdleHead=index
 endfunction
-//ÔøΩ√∫ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ–¥ÔøΩÔøΩÔøΩ
+//∏√∫Ø ˝–Ú¡–¥¶¿Ì
 function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
  local integer index= YDWETimerSystem__NewTaskIndex()
  local integer h= YDWETimerSystem__TaskListHead
@@ -6420,7 +6420,7 @@ endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
 	return YDWETimerSystem__CurrentIndex
 endfunction
-//…æÔøΩÔøΩÔøΩÔøΩŒª
+//…æ≥˝µ•Œª
 function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
     call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6428,7 +6428,7 @@ endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
     call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
 endfunction
-//ÔøΩ›ªŸºÔøΩ ±ÔøΩÔøΩ
+//¥›ªŸº∆ ±∆˜
 function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
     call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6436,7 +6436,7 @@ endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
     call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
 endfunction
-//…æÔøΩÔøΩÔøΩÔøΩ∆∑
+//…æ≥˝ŒÔ∆∑
 function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
     call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6444,7 +6444,7 @@ endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
     call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
 endfunction
-//…æÔøΩÔøΩÔøΩÔøΩ–ß
+//…æ≥˝Ãÿ–ß
 function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
     call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6452,7 +6452,7 @@ endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
     call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
 endfunction
-//…æÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ–ß
+//…æ≥˝…¡µÁÃÿ–ß
 function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
     call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6461,7 +6461,7 @@ function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
  local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
     call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
 endfunction
-//ÔøΩÔøΩÔøΩ–¥ÔøΩÔøΩÔøΩÔøΩÔøΩ
+//‘À––¥•∑¢∆˜
 function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
     call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -6469,7 +6469,7 @@ endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
     call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
 endfunction
-//…æÔøΩÔøΩ∆ØÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+//…æ≥˝∆Ø∏°Œƒ◊÷
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     local integer N=0
     local integer i=0
@@ -6480,7 +6480,7 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagLifespan(tt, time)
     call SetTextTagFadepoint(tt, time)
 endfunction
-//ÔøΩÔøΩÔøΩƒºÔøΩ ±ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+//÷––ƒº∆ ±∆˜÷˜∫Ø ˝
 function YDWETimerSystem__Main takes nothing returns nothing
  local integer h= YDWETimerSystem__TaskListHead
  local integer p
@@ -6494,7 +6494,7 @@ function YDWETimerSystem__Main takes nothing returns nothing
 	endloop
 	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
 endfunction
-//ÔøΩÔøΩ ºÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+//≥ı ºªØ∫Ø ˝
 function YDWETimerSystem__Init takes nothing returns nothing
     set YDWETimerSystem__Timer=CreateTimer()
 	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
@@ -6520,7 +6520,7 @@ function YDWETimerSystem__Init takes nothing returns nothing
 	
     call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
 endfunction
-//—≠ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ√∂ÔøΩÔøΩÔøΩÔøΩÔøΩ ±ÔøΩÔøΩ
+//—≠ª∑¿‡»‘”√∂¿¡¢º∆ ±∆˜
 function YDWETimerSystemGetRunIndex takes nothing returns integer
     return YDWETimerSystem__TimerSystem_RunIndex
 endfunction
@@ -6600,7 +6600,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Sun May 05 10:40:07 2019
+//   Date: Tue May 07 20:12:54 2019
 //   Map Author: ‰∫ëÊù® zei_kale
 // 
 //===========================================================================
@@ -6688,6 +6688,9 @@ function CreateNeutralHostile takes nothing returns nothing
     local integer unitID
     local trigger t
     local real life
+    set u=CreateUnit(p, 'nvil', 9481.5, 2020.6, 153.110)
+    set u=CreateUnit(p, 'nvil', 11946.6, 1409.1, 153.110)
+    set u=CreateUnit(p, 'nvil', 12790.4, - 318.2, 358.110)
     set u=CreateUnit(p, 'hrif', 12079.0, 8383.5, 94.211)
     set u=CreateUnit(p, 'hrif', 12335.5, 8511.9, 240.795)
     set u=CreateUnit(p, 'hrif', 12570.7, 8503.7, 296.640)
@@ -6706,6 +6709,19 @@ function CreateNeutralHostile takes nothing returns nothing
     call IssueImmediateOrder(u, "")
     set u=CreateUnit(p, 'hrif', 13040.2, 9945.3, 320.393)
     set u=CreateUnit(p, 'hrif', 12964.0, 10367.6, 268.042)
+    set u=CreateUnit(p, 'nvil', 10161.2, 3604.7, 103.350)
+    set u=CreateUnit(p, 'nvil', 11325.7, 3482.4, 172.070)
+    set u=CreateUnit(p, 'nvil', 11322.3, 743.0, 84.356)
+    set u=CreateUnit(p, 'nvil', 10865.2, - 59.7, 238.960)
+    set u=CreateUnit(p, 'nvil', 12972.2, - 1286.4, 322.470)
+    set u=CreateUnit(p, 'nvil', 13438.4, - 1039.8, 151.045)
+    set u=CreateUnit(p, 'nvil', 13883.7, - 1122.0, 87.959)
+    set u=CreateUnit(p, 'nvil', 14335.6, - 246.5, 7.174)
+    set u=CreateUnit(p, 'nvil', 12558.5, - 1512.8, 224.183)
+    set u=CreateUnit(p, 'nvil', 11989.6, - 691.0, 48.506)
+    set u=CreateUnit(p, 'nvil', 10697.4, 1028.4, 2.142)
+    set u=CreateUnit(p, 'nvil', 9993.2, 838.7, 130.620)
+    set u=CreateUnit(p, 'nvil', 9880.9, - 312.0, 83.993)
     set gg_unit_n00M_0131=CreateUnit(p, 'n00M', - 3348.2, - 15208.4, 56.220)
     set gg_unit_n00N_0132=CreateUnit(p, 'n00N', - 3272.5, - 15268.8, 90.000)
 endfunction
@@ -6747,9 +6763,6 @@ function CreateNeutralPassive takes nothing returns nothing
     set u=CreateUnit(p, 'hbsh', 8756.7, 2231.1, 159.134)
     set u=CreateUnit(p, 'hdes', 8725.7, 1444.5, 148.343)
     set u=CreateUnit(p, 'ogrk', 10149.5, 2965.0, 12.490)
-    set u=CreateUnit(p, 'nvil', 9481.5, 2020.6, 153.110)
-    set u=CreateUnit(p, 'nvil', 11946.6, 1409.1, 153.110)
-    set u=CreateUnit(p, 'nvil', 13162.3, - 376.3, 358.110)
     set gg_unit_N007_0055=CreateUnit(p, 'N007', 382.3, - 722.9, 180.000)
     set u=CreateUnit(p, 'nslf', 10997.8, 3200.4, 270.000)
     set u=CreateUnit(p, 'nwnr', 10992.4, 2448.7, 90.000)
@@ -6757,19 +6770,6 @@ function CreateNeutralPassive takes nothing returns nothing
     set u=CreateUnit(p, 'o022', 10129.1, 2787.2, 0.000)
     set u=CreateUnit(p, 'n00A', 10780.4, 3209.3, 270.000)
     set u=CreateUnit(p, 'o01X', 12561.4, 1703.5, 225.000)
-    set u=CreateUnit(p, 'nvil', 10161.2, 3604.7, 103.352)
-    set u=CreateUnit(p, 'nvil', 11325.7, 3482.4, 240.168)
-    set u=CreateUnit(p, 'nvil', 11322.3, 743.0, 84.356)
-    set u=CreateUnit(p, 'nvil', 10865.2, - 59.7, 238.960)
-    set u=CreateUnit(p, 'nvil', 12978.8, - 742.5, 322.470)
-    set u=CreateUnit(p, 'nvil', 13486.5, - 796.9, 151.045)
-    set u=CreateUnit(p, 'nvil', 13883.7, - 1122.0, 87.959)
-    set u=CreateUnit(p, 'nvil', 14401.0, - 496.5, 7.174)
-    set u=CreateUnit(p, 'nvil', 12518.7, - 847.8, 224.183)
-    set u=CreateUnit(p, 'nvil', 11989.6, - 691.0, 48.506)
-    set u=CreateUnit(p, 'nvil', 10697.4, 1028.4, 2.142)
-    set u=CreateUnit(p, 'nvil', 9993.2, 838.7, 130.620)
-    set u=CreateUnit(p, 'nvil', 9880.9, - 312.0, 83.993)
     set u=CreateUnit(p, 'N00P', - 1422.3, - 1379.7, 0.000)
     set u=CreateUnit(p, 'N00F', - 1396.8, - 161.8, 300.000)
     set u=CreateUnit(p, 'N00B', - 1463.4, - 512.7, 352.620)
@@ -10163,8 +10163,8 @@ function JiaRuMenPai takes nothing returns nothing
 			endif
 			// Ëá™Áî±ÊîπÊäïÁÅµÈπ´
 			if GetItemTypeId(GetManipulatedItem()) == 'I0EH' then
-				if udg_jf[i - 1] >= 10 then
-					if ( jf_useMax[i - 1] + 10 ) <= jf_max then
+				if udg_jf[i - 1] >= 20 then
+					if ( jf_useMax[i - 1] + 20 ) <= jf_max then
 						set udg_shuxing[i]=udg_shuxing[i] - 5
 						set danpo[i]=( danpo[i] + 2 )
 						set jingmai[i]=( jingmai[i] + 2 )
@@ -10174,17 +10174,17 @@ function JiaRuMenPai takes nothing returns nothing
 						call SetPlayerName(p, "„ÄìÁÅµÈπ´ÂÆ´„Äì" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 						call AdjustPlayerStateBJ(- 60, p, PLAYER_STATE_RESOURCE_LUMBER)
 						// Á¥ØÂä†Êú¨Â±ÄÂèØÁî®ÁßØÂàÜ
-						set jf_useMax[i - 1]=jf_useMax[i - 1] + 10
+						set jf_useMax[i - 1]=jf_useMax[i - 1] + 20
 						// Êâ£Èô§ÂØπÂ∫îÁöÑÁßØÂàÜ
-						set udg_jf[i - 1]=udg_jf[i - 1] - 10
+						set udg_jf[i - 1]=udg_jf[i - 1] - 20
 						// ‰øùÂ≠òÂà∞ÊúçÂä°Âô®
 						call DzAPI_Map_StoreInteger(Player(i - 1) , "jf" , udg_jf[i - 1])
-						call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00Êâ£Èô§10ÁßØÂàÜÈÄâÊã©ÁÅµÈπ´ÂÆ´")
+						call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00Êâ£Èô§20ÁßØÂàÜÈÄâÊã©ÁÅµÈπ´ÂÆ´")
 					else
 						call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00‰∏çËÉΩÈÄâÊã©ÁÅµÈπ´ÂÆ´ÔºåÊú¨Â±ÄÂèØÁî®ÁßØÂàÜËææÂà∞‰∏äÈôê50")
 					endif
 				else
-					call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00ÁßØÂàÜ‰∏çË∂≥10Ôºå‰∏çËÉΩÈÄâÊã©ÁÅµÈπ´ÂÆ´")
+					call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00ÁßØÂàÜ‰∏çË∂≥20Ôºå‰∏çËÉΩÈÄâÊã©ÁÅµÈπ´ÂÆ´")
 				endif
 			endif
 			// Ëá™Áî±ÊîπÊäïÈìÅÊéåÂ∏Æ
@@ -11249,14 +11249,15 @@ function Victory takes nothing returns nothing
 	set i=1
 	loop
 		exitwhen i >= 6
-		set udg_MeiJuJiFen[i]=udg_MeiJuJiFen[i] + ae / 50
-		call YDWE_PreloadSL_Set(Player(i - 1) , "ÊÄªÁßØÂàÜ" , 1 , udg_MeiJuJiFen[i])
-		call YDWE_PreloadSL_Save(Player(i - 1) , "JueZhan" , "JiangHu" + I2S(i) , 1)
 		if saveFlag[i - 1] == false then
-			call DisplayTextToPlayer(Player(i - 1), 0, 0, "|CFF99CC00Ëé∑ÂæóÊàòÊñóÂäõÂíåÁßØÂàÜÔºö" + I2S(get_zdl + damage_jf))
+		    if mall_addition[i] == 0 then
+			    call DisplayTextToPlayer(Player(i - 1), 0, 0, "|CFF99CC00Ëé∑ÂæóÊàòÊñóÂäõÂíåÁßØÂàÜÔºö" + I2S(get_zdl + damage_jf))
+			 else
+			    call DisplayTextToPlayer(Player(i - 1), 0, 0, "|CFF99CC00ÂºÄÂêØ‰∫ÜÂèåÂÄçÁßØÂàÜÔºåËé∑ÂæóÊàòÊñóÂäõÂíåÁßØÂàÜÔºö" + I2S(( get_zdl + damage_jf ) * ( 1 + mall_addition[i] )))
+			 endif
 			// ËÆ°ÁÆóÊàòÊñóÂäõÂíåÁßØÂàÜ
-			set udg_zdl[i - 1]=udg_zdl[i - 1] + get_zdl + damage_jf
-			set udg_jf[i - 1]=udg_jf[i - 1] + get_zdl + damage_jf
+			set udg_zdl[i - 1]=udg_zdl[i - 1] + ( get_zdl + damage_jf ) * ( 1 + mall_addition[i] )
+			set udg_jf[i - 1]=udg_jf[i - 1] + ( get_zdl + damage_jf ) * ( 1 + mall_addition[i] )
 			set udg_success[i - 1]=udg_success[i - 1] + 1
 			// ‰øùÂ≠òÊàòÊñóÂäõ„ÄÅÁßØÂàÜ„ÄÅÈÄöÂÖ≥Ê¨°Êï∞Âà∞ÊúçÂä°Âô®
 			call DzAPI_Map_StoreInteger(Player(i - 1) , "zdl" , udg_zdl[i - 1])
@@ -30087,7 +30088,7 @@ function YeChaGun_SH takes nothing returns nothing
 	if UnitHaveItem(udg_yechadanwei , 'I097') then
 	    set shxishu=shxishu * 4
     endif
-    set shanghai=ShangHaiGongShi(udg_yechadanwei , GetEnumUnit() , 8.4 , 2.3 , shxishu , 'A0CB')
+    set shanghai=ShangHaiGongShi(udg_yechadanwei , GetEnumUnit() , 18 , 12 , shxishu , 'A0CB')
     call WuGongShangHai(udg_yechadanwei , GetEnumUnit() , shanghai)
     if GetUnitAbilityLevel(udg_yechadanwei, 'A0DI') >= 1 then
 	     call SetUnitDizzy(GetEnumUnit() , 2. , "Abilities\\Spells\\Human\\Thunderclap\\ThunderclapTarget.mdl")
@@ -30408,7 +30409,7 @@ function XueDao_Action takes nothing returns nothing
 	if UnitHaveItem(u , 'I098') then
 		set shxishu=shxishu * 4
 	endif
-	set shanghai=ShangHaiGongShi(u , uc , 18 , 27 , shxishu , 'A0CI')
+	set shanghai=ShangHaiGongShi(u , uc , 36 , 54 , shxishu , 'A0CI')
 	//call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,R2S(shanghai))
 	call WuGongShangHai(u , uc , shanghai)
 	call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\HeroBloodElfBlood.mdl", uc, "overhead"))
@@ -30488,7 +30489,7 @@ function XueMo_Action takes nothing returns nothing
 		if dist > 2. then
 			set shxishu=1. + dist / 5.
 		endif
-		set shanghai=ShangHaiGongShi(u , uc , 3.5 , 3.5 , shxishu , 'A0CJ')
+		set shanghai=ShangHaiGongShi(u , uc , 7 , 7 , shxishu , 'A0CJ')
 		if uc != null and IsUnitAliveBJ(uc) then
 		    call WuGongShangHai(u , uc , shanghai)
 		    call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\HeroBloodElfBlood.mdl", uc, "overhead"))
@@ -34623,7 +34624,7 @@ if GetUnitAbilityLevel(u, 'A07W') >= 1 then
 			call SaveUnitHandle(YDHT, GetHandleId(t), 1, u)
 			call SaveInteger(YDHT, GetHandleId(t), 2, jishu)
 			call SaveInteger(YDHT, GetHandleId(t), 3, level)
-			call TimerStart(t, 12., false, function BaHuangGong_1)
+			call TimerStart(t, 8., false, function BaHuangGong_1)
 		else
 			call ModifyHeroStat(0, u, 0, jishu * level)
 			call ModifyHeroStat(1, u, 0, jishu * level)
@@ -34632,7 +34633,7 @@ if GetUnitAbilityLevel(u, 'A07W') >= 1 then
 			call SaveUnitHandle(YDHT, GetHandleId(t), 1, u)
 			call SaveInteger(YDHT, GetHandleId(t), 2, jishu)
 			call SaveInteger(YDHT, GetHandleId(t), 3, level)
-			call TimerStart(t, 12., false, function BaHuangGong_2)
+			call TimerStart(t, 8., false, function BaHuangGong_2)
 		endif
 		call DestroyEffect(AddSpecialEffectLocBJ(loc, "Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl"))
 		if GetUnitAbilityLevel(u, 'A083') >= 1 then
@@ -34641,7 +34642,7 @@ if GetUnitAbilityLevel(u, 'A07W') >= 1 then
 			call SaveUnitHandle(YDHT, GetHandleId(t), 1, u)
 			call SaveInteger(YDHT, GetHandleId(t), 2, jishu)
 			call SaveInteger(YDHT, GetHandleId(t), 3, level)
-			call TimerStart(t, 12., false, function BaHuangGong_3)
+			call TimerStart(t, 8., false, function BaHuangGong_3)
 		endif
 	endif
 	call RemoveLocation(loc)
@@ -35937,7 +35938,7 @@ set shxishu=shxishu + 1
 	//     set shxishu= shxishu + 1.2
     // endif
 	if ( GetUnitAbilityLevel(u, 'A056') != 0 ) and ( GetRandomReal(.0, 100.) <= 30. + fuyuan[i] / 3 + GetUnitAbilityLevel(u, 'A04X') * 5 ) then //Âä†Â∞èÊÄúÊ®™Èôà
-call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(800 + 600 * ( GetUnitAbilityLevel(u, 'A07N') ) , loc , Condition(function XiaoLian_Condition_1)), function XiaoLian_Action_1)
+call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(800 + 100 * ( GetUnitAbilityLevel(u, 'A07N') ) , loc , Condition(function XiaoLian_Condition_1)), function XiaoLian_Action_1)
 	    call WuGongShengChong(u , 'A056' , 900.)
 	    call WuGongShengChong(u , 'A059' , 2500.)
 	    if ( ( GetUnitAbilityLevel(u, 'A07N') != 0 ) ) then //Âä†‰πùÁà™
@@ -36138,7 +36139,7 @@ function birdDamage takes unit u,unit l__ut returns nothing
     if LoadBoolean(YDHT, GetHandleId(u), StringHash("Êïô‰∏ªÂ§´‰∫∫")) then
         set shxishu=shxishu * 2
     endif
-    set shanghai=ShangHaiGongShi(u , l__ut , 60 , 40 , shxishu , 'A054')
+    set shanghai=ShangHaiGongShi(u , l__ut , 30 , 20 , shxishu , 'A054')
     call WuGongShangHai(u , l__ut , shanghai)
     call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", GetEnumUnit(), "overhead"))
 endfunction
@@ -37489,11 +37490,11 @@ function ShiBaPan takes nothing returns nothing
  local integer gailv= 15
 // ‰∏ìÂ±ûÂä†ÊàêÔºåËß¶ÂèëÊ¶ÇÁéá100%
 if UnitHaveItem(u , 'I0E2') then
-	    set gailv=100
+	    set gailv=gailv + 15
   endif
 	if ( GetRandomInt(1, 100) <= gailv + GetUnitAbilityLevel(u, 'A08F') + fuyuan[i] / 5 and not ( UnitHasBuffBJ(u, 'B01L') ) ) then
-			call WuGongShengChong(u , 'A08E' , 500)
-			if GetUnitAbilityLevel(u, 'A083') >= 1 then
+        call WuGongShengChong(u , 'A08E' , 500)
+        if GetUnitAbilityLevel(u, 'A083') >= 1 then
 			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[1] , 'e000' , 'A08F' , abilityLevel , $D0085 , udg_hero[1] , 3)
 			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[2] , 'e000' , 'A08F' , abilityLevel , $D0085 , udg_hero[2] , 3)
 			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[3] , 'e000' , 'A08F' , abilityLevel , $D0085 , udg_hero[3] , 3)
@@ -43086,6 +43087,8 @@ function InitShopWeapon takes nothing returns nothing
 	set shopweapon[25]=s__ShopWeapon_create('I0DZ' , 6)
 	set shopweapon[26]=s__ShopWeapon_create('I0E0' , 6)
 	set shopweapon[27]=s__ShopWeapon_create('I0E2' , 6)
+	set shopweapon[28]=s__ShopWeapon_create('I09B' , 6)
+	set shopweapon[29]=s__ShopWeapon_create('I09D' , 6)
 endfunction
 function SmeltingWeaponSystem takes nothing returns nothing
  local trigger t= CreateTrigger()
@@ -47731,8 +47734,14 @@ set udg_success[i]=DzAPI_Map_GetStoredInteger(Player(i) , "success") // Ëé∑ÂèñÈÄ
 set max_damage[i]=DzAPI_Map_GetStoredReal(Player(i) , "maxDamage") // Ëé∑ÂèñÊúÄÈ´ò‰º§ÂÆ≥
 set bonus_wugong[i]=DzAPI_Map_GetStoredReal(Player(i) , "wugong") // Ëé∑ÂèñÊ≠¶Âäü‰º§ÂÆ≥Âä†Êàê
 set bonus_baoshang[i]=DzAPI_Map_GetStoredReal(Player(i) , "baoshang") // Ëé∑ÂèñÁàÜ‰º§Âä†Êàê
-// ÁßØÂàÜË¥≠‰π∞Ê≠¶ÂäüÂä†ÊàêÂíåÁàÜ‰º§‰∏äÈôê30%ÔºåË∂ÖËøáËßÜ‰∏∫‰ΩúÂºäÔºå‰∏çÂä†‰º§ÂÆ≥
-if bonus_wugong[i] > 0.3 then
+// ÁßØÂàÜÂ§ß‰∫éÊàòÊñóÂäõËßÜ‰∏∫‰ΩúÂºäÔºåÁßØÂàÜÊ∏ÖÈõ∂
+if udg_jf[i] > udg_zdl[i] or udg_jf[i] > 326 * udg_success[i] then
+		    call DisplayTextToPlayer(Player(i), 0, 0, "Á≥ªÁªüÊ£ÄÊµãÂà∞‰Ω†‰ΩúÂºäÔºåÁßØÂàÜÊ∏ÖÈõ∂")
+		    set udg_jf[i]=0
+		    call DzAPI_Map_StoreInteger(Player(i) , "jf" , 0)
+		endif
+		// ÁßØÂàÜË¥≠‰π∞Ê≠¶ÂäüÂä†ÊàêÂíåÁàÜ‰º§‰∏äÈôê30%ÔºåË∂ÖËøáËßÜ‰∏∫‰ΩúÂºäÔºå‰∏çÂä†‰º§ÂÆ≥
+		if bonus_wugong[i] > 0.3 then
 			set bonus_wugong[i]=0
 			call BJDebugMsg("‰º§ÂÆ≥Âä†ÊàêË∂ÖËøá30%")
 		endif
@@ -48934,7 +48943,7 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs6696093")
+call ExecuteFunc("jasshelper__initstructs213857843")
 call ExecuteFunc("UniMissileSystem3D__Init")
 call ExecuteFunc("init")
 call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
@@ -48977,23 +48986,23 @@ function config takes nothing returns nothing
     call InitCustomTeams()
     call InitAllyPriorities()
 endfunction
-//===========================================================================
-//ÔøΩÔøΩ‘æœµÕ≥ 
-//===========================================================================
 //===========================================================================  
 //===========================================================================  
-//ÔøΩ‘∂ÔøΩÔøΩÔøΩÔøΩ¬ºÔøΩ 
+//◊‘∂®“Â ¬º˛ 
 //===========================================================================
 //===========================================================================   
+     
+ 
+                 
 //===========================================================================
 //œµÕ≥-TimerSystem
 //===========================================================================
 //===========================================================================
+//Ã¯‘æœµÕ≥ 
+//===========================================================================
+//===========================================================================
 //‰øÆÊîπÁîüÂëΩ
 //===========================================================================
-     
- 
-                 
 
 
 
@@ -49126,7 +49135,7 @@ function sa___prototype3_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs6696093 takes nothing returns nothing
+function jasshelper__initstructs213857843 takes nothing returns nothing
     set st__ShopWeapon_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__ShopWeapon_onDestroy,Condition( function sa__ShopWeapon_onDestroy))
     set st__ShopWeapon_PickUpWeapon=CreateTrigger()

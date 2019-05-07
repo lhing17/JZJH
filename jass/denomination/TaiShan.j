@@ -236,11 +236,11 @@ function ShiBaPan takes nothing returns nothing
 	local integer gailv = 15 // 触发概率
 	// 专属加成，触发概率100%
 	if UnitHaveItem(u, 'I0E2') then
-	    set gailv = 100
+	    set gailv = gailv + 15
   endif
 	if (GetRandomInt(1, 100) <= gailv + GetUnitAbilityLevel(u, 'A08F') + fuyuan[i] / 5 and not(UnitHasBuffBJ(u, 'B01L'))) then
-			call WuGongShengChong(u, 'A08E', 500)
-			if GetUnitAbilityLevel(u, 'A083') >= 1 then
+        call WuGongShengChong(u, 'A08E', 500)
+        if GetUnitAbilityLevel(u, 'A083') >= 1 then
 			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[1], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[1], 3)
 			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[2], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[2], 3)
 			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[3], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[3], 3)

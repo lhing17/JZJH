@@ -212,7 +212,7 @@ function GuiFeiHuiMouSH takes nothing returns nothing
 	//     set shxishu= shxishu + 1.2
     // endif
 	if (GetUnitAbilityLevel(u,'A056')!=0) and (GetRandomReal(.0,100.) <= 30. + fuyuan[i]/3 + GetUnitAbilityLevel(u, 'A04X')*5 ) then //加小怜横陈
-	    call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(800+600*(GetUnitAbilityLevel(u,'A07N')),loc,Condition(function XiaoLian_Condition_1)),function XiaoLian_Action_1)
+	    call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(800+100*(GetUnitAbilityLevel(u,'A07N')),loc,Condition(function XiaoLian_Condition_1)),function XiaoLian_Action_1)
 	    call WuGongShengChong(u,'A056',900.)
 	    call WuGongShengChong(u,'A059',2500.)
 	    if((GetUnitAbilityLevel(u,'A07N')!=0))then//加九爪
@@ -419,7 +419,7 @@ function birdDamage takes unit u, unit ut returns nothing
     if LoadBoolean(YDHT,GetHandleId(u),StringHash("教主夫人")) then
         set shxishu = shxishu * 2
     endif
-    set shanghai=ShangHaiGongShi(u,ut,60,40,shxishu,'A054')
+    set shanghai=ShangHaiGongShi(u,ut,30,20,shxishu,'A054')
     call WuGongShangHai(u,ut,shanghai)
     call DestroyEffect( AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", GetEnumUnit(), "overhead") )
 endfunction

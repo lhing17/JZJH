@@ -110,8 +110,8 @@ globals
 	integer array udg_zdl
 	// 积分数组
 	integer array udg_jf
-	// 每局可用积分50分
-	integer jf_max = 50
+	// 每局可用积分80分
+	integer jf_max = 80
 	// 每局已用积分
 	integer array jf_useMax
 	// 通关次数数组
@@ -1805,6 +1805,12 @@ function InitGlobalSave takes nothing returns nothing
 		set max_damage[i]=DzAPI_Map_GetStoredReal(Player(i),"maxDamage") // 获取最高伤害
 		set bonus_wugong[i]=DzAPI_Map_GetStoredReal(Player(i),"wugong") // 获取武功伤害加成
 		set bonus_baoshang[i]=DzAPI_Map_GetStoredReal(Player(i),"baoshang") // 获取爆伤加成
+		// 积分大于战斗力视为作弊，积分清零
+		if udg_jf[i] > udg_zdl[i] or udg_jf[i] > 326 * udg_success[i] then
+		    call DisplayTextToPlayer(Player(i), 0, 0, "系统检测到你作弊，积分清零")
+		    set udg_jf[i] = 0
+		    call DzAPI_Map_StoreInteger(Player(i),"jf",0)
+		endif
 		// 积分购买武功加成和爆伤上限30%，超过视为作弊，不加伤害
 		if bonus_wugong[i] > 0.3 then
 			set bonus_wugong[i] = 0

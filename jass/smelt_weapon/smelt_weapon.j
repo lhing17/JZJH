@@ -307,6 +307,8 @@ function InitShopWeapon takes nothing returns nothing
 	set shopweapon[25] = ShopWeapon.create('I0DZ', 6)
 	set shopweapon[26] = ShopWeapon.create('I0E0', 6)
 	set shopweapon[27] = ShopWeapon.create('I0E2', 6)
+	set shopweapon[28] = ShopWeapon.create('I09B', 6)
+	set shopweapon[29] = ShopWeapon.create('I09D', 6)
 endfunction
 
 function SmeltingWeaponSystem takes nothing returns nothing

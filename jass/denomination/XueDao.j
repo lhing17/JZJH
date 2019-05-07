@@ -144,7 +144,7 @@ function XueDao_Action takes nothing returns nothing
 	if UnitHaveItem(u,'I098') then
 		set shxishu=shxishu*4
 	endif
-	set shanghai=ShangHaiGongShi(u,uc,18,27,shxishu,'A0CI')
+	set shanghai=ShangHaiGongShi(u,uc,36,54,shxishu,'A0CI')
 	//call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,R2S(shanghai))
 	call WuGongShangHai(u,uc,shanghai)
 	call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\HeroBloodElfBlood.mdl",uc,"overhead"))
@@ -224,7 +224,7 @@ function XueMo_Action takes nothing returns nothing
 		if dist>2. then
 			set shxishu=1.+dist/5.
 		endif
-		set shanghai=ShangHaiGongShi(u,uc,3.5,3.5,shxishu,'A0CJ')
+		set shanghai=ShangHaiGongShi(u,uc,7, 7, shxishu,'A0CJ')
 		if uc!=null and IsUnitAliveBJ(uc) then
 		    call WuGongShangHai(u,uc,shanghai)
 		    call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\HeroBloodElfBlood.mdl",uc,"overhead"))

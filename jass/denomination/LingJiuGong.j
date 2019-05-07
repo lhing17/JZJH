@@ -363,7 +363,7 @@ function BaHuangGong takes nothing returns nothing
 			call SaveUnitHandle(YDHT, GetHandleId(t), 1, u)
 			call SaveInteger(YDHT, GetHandleId(t), 2, jishu)
 			call SaveInteger(YDHT, GetHandleId(t), 3, level)
-			call TimerStart(t, 12., false, function BaHuangGong_1)
+			call TimerStart(t, 8., false, function BaHuangGong_1)
 		else
 			call ModifyHeroStat(0, u, 0, jishu*level)
 			call ModifyHeroStat(1, u, 0, jishu*level)
@@ -372,7 +372,7 @@ function BaHuangGong takes nothing returns nothing
 			call SaveUnitHandle(YDHT, GetHandleId(t), 1, u)
 			call SaveInteger(YDHT, GetHandleId(t), 2, jishu)
 			call SaveInteger(YDHT, GetHandleId(t), 3, level)
-			call TimerStart(t, 12., false, function BaHuangGong_2)
+			call TimerStart(t, 8., false, function BaHuangGong_2)
 		endif
 		call DestroyEffect(AddSpecialEffectLocBJ(loc,"Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl"))
 		if GetUnitAbilityLevel(u, 'A083')>=1 then
@@ -381,7 +381,7 @@ function BaHuangGong takes nothing returns nothing
 			call SaveUnitHandle(YDHT, GetHandleId(t), 1, u)
 			call SaveInteger(YDHT, GetHandleId(t), 2, jishu)
 			call SaveInteger(YDHT, GetHandleId(t), 3, level)
-			call TimerStart(t, 12., false, function BaHuangGong_3)
+			call TimerStart(t, 8., false, function BaHuangGong_3)
 		endif
 	endif
 	call RemoveLocation(loc)

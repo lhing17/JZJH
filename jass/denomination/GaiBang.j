@@ -297,7 +297,7 @@ function YeChaGun_SH takes nothing returns nothing
 	if UnitHaveItem(udg_yechadanwei,'I097') then
 	    set shxishu=shxishu*4
     endif
-    set shanghai=ShangHaiGongShi(udg_yechadanwei,GetEnumUnit(),8.4,2.3,shxishu,'A0CB')
+    set shanghai=ShangHaiGongShi(udg_yechadanwei,GetEnumUnit(),18,12,shxishu,'A0CB')
     call WuGongShangHai(udg_yechadanwei,GetEnumUnit(),shanghai)
     if GetUnitAbilityLevel(udg_yechadanwei,'A0DI')>=1 then
 	     call SetUnitDizzy(GetEnumUnit(),2.,"Abilities\\Spells\\Human\\Thunderclap\\ThunderclapTarget.mdl")

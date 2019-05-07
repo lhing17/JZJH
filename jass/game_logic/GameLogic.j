@@ -372,8 +372,8 @@ function JiaRuMenPai takes nothing returns nothing
 			endif
 			// 自由改投灵鹫
 			if GetItemTypeId(GetManipulatedItem())=='I0EH' then
-				if udg_jf[i-1] >= 10 then
-					if  (jf_useMax[i-1]+10) <= jf_max then
+				if udg_jf[i-1] >= 20 then
+					if  (jf_useMax[i-1]+20) <= jf_max then
 						set udg_shuxing[i]=udg_shuxing[i]-5
 						set danpo[i]=(danpo[i]+2)
 						set jingmai[i]=(jingmai[i]+2)
@@ -383,17 +383,17 @@ function JiaRuMenPai takes nothing returns nothing
 						call SetPlayerName(p,"〓灵鹫宫〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
 						call AdjustPlayerStateBJ(-60, p, PLAYER_STATE_RESOURCE_LUMBER)
 						// 累加本局可用积分
-						set jf_useMax[i-1] = jf_useMax[i-1] + 10
+						set jf_useMax[i-1] = jf_useMax[i-1] + 20
 						// 扣除对应的积分
-						set udg_jf[i-1] = udg_jf[i-1] -10
+						set udg_jf[i-1] = udg_jf[i-1] - 20
 						// 保存到服务器
 						call DzAPI_Map_StoreInteger(Player(i-1),"jf",udg_jf[i-1])
-						call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00扣除10积分选择灵鹫宫")
+						call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00扣除20积分选择灵鹫宫")
 					else
 						call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00不能选择灵鹫宫，本局可用积分达到上限50")
 					endif
 				else
-					call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00积分不足10，不能选择灵鹫宫")
+					call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00积分不足20，不能选择灵鹫宫")
 				endif
 			endif
 
@@ -1496,14 +1496,15 @@ function Victory takes nothing returns nothing
 	set i = 1
 	loop
 		exitwhen i >= 6
-		set udg_MeiJuJiFen[i]=udg_MeiJuJiFen[i]+ae/50
-		call YDWE_PreloadSL_Set( Player(i-1), "总积分", 1, udg_MeiJuJiFen[i] )
-		call YDWE_PreloadSL_Save( Player(i-1), "JueZhan", "JiangHu"+I2S(i), 1 )
 		if saveFlag[i-1] == false then
-			call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00获得战斗力和积分："+I2S(get_zdl+damage_jf))
+		    if mall_addition[i] == 0 then
+			    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00获得战斗力和积分："+I2S(get_zdl+damage_jf))
+			 else
+			    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00开启了双倍积分，获得战斗力和积分："+I2S((get_zdl+damage_jf)* (1+mall_addition[i])))
+			 endif
 			// 计算战斗力和积分
-			set udg_zdl[i-1] = udg_zdl[i-1] + get_zdl + damage_jf
-			set udg_jf[i-1] = udg_jf[i-1] + get_zdl + damage_jf
+			set udg_zdl[i-1] = udg_zdl[i-1] + (get_zdl + damage_jf)* (1+mall_addition[i])
+			set udg_jf[i-1] = udg_jf[i-1] + (get_zdl + damage_jf)* (1+mall_addition[i])
 			set udg_success[i-1] = udg_success[i-1]+1
 			// 保存战斗力、积分、通关次数到服务器
 			call DzAPI_Map_StoreInteger(Player(i-1),"zdl",udg_zdl[i-1])
