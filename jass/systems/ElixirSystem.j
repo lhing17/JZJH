@@ -1022,6 +1022,7 @@ function LianSomeDan takes unit u, item it, integer dan, integer ys, integer y1,
 			if (GetRandomInt(1,20) <= 20-que) then
 				call unitadditembyidswapped(CorresDan(dan),u)
 				call DisplayTimedTextToPlayer(p,0,0,5.,"|cff00ffff恭喜炼制成功！")
+				set biYuAddition[i] = biYuAddition[i] + 0.5
 				set udg_ldds[i] = udg_ldds[i] + 1
 				if (udg_ldds[i]<=5) and udg_lddsbool[i] == false then
 					call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您炼成第"+I2S(udg_ldds[i])+"颗丹药，炼成5颗可获得大师哦")

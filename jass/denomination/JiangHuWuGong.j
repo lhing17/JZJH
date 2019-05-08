@@ -113,14 +113,16 @@ function TanZhiShangHai takes nothing returns nothing
 endfunction
 //冰魄银针
 function dF takes nothing returns boolean
-	return((GetSpellAbilityId()=='A07A')and(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO)))
+	return GetSpellAbilityId()=='A07A'
 endfunction
 function eF takes nothing returns nothing
     local unit uc=GetTriggerUnit()
     local location loc=GetUnitLoc(uc)
     local location array loc_bp
     local integer level = 0
-    call WuGongShengChong(GetTriggerUnit(),'A07A',260.)
+    if UnitTypeNotNull(uc, UNIT_TYPE_HERO) then
+        call WuGongShengChong(GetTriggerUnit(),'A07A',260.)
+    endif
     set H7=1
     loop
         exitwhen H7>12

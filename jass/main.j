@@ -35,6 +35,7 @@
 #include "denomination/VIPMingJiao.j"
 #include "denomination/ShenLong.j"
 #include "denomination/QuanZhen.j"
+#include "denomination/TangMen.j"
 #include "denomination/TieZhang.j"
 #include "denomination/TaiShan.j"
 
@@ -1883,6 +1884,7 @@ function MenPai_Trigger takes nothing returns nothing
 	call ShaoLin_Trigger() //少林武功触发
 	call ShenLong_Trigger() //神龙教武功触发
     call TieZhang_Trigger() //铁掌帮武功触发
+	call tangMenTrigger() //唐门武功触发
     call TaiShan_Trigger() //泰山派武功触发
 	call VIPMingJiao_Trigger() //明教武功触发
 	call WuDang_Trigger() //武当武功触发
