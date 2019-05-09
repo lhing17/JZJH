@@ -835,7 +835,6 @@ function ChooseMoshi_Auto takes nothing returns nothing
 	if moshiFlag == false then
 		call DialogDisplayBJ(false,udg_index,Player(0))
 		set udg_teshushijian=true
-		set udg_shengchun=false
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF默认选择了特殊事件模式")
 	endif
 	call PauseTimer(t)
@@ -849,7 +848,6 @@ function ChooseMoShi takes nothing returns nothing
         call DialogSetMessage(udg_index,"请选择游戏模式，20秒时间")
         set udg_index0=DialogAddButtonBJ(udg_index,"|cFF00CC00普通模式（无积分）")
         set udg_index1=DialogAddButtonBJ(udg_index,"|cFFCC0066特殊事件模式（推荐）")
-        set udg_index2=DialogAddButtonBJ(udg_index,"|cFFFF6600生存模式")
         set udg_index3 = DialogAddButtonBJ(udg_index,"|cFF6600FF挑战模式（3倍积分）")
         call DialogDisplayBJ(true,udg_index,Player(0))
 		// 开启计时器，20s不选模式默认选择特殊模式
@@ -866,7 +864,6 @@ function TiaoZhanMoshi_Auto takes nothing returns nothing
 	if tiaoZhanFlag == false then
 		call DialogDisplayBJ(false,udg_tiaoZhan,Player(0))
 		set udg_teshushijian=true
-		set udg_shengchun=false
 		set udg_sutong = true
 		set tiaoZhanIndex = 1
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF默认选择了快速通关模式")
@@ -894,14 +891,12 @@ function TiaoZhanMoshi_Action takes nothing returns nothing
 	if GetClickedButton()==udg_tiaoZhan0 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了快速通关模式")
         set udg_teshushijian=true
-        set udg_shengchun=false
         set udg_sutong = true
 		set tiaoZhanIndex = 1
     endif
     if GetClickedButton()==udg_tiaoZhan1 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了无技能书商店模式")
         set udg_teshushijian=true
-        set udg_shengchun=false
         set udg_sutong = false
 		set tiaoZhanIndex = 2
 		// 移除技能书商店
@@ -922,24 +917,14 @@ function ChooseMoShi_Action takes nothing returns nothing
     if GetClickedButton()==udg_index0 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了普通模式（无积分）")
         set udg_teshushijian=false
-        set udg_shengchun=false
     endif
     if GetClickedButton()==udg_index1 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了特殊事件模式")
         set udg_teshushijian=true
-        set udg_shengchun=false
-    endif
-    if GetClickedButton()==udg_index2 then
-        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了生存模式")
-        set udg_teshushijian=false
-        set udg_shengchun=true
     endif
     if GetClickedButton()==udg_index3 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了挑战模式")
 		call TiaoZhanMoshi()
-        // set udg_teshushijian=true
-        // set udg_shengchun=false
-        // set udg_sutong = true
     endif
 	// 已选难度
 	set moshiFlag = true
@@ -947,8 +932,8 @@ endfunction
 
 //调整游戏难度
 function GameNanDu_Condition takes nothing returns boolean
-	//非特殊事件模式、非生存模式
-	return (udg_teshushijian==false and udg_shengchun==false)
+	//非特殊事件模式
+	return udg_teshushijian==false
 endfunction
 function GameNanDu takes nothing returns nothing
 	local trigger t=GetTriggeringTrigger()
@@ -1474,10 +1459,6 @@ function Victory takes nothing returns nothing
 	set cx=cx+3
 	call SaveInteger(YDHT,id,-$3021938A,cx)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	// 生存模式
-	if udg_shengchun then
-		set get_zdl = 20
-	endif
 	// 速通模式3倍积分
 	if tiaoZhanIndex == 1 then
 		set get_zdl = get_zdl * 3
@@ -1903,7 +1884,7 @@ function HA takes nothing returns nothing
 	call YDWEPolledWaitNull(60.)
 	if((O4>1))then
 		call EnableTrigger(Zi)
-	    if((ModuloInteger(udg_boshu,4)==0)and(udg_boshu<28) and udg_shengchun==false)then
+	    if ModuloInteger(udg_boshu,4)==0 and udg_boshu<28 then
 	        call CreateNUnitsAtLocFacingLocBJ(1,u7[(udg_boshu/4)],Player(6),v7[8],v7[3])
 	        call GroupAddUnit(w7,bj_lastCreatedUnit)
 	        call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[3])
@@ -1912,7 +1893,7 @@ function HA takes nothing returns nothing
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033邪教趁我方不备，偷偷地从背后杀过来了")
 
 	endif
-	if((ModuloInteger(udg_boshu,4)==0)and(udg_boshu<30)and udg_shengchun==false)then
+	if((ModuloInteger(udg_boshu,4)==0)and(udg_boshu<30))then
 	    call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033邪教派出BOSS前来进攻，请准备防御")
 	    call CreateNUnitsAtLocFacingLocBJ(1,u7[(udg_boshu/4)],Player(6),v7[6],v7[4])
 		if udg_boshu==4 then
@@ -1958,7 +1939,7 @@ function HA takes nothing returns nothing
 	    call TimerStart(t,20,true,function BOSSChengZhang)
 	    call GroupAddUnit(w7,bj_lastCreatedUnit)
 	    call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-	elseif((ModuloInteger(udg_boshu,4)!=0)and(udg_boshu<28)and udg_shengchun==false)then
+	elseif((ModuloInteger(udg_boshu,4)!=0)and(udg_boshu<28))then
 	    if LevelGuoGao() then
 		    call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033由于激活特殊事件，邪教派出BOSS前来进攻，请准备防御")
 	        call CreateNUnitsAtLocFacingLocBJ(1,u7[(udg_boshu/4)+1],Player(6),v7[6],v7[4])
@@ -1984,7 +1965,7 @@ function HA takes nothing returns nothing
 	if udg_sutong == false then
 		call YDWEPolledWaitNull(135-GetNumPlayer()*10)
 	endif
-	if((udg_boshu>=29) and udg_shengchun==false)then
+	if((udg_boshu>=29))then
 	    call StopMusic(false)
 	    call PlayMusicBJ(zh)
 	    call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033西域势力最后BOSS即将发起最后进攻，请作好防守准备")
@@ -1994,10 +1975,6 @@ function HA takes nothing returns nothing
 	    call GroupAddUnit(w7,bj_lastCreatedUnit)
 	    call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
 	else
-	    if udg_shengchun==true then
-		    call AddPlayerTechResearched(Player(12),'R004',1)
-		    call AddPlayerTechResearched(Player(6),'R004',1)
-	    endif
 	    if((x7>=1))then
 	        call TriggerExecute(ij)
 	    else
@@ -2034,7 +2011,16 @@ function JiaJiNeng takes unit u returns nothing
     endif
 endfunction
 function lA takes nothing returns nothing
-	if udg_shengchun==false then
+    call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[6],v7[4])
+    call GroupAddUnit(w7,bj_lastCreatedUnit)
+    call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
+    call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[7],v7[4])
+    call GroupAddUnit(w7,bj_lastCreatedUnit)
+    call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
+    call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[5],v7[4])
+    call GroupAddUnit(w7,bj_lastCreatedUnit)
+    call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
+    if LevelGuoGao() then
         call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[6],v7[4])
         call GroupAddUnit(w7,bj_lastCreatedUnit)
         call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
@@ -2044,47 +2030,16 @@ function lA takes nothing returns nothing
         call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[5],v7[4])
         call GroupAddUnit(w7,bj_lastCreatedUnit)
         call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-        if LevelGuoGao() then
-        	call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[6],v7[4])
-            call GroupAddUnit(w7,bj_lastCreatedUnit)
-            call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-            call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[7],v7[4])
-            call GroupAddUnit(w7,bj_lastCreatedUnit)
-            call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-            call CreateNUnitsAtLocFacingLocBJ(1,y7[udg_boshu],Player(6),v7[5],v7[4])
-            call GroupAddUnit(w7,bj_lastCreatedUnit)
-            call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-        endif
-    else
-        call CreateNUnitsAtLocFacingLocBJ(1,'n003',Player(6),v7[6],v7[4])
-        call GroupAddUnit(w7,bj_lastCreatedUnit)
-        call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-        call JiaJiNeng(bj_lastCreatedUnit)
-        call CreateNUnitsAtLocFacingLocBJ(1,'n003',Player(6),v7[7],v7[4])
-        call GroupAddUnit(w7,bj_lastCreatedUnit)
-        call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-        call JiaJiNeng(bj_lastCreatedUnit)
-        call CreateNUnitsAtLocFacingLocBJ(1,'n003',Player(6),v7[5],v7[4])
-        call GroupAddUnit(w7,bj_lastCreatedUnit)
-        call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
-        call JiaJiNeng(bj_lastCreatedUnit)
     endif
 endfunction
 function KA takes nothing returns nothing
-	if udg_shengchun==false then
+    call CreateNUnitsAtLocFacingLocBJ(1,y7[(udg_boshu+1)],Player(6),v7[8],v7[3])
+    call GroupAddUnit(w7,bj_lastCreatedUnit)
+    call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[3])
+    if LevelGuoGao() then
         call CreateNUnitsAtLocFacingLocBJ(1,y7[(udg_boshu+1)],Player(6),v7[8],v7[3])
         call GroupAddUnit(w7,bj_lastCreatedUnit)
         call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[3])
-        if LevelGuoGao() then
-        	call CreateNUnitsAtLocFacingLocBJ(1,y7[(udg_boshu+1)],Player(6),v7[8],v7[3])
-            call GroupAddUnit(w7,bj_lastCreatedUnit)
-            call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[3])
-        endif
-    else
-        call CreateNUnitsAtLocFacingLocBJ(1,'n003',Player(6),v7[8],v7[3])
-        call GroupAddUnit(w7,bj_lastCreatedUnit)
-        call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[3])
-        call JiaJiNeng(bj_lastCreatedUnit)
     endif
 endfunction
 function MA takes nothing returns boolean

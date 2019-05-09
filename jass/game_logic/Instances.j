@@ -2821,11 +2821,6 @@ function isKillANiu takes nothing returns boolean
 	return GetUnitTypeId(GetTriggerUnit())=='n00N'
 endfunction
 function killANiu takes nothing returns nothing
-	// 生存模式15波后杀阿牛出boss
-	if udg_boshu>15 and udg_shengchun then
-		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cFFFFCC00江湖小报：最终boss出现在地图上方！！！")
-		call CreateNUnitsAtLocFacingLocBJ(1, u7[8], Player(6), v7[6], v7[4]) // boss8出现
-	endif
 	call dropItem(GetKillingUnit(), 'I0CW', 'I09Q', 50)
 endfunction
 //------------------九阳真经系统结束----------------------------

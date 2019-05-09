@@ -139,7 +139,6 @@ globals
 
 	boolean udg_shifoufomie=false
 	boolean udg_teshushijian=false
-	boolean udg_shengchun=false
 	boolean udg_yunyangxianshen=false
 	boolean udg_sutong = false
 	boolean taohuakai=false
