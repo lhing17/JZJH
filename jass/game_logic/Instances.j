@@ -121,7 +121,7 @@ function cl takes nothing returns boolean
 	return((GetUnitTypeId(GetTriggerUnit())=='nbdw'))
 endfunction
 function KillTangWenLiang takes nothing returns nothing
-	call BaoWuDiaoLuo(GetKillingUnit(), GetTriggerUnit() , 100, 'I01L', 'I01M', 'I01Q', 'I01R', 0, 0)
+	call BaoWuDiaoLuo(GetKillingUnit(), GetTriggerUnit() , 100, 'I01L', 'I01M', 'I01Q', 'I01R', 10, 'I0EP')
 endfunction
 //杀关能
 function Fl takes nothing returns boolean
@@ -688,6 +688,7 @@ exitwhen N7>MM7
 call createitemloc('I09I',LoadLocationHandle(YDHT,id*cx,$1769D332))
 if((GetRandomInt(1,50)<=30))then
 call createitemloc(YaoCao[6],LoadLocationHandle(YDHT,id*cx,$1769D332))
+call createitemloc('I0EQ',LoadLocationHandle(YDHT,id*cx,$1769D332))
 if udg_lddsbool[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))] then
     call createitemloc(YaoCao[6],LoadLocationHandle(YDHT,id*cx,$1769D332))
 endif

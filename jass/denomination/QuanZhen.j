@@ -384,7 +384,9 @@ function XianTian1 takes nothing returns nothing
     // call BJDebugMsg("捕捉重生事件")
     if GetPlayerState(GetOwningPlayer(u),PLAYER_STATE_RESOURCE_FOOD_USED)==LoadInteger(YDHT,p,1) then
         // call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "捕捉成功" )
-        call WuGongShengChong(u,'A0CH',40.)
+        if GetPlayerController(GetOwningPlayer(u))==MAP_CONTROL_USER then
+            call WuGongShengChong(u,'A0CH',40.)
+        endif
         set tm = CreateTimer()
         call SaveUnitHandle(YDHT,GetHandleId(tm),0,u)
         call SaveInteger(YDHT,GetHandleId(tm),1,LoadInteger(YDHT,p,1))

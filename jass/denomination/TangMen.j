@@ -87,9 +87,14 @@ function yinZhenDamage takes nothing returns nothing
     endif
 
     // 专属加成
-//    if UnitHaveItem(u, 'I0DZ') then
-//        set shxishu = shxishu * 2
-//    endif
+    // 子午砂
+    if UnitHaveItem(u, 'I0EP') then
+        set shxishu = shxishu * 2.0
+    endif
+    // 观音泪
+    if UnitHaveItem(u, 'I0EQ') then
+        set shxishu = shxishu * 2.0
+    endif
     set shanghai=ShangHaiGongShi(u,target,30,30,shxishu,'A098')
     call WuGongShangHai(u,target,shanghai)
 endfunction
@@ -174,6 +179,15 @@ function manTianDamage takes nothing returns nothing
     if((GetUnitAbilityLevel(u,'A0B6')!=0))then // 加六合经 破防
         call WanBuff(u, target, 9)
     endif
+    // 子午砂
+     if UnitHaveItem(u, 'I0EP') then
+         set shxishu = shxishu * 2.0
+     endif
+     // 观音泪
+     if UnitHaveItem(u, 'I0EQ') then
+         set shxishu = shxishu * 2.0
+     endif
+
 
     set shanghai=ShangHaiGongShi(u,target,80,90,shxishu,'A09A')
     call WuGongShangHai(u,target,shanghai)
@@ -268,6 +282,14 @@ function duoHunDamage takes nothing returns nothing
         set shxishu = shxishu + 1.5
     endif
     call WanBuff(u, target, 4)
+    // 子午砂
+    if UnitHaveItem(u, 'I0EP') then
+        set shxishu = shxishu * 2.0
+    endif
+    // 观音泪
+    if UnitHaveItem(u, 'I0EQ') then
+        set shxishu = shxishu * 2.0
+    endif
     set shanghai=ShangHaiGongShi(u,target,100,100,shxishu,'A0B0')
     call WuGongShangHai(u,target,shanghai)
 endfunction
@@ -414,6 +436,14 @@ function biYuAction takes nothing returns nothing
 	if UnitHaveItem(GetAttacker(), 'I0AM') or Ce[i] == 1 then
 	    set shxishu = shxishu + 2.0
     endif
+    // 子午砂
+    if UnitHaveItem(GetAttacker(), 'I0EP') then
+        set shxishu = shxishu * 2.0
+    endif
+    // 观音泪
+    if UnitHaveItem(GetAttacker(), 'I0EQ') then
+        set shxishu = shxishu * 2.0
+    endif
     call WuGongShangHai(GetAttacker(),GetEnumUnit(),ShangHaiGongShi(GetAttacker(),GetEnumUnit(),200,200,shxishu,'A0B1'))
 endfunction
 
@@ -441,7 +471,18 @@ function biYuDan takes nothing returns nothing
     set g = null
 endfunction
 
- 
+function isGuanYinLei takes nothing returns boolean
+    return UnitHaveItem(GetAttacker(), 'I0EQ')
+endfunction
+
+function guanYinLei takes nothing returns nothing
+    local integer  i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
+    // 观音泪攻击深度中毒
+    if GetRandomInt(1, 100) <= 15 + fuyuan[i] / 5 then
+        call WanBuff(GetAttacker(), GetTriggerUnit(), 14)
+    endif
+endfunction
+
 function tangMenTrigger takes nothing returns nothing
     local trigger t = CreateTrigger()
     local integer i = 1
@@ -501,6 +542,11 @@ function tangMenTrigger takes nothing returns nothing
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_SPELL_EFFECT)
     call TriggerAddCondition(t, Condition(function liuHeCondition))
     call TriggerAddAction(t, function liuHeAction)
+
+    set t = CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_ATTACKED)
+    call TriggerAddCondition(t,Condition(function isGuanYinLei))
+    call TriggerAddAction(t,function guanYinLei)
 
     set t = null
 
