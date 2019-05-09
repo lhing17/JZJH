@@ -2543,7 +2543,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
             // 学小无相+冰魄银针6重，搜魂侠
             if GetUnitAbilityLevel(u, 'A083') >= 1 and GetUnitAbilityLevel(u, 'A07A') >= 1 then
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：搜魂侠")
-                call ModifyHeroStat(0, u, 0, 100)
+                call ModifyHeroStat(0, u, 0, 300)
                 call ModifyHeroStat(1, u, 0, 200)
                 call ModifyHeroStat(2, u, 0, 300)
                 call SetPlayerName(p, "〓搜魂侠〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))

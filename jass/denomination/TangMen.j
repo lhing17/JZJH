@@ -93,7 +93,7 @@ function yinZhenDamage takes nothing returns nothing
     endif
     // 观音泪
     if UnitHaveItem(u, 'I0EQ') then
-        set shxishu = shxishu * 2.0
+        set shxishu = shxishu * 3.0
     endif
     set shanghai=ShangHaiGongShi(u,target,30,30,shxishu,'A098')
     call WuGongShangHai(u,target,shanghai)
@@ -126,13 +126,13 @@ function manTian takes nothing returns nothing
     local player p = GetOwningPlayer(u)
     local integer i = 1 + GetPlayerId(p)
     local integer j = 1
-    local integer max = 1
+    local integer max = 4
     local real range = 1300
     if GetRandomInt(1, 100) < 15 + fuyuan[i] / 5 then
         call WuGongShengChong(u,'A09A',900.)
         // 双手互搏 双倍导弹
         if GetUnitAbilityLevel(u, 'A07U') >= 1 then
-            set max = 2
+            set max = 8
         endif
         loop
             exitwhen j > max
@@ -185,7 +185,7 @@ function manTianDamage takes nothing returns nothing
      endif
      // 观音泪
      if UnitHaveItem(u, 'I0EQ') then
-         set shxishu = shxishu * 2.0
+         set shxishu = shxishu * 3.0
      endif
 
 
@@ -288,7 +288,7 @@ function duoHunDamage takes nothing returns nothing
     endif
     // 观音泪
     if UnitHaveItem(u, 'I0EQ') then
-        set shxishu = shxishu * 2.0
+        set shxishu = shxishu * 3.0
     endif
     set shanghai=ShangHaiGongShi(u,target,100,100,shxishu,'A0B0')
     call WuGongShangHai(u,target,shanghai)
@@ -436,13 +436,17 @@ function biYuAction takes nothing returns nothing
 	if UnitHaveItem(GetAttacker(), 'I0AM') or Ce[i] == 1 then
 	    set shxishu = shxishu + 2.0
     endif
+    // 搜魂侠加成
+    if LoadBoolean(YDHT,GetHandleId(GetAttacker()),StringHash("搜魂侠")) then
+        set shxishu = shxishu * 2
+    endif
     // 子午砂
     if UnitHaveItem(GetAttacker(), 'I0EP') then
         set shxishu = shxishu * 2.0
     endif
     // 观音泪
     if UnitHaveItem(GetAttacker(), 'I0EQ') then
-        set shxishu = shxishu * 2.0
+        set shxishu = shxishu * 3.0
     endif
     call WuGongShangHai(GetAttacker(),GetEnumUnit(),ShangHaiGongShi(GetAttacker(),GetEnumUnit(),200,200,shxishu,'A0B1'))
 endfunction
