@@ -11,3 +11,16 @@ require 'logic.showHealthPoint'
 require 'logic.cleanItems'
 require 'logic.enhancedDefense'
 require 'logic.antiqueExchangeBooks'
+
+local logic = {}
+
+function logic.init()
+    talent_effect()
+    showHealthPoint()
+    showNpcHint()
+    enhanceDefense()
+    cleanItems()
+    exchangeBooks()
+end
+
+return logic

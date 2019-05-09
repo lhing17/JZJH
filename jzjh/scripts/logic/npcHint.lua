@@ -25,7 +25,9 @@ local function createHint(tab)
     et.tag.create(tab.name, loc, 13, 100, 100, 100, 0, 50)
 end
 
-for k, v in pairs(npc, defaultComp) do
-    log.debug(k, v)
-    createHint(v)
+function showNpcHint()
+    for k, v in pairs(npc, defaultComp) do
+        log.debug(k, v)
+        createHint(v)
+    end
 end

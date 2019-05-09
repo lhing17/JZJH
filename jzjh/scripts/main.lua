@@ -19,10 +19,18 @@ require 'entity.init'
 require 'util.general_bonus'
 require 'util.general_buff'
 
-require 'logic.init'
-require 'ui.init'
+local logic = require 'logic.init'
+-- require 'ui.init'
 
-require 'kungfu.init'
+local kungfu = require 'kungfu.init'
+
+local function main()
+    logic.init()
+    kungfu.init()
+end
+
+main()
+
 
 
 

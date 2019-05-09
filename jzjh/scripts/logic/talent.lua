@@ -36,7 +36,7 @@ local function add_talent(i, t)
     end
 end
 
-local function talent_effect()
+function talent_effect()
 
     -- 判断玩家是否购买
     et.loop(1 * 1000, function()
@@ -81,8 +81,8 @@ local function talent_effect()
         if base.is_include(p:get_base_name(), VIP)  and not g.udg_isTest[p:get()-1] then
             g.udg_isTest[p:get()-1] = true
         end
-        if g.udg_isTest[p:get()-1] and g.talent_flag[p.id] == 0 then
-            local i = p.id
+        if g.udg_isTest[p:get()-1] and g.talent_flag[p:get()] == 0 then
+            local i = p:get()
             g.talent_flag[i] = 1
             g.tiezhang_flag[i] = 1
             g.tangmen_flag[i] = 1
@@ -116,4 +116,3 @@ local function talent_effect()
     end)
 end
 
-talent_effect()

@@ -5,3 +5,12 @@
 ---
 
 require 'kungfu.tiezhang.guiYuanTuNa'
+
+local kungfu = {}
+
+function kungfu.init()
+    registerGuiYuan()
+end
+
+
+return kungfu

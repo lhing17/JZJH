@@ -27,7 +27,7 @@ local canzhang_bag = bag:new({ 'I05C', 'I05C' })
 local function exchange(itemIdBag, itemTable, bookBag, award, x, y)
     if itemIdBag:containsAll(bookBag) then
         itemIdBag:removesAll(bookBag)
-        for element, count in pairs(bookBag) do
+        for element, count in pairs(bookBag, defaultComp) do
             for i = 1, count do
                 itemTable[element]:pop():remove()
             end
@@ -36,27 +36,29 @@ local function exchange(itemIdBag, itemTable, bookBag, award, x, y)
     end
 end
 
+function exchangeBooks()
+    --- @param u unit
+    --- @param id string
+    --- @param target unit|item|point
+    et.game:event '单位-技能生效'(function(self, u, id, target)
+        if id == 'A08O' then
+            local x, y = target[1], target[2]
+            local r = et.rect.new(x - 300, y - 300, x + 300, y + 300)
+            local itemTable = {}
+            local itemIdBag = bag:new()
+            jass.EnumItemsInRect(r.handle, nil, function()
+                local it = et.item:get(jass.GetEnumItem())
+                local itemId = it:get_id()
+                itemTable[itemId] = itemTable[itemId] or stack:new()
+                itemTable[itemId]:push(it)
+                itemIdBag:insert(itemId)
+                exchange(itemIdBag, itemTable, jianghu_bag, g.udg_jianghu[jass.GetRandomInt(1, 18)], x, y)
+                exchange(itemIdBag, itemTable, juexue_bag, g.udg_juexue[jass.GetRandomInt(1, 10)], x, y)
+                exchange(itemIdBag, itemTable, juenei_bag, g.udg_juenei[jass.GetRandomInt(1, 8)], x, y)
+                exchange(itemIdBag, itemTable, canzhang_bag, g.udg_canzhang[jass.GetRandomInt(1, 10)], x, y)
+            end)
+        end
+    end)
 
---- @param u unit
---- @param id string
---- @param target unit|item|point
-et.game:event '单位-技能生效'(function(self, u, id, target)
-    if id == 'A08O' then
-        local x, y = target[1], target[2]
-        local r = et.rect.new(x - 300, y - 300, x + 300, y + 300)
-        local itemTable = {}
-        local itemIdBag = bag:new()
-        jass.EnumItemsInRect(r.handle, nil, function()
-            local it = et.item:get(jass.GetEnumItem())
-            local itemId = it:get_id()
-            itemTable[itemId] = itemTable[itemId] or stack:new()
-            itemTable[itemId]:push(it)
-            itemIdBag:insert(itemId)
-            exchange(itemIdBag, itemTable, jianghu_bag, g.udg_jianghu[jass.GetRandomInt(1, 18)], x, y)
-            exchange(itemIdBag, itemTable, juexue_bag, g.udg_juexue[jass.GetRandomInt(1, 10)], x, y)
-            exchange(itemIdBag, itemTable, juenei_bag, g.udg_juenei[jass.GetRandomInt(1, 8)], x, y)
-            exchange(itemIdBag, itemTable, canzhang_bag, g.udg_canzhang[jass.GetRandomInt(1, 10)], x, y)
-        end)
-    end
-end)
+end
 

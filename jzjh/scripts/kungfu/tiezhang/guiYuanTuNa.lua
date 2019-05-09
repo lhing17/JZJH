@@ -61,7 +61,7 @@ local function addRealAttrTemp(i, coefficient, time)
 end
 
 
-local function registerGuiYuan()
+function registerGuiYuan()
     --- 铁掌帮 归元吐纳功
     et.loop(30 * 1000, function()
         for i = 1, 5 do
@@ -99,4 +99,3 @@ local function registerGuiYuan()
     end)
 end
 
-registerGuiYuan()
