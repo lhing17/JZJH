@@ -414,6 +414,23 @@ function JiaRuMenPai takes nothing returns nothing
                 endif
             endif
 
+            // 自由改投唐门
+            if GetItemTypeId(GetManipulatedItem())=='I0EO' then
+                if tangmen_flag[i] == 1 then
+                    set wuxing[i] = wuxing[i] + 3
+                    set fuyuan[i] = fuyuan[i] + 2
+                    set udg_runamen[i]=20
+                    call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"改拜入了〓唐门〓，大家一起膜拜他|r")
+                    call SetPlayerName(p,"〓唐门〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
+
+                    set udg_shuxing[i]=udg_shuxing[i]-5
+                    call AdjustPlayerStateBJ(-60, p, PLAYER_STATE_RESOURCE_LUMBER)
+                    call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00选择唐门")
+                else
+                    call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00尚未解锁，不能选择唐门")
+                endif
+            endif
+
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff0000你已经加过门派了|r")
 		endif

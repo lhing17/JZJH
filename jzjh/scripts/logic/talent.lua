@@ -60,7 +60,7 @@ local function talent_effect()
             logger(('玩家名字为%s'):format(p:get_base_name()))
             logger(('hasMallItem是否存在：%s'):format(not not hasMallItem))
             logger(g.PROPERTY_TALENT)
-            logger(g.PROPERTY_DENOMINATION)
+            logger(g.PROPERTY_TIEZHANG)
         end
         if s:sub(1, 6) == 'enable' and g.udg_isTest[p:get()-1] then
             local id = s:sub(8, 11)
@@ -85,6 +85,7 @@ local function talent_effect()
             local i = p.id
             g.talent_flag[i] = 1
             g.tiezhang_flag[i] = 1
+            g.tangmen_flag[i] = 1
             g.mall_addition[i] = 1
             g.level_award[i] = 1
             p:send_message("开启了天赋和铁掌帮的权限，开启双倍积分和萌新礼包权限")

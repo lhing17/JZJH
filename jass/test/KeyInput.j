@@ -166,7 +166,8 @@ function KeyInput takes nothing returns nothing
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF星宿：神木王鼎，乔峰接任务，副本1杀丁春秋杀阿紫")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF血刀：血刀，90级挑战场挑战血刀老祖")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF自由：十四天书，具体合成请看基地右边NPC随风")
-		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF铁掌：铁掌令，老顽童处任务")
+		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF铁掌：铁掌令，周伯通处任务")
+		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF唐门：子午砂，副本2唐文亮几率掉落；观音泪，副本4南海神尼几率掉落")
 	endif
 
 	if s == "cx" or s == "CX" then
@@ -444,13 +445,13 @@ function KeyInput takes nothing returns nothing
 	endif
 	if s=="testMall" then
         call DisplayTextToPlayer(p,0,0,"|cFFFF0000天赋道具ID为："+PROPERTY_TALENT)
-        call DisplayTextToPlayer(p,0,0,"|cFFFF0000门派道具ID为："+PROPERTY_DENOMINATION)
+        call DisplayTextToPlayer(p,0,0,"|cFFFF0000门派道具ID为："+PROPERTY_TIEZHANG)
 	    if DzAPI_Map_HasMallItem(p, PROPERTY_TALENT) then
 	        call DisplayTextToPlayer(p,0,0,"|cFFFF0000拥有天赋道具")
 	    else
 	        call DisplayTextToPlayer(p,0,0,"|cFFFF0000未拥有天赋道具")
 	    endif
-	    if DzAPI_Map_HasMallItem(p, PROPERTY_DENOMINATION) then
+	    if DzAPI_Map_HasMallItem(p, PROPERTY_TIEZHANG) then
             call DisplayTextToPlayer(p,0,0,"|cFFFF0000拥有门派道具")
         else
             call DisplayTextToPlayer(p,0,0,"|cFFFF0000未拥有门派道具")
