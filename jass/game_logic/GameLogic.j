@@ -3456,6 +3456,10 @@ function Forget takes player p, integer num returns nothing
 		if I7[20*(i-1)+num] == 'A02B' then
 			set udg_zhemei[i] = 0
 		endif
+		if I7[(i-1)*20+num]=='A0B6' then // 六合经
+            call UnitRemoveAbility(udg_hero[i], 'A0B5')
+            set liuHeFlag[i] = 0
+        endif
 		if I7[20*(i-1)+num] == 'A0DP' then // 归元吐纳功
 			set level = GetUnitAbilityLevel(udg_hero[i], I7[20*(i-1)+num])
 			set fuyuan[i] = fuyuan[i] - 2 * level

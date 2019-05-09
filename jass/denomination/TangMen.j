@@ -171,7 +171,7 @@ function manTianDamage takes nothing returns nothing
     if((GetUnitAbilityLevel(u,'A07T')!=0))then // 葵花宝典
         set shxishu = shxishu + 0.9
     endif
-    if((GetUnitAbilityLevel(u,'A083')!=0))then // 加六合经 破防 FIXME
+    if((GetUnitAbilityLevel(u,'A0B6')!=0))then // 加六合经 破防
         call WanBuff(u, target, 9)
     endif
 
@@ -286,66 +286,64 @@ endfunction
  * 技能伤害：
  * 技能搭配：
  */
+
+ function liuHeCondition takes nothing returns boolean
+     return GetSpellAbilityId() == 'A0B6'
+ endfunction
+
 function liuHeAction takes nothing returns nothing
-    local timer t = GetExpiredTimer()
-    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
-    local integer which = LoadInteger(YDHT, GetHandleId(t), 1) // 上一次随机到的项
-    local real oldSpeed =  LoadReal(YDHT, GetHandleId(t), 2)
-    local real oldSpeed2 = GetUnitMoveSpeedEx(u) - LoadReal(YDHT, GetHandleId(t), 3)
-    local real critical = LoadReal(YDHT, GetHandleId(t), 4)
-    local integer profound = LoadInteger(YDHT, GetHandleId(t), 5)
-    local real addition = LoadReal(YDHT, GetHandleId(t), 6)
+    local unit u = GetTriggerUnit()
     local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer key = $FFAFBF + i
+    local integer which = LoadInteger(YDHT, key, 1) // 上一次随机到的项
+    local real oldSpeed =  LoadReal(YDHT, key, 2)
+    local real oldSpeed2 = GetUnitMoveSpeedEx(u) - LoadReal(YDHT, key, 3)
+    local real critical = LoadReal(YDHT, key, 4)
+    local integer profound = LoadInteger(YDHT, key, 5)
+    local real addition = LoadReal(YDHT, key, 6)
     local integer j = GetRandomInt(1, 6)
-    if GetUnitAbilityLevel(u, 'A0B3') >= 1 then
-        // 清除上一次的状态
-        if which == 1 then //移速
-            call SetUnitMoveSpeed(u, RMaxBJ(RMinBJ(oldSpeed, oldSpeed2), 350.))
-        elseif which == 2 then //爆伤
-            set	udg_baojishanghai[i] = udg_baojishanghai[i] - critical
-        elseif which == 3 then //攻速
-            call UnitRemoveAbility(u, 'A0DB')
-        elseif which == 4 then //
-            call SetUnitInvulnerable(u, false)
-        elseif which == 5 then
-            set	juexuelingwu[i] = juexuelingwu[i] - profound
-        elseif which == 6 then
-            set	udg_shanghaijiacheng[i] = udg_shanghaijiacheng[i] - addition
-        endif
-        // 增加本次的状态
-        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
-        call SaveInteger(YDHT, GetHandleId(t), 1, j)
-        call SetUnitAbilityLevel(u, 'A0B4', j)
-        if j == 1 then
-            call SetUnitMoveSpeed(u, RMinBJ(GetUnitMoveSpeedEx(u) + jingmai[i] * 20, 1400))
-            call SaveReal(YDHT, GetHandleId(t), 2, GetUnitMoveSpeedEx(u))
-            call SaveReal(YDHT, GetHandleId(t), 3, jingmai[i]*20)
-        elseif j == 2 then
-            set critical = 0.1 * gengu[i]
-            call SaveReal(YDHT, GetHandleId(t), 4, critical)
-            set udg_baojishanghai[i] = udg_baojishanghai[i] + critical
-        elseif j == 3 then
-            call UnitAddAbility(u,'A0DB')
-            call SetUnitAbilityLevel(u,'A0DB', IMinBJ(1 + fuyuan[i] / 20, 10))
-        elseif j == 4 then
-            call SetUnitInvulnerable(u, true)
-        elseif j == 5 then
-            set profound = 2 * wuxing[i]
-            call SaveInteger(YDHT, GetHandleId(t), 5, profound)
-            set	juexuelingwu[i] = juexuelingwu[i] + profound
-        elseif j == 6 then
-            set addition = 0.2 * danpo[i]
-            call SaveReal(YDHT, GetHandleId(t), 6, addition)
-            set	udg_shanghaijiacheng[i] = udg_shanghaijiacheng[i] + addition
-        endif
-    else
-        call UnitRemoveAbility(u, 'A0B5' )
-        call FlushChildHashtable(YDHT, GetHandleId(t))
-        call PauseTimer(t)
-        call DestroyTimer(t)
-        set liuHeFlag[i] = 0
+    // 清除上一次的状态
+    if which == 1 then //移速
+        call SetUnitMoveSpeed(u, RMaxBJ(RMinBJ(oldSpeed, oldSpeed2), 350.))
+    elseif which == 2 then //爆伤
+        set	udg_baojishanghai[i] = udg_baojishanghai[i] - critical
+    elseif which == 3 then //攻速
+        call UnitRemoveAbility(u, 'A0DB')
+    elseif which == 4 then // 最大护甲
+        call UnitRemoveAbility(u,'A00S')
+    elseif which == 5 then
+        set	juexuelingwu[i] = juexuelingwu[i] - profound
+    elseif which == 6 then
+        set	udg_shanghaijiacheng[i] = udg_shanghaijiacheng[i] - addition
     endif
-    set t = null
+    // 增加本次的状态
+    call SaveInteger(YDHT, key, 1, j)
+    call SetUnitAbilityLevel(u, 'A0B4', j)
+    call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Undead\\FrostNova\\FrostNovaTarget.mdl",u,"overhead"))
+    if j == 1 then
+        call SetUnitMoveSpeed(u, RMinBJ(GetUnitMoveSpeedEx(u) + jingmai[i] * 20, 1400))
+        call SaveReal(YDHT, key, 2, GetUnitMoveSpeedEx(u))
+        call SaveReal(YDHT, key, 3, jingmai[i]*20)
+    elseif j == 2 then
+        set critical = 0.1 * gengu[i]
+        call SaveReal(YDHT, key, 4, critical)
+        set udg_baojishanghai[i] = udg_baojishanghai[i] + critical
+    elseif j == 3 then
+        call UnitAddAbility(u,'A0DB')
+        call SetUnitAbilityLevel(u,'A0DB', IMinBJ(1 + fuyuan[i] / 20, 10))
+    elseif j == 4 then
+        call UnitAddAbility(u,'A00S')
+        call PolledWait(10)
+        call UnitAddAbility(u, 'A00S')
+    elseif j == 5 then
+        set profound = 2 * wuxing[i]
+        call SaveInteger(YDHT, key, 5, profound)
+        set	juexuelingwu[i] = juexuelingwu[i] + profound
+    elseif j == 6 then
+        set addition = 0.2 * danpo[i]
+        call SaveReal(YDHT, key, 6, addition)
+        set	udg_shanghaijiacheng[i] = udg_shanghaijiacheng[i] + addition
+    endif
     set u = null
 endfunction
 
@@ -354,13 +352,10 @@ function liuHe takes nothing returns nothing
     local timer t = null
     loop
         exitwhen i > 5
-        if liuHeFlag[i] == 0 and GetUnitAbilityLevel(udg_hero[i], 'A0B3') >= 1 then
+        if liuHeFlag[i] == 0 and GetUnitAbilityLevel(udg_hero[i], 'A0B6') >= 1 then
             set liuHeFlag[i] = 1
-            set t = CreateTimer()
             call UnitAddAbility(udg_hero[i], 'A0B5' )
             call SetPlayerAbilityAvailable( GetOwningPlayer(udg_hero[i]), 'A0B5', false )
-            call SaveUnitHandle(YDHT, GetHandleId(t), 0, udg_hero[i])
-            call TimerStart(t, 10, true, function liuHeAction)
         endif
         set i = i + 1
     endloop
@@ -479,6 +474,11 @@ function tangMenTrigger takes nothing returns nothing
     set t = CreateTrigger()
     call TriggerRegisterTimerEventPeriodic(t, 1.)
     call TriggerAddAction(t,function liuHe)
+
+    set t = CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+    call TriggerAddCondition(t, Condition(function liuHeCondition))
+    call TriggerAddAction(t, function liuHeAction)
 
     set t = null
 

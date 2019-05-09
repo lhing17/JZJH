@@ -1689,12 +1689,18 @@ function InitDenominationSkills takes nothing returns nothing
 	set Q8[18]='A08G'
 	// set P8[18]='A08H' // 快活三剑太卡，不用
 	set P8[18]='A08G'
-	set udg_menpainame[19]="铁掌帮" // 放着，还没完成
+	set udg_menpainame[19]="铁掌帮"
 	set X7[19]='A06Y'
 	set Z7[19]='A06Z'
 	set Y7[19]='A07Y'
 	set Q8[19]='A070'
 	set P8[19]='A0DP'
+	set udg_menpainame[20]="唐门"
+    set X7[20]='A098'
+    set Z7[20]='A09A'
+    set Y7[20]='A0B0'
+    set Q8[20]='A0B6'
+    set P8[20]='A0B1'
 endfunction
 
 function InitSkillBooks takes nothing returns nothing
