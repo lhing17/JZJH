@@ -4,6 +4,7 @@ local setmetatable = setmetatable
 local table_insert = table.insert
 local table_remove = table.remove
 local ipairs = ipairs
+local dbg = require 'jass.debug'
 
 local point = {}
 setmetatable(point, point)
@@ -291,5 +292,6 @@ end
 
 
 point.dummy = jass.Location(0, 0)
+dbg.handle_ref(point.dummy)
 
 return point

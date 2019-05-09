@@ -5,6 +5,8 @@
 ---
 
 local jass = require 'jass.common'
+local japi = require 'jass.japi'
+local dbg = require 'jass.debug'
 
 --- @class item
 local item = {}
@@ -52,6 +54,8 @@ function item:new(item_id, x, y)
         item_id = base.string2id(item_id)
     end
     it.handle = jass.CreateItem(item_id, x, y)
+    dbg.gchash(it, it.handle)
+    dbg.handle_ref(it.handle)
     it.x = x or 0
     it.y = y or 0
     it.id = base.id2string(item_id)
@@ -66,6 +70,7 @@ end
 function item:remove()
     item[self.handle] = nil
     jass.RemoveItem(self.handle)
+    dbg.handle_unref(self.handle)
 end
 
 --- @return string 物品四圣的特殊属性
@@ -89,6 +94,7 @@ function item:get(j_item)
         return self[j_item]
     end
     local it = setmetatable({}, self)
+    dbg.gchash(it, j_item)
     self.__index = self
     it.handle = j_item
     it.id = base.id2string(jass.GetItemTypeId(j_item))
@@ -128,12 +134,6 @@ end
 --- @return number
 function item:get_remained_hole()
     return self.hole - #self.imbeds
-end
-
---- 判断物品是否为装备
---- @return boolean
-function item:is_equipment()
-    return is_in(self.type, { 'weapon', 'clothes', 'helmet', 'shoe', 'accessory', 'deputy' })
 end
 
 --- 获取物品的等级

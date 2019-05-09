@@ -5,6 +5,7 @@
 ---
 
 local jass = require 'jass.common'
+local dbg = require 'jass.debug'
 local rect = {}
 et.rect = rect
 
@@ -84,6 +85,7 @@ end
 function rect.j_rect(j_rect)
     if not rect[j_rect] then
         rect[j_rect] = setmetatable({}, rect)
+        dbg.gchash(rect[j_rect], j_rect)
         rect[j_rect].min_x = jass.GetRectMinX(j_rect)
         rect[j_rect].min_y = jass.GetRectMinY(j_rect)
         rect[j_rect].max_x = jass.GetRectMaxX(j_rect)
@@ -94,6 +96,7 @@ function rect.j_rect(j_rect)
             rect[j_rect]:event_notify('单位-进入区域', u)
         end)
         local j_region = jass.CreateRegion()
+        dbg.handle_ref(j_region)
         jass.RegionAddRect(j_region, j_rect)
         jass.TriggerRegisterEnterRegion(j_trg, j_region, nil)
     end
@@ -107,6 +110,7 @@ end
 --- @return rect
 function rect.new(min_x, min_y, max_x, max_y)
     local j_rect = jass.Rect(min_x, min_y, max_x, max_y)
+    dbg.handle_ref(j_rect)
     return rect.j_rect(j_rect)
 end
 

@@ -4,11 +4,13 @@
 --- DateTime: 2018/11/21 13:02
 ---
 
+local dbg = require 'jass.debug'
 local tag = {}
 et.tag = tag
 
 function tag.create(text, point, size, zOffset, r, g, b, transparency, time, speed, angle)
     local last = jass.CreateTextTag()
+    dbg.handle_ref(last)
     local height = size * 0.023 / 10
     jass.SetTextTagText(last, text, height)
     jass.SetTextTagPos(last, point[1], point[2], zOffset)

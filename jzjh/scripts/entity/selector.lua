@@ -8,9 +8,11 @@ local ipairs = ipairs
 local math_angle = et.math_angle
 local math_abs = math.abs
 local math_random = math.random
+local dbg = require 'jass.debug'
 
 local MAX_COLLISION = 200
 local dummy_group = jass.CreateGroup()
+dbg.handle_ref(dummy_group)
 local GroupEnumUnitsInRange = jass.GroupEnumUnitsInRange
 local FirstOfGroup = jass.FirstOfGroup
 local GroupRemoveUnit = jass.GroupRemoveUnit

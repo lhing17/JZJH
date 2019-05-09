@@ -5,6 +5,7 @@
 ---
 
 local point = require 'entity.point'
+local dbg = require 'jass.debug'
 
 local effect = {}
 
@@ -26,6 +27,7 @@ mt.type = 'effect'
 function mt:destroy()
     effect[self.handle] = nil
     jass.DestroyEffect(self.handle)
+    dbg.handle_unref(self.handle)
 end
 
 --- @param model_name  string
@@ -35,6 +37,8 @@ end
 function effect.add_to_unit(model_name, unit, attach_point)
     local e = setmetatable({}, effect)
     e.handle = jass.AddSpecialEffectTarget(model_name, unit.handle, attach_point)
+    dbg.gchash(e, e.handle)
+    dbg.handle_ref(e.handle)
     effect[e.handle] = e
     return e
 end
@@ -45,6 +49,7 @@ end
 function effect.add_to_point(model_name, where)
     local e = setmetatable({}, effect)
     e.handle = jass.AddSpecialEffect(model_name, where[1], where[2])
+    dbg.handle_ref(e.handle)
     effect[e.handle] = e
     return e
 end
