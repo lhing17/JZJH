@@ -200,7 +200,7 @@ function duoHun takes nothing returns nothing
     local real y = GetSpellTargetY()
     local real distance = SquareRoot((x - GetUnitX(u)) * (x - GetUnitX(u)) + (y - GetUnitY(u)) * (y - GetUnitY(u)))
     local real angle = Atan2BJ(y - GetUnitY(u), x - GetUnitX(u))
-    local real speed = 1000
+    local real speed = 1200
     // 向周围施放烟雾
     local unit dummy = CreateUnit(GetOwningPlayer(u), 'e000', GetUnitX(u), GetUnitY(u), bj_UNIT_FACING)
     if (GetUnitAbilityLevel(u, 'A03V') >= 1 ) then // +擒龙控鹤 冲刺速度加倍
@@ -211,7 +211,7 @@ function duoHun takes nothing returns nothing
     call IssuePointOrderById( dummy, $D0208, GetUnitX(u), GetUnitY(u) )
     call UnitApplyTimedLife(dummy,'BHwe', 3)
     // 向目标方向冲刺
-    call YDWETimerPatternRushSlide( u, angle, distance, distance / speed, 0.03, 0, false, false, false, "origin", "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl", "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl" )
+    call YDWETimerPatternRushSlide( u, angle, distance, distance / speed, 0.03, 0, false, false, true, "origin", "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl", "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl" )
 
     // 武功升重
     call WuGongShengChong(u,'A0B0',200.)
@@ -236,7 +236,7 @@ function duoHunPassive takes nothing returns nothing
     local unit u = GetAttacker()
     local real distance = 1000
     local real angle = GetUnitFacing(u)
-    local real speed = 1000
+    local real speed = 1200
     local unit dummy = null
     local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
     if GetRandomInt(1, 100) <= 15 + fuyuan[i] / 5 then
@@ -291,6 +291,16 @@ endfunction
      return GetSpellAbilityId() == 'A0B6'
  endfunction
 
+function removeLiuHeState takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    call UnitAddAbility(u, 'A00S')
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t = null
+    set u = null
+endfunction
+
 function liuHeAction takes nothing returns nothing
     local unit u = GetTriggerUnit()
     local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
@@ -302,6 +312,7 @@ function liuHeAction takes nothing returns nothing
     local integer profound = LoadInteger(YDHT, key, 5)
     local real addition = LoadReal(YDHT, key, 6)
     local integer j = GetRandomInt(1, 6)
+    local timer t = null
     // 清除上一次的状态
     if which == 1 then //移速
         call SetUnitMoveSpeed(u, RMaxBJ(RMinBJ(oldSpeed, oldSpeed2), 350.))
@@ -316,6 +327,7 @@ function liuHeAction takes nothing returns nothing
     elseif which == 6 then
         set	udg_shanghaijiacheng[i] = udg_shanghaijiacheng[i] - addition
     endif
+
     // 增加本次的状态
     call SaveInteger(YDHT, key, 1, j)
     call SetUnitAbilityLevel(u, 'A0B4', j)
@@ -333,8 +345,9 @@ function liuHeAction takes nothing returns nothing
         call SetUnitAbilityLevel(u,'A0DB', IMinBJ(1 + fuyuan[i] / 20, 10))
     elseif j == 4 then
         call UnitAddAbility(u,'A00S')
-        call PolledWait(10)
-        call UnitAddAbility(u, 'A00S')
+        set t = CreateTimer()
+        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+        call TimerStart(t, 10, false, function removeLiuHeState)
     elseif j == 5 then
         set profound = 2 * wuxing[i]
         call SaveInteger(YDHT, key, 5, profound)
@@ -344,7 +357,16 @@ function liuHeAction takes nothing returns nothing
         call SaveReal(YDHT, key, 6, addition)
         set	udg_shanghaijiacheng[i] = udg_shanghaijiacheng[i] + addition
     endif
+    call PolledWait(0.2)
+    // 双手或小无相功的搭配
+    if GetUnitAbilityLevel(u, 'A07U') >= 1 then
+        call EXSetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1, EXGetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1) - 5)
+    endif
+    if GetUnitAbilityLevel(u, 'A083') >= 1 then
+       call EXSetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1, EXGetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1) - 5)
+    endif
     set u = null
+    set t = null
 endfunction
 
 function liuHe takes nothing returns nothing

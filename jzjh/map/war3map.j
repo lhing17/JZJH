@@ -1,72 +1,72 @@
 globals
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed___USE_TABLE= true
-constant boolean MaxSpeed___NEW_TABLE= true
+constant boolean MaxSpeed__USE_TABLE= true
+constant boolean MaxSpeed__NEW_TABLE= true
          // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed___TEST_MODE= false
-constant real MaxSpeed___PERIOD= 0.03125
+constant boolean MaxSpeed__TEST_MODE= false
+constant real MaxSpeed__PERIOD= 0.03125
         //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed___MAX_SPEED= 1400.0
+constant real MaxSpeed__MAX_SPEED= 1400.0
          // 最大速度限定，超出视为传送。
-constant real MaxSpeed___MIN_SPEED= 500.0
+constant real MaxSpeed__MIN_SPEED= 500.0
          // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
         // 测试最大为500刚出头，与522还有些差距
 //endglobals from MaxSpeed
 //globals from UniMissileSystem3D:
 constant boolean LIBRARY_UniMissileSystem3D=true
-real array UniMissileSystem3D__SP
-real array UniMissileSystem3D__RA
-real array UniMissileSystem3D__DM
-real array UniMissileSystem3D__DI
-real array UniMissileSystem3D__AN
-real array UniMissileSystem3D__ANZ
-real array UniMissileSystem3D__HE
-real array UniMissileSystem3D__HEMax
-real array UniMissileSystem3D__SH
-real array UniMissileSystem3D__US
-real array UniMissileSystem3D__MX
-real array UniMissileSystem3D__MY
-real array UniMissileSystem3D__MZ
-real array UniMissileSystem3D__ARC
-real array UniMissileSystem3D__HP
-real array UniMissileSystem3D__OF
-real array UniMissileSystem3D__OS
-real array UniMissileSystem3D__TIM
-real array UniMissileSystem3D__LT
-real array UniMissileSystem3D__SZ
-real array UniMissileSystem3D__RI
-real array UniMissileSystem3D__R01
-real array UniMissileSystem3D__R02
-real array UniMissileSystem3D__MGra
-real array UniMissileSystem3D__LOC
-real array UniMissileSystem3D__OH
-real UniMissileSystem3D__Gravity=0.40
-unit array UniMissileSystem3D__MU
-unit array UniMissileSystem3D__MT
-unit UniMissileSystem3D__DamageUnit
-string array UniMissileSystem3D__EF
-effect array UniMissileSystem3D__EFL
-real array UniMissileSystem3D__ACC
-real array UniMissileSystem3D__MaxS
-real array UniMissileSystem3D__SPX
-real array UniMissileSystem3D__SPY
-real array UniMissileSystem3D__LastX
-real array UniMissileSystem3D__LastY
-real array UniMissileSystem3D__MKs
-integer array UniMissileSystem3D__IN
-integer UniMissileSystem3D__Top=- 1
-real UniMissileSystem3D__TIMOut=0.03
-group UniMissileSystem3D__DamageGroup
-timer UniMissileSystem3D__TIMr
-location UniMissileSystem3D__HeroLoc
-location array UniMissileSystem3D__MLoc
-player array UniMissileSystem3D__LastOwner
+real array UniMissileSystem3D___SP
+real array UniMissileSystem3D___RA
+real array UniMissileSystem3D___DM
+real array UniMissileSystem3D___DI
+real array UniMissileSystem3D___AN
+real array UniMissileSystem3D___ANZ
+real array UniMissileSystem3D___HE
+real array UniMissileSystem3D___HEMax
+real array UniMissileSystem3D___SH
+real array UniMissileSystem3D___US
+real array UniMissileSystem3D___MX
+real array UniMissileSystem3D___MY
+real array UniMissileSystem3D___MZ
+real array UniMissileSystem3D___ARC
+real array UniMissileSystem3D___HP
+real array UniMissileSystem3D___OF
+real array UniMissileSystem3D___OS
+real array UniMissileSystem3D___TIM
+real array UniMissileSystem3D___LT
+real array UniMissileSystem3D___SZ
+real array UniMissileSystem3D___RI
+real array UniMissileSystem3D___R01
+real array UniMissileSystem3D___R02
+real array UniMissileSystem3D___MGra
+real array UniMissileSystem3D___LOC
+real array UniMissileSystem3D___OH
+real UniMissileSystem3D___Gravity=0.40
+unit array UniMissileSystem3D___MU
+unit array UniMissileSystem3D___MT
+unit UniMissileSystem3D___DamageUnit
+string array UniMissileSystem3D___EF
+effect array UniMissileSystem3D___EFL
+real array UniMissileSystem3D___ACC
+real array UniMissileSystem3D___MaxS
+real array UniMissileSystem3D___SPX
+real array UniMissileSystem3D___SPY
+real array UniMissileSystem3D___LastX
+real array UniMissileSystem3D___LastY
+real array UniMissileSystem3D___MKs
+integer array UniMissileSystem3D___IN
+integer UniMissileSystem3D___Top=- 1
+real UniMissileSystem3D___TIMOut=0.03
+group UniMissileSystem3D___DamageGroup
+timer UniMissileSystem3D___TIMr
+location UniMissileSystem3D___HeroLoc
+location array UniMissileSystem3D___MLoc
+player array UniMissileSystem3D___LastOwner
 boolean MissileTimerPause=false
-real UniMissileSystem3D__map_max_X
-real UniMissileSystem3D__map_max_Y
-real UniMissileSystem3D__map_min_X
-real UniMissileSystem3D__map_min_Y
+real UniMissileSystem3D___map_max_X
+real UniMissileSystem3D___map_max_Y
+real UniMissileSystem3D___map_min_X
+real UniMissileSystem3D___map_min_Y
 //endglobals from UniMissileSystem3D
 //globals from WuQiQiHeSystem:
 constant boolean LIBRARY_WuQiQiHeSystem=true
@@ -94,15 +94,15 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase__yd_PlayerColor
-trigger array YDWEBase__AbilityCastingOverEventQueue
-integer array YDWEBase__AbilityCastingOverEventType
-integer YDWEBase__AbilityCastingOverEventNumber= 0
+string array YDWEBase___yd_PlayerColor
+trigger array YDWEBase___AbilityCastingOverEventQueue
+integer array YDWEBase___AbilityCastingOverEventType
+integer YDWEBase___AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEBitwise:
 constant boolean LIBRARY_YDWEBitwise=true
-integer array YDWEBitwise__C2
-constant string YDWEBitwise__hexstr= "0123456789ABCDEF"
+integer array YDWEBitwise___C2
+constant string YDWEBitwise___hexstr= "0123456789ABCDEF"
 //endglobals from YDWEBitwise
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
@@ -125,7 +125,7 @@ group yd_NullTempGroup
 //endglobals from YDWEGetUnitsInRangeOfLocMatchingNull
 //globals from YDWELogarithm:
 constant boolean LIBRARY_YDWELogarithm=true
-real array YDWELogarithm__base
+real array YDWELogarithm___base
 //endglobals from YDWELogarithm
 //globals from YDWEPolledWaitNull:
 constant boolean LIBRARY_YDWEPolledWaitNull=true
@@ -135,8 +135,8 @@ constant boolean LIBRARY_YDWEStringHash=true
 //endglobals from YDWEStringHash
 //globals from YDWESync:
 constant boolean LIBRARY_YDWESync=true
-gamecache YDWESync__m_gc
-boolean YDWESync__m_mutex_state= false
+gamecache YDWESync___m_gc
+boolean YDWESync___m_mutex_state= false
 //endglobals from YDWESync
 //globals from YDWETriggerEvent:
 constant boolean LIBRARY_YDWETriggerEvent=true
@@ -171,9 +171,9 @@ constant boolean LIBRARY_YDWEPreloadSL=true
     /// ÿ�����ռ�õĿռ�[500*id, 500*(id-1))
     /// �±�Խ��û�н��м�飬�ƺ�û�����Ҫ��˭Ҫ���ó���500...��ȥ����- -
     /// 
-integer array YDWEPreloadSL__Code
-integer array YDWEPreloadSL__CodeHI
-integer array YDWEPreloadSL__CodeLO
+integer array YDWEPreloadSL___Code
+integer array YDWEPreloadSL___CodeHI
+integer array YDWEPreloadSL___CodeLO
 boolean bj_lastLoadPreloadSLResult
 string array udg_YDWE_PreloadSL_List
 string udg_YDWE_PreloadSL_CurrentDir= ""
@@ -283,6 +283,7 @@ string PROPERTY_TIEZHANG= "A198FYU9ME"
 string PROPERTY_TANGMEN= "AR87S95C34"
 string PROPERTY_DOUBLE_POINT= "BC98FNY5L9"
 string PROPERTY_LEVEL_AWARD= "BYOUARES13"
+constant integer DENOMINATION_NUMBER= 20
 boolean moshiFlag= false
 integer nanduFlag= 0
 boolean tiaoZhanFlag= false
@@ -1862,6 +1863,17 @@ native DzFrameSetValue takes integer frame, real value returns nothing
 native DzFrameSetSize takes integer frame, real w, real h returns nothing
 native DzCreateFrameByTagName takes string frameType, string name, integer parent, string template, integer id returns integer
 native DzFrameSetVertexColor takes integer frame, integer color returns nothing
+native EXGetUnitAbility takes unit u, integer abilcode returns ability
+native EXGetUnitAbilityByIndex takes unit u, integer index returns ability
+native EXGetAbilityId takes ability abil returns integer
+native EXGetAbilityState takes ability abil, integer state_type returns real
+native EXSetAbilityState takes ability abil, integer state_type, real value returns boolean
+native EXGetAbilityDataReal takes ability abil, integer level, integer data_type returns real
+native EXSetAbilityDataReal takes ability abil, integer level, integer data_type, real value returns boolean
+native EXGetAbilityDataInteger takes ability abil, integer level, integer data_type returns integer
+native EXSetAbilityDataInteger takes ability abil, integer level, integer data_type, integer value returns boolean
+native EXGetAbilityDataString takes ability abil, integer level, integer data_type returns string
+native EXSetAbilityDataString takes ability abil, integer level, integer data_type, string value returns boolean
 native DzAPI_Map_SaveServerValue takes player whichPlayer, string key, string value returns boolean
 native DzAPI_Map_GetServerValue takes player whichPlayer, string key returns string
 native DzAPI_Map_Ladder_SetStat takes player whichPlayer, string key, string value returns nothing
@@ -2329,8 +2341,8 @@ endfunction
              set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
              set s__ModSpeed_lastX[this]=s__ModSpeed_x
              set s__ModSpeed_lastY[this]=s__ModSpeed_y
-             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
-             if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
+             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
+             if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
                  set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                  set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                  set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -2410,7 +2422,7 @@ endfunction
                      set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                  endif
                  if ( s__ModSpeed_next[(0)] == 0 ) then
-                     call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
+                     call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -2429,7 +2441,7 @@ endfunction
 
 
              endif
-             set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
+             set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
              set s__ModSpeed_lastX[this]=GetUnitX(u)
              set s__ModSpeed_lastY[this]=GetUnitY(u)
              set s__ModSpeed_speed[this]=amount
@@ -2449,19 +2461,19 @@ endfunction
 //library MaxSpeed ends
 //library UniMissileSystem3D:
 // 计算两点间的距离
-function UniMissileSystem3D__DistanceBetweenXY takes real x1,real x2,real y1,real y2 returns real
+function UniMissileSystem3D___DistanceBetweenXY takes real x1,real x2,real y1,real y2 returns real
     return SquareRoot(( x1 - x2 ) * ( x1 - x2 ) + ( y1 - y2 ) * ( y1 - y2 ))
 endfunction
 // 计算两点间的角度（角度制）
-function UniMissileSystem3D__AngleBetweenXY takes real x1,real x2,real y1,real y2 returns real
+function UniMissileSystem3D___AngleBetweenXY takes real x1,real x2,real y1,real y2 returns real
     return bj_RADTODEG * Atan2(y2 - y1, x2 - x1)
 endfunction
 // 计算两个单位间的角度
-function UniMissileSystem3D__GetAngleBetweenUnits takes unit l__A,unit l__B returns real
+function UniMissileSystem3D___GetAngleBetweenUnits takes unit l__A,unit l__B returns real
     return Atan2(GetUnitY(l__B) - GetUnitY(l__A), GetUnitX(l__B) - GetUnitX(l__A))
 endfunction
 // 计算两个单位间的距离
-function UniMissileSystem3D__DistanceBetweenUnits takes unit l__A,unit l__B returns real
+function UniMissileSystem3D___DistanceBetweenUnits takes unit l__A,unit l__B returns real
     local real x1=GetUnitX(l__A)
     local real x2=GetUnitX(l__B)
     local real y1=GetUnitY(l__A)
@@ -2472,7 +2484,7 @@ endfunction
 // s = v0 * t + 1/2 * a * t * t
 // a * t * t  + 2 * v0 * t - 2 * s = 0
 // time1 = (- 2 * v0 + SquareRoot ( 4 * v0 *v0 + 8 * a * s)) / (2 * a)
-function UniMissileSystem3D__GetAcceleratedTime takes real dis,real originspeed,real accel returns real
+function UniMissileSystem3D___GetAcceleratedTime takes real dis,real originspeed,real accel returns real
     local real time1=0.0
     local real time2=0.0
     set time1=( - 1 * originspeed + SquareRoot(Pow(originspeed, 2.0) + 2 * accel * dis) ) / accel
@@ -2489,68 +2501,68 @@ function UniMissileSystem3D__GetAcceleratedTime takes real dis,real originspeed,
     return time2
 endfunction
 // 登记弹幕
-function UniMissileSystem3D__MRegister takes unit missile returns nothing
+function UniMissileSystem3D___MRegister takes unit missile returns nothing
     call UnitAddAbility(missile, 'Arav') // 风暴之鸦
 call UnitRemoveAbility(missile, 'Arav')
     call SetUnitPosition(missile, GetUnitX(missile), GetUnitY(missile))
     call SetUnitAnimationByIndex(missile, 90)
 endfunction
 // 将i从栈中移除，使用栈顶元素补充i
-function UniMissileSystem3D__MPop takes integer i returns nothing
-     if GetUnitState(UniMissileSystem3D__MU[i], UNIT_STATE_LIFE) > 0.4 then
-        call KillUnit(UniMissileSystem3D__MU[i])
+function UniMissileSystem3D___MPop takes integer i returns nothing
+     if GetUnitState(UniMissileSystem3D___MU[i], UNIT_STATE_LIFE) > 0.4 then
+        call KillUnit(UniMissileSystem3D___MU[i])
      endif
-     call DestroyEffect(UniMissileSystem3D__EFL[i])
-     set UniMissileSystem3D__MU[i]=UniMissileSystem3D__MU[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__SP[i]=UniMissileSystem3D__SP[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__RA[i]=UniMissileSystem3D__RA[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__DM[i]=UniMissileSystem3D__DM[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__DI[i]=UniMissileSystem3D__DI[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__AN[i]=UniMissileSystem3D__AN[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__HE[i]=UniMissileSystem3D__HE[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__HEMax[i]=UniMissileSystem3D__HEMax[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__US[i]=UniMissileSystem3D__US[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__ARC[i]=UniMissileSystem3D__ARC[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__HP[i]=UniMissileSystem3D__HP[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__EF[i]=UniMissileSystem3D__EF[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__EFL[i]=UniMissileSystem3D__EFL[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__SH[i]=UniMissileSystem3D__SH[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__MGra[i]=UniMissileSystem3D__MGra[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__LOC[i]=UniMissileSystem3D__LOC[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__TIM[i]=UniMissileSystem3D__TIM[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__LT[i]=UniMissileSystem3D__LT[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__SZ[i]=UniMissileSystem3D__SZ[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__RI[i]=UniMissileSystem3D__RI[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__R01[i]=UniMissileSystem3D__R01[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__R02[i]=UniMissileSystem3D__R02[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__MT[i]=UniMissileSystem3D__MT[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__OH[i]=UniMissileSystem3D__OH[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__OS[i]=UniMissileSystem3D__OS[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__OF[i]=UniMissileSystem3D__OF[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__ACC[i]=UniMissileSystem3D__ACC[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__MaxS[i]=UniMissileSystem3D__MaxS[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__MKs[i]=UniMissileSystem3D__MKs[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SPX[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SPY[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__LastX[i]=UniMissileSystem3D__LastX[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__LastY[i]=UniMissileSystem3D__LastY[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__IN[i]=UniMissileSystem3D__IN[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__LastOwner[i]=UniMissileSystem3D__LastOwner[UniMissileSystem3D__Top]
-     set UniMissileSystem3D__MU[UniMissileSystem3D__Top]=null
-     set UniMissileSystem3D__MT[UniMissileSystem3D__Top]=null
-     set UniMissileSystem3D__Top=UniMissileSystem3D__Top - 1
+     call DestroyEffect(UniMissileSystem3D___EFL[i])
+     set UniMissileSystem3D___MU[i]=UniMissileSystem3D___MU[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___SP[i]=UniMissileSystem3D___SP[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___RA[i]=UniMissileSystem3D___RA[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___DM[i]=UniMissileSystem3D___DM[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___DI[i]=UniMissileSystem3D___DI[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___AN[i]=UniMissileSystem3D___AN[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___HE[i]=UniMissileSystem3D___HE[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___HEMax[i]=UniMissileSystem3D___HEMax[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___US[i]=UniMissileSystem3D___US[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___ARC[i]=UniMissileSystem3D___ARC[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___HP[i]=UniMissileSystem3D___HP[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___EF[i]=UniMissileSystem3D___EF[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___EFL[i]=UniMissileSystem3D___EFL[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___SH[i]=UniMissileSystem3D___SH[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___MGra[i]=UniMissileSystem3D___MGra[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___LOC[i]=UniMissileSystem3D___LOC[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___TIM[i]=UniMissileSystem3D___TIM[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___LT[i]=UniMissileSystem3D___LT[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___SZ[i]=UniMissileSystem3D___SZ[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___RI[i]=UniMissileSystem3D___RI[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___R01[i]=UniMissileSystem3D___R01[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___R02[i]=UniMissileSystem3D___R02[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___MT[i]=UniMissileSystem3D___MT[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___OH[i]=UniMissileSystem3D___OH[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___OS[i]=UniMissileSystem3D___OS[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___OF[i]=UniMissileSystem3D___OF[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___ACC[i]=UniMissileSystem3D___ACC[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___MaxS[i]=UniMissileSystem3D___MaxS[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___MKs[i]=UniMissileSystem3D___MKs[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SPX[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SPY[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___LastX[i]=UniMissileSystem3D___LastX[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___LastY[i]=UniMissileSystem3D___LastY[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___IN[i]=UniMissileSystem3D___IN[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___LastOwner[i]=UniMissileSystem3D___LastOwner[UniMissileSystem3D___Top]
+     set UniMissileSystem3D___MU[UniMissileSystem3D___Top]=null
+     set UniMissileSystem3D___MT[UniMissileSystem3D___Top]=null
+     set UniMissileSystem3D___Top=UniMissileSystem3D___Top - 1
 endfunction
 // 判断是否越界
-function UniMissileSystem3D__MLimit takes real x,real y returns boolean
-     if x > UniMissileSystem3D__map_max_X or x < UniMissileSystem3D__map_min_X or y > UniMissileSystem3D__map_max_Y or y < UniMissileSystem3D__map_min_Y then //边界判定
+function UniMissileSystem3D___MLimit takes real x,real y returns boolean
+     if x > UniMissileSystem3D___map_max_X or x < UniMissileSystem3D___map_min_X or y > UniMissileSystem3D___map_max_Y or y < UniMissileSystem3D___map_min_Y then //边界判定
         return true
      else
         return false
      endif
 endfunction
 // 弹幕循环
-function UniMissileSystem3D__MLoop takes nothing returns nothing
-     local integer i=UniMissileSystem3D__Top
+function UniMissileSystem3D___MLoop takes nothing returns nothing
+     local integer i=UniMissileSystem3D___Top
      local real array x
      local real array y
      local real array zLoc
@@ -2576,103 +2588,103 @@ function UniMissileSystem3D__MLoop takes nothing returns nothing
          exitwhen i < 0
          set addh=0.0
          set udis=0.0
-         set x[1]=GetUnitX(UniMissileSystem3D__MU[i])
-         set y[1]=GetUnitY(UniMissileSystem3D__MU[i])
-         set height=GetUnitFlyHeight(UniMissileSystem3D__MU[i])
-         if UniMissileSystem3D__DI[i] <= 0.0 or GetUnitState(UniMissileSystem3D__MU[i], UNIT_STATE_LIFE) < 0.4 or height <= 0.1 or UniMissileSystem3D__HP[i] <= 0.0 or UniMissileSystem3D__MLimit(x[1] , y[1]) == true or height >= 9999.1 then
-             call UniMissileSystem3D__MPop(i)
+         set x[1]=GetUnitX(UniMissileSystem3D___MU[i])
+         set y[1]=GetUnitY(UniMissileSystem3D___MU[i])
+         set height=GetUnitFlyHeight(UniMissileSystem3D___MU[i])
+         if UniMissileSystem3D___DI[i] <= 0.0 or GetUnitState(UniMissileSystem3D___MU[i], UNIT_STATE_LIFE) < 0.4 or height <= 0.1 or UniMissileSystem3D___HP[i] <= 0.0 or UniMissileSystem3D___MLimit(x[1] , y[1]) == true or height >= 9999.1 then
+             call UniMissileSystem3D___MPop(i)
          else
-             if UniMissileSystem3D__MT[i] != null then
-                set UniMissileSystem3D__AN[i]=UniMissileSystem3D__AngleBetweenXY(x[1] , GetUnitX(UniMissileSystem3D__MT[i]) , y[1] , GetUnitY(UniMissileSystem3D__MT[i]))
-                set ang=UniMissileSystem3D__AN[i] * bj_DEGTORAD
-                if UniMissileSystem3D__IN[i] == 0 then
-                   set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SP[i] * Cos(ang)
-                   set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SP[i] * Sin(ang)
+             if UniMissileSystem3D___MT[i] != null then
+                set UniMissileSystem3D___AN[i]=UniMissileSystem3D___AngleBetweenXY(x[1] , GetUnitX(UniMissileSystem3D___MT[i]) , y[1] , GetUnitY(UniMissileSystem3D___MT[i]))
+                set ang=UniMissileSystem3D___AN[i] * bj_DEGTORAD
+                if UniMissileSystem3D___IN[i] == 0 then
+                   set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SP[i] * Cos(ang)
+                   set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SP[i] * Sin(ang)
                 else
-                   set ang=ang + UniMissileSystem3D__OF[i]
-                   set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SPX[i] * UniMissileSystem3D__MKs[i] + UniMissileSystem3D__ACC[i] * Cos(ang)
-                   set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SPY[i] * UniMissileSystem3D__MKs[i] + UniMissileSystem3D__ACC[i] * Sin(ang)
+                   set ang=ang + UniMissileSystem3D___OF[i]
+                   set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SPX[i] * UniMissileSystem3D___MKs[i] + UniMissileSystem3D___ACC[i] * Cos(ang)
+                   set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SPY[i] * UniMissileSystem3D___MKs[i] + UniMissileSystem3D___ACC[i] * Sin(ang)
                 endif
-                if IsUnitType(UniMissileSystem3D__MT[i], UNIT_TYPE_DEAD) == true then
-                   set UniMissileSystem3D__MT[i]=null
+                if IsUnitType(UniMissileSystem3D___MT[i], UNIT_TYPE_DEAD) == true then
+                   set UniMissileSystem3D___MT[i]=null
                 endif
-                set udis=UniMissileSystem3D__DistanceBetweenUnits(UniMissileSystem3D__MT[i] , UniMissileSystem3D__MU[i]) / 100.
+                set udis=UniMissileSystem3D___DistanceBetweenUnits(UniMissileSystem3D___MT[i] , UniMissileSystem3D___MU[i]) / 100.
                 if udis == 0. then
                    set udis=0.01
                 endif
-                set targetheight=GetUnitFlyHeight(UniMissileSystem3D__MT[i])
-                if RAbsBJ(height - targetheight) > UniMissileSystem3D__RA[i] then
+                set targetheight=GetUnitFlyHeight(UniMissileSystem3D___MT[i])
+                if RAbsBJ(height - targetheight) > UniMissileSystem3D___RA[i] then
                    if targetheight > height then
-                      set addh=RAbsBJ(UniMissileSystem3D__SP[i]) / udis
+                      set addh=RAbsBJ(UniMissileSystem3D___SP[i]) / udis
                       if addh + height > targetheight then
                          set addh=addh / 10.
-                         call SetUnitFlyHeight(UniMissileSystem3D__MU[i], targetheight, 0.0)
+                         call SetUnitFlyHeight(UniMissileSystem3D___MU[i], targetheight, 0.0)
                          set height=targetheight
                       endif
                    elseif targetheight < height then
-                          set addh=RAbsBJ(UniMissileSystem3D__SP[i]) * ( - 1. ) / udis
+                          set addh=RAbsBJ(UniMissileSystem3D___SP[i]) * ( - 1. ) / udis
                           if addh + height < targetheight then
-                             call SetUnitFlyHeight(UniMissileSystem3D__MU[i], targetheight, 0.0)
+                             call SetUnitFlyHeight(UniMissileSystem3D___MU[i], targetheight, 0.0)
                              set height=targetheight
                           endif
                    endif
                 endif
              else
-                set ang=UniMissileSystem3D__AN[i] * bj_DEGTORAD
-                set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SP[i] * Cos(ang)
-                set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SP[i] * Sin(ang)
-                if UniMissileSystem3D__LOC[i] == 0.0 then
-                   set UniMissileSystem3D__SP[i]=UniMissileSystem3D__SP[i] + UniMissileSystem3D__ACC[i]
+                set ang=UniMissileSystem3D___AN[i] * bj_DEGTORAD
+                set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SP[i] * Cos(ang)
+                set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SP[i] * Sin(ang)
+                if UniMissileSystem3D___LOC[i] == 0.0 then
+                   set UniMissileSystem3D___SP[i]=UniMissileSystem3D___SP[i] + UniMissileSystem3D___ACC[i]
                 else
-                   if UniMissileSystem3D__SP[i] <= UniMissileSystem3D__MaxS[i] then
-                     set UniMissileSystem3D__SP[i]=UniMissileSystem3D__SP[i] + UniMissileSystem3D__ACC[i]
+                   if UniMissileSystem3D___SP[i] <= UniMissileSystem3D___MaxS[i] then
+                     set UniMissileSystem3D___SP[i]=UniMissileSystem3D___SP[i] + UniMissileSystem3D___ACC[i]
                    else
-                     set UniMissileSystem3D__SP[i]=UniMissileSystem3D__MaxS[i]
+                     set UniMissileSystem3D___SP[i]=UniMissileSystem3D___MaxS[i]
                    endif
                 endif
              endif
-             set x[2]=x[1] + UniMissileSystem3D__SPX[i]
-             set y[2]=y[1] + UniMissileSystem3D__SPY[i]
-             set UniMissileSystem3D__MLoc[1]=Location(x[1], y[1])
-             set UniMissileSystem3D__MLoc[2]=Location(x[2], y[2])
-             set zLoc[1]=GetLocationZ(UniMissileSystem3D__MLoc[1])
-             set zLoc[2]=GetLocationZ(UniMissileSystem3D__MLoc[2])
-             call SetUnitX(UniMissileSystem3D__MU[i], x[2])
-             call SetUnitY(UniMissileSystem3D__MU[i], y[2])
-             set UniMissileSystem3D__LastX[i]=x[2]
-             set UniMissileSystem3D__LastY[i]=y[2]
-             set addxy=UniMissileSystem3D__DistanceBetweenXY(x[2] , x[1] , y[2] , y[1])
-             call SetUnitFacing(UniMissileSystem3D__MU[i], UniMissileSystem3D__AN[i])
-             call GroupEnumUnitsInRange(UniMissileSystem3D__DamageGroup, x[2], y[2], UniMissileSystem3D__RA[i], null)
+             set x[2]=x[1] + UniMissileSystem3D___SPX[i]
+             set y[2]=y[1] + UniMissileSystem3D___SPY[i]
+             set UniMissileSystem3D___MLoc[1]=Location(x[1], y[1])
+             set UniMissileSystem3D___MLoc[2]=Location(x[2], y[2])
+             set zLoc[1]=GetLocationZ(UniMissileSystem3D___MLoc[1])
+             set zLoc[2]=GetLocationZ(UniMissileSystem3D___MLoc[2])
+             call SetUnitX(UniMissileSystem3D___MU[i], x[2])
+             call SetUnitY(UniMissileSystem3D___MU[i], y[2])
+             set UniMissileSystem3D___LastX[i]=x[2]
+             set UniMissileSystem3D___LastY[i]=y[2]
+             set addxy=UniMissileSystem3D___DistanceBetweenXY(x[2] , x[1] , y[2] , y[1])
+             call SetUnitFacing(UniMissileSystem3D___MU[i], UniMissileSystem3D___AN[i])
+             call GroupEnumUnitsInRange(UniMissileSystem3D___DamageGroup, x[2], y[2], UniMissileSystem3D___RA[i], null)
              loop
-                 set UniMissileSystem3D__DamageUnit=FirstOfGroup(UniMissileSystem3D__DamageGroup)
-                 if GetUnitState(UniMissileSystem3D__DamageUnit, UNIT_STATE_LIFE) > 0.4 and ( UniMissileSystem3D__MT[i] == UniMissileSystem3D__DamageUnit or IsUnitEnemy(UniMissileSystem3D__DamageUnit, GetOwningPlayer(UniMissileSystem3D__MU[i])) ) then
-                     if RAbsBJ(height - GetUnitFlyHeight(UniMissileSystem3D__DamageUnit)) <= UniMissileSystem3D__RA[i] then
-                        call UnitDamageTarget(UniMissileSystem3D__MU[i], UniMissileSystem3D__DamageUnit, UniMissileSystem3D__DM[i], true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-                        set UniMissileSystem3D__HP[i]=UniMissileSystem3D__HP[i] - 1.
-                        set UniMissileSystem3D__DM[i]=UniMissileSystem3D__DM[i] * 0.5
+                 set UniMissileSystem3D___DamageUnit=FirstOfGroup(UniMissileSystem3D___DamageGroup)
+                 if GetUnitState(UniMissileSystem3D___DamageUnit, UNIT_STATE_LIFE) > 0.4 and ( UniMissileSystem3D___MT[i] == UniMissileSystem3D___DamageUnit or IsUnitEnemy(UniMissileSystem3D___DamageUnit, GetOwningPlayer(UniMissileSystem3D___MU[i])) ) then
+                     if RAbsBJ(height - GetUnitFlyHeight(UniMissileSystem3D___DamageUnit)) <= UniMissileSystem3D___RA[i] then
+                        call UnitDamageTarget(UniMissileSystem3D___MU[i], UniMissileSystem3D___DamageUnit, UniMissileSystem3D___DM[i], true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+                        set UniMissileSystem3D___HP[i]=UniMissileSystem3D___HP[i] - 1.
+                        set UniMissileSystem3D___DM[i]=UniMissileSystem3D___DM[i] * 0.5
                      endif
                  endif
-                 call GroupRemoveUnit(UniMissileSystem3D__DamageGroup, UniMissileSystem3D__DamageUnit)
-                 exitwhen UniMissileSystem3D__DamageUnit == null
+                 call GroupRemoveUnit(UniMissileSystem3D___DamageGroup, UniMissileSystem3D___DamageUnit)
+                 exitwhen UniMissileSystem3D___DamageUnit == null
              endloop
-             call GroupClear(UniMissileSystem3D__DamageGroup)
-             set UniMissileSystem3D__TIM[i]=UniMissileSystem3D__TIM[i] + UniMissileSystem3D__TIMOut
-            if UniMissileSystem3D__MGra[i] == 0.0 then
-            set h=0.11 + UniMissileSystem3D__SZ[i] - zLoc[2]
+             call GroupClear(UniMissileSystem3D___DamageGroup)
+             set UniMissileSystem3D___TIM[i]=UniMissileSystem3D___TIM[i] + UniMissileSystem3D___TIMOut
+            if UniMissileSystem3D___MGra[i] == 0.0 then
+            set h=0.11 + UniMissileSystem3D___SZ[i] - zLoc[2]
             endif
-            if UniMissileSystem3D__LOC[i] == 0.0 then
-             if UniMissileSystem3D__MGra[i] == 0.0 then
+            if UniMissileSystem3D___LOC[i] == 0.0 then
+             if UniMissileSystem3D___MGra[i] == 0.0 then
              else
-             set h=UniMissileSystem3D__HEMax[i] - UniMissileSystem3D__R01[i] * ( UniMissileSystem3D__TIM[i] - UniMissileSystem3D__LT[i] / 2 ) * ( UniMissileSystem3D__TIM[i] - UniMissileSystem3D__LT[i] / 2 ) + UniMissileSystem3D__TIM[i] * UniMissileSystem3D__R02[i] + UniMissileSystem3D__SZ[i] - zLoc[2]
+             set h=UniMissileSystem3D___HEMax[i] - UniMissileSystem3D___R01[i] * ( UniMissileSystem3D___TIM[i] - UniMissileSystem3D___LT[i] / 2 ) * ( UniMissileSystem3D___TIM[i] - UniMissileSystem3D___LT[i] / 2 ) + UniMissileSystem3D___TIM[i] * UniMissileSystem3D___R02[i] + UniMissileSystem3D___SZ[i] - zLoc[2]
              endif
             else
-             set UniMissileSystem3D__US[i]=UniMissileSystem3D__US[i] - UniMissileSystem3D__MGra[i]
+             set UniMissileSystem3D___US[i]=UniMissileSystem3D___US[i] - UniMissileSystem3D___MGra[i]
             endif
              set lastheight=height
-             set UniMissileSystem3D__HE[i]=UniMissileSystem3D__HE[i] * UniMissileSystem3D__LOC[i] + UniMissileSystem3D__SH[i] + UniMissileSystem3D__US[i] * UniMissileSystem3D__LOC[i] + h * ( 1 - UniMissileSystem3D__LOC[i] ) + addh
-             set height=UniMissileSystem3D__HE[i] - zLoc[2] * UniMissileSystem3D__LOC[i]
-             call SetUnitFlyHeight(UniMissileSystem3D__MU[i], height, 0.0)
+             set UniMissileSystem3D___HE[i]=UniMissileSystem3D___HE[i] * UniMissileSystem3D___LOC[i] + UniMissileSystem3D___SH[i] + UniMissileSystem3D___US[i] * UniMissileSystem3D___LOC[i] + h * ( 1 - UniMissileSystem3D___LOC[i] ) + addh
+             set height=UniMissileSystem3D___HE[i] - zLoc[2] * UniMissileSystem3D___LOC[i]
+             call SetUnitFlyHeight(UniMissileSystem3D___MU[i], height, 0.0)
              set addz=height - lastheight
              if addxy == 0. then
                 set addxy=1.
@@ -2686,11 +2698,11 @@ function UniMissileSystem3D__MLoop takes nothing returns nothing
              elseif aniI > 181 then
                 set aniI=181
              endif
-             call SetUnitAnimationByIndex(UniMissileSystem3D__MU[i], aniI)
-             set UniMissileSystem3D__DI[i]=UniMissileSystem3D__DI[i] - UniMissileSystem3D__SP[i] * UniMissileSystem3D__LOC[i]
-             set UniMissileSystem3D__US[i]=UniMissileSystem3D__US[i] - UniMissileSystem3D__MGra[i]
-             call RemoveLocation(UniMissileSystem3D__MLoc[1])
-             call RemoveLocation(UniMissileSystem3D__MLoc[2])
+             call SetUnitAnimationByIndex(UniMissileSystem3D___MU[i], aniI)
+             set UniMissileSystem3D___DI[i]=UniMissileSystem3D___DI[i] - UniMissileSystem3D___SP[i] * UniMissileSystem3D___LOC[i]
+             set UniMissileSystem3D___US[i]=UniMissileSystem3D___US[i] - UniMissileSystem3D___MGra[i]
+             call RemoveLocation(UniMissileSystem3D___MLoc[1])
+             call RemoveLocation(UniMissileSystem3D___MLoc[2])
          endif
          set i=i - 1
      endloop
@@ -2709,9 +2721,9 @@ function MissileCast takes unit caster,unit missile,real originspeed,real maxspe
      if loc == null then
         return
      endif
-     set UniMissileSystem3D__Top=UniMissileSystem3D__Top + 1
-     set i=UniMissileSystem3D__Top
-     set UniMissileSystem3D__HeroLoc=GetUnitLoc(caster)
+     set UniMissileSystem3D___Top=UniMissileSystem3D___Top + 1
+     set i=UniMissileSystem3D___Top
+     set UniMissileSystem3D___HeroLoc=GetUnitLoc(caster)
      if speed == 0. then
         set speed=0.01
      endif
@@ -2727,101 +2739,101 @@ function MissileCast takes unit caster,unit missile,real originspeed,real maxspe
      if height == 0. then
         set height=0.1
      endif
-     if GetLocationX(loc) != GetLocationX(UniMissileSystem3D__HeroLoc) or GetLocationY(loc) != GetLocationY(UniMissileSystem3D__HeroLoc) then
+     if GetLocationX(loc) != GetLocationX(UniMissileSystem3D___HeroLoc) or GetLocationY(loc) != GetLocationY(UniMissileSystem3D___HeroLoc) then
         set x=GetLocationX(loc)
         set y=GetLocationY(loc)
-        set ang=UniMissileSystem3D__AngleBetweenXY(GetUnitX(caster) , x , GetUnitY(caster) , y)
-        set dis=UniMissileSystem3D__DistanceBetweenXY(x , GetUnitX(caster) , y , GetUnitY(caster))
-        set UniMissileSystem3D__LOC[i]=0.0
+        set ang=UniMissileSystem3D___AngleBetweenXY(GetUnitX(caster) , x , GetUnitY(caster) , y)
+        set dis=UniMissileSystem3D___DistanceBetweenXY(x , GetUnitX(caster) , y , GetUnitY(caster))
+        set UniMissileSystem3D___LOC[i]=0.0
      else
         set ang=angle
         set dis=distance
-        set UniMissileSystem3D__LOC[i]=1.0
+        set UniMissileSystem3D___LOC[i]=1.0
      endif
      if gravity == true then
-        set UniMissileSystem3D__MGra[i]=UniMissileSystem3D__Gravity
+        set UniMissileSystem3D___MGra[i]=UniMissileSystem3D___Gravity
      else
-        set UniMissileSystem3D__MGra[i]=0.0
+        set UniMissileSystem3D___MGra[i]=0.0
      endif
-     set UniMissileSystem3D__MU[i]=missile
-     call UniMissileSystem3D__MRegister(UniMissileSystem3D__MU[i])
-     set UniMissileSystem3D__OH[i]=GetUnitFlyHeight(caster) + height
-     set UniMissileSystem3D__SZ[i]=GetLocationZ(UniMissileSystem3D__HeroLoc) + UniMissileSystem3D__OH[i]
+     set UniMissileSystem3D___MU[i]=missile
+     call UniMissileSystem3D___MRegister(UniMissileSystem3D___MU[i])
+     set UniMissileSystem3D___OH[i]=GetUnitFlyHeight(caster) + height
+     set UniMissileSystem3D___SZ[i]=GetLocationZ(UniMissileSystem3D___HeroLoc) + UniMissileSystem3D___OH[i]
      if originspeed == maxspeed then
         set speed=originspeed
         set accel=0.0
         set inertia=false
-        set UniMissileSystem3D__LT[i]=dis / speed
+        set UniMissileSystem3D___LT[i]=dis / speed
      else
         set inertia=true
-        set UniMissileSystem3D__LT[i]=UniMissileSystem3D__GetAcceleratedTime(dis , originspeed , accel)
+        set UniMissileSystem3D___LT[i]=UniMissileSystem3D___GetAcceleratedTime(dis , originspeed , accel)
      endif
-     set UniMissileSystem3D__SP[i]=originspeed * UniMissileSystem3D__TIMOut
-     set UniMissileSystem3D__MaxS[i]=maxspeed
-     set UniMissileSystem3D__RI[i]=( GetLocationZ(loc) - UniMissileSystem3D__SZ[i] ) / dis
-     set UniMissileSystem3D__TIM[i]=0
-     set UniMissileSystem3D__IN[i]=0
+     set UniMissileSystem3D___SP[i]=originspeed * UniMissileSystem3D___TIMOut
+     set UniMissileSystem3D___MaxS[i]=maxspeed
+     set UniMissileSystem3D___RI[i]=( GetLocationZ(loc) - UniMissileSystem3D___SZ[i] ) / dis
+     set UniMissileSystem3D___TIM[i]=0
+     set UniMissileSystem3D___IN[i]=0
      if target != null then
         if GetUnitState(target, UNIT_STATE_LIFE) > 0.4 then
-        set UniMissileSystem3D__MT[i]=target
+        set UniMissileSystem3D___MT[i]=target
         if inertia == true then
-           set UniMissileSystem3D__OS[i]=originspeed * UniMissileSystem3D__TIMOut
-           set UniMissileSystem3D__OF[i]=Deg2Rad(50)
-           set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__OS[i] * Cos(ang)
-           set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__OS[i] * Sin(ang)
-           set UniMissileSystem3D__MKs[i]=1 - accel * UniMissileSystem3D__TIMOut / maxspeed
+           set UniMissileSystem3D___OS[i]=originspeed * UniMissileSystem3D___TIMOut
+           set UniMissileSystem3D___OF[i]=Deg2Rad(50)
+           set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___OS[i] * Cos(ang)
+           set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___OS[i] * Sin(ang)
+           set UniMissileSystem3D___MKs[i]=1 - accel * UniMissileSystem3D___TIMOut / maxspeed
         endif
         endif
      endif
-     set UniMissileSystem3D__ACC[i]=accel * UniMissileSystem3D__TIMOut * UniMissileSystem3D__TIMOut
+     set UniMissileSystem3D___ACC[i]=accel * UniMissileSystem3D___TIMOut * UniMissileSystem3D___TIMOut
      if inertia == true then
-        set UniMissileSystem3D__IN[i]=1
+        set UniMissileSystem3D___IN[i]=1
      endif
-     set UniMissileSystem3D__RA[i]=range
-     set UniMissileSystem3D__DM[i]=damage
-     set UniMissileSystem3D__AN[i]=ang
-     set UniMissileSystem3D__ARC[i]=arc
-     set UniMissileSystem3D__MaxS[i]=maxspeed * UniMissileSystem3D__TIMOut
+     set UniMissileSystem3D___RA[i]=range
+     set UniMissileSystem3D___DM[i]=damage
+     set UniMissileSystem3D___AN[i]=ang
+     set UniMissileSystem3D___ARC[i]=arc
+     set UniMissileSystem3D___MaxS[i]=maxspeed * UniMissileSystem3D___TIMOut
      if arc != 0.0 then
-        set UniMissileSystem3D__HEMax[i]=dis * UniMissileSystem3D__ARC[i]
+        set UniMissileSystem3D___HEMax[i]=dis * UniMissileSystem3D___ARC[i]
      else
-        set UniMissileSystem3D__HEMax[i]=height
+        set UniMissileSystem3D___HEMax[i]=height
      endif
-     if GetLocationX(loc) == GetLocationX(UniMissileSystem3D__HeroLoc) and GetLocationY(loc) == GetLocationY(UniMissileSystem3D__HeroLoc) then
-        set UniMissileSystem3D__ANZ[i]=AtanBJ(arc)
-        set UniMissileSystem3D__US[i]=arc * UniMissileSystem3D__SP[i]
-        set UniMissileSystem3D__DI[i]=distance
+     if GetLocationX(loc) == GetLocationX(UniMissileSystem3D___HeroLoc) and GetLocationY(loc) == GetLocationY(UniMissileSystem3D___HeroLoc) then
+        set UniMissileSystem3D___ANZ[i]=AtanBJ(arc)
+        set UniMissileSystem3D___US[i]=arc * UniMissileSystem3D___SP[i]
+        set UniMissileSystem3D___DI[i]=distance
      else
-        set UniMissileSystem3D__US[i]=0
-        set UniMissileSystem3D__DI[i]=dis
+        set UniMissileSystem3D___US[i]=0
+        set UniMissileSystem3D___DI[i]=dis
      endif
-     call SetUnitX(UniMissileSystem3D__MU[i], GetLocationX(UniMissileSystem3D__HeroLoc))
-     call SetUnitY(UniMissileSystem3D__MU[i], GetLocationY(UniMissileSystem3D__HeroLoc))
-     call SetUnitOwner(UniMissileSystem3D__MU[i], GetOwningPlayer(caster), true)
-     call SetUnitFacing(UniMissileSystem3D__MU[i], UniMissileSystem3D__AN[i])
-     set UniMissileSystem3D__HE[i]=UniMissileSystem3D__OH[i] + GetLocationZ(UniMissileSystem3D__HeroLoc) + 0.11
-     set UniMissileSystem3D__SH[i]=0 * speed
-     set UniMissileSystem3D__LastX[i]=0.0
-     set UniMissileSystem3D__LastY[i]=0.0
-     set UniMissileSystem3D__R01[i]=UniMissileSystem3D__HEMax[i] / UniMissileSystem3D__LT[i] / UniMissileSystem3D__LT[i] * 4
-     set UniMissileSystem3D__R02[i]=UniMissileSystem3D__SP[i] * UniMissileSystem3D__RI[i] / UniMissileSystem3D__TIMOut
-     set UniMissileSystem3D__HP[i]=l__hp
-     set UniMissileSystem3D__DM[i]=damage
-     set UniMissileSystem3D__EF[i]=Effect
-     call SetUnitFlyHeight(UniMissileSystem3D__MU[i], UniMissileSystem3D__HE[i] - GetLocationZ(UniMissileSystem3D__HeroLoc), 0.0)
-     set UniMissileSystem3D__EFL[i]=AddSpecialEffectTarget(UniMissileSystem3D__EF[i], UniMissileSystem3D__MU[i], "chest")
-     set UniMissileSystem3D__LastOwner[i]=GetOwningPlayer(caster)
-     call RemoveLocation(UniMissileSystem3D__HeroLoc)
-     set UniMissileSystem3D__HeroLoc=null
+     call SetUnitX(UniMissileSystem3D___MU[i], GetLocationX(UniMissileSystem3D___HeroLoc))
+     call SetUnitY(UniMissileSystem3D___MU[i], GetLocationY(UniMissileSystem3D___HeroLoc))
+     call SetUnitOwner(UniMissileSystem3D___MU[i], GetOwningPlayer(caster), true)
+     call SetUnitFacing(UniMissileSystem3D___MU[i], UniMissileSystem3D___AN[i])
+     set UniMissileSystem3D___HE[i]=UniMissileSystem3D___OH[i] + GetLocationZ(UniMissileSystem3D___HeroLoc) + 0.11
+     set UniMissileSystem3D___SH[i]=0 * speed
+     set UniMissileSystem3D___LastX[i]=0.0
+     set UniMissileSystem3D___LastY[i]=0.0
+     set UniMissileSystem3D___R01[i]=UniMissileSystem3D___HEMax[i] / UniMissileSystem3D___LT[i] / UniMissileSystem3D___LT[i] * 4
+     set UniMissileSystem3D___R02[i]=UniMissileSystem3D___SP[i] * UniMissileSystem3D___RI[i] / UniMissileSystem3D___TIMOut
+     set UniMissileSystem3D___HP[i]=l__hp
+     set UniMissileSystem3D___DM[i]=damage
+     set UniMissileSystem3D___EF[i]=Effect
+     call SetUnitFlyHeight(UniMissileSystem3D___MU[i], UniMissileSystem3D___HE[i] - GetLocationZ(UniMissileSystem3D___HeroLoc), 0.0)
+     set UniMissileSystem3D___EFL[i]=AddSpecialEffectTarget(UniMissileSystem3D___EF[i], UniMissileSystem3D___MU[i], "chest")
+     set UniMissileSystem3D___LastOwner[i]=GetOwningPlayer(caster)
+     call RemoveLocation(UniMissileSystem3D___HeroLoc)
+     set UniMissileSystem3D___HeroLoc=null
 endfunction
-function UniMissileSystem3D__Init takes nothing returns nothing
-     set UniMissileSystem3D__map_max_X=GetRectMaxX(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D__map_max_Y=GetRectMaxY(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D__map_min_X=GetRectMinX(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D__map_min_Y=GetRectMinY(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D__DamageGroup=CreateGroup()
-     set UniMissileSystem3D__TIMr=CreateTimer()
-     call TimerStart(UniMissileSystem3D__TIMr, UniMissileSystem3D__TIMOut, true, function UniMissileSystem3D__MLoop)
+function UniMissileSystem3D___Init takes nothing returns nothing
+     set UniMissileSystem3D___map_max_X=GetRectMaxX(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D___map_max_Y=GetRectMaxY(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D___map_min_X=GetRectMinX(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D___map_min_Y=GetRectMinY(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D___DamageGroup=CreateGroup()
+     set UniMissileSystem3D___TIMr=CreateTimer()
+     call TimerStart(UniMissileSystem3D___TIMr, UniMissileSystem3D___TIMOut, true, function UniMissileSystem3D___MLoop)
 endfunction
 
 //library UniMissileSystem3D ends
@@ -3117,7 +3129,7 @@ endfunction
 
 //library WuQiQiHeSystem ends
 //library YDTriggerSaveLoadSystem:
-    function YDTriggerSaveLoadSystem__Init takes nothing returns nothing
+    function YDTriggerSaveLoadSystem___Init takes nothing returns nothing
             set YDHT=InitHashtable()
         set YDLOC=InitHashtable()
     endfunction
@@ -3722,11 +3734,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
-        if YDWEBase__AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
+        if YDWEBase___AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
+			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -3736,9 +3748,9 @@ endfunction
 //YDWE技能捕捉事件 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
-	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
-	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
+	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
+	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
+	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //系统函数完善
@@ -3775,7 +3787,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -3822,22 +3834,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
     //=================显示版本=====================
     call YDWEVersion_Init()
 endfunction
@@ -3845,18 +3857,18 @@ endfunction
 //library YDWEBase ends
 //library YDWEBitwise:
     
-    function YDWEBitwise__Bit takes integer x returns boolean
+    function YDWEBitwise___Bit takes integer x returns boolean
         return ( x - x / 2 * 2 ) != 0
     endfunction 
     
- function YDWEBitwise__NOT_P takes integer x returns integer
+ function YDWEBitwise___NOT_P takes integer x returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if not YDWEBitwise__Bit(x) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if not YDWEBitwise___Bit(x) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set i=i + 1
@@ -3866,20 +3878,20 @@ endfunction
 	endfunction
  function YDWEBitwise_NOT takes integer x returns integer
 		if x >= 0 then
-            return YDWEBitwise__NOT_P(x) + YDWEBitwise__C2[31]
+            return YDWEBitwise___NOT_P(x) + YDWEBitwise___C2[31]
         else
             return - x - 1
         endif
 	endfunction
     
-    function YDWEBitwise__AND_P takes integer x,integer y returns integer
+    function YDWEBitwise___AND_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise__Bit(x) and YDWEBitwise__Bit(y) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if YDWEBitwise___Bit(x) and YDWEBitwise___Bit(y) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3891,27 +3903,27 @@ endfunction
     function YDWEBitwise_AND takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise__AND_P(x , y)
+                return YDWEBitwise___AND_P(x , y)
             else
-                return YDWEBitwise__AND_P(x , YDWEBitwise__NOT_P(- y - 1))
+                return YDWEBitwise___AND_P(x , YDWEBitwise___NOT_P(- y - 1))
             endif
         else
             if y >= 0 then
-                return YDWEBitwise__AND_P(YDWEBitwise__NOT_P(- x - 1) , y)
+                return YDWEBitwise___AND_P(YDWEBitwise___NOT_P(- x - 1) , y)
             else
-                return YDWEBitwise__AND_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___AND_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         endif
     endfunction
     
-    function YDWEBitwise__OR_P takes integer x,integer y returns integer
+    function YDWEBitwise___OR_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise__Bit(x) or YDWEBitwise__Bit(y) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if YDWEBitwise___Bit(x) or YDWEBitwise___Bit(y) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3923,26 +3935,26 @@ endfunction
     function YDWEBitwise_OR takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise__OR_P(x , y)
+                return YDWEBitwise___OR_P(x , y)
             else
-                return YDWEBitwise__OR_P(x , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___OR_P(x , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         else
             if y >= 0 then
-                return YDWEBitwise__OR_P(YDWEBitwise__NOT_P(- x - 1) , y) + YDWEBitwise__C2[31]
+                return YDWEBitwise___OR_P(YDWEBitwise___NOT_P(- x - 1) , y) + YDWEBitwise___C2[31]
             else
-                return YDWEBitwise__OR_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___OR_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         endif
     endfunction
-    function YDWEBitwise__XOR_P takes integer x,integer y returns integer
+    function YDWEBitwise___XOR_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise__Bit(x) != YDWEBitwise__Bit(y) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if YDWEBitwise___Bit(x) != YDWEBitwise___Bit(y) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3954,71 +3966,71 @@ endfunction
     function YDWEBitwise_XOR takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise__XOR_P(x , y)
+                return YDWEBitwise___XOR_P(x , y)
             else
-                return YDWEBitwise__XOR_P(x , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___XOR_P(x , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         else
             if y >= 0 then
-                return YDWEBitwise__XOR_P(YDWEBitwise__NOT_P(- x - 1) , y) + YDWEBitwise__C2[31]
+                return YDWEBitwise___XOR_P(YDWEBitwise___NOT_P(- x - 1) , y) + YDWEBitwise___C2[31]
             else
-                return YDWEBitwise__XOR_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1))
+                return YDWEBitwise___XOR_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1))
             endif
         endif
     endfunction
     
-    function YDWEBitwise__LShift_P takes integer x,integer n returns integer
-        return x * YDWEBitwise__C2[n]
+    function YDWEBitwise___LShift_P takes integer x,integer n returns integer
+        return x * YDWEBitwise___C2[n]
     endfunction
     function YDWEBitwise_LShift takes integer x,integer n returns integer
-        return x * YDWEBitwise__C2[n]
+        return x * YDWEBitwise___C2[n]
     endfunction
     
-    function YDWEBitwise__RShift_P takes integer x,integer n returns integer
-        return x / YDWEBitwise__C2[n]
+    function YDWEBitwise___RShift_P takes integer x,integer n returns integer
+        return x / YDWEBitwise___C2[n]
     endfunction
     function YDWEBitwise_RShift takes integer x,integer n returns integer
 		if x >= 0 then
-            return ((x ) / YDWEBitwise__C2[( n)]) // INLINED!!
+            return ((x ) / YDWEBitwise___C2[( n)]) // INLINED!!
         else
-            return ((YDWEBitwise__NOT_P(- x - 1) ) / YDWEBitwise__C2[( n)]) + YDWEBitwise__C2[31 - n] // INLINED!!
+            return ((YDWEBitwise___NOT_P(- x - 1) ) / YDWEBitwise___C2[( n)]) + YDWEBitwise___C2[31 - n] // INLINED!!
         endif
     endfunction
     
-    function YDWEBitwise__ToHexChar takes integer x returns string
-        return SubString(YDWEBitwise__hexstr, x, x + 1)
+    function YDWEBitwise___ToHexChar takes integer x returns string
+        return SubString(YDWEBitwise___hexstr, x, x + 1)
     endfunction 
-    function YDWEBitwise__ToHexChar7 takes integer x returns string
+    function YDWEBitwise___ToHexChar7 takes integer x returns string
         local string s= ""
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        return YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        return YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
     endfunction
     function YDWEBitwise_ToHexString takes integer x returns string
 		if x >= 0 then
-            return YDWEBitwise__ToHexChar(x / $10000000) + YDWEBitwise__ToHexChar7(x)
+            return YDWEBitwise___ToHexChar(x / $10000000) + YDWEBitwise___ToHexChar7(x)
         else
-            set x=YDWEBitwise__NOT_P(- x - 1)
-            return YDWEBitwise__ToHexChar($8 + x / $10000000) + YDWEBitwise__ToHexChar7(x)
+            set x=YDWEBitwise___NOT_P(- x - 1)
+            return YDWEBitwise___ToHexChar($8 + x / $10000000) + YDWEBitwise___ToHexChar7(x)
         endif
     endfunction
 
- function YDWEBitwise__onInit takes nothing returns nothing
+ function YDWEBitwise___onInit takes nothing returns nothing
   local integer i= 1
-		set YDWEBitwise__C2[0]=1
+		set YDWEBitwise___C2[0]=1
 		loop
 			exitwhen ( i == 32 )
-			set YDWEBitwise__C2[i]=YDWEBitwise__C2[i - 1] * 2
+			set YDWEBitwise___C2[i]=YDWEBitwise___C2[i - 1] * 2
 			set i=i + 1
 		endloop
 
@@ -4448,7 +4460,7 @@ endfunction
 // Modified by : c kuhn
 // [private]用级数计算以e为底的对数
 // Returns 0 if x <= 0
-function YDWELogarithm__ln_taylor takes real x returns real
+function YDWELogarithm___ln_taylor takes real x returns real
     // ln( (1+x) / (1-x) ) = ln(1+x) - ln(1-x) = 2 * ( x + x^3 / 3 + x^5 / 5 + ... )
     // x = (y-1) / (y+1)
     // (0 < y < +∞, -1 < x < 1)
@@ -4473,7 +4485,7 @@ local real fCur
 endfunction
 // Author : c kuhn
 // 通过满二叉树特性快速找到大的部分
-function YDWELogarithm__Log2 takes real x returns real
+function YDWELogarithm___Log2 takes real x returns real
     local real res= 0.
     local real sign=1.
     local real i= 64.
@@ -4488,16 +4500,16 @@ function YDWELogarithm__Log2 takes real x returns real
             set x=1. / x
         endif
         if x >= 2. then
-            set mid=YDWELogarithm__base[7]
+            set mid=YDWELogarithm___base[7]
             loop
                 set temp=x / mid
                 exitwhen temp >= 1. and temp < 2.
                 if x < mid then
                     set i=i - level
-                    set mid=mid / YDWELogarithm__base[count]
+                    set mid=mid / YDWELogarithm___base[count]
                 else
                     set i=i + level
-                    set mid=mid * YDWELogarithm__base[count]
+                    set mid=mid * YDWELogarithm___base[count]
                 endif
                 set level=level / 2.
                 set count=count - 1
@@ -4510,7 +4522,7 @@ function YDWELogarithm__Log2 takes real x returns real
             set x=x / 1.4142135
             set fac=fac + .5
         endif
-        set res=sign * ( fac + YDWELogarithm__ln_taylor(x) * 1.442695 )
+        set res=sign * ( fac + YDWELogarithm___ln_taylor(x) * 1.442695 )
     endif
     
     return res
@@ -4518,29 +4530,29 @@ endfunction
 // 以 10 为底的对数
 // Returns 0 if x <= 0
 function YDWELogarithmLg takes real x returns real
-    return YDWELogarithm__Log2(x) * 0.3010300 // 1/log2(10) = 0.30102999566398119521373889472449
+    return YDWELogarithm___Log2(x) * 0.3010300 // 1/log2(10) = 0.30102999566398119521373889472449
 endfunction
 // 以 e 为底的对数
 // Returns 0 if x <= 0
 function YDWELogarithmLn takes real x returns real
-    return YDWELogarithm__Log2(x) * 0.6931472 // 1/log2(e) = 0.69314718055994530941723212145818
+    return YDWELogarithm___Log2(x) * 0.6931472 // 1/log2(e) = 0.69314718055994530941723212145818
 endfunction
 // 以 任意数 为底的对数 
 function YDWELogarithmLog takes real a,real x returns real
     if a <= 0 or ( a <= 1 and a >= 1 ) then
         return 0.
     endif
-    return YDWELogarithm__Log2(x) / YDWELogarithm__Log2(a)
+    return YDWELogarithm___Log2(x) / YDWELogarithm___Log2(a)
 endfunction
-function YDWELogarithm__onInit takes nothing returns nothing
-    set YDWELogarithm__base[1]=2.
-    set YDWELogarithm__base[2]=4.
-    set YDWELogarithm__base[3]=16.
-    set YDWELogarithm__base[4]=256.
-    set YDWELogarithm__base[5]=65536.
+function YDWELogarithm___onInit takes nothing returns nothing
+    set YDWELogarithm___base[1]=2.
+    set YDWELogarithm___base[2]=4.
+    set YDWELogarithm___base[3]=16.
+    set YDWELogarithm___base[4]=256.
+    set YDWELogarithm___base[5]=65536.
     //过大的数必须用乘法
-    set YDWELogarithm__base[6]=65536. * 65536. //2^32
-set YDWELogarithm__base[7]=YDWELogarithm__base[6] * YDWELogarithm__base[6] //2^64
+    set YDWELogarithm___base[6]=65536. * 65536. //2^32
+set YDWELogarithm___base[7]=YDWELogarithm___base[6] * YDWELogarithm___base[6] //2^64
 endfunction
 
 //library YDWELogarithm ends
@@ -4573,13 +4585,13 @@ endfunction
 
 //library YDWEStringHash ends
 //library YDWESync:
- function YDWESync__IsLivingPlayer takes player p returns boolean
+ function YDWESync___IsLivingPlayer takes player p returns boolean
 		return ( GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING ) and ( GetPlayerController(p) == MAP_CONTROL_USER )
 	endfunction
- function YDWESync__GetLivingfPlayer takes nothing returns player
+ function YDWESync___GetLivingfPlayer takes nothing returns player
   local integer i= 0
 		loop
-			exitwhen YDWESync__IsLivingPlayer(Player(i)) or i >= 11
+			exitwhen YDWESync___IsLivingPlayer(Player(i)) or i >= 11
 			set i=i + 1
 		endloop
 		return Player(i)
@@ -4587,8 +4599,8 @@ endfunction
     
     function YDWESync_Lock takes nothing returns nothing
         loop
-            if not YDWESync__m_mutex_state then
-                set YDWESync__m_mutex_state=true
+            if not YDWESync___m_mutex_state then
+                set YDWESync___m_mutex_state=true
                 return
             endif
             call TriggerSleepAction(0.2)
@@ -4596,21 +4608,21 @@ endfunction
     endfunction
     
     function YDWESync_Unlock takes nothing returns nothing
-        set YDWESync__m_mutex_state=false
+        set YDWESync___m_mutex_state=false
     endfunction
     
     function YDWESync_Join takes player p returns nothing
         if GetLocalPlayer() == p then
-            call StoreInteger(YDWESync__m_gc, "-", "-", 'YDWE')
+            call StoreInteger(YDWESync___m_gc, "-", "-", 'YDWE')
         endif
         call TriggerSyncStart()
         if GetLocalPlayer() == p then
-            call SyncStoredInteger(YDWESync__m_gc, "-", "-")
+            call SyncStoredInteger(YDWESync___m_gc, "-", "-")
         endif
-        call StoreInteger(YDWESync__m_gc, "-", "-", 0)
+        call StoreInteger(YDWESync___m_gc, "-", "-", 0)
         call TriggerSyncReady()
         loop
-            if 'YDWE' == GetStoredInteger(YDWESync__m_gc, "-", "-") then
+            if 'YDWE' == GetStoredInteger(YDWESync___m_gc, "-", "-") then
                 return
             endif
             call TriggerSleepAction(0.2)
@@ -4618,11 +4630,11 @@ endfunction
     endfunction
     
     function YDWESync_Set takes string table,string key,integer value returns nothing
-        call StoreInteger(YDWESync__m_gc, table, key, value)
+        call StoreInteger(YDWESync___m_gc, table, key, value)
     endfunction
     
     function YDWESync_Get takes string table,string key returns integer
-        return GetStoredInteger(YDWESync__m_gc, table, key)
+        return GetStoredInteger(YDWESync___m_gc, table, key)
     endfunction
     
     function YDWESync_Start takes nothing returns nothing
@@ -4634,12 +4646,12 @@ endfunction
     endfunction
     
     function YDWESync_Send takes string table,string key returns nothing
-        call SyncStoredInteger(YDWESync__m_gc, table, key)
+        call SyncStoredInteger(YDWESync___m_gc, table, key)
     endfunction
     
- function YDWESync__onInit takes nothing returns nothing
+ function YDWESync___onInit takes nothing returns nothing
 		call FlushGameCache(InitGameCache("@"))
-		set YDWESync__m_gc=InitGameCache("@")
+		set YDWESync___m_gc=InitGameCache("@")
 	endfunction
 
 //library YDWESync ends
@@ -5150,8 +5162,8 @@ function YDWE_PreloadSL_LoadPreFile takes player p,integer n,string strFilePath 
   
   loop
     exitwhen index > n
-    set YDWEPreloadSL__CodeHI[beg + index]=YDWE_PreloadSL_LoadInteger(index)
-    set YDWEPreloadSL__CodeLO[beg + index]=YDWE_PreloadSL_LoadInteger($200 + index)
+    set YDWEPreloadSL___CodeHI[beg + index]=YDWE_PreloadSL_LoadInteger(index)
+    set YDWEPreloadSL___CodeLO[beg + index]=YDWE_PreloadSL_LoadInteger($200 + index)
     set index=index + 1
   endloop
 endfunction
@@ -5163,8 +5175,8 @@ function YDWE_PreloadSL_SavePreFile takes player p,integer n,string strFilePath 
   call PreloadGenStart()
   loop
     exitwhen index > n
-    call YDWE_PreloadSL_SaveInteger(index , YDWEPreloadSL__CodeHI[beg + index])
-    call YDWE_PreloadSL_SaveInteger($200 + index , YDWEPreloadSL__CodeLO[beg + index])
+    call YDWE_PreloadSL_SaveInteger(index , YDWEPreloadSL___CodeHI[beg + index])
+    call YDWE_PreloadSL_SaveInteger($200 + index , YDWEPreloadSL___CodeLO[beg + index])
     set index=index + 1
   endloop
           
@@ -5247,15 +5259,15 @@ endfunction
 function YDWE_PreloadSL_GetMask takes player p returns integer
     local integer value
     local integer beg= ( 501 * GetPlayerId(p) )
-    local integer l__hi= YDWEPreloadSL__CodeHI[beg]
-    local integer l__lo= YDWEPreloadSL__CodeLO[beg]
+    local integer l__hi= YDWEPreloadSL___CodeHI[beg]
+    local integer l__lo= YDWEPreloadSL___CodeLO[beg]
     if l__hi < $8000 then
         set value=l__lo + l__hi * $10000
     else
         set l__hi=l__hi - $8000
         set value=- ( l__lo + l__hi * $10000 )
     endif
-    set YDWEPreloadSL__Code[beg]=value
+    set YDWEPreloadSL___Code[beg]=value
     return value - 'YDWE'
 endfunction
 ///
@@ -5276,18 +5288,18 @@ function YDWE_PreloadSL_Unmove takes integer beg,integer n,integer key returns n
         if value < beg then
             set value=value + n
         endif
-        set l__hi=YDWEPreloadSL__CodeHI[value]
-        set YDWEPreloadSL__CodeHI[value]=YDWEPreloadSL__CodeHI[index]
-        set YDWEPreloadSL__CodeHI[index]=l__hi
+        set l__hi=YDWEPreloadSL___CodeHI[value]
+        set YDWEPreloadSL___CodeHI[value]=YDWEPreloadSL___CodeHI[index]
+        set YDWEPreloadSL___CodeHI[index]=l__hi
         
         set value=keys - ( index - beg )
         set value=beg + value - value / n * n
         if value < beg then
             set value=value + n
         endif
-        set l__lo=YDWEPreloadSL__CodeLO[value]
-        set YDWEPreloadSL__CodeLO[value]=YDWEPreloadSL__CodeLO[index]
-        set YDWEPreloadSL__CodeLO[index]=l__lo
+        set l__lo=YDWEPreloadSL___CodeLO[value]
+        set YDWEPreloadSL___CodeLO[value]=YDWEPreloadSL___CodeLO[index]
+        set YDWEPreloadSL___CodeLO[index]=l__lo
         
         set keys=keys - key
         
@@ -5305,8 +5317,8 @@ function YDWE_PreloadSL_GetCode takes integer beg,integer n,integer key,integer 
     
     loop
         exitwhen index > end
-        set l__hi=YDWEPreloadSL__CodeHI[index]
-        set l__lo=YDWEPreloadSL__CodeLO[index]
+        set l__hi=YDWEPreloadSL___CodeHI[index]
+        set l__lo=YDWEPreloadSL___CodeLO[index]
         
         // SubKey
         set keys=keys + key
@@ -5335,7 +5347,7 @@ function YDWE_PreloadSL_GetCode takes integer beg,integer n,integer key,integer 
             set value=- ( l__lo + l__hi * $10000 )
         endif
         
-        set YDWEPreloadSL__Code[index]=value
+        set YDWEPreloadSL___Code[index]=value
         set index=index + 1
     endloop
     
@@ -5362,8 +5374,8 @@ function YDWE_PreloadSL_SetMask takes player p,integer mask returns nothing
             set l__lo=value - l__hi * $10000
             set l__hi=l__hi + $8000
     endif
-    set YDWEPreloadSL__CodeHI[beg]=l__hi
-    set YDWEPreloadSL__CodeLO[beg]=l__lo
+    set YDWEPreloadSL___CodeHI[beg]=l__hi
+    set YDWEPreloadSL___CodeLO[beg]=l__lo
 endfunction
 function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer mask returns nothing
     local integer l__hi
@@ -5376,7 +5388,7 @@ function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer 
     
     loop
         exitwhen index > end
-        set value=YDWEPreloadSL__Code[index]
+        set value=YDWEPreloadSL___Code[index]
         
         // SetCode
         if value >= 0 then
@@ -5398,8 +5410,8 @@ function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer 
         set value=masks / $10000
         set l__hi=l__hi + ( value - value / $100 * $100 ) * $100
         set l__lo=l__lo + ( masks - masks / $100 * $100 ) * $10000
-        set YDWEPreloadSL__CodeHI[index]=l__hi
-        set YDWEPreloadSL__CodeLO[index]=l__lo
+        set YDWEPreloadSL___CodeHI[index]=l__hi
+        set YDWEPreloadSL___CodeLO[index]=l__lo
         set index=index + 1
     endloop
 endfunction
@@ -5425,18 +5437,18 @@ function YDWE_PreloadSL_Move takes integer beg,integer n,integer key returns not
         if value < beg then
             set value=value + n
         endif
-        set l__hi=YDWEPreloadSL__CodeHI[value]
-        set YDWEPreloadSL__CodeHI[value]=YDWEPreloadSL__CodeHI[index]
-        set YDWEPreloadSL__CodeHI[index]=l__hi
+        set l__hi=YDWEPreloadSL___CodeHI[value]
+        set YDWEPreloadSL___CodeHI[value]=YDWEPreloadSL___CodeHI[index]
+        set YDWEPreloadSL___CodeHI[index]=l__hi
         
         set value=keys - ( index - beg )
         set value=beg + value - value / n * n
         if value < beg then
             set value=value + n
         endif
-        set l__lo=YDWEPreloadSL__CodeLO[value]
-        set YDWEPreloadSL__CodeLO[value]=YDWEPreloadSL__CodeLO[index]
-        set YDWEPreloadSL__CodeLO[index]=l__lo
+        set l__lo=YDWEPreloadSL___CodeLO[value]
+        set YDWEPreloadSL___CodeLO[value]=YDWEPreloadSL___CodeLO[index]
+        set YDWEPreloadSL___CodeLO[index]=l__lo
         
         set index=index + 1
     endloop
@@ -5460,8 +5472,8 @@ function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
         set index=beg
         loop
             exitwhen index > end
-            call StoreInteger(YDWESync__m_gc, ("H" ), ( I2S(index) ), ( YDWEPreloadSL__CodeHI[index])) // INLINED!!
-            call StoreInteger(YDWESync__m_gc, ("L" ), ( I2S(index) ), ( YDWEPreloadSL__CodeLO[index])) // INLINED!!
+            call StoreInteger(YDWESync___m_gc, ("H" ), ( I2S(index) ), ( YDWEPreloadSL___CodeHI[index])) // INLINED!!
+            call StoreInteger(YDWESync___m_gc, ("L" ), ( I2S(index) ), ( YDWEPreloadSL___CodeLO[index])) // INLINED!!
             set index=index + 1
         endloop
     endif
@@ -5470,8 +5482,8 @@ function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
         set index=beg
         loop
             exitwhen index > end
-            call SyncStoredInteger(YDWESync__m_gc, ("H" ), ( I2S(index))) // INLINED!!
-            call SyncStoredInteger(YDWESync__m_gc, ("L" ), ( I2S(index))) // INLINED!!
+            call SyncStoredInteger(YDWESync___m_gc, ("H" ), ( I2S(index))) // INLINED!!
+            call SyncStoredInteger(YDWESync___m_gc, ("L" ), ( I2S(index))) // INLINED!!
             set index=index + 1
         endloop
     endif
@@ -5481,8 +5493,8 @@ function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
     set index=beg
     loop
         exitwhen index > end
-        set YDWEPreloadSL__CodeHI[index]=(GetStoredInteger(YDWESync__m_gc, ("H" ), ( I2S(index)))) // INLINED!!
-        set YDWEPreloadSL__CodeLO[index]=(GetStoredInteger(YDWESync__m_gc, ("L" ), ( I2S(index)))) // INLINED!!
+        set YDWEPreloadSL___CodeHI[index]=(GetStoredInteger(YDWESync___m_gc, ("H" ), ( I2S(index)))) // INLINED!!
+        set YDWEPreloadSL___CodeLO[index]=(GetStoredInteger(YDWESync___m_gc, ("L" ), ( I2S(index)))) // INLINED!!
         set index=index + 1
     endloop
 endfunction
@@ -5496,7 +5508,7 @@ function YDWE_PreloadSL_Load takes player p,string dir,string file,integer n ret
     
     call YDWE_PreloadSL_Sync(p , n)
     set bj_lastLoadPreloadSLResult=YDWE_PreloadSL_Decode(p , n)
-    set YDWESync__m_mutex_state=false // INLINED!!
+    set YDWESync___m_mutex_state=false // INLINED!!
     
     return bj_lastLoadPreloadSLResult
 endfunction
@@ -5510,13 +5522,13 @@ function YDWE_PreloadSL_Save takes player p,string dir,string file,integer n ret
 endfunction
  
 function YDWE_PreloadSL_Set takes player p,string s,integer n,integer value returns nothing
-    set YDWEPreloadSL__Code[n + ( 501 * GetPlayerId(p) )]=value
+    set YDWEPreloadSL___Code[n + ( 501 * GetPlayerId(p) )]=value
 endfunction
 function YDWE_PreloadSL_Get takes player p,string s,integer n returns integer
-    return YDWEPreloadSL__Code[n + ( 501 * GetPlayerId(p) )]
+    return YDWEPreloadSL___Code[n + ( 501 * GetPlayerId(p) )]
 endfunction
                                 
-function YDWEPreloadSL__Init takes nothing returns nothing
+function YDWEPreloadSL___Init takes nothing returns nothing
     local integer index= 0
     loop
         exitwhen index >= 16
@@ -6604,7 +6616,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Thu May 09 11:28:30 2019
+//   Date: Thu May 09 14:14:13 2019
 //   Map Author: 云杨 zei_kale
 // 
 //===========================================================================
@@ -7027,6 +7039,18 @@ endfunction
 //根据tag创建frame
 
 //设置颜色（支持SimpleStatusBar）
+
+
+// japi
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7547,8 +7571,8 @@ function TransferJY takes nothing returns nothing
 	set p=null
 endfunction
 function GetGeoNormRandomReal takes real r1,real r2 returns real
- local real rr1= (YDWELogarithm__Log2(((r1)*1.0)) * 0.3010300) // INLINED!!
- local real rr2= (YDWELogarithm__Log2(((r2)*1.0)) * 0.3010300) // INLINED!!
+ local real rr1= (YDWELogarithm___Log2(((r1)*1.0)) * 0.3010300) // INLINED!!
+ local real rr2= (YDWELogarithm___Log2(((r2)*1.0)) * 0.3010300) // INLINED!!
  local real rr3= GetRandomReal(rr1, rr2)
  local real rr4= GetRandomReal(rr1, rr2)
  local real rr5= GetRandomReal(rr1, rr2)
@@ -10145,7 +10169,7 @@ function WuMenPai_Action takes nothing returns nothing
 endfunction
 // 加入门派的itemid
 function ox takes nothing returns boolean
-	return ( ( (IsUnitType((GetTriggerUnit() ), ( UNIT_TYPE_HERO)) != null) ) and ( ( GetItemTypeId(GetManipulatedItem()) == 1227894833 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894834 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894835 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894836 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894837 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894838 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894839 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894840 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894841 ) or ( GetItemTypeId(GetManipulatedItem()) == 'I09E' ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894849 ) or ( GetItemTypeId(GetManipulatedItem()) == 'I09N' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0A2' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0CK' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0CX' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0E1' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0EH' ) ) ) // INLINED!!
+	return ( ( (IsUnitType((GetTriggerUnit() ), ( UNIT_TYPE_HERO)) != null) ) and ( ( GetItemTypeId(GetManipulatedItem()) == 1227894833 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894834 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894835 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894836 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894837 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894838 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894839 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894840 ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894841 ) or ( GetItemTypeId(GetManipulatedItem()) == 'I09E' ) or ( GetItemTypeId(GetManipulatedItem()) == 1227894849 ) or ( GetItemTypeId(GetManipulatedItem()) == 'I09N' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0A2' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0CK' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0CX' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0E1' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0EH' ) or ( GetItemTypeId(GetManipulatedItem()) == 'I0EO' ) ) ) // INLINED!!
 endfunction
 function JiaRuMenPai takes nothing returns nothing
  local unit u=GetTriggerUnit()
@@ -12053,7 +12077,7 @@ function HeroLevel takes nothing returns nothing
 		set Z8[i]=true
 		set d8[i]=1
 		loop
-			exitwhen d8[i] > 20 //门派数
+			exitwhen d8[i] > DENOMINATION_NUMBER //门派数
 if ( udg_runamen[i] == d8[i] ) then
 				// 自由3级自动学技能begin
 				if d8[i] == 11 then
@@ -37121,7 +37145,7 @@ function duoHun takes nothing returns nothing
     local real y= GetSpellTargetY()
     local real distance= SquareRoot(( x - GetUnitX(u) ) * ( x - GetUnitX(u) ) + ( y - GetUnitY(u) ) * ( y - GetUnitY(u) ))
     local real angle= Atan2BJ(y - GetUnitY(u), x - GetUnitX(u))
-    local real speed= 1000
+    local real speed= 1200
     // 向周围施放烟雾
     local unit dummy= CreateUnit(GetOwningPlayer(u), 'e000', GetUnitX(u), GetUnitY(u), bj_UNIT_FACING)
     if ( GetUnitAbilityLevel(u, 'A03V') >= 1 ) then // +擒龙控鹤 冲刺速度加倍
@@ -37132,7 +37156,7 @@ set speed=speed * 2
     call IssuePointOrderById(dummy, $D0208, GetUnitX(u), GetUnitY(u))
     call UnitApplyTimedLife(dummy, 'BHwe', 3)
     // 向目标方向冲刺
-    call YDWETimerPatternRushSlide(u , angle , distance , distance / speed , 0.03 , 0 , false , false , false , "origin" , "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl" , "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl")
+    call YDWETimerPatternRushSlide(u , angle , distance , distance / speed , 0.03 , 0 , false , false , true , "origin" , "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl" , "Objects\\Spawnmodels\\Undead\\ImpaleTargetDust\\ImpaleTargetDust.mdl")
     // 武功升重
     call WuGongShengChong(u , 'A0B0' , 200.)
     call YDWEPolledWaitNull(distance / 1000)
@@ -37153,7 +37177,7 @@ function duoHunPassive takes nothing returns nothing
     local unit u= GetAttacker()
     local real distance= 1000
     local real angle= GetUnitFacing(u)
-    local real speed= 1000
+    local real speed= 1200
     local unit dummy= null
     local integer i= 1 + GetPlayerId(GetOwningPlayer(u))
     if GetRandomInt(1, 100) <= 15 + fuyuan[i] / 5 then
@@ -37189,6 +37213,15 @@ endfunction
  function liuHeCondition takes nothing returns boolean
      return GetSpellAbilityId() == 'A0B6'
  endfunction
+function removeLiuHeState takes nothing returns nothing
+    local timer t= GetExpiredTimer()
+    local unit u= LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    call UnitAddAbility(u, 'A00S')
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t=null
+    set u=null
+endfunction
 function liuHeAction takes nothing returns nothing
     local unit u= GetTriggerUnit()
     local integer i= 1 + GetPlayerId(GetOwningPlayer(u))
@@ -37200,6 +37233,7 @@ local real oldSpeed= LoadReal(YDHT, key, 2)
     local integer profound= LoadInteger(YDHT, key, 5)
     local real addition= LoadReal(YDHT, key, 6)
     local integer j= GetRandomInt(1, 6)
+    local timer t= null
     // 清除上一次的状态
     if which == 1 then //移速
 call h__SetUnitMoveSpeed(u, RMaxBJ(RMinBJ(oldSpeed, oldSpeed2), 350.))
@@ -37231,8 +37265,9 @@ call UnitRemoveAbility(u, 'A00S')
         call SetUnitAbilityLevel(u, 'A0DB', IMinBJ(1 + fuyuan[i] / 20, 10))
     elseif j == 4 then
         call UnitAddAbility(u, 'A00S')
-        call YDWEPolledWaitNull(10)
-        call UnitAddAbility(u, 'A00S')
+        set t=CreateTimer()
+        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+        call TimerStart(t, 10, false, function removeLiuHeState)
     elseif j == 5 then
         set profound=2 * wuxing[i]
         call SaveInteger(YDHT, key, 5, profound)
@@ -37242,7 +37277,16 @@ call UnitRemoveAbility(u, 'A00S')
         call SaveReal(YDHT, key, 6, addition)
         set udg_shanghaijiacheng[i]=udg_shanghaijiacheng[i] + addition
     endif
+    call YDWEPolledWaitNull(0.2)
+    // 双手或小无相功的搭配
+    if GetUnitAbilityLevel(u, 'A07U') >= 1 then
+        call EXSetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1, EXGetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1) - 5)
+    endif
+    if GetUnitAbilityLevel(u, 'A083') >= 1 then
+       call EXSetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1, EXGetAbilityState(EXGetUnitAbility(u, 'A0B6'), 1) - 5)
+    endif
     set u=null
+    set t=null
 endfunction
 function liuHe takes nothing returns nothing
     local integer i= 1
@@ -48682,7 +48726,7 @@ endfunction
 function Trig____________________004Actions takes nothing returns nothing
     call main2()
     call YDWEGeneralBounsSystemUnitSetBonus(GetTriggerUnit() , 0 , 0 , 300)
-    call YDWESetLocalVariableReal("R" , (YDWELogarithm__Log2(((0.01)*1.0)) * 0.3010300)) // INLINED!!
+    call YDWESetLocalVariableReal("R" , (YDWELogarithm___Log2(((0.01)*1.0)) * 0.3010300)) // INLINED!!
 endfunction
 //===========================================================================
 function InitTrig____________________004 takes nothing returns nothing
@@ -49345,16 +49389,16 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs355190718")
-call ExecuteFunc("UniMissileSystem3D__Init")
+call ExecuteFunc("jasshelper__initstructs365133578")
+call ExecuteFunc("UniMissileSystem3D___Init")
 call ExecuteFunc("init")
-call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
+call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
-call ExecuteFunc("YDWEBitwise__onInit")
+call ExecuteFunc("YDWEBitwise___onInit")
 call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
-call ExecuteFunc("YDWELogarithm__onInit")
-call ExecuteFunc("YDWESync__onInit")
-call ExecuteFunc("YDWEPreloadSL__Init")
+call ExecuteFunc("YDWELogarithm___onInit")
+call ExecuteFunc("YDWESync___onInit")
+call ExecuteFunc("YDWEPreloadSL___Init")
 call ExecuteFunc("YDWEStringFormula___Init")
 call ExecuteFunc("YDWETimerPattern___Init")
 call ExecuteFunc("YDWETimerSystem___Init")
@@ -49391,20 +49435,20 @@ endfunction
 //===========================================================================
 //��Ծϵͳ 
 //===========================================================================
-     
- 
-                 
-//===========================================================================
-//修改生命
-//===========================================================================
 //===========================================================================  
 //===========================================================================  
 //�Զ����¼� 
 //===========================================================================
 //===========================================================================   
 //===========================================================================
+//修改生命
+//===========================================================================
+//===========================================================================
 //ϵͳ-TimerSystem
 //===========================================================================
+     
+ 
+                 
 
 
 
@@ -49537,7 +49581,7 @@ function sa___prototype3_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs355190718 takes nothing returns nothing
+function jasshelper__initstructs365133578 takes nothing returns nothing
     set st__ShopWeapon_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__ShopWeapon_onDestroy,Condition( function sa__ShopWeapon_onDestroy))
     set st__ShopWeapon_PickUpWeapon=CreateTrigger()
@@ -49564,7 +49608,7 @@ function jasshelper__initstructs355190718 takes nothing returns nothing
     call TriggerAddAction(st___prototype3[1],function sa___prototype3_SetUnitMoveSpeedEx)
     call TriggerAddCondition(st___prototype3[1],Condition(function sa___prototype3_SetUnitMoveSpeedEx))
 
-call ExecuteFunc("s__ModSpeed_Init__onInit")
+call ExecuteFunc("s__ModSpeed_Init___onInit")
 
 
 

@@ -81,14 +81,14 @@ local function talent_effect()
         if base.is_include(p:get_base_name(), VIP)  and not g.udg_isTest[p:get()-1] then
             g.udg_isTest[p:get()-1] = true
         end
-        if g.udg_isTest[p:get()-1] and g.talent_flag[i] == 0 then
+        if g.udg_isTest[p:get()-1] and g.talent_flag[p.id] == 0 then
             local i = p.id
             g.talent_flag[i] = 1
             g.tiezhang_flag[i] = 1
             g.tangmen_flag[i] = 1
             g.mall_addition[i] = 1
             g.level_award[i] = 1
-            p:send_message("开启了天赋和铁掌帮的权限，开启双倍积分和萌新礼包权限")
+            p:send_message("开启了天赋、铁掌帮和唐门的权限，开启双倍积分和萌新礼包权限")
         end
     end)
 

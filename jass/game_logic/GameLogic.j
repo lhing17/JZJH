@@ -10,6 +10,10 @@
 //---------------------------------
 
 
+globals
+    constant integer DENOMINATION_NUMBER = 20
+endglobals
+
 
 /*
  * 1. 基地保护机制
@@ -329,7 +333,8 @@ function ox takes nothing returns boolean
 		or(GetItemTypeId(GetManipulatedItem())==1227894838)or(GetItemTypeId(GetManipulatedItem())==1227894839)or(GetItemTypeId(GetManipulatedItem())==1227894840)	 	\
 		or(GetItemTypeId(GetManipulatedItem())==1227894841)or (GetItemTypeId(GetManipulatedItem())=='I09E') or(GetItemTypeId(GetManipulatedItem())==1227894849)		 	\
 		or (GetItemTypeId(GetManipulatedItem())=='I09N') or (GetItemTypeId(GetManipulatedItem())=='I0A2')  or (GetItemTypeId(GetManipulatedItem())=='I0CK')				\
-		or (GetItemTypeId(GetManipulatedItem())=='I0CX') or (GetItemTypeId(GetManipulatedItem())=='I0E1') or (GetItemTypeId(GetManipulatedItem())=='I0EH')))
+		or (GetItemTypeId(GetManipulatedItem())=='I0CX') or (GetItemTypeId(GetManipulatedItem())=='I0E1') or (GetItemTypeId(GetManipulatedItem())=='I0EH')\
+		or (GetItemTypeId(GetManipulatedItem())=='I0EO')))
 endfunction
 function JiaRuMenPai takes nothing returns nothing
 	local unit u=GetTriggerUnit()
@@ -2303,7 +2308,7 @@ function HeroLevel takes nothing returns nothing
 		set Z8[i]=true
 		set d8[i]=1
 		loop
-			exitwhen d8[i]>20 //门派数
+			exitwhen d8[i]>DENOMINATION_NUMBER //门派数
 			if (udg_runamen[i]==d8[i]) then
 				// 自由3级自动学技能begin
 				if d8[i]==11 then

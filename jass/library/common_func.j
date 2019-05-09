@@ -13,6 +13,20 @@ globals
 	constant integer MAX_BAN_LV_NUM = 14
 endglobals
 
+// japi
+native EXGetUnitAbility        takes unit u, integer abilcode returns ability
+native EXGetUnitAbilityByIndex takes unit u, integer index returns ability
+native EXGetAbilityId          takes ability abil returns integer
+native EXGetAbilityState       takes ability abil, integer state_type returns real
+native EXSetAbilityState       takes ability abil, integer state_type, real value returns boolean
+native EXGetAbilityDataReal    takes ability abil, integer level, integer data_type returns real
+native EXSetAbilityDataReal    takes ability abil, integer level, integer data_type, real value returns boolean
+native EXGetAbilityDataInteger takes ability abil, integer level, integer data_type returns integer
+native EXSetAbilityDataInteger takes ability abil, integer level, integer data_type, integer value returns boolean
+native EXGetAbilityDataString  takes ability abil, integer level, integer data_type returns string
+native EXSetAbilityDataString  takes ability abil, integer level, integer data_type, string value returns boolean
+
+
 native DzAPI_Map_SaveServerValue takes player whichPlayer, string key, string value returns boolean
 native DzAPI_Map_GetServerValue takes player whichPlayer, string key returns string
 native DzAPI_Map_Ladder_SetStat takes player whichPlayer, string key, string value returns nothing
