@@ -23,7 +23,6 @@ function cleanItems()
                             and not base.is_include(it:get_id(), GLOBALS.CANZHANG_ITEMS)
                             and not base.is_include(it:get_id(), GLOBALS.QIWU_ITEMS) then
                         it:remove()
-
                     end
                 end)
                 p.readyToClear = false

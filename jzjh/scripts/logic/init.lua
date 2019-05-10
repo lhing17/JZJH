@@ -11,6 +11,7 @@ require 'logic.showHealthPoint'
 require 'logic.cleanItems'
 require 'logic.enhancedDefense'
 require 'logic.antiqueExchangeBooks'
+require 'logic.recordHandleNumber'
 
 local logic = {}
 
@@ -21,6 +22,7 @@ function logic.init()
     enhanceDefense()
     cleanItems()
     exchangeBooks()
+    recordHandleNumber()
 end
 
 return logic
