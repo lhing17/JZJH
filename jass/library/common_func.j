@@ -25,6 +25,8 @@ native EXGetAbilityDataInteger takes ability abil, integer level, integer data_t
 native EXSetAbilityDataInteger takes ability abil, integer level, integer data_type, integer value returns boolean
 native EXGetAbilityDataString  takes ability abil, integer level, integer data_type returns string
 native EXSetAbilityDataString  takes ability abil, integer level, integer data_type, string value returns boolean
+native EXGetEventDamageData takes integer edd_type returns integer
+native EXSetEventDamage takes real amount returns boolean
 
 
 native DzAPI_Map_SaveServerValue takes player whichPlayer, string key, string value returns boolean
@@ -2533,7 +2535,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
             	call SetPlayerName(p, "〓铁掌水上漂〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				call SaveBoolean(YDHT,GetHandleId(u),StringHash("铁掌水上漂"),true)
         	endif
-        elseif GetUnitAbilityLevel(u, 'A098') >= 6 and GetUnitAbilityLevel(u, 'A09A') >= 6 and GetUnitAbilityLevel(u, 'A0B0') >= 6 and ( GetUnitAbilityLevel(u, 'A0B6') >= 6 or GetUnitAbilityLevel(u, 'A0B1') >= 6 ) then
+        elseif GetUnitAbilityLevel(u, 'A098') >= 6 and GetUnitAbilityLevel(u, 'A09A') >= 6 and GetUnitAbilityLevel(u, 'A0B0') >= 6 and ( GetUnitAbilityLevel(u, 'A0B6') >= 1 or GetUnitAbilityLevel(u, 'A0B1') >= 6 ) then
             call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：唐门门主")
             call ModifyHeroStat(1, u, 0, 225)
             call ModifyHeroStat(2, u, 0, 300)

@@ -18,19 +18,19 @@ function checkPurchase takes nothing returns nothing
     local integer i = 1
     loop
         exitwhen i > 5
-        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_TALENT) then
+        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_TALENT) or udg_isTest[i-1] then
             set talent_flag[i] = 1
         endif
-        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_TIEZHANG) then
+        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_TIEZHANG) or udg_isTest[i-1] then
             set tiezhang_flag[i] = 1
         endif
-        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_TANGMEN) then
+        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_TANGMEN) or udg_isTest[i-1] then
             set tangmen_flag[i] = 1
         endif
-        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_DOUBLE_POINT) then
+        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_DOUBLE_POINT) or udg_isTest[i-1] then
             set mall_addition[i] = 1
         endif
-        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_LEVEL_AWARD) then
+        if DzAPI_Map_HasMallItem(Player(i-1), PROPERTY_LEVEL_AWARD) or udg_isTest[i-1] then
             set level_award[i] = 1
         endif
         set i = i + 1

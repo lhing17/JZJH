@@ -5028,7 +5028,7 @@ function aQ takes nothing returns nothing
 			set wuxing[i]=wuxing[i]+5
 			set Ce[i]=4
 			call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为鉴定师，获得悟性+5")
-			call UnitAddAbility(P4[i], 'A08O')
+			//call UnitAddAbility(P4[i], 'A08O')
 		elseif (GetItemTypeId(GetManipulatedItem())=='I0A5') then
 			set jingmai[i]=jingmai[i]+5
 			set Ce[i]=5

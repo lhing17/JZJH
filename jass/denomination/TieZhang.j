@@ -1,6 +1,9 @@
 // 铁掌帮武功：铁砂掌、毒蛇神掌、通背拳、水上漂、归元吐纳功
 
 
+globals
+	integer array selected_attr
+endglobals
 
 /*
  * 铁砂掌 A06Y
@@ -237,18 +240,142 @@ function TongBeiQuan takes nothing returns nothing
 	set loc = null
 endfunction
 
+
 function IsGuiYuan takes nothing returns boolean
-	return PassiveWuGongCondition(GetAttacker(), GetTriggerUnit(), 'A0DP')
+	return PassiveWuGongCondition(GetAttacker(), GetTriggerUnit(), 'A0DP') or PassiveWuGongCondition(GetTriggerUnit(), GetAttacker(), 'A0DP') 
+endfunction
+
+function selectAttr takes nothing returns nothing
+	local player p = GetTriggerPlayer()
+	local string s = GetEventPlayerChatString()
+	local integer i = 1 + GetPlayerId(p)
+	if GetUnitAbilityLevel(udg_hero[i], 'A07M') >= 1 and GetUnitAbilityLevel(udg_hero[i], 'A0DP') >= 1 then
+		if s == "jwx" then
+			set selected_attr[i] = 1
+			call DisplayTextToPlayer(p, 0, 0, "|cffffff00临时增加的属性设定为悟性")
+		elseif s == "jgg" then
+			set selected_attr[i] = 2
+			call DisplayTextToPlayer(p, 0, 0, "|cffffff00临时增加的属性设定为根骨")
+		elseif s == "jfy" then
+			set selected_attr[i] = 3
+			call DisplayTextToPlayer(p, 0, 0, "|cffffff00临时增加的属性设定为福缘")
+		elseif s == "jys" then
+			set selected_attr[i] = 4
+			call DisplayTextToPlayer(p, 0, 0, "|cffffff00临时增加的属性设定为医术")
+		elseif s == "jdp" then
+			set selected_attr[i] = 5
+			call DisplayTextToPlayer(p, 0, 0, "|cffffff00临时增加的属性设定为胆魄")
+		elseif s == "jjm" then
+			set selected_attr[i] = 6
+			call DisplayTextToPlayer(p, 0, 0, "|cffffff00临时增加的属性设定为经脉")
+		elseif s == "jsj" then
+			set selected_attr[i] = 0
+			call DisplayTextToPlayer(p, 0, 0, "|cffffff00临时增加的属性设定为随机")
+		endif
+
+	endif
+	set p = null
+endfunction
+
+function reduceAttr takes nothing returns nothing
+	local timer t = GetExpiredTimer()
+	local integer attr = LoadInteger(YDHT, GetHandleId(t), 0)
+	local string text = LoadStr(YDHT, GetHandleId(t), 1)
+	local integer value = LoadInteger(YDHT, GetHandleId(t), 2)
+	local integer i = LoadInteger(YDHT, GetHandleId(t), 3)
+	if attr == 1 then
+		set wuxing[i] = wuxing[i] - value
+	elseif attr == 2 then
+		set gengu[i] = gengu[i] - value
+	elseif attr == 3 then
+		set fuyuan[i] = fuyuan[i] - value
+	elseif attr == 4 then
+		set yishu[i] = yishu[i] - value
+	elseif attr == 5 then
+		set danpo[i] = danpo[i] - value
+	elseif attr == 6 then
+		set jingmai[i] = jingmai[i] - value
+	endif
+	call CreateTextTagUnitBJ(text + "-" + I2S(value), udg_hero[i], 60, 14, 100, 0, 0, 30)
+	call Nw(3.,bj_lastCreatedTextTag)
+    call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400.,GetRandomReal(80, 100))
+endfunction
+
+function addRealAttrTemp takes integer i, integer j returns nothing
+	local integer value = GetUnitAbilityLevel(udg_hero[i], 'A0DP') * j
+	local integer attr = 0
+	local string text = ""
+	local timer t = null
+	if selected_attr[i] != 0 then
+		set attr = selected_attr[i]
+	else
+		set attr = GetRandomInt(1, 6)
+	endif
+	if attr == 1 then
+		set wuxing[i] = wuxing[i] + value
+		set text = "悟性"
+	elseif attr == 2 then
+		set gengu[i] = gengu[i] + value
+		set text = "根骨"
+	elseif attr == 3 then
+		set fuyuan[i] = fuyuan[i] + value
+		set text = "福缘"
+	elseif attr == 4 then
+		set yishu[i] = yishu[i] + value
+		set text = "医术"
+	elseif attr == 5 then
+		set danpo[i] = danpo[i] + value
+		set text = "胆魄"
+	elseif attr == 6 then
+		set jingmai[i] = jingmai[i] + value
+		set text = "经脉"
+	endif
+	call DestroyEffect(AddSpecialEffectTarget("war3mapImported\\frozenarmor.mdx", udg_hero[i], "overhead"))
+	call CreateTextTagUnitBJ(text + "+" + I2S(value), udg_hero[i], 60, 14, 100, 0, 0, 30)
+	call Nw(3.,bj_lastCreatedTextTag)
+    call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400.,GetRandomReal(80, 100))
+	if (GetUnitAbilityLevel(udg_hero[i], 'S002') < 1 or GetRandomInt(1, 10) <= 9) then
+		set t = CreateTimer()
+		call SaveInteger(YDHT, GetHandleId(t), 0, attr)
+		call SaveStr(YDHT, GetHandleId(t), 1, text)
+		call SaveInteger(YDHT, GetHandleId(t), 2, value)
+		call SaveInteger(YDHT, GetHandleId(t), 3, i)
+		call TimerStart(t, 30, false, function reduceAttr)
+	endif
+	set t = null
 endfunction
 
 function GuiYuanTuNa takes nothing returns nothing
     local unit u = GetAttacker()
-    local integer i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
-	if GetRandomInt(0, 100) <= 15 + fuyuan[i] / 5 then
-		call WuGongShengChong(u,'A0DP',800)
+    local integer i = 0
+	if (GetUnitAbilityLevel(u, 'A0DP') >= 1) then
+		set i = 1 + GetPlayerId(GetOwningPlayer(GetAttacker()))
+		if GetRandomInt(0, 100) <= 15 + fuyuan[i] / 5 then
+			call WuGongShengChong(u,'A0DP',800)
+		endif
+		if GetUnitAbilityLevel(u, 'A07W') >= 1 and GetRandomInt(0, 100) <= 15 then
+			call addRealAttrTemp(i, 1)
+		endif
+	endif
+	if (GetUnitAbilityLevel(GetTriggerUnit(), 'A0DP') >= 1) then
+		set i = 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit()))
+		if GetUnitAbilityLevel(GetTriggerUnit(), 'A07T') >= 1 and GetRandomInt(0, 100) <= 15 then
+			call addRealAttrTemp(i, 1)
+		endif
 	endif
 	set u = null
 
+endfunction
+
+function periodicAddAttr takes nothing returns nothing
+    local integer i = 1
+    loop
+        exitwhen i > 5
+        if GetUnitAbilityLevel(udg_hero[i], 'A0DP')>=1 then
+            call addRealAttrTemp(i, 5)
+        endif
+        set i = i + 1
+    endloop
 endfunction
 
 /*
@@ -384,10 +511,21 @@ endfunction
  */
 function TieZhang_Trigger takes nothing returns nothing
 
+	local trigger t=CreateTrigger()
+	local timer tm = CreateTimer()
+	local integer i = 1
+	loop
+		exitwhen i > 5
+		call TriggerRegisterPlayerChatEvent(t,Player(i-1),"",true)
+		set selected_attr[i] = 0
+		set i = i + 1
+	endloop
+
+	call TriggerAddAction(t,function selectAttr)
 	/*
 	 * 铁砂掌触发器
 	 */
-	local trigger t=CreateTrigger()
+	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_ATTACKED)
 	call TriggerAddCondition(t,Condition(function IsTieShaZhang))
 	call TriggerAddAction(t,function TieShaZhang)
@@ -424,5 +562,7 @@ function TieZhang_Trigger takes nothing returns nothing
 	call TriggerAddCondition(t,Condition(function IsGuiYuan))
 	call TriggerAddAction(t,function GuiYuanTuNa)
 
+    call TimerStart(tm, 30, true, function periodicAddAttr)
 	set t =null
+	set tm = null
 endfunction

@@ -12,6 +12,12 @@
 #include "game_logic/Experiences.j"
 #include "game_logic/Tasks.j"
 
+#include "game_logic/CleanItems.j"
+#include "game_logic/Talent.j"
+#include "game_logic/EnhanceDefense.j"
+#include "game_logic/NpcHint.j"
+#include "game_logic/ShowHealthPoint.j"
+
 #include "systems/ElixirSystem.j"
 #include "systems/Activity.j"
 
@@ -173,7 +179,7 @@ globals
 	// 是否是测试人员
 	boolean array udg_isTest
 	// 是否开启测试码开关，全局存档，后台可以控制
-	string admin = "1" // 默认不开启
+	string admin = "0" // 默认开启
 	// 通知内容，后台控制开局对用户输出内容
 	string info = ""
 	// 积分倍数，全局存档
@@ -183,6 +189,7 @@ globals
 	integer array udg_juenei
 	integer array udg_canzhang
 	integer array udg_diershi
+	integer array udg_qiwu
 	integer array aidacishu
 	integer array udg_wuqishu
 	integer array udg_yifushu
@@ -1764,6 +1771,23 @@ function InitSkillBooks takes nothing returns nothing
 	set udg_diershi[8]='I09L'
 	set udg_diershi[9]='I09M'
 	set udg_diershi[10]='I09N'
+
+	set udg_qiwu[1] = 'I0C2'
+	set udg_qiwu[2] = 'I0C3'
+	set udg_qiwu[3] = 'I0C4'
+	set udg_qiwu[4] = 'I0C5'
+	set udg_qiwu[5] = 'I0C6'
+	set udg_qiwu[6] = 'I0C8'
+	set udg_qiwu[7] = 'I0C9'
+	set udg_qiwu[8] = 'I0CA'
+	set udg_qiwu[9] = 'I0CB'
+	set udg_qiwu[10] = 'I0CC'
+	set udg_qiwu[11] = 'I0CD'
+	set udg_qiwu[12] = 'I0CJ'
+	set udg_qiwu[13] = 'I0CT'
+	set udg_qiwu[14] = 'I0CU'
+	set udg_qiwu[15] = 'I0CV' 
+
 endfunction
 
 function InitKillingTaskCreatures takes nothing returns nothing
@@ -1798,7 +1822,7 @@ function InitGlobalSave takes nothing returns nothing
 	// 获取全局存档
 	set admin = DzAPI_Map_GetMapConfig("admin") // 测试码开关
 	if admin == "" then
-		set admin = "1"
+		set admin = "0"
 	endif
 	// 积分倍数全局存档
 	set jfBeishu = DzAPI_Map_GetMapConfig("jfBeishu")
@@ -1852,6 +1876,12 @@ function InitPriv takes nothing returns nothing
 			if GetPlayerName(Player(i))=="WorldEdit" or GetPlayerName(Player(i))=="zeikale" or GetPlayerName(Player(i))=="zeikala" or GetPlayerName(Player(i))=="非我莫属xq" or GetPlayerName(Player(i))=="苍穹而降" or GetPlayerName(Player(i))=="晓窗临风" or GetPlayerName(Player(i))=="沫Mu"  then
 				if admin == "0" or testVersion then
 					set udg_isTest[i] = true
+					set talent_flag[i + 1] = 1
+					set tiezhang_flag[i + 1] = 1
+					set tangmen_flag[i + 1] = 1
+					set mall_addition[i + 1] = 1
+					set level_award[i + 1] = 1
+					call DisplayTextToPlayer(Player(i), 0, 0, "开启了天赋、铁掌帮和唐门的权限，开启双倍积分和萌新礼包权限")
 				endif
 			endif
 		set i=i+1
@@ -2337,4 +2367,11 @@ function main2 takes nothing returns nothing
 	call ElixirSystem_Trigger() //丹药系统
 	call Tasks_Trigger() //任务系统
 	call checkActivityAddition() // 判断是否在活动期间
+
+
+	call cleanItems() // 清除物品命令
+	call enhanceDefense() // 难度七提升防御
+	call npcHint() // NPC提示
+	call showHealthPoint() //展示单位血量
+	call talent() //天赋系统
 endfunction
