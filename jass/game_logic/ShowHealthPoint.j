@@ -27,6 +27,11 @@ function toggleHint takes nothing returns nothing
         call DisplayTextToPlayer(p, 0, 0, "|cffffff00开启血量提示")
         set showHint[1 + GetPlayerId(p)] = true
     endif
+
+    if s == "maxDiff" and udg_isTest[GetPlayerId(p)] then
+        set udg_nandu = 6
+        call DisplayTextToPlayer(p, 0, 0, "|cffffff00难度设置为7")
+    endif
     set p = null
 endfunction
 

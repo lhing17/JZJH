@@ -16,7 +16,7 @@ function addTalent takes nothing returns nothing
                 call SetPlayerAbilityAvailable(Player(i-1), 'A08M', false)
                 call DisplayTextToPlayer(Player(i-1), 0, 0, "随机到天赋"+I2S(j))
                 set udg_talent[i] = j
-                call SetUnitAbilityLevel(udg_hero[i], '', j)
+                call SetUnitAbilityLevel(udg_hero[i], 'A08L', j)
             endif
         endif
         set i = i + 1
@@ -53,7 +53,6 @@ function reserveVips takes nothing returns nothing
        set udg_isTest[i-1] = true
     endif
 endfunction
-A08L
 function talent takes nothing returns nothing
     local timer tm = CreateTimer()
     local timer tm2 = CreateTimer()
