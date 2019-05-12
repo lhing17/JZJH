@@ -43,7 +43,7 @@ function shieldReduceDamage takes nothing returns nothing
     local real loss = 0
     if LoadReal(YDHT, GetHandleId(u), $FED) > 0 then
         set boss_index = (udg_boshu - 1) / 4 + 1
-        call BJDebugMsg(R2S(YDWELogarithmLg(GetEventDamage())))
+        //call BJDebugMsg(R2S(YDWELogarithmLg(GetEventDamage())))
         set loss = Pow(2,YDWELogarithmLg(GetEventDamage())) * 100 / Pow(2, 10 + boss_index)
         call EXSetEventDamage(0)
         call SaveReal(YDHT, GetHandleId(u), $FED, LoadReal(YDHT, GetHandleId(u), $FED) - loss)
