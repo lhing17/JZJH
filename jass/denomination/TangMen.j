@@ -371,11 +371,11 @@ function liuHeAction takes nothing returns nothing
         call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
         call TimerStart(t, 10, false, function removeLiuHeState)
     elseif j == 5 then
-        set profound = 2 * wuxing[i]
+        set profound = wuxing[i]
         call SaveInteger(YDHT, key, 5, profound)
         set	juexuelingwu[i] = juexuelingwu[i] + profound
     elseif j == 6 then
-        set addition = 0.2 * danpo[i]
+        set addition = 0.1 * danpo[i]
         call SaveReal(YDHT, key, 6, addition)
         set	udg_shanghaijiacheng[i] = udg_shanghaijiacheng[i] + addition
     endif

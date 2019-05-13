@@ -86,10 +86,14 @@ function DuSheMove takes nothing returns nothing
 	local location destination = LoadLocationHandle(YDHT, GetHandleId(t), 3)
 	local unit majia = LoadUnitHandle(YDHT, GetHandleId(t), 4)
 	local integer counter = LoadInteger(YDHT, GetHandleId(t), 5)
-	local integer maxCount = 30 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 6
+	local integer maxCount = 18 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 8
 	local real angle = AngleBetweenPoints(source, destination)
 	local group g = null
 	local real shxishu = 1 + DamageCoefficientByItem(u, 'I09B', 3.)
+	local integer speed = 15
+	if GetUnitAbilityLevel(u, 'A06H') >= 1 then
+	    set speed = 15
+	endif
 	if (UnitHasBuffBJ(ut, 'BEsh') or UnitHasBuffBJ(ut, 'B01J')) then
 		set shxishu = shxishu + 1.
 	endif
@@ -141,8 +145,8 @@ function DuSheMove takes nothing returns nothing
 			endif
 		else
 			//毒蛇马甲向目标移动
-			call SetUnitPositionLoc(majia, PolarProjectionBJ(source, 15, angle))
-			call SaveLocationHandle(YDHT, GetHandleId(t), 2, PolarProjectionBJ(source, 15, angle))
+			call SetUnitPositionLoc(majia, PolarProjectionBJ(source, speed, angle))
+			call SaveLocationHandle(YDHT, GetHandleId(t), 2, PolarProjectionBJ(source, speed, angle))
 			call SaveLocationHandle(YDHT, GetHandleId(t), 3, GetUnitLoc(ut))
 		endif
 	endif
