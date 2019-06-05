@@ -1,5 +1,16 @@
 //---------------------------------
 // 武器和装备相关
+	//鸟拿东西显示附加属性
+    //英雄拿东西显示附加属性
+    //英雄放下东西显示失去附加属性
+    //英雄穿上装备
+    //英雄脱下装备
+	//只能穿一件衣服或武器的判断
+	//集齐套装
+	//失去套装
+	//镇妖升级
+	//镶嵌宝石系统
+	// 携带养吾剑破防
 //---------------------------------
 
 //鸟拿东西显示附加属性
@@ -1309,6 +1320,7 @@ function mA takes nothing returns nothing
 endfunction
 //-------镶嵌宝石系统结束-------//
 
+
 function Equipment_Trigger takes nothing returns nothing
 	local trigger t = CreateTrigger()
 //鸟拿东西显示附加属性
@@ -1336,6 +1348,7 @@ function Equipment_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(bi,EVENT_PLAYER_UNIT_DROP_ITEM)
 	call TriggerAddCondition(bi,Condition(function pz))
 	call TriggerAddAction(bi,function qz)
+
 	//只能穿一件衣服或武器的判断
 	set li=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(li,EVENT_PLAYER_UNIT_PICKUP_ITEM)

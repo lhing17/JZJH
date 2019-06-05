@@ -86,7 +86,7 @@ function FoGuang_Condition takes nothing returns boolean
 	    set shanghai=shanghai*2
     endif
     call SetWidgetLife(u,GetWidgetLife(u)+shanghai)
-    if IsUnitEnemy(uc,GetOwningPlayer(u))==true and IsUnitAliveBJ(uc) and IsUnitMonster(uc) == false then
+    if IsUnitEnemy(uc,GetOwningPlayer(u))==true and IsUnitAliveBJ(uc) then
 	    if (ModuloInteger(GetUnitPointValue(uc),100)==0) then
             call SetWidgetLife(uc,GetWidgetLife(uc)-shanghai)
         else

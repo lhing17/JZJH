@@ -1,4 +1,5 @@
 // 怪物和BOSS提升防御
+// 难七下怪物增加防御力，BOSS增加对数盾
 
 function isUnitAttacker takes integer id returns boolean
     local integer i = 1

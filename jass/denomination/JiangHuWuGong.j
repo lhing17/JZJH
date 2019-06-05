@@ -625,7 +625,7 @@ function JF takes nothing returns nothing
 	endif
     set shanghai=ShangHaiGongShi(u,uc,40.,40.,shxishu,'A06P')
     call WuGongShangHai(u,uc,shanghai)
-    if((GetUnitAbilityLevel(u,'A07U')!=0)and(UnitTypeNotNull(u,UNIT_TYPE_HERO)) and IsUnitMonster(uc) == false)then
+    if GetUnitAbilityLevel(u,'A07U')!=0 and UnitTypeNotNull(u,UNIT_TYPE_HERO)then
         if((GetUnitState(uc,UNIT_STATE_LIFE)<=(.05*(1.*GetUnitState(uc,UNIT_STATE_MAX_LIFE)))))then
 	        call WuDi(uc)
             call SetWidgetLife(uc,1.)

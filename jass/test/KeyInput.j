@@ -101,30 +101,6 @@ function KeyInput takes nothing returns nothing
 	    	call DisplayTextToPlayer(p,0,0,"|cFFFFFF33医术："+I2S(R2I(LoadReal(YDHT,GetHandleId(it),StringHash("医术"))))+" 经脉："+I2S(R2I(LoadReal(YDHT,GetHandleId(it),StringHash("经脉"))))+" 福缘："+I2S(R2I(LoadReal(YDHT,GetHandleId(it),StringHash("福缘")))))
 			call DisplayTextToPlayer(p,0,0,"|cFF9933FF伤害回复："+I2S(R2I(LoadReal(YDHT,GetHandleId(it),StringHash("伤害回复"))))+" 杀怪回复："+I2S(R2I(LoadReal(YDHT,GetHandleId(it),StringHash("杀怪回复"))))+" 生命回复："+I2S(R2I(LoadReal(YDHT,GetHandleId(it),StringHash("生命回复"))))+" 法力回复："+I2S(R2I(LoadReal(YDHT,GetHandleId(it),StringHash("法力回复")))))
 		endif
-		//set j = 1
-		//loop
-		//	exitwhen j >= 7
-	 //           if(GetItemType(UnitItemInSlotBJ(udg_hero[i],j))==ITEM_TYPE_ARTIFACT)then
-		//	    	set it= UnitItemInSlotBJ(udg_hero[i],j)
-		//	    	call DisplayTextToPlayer(p, 0, 0, "|cFFFF0000当前使用武器："+GetItemName(it))
-		//			call DisplayTextToPlayer(p, 0, 0, "|cFFFF0000武器耐久度:"+I2S(LoadInteger(YDHT,GetHandleId(it),0))+"/"+I2S(WeaponNaiJiu(it)))
-		//			if udg_bqdsbool[i]==true then
-		//				call DisplayTextToPlayer(p, 0, 0, "|cFFFF0000对"+GetItemName(it)+"的熟练度:"+I2S(R2I(LoadReal(YDHT,GetHandleId(p),GetItemTypeId(it))))+"/"+I2S(R2I(10000. * (1+WeaponLevel(GetItemTypeId(it))))))
-		//			elseif Ce[i]==3 then
-		//				call DisplayTextToPlayer(p, 0, 0, "|cFFFF0000对"+GetItemName(it)+"的熟练度:"+I2S(R2I(LoadReal(YDHT,GetHandleId(p),GetItemTypeId(it))))+"/"+I2S(R2I(5000. * (1+WeaponLevel(GetItemTypeId(it))))))
-		//			else
-		//				call DisplayTextToPlayer(p, 0, 0, "|cFFFF0000对"+GetItemName(it)+"的熟练度:"+I2S(R2I(LoadReal(YDHT,GetHandleId(p),GetItemTypeId(it))))+"/"+I2S(R2I(3000. * (1+WeaponLevel(GetItemTypeId(it))))))
-		//			endif
-	 //           endif
-		//	set j = j + 1
-		//endloop
-		//if it==null then
-		//	call DisplayTextToPlayer(p,0,0,"|cFFFF0000当前未装备武器")
-		//endif
-		//if Ce[i]==3 then
-		//	call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00您已经炼成了"+I2S(udg_bqds[i])+" / 3把武器")
-		//endif
-		//call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00该系统已下线，欢迎体验新系统")
 	endif
 	
 	if s=="ckjn" or s=="CKJN" then

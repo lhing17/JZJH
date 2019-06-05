@@ -1,5 +1,6 @@
 //----------------------------------------------
 //游戏细节处理——一般情况下不需要修改
+// 1. 用移动模拟攻击、巡逻模拟移动 对地面
 //----------------------------------------------
 
 
@@ -50,7 +51,7 @@ function ga takes nothing returns nothing
 	call IssuePointOrderByIdLoc(GetEnumUnit(),$D000F,v7[4])
 endfunction
 function ha takes nothing returns nothing
-	call ForGroupBJ(w7,function ga)
+	call ForGroup(w7,function ga)
 endfunction
 
 function GameDetail_Trigger takes nothing returns nothing

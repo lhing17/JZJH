@@ -9,9 +9,6 @@ function createTagForNpc0 takes string text, real x, real y, real size, real zOf
     set last = null
 endfunction
 
-
-
-
 function createTagForNpc takes string s, real x, real y returns nothing
     call createTagForNpc0(s, x-50, y, 13, 100, 100, 100, 0, 50)
 endfunction

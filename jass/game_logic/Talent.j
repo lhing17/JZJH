@@ -2,6 +2,7 @@
 
 globals
     integer array udg_talent
+    constant integer MAX_TALENT_NUM = 7
 endglobals
 
 function addTalent takes nothing returns nothing
@@ -11,7 +12,7 @@ function addTalent takes nothing returns nothing
         exitwhen i > 5
         if udg_talent[i] == 0 and talent_flag[i] == 1 then
             if udg_hero[i] != null then
-                set j = GetRandomInt(1, 7)
+                set j = GetRandomInt(1, MAX_TALENT_NUM)
                 call UnitAddAbility(udg_hero[i], 'A08M')
                 call SetPlayerAbilityAvailable(Player(i-1), 'A08M', false)
                 call DisplayTextToPlayer(Player(i-1), 0, 0, "随机到天赋"+I2S(j))

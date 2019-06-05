@@ -7,6 +7,18 @@
 // 5. 游戏胜利和失败
 // 6. 玩家英雄阵亡和复活
 // 7. 刷怪相关
+// 8. 鸟的技能
+// 9. 英雄升级
+// 10. 各类回复
+// 11. 远程传送
+// 12. 古董系统
+// 13. 剑意系统
+// 14. 积分和声望换物品、武学精要
+// 15. 学习和遗忘武功（含激活残章）
+// 16. 合成物品
+// 17. 伴侣系统
+// 18. 整理地图上物品
+// 19. 其他琐碎逻辑
 //---------------------------------
 
 
@@ -4264,10 +4276,6 @@ function HeCheng_Actions takes nothing returns nothing
     	call YDWENewItemsFormula( 'I02P', 1, 'I09P', 1, 'I09P', 1, 'I09P', 1, 'I09P', 1, 'I09P', 1, 'I08V' )
 	endif
 
-	//call BJDebugMsg(GetItemName(GetLastCombinedItem())+"A")
-	//if GetItemType(GetLastCombinedItem())==ITEM_TYPE_ARTIFACT then
-	//    call SaveInteger(YDHT,GetHandleId(GetLastCombinedItem()),0,WeaponNaiJiu(GetLastCombinedItem()))
- //   endif
 endfunction
 
 globals
@@ -4354,10 +4362,6 @@ function WuPinHeCheng takes nothing returns nothing
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"获得锻造大师")
 		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓"+GetPlayerName(GetOwningPlayer(GetTriggerUnit())))
 	endif
-	//call BJDebugMsg(GetItemName(it))
-	if GetItemType(it)==ITEM_TYPE_ARTIFACT then
-	    call SaveInteger(YDHT,GetHandleId(it),0,WeaponNaiJiu(it))
-    endif
     set it=null
 endfunction
 

@@ -1,3 +1,12 @@
+//-------------- 历练系统 ----------------
+// 历练1：大战江南七怪
+// 历练2：十八罗汉阵
+// 历练3：十恶不赦
+// 历练4：挑战光明顶
+// 历练5：华山论剑
+// 历练6：古龙传奇
+//----------------------------------------
+
 //大战江南七怪
 function XQ takes nothing returns boolean
 	return((UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895630))

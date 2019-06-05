@@ -1,3 +1,4 @@
+// 基于游戏时间的活动系统
 
 globals
     integer NormalSeconds = 31536000 // 平年秒数
