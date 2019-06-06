@@ -223,6 +223,111 @@ function FuMoShangHai takes nothing returns nothing
     set uc = null
 endfunction
 
+// 唐门：九宫八卦阵
+function IsJiuGongBaGua takes nothing returns boolean
+	return GetSpellAbilityId()=='A0B3'
+endfunction
+function JiuGongBaGua_Condition takes nothing returns boolean
+    return IsUnitEnemy(GetFilterUnit(), Player(0)) and GetUnitAbilityLevel(GetFilterUnit(),'Avul')==0 and IsUnitAliveBJ(GetFilterUnit())
+endfunction
+
+function JiuGongBaGua_Action takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local real x = LoadReal(YDHT, GetHandleId(t), 0)
+    local real y = LoadReal(YDHT, GetHandleId(t), 1)
+    local real range = LoadReal(YDHT, GetHandleId(t), 2)
+    local integer j = LoadInteger(YDHT, GetHandleId(t), 3)
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 4)
+    local unit dummy = null
+    local unit target = null
+    local group g = null
+    local integer i = 1
+    local integer jmax = 50
+    if j > jmax then
+        call clearTimer(t)
+    else
+        call SaveInteger(YDHT, GetHandleId(t), 3, j + 1)
+        loop
+            exitwhen i > 8
+            set dummy = CreateUnit(GetOwningPlayer(u), 'e000',x + range * CosBJ(45 * i), y + range * SinBJ(45 * i), 270 + 45 * i)
+            set g = CreateGroup()
+            call GroupEnumUnitsInRange(g, GetUnitX(dummy), GetUnitY(dummy), range + 200, Condition(function JiuGongBaGua_Condition))
+            set target = GroupPickRandomUnit(g)
+            call ShowUnitHide(dummy)
+            call UnitAddAbility(dummy, 'A09B')
+            call IssueTargetOrderById( dummy, $D007F, target )
+            call UnitApplyTimedLife(dummy,'BHwe', 3)
+            call DestroyGroup(g)
+            set i = i + 1
+        endloop
+    endif
+    set g = null
+    set u = null
+    set dummy = null
+    set t = null
+    set target = null
+endfunction
+
+function attackPeriodicly takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    if GetUnitState(u, UNIT_STATE_LIFE) > 0 then
+        call SetUnitAnimation(u,"attack")
+    else
+        call clearTimer(t)
+    endif
+    set t = null
+    set u = null
+endfunction
+
+function JiuGongBaGua takes nothing returns nothing
+    local unit u = GetTriggerUnit()
+    local unit dummy = null
+    local integer id = 0
+    local integer i = 1
+    local real range = GetRandomReal(500, 800)
+    local timer t = CreateTimer()
+    local timer tt = null
+    if((GetUnitTypeId(u)=='O004'))then
+        set id = 1747988533
+    elseif((GetUnitTypeId(u)=='O001'))then
+        set id = 1747988535
+    elseif((GetUnitTypeId(u)=='O002'))then
+        set id = 1747988536
+    elseif((GetUnitTypeId(u)=='O003'))then
+        set id = 1747988537
+    elseif((GetUnitTypeId(u)=='O000'))then
+        set id = 1747988534
+    elseif((GetUnitTypeId(u)=='O023' or GetUnitTypeId(u)=='O02H' or GetUnitTypeId(u)=='O02I'))then
+        set id = 'h00I'
+    elseif((GetUnitTypeId(u)=='O02J'))then
+        set id = 'h00K'
+    endif
+    loop
+        exitwhen i > 8
+        set dummy = CreateUnit(GetOwningPlayer(u), id, GetUnitX(u) + range * CosBJ(45 * i), GetUnitY(u) + range * SinBJ(45 * i), 45 * i)
+        call YDWETimerDestroyLightning(15., AddLightning("MFPB", true, GetUnitX(u) + range * CosBJ(45 * i), GetUnitY(u) + range * SinBJ(45 * i), GetUnitX(u) + range * CosBJ(45 * i + 45), GetUnitY(u) + range * SinBJ(45 * i + 45)))
+        call SetUnitMoveSpeed(dummy, 0)
+        set tt = CreateTimer()
+        call SaveUnitHandle(YDHT, GetHandleId(tt), 0, dummy)
+        call TimerStart(tt, 1, true, function attackPeriodicly)
+        call SetUnitVertexColorBJ(dummy,GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,80.),GetRandomReal(20.,60.))
+        call UnitAddAbility(dummy,'Aloc')
+        call UnitApplyTimedLife(dummy, 1112045413, 15.)
+        set i = i + 1
+    endloop
+    call SaveReal(YDHT, GetHandleId(t), 0, GetUnitX(u))
+    call SaveReal(YDHT, GetHandleId(t), 1, GetUnitY(u))
+    call SaveReal(YDHT, GetHandleId(t), 2, range)
+    call SaveInteger(YDHT, GetHandleId(t), 3, 0)
+    call SaveUnitHandle(YDHT, GetHandleId(t), 4, u)
+    call TimerStart(t, 0.3, true, function JiuGongBaGua_Action)
+    set dummy = null
+    set u = null
+    set t = null
+    set tt = null
+endfunction
+
 //十八罗汉阵
 //真武七截阵
 function IsZhenWuQiJie takes nothing returns boolean
@@ -577,6 +682,40 @@ function XueZhenFa takes nothing returns nothing
 	    			call DisplayTextToPlayer(p,0,0, "|cff00FF66条件不足，无法修行此阵法")
     			endif
     		endif
+    	elseif id == 'I0ER' then
+            if GetUnitAbilityLevel(u, 'A03G')!=0 then
+                call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
+            else
+                if udg_whichzhangmen[i]==28 and GetUnitAbilityLevel(u, 'A09A')==9 then // 唐门门主、漫天飞花达到9级
+                    set j=1
+                    loop
+                    exitwhen j>wugongshu[i]
+                        if (I7[(i-1)*20+j])!='AEfk' then
+                            if j==wugongshu[i] then
+                                call DisplayTextToPlayer(p,0,0,"|CFF34FF00学习技能已达上限，请先遗忘部分技能")
+                            endif
+                        else
+                            call UnitAddAbility(u,'A0B3')
+                            call DisplayTextToPlayer(p,0,0, "|cff00FF66恭喜领悟技能："+GetObjectName('A0B3'))
+                            set L7[i]=1
+                            loop
+                                exitwhen L7[i]>wugongshu[i]
+                                if((I7[(((i-1)*20)+L7[i])]!='AEfk'))then
+                                else
+                                    set I7[(((i-1)*20)+L7[i])]='A0B3'
+                                    exitwhen true
+                                endif
+                                set L7[i]=L7[i]+1
+                            endloop
+                            exitwhen true
+                        endif
+
+                        set j = j + 1
+                    endloop
+                else
+                    call DisplayTextToPlayer(p,0,0, "|cff00FF66条件不足，无法修行此阵法")
+                endif
+            endif
 		endif
 	endif
 	set u = null
@@ -612,9 +751,16 @@ function ZhenFa_Trigger takes nothing returns nothing
     call YDWESyStemAnyUnitDamagedRegistTrigger( t )
     call TriggerAddCondition(t, Condition(function IsZhenWuShangHai))
     call TriggerAddAction(t, function ZhenWuShangHai)
+    // 唐门：九宫八卦阵
+    set t = CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_SPELL_EFFECT)
+    call TriggerAddCondition(t,Condition(function IsJiuGongBaGua))
+    call TriggerAddAction(t,function JiuGongBaGua)
     set t=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_PICKUP_ITEM)
 	call TriggerAddCondition(t,Condition(function IsXueZhenFa))
 	call TriggerAddAction(t,function XueZhenFa)
+
+
     set t =null
 endfunction

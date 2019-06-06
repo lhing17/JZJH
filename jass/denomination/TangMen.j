@@ -169,7 +169,7 @@ function isManTianDamage takes nothing returns boolean
 endfunction
 
 function manTianDamage takes nothing returns nothing
-    local unit u = GetEventDamageSource()
+    local unit u = udg_hero[1 + GetPlayerId(GetOwningPlayer(GetEventDamageSource()))]
     local unit target = GetTriggerUnit()
     local real shxishu= 1
     local real shanghai=0.
@@ -191,6 +191,10 @@ function manTianDamage takes nothing returns nothing
 
     set shanghai=ShangHaiGongShi(u,target,80,90,shxishu,'A09A')
     call WuGongShangHai(u,target,shanghai)
+    if GetUnitAbilityLevel(u,'A0B3') != 0 then
+        set shanghai=ShangHaiGongShi(u,target,800,900,shxishu,'A0B3')
+        call WuGongShangHai(u,target,shanghai)
+    endif
 endfunction
 
 
