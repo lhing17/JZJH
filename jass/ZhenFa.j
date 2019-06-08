@@ -534,7 +534,7 @@ endfunction
 //天罗地网阵
 //修习阵法
 function IsXueZhenFa takes nothing returns boolean
-	return GetItemTypeId(GetManipulatedItem())=='I0BY' or GetItemTypeId(GetManipulatedItem())=='I0BZ' or GetItemTypeId(GetManipulatedItem())=='I0C0' or GetItemTypeId(GetManipulatedItem())=='I0C1'
+	return GetItemTypeId(GetManipulatedItem())=='I0BY' or GetItemTypeId(GetManipulatedItem())=='I0BZ' or GetItemTypeId(GetManipulatedItem())=='I0C0' or GetItemTypeId(GetManipulatedItem())=='I0C1' or GetItemTypeId(GetManipulatedItem())=='I0ER'
 endfunction
 function XueZhenFa takes nothing returns nothing
 	local integer id = GetItemTypeId(GetManipulatedItem())
