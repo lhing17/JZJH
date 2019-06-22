@@ -9,13 +9,13 @@ struct DaPei
 		set dpi.wugongid = wugongid
 		set dpi.dapeixiaoguo = dapeixiaoguo
 		if dapeixiaoguo == 1 then
-			set dpi.r = GetRandomReal(0.7, 1.1)
+			set dpi.r = GetRandomReal(1.0, 1.6)
 		elseif dapeixiaoguo == 2 then
 			set dpi.r = I2R(GetRandomInt(1, 13))
 		elseif dapeixiaoguo == 3 then
-			set dpi.r = GetRandomReal(0.9, 1.3)
+			set dpi.r = GetRandomReal(1.4, 1.9)
 		elseif dapeixiaoguo == 4 then
-			set dpi.r = GetRandomReal(1.3, 2.0)
+			set dpi.r = GetRandomReal(2.0, 3.0)
 		endif
 		return dpi
 	endmethod

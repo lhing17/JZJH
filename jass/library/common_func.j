@@ -1418,7 +1418,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if UnitTypeNotNull(u,UNIT_TYPE_HERO) then
 	// 神龙心法加成
 		set attack = (1+0.3*GetUnitAbilityLevel(u, 'A059')) \
-		* 18 \
+		* 27 \
 		* udg_lilianxishu[i] \
 		* (w1 * (1 + str / 500) * (1 + agi / 500) + w2 * 0.01 * int) \
 		* (1.6 + 0.4 * GetUnitAbilityLevel(u,id)) \
