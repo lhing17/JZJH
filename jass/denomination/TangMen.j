@@ -95,7 +95,7 @@ function yinZhenDamage takes nothing returns nothing
     if UnitHaveItem(u, 'I0EQ') then
         set shxishu = shxishu * 3.0
     endif
-    set shanghai=ShangHaiGongShi(u,target,30,30,shxishu,'A098')
+    set shanghai=ShangHaiGongShi(u,target,60,60,shxishu,'A098')
     call WuGongShangHai(u,target,shanghai)
 endfunction
 
@@ -189,12 +189,11 @@ function manTianDamage takes nothing returns nothing
      endif
 
 
-    set shanghai=ShangHaiGongShi(u,target,80,90,shxishu,'A09A')
-    call WuGongShangHai(u,target,shanghai)
+    set shanghai=ShangHaiGongShi(u,target,160,180,shxishu,'A09A')
     if GetUnitAbilityLevel(u,'A0B3') != 0 then
         set shanghai=ShangHaiGongShi(u,target,800,900,shxishu,'A0B3')
-        call WuGongShangHai(u,target,shanghai)
     endif
+    call WuGongShangHai(u,target,shanghai)
 endfunction
 
 
@@ -320,7 +319,7 @@ endfunction
 function removeLiuHeState takes nothing returns nothing
     local timer t = GetExpiredTimer()
     local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
-    call UnitAddAbility(u, 'A00S')
+    call UnitRemoveAbility(u, 'A00S')
     call PauseTimer(t)
     call DestroyTimer(t)
     set t = null

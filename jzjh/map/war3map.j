@@ -1,15 +1,15 @@
 globals
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed__USE_TABLE= true
-constant boolean MaxSpeed__NEW_TABLE= true
+constant boolean MaxSpeed___USE_TABLE= true
+constant boolean MaxSpeed___NEW_TABLE= true
          // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed__TEST_MODE= false
-constant real MaxSpeed__PERIOD= 0.03125
+constant boolean MaxSpeed___TEST_MODE= false
+constant real MaxSpeed___PERIOD= 0.03125
         //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed__MAX_SPEED= 1400.0
+constant real MaxSpeed___MAX_SPEED= 1400.0
          // 最大速度限定，超出视为传送。
-constant real MaxSpeed__MIN_SPEED= 500.0
+constant real MaxSpeed___MIN_SPEED= 500.0
          // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
         // 测试最大为500刚出头，与522还有些差距
 //endglobals from MaxSpeed
@@ -94,15 +94,15 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase___yd_PlayerColor
-trigger array YDWEBase___AbilityCastingOverEventQueue
-integer array YDWEBase___AbilityCastingOverEventType
-integer YDWEBase___AbilityCastingOverEventNumber= 0
+string array YDWEBase__yd_PlayerColor
+trigger array YDWEBase__AbilityCastingOverEventQueue
+integer array YDWEBase__AbilityCastingOverEventType
+integer YDWEBase__AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEBitwise:
 constant boolean LIBRARY_YDWEBitwise=true
-integer array YDWEBitwise__C2
-constant string YDWEBitwise__hexstr= "0123456789ABCDEF"
+integer array YDWEBitwise___C2
+constant string YDWEBitwise___hexstr= "0123456789ABCDEF"
 //endglobals from YDWEBitwise
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
@@ -2345,8 +2345,8 @@ endfunction
              set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
              set s__ModSpeed_lastX[this]=s__ModSpeed_x
              set s__ModSpeed_lastY[this]=s__ModSpeed_y
-             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
-             if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
+             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
+             if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
                  set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                  set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                  set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -2426,7 +2426,7 @@ endfunction
                      set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                  endif
                  if ( s__ModSpeed_next[(0)] == 0 ) then
-                     call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
+                     call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -2445,7 +2445,7 @@ endfunction
 
 
              endif
-             set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
+             set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
              set s__ModSpeed_lastX[this]=GetUnitX(u)
              set s__ModSpeed_lastY[this]=GetUnitY(u)
              set s__ModSpeed_speed[this]=amount
@@ -3032,7 +3032,7 @@ endfunction
 
 //library WuQiQiHeSystem ends
 //library YDTriggerSaveLoadSystem:
-    function YDTriggerSaveLoadSystem__Init takes nothing returns nothing
+    function YDTriggerSaveLoadSystem___Init takes nothing returns nothing
             set YDHT=InitHashtable()
         set YDLOC=InitHashtable()
     endfunction
@@ -3637,11 +3637,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
-        if YDWEBase___AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
+        if YDWEBase__AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
+			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -3651,9 +3651,9 @@ endfunction
 //YDWE技能捕捉事件 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
-	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
-	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
+	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
+	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
+	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //系统函数完善
@@ -3690,7 +3690,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -3737,22 +3737,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
     //=================显示版本=====================
     call YDWEVersion_Init()
 endfunction
@@ -3760,18 +3760,18 @@ endfunction
 //library YDWEBase ends
 //library YDWEBitwise:
     
-    function YDWEBitwise__Bit takes integer x returns boolean
+    function YDWEBitwise___Bit takes integer x returns boolean
         return ( x - x / 2 * 2 ) != 0
     endfunction 
     
- function YDWEBitwise__NOT_P takes integer x returns integer
+ function YDWEBitwise___NOT_P takes integer x returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if not YDWEBitwise__Bit(x) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if not YDWEBitwise___Bit(x) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set i=i + 1
@@ -3781,20 +3781,20 @@ endfunction
 	endfunction
  function YDWEBitwise_NOT takes integer x returns integer
 		if x >= 0 then
-            return YDWEBitwise__NOT_P(x) + YDWEBitwise__C2[31]
+            return YDWEBitwise___NOT_P(x) + YDWEBitwise___C2[31]
         else
             return - x - 1
         endif
 	endfunction
     
-    function YDWEBitwise__AND_P takes integer x,integer y returns integer
+    function YDWEBitwise___AND_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise__Bit(x) and YDWEBitwise__Bit(y) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if YDWEBitwise___Bit(x) and YDWEBitwise___Bit(y) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3806,27 +3806,27 @@ endfunction
     function YDWEBitwise_AND takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise__AND_P(x , y)
+                return YDWEBitwise___AND_P(x , y)
             else
-                return YDWEBitwise__AND_P(x , YDWEBitwise__NOT_P(- y - 1))
+                return YDWEBitwise___AND_P(x , YDWEBitwise___NOT_P(- y - 1))
             endif
         else
             if y >= 0 then
-                return YDWEBitwise__AND_P(YDWEBitwise__NOT_P(- x - 1) , y)
+                return YDWEBitwise___AND_P(YDWEBitwise___NOT_P(- x - 1) , y)
             else
-                return YDWEBitwise__AND_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___AND_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         endif
     endfunction
     
-    function YDWEBitwise__OR_P takes integer x,integer y returns integer
+    function YDWEBitwise___OR_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise__Bit(x) or YDWEBitwise__Bit(y) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if YDWEBitwise___Bit(x) or YDWEBitwise___Bit(y) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3838,26 +3838,26 @@ endfunction
     function YDWEBitwise_OR takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise__OR_P(x , y)
+                return YDWEBitwise___OR_P(x , y)
             else
-                return YDWEBitwise__OR_P(x , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___OR_P(x , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         else
             if y >= 0 then
-                return YDWEBitwise__OR_P(YDWEBitwise__NOT_P(- x - 1) , y) + YDWEBitwise__C2[31]
+                return YDWEBitwise___OR_P(YDWEBitwise___NOT_P(- x - 1) , y) + YDWEBitwise___C2[31]
             else
-                return YDWEBitwise__OR_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___OR_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         endif
     endfunction
-    function YDWEBitwise__XOR_P takes integer x,integer y returns integer
+    function YDWEBitwise___XOR_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise__Bit(x) != YDWEBitwise__Bit(y) then
-				set l__z=l__z + YDWEBitwise__C2[i]
+			if YDWEBitwise___Bit(x) != YDWEBitwise___Bit(y) then
+				set l__z=l__z + YDWEBitwise___C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3869,71 +3869,71 @@ endfunction
     function YDWEBitwise_XOR takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise__XOR_P(x , y)
+                return YDWEBitwise___XOR_P(x , y)
             else
-                return YDWEBitwise__XOR_P(x , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
+                return YDWEBitwise___XOR_P(x , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
             endif
         else
             if y >= 0 then
-                return YDWEBitwise__XOR_P(YDWEBitwise__NOT_P(- x - 1) , y) + YDWEBitwise__C2[31]
+                return YDWEBitwise___XOR_P(YDWEBitwise___NOT_P(- x - 1) , y) + YDWEBitwise___C2[31]
             else
-                return YDWEBitwise__XOR_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1))
+                return YDWEBitwise___XOR_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1))
             endif
         endif
     endfunction
     
-    function YDWEBitwise__LShift_P takes integer x,integer n returns integer
-        return x * YDWEBitwise__C2[n]
+    function YDWEBitwise___LShift_P takes integer x,integer n returns integer
+        return x * YDWEBitwise___C2[n]
     endfunction
     function YDWEBitwise_LShift takes integer x,integer n returns integer
-        return x * YDWEBitwise__C2[n]
+        return x * YDWEBitwise___C2[n]
     endfunction
     
-    function YDWEBitwise__RShift_P takes integer x,integer n returns integer
-        return x / YDWEBitwise__C2[n]
+    function YDWEBitwise___RShift_P takes integer x,integer n returns integer
+        return x / YDWEBitwise___C2[n]
     endfunction
     function YDWEBitwise_RShift takes integer x,integer n returns integer
 		if x >= 0 then
-            return ((x ) / YDWEBitwise__C2[( n)]) // INLINED!!
+            return ((x ) / YDWEBitwise___C2[( n)]) // INLINED!!
         else
-            return ((YDWEBitwise__NOT_P(- x - 1) ) / YDWEBitwise__C2[( n)]) + YDWEBitwise__C2[31 - n] // INLINED!!
+            return ((YDWEBitwise___NOT_P(- x - 1) ) / YDWEBitwise___C2[( n)]) + YDWEBitwise___C2[31 - n] // INLINED!!
         endif
     endfunction
     
-    function YDWEBitwise__ToHexChar takes integer x returns string
-        return SubString(YDWEBitwise__hexstr, x, x + 1)
+    function YDWEBitwise___ToHexChar takes integer x returns string
+        return SubString(YDWEBitwise___hexstr, x, x + 1)
     endfunction 
-    function YDWEBitwise__ToHexChar7 takes integer x returns string
+    function YDWEBitwise___ToHexChar7 takes integer x returns string
         local string s= ""
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        return YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
+        return YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
     endfunction
     function YDWEBitwise_ToHexString takes integer x returns string
 		if x >= 0 then
-            return YDWEBitwise__ToHexChar(x / $10000000) + YDWEBitwise__ToHexChar7(x)
+            return YDWEBitwise___ToHexChar(x / $10000000) + YDWEBitwise___ToHexChar7(x)
         else
-            set x=YDWEBitwise__NOT_P(- x - 1)
-            return YDWEBitwise__ToHexChar($8 + x / $10000000) + YDWEBitwise__ToHexChar7(x)
+            set x=YDWEBitwise___NOT_P(- x - 1)
+            return YDWEBitwise___ToHexChar($8 + x / $10000000) + YDWEBitwise___ToHexChar7(x)
         endif
     endfunction
 
- function YDWEBitwise__onInit takes nothing returns nothing
+ function YDWEBitwise___onInit takes nothing returns nothing
   local integer i= 1
-		set YDWEBitwise__C2[0]=1
+		set YDWEBitwise___C2[0]=1
 		loop
 			exitwhen ( i == 32 )
-			set YDWEBitwise__C2[i]=YDWEBitwise__C2[i - 1] * 2
+			set YDWEBitwise___C2[i]=YDWEBitwise___C2[i - 1] * 2
 			set i=i + 1
 		endloop
 
@@ -6515,11 +6515,11 @@ endfunction
 //library YDWETimerSystem ends
 //===========================================================================
 // 
-// 决战江湖1.6.18正式版
+// 决战江湖1.6.19正式版
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Sat Jun 08 16:29:12 2019
+//   Date: Fri Jun 21 17:17:13 2019
 //   Map Author: 云杨 zei_kale
 // 
 //===========================================================================
@@ -8324,8 +8324,13 @@ local real target_def
 local real dodge
 local real random
 local real basic_damage
+local real str= I2R(GetHeroStatBJ(0, u, true))
+local real agi= I2R(GetHeroStatBJ(1, u, true))
+local real int= I2R(GetHeroStatBJ(2, u, true))
 if (IsUnitType((u ), ( UNIT_TYPE_HERO)) != null) then // INLINED!!
-		set attack=( 1 + 0.3 * GetUnitAbilityLevel(u, 'A059') ) * 37.5 * udg_lilianxishu[i] * ( w1 * ( 1 + I2R(GetHeroStatBJ(0, u, true)) / 200 ) * ( 1 + I2R(GetHeroStatBJ(1, u, true)) / 200 ) + w2 * 0.03 * I2R(GetHeroStatBJ(2, u, true)) ) * ( 1. + GetUnitAbilityLevel(u, id) ) * ( udg_shanghaijiacheng[i] + 1. ) * shxishu
+	// 神龙心法加成
+		set attack=( 1 + 0.3 * GetUnitAbilityLevel(u, 'A059') ) * 18 * udg_lilianxishu[i] * ( w1 * ( 1 + str / 500 ) * ( 1 + agi / 500 ) + w2 * 0.01 * int ) * ( 1.6 + 0.4 * GetUnitAbilityLevel(u, id) ) * ( udg_shanghaijiacheng[i] + 1. ) * shxishu
+		// 9级技能伤害为原来的3倍
 		if GetUnitAbilityLevel(u, id) == 9 then
 			set attack=attack * 3
 		endif
@@ -8354,7 +8359,7 @@ if (IsUnitType((u ), ( UNIT_TYPE_HERO)) != null) then // INLINED!!
 		set attack=750 * ( w1 + w2 ) * ( 1. + GetUnitAbilityLevel(u, id) ) * shxishu
 		// 难6以上敌方用先天功加超多伤害
 		if udg_nandu >= 5 and id == 1093682245 then
-			set attack=attack * 100000000
+			set attack=attack * 10
 		endif
 	endif
 	
@@ -8362,13 +8367,13 @@ if (IsUnitType((u ), ( UNIT_TYPE_HERO)) != null) then // INLINED!!
 	if uc == null then
 		set target_def=1
 	else
-		set target_def=1 / ( 1 + 0.05 * GetUnitLevel(uc) )
+		set target_def=1 / ( 1 + 0.1 * GetUnitLevel(uc) )
 	endif
 	//set critical = udg_baojishanghai[1+GetPlayerId(GetOwningPlayer(u))]
 	if uc == null then
 		set dodge=25
 	else
-		set dodge=RMinBJ(I2R(GetUnitLevel(uc)) / 8, 95.)
+		set dodge=RMinBJ(I2R(GetUnitLevel(uc)) / 5, 95.)
 		if UnitHasBuffBJ(uc, 'Bslo') then
 			set dodge=0.
 		endif
@@ -11066,7 +11071,7 @@ else
 	endloop
 	// 获胜标识
 	set is_victory=true
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.18的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.19的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT, id * cx, - $5E9EB4B3, 40.)
@@ -11081,7 +11086,7 @@ else
 	call TimerStart(ky, .04, true, function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT, id, - $1317DA19, cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.18的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.19的游戏总评分：" + ( I2S(ae) + "分（通关）" ) ))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT, id, - $1317DA19, cx)
@@ -11096,7 +11101,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
  local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.18的游戏总评分：" + ( I2S(ae) + "分（战败）" ) ))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, ( "|CFFFF00B2决战江湖1.6.19的游戏总评分：" + ( I2S(ae) + "分（战败）" ) ))
 	set i=1
 	loop
 		exitwhen i >= 6
@@ -37086,7 +37091,7 @@ call WanBuff(u , target , 15)
     if UnitHaveItem(u , 'I0EQ') then
         set shxishu=shxishu * 3.0
     endif
-    set shanghai=ShangHaiGongShi(u , target , 30 , 30 , shxishu , 'A098')
+    set shanghai=ShangHaiGongShi(u , target , 60 , 60 , shxishu , 'A098')
     call WuGongShangHai(u , target , shanghai)
 endfunction
  
@@ -37164,12 +37169,11 @@ call WanBuff(u , target , 9)
      if UnitHaveItem(u , 'I0EQ') then
          set shxishu=shxishu * 3.0
      endif
-    set shanghai=ShangHaiGongShi(u , target , 80 , 90 , shxishu , 'A09A')
-    call WuGongShangHai(u , target , shanghai)
+    set shanghai=ShangHaiGongShi(u , target , 160 , 180 , shxishu , 'A09A')
     if GetUnitAbilityLevel(u, 'A0B3') != 0 then
         set shanghai=ShangHaiGongShi(u , target , 800 , 900 , shxishu , 'A0B3')
-        call WuGongShangHai(u , target , shanghai)
     endif
+    call WuGongShangHai(u , target , shanghai)
 endfunction
  
 function isDuoHun takes nothing returns boolean
@@ -37260,7 +37264,7 @@ endfunction
 function removeLiuHeState takes nothing returns nothing
     local timer t= GetExpiredTimer()
     local unit u= LoadUnitHandle(YDHT, GetHandleId(t), 0)
-    call UnitAddAbility(u, 'A00S')
+    call UnitRemoveAbility(u, 'A00S')
     call PauseTimer(t)
     call DestroyTimer(t)
     set t=null
@@ -37520,7 +37524,7 @@ function DuSheMove takes nothing returns nothing
  local location destination= LoadLocationHandle(YDHT, GetHandleId(t), 3)
  local unit majia= LoadUnitHandle(YDHT, GetHandleId(t), 4)
  local integer counter= LoadInteger(YDHT, GetHandleId(t), 5)
- local integer maxCount= 18 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 8
+ local integer maxCount= 10 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 8
  local real angle= AngleBetweenPoints(source, destination)
  local group g= null
  local real shxishu= 1 + DamageCoefficientByItem(u , 'I09B' , 3.)
@@ -37752,7 +37756,7 @@ function addRealAttrTemp takes integer i,integer j returns nothing
 	call CreateTextTagUnitBJ(text + "+" + I2S(value), udg_hero[i], 60, 14, 100, 0, 0, 30)
 	call Nw(3. , bj_lastCreatedTextTag)
     call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80, 100))
-	if ( GetUnitAbilityLevel(udg_hero[i], 'S002') < 1 or GetRandomInt(1, 10) <= 9 ) then
+	if ( GetUnitAbilityLevel(udg_hero[i], 'S002') < 1 or GetRandomInt(1, 20) <= 19 ) then
 		set t=CreateTimer()
 		call SaveInteger(YDHT, GetHandleId(t), 0, attr)
 		call SaveStr(YDHT, GetHandleId(t), 1, text)
@@ -48071,7 +48075,7 @@ function Zw takes nothing returns nothing
 	// call CreateTextTagLocBJ("新手教官",Location(420,-597),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("地图等级福利",Location(-1500,-113),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("积分商店",Location(-1500,-1344),120.0,15.,100.,100.,.0,50.)
-	call CreateTextTagLocBJ("决战江湖1.6.18名人榜", GetRectCenter(uh), 100., $A, 100, 100, .0, 50.)
+	call CreateTextTagLocBJ("决战江湖1.6.19名人榜", GetRectCenter(uh), 100., $A, 100, 100, .0, 50.)
 	set v7[1]=GetRectCenter(Ie)
 	set v7[2]=GetRectCenter(le)
 	set v7[3]=GetRectCenter(Je)
@@ -48114,7 +48118,7 @@ function Zw takes nothing returns nothing
 	call CreateTimerDialogBJ(bj_lastStartedTimer, "邪教进攻倒计时：")
 	call TimerDialogDisplay(bj_lastCreatedTimerDialog, true)
 	set z7[3]=bj_lastCreatedTimerDialog
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, "|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.18|r")
+	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, "|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.19|r")
 	// 获取服务器全局存档，信息提示
 	set info=DzAPI_Map_GetMapConfig("info")
 	if info != "无" then
@@ -49749,12 +49753,12 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs1670476890")
+call ExecuteFunc("jasshelper__initstructs269490703")
 call ExecuteFunc("UniMissileSystem3D__Init")
 call ExecuteFunc("init")
-call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
+call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
-call ExecuteFunc("YDWEBitwise__onInit")
+call ExecuteFunc("YDWEBitwise___onInit")
 call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
 call ExecuteFunc("YDWELogarithm___onInit")
 call ExecuteFunc("YDWESync___onInit")
@@ -49773,7 +49777,7 @@ endfunction
 //*
 //***************************************************************************
 function config takes nothing returns nothing
-    call SetMapName("决战江湖1.6.18正式版")
+    call SetMapName("决战江湖1.6.19正式版")
     call SetMapDescription("|cFFFF00FF当你打开这个游戏的时候，你的江湖已经开始了.....|r")
     call SetPlayers(9)
     call SetTeams(9)
@@ -49795,20 +49799,20 @@ endfunction
      
  
                  
+//===========================================================================
+//ϵͳ-TimerSystem
+//===========================================================================
+//===========================================================================
+//��Ծϵͳ 
+//===========================================================================
+//===========================================================================
+//修改生命
+//===========================================================================
 //===========================================================================  
 //===========================================================================  
 //�Զ����¼� 
 //===========================================================================
 //===========================================================================   
-//===========================================================================
-//ϵͳ-TimerSystem
-//===========================================================================
-//===========================================================================
-//修改生命
-//===========================================================================
-//===========================================================================
-//��Ծϵͳ 
-//===========================================================================
 
 
 
@@ -49941,7 +49945,7 @@ function sa___prototype3_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs1670476890 takes nothing returns nothing
+function jasshelper__initstructs269490703 takes nothing returns nothing
     set st__ShopWeapon_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__ShopWeapon_onDestroy,Condition( function sa__ShopWeapon_onDestroy))
     set st__ShopWeapon_PickUpWeapon=CreateTrigger()

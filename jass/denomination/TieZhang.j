@@ -86,7 +86,7 @@ function DuSheMove takes nothing returns nothing
 	local location destination = LoadLocationHandle(YDHT, GetHandleId(t), 3)
 	local unit majia = LoadUnitHandle(YDHT, GetHandleId(t), 4)
 	local integer counter = LoadInteger(YDHT, GetHandleId(t), 5)
-	local integer maxCount = 18 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 8
+	local integer maxCount = 10 + GetUnitAbilityLevel(u, 'A07U') * 20 + GetUnitAbilityLevel(u, 'A06H') * 8
 	local real angle = AngleBetweenPoints(source, destination)
 	local group g = null
 	local real shxishu = 1 + DamageCoefficientByItem(u, 'I09B', 3.)
@@ -338,7 +338,7 @@ function addRealAttrTemp takes integer i, integer j returns nothing
 	call CreateTextTagUnitBJ(text + "+" + I2S(value), udg_hero[i], 60, 14, 100, 0, 0, 30)
 	call Nw(3.,bj_lastCreatedTextTag)
     call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400.,GetRandomReal(80, 100))
-	if (GetUnitAbilityLevel(udg_hero[i], 'S002') < 1 or GetRandomInt(1, 10) <= 9) then
+	if (GetUnitAbilityLevel(udg_hero[i], 'S002') < 1 or GetRandomInt(1, 20) <= 19) then
 		set t = CreateTimer()
 		call SaveInteger(YDHT, GetHandleId(t), 0, attr)
 		call SaveStr(YDHT, GetHandleId(t), 1, text)

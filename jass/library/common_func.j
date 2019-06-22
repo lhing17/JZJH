@@ -1412,8 +1412,19 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	local real dodge //闪避因子
 	local real random //随机因子
 	local real basic_damage //基础伤害
+	local real str = I2R(GetHeroStatBJ(0,u,true)) // 招式伤害
+	local real agi = I2R(GetHeroStatBJ(1,u,true)) // 内力
+	local real int = I2R(GetHeroStatBJ(2,u,true)) // 真实伤害
 	if UnitTypeNotNull(u,UNIT_TYPE_HERO) then
-		set attack = (1+0.3*GetUnitAbilityLevel(u, 'A059'))*37.5*udg_lilianxishu[i]*(w1*(1+I2R(GetHeroStatBJ(0,u,true))/200)*(1+I2R(GetHeroStatBJ(1,u,true))/200)+w2*0.03*I2R(GetHeroStatBJ(2,u,true)))*(1.+GetUnitAbilityLevel(u,id))*(udg_shanghaijiacheng[i]+1.)*shxishu
+	// 神龙心法加成
+		set attack = (1+0.3*GetUnitAbilityLevel(u, 'A059')) \
+		* 18 \
+		* udg_lilianxishu[i] \
+		* (w1 * (1 + str / 500) * (1 + agi / 500) + w2 * 0.01 * int) \
+		* (1.6 + 0.4 * GetUnitAbilityLevel(u,id)) \
+		* (udg_shanghaijiacheng[i] + 1.) \
+		* shxishu
+		// 9级技能伤害为原来的3倍
 		if GetUnitAbilityLevel(u, id)==9 then
 			set attack = attack * 3
 		endif
@@ -1426,7 +1437,6 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		set j = 1
 		loop
 			exitwhen j >= 7
-
 	            if(GetItemType(UnitItemInSlotBJ(u,j))==ITEM_TYPE_ARTIFACT)then
 			    	set it= UnitItemInSlotBJ(u,j)
 	            endif
@@ -1443,7 +1453,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		set attack = 750*(w1+w2)*(1.+GetUnitAbilityLevel(u,id))*shxishu
 		// 难6以上敌方用先天功加超多伤害
 		if udg_nandu>=5 and id == 1093682245 then
-			set attack = attack * 100000000
+			set attack = attack * 10
 		endif 
 	endif
 	
@@ -1451,13 +1461,13 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if uc == null then
 		set target_def = 1
 	else
-		set target_def = 1/(1+0.05*GetUnitLevel(uc))
+		set target_def = 1 / (1 + 0.1 * GetUnitLevel(uc))
 	endif
 	//set critical = udg_baojishanghai[1+GetPlayerId(GetOwningPlayer(u))]
 	if uc == null then
 		set dodge = 25
 	else
-		set dodge = RMinBJ(I2R(GetUnitLevel(uc)) / 8, 95.)
+		set dodge = RMinBJ(I2R(GetUnitLevel(uc)) / 5, 95.)
 		if UnitHasBuffBJ(uc, 'Bslo') then
 			set dodge = 0.
 		endif
