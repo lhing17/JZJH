@@ -371,9 +371,9 @@ function EMeiJiuYang takes nothing returns nothing
 	if GetUnitAbilityLevel(u,'A083')>=1 then
 		call YDWEGeneralBounsSystemUnitSetBonus(u,1,0,20)
 	endif
-    if LoadBoolean(YDHT,GetHandleId(u),StringHash("小东邪")) then
+    if isTitle(i, 20) then // 小东邪
         call YDWEGeneralBounsSystemUnitSetBonus(u,1,0,20)
-        set r=r+500.
+        set r = r + 500.
     endif
     call GroupEnumUnitsInRange(g,x,y,r,Condition(function EMeiJiuYang_Condition))
     call ForGroupBJ(g,function EMeiJiuYang_Action)

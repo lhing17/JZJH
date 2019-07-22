@@ -935,7 +935,7 @@ function ItemChongFu takes nothing returns nothing
                 set udg_yifushu[i]=udg_yifushu[i]+1
             endif
             if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_ARTIFACT or GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_PURCHASABLE) then
-                if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and Ce[i]!=7 and LoadBoolean(YDHT,GetHandleId(u),StringHash("君子剑岳不群")) == false) then
+                if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and Ce[i]!=7 and not isTitle(i, 11)) then
                     call UnitRemoveItemSwapped(UnitItemInSlotBJ(u,E8),u)
                     call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000非丫鬟角色最多只能携带一件武器和衣服")
                 endif
@@ -944,7 +944,7 @@ function ItemChongFu takes nothing returns nothing
 		endif
 		set E8=E8+1
 	endloop
-	if (Ce[i]==7 or LoadBoolean(YDHT,GetHandleId(u),StringHash("君子剑岳不群"))) and udg_junzhu[i]==false then
+	if (Ce[i]==7 or isTitle(i, 11)) and udg_junzhu[i]==false then
 		if GetItemType(GetManipulatedItem())==ITEM_TYPE_ARTIFACT and udg_wuqishu[i]>=3 then
 			call UnitRemoveItemSwapped(GetManipulatedItem(),u)
 			call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000丫鬟最多只能携带两件武器")

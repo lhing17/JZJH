@@ -882,6 +882,7 @@ function ChooseMoShi takes nothing returns nothing
         call DialogSetMessage(udg_index,"请选择游戏模式，20秒时间")
         set udg_index0=DialogAddButtonBJ(udg_index,"|cFF00CC00普通模式（无积分）")
         set udg_index1=DialogAddButtonBJ(udg_index,"|cFFCC0066特殊事件模式（推荐）")
+        set udg_index2=DialogAddButtonBJ(udg_index,"|cFFCC7766养老模式（30倍伤害，无积分）")
         set udg_index3 = DialogAddButtonBJ(udg_index,"|cFF6600FF挑战模式（3倍积分）")
         call DialogDisplayBJ(true,udg_index,Player(0))
 		// 开启计时器，20s不选模式默认选择特殊模式
@@ -955,6 +956,12 @@ function ChooseMoShi_Action takes nothing returns nothing
     if GetClickedButton()==udg_index1 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了特殊事件模式")
         set udg_teshushijian=true
+    endif
+    if GetClickedButton()==udg_index2 then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了养老模式")
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF养老模式下，伤害为其他模式下的30倍，通关和打伤害均不给积分")
+        set udg_teshushijian=true
+        set udg_yanglao = true
     endif
     if GetClickedButton()==udg_index3 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了挑战模式")
@@ -1493,6 +1500,10 @@ function Victory takes nothing returns nothing
 	set cx=cx+3
 	call SaveInteger(YDHT,id,-$3021938A,cx)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
+	if udg_yanglao then
+	    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00养老模式下无积分")
+	    return
+	endif
 	// 速通模式3倍积分
 	if tiaoZhanIndex == 1 then
 		set get_zdl = get_zdl * 3
@@ -2292,10 +2303,7 @@ function HeroLevel takes nothing returns nothing
 		endif
 		if (GetUnitLevel(u)==80) then
 			set juexuelingwu[i] = juexuelingwu[i]+50
-			if udg_zhangmen[i]==true then
-			else
-				call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓练气大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-			endif
+			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓练气大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得练气大师")
 			call SetPlayerName(p, "〓练气大师〓"+GetPlayerName(p))
 		endif
@@ -3078,10 +3086,7 @@ function CollectGuDong_Actions takes nothing returns nothing
     if udg_jdds[i]>=10 and udg_jddsbool[i]==false and Ce[i]==4 then
 		set wuxing[i]=wuxing[i]+10 // 悟性加10
 	    set udg_jddsbool[i]=true
-	    if udg_zhangmen[i]==true then
-		else
-			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓鉴定大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-		endif
+		call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓鉴定大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得鉴定大师")
 		call SetPlayerName(p, "〓鉴定大师〓"+GetPlayerName(p))
 	endif
@@ -4355,10 +4360,7 @@ function WuPinHeCheng takes nothing returns nothing
 	if Ce[i]==2 and udg_dzds[i]>=5 and udg_dzdsbool[i]==false then
 		set udg_dzdsbool[i] = true
 		call DZDSBuShuXing(udg_hero[i])
-		if udg_zhangmen[i]==true then
-		else
-			call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
-		endif
+		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"获得锻造大师")
 		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓"+GetPlayerName(GetOwningPlayer(GetTriggerUnit())))
 	endif
@@ -4376,10 +4378,7 @@ endfunction
 	if Ce[i]==2 and udg_dzds[i]>=5 and udg_dzdsbool[i]==false then
 		set udg_dzdsbool[i] = true
 		call DZDSBuShuXing(udg_hero[i])
-		if udg_zhangmen[i]==true then
-		else
-			call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
-		endif
+		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"获得锻造大师")
 		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓"+GetPlayerName(GetOwningPlayer(GetTriggerUnit())))
 	endif
@@ -4691,7 +4690,7 @@ function CeShiJieShu takes nothing returns nothing
 		call DzAPI_Map_StoreReal(Player(GetPlayerId(GetOwningPlayer(GetTriggerUnit()))),"maxDamage",ceshizongshanghai)
 	endif
 	// 计算积分，伤害超过13位触发
-	if StringLength(R2S(ceshizongshanghai))-4 > 13 and ceshizongshanghai > curMaxDamage then
+	if StringLength(R2S(ceshizongshanghai))-4 > 13 and ceshizongshanghai > curMaxDamage and not udg_yanglao then
 		set curMaxDamage = ceshizongshanghai
 		call shangHaiBonus(ceshizongshanghai)
 	endif

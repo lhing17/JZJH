@@ -318,7 +318,7 @@ function XianTian_Action takes nothing returns nothing
 	local real shxishu=1.
 	local real shanghai=0.
 	local location loc=GetUnitLoc(uc)
-    if zhongshentong[i] then
+    if isTitle(i, 14) then
         set shxishu = shxishu*5
     endif
     // 专属加成

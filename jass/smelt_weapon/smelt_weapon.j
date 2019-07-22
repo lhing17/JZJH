@@ -204,10 +204,7 @@ function YeLianWuQi takes nothing returns nothing
 			endif
 			if udg_bqds[i]>=5 and udg_bqdsbool[i]==false and Ce[i]==3 then
 			    set udg_bqdsbool[i]=true
-			    if udg_zhangmen[i]==true then
-				else
-					call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓兵器大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				endif
+				call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓兵器大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得兵器大师")
 				call SetPlayerName(p, "〓兵器大师〓"+GetPlayerName(p))
 			endif

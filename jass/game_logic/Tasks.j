@@ -282,10 +282,7 @@ function WanChengWuPin takes nothing returns nothing
 			else
 				if udg_xbdsbool[i] == false then
 					set udg_xbdsbool[i] = true
-					if udg_zhangmen[i]==true then
-					else
-						call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓寻宝大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-					endif
+					call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓寻宝大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 					call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得寻宝大师")
 					call SetPlayerName(p, "〓寻宝大师〓"+GetPlayerName(p))
 				endif
@@ -495,9 +492,7 @@ function jfShop takes nothing returns nothing
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00获取桃花岛传送符，扣除4积分")
 		call jfChange(i,jf4)
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DG')) and udg_jf[i] >= jf5 and (jf_useMax[i]+jf5) <= jf_max then
-		// 重置门派称号
-		set udg_zhangmen[i+1] = false
-		set udg_whichzhangmen[i+1] = 0
+		// 重置门派称号 FIXME
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00重置门派称号成功，扣除14积分")
 		call jfChange(i,jf5)
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DH')) and udg_jf[i] >= jf6 and (jf_useMax[i]+jf6) <= jf_max then
@@ -686,7 +681,7 @@ endfunction
 	local integer i=1+GetPlayerId(p)
 	if muRongOnlyFlag[i] == 0 then
 		if udg_runamen[i] == 13 then
-			if muronglc[i] and GetHeroLevel(udg_hero[i]) > 100 then
+			if isTitle(i, 26) and GetHeroLevel(udg_hero[i]) > 100 then
 				set muRongOnlyFlag[i]=1 // 慕容任务标记已完成
 				call unitadditembyidswapped('I0DS',u)
 				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00慕容复：|r |cFF99FFCC你小子没让我失望，这是你的奖励！|r\n")

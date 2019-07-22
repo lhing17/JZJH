@@ -184,7 +184,7 @@ function y3 takes nothing returns nothing
         if UnitHaveItem(u, 'I0AM') then
 	    	set shxishu = shxishu * 1.8
     	endif
-        if xingxiulaoxian[i] then
+        if isTitle(i, 23) then
 	    	set shxishu = shxishu * 4
     	endif
         set shanghai=ShangHaiGongShi(u,uc,16.,16.,shxishu,'A0BQ')
@@ -199,7 +199,7 @@ function y3 takes nothing returns nothing
             if UnitHaveItem(u, 'I0AM') then
 	    		set shxishu = shxishu * 1.8
     		endif
-            if xingxiulaoxian[i] then
+            if isTitle(i, 23) then
 	    	    set shxishu = shxishu * 4
     	    endif
             set shanghai=ShangHaiGongShi(u,uc,20.,20.,shxishu,'A0BQ')
@@ -450,7 +450,7 @@ function L3 takes nothing returns nothing
     if UnitHaveItem(u, 'I0AM') then
 	    set shxishu = shxishu * 1.8
     endif
-    if xingxiulaoxian[i] then
+    if isTitle(i, 23) then
         set shxishu = shxishu * 4
     endif
     set shanghai=ShangHaiGongShi(u,uc,60.,60.,shxishu,'A0BV')
@@ -463,7 +463,7 @@ function MM3 takes nothing returns nothing
     local integer cx=LoadInteger(YDHT,id,-$3021938A)
     local integer gailv = 80 // 分身死亡重生概率
     // 星宿老仙，心法90%概率重生
-    if xingxiulaoxian[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))] then
+    if isTitle(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), 23) then
         set gailv = 90
     endif
     set cx=cx+3

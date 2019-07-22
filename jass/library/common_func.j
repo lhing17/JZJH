@@ -146,30 +146,15 @@ library WuQiQiHeSystem initializer init
 				    	    call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您炼成了第"+I2S(udg_bqds[j])+"把武器，您需要炼成3把武器才能获得兵器大师哦")
 			        	endif
 		        	endif
-			   //     if udg_bqds[j]>=3 and udg_bqdsbool[j]==false and Ce[j]==3 then
-				  //      set udg_bqdsbool[j]=true
-				  //      if udg_zhangmen[j]==true then
-						//else
-						//	call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓兵器大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-						//endif
-						//call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得兵器大师")
-						//call SetPlayerName(p, "〓兵器大师〓"+GetPlayerName(p))
-			   //     endif
 		    	    if LoadInteger(YDHT,GetHandleId(it),0)>0 then
 			    	    if  Ce[1+GetPlayerId(GetOwningPlayer(u))]!=3 then
 			        	    call SaveInteger(YDHT,GetHandleId(it),0,LoadInteger(YDHT,GetHandleId(it),0)-1)
 		        	    endif
 		    	    endif
-		    	    //if LoadInteger(YDHT,GetHandleId(it),0)<=0 then
-			        //	call FlushChildHashtable(YDHT,GetHandleId(it))
-			        //	call RemoveItem(it)
-			        //	call DisplayTextToPlayer(GetOwningPlayer(u),0,0,"|cFFFF0000你的武器已损坏，请及时更换武器")
-		    	    //endif
 	    	    endif
 	    	endif
 	    	set i = i + 1
 	    endloop
-	    //call BJDebugMsg(GetItemName(it))
 
         set u=null
         set it=null
@@ -1424,6 +1409,11 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		* (1.6 + 0.4 * GetUnitAbilityLevel(u,id)) \
 		* (udg_shanghaijiacheng[i] + 1.) \
 		* shxishu
+
+		// 养老模式
+		if udg_yanglao then
+		    set attack = attack * 30
+		endif
 		// 9级技能伤害为原来的3倍
 		if GetUnitAbilityLevel(u, id)==9 then
 			set attack = attack * 3

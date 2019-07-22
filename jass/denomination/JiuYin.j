@@ -17,8 +17,8 @@ library JiuYin initializer JiuYin_Init
         if GetUnitAbilityLevel(GetAttacker(),'A07S')>=1 then
 	        set shxishu=shxishu+1.
         endif
-        if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
-	        set shxishu=shxishu*20
+        if isTitle(1+GetPlayerId(GetOwningPlayer(u)), 37) then // 九阴真人
+	        set shxishu=shxishu * 20
         endif
         set shanghai=ShangHaiGongShi(u,uc,3.,3.,shxishu,'A0D1')
         call WuGongShangHai(u,uc,shanghai)
@@ -56,7 +56,7 @@ library JiuYin initializer JiuYin_Init
         //摧心掌
 	    else
 	        if GetRandomReal(.0,100.)<=15.+I2R(fuyuan[i])/5. then
-		        if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
+		        if isTitle(i, 37) then
 	                set shxishu=shxishu*20
                 endif
 		        set shanghai=ShangHaiGongShi(u,ut,20,16,shxishu,'A0D3')

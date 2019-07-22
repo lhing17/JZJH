@@ -65,7 +65,7 @@ function WuXiangShangHai takes nothing returns nothing
 	if UnitHasBuffBJ(uc, 'Bfro') then
 		set shxishu = shxishu * 3
 	endif
-	if LoadBoolean(YDHT,GetHandleId(u),StringHash("大轮明王")) then
+	if isTitle(i, 3) then // 大轮明王
 		set shxishu = shxishu * 5
 	endif
 	set shxishu = shxishu * (1. + I2R(danpo[i])/20 + I2R(juexuelingwu[i]))

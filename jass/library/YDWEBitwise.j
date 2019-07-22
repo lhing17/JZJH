@@ -178,7 +178,7 @@ library YDWEBitwise initializer onInit
 /*
     private function UnitTest takes nothing returns nothing
         local boolean b = true
-#define UNIT_TEST(conf) if not (conf) then YDNL call BJDebugMsg("[BitwiseTest] ´íÎó£º" + #conf) YDNL set b = false YDNL endif
+#define UNIT_TEST(conf) if not (conf) then YDNL call BJDebugMsg("[BitwiseTest] é”™è¯¯ï¼š" + #conf) YDNL set b = false YDNL endif
         UNIT_TEST(NOT($10000007) == $EFFFFFF8)
         UNIT_TEST(AND($10000007, $101) == $1)
         UNIT_TEST(OR ($10000007, $101) == $10000107)
@@ -199,7 +199,7 @@ library YDWEBitwise initializer onInit
         UNIT_TEST(ToHexString($FADF2312) == "FADF2312")
 #undef  UNIT_TEST
         if b then
-            call BJDebugMsg("[BitwiseTest] ËùÓĞ²âÊÔÍ¨¹ı£¡")
+            call BJDebugMsg("[BitwiseTest] æ‰€æœ‰æµ‹è¯•é€šè¿‡ï¼")
         endif
     endfunction
     private function UnitTestInit takes nothing returns nothing

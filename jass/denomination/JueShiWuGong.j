@@ -34,11 +34,11 @@ function eG takes nothing returns nothing
 	local real shanghai=0.
 	local real shxishu=jueXueXiShu(i)
 	// 北乔峰称号加强降龙伤害
-	if beiqiaofeng[i] then
+	if isTitle(i, 10) then
 		set shxishu = shxishu * 5
 	endif
 	// 北丐或北侠称号加强降龙伤害
-	if beigai[i] or beixia[i] then
+	if isTitle(i, 9) or isTitle(i, 43) then
 		set shxishu = shxishu * 3
 	endif
 	call DestroyEffect(AddSpecialEffectLocBJ(loc,"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl"))
@@ -272,7 +272,7 @@ function GG takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(u))
 	local real shxishu=jueXueXiShu(i)
 	local real shanghai=0.
-	if LoadBoolean(YDHT,GetHandleId(u),StringHash("小虾米")) then
+	if isTitle(i, 42) then
 		set shxishu = shxishu * 3
 	endif
 	call DestroyEffect(AddSpecialEffectLocBJ(loc,"war3mapImported\\CrimsonWake.mdx"))
@@ -478,7 +478,7 @@ function i6 takes nothing returns nothing
 	    set shxishu=shxishu*8
     endif
 	// 西毒称号加成
-	if LoadBoolean(YDHT,GetHandleId(u),StringHash("西毒")) then
+	if isTitle(i, 38) then
 		set shxishu = shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u,uc,45.,45.,shxishu,'A089')
@@ -584,7 +584,7 @@ function Q6 takes nothing returns nothing
 	local real shxishu=jueXueXiShu(i)
 	local real shanghai=0.
 	// 北丐打狗5倍
-	if beigai[i] then
+	if isTitle(i, 9) then
 		set shxishu = shxishu * 5
 	endif
 	if UnitHaveItem(u,'I097') then
@@ -907,7 +907,7 @@ function rH takes nothing returns nothing
     local real shxishu=jueXueXiShu(i)
     local real shanghai=0.
 	// 北丐打狗5倍
-	if beigai[i] then
+	if isTitle(i, 9) then
 		set shxishu = shxishu * 5
 	endif
     set shanghai=ShangHaiGongShi(u,uc,35.,35.,shxishu,'A07L')
@@ -929,11 +929,11 @@ function vH takes nothing returns nothing
 	local real shanghai=0.
 	local real shxishu=jueXueXiShu(i)
 	// 北乔峰称号加强降龙伤害
-	if beiqiaofeng[i] then
+	if isTitle(i, 10) then
 		set shxishu = shxishu * 5
 	endif
 	// 北丐或北侠称号加强降龙伤害
-	if beigai[i] or beixia[i] then
+	if isTitle(i, 9) or isTitle(i, 43) then
 		set shxishu = shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u,uc,70.,70.,shxishu,'A07E')
@@ -973,11 +973,11 @@ function XLES_Action takes nothing returns nothing
 	local real shanghai=0.
 	local real shxishu=jueXueXiShu(i)
 	// 北乔峰称号加强降龙伤害
-	if beiqiaofeng[i] then
+	if isTitle(i, 10) then
 		set shxishu = shxishu * 5
 	endif
 	// 北丐或北侠称号加强降龙伤害
-	if beigai[i] or beixia[i] then
+	if isTitle(i, 9) or isTitle(i, 43) then
 		set shxishu = shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u,uc,80.,80.,shxishu,'A07E')
@@ -1136,7 +1136,7 @@ function GH takes nothing returns nothing
     local real shxishu=jueXueXiShu(i)
     local real shanghai=0.
 	// 西毒称号加成
-	if LoadBoolean(YDHT,GetHandleId(u),StringHash("西毒")) then
+	if isTitle(i, 38) then
 		set shxishu = shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u,uc,42.,42.,shxishu,'A089')
@@ -1388,7 +1388,7 @@ function qI takes nothing returns nothing
 	local integer i=1+GetPlayerId(GetOwningPlayer(u))
 	local real shxishu=jueXueXiShu(i)
 	local real shanghai=0.
-	if LoadBoolean(YDHT,GetHandleId(u),StringHash("小虾米")) then
+	if isTitle(i, 42) then
 		set shxishu = shxishu * 3
 	endif
 	call  DestroyEffect(AddSpecialEffectLocBJ(loc,"Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl"))

@@ -458,9 +458,9 @@ endfunction
 globals
 	integer array beiMingShaGuai // 北冥杀怪数
 endglobals
-// 虚竹，北冥杀怪加内力
+// 虚竹子称号：北冥杀怪加内力
 function isXuZhuBeiMing takes nothing returns boolean
-	return((GetUnitAbilityLevel(GetKillingUnit(),'A082')!=0)) and LoadBoolean(YDHT,GetHandleId(GetKillingUnit()),StringHash("虚竹子"))
+	return GetUnitAbilityLevel(GetKillingUnit(),'A082')!=0 and isTitle(1 + GetPlayerId(GetOwningPlayer(GetKillingUnit())), 25)
 endfunction
 function xuZhuBeiMing takes nothing returns nothing
 	local unit u = GetKillingUnit()

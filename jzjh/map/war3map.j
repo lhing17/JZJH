@@ -1,15 +1,15 @@
 globals
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed___USE_TABLE= true
-constant boolean MaxSpeed___NEW_TABLE= true
+constant boolean MaxSpeed__USE_TABLE= true
+constant boolean MaxSpeed__NEW_TABLE= true
          // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed___TEST_MODE= false
-constant real MaxSpeed___PERIOD= 0.03125
+constant boolean MaxSpeed__TEST_MODE= false
+constant real MaxSpeed__PERIOD= 0.03125
         //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed___MAX_SPEED= 1400.0
+constant real MaxSpeed__MAX_SPEED= 1400.0
          // 最大速度限定，超出视为传送。
-constant real MaxSpeed___MIN_SPEED= 500.0
+constant real MaxSpeed__MIN_SPEED= 500.0
          // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
         // 测试最大为500刚出头，与522还有些差距
 //endglobals from MaxSpeed
@@ -94,30 +94,30 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase__yd_PlayerColor
-trigger array YDWEBase__AbilityCastingOverEventQueue
-integer array YDWEBase__AbilityCastingOverEventType
-integer YDWEBase__AbilityCastingOverEventNumber= 0
+string array YDWEBase___yd_PlayerColor
+trigger array YDWEBase___AbilityCastingOverEventQueue
+integer array YDWEBase___AbilityCastingOverEventType
+integer YDWEBase___AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEBitwise:
 constant boolean LIBRARY_YDWEBitwise=true
-integer array YDWEBitwise___C2
-constant string YDWEBitwise___hexstr= "0123456789ABCDEF"
+integer array YDWEBitwise__C2
+constant string YDWEBitwise__hexstr= "0123456789ABCDEF"
 //endglobals from YDWEBitwise
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
-integer array YDWEGeneralBounsSystem__ABILITY_COUNT
-integer array YDWEGeneralBounsSystem__ABILITY_NUM
-integer array YDWEGeneralBounsSystem__BonusAbilitys
-integer array YDWEGeneralBounsSystem__PowersOf2
-integer YDWEGeneralBounsSystem__PRELOAD_DUMMY_UNIT= 'hpea'
-integer array YDWEGeneralBounsSystem__YDWEBONUS_MyChar
-boolean YDWEGeneralBounsSystem__PRELOAD_ABILITYS= true
-constant integer YDWEGeneralBounsSystem__BONUS_TYPES= 4
-integer array YDWEGeneralBounsSystem__MaxBonus
-integer array YDWEGeneralBounsSystem__MinBonus
-unit array YDWEGeneralBounsSystem__Units
-integer YDWEGeneralBounsSystem__UnitCount= 0
+integer array YDWEGeneralBounsSystem___ABILITY_COUNT
+integer array YDWEGeneralBounsSystem___ABILITY_NUM
+integer array YDWEGeneralBounsSystem___BonusAbilitys
+integer array YDWEGeneralBounsSystem___PowersOf2
+integer YDWEGeneralBounsSystem___PRELOAD_DUMMY_UNIT= 'hpea'
+integer array YDWEGeneralBounsSystem___YDWEBONUS_MyChar
+boolean YDWEGeneralBounsSystem___PRELOAD_ABILITYS= true
+constant integer YDWEGeneralBounsSystem___BONUS_TYPES= 4
+integer array YDWEGeneralBounsSystem___MaxBonus
+integer array YDWEGeneralBounsSystem___MinBonus
+unit array YDWEGeneralBounsSystem___Units
+integer YDWEGeneralBounsSystem___UnitCount= 0
 //endglobals from YDWEGeneralBounsSystem
 //globals from YDWEGetUnitsInRangeOfLocMatchingNull:
 constant boolean LIBRARY_YDWEGetUnitsInRangeOfLocMatchingNull=true
@@ -141,14 +141,14 @@ boolean YDWESync__m_mutex_state= false
 //globals from YDWETriggerEvent:
 constant boolean LIBRARY_YDWETriggerEvent=true
 trigger yd_DamageEventTrigger= null
-trigger array YDWETriggerEvent__DamageEventQueue
-integer YDWETriggerEvent__DamageEventNumber= 0
+trigger array YDWETriggerEvent___DamageEventQueue
+integer YDWETriggerEvent___DamageEventNumber= 0
 	
 item bj_lastMovedItemInItemSlot= null
 	
-trigger YDWETriggerEvent__MoveItemEventTrigger= null
-trigger array YDWETriggerEvent__MoveItemEventQueue
-integer YDWETriggerEvent__MoveItemEventNumber= 0
+trigger YDWETriggerEvent___MoveItemEventTrigger= null
+trigger array YDWETriggerEvent___MoveItemEventQueue
+integer YDWETriggerEvent___MoveItemEventNumber= 0
 //endglobals from YDWETriggerEvent
 //globals from YDWETriggerRegisterLeaveRectSimpleNull:
 constant boolean LIBRARY_YDWETriggerRegisterLeaveRectSimpleNull=true
@@ -189,31 +189,31 @@ integer YDWEStringFormula__FormulaData= 0
 //endglobals from YDWEStringFormula
 //globals from YDWETimerPattern:
 constant boolean LIBRARY_YDWETimerPattern=true
-boolexpr YDWETimerPattern__Bexpr= null
-rect YDWETimerPattern__Area= null
-integer YDWETimerPattern__tmp_data
-location YDWETimerPattern__yd_loc= Location(0.0, 0.0)
+boolexpr YDWETimerPattern___Bexpr= null
+rect YDWETimerPattern___Area= null
+integer YDWETimerPattern___tmp_data
+location YDWETimerPattern___yd_loc= Location(0.0, 0.0)
 //endglobals from YDWETimerPattern
 //globals from YDWETimerSystem:
 constant boolean LIBRARY_YDWETimerSystem=true
-integer YDWETimerSystem__CurrentTime
-integer YDWETimerSystem__CurrentIndex
-integer YDWETimerSystem__TaskListHead
-integer YDWETimerSystem__TaskListIdleHead
-integer YDWETimerSystem__TaskListIdleMax
-integer array YDWETimerSystem__TaskListIdle
-integer array YDWETimerSystem__TaskListNext
-integer array YDWETimerSystem__TaskListTime
-trigger array YDWETimerSystem__TaskListProc
-trigger YDWETimerSystem__fnRemoveUnit
-trigger YDWETimerSystem__fnDestroyTimer
-trigger YDWETimerSystem__fnRemoveItem
-trigger YDWETimerSystem__fnDestroyEffect
-trigger YDWETimerSystem__fnDestroyLightning
-trigger YDWETimerSystem__fnRunTrigger
-timer YDWETimerSystem__Timer
-integer YDWETimerSystem__TimerHandle
-integer YDWETimerSystem__TimerSystem_RunIndex= 0
+integer YDWETimerSystem___CurrentTime
+integer YDWETimerSystem___CurrentIndex
+integer YDWETimerSystem___TaskListHead
+integer YDWETimerSystem___TaskListIdleHead
+integer YDWETimerSystem___TaskListIdleMax
+integer array YDWETimerSystem___TaskListIdle
+integer array YDWETimerSystem___TaskListNext
+integer array YDWETimerSystem___TaskListTime
+trigger array YDWETimerSystem___TaskListProc
+trigger YDWETimerSystem___fnRemoveUnit
+trigger YDWETimerSystem___fnDestroyTimer
+trigger YDWETimerSystem___fnRemoveItem
+trigger YDWETimerSystem___fnDestroyEffect
+trigger YDWETimerSystem___fnDestroyLightning
+trigger YDWETimerSystem___fnRunTrigger
+timer YDWETimerSystem___Timer
+integer YDWETimerSystem___TimerHandle
+integer YDWETimerSystem___TimerSystem_RunIndex= 0
 //endglobals from YDWETimerSystem
     // User-defined
 group udg_UG_ResidualImage= null
@@ -437,31 +437,11 @@ unit udg_fomiedanwei=null
 unit udg_yechadanwei=null
 unit udg_miejuedanwei=null
 integer array wugongshu
-integer array udg_whichzhangmen
 integer array udg_zhemei
-boolean array udg_zhangmen
-boolean array chilian
-boolean array zhiruo
-// 是否获得老顽童称号
-boolean array laowantong
-	// 是否获得中神通称号
-boolean array zhongshentong
-	// 是否获得血刀老祖称号
-boolean array xuedaolaozu
-	// 是否获得星宿老仙称号
-boolean array xingxiulaoxian
-	// 是否获得东邪称号
-boolean array dongxie
-	// 是否获得瑶琴称号
-boolean array yaoqin
-	// 是否获得北丐称号
-boolean array beigai
-	// 是否获得北乔峰称号
-boolean array beiqiaofeng
-	// 是否获得北侠称号
-boolean array beixia
-	// 是否获得慕容龙城称号
-boolean array muronglc
+integer array chief
+integer array title0
+integer array title1
+
 	// 战斗力数组，每位玩家的战斗力
 integer array udg_zdl
 	// 积分数组
@@ -491,8 +471,9 @@ unit array udg_sellSkillBook
 integer udg_tiebushancengshu=0
 integer udg_nandu=0
 boolean udg_shifoufomie=false
-boolean udg_teshushijian=false
-boolean udg_yunyangxianshen=false
+boolean udg_teshushijian= false
+boolean udg_yanglao= false
+boolean udg_yunyangxianshen= false
 boolean udg_sutong= false
 boolean taohuakai=false
 dialog udg_index=null
@@ -1669,47 +1650,47 @@ constant integer s___YDWEStringFormula__Sorting_count_size=8
 integer array s__YDWEStringFormula__Sorting_count
 integer array s__YDWEStringFormula__Sorting_total
 string array s__YDWEStringFormula__Sorting_char
-constant integer si__YDWETimerPattern__YDVector3=9
-integer si__YDWETimerPattern__YDVector3_F=0
-integer si__YDWETimerPattern__YDVector3_I=0
-integer array si__YDWETimerPattern__YDVector3_V
-real array s__YDWETimerPattern__YDVector3_x
-real array s__YDWETimerPattern__YDVector3_y
-real array s__YDWETimerPattern__YDVector3_z
-constant integer si__YDWETimerPattern__Thread=10
-integer si__YDWETimerPattern__Thread_F=0
-integer si__YDWETimerPattern__Thread_I=0
-integer array si__YDWETimerPattern__Thread_V
-integer array s__YDWETimerPattern__Thread_des
-integer array s__YDWETimerPattern__Thread_pos
-integer array s__YDWETimerPattern__Thread_vel
-unit array s__YDWETimerPattern__Thread_caster
-unit array s__YDWETimerPattern__Thread_source
-unit array s__YDWETimerPattern__Thread_target
-unit array s__YDWETimerPattern__Thread_obj
-real array s__YDWETimerPattern__Thread_ac
-real array s__YDWETimerPattern__Thread_bc
-real array s__YDWETimerPattern__Thread_dist
-real array s__YDWETimerPattern__Thread_step
-real array s__YDWETimerPattern__Thread_amount
-integer array s__YDWETimerPattern__Thread_switch
-integer array s__YDWETimerPattern__Thread_follow
-integer array s__YDWETimerPattern__Thread_unitid
-integer array s__YDWETimerPattern__Thread_skills
-integer array s__YDWETimerPattern__Thread_order
-integer array s__YDWETimerPattern__Thread_level
-string array s__YDWETimerPattern__Thread_dsfx
-string array s__YDWETimerPattern__Thread_gsfx
-string array s__YDWETimerPattern__Thread_wsfx
-string array s__YDWETimerPattern__Thread_part
-boolean array s__YDWETimerPattern__Thread_recycle
-boolean array s__YDWETimerPattern__Thread_killdest
-boolean array s__YDWETimerPattern__Thread_volume
-group array s__YDWETimerPattern__Thread_g
-timer array s__YDWETimerPattern__Thread_t
-constant integer si__YDWETimerPattern__Parabola=11
-constant integer si__YDWETimerPattern__Linear=12
-constant integer si__YDWETimerPattern__Deceleration=13
+constant integer si__YDWETimerPattern___YDVector3=9
+integer si__YDWETimerPattern___YDVector3_F=0
+integer si__YDWETimerPattern___YDVector3_I=0
+integer array si__YDWETimerPattern___YDVector3_V
+real array s__YDWETimerPattern___YDVector3_x
+real array s__YDWETimerPattern___YDVector3_y
+real array s__YDWETimerPattern___YDVector3_z
+constant integer si__YDWETimerPattern___Thread=10
+integer si__YDWETimerPattern___Thread_F=0
+integer si__YDWETimerPattern___Thread_I=0
+integer array si__YDWETimerPattern___Thread_V
+integer array s__YDWETimerPattern___Thread_des
+integer array s__YDWETimerPattern___Thread_pos
+integer array s__YDWETimerPattern___Thread_vel
+unit array s__YDWETimerPattern___Thread_caster
+unit array s__YDWETimerPattern___Thread_source
+unit array s__YDWETimerPattern___Thread_target
+unit array s__YDWETimerPattern___Thread_obj
+real array s__YDWETimerPattern___Thread_ac
+real array s__YDWETimerPattern___Thread_bc
+real array s__YDWETimerPattern___Thread_dist
+real array s__YDWETimerPattern___Thread_step
+real array s__YDWETimerPattern___Thread_amount
+integer array s__YDWETimerPattern___Thread_switch
+integer array s__YDWETimerPattern___Thread_follow
+integer array s__YDWETimerPattern___Thread_unitid
+integer array s__YDWETimerPattern___Thread_skills
+integer array s__YDWETimerPattern___Thread_order
+integer array s__YDWETimerPattern___Thread_level
+string array s__YDWETimerPattern___Thread_dsfx
+string array s__YDWETimerPattern___Thread_gsfx
+string array s__YDWETimerPattern___Thread_wsfx
+string array s__YDWETimerPattern___Thread_part
+boolean array s__YDWETimerPattern___Thread_recycle
+boolean array s__YDWETimerPattern___Thread_killdest
+boolean array s__YDWETimerPattern___Thread_volume
+group array s__YDWETimerPattern___Thread_g
+timer array s__YDWETimerPattern___Thread_t
+constant integer si__YDWETimerPattern___Parabola=11
+constant integer si__YDWETimerPattern___Linear=12
+constant integer si__YDWETimerPattern___Deceleration=13
 constant integer si__DaPei=14
 integer si__DaPei_F=0
 integer si__DaPei_I=0
@@ -1737,8 +1718,8 @@ integer array s__ShopWeapon_id
 boolean array s__ShopWeapon_zhuanshu
 integer array si__YDWEStringFormula__Inventory_type
 trigger array st__YDWEStringFormula__Inventory_onDestroy
-integer array si__YDWETimerPattern__Thread_type
-trigger array st__YDWETimerPattern__Thread_onDestroy
+integer array si__YDWETimerPattern___Thread_type
+trigger array st__YDWETimerPattern___Thread_onDestroy
 trigger st__YDWEStringFormula__Sorting_onDestroy
 trigger st__DaPei_onDestroy
 trigger st__DaPei_XiaoGuoShuoMing
@@ -2125,69 +2106,69 @@ function s__YDWEStringFormula__StringTable__allocate takes nothing returns integ
 endfunction
 
 
-//Generated method caller for YDWETimerPattern__Thread.onDestroy
-function sc__YDWETimerPattern__Thread_onDestroy takes integer this returns nothing
+//Generated method caller for YDWETimerPattern___Thread.onDestroy
+function sc__YDWETimerPattern___Thread_onDestroy takes integer this returns nothing
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWETimerPattern__Thread_onDestroy[10])
+    call TriggerEvaluate(st__YDWETimerPattern___Thread_onDestroy[10])
 endfunction
 
-//Generated allocator of YDWETimerPattern__Thread
-function s__YDWETimerPattern__Thread__allocate takes nothing returns integer
- local integer this=si__YDWETimerPattern__Thread_F
+//Generated allocator of YDWETimerPattern___Thread
+function s__YDWETimerPattern___Thread__allocate takes nothing returns integer
+ local integer this=si__YDWETimerPattern___Thread_F
     if (this!=0) then
-        set si__YDWETimerPattern__Thread_F=si__YDWETimerPattern__Thread_V[this]
+        set si__YDWETimerPattern___Thread_F=si__YDWETimerPattern___Thread_V[this]
     else
-        set si__YDWETimerPattern__Thread_I=si__YDWETimerPattern__Thread_I+1
-        set this=si__YDWETimerPattern__Thread_I
+        set si__YDWETimerPattern___Thread_I=si__YDWETimerPattern___Thread_I+1
+        set this=si__YDWETimerPattern___Thread_I
     endif
     if (this>8190) then
         return 0
     endif
 
-    set si__YDWETimerPattern__Thread_type[this]=10
-    set si__YDWETimerPattern__Thread_V[this]=-1
+    set si__YDWETimerPattern___Thread_type[this]=10
+    set si__YDWETimerPattern___Thread_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of YDWETimerPattern__Thread
-function sc__YDWETimerPattern__Thread_deallocate takes integer this returns nothing
+//Generated destructor of YDWETimerPattern___Thread
+function sc__YDWETimerPattern___Thread_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWETimerPattern__Thread_V[this]!=-1) then
+    elseif (si__YDWETimerPattern___Thread_V[this]!=-1) then
         return
     endif
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWETimerPattern__Thread_onDestroy[si__YDWETimerPattern__Thread_type[this]])
-    set si__YDWETimerPattern__Thread_V[this]=si__YDWETimerPattern__Thread_F
-    set si__YDWETimerPattern__Thread_F=this
+    call TriggerEvaluate(st__YDWETimerPattern___Thread_onDestroy[si__YDWETimerPattern___Thread_type[this]])
+    set si__YDWETimerPattern___Thread_V[this]=si__YDWETimerPattern___Thread_F
+    set si__YDWETimerPattern___Thread_F=this
 endfunction
 
-//Generated allocator of YDWETimerPattern__YDVector3
-function s__YDWETimerPattern__YDVector3__allocate takes nothing returns integer
- local integer this=si__YDWETimerPattern__YDVector3_F
+//Generated allocator of YDWETimerPattern___YDVector3
+function s__YDWETimerPattern___YDVector3__allocate takes nothing returns integer
+ local integer this=si__YDWETimerPattern___YDVector3_F
     if (this!=0) then
-        set si__YDWETimerPattern__YDVector3_F=si__YDWETimerPattern__YDVector3_V[this]
+        set si__YDWETimerPattern___YDVector3_F=si__YDWETimerPattern___YDVector3_V[this]
     else
-        set si__YDWETimerPattern__YDVector3_I=si__YDWETimerPattern__YDVector3_I+1
-        set this=si__YDWETimerPattern__YDVector3_I
+        set si__YDWETimerPattern___YDVector3_I=si__YDWETimerPattern___YDVector3_I+1
+        set this=si__YDWETimerPattern___YDVector3_I
     endif
     if (this>8190) then
         return 0
     endif
 
-    set si__YDWETimerPattern__YDVector3_V[this]=-1
+    set si__YDWETimerPattern___YDVector3_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of YDWETimerPattern__YDVector3
-function s__YDWETimerPattern__YDVector3_deallocate takes integer this returns nothing
+//Generated destructor of YDWETimerPattern___YDVector3
+function s__YDWETimerPattern___YDVector3_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWETimerPattern__YDVector3_V[this]!=-1) then
+    elseif (si__YDWETimerPattern___YDVector3_V[this]!=-1) then
         return
     endif
-    set si__YDWETimerPattern__YDVector3_V[this]=si__YDWETimerPattern__YDVector3_F
-    set si__YDWETimerPattern__YDVector3_F=this
+    set si__YDWETimerPattern___YDVector3_V[this]=si__YDWETimerPattern___YDVector3_F
+    set si__YDWETimerPattern___YDVector3_F=this
 endfunction
 
 //Generated method caller for YDWEStringFormula__Sorting.onDestroy
@@ -2234,42 +2215,42 @@ function sc__YDWEStringFormula__Sorting_deallocate takes integer this returns no
     set si__YDWEStringFormula__Sorting_F=this
 endfunction
 
-//Generated allocator of YDWETimerPattern__Deceleration
-function s__YDWETimerPattern__Deceleration__allocate takes nothing returns integer
- local integer this=s__YDWETimerPattern__Thread__allocate()
+//Generated allocator of YDWETimerPattern___Deceleration
+function s__YDWETimerPattern___Deceleration__allocate takes nothing returns integer
+ local integer this=s__YDWETimerPattern___Thread__allocate()
  local integer kthis
     if(this==0) then
         return 0
     endif
-    set si__YDWETimerPattern__Thread_type[this]=13
+    set si__YDWETimerPattern___Thread_type[this]=13
     set kthis=this
 
  return this
 endfunction
 
 
-//Generated allocator of YDWETimerPattern__Parabola
-function s__YDWETimerPattern__Parabola__allocate takes nothing returns integer
- local integer this=s__YDWETimerPattern__Thread__allocate()
+//Generated allocator of YDWETimerPattern___Parabola
+function s__YDWETimerPattern___Parabola__allocate takes nothing returns integer
+ local integer this=s__YDWETimerPattern___Thread__allocate()
  local integer kthis
     if(this==0) then
         return 0
     endif
-    set si__YDWETimerPattern__Thread_type[this]=11
+    set si__YDWETimerPattern___Thread_type[this]=11
     set kthis=this
 
  return this
 endfunction
 
 
-//Generated allocator of YDWETimerPattern__Linear
-function s__YDWETimerPattern__Linear__allocate takes nothing returns integer
- local integer this=s__YDWETimerPattern__Thread__allocate()
+//Generated allocator of YDWETimerPattern___Linear
+function s__YDWETimerPattern___Linear__allocate takes nothing returns integer
+ local integer this=s__YDWETimerPattern___Thread__allocate()
  local integer kthis
     if(this==0) then
         return 0
     endif
-    set si__YDWETimerPattern__Thread_type[this]=12
+    set si__YDWETimerPattern___Thread_type[this]=12
     set kthis=this
 
  return this
@@ -2345,8 +2326,8 @@ endfunction
              set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
              set s__ModSpeed_lastX[this]=s__ModSpeed_x
              set s__ModSpeed_lastY[this]=s__ModSpeed_y
-             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
-             if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
+             set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
+             if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
                  set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                  set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                  set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -2426,7 +2407,7 @@ endfunction
                      set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                  endif
                  if ( s__ModSpeed_next[(0)] == 0 ) then
-                     call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
+                     call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -2445,7 +2426,7 @@ endfunction
 
 
              endif
-             set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
+             set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
              set s__ModSpeed_lastX[this]=GetUnitX(u)
              set s__ModSpeed_lastY[this]=GetUnitY(u)
              set s__ModSpeed_speed[this]=amount
@@ -2978,30 +2959,15 @@ endfunction
 				    	    call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您炼成了第" + I2S(udg_bqds[j]) + "把武器，您需要炼成3把武器才能获得兵器大师哦")
 			        	endif
 		        	endif
-			   //     if udg_bqds[j]>=3 and udg_bqdsbool[j]==false and Ce[j]==3 then
-				  //      set udg_bqdsbool[j]=true
-				  //      if udg_zhangmen[j]==true then
-						//else
-						//	call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓兵器大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-						//endif
-						//call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得兵器大师")
-						//call SetPlayerName(p, "〓兵器大师〓"+GetPlayerName(p))
-			   //     endif
 		    	    if LoadInteger(YDHT, GetHandleId(it), 0) > 0 then
 			    	    if Ce[1 + GetPlayerId(GetOwningPlayer(u))] != 3 then
 			        	    call SaveInteger(YDHT, GetHandleId(it), 0, LoadInteger(YDHT, GetHandleId(it), 0) - 1)
 		        	    endif
 		    	    endif
-		    	    //if LoadInteger(YDHT,GetHandleId(it),0)<=0 then
-			        //	call FlushChildHashtable(YDHT,GetHandleId(it))
-			        //	call RemoveItem(it)
-			        //	call DisplayTextToPlayer(GetOwningPlayer(u),0,0,"|cFFFF0000你的武器已损坏，请及时更换武器")
-		    	    //endif
 	    	    endif
 	    	endif
 	    	set i=i + 1
 	    endloop
-	    //call BJDebugMsg(GetItemName(it))
         set u=null
         set it=null
         set p=null
@@ -3032,7 +2998,7 @@ endfunction
 
 //library WuQiQiHeSystem ends
 //library YDTriggerSaveLoadSystem:
-    function YDTriggerSaveLoadSystem___Init takes nothing returns nothing
+    function YDTriggerSaveLoadSystem__Init takes nothing returns nothing
             set YDHT=InitHashtable()
         set YDLOC=InitHashtable()
     endfunction
@@ -3637,11 +3603,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
-        if YDWEBase__AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
+        if YDWEBase___AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
+			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -3651,9 +3617,9 @@ endfunction
 //YDWE技能捕捉事件 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
-	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
-	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
+	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
+	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
+	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //系统函数完善
@@ -3690,7 +3656,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -3737,22 +3703,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
     //=================显示版本=====================
     call YDWEVersion_Init()
 endfunction
@@ -3760,18 +3726,18 @@ endfunction
 //library YDWEBase ends
 //library YDWEBitwise:
     
-    function YDWEBitwise___Bit takes integer x returns boolean
+    function YDWEBitwise__Bit takes integer x returns boolean
         return ( x - x / 2 * 2 ) != 0
     endfunction 
     
- function YDWEBitwise___NOT_P takes integer x returns integer
+ function YDWEBitwise__NOT_P takes integer x returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if not YDWEBitwise___Bit(x) then
-				set l__z=l__z + YDWEBitwise___C2[i]
+			if not YDWEBitwise__Bit(x) then
+				set l__z=l__z + YDWEBitwise__C2[i]
 			endif
 			set x=x / 2
 			set i=i + 1
@@ -3781,20 +3747,20 @@ endfunction
 	endfunction
  function YDWEBitwise_NOT takes integer x returns integer
 		if x >= 0 then
-            return YDWEBitwise___NOT_P(x) + YDWEBitwise___C2[31]
+            return YDWEBitwise__NOT_P(x) + YDWEBitwise__C2[31]
         else
             return - x - 1
         endif
 	endfunction
     
-    function YDWEBitwise___AND_P takes integer x,integer y returns integer
+    function YDWEBitwise__AND_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise___Bit(x) and YDWEBitwise___Bit(y) then
-				set l__z=l__z + YDWEBitwise___C2[i]
+			if YDWEBitwise__Bit(x) and YDWEBitwise__Bit(y) then
+				set l__z=l__z + YDWEBitwise__C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3806,27 +3772,27 @@ endfunction
     function YDWEBitwise_AND takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise___AND_P(x , y)
+                return YDWEBitwise__AND_P(x , y)
             else
-                return YDWEBitwise___AND_P(x , YDWEBitwise___NOT_P(- y - 1))
+                return YDWEBitwise__AND_P(x , YDWEBitwise__NOT_P(- y - 1))
             endif
         else
             if y >= 0 then
-                return YDWEBitwise___AND_P(YDWEBitwise___NOT_P(- x - 1) , y)
+                return YDWEBitwise__AND_P(YDWEBitwise__NOT_P(- x - 1) , y)
             else
-                return YDWEBitwise___AND_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
+                return YDWEBitwise__AND_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
             endif
         endif
     endfunction
     
-    function YDWEBitwise___OR_P takes integer x,integer y returns integer
+    function YDWEBitwise__OR_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise___Bit(x) or YDWEBitwise___Bit(y) then
-				set l__z=l__z + YDWEBitwise___C2[i]
+			if YDWEBitwise__Bit(x) or YDWEBitwise__Bit(y) then
+				set l__z=l__z + YDWEBitwise__C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3838,26 +3804,26 @@ endfunction
     function YDWEBitwise_OR takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise___OR_P(x , y)
+                return YDWEBitwise__OR_P(x , y)
             else
-                return YDWEBitwise___OR_P(x , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
+                return YDWEBitwise__OR_P(x , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
             endif
         else
             if y >= 0 then
-                return YDWEBitwise___OR_P(YDWEBitwise___NOT_P(- x - 1) , y) + YDWEBitwise___C2[31]
+                return YDWEBitwise__OR_P(YDWEBitwise__NOT_P(- x - 1) , y) + YDWEBitwise__C2[31]
             else
-                return YDWEBitwise___OR_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
+                return YDWEBitwise__OR_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
             endif
         endif
     endfunction
-    function YDWEBitwise___XOR_P takes integer x,integer y returns integer
+    function YDWEBitwise__XOR_P takes integer x,integer y returns integer
   local integer l__z= 0
   local integer i= 0
 	
 		loop
 			exitwhen ( i == 31 )
-			if YDWEBitwise___Bit(x) != YDWEBitwise___Bit(y) then
-				set l__z=l__z + YDWEBitwise___C2[i]
+			if YDWEBitwise__Bit(x) != YDWEBitwise__Bit(y) then
+				set l__z=l__z + YDWEBitwise__C2[i]
 			endif
 			set x=x / 2
 			set y=y / 2
@@ -3869,71 +3835,71 @@ endfunction
     function YDWEBitwise_XOR takes integer x,integer y returns integer
 		if x >= 0 then
             if y >= 0 then
-                return YDWEBitwise___XOR_P(x , y)
+                return YDWEBitwise__XOR_P(x , y)
             else
-                return YDWEBitwise___XOR_P(x , YDWEBitwise___NOT_P(- y - 1)) + YDWEBitwise___C2[31]
+                return YDWEBitwise__XOR_P(x , YDWEBitwise__NOT_P(- y - 1)) + YDWEBitwise__C2[31]
             endif
         else
             if y >= 0 then
-                return YDWEBitwise___XOR_P(YDWEBitwise___NOT_P(- x - 1) , y) + YDWEBitwise___C2[31]
+                return YDWEBitwise__XOR_P(YDWEBitwise__NOT_P(- x - 1) , y) + YDWEBitwise__C2[31]
             else
-                return YDWEBitwise___XOR_P(YDWEBitwise___NOT_P(- x - 1) , YDWEBitwise___NOT_P(- y - 1))
+                return YDWEBitwise__XOR_P(YDWEBitwise__NOT_P(- x - 1) , YDWEBitwise__NOT_P(- y - 1))
             endif
         endif
     endfunction
     
-    function YDWEBitwise___LShift_P takes integer x,integer n returns integer
-        return x * YDWEBitwise___C2[n]
+    function YDWEBitwise__LShift_P takes integer x,integer n returns integer
+        return x * YDWEBitwise__C2[n]
     endfunction
     function YDWEBitwise_LShift takes integer x,integer n returns integer
-        return x * YDWEBitwise___C2[n]
+        return x * YDWEBitwise__C2[n]
     endfunction
     
-    function YDWEBitwise___RShift_P takes integer x,integer n returns integer
-        return x / YDWEBitwise___C2[n]
+    function YDWEBitwise__RShift_P takes integer x,integer n returns integer
+        return x / YDWEBitwise__C2[n]
     endfunction
     function YDWEBitwise_RShift takes integer x,integer n returns integer
 		if x >= 0 then
-            return ((x ) / YDWEBitwise___C2[( n)]) // INLINED!!
+            return ((x ) / YDWEBitwise__C2[( n)]) // INLINED!!
         else
-            return ((YDWEBitwise___NOT_P(- x - 1) ) / YDWEBitwise___C2[( n)]) + YDWEBitwise___C2[31 - n] // INLINED!!
+            return ((YDWEBitwise__NOT_P(- x - 1) ) / YDWEBitwise__C2[( n)]) + YDWEBitwise__C2[31 - n] // INLINED!!
         endif
     endfunction
     
-    function YDWEBitwise___ToHexChar takes integer x returns string
-        return SubString(YDWEBitwise___hexstr, x, x + 1)
+    function YDWEBitwise__ToHexChar takes integer x returns string
+        return SubString(YDWEBitwise__hexstr, x, x + 1)
     endfunction 
-    function YDWEBitwise___ToHexChar7 takes integer x returns string
+    function YDWEBitwise__ToHexChar7 takes integer x returns string
         local string s= ""
-        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        set s=YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
+        set s=YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
         set x=x / $10
-        return YDWEBitwise___ToHexChar(x - x / $10 * $10) + s
+        return YDWEBitwise__ToHexChar(x - x / $10 * $10) + s
     endfunction
     function YDWEBitwise_ToHexString takes integer x returns string
 		if x >= 0 then
-            return YDWEBitwise___ToHexChar(x / $10000000) + YDWEBitwise___ToHexChar7(x)
+            return YDWEBitwise__ToHexChar(x / $10000000) + YDWEBitwise__ToHexChar7(x)
         else
-            set x=YDWEBitwise___NOT_P(- x - 1)
-            return YDWEBitwise___ToHexChar($8 + x / $10000000) + YDWEBitwise___ToHexChar7(x)
+            set x=YDWEBitwise__NOT_P(- x - 1)
+            return YDWEBitwise__ToHexChar($8 + x / $10000000) + YDWEBitwise__ToHexChar7(x)
         endif
     endfunction
 
- function YDWEBitwise___onInit takes nothing returns nothing
+ function YDWEBitwise__onInit takes nothing returns nothing
   local integer i= 1
-		set YDWEBitwise___C2[0]=1
+		set YDWEBitwise__C2[0]=1
 		loop
 			exitwhen ( i == 32 )
-			set YDWEBitwise___C2[i]=YDWEBitwise___C2[i - 1] * 2
+			set YDWEBitwise__C2[i]=YDWEBitwise__C2[i - 1] * 2
 			set i=i + 1
 		endloop
 
@@ -3943,7 +3909,7 @@ endfunction
 //library YDWEGeneralBounsSystem:
 
 //以下函数仅仅是让技能ID出现在代码里，不然SLK优化器会删除这些技能
-function YDWEGeneralBounsSystem__DisplayAllAbilityId takes nothing returns nothing
+function YDWEGeneralBounsSystem___DisplayAllAbilityId takes nothing returns nothing
     local integer aid=0
     set aid='YDl0'
     set aid='YDl1'
@@ -4015,22 +3981,22 @@ function YDWEGeneralBounsSystem__DisplayAllAbilityId takes nothing returns nothi
     set aid='YDbm'
     set aid='YDbn'
 endfunction
-    function YDWEGeneralBounsSystem__UnitClearBonus takes unit u,integer bonusType returns nothing
-        local integer i=YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1
+    function YDWEGeneralBounsSystem___UnitClearBonus takes unit u,integer bonusType returns nothing
+        local integer i=YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1
         loop
-            exitwhen i < YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType]
-            call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
+            exitwhen i < YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType]
+            call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
             set i=i - 1
         endloop
         call SaveInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType) )), ( 0)) // INLINED!!
     endfunction
-    function YDWEGeneralBounsSystem__SetUnitMaxState takes unit u,integer bonusType,real value returns boolean
+    function YDWEGeneralBounsSystem___SetUnitMaxState takes unit u,integer bonusType,real value returns boolean
         local integer v=R2I(value)
         local integer s=0
         local integer o=0
         local unitstate state
-        local integer i=YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 2
-        local integer a=YDWEGeneralBounsSystem__ABILITY_NUM[bonusType]
+        local integer i=YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 2
+        local integer a=YDWEGeneralBounsSystem___ABILITY_NUM[bonusType]
         if value > 65535 or value <= 0 then
             return false
         endif
@@ -4052,60 +4018,60 @@ endfunction
             return false
         endif
         loop
-            exitwhen i < YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType]
-            if v >= YDWEGeneralBounsSystem__PowersOf2[i] then
-                call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
-                call SetUnitAbilityLevel(u, YDWEGeneralBounsSystem__BonusAbilitys[i], o)
-                call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
-                set v=v - YDWEGeneralBounsSystem__PowersOf2[i]
+            exitwhen i < YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType]
+            if v >= YDWEGeneralBounsSystem___PowersOf2[i] then
+                call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
+                call SetUnitAbilityLevel(u, YDWEGeneralBounsSystem___BonusAbilitys[i], o)
+                call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
+                set v=v - YDWEGeneralBounsSystem___PowersOf2[i]
             endif
             set i=i - 1
         endloop
         return true
     endfunction
-function YDWEGeneralBounsSystem__UnitSetBonus takes unit u,integer bonusType,integer ammount returns boolean
+function YDWEGeneralBounsSystem___UnitSetBonus takes unit u,integer bonusType,integer ammount returns boolean
     local integer i
     //设置属性为0不进行Loop
     if ammount == 0 then
-        call YDWEGeneralBounsSystem__UnitClearBonus(u , bonusType)
+        call YDWEGeneralBounsSystem___UnitClearBonus(u , bonusType)
         return false
     endif
-    if ammount < YDWEGeneralBounsSystem__MinBonus[bonusType] or ammount > YDWEGeneralBounsSystem__MaxBonus[bonusType] then
+    if ammount < YDWEGeneralBounsSystem___MinBonus[bonusType] or ammount > YDWEGeneralBounsSystem___MaxBonus[bonusType] then
         return false
-    elseif bonusType < 0 or bonusType >= YDWEGeneralBounsSystem__BONUS_TYPES then
+    elseif bonusType < 0 or bonusType >= YDWEGeneralBounsSystem___BONUS_TYPES then
         return false
     endif
     call SaveInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType) )), ( ammount)) // INLINED!!
     if ammount < 0 then
-        set ammount=YDWEGeneralBounsSystem__MaxBonus[bonusType] + ammount + 1
-        call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1])
-        call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem__BonusAbilitys[YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1])
+        set ammount=YDWEGeneralBounsSystem___MaxBonus[bonusType] + ammount + 1
+        call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1])
+        call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem___BonusAbilitys[YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1])
       else
-        call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1])
+        call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1])
     endif
-    set i=YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 2
+    set i=YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 2
     loop
-        exitwhen i < YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType]
-        if ammount >= YDWEGeneralBounsSystem__PowersOf2[i] then
-            call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
-            call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem__BonusAbilitys[i])
-            set ammount=ammount - YDWEGeneralBounsSystem__PowersOf2[i]
+        exitwhen i < YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType]
+        if ammount >= YDWEGeneralBounsSystem___PowersOf2[i] then
+            call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
+            call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem___BonusAbilitys[i])
+            set ammount=ammount - YDWEGeneralBounsSystem___PowersOf2[i]
         else
-            call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
+            call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
         endif
         set i=i - 1
     endloop
     if not (LoadBoolean(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusMark")))) then // INLINED!!
         call SaveBoolean(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusMark" )), ( true)) // INLINED!!
-        set YDWEGeneralBounsSystem__UnitCount=YDWEGeneralBounsSystem__UnitCount + 1
-        set YDWEGeneralBounsSystem__Units[YDWEGeneralBounsSystem__UnitCount]=u
+        set YDWEGeneralBounsSystem___UnitCount=YDWEGeneralBounsSystem___UnitCount + 1
+        set YDWEGeneralBounsSystem___Units[YDWEGeneralBounsSystem___UnitCount]=u
     endif
     return true
 endfunction
-function YDWEGeneralBounsSystem__UnitGetBonus takes unit u,integer bonusType returns integer
+function YDWEGeneralBounsSystem___UnitGetBonus takes unit u,integer bonusType returns integer
     return (LoadInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType))))) // INLINED!!
 endfunction
-function YDWEGeneralBounsSystem__AddUnitMaxState takes unit u,integer bonusType,real value returns boolean
+function YDWEGeneralBounsSystem___AddUnitMaxState takes unit u,integer bonusType,real value returns boolean
     local unitstate state
     if bonusType == 0 then
         set state=UNIT_STATE_MAX_LIFE
@@ -4114,42 +4080,42 @@ function YDWEGeneralBounsSystem__AddUnitMaxState takes unit u,integer bonusType,
       else
         return false
     endif
-    return YDWEGeneralBounsSystem__SetUnitMaxState(u , bonusType , value + GetUnitState(u, state))
+    return YDWEGeneralBounsSystem___SetUnitMaxState(u , bonusType , value + GetUnitState(u, state))
 endfunction
-function YDWEGeneralBounsSystem__UnitAddBonus takes unit u,integer bonusType,integer ammount returns boolean
-    return YDWEGeneralBounsSystem__UnitSetBonus(u , bonusType , (LoadInteger(YDHT, StringHash((I2S((GetHandleId(((u ))))) )), StringHash(( "bonusType" + I2S(( bonusType)))))) + ammount) // INLINED!!
+function YDWEGeneralBounsSystem___UnitAddBonus takes unit u,integer bonusType,integer ammount returns boolean
+    return YDWEGeneralBounsSystem___UnitSetBonus(u , bonusType , (LoadInteger(YDHT, StringHash((I2S((GetHandleId(((u ))))) )), StringHash(( "bonusType" + I2S(( bonusType)))))) + ammount) // INLINED!!
 endfunction
-function YDWEGeneralBounsSystem__FlushUnits takes nothing returns nothing
-    local integer i= YDWEGeneralBounsSystem__UnitCount
+function YDWEGeneralBounsSystem___FlushUnits takes nothing returns nothing
+    local integer i= YDWEGeneralBounsSystem___UnitCount
     local string h
     loop
         exitwhen i < 1
-        if GetUnitTypeId(YDWEGeneralBounsSystem__Units[i]) == 0 then
-            set h=I2S((GetHandleId((YDWEGeneralBounsSystem__Units[i])))) // INLINED!!
+        if GetUnitTypeId(YDWEGeneralBounsSystem___Units[i]) == 0 then
+            set h=I2S((GetHandleId((YDWEGeneralBounsSystem___Units[i])))) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType0" )), ( 0)) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType1" )), ( 0)) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType2" )), ( 0)) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType3" )), ( 0)) // INLINED!!
             call SaveBoolean(YDHT, StringHash((h )), StringHash(( "bonusMark" )), ( false)) // INLINED!!
-            set YDWEGeneralBounsSystem__Units[i]=YDWEGeneralBounsSystem__Units[YDWEGeneralBounsSystem__UnitCount]
-            set YDWEGeneralBounsSystem__Units[YDWEGeneralBounsSystem__UnitCount]=null
-            set YDWEGeneralBounsSystem__UnitCount=YDWEGeneralBounsSystem__UnitCount - 1
+            set YDWEGeneralBounsSystem___Units[i]=YDWEGeneralBounsSystem___Units[YDWEGeneralBounsSystem___UnitCount]
+            set YDWEGeneralBounsSystem___Units[YDWEGeneralBounsSystem___UnitCount]=null
+            set YDWEGeneralBounsSystem___UnitCount=YDWEGeneralBounsSystem___UnitCount - 1
         endif
         set i=i - 1
     endloop
 endfunction
 function YDWEUnitSetBonus takes unit u,integer bonusType,integer ammount returns nothing
     if bonusType == 0 or bonusType == 1 then
-        call YDWEGeneralBounsSystem__SetUnitMaxState(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem___SetUnitMaxState(u , bonusType , ammount)
       else
-        call YDWEGeneralBounsSystem__UnitSetBonus(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem___UnitSetBonus(u , bonusType , ammount)
     endif
 endfunction
 function YDWEUnitAddBonus takes unit u,integer bonusType,integer ammount returns nothing
     if bonusType == 0 or bonusType == 1 then
-        call YDWEGeneralBounsSystem__AddUnitMaxState(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem___AddUnitMaxState(u , bonusType , ammount)
       else
-        call YDWEGeneralBounsSystem__UnitAddBonus(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem___UnitAddBonus(u , bonusType , ammount)
     endif
 endfunction
 function YDWEGeneralBounsSystemUnitSetBonus takes unit u,integer bonusType,integer mod,integer ammount returns nothing
@@ -4165,100 +4131,100 @@ function YDWEGeneralBounsSystemUnitGetBonus takes unit u,integer bonusType retur
     return (LoadInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType))))) // INLINED!!
 endfunction
 //private keyword BonusAbilitys
-function YDWEGeneralBounsSystem__InitializeAbilitys takes nothing returns nothing
+function YDWEGeneralBounsSystem___InitializeAbilitys takes nothing returns nothing
     local integer i=0
     local integer m=0
-    set YDWEGeneralBounsSystem__ABILITY_COUNT[0]=0 //life max
-set YDWEGeneralBounsSystem__ABILITY_COUNT[1]=15 //mana max
-set YDWEGeneralBounsSystem__ABILITY_COUNT[2]=30 //armor
-set YDWEGeneralBounsSystem__ABILITY_COUNT[3]=43 //attack
-set YDWEGeneralBounsSystem__ABILITY_COUNT[4]=67
-    set YDWEGeneralBounsSystem__ABILITY_NUM[0]=15
-    set YDWEGeneralBounsSystem__ABILITY_NUM[1]=15
-    set YDWEGeneralBounsSystem__ABILITY_NUM[2]=13
-    set YDWEGeneralBounsSystem__ABILITY_NUM[3]=24
+    set YDWEGeneralBounsSystem___ABILITY_COUNT[0]=0 //life max
+set YDWEGeneralBounsSystem___ABILITY_COUNT[1]=15 //mana max
+set YDWEGeneralBounsSystem___ABILITY_COUNT[2]=30 //armor
+set YDWEGeneralBounsSystem___ABILITY_COUNT[3]=43 //attack
+set YDWEGeneralBounsSystem___ABILITY_COUNT[4]=67
+    set YDWEGeneralBounsSystem___ABILITY_NUM[0]=15
+    set YDWEGeneralBounsSystem___ABILITY_NUM[1]=15
+    set YDWEGeneralBounsSystem___ABILITY_NUM[2]=13
+    set YDWEGeneralBounsSystem___ABILITY_NUM[3]=24
     // Bonus Mod - armor abilitys
     loop
         exitwhen i > 9
-        set YDWEGeneralBounsSystem__YDWEBONUS_MyChar[i]='0' + m
+        set YDWEGeneralBounsSystem___YDWEBONUS_MyChar[i]='0' + m
         set m=m + 1
         set i=i + 1
     endloop
     set m=0
     loop
         exitwhen i > 26
-        set YDWEGeneralBounsSystem__YDWEBONUS_MyChar[i]='a' + m
+        set YDWEGeneralBounsSystem___YDWEBONUS_MyChar[i]='a' + m
         set m=m + 1
         set i=i + 1
     endloop
     set i=0
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[0] - 1 )
-        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDl0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[0] - 1 )
+        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDl0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
     // Bonus Mod - Damage abilitys
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[1] - 1 )
-        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDm0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[1] - 1 )
+        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDm0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
     // Bonus Mod - Life MaxState abilitys
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[2] - 1 )
-        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDc0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[2] - 1 )
+        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDc0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
     // Bonus Mod - Mana MaxState abilitys
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[3] - 1 )
-        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDb0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[3] - 1 )
+        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDb0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
 endfunction
-function YDWEGeneralBounsSystem__Initialize takes nothing returns nothing
+function YDWEGeneralBounsSystem___Initialize takes nothing returns nothing
     local integer i= 1
     local unit u
     local integer n=0
     local integer add=0
-    call YDWEGeneralBounsSystem__InitializeAbilitys()
+    call YDWEGeneralBounsSystem___InitializeAbilitys()
     loop
         set i=1
-        set YDWEGeneralBounsSystem__PowersOf2[add]=1
+        set YDWEGeneralBounsSystem___PowersOf2[add]=1
             loop
-                set YDWEGeneralBounsSystem__PowersOf2[add + 1]=YDWEGeneralBounsSystem__PowersOf2[add] * 2
+                set YDWEGeneralBounsSystem___PowersOf2[add + 1]=YDWEGeneralBounsSystem___PowersOf2[add] * 2
                 set add=add + 1
                 set i=i + 1
-                exitwhen i == YDWEGeneralBounsSystem__ABILITY_NUM[n]
+                exitwhen i == YDWEGeneralBounsSystem___ABILITY_NUM[n]
             endloop
-        set YDWEGeneralBounsSystem__MaxBonus[n]=YDWEGeneralBounsSystem__PowersOf2[add] - 1
-        set YDWEGeneralBounsSystem__MinBonus[n]=- YDWEGeneralBounsSystem__PowersOf2[add]
+        set YDWEGeneralBounsSystem___MaxBonus[n]=YDWEGeneralBounsSystem___PowersOf2[add] - 1
+        set YDWEGeneralBounsSystem___MinBonus[n]=- YDWEGeneralBounsSystem___PowersOf2[add]
         set add=add + 1
         set n=n + 1
         exitwhen n >= 4
     endloop
     //预读技能
-    if YDWEGeneralBounsSystem__PRELOAD_ABILITYS then
-        set u=CreateUnit(Player(15), YDWEGeneralBounsSystem__PRELOAD_DUMMY_UNIT, 0, 0, 0)
+    if YDWEGeneralBounsSystem___PRELOAD_ABILITYS then
+        set u=CreateUnit(Player(15), YDWEGeneralBounsSystem___PRELOAD_DUMMY_UNIT, 0, 0, 0)
         set i=0
         loop
-            exitwhen i == YDWEGeneralBounsSystem__ABILITY_COUNT[5]
-            call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
+            exitwhen i == YDWEGeneralBounsSystem___ABILITY_COUNT[5]
+            call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
             set i=i + 1
         endloop
         call RemoveUnit(u)
         set u=null
     endif
     //回收数据
-    call TimerStart(CreateTimer(), 10, true, function YDWEGeneralBounsSystem__FlushUnits)
+    call TimerStart(CreateTimer(), 10, true, function YDWEGeneralBounsSystem___FlushUnits)
 endfunction
 function YDWELifeChange takes unit u,integer mod,integer ch,integer id returns nothing
     local integer a
@@ -4567,9 +4533,9 @@ function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
     
     loop
-        exitwhen i >= YDWETriggerEvent__DamageEventNumber
-        if YDWETriggerEvent__DamageEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent__DamageEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent__DamageEventQueue[i]) then
-            call TriggerExecute(YDWETriggerEvent__DamageEventQueue[i])
+        exitwhen i >= YDWETriggerEvent___DamageEventNumber
+        if YDWETriggerEvent___DamageEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent___DamageEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent___DamageEventQueue[i]) then
+            call TriggerExecute(YDWETriggerEvent___DamageEventQueue[i])
         endif
         set i=i + 1
     endloop
@@ -4598,14 +4564,14 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
         return
     endif
         
-    if YDWETriggerEvent__DamageEventNumber == 0 then
+    if YDWETriggerEvent___DamageEventNumber == 0 then
         set yd_DamageEventTrigger=CreateTrigger()
         call TriggerAddAction(yd_DamageEventTrigger, function YDWEAnyUnitDamagedTriggerAction)
         call YDWEAnyUnitDamagedEnumUnit()
     endif
     
-    set YDWETriggerEvent__DamageEventQueue[YDWETriggerEvent__DamageEventNumber]=trg
-    set YDWETriggerEvent__DamageEventNumber=YDWETriggerEvent__DamageEventNumber + 1
+    set YDWETriggerEvent___DamageEventQueue[YDWETriggerEvent___DamageEventNumber]=trg
+    set YDWETriggerEvent___DamageEventNumber=YDWETriggerEvent___DamageEventNumber + 1
 endfunction
 //===========================================================================  
 //�ƶ���Ʒ�¼� 
@@ -4616,9 +4582,9 @@ function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     if GetIssuedOrderId() >= 852002 and GetIssuedOrderId() <= 852007 then
 		set bj_lastMovedItemInItemSlot=GetOrderTargetItem()
     	loop
-        	exitwhen i >= YDWETriggerEvent__MoveItemEventNumber
-        	if YDWETriggerEvent__MoveItemEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent__MoveItemEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent__MoveItemEventQueue[i]) then
-        	    call TriggerExecute(YDWETriggerEvent__MoveItemEventQueue[i])
+        	exitwhen i >= YDWETriggerEvent___MoveItemEventNumber
+        	if YDWETriggerEvent___MoveItemEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent___MoveItemEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent___MoveItemEventQueue[i]) then
+        	    call TriggerExecute(YDWETriggerEvent___MoveItemEventQueue[i])
         	endif
         	set i=i + 1
     	endloop
@@ -4629,14 +4595,14 @@ function YDWESyStemItemUnmovableRegistTrigger takes trigger trg returns nothing
         return
     endif
         
-    if YDWETriggerEvent__MoveItemEventNumber == 0 then
-        set YDWETriggerEvent__MoveItemEventTrigger=CreateTrigger()
-        call TriggerAddAction(YDWETriggerEvent__MoveItemEventTrigger, function YDWESyStemItemUnmovableTriggerAction)
-        call TriggerRegisterAnyUnitEventBJ(YDWETriggerEvent__MoveItemEventTrigger, EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER)
+    if YDWETriggerEvent___MoveItemEventNumber == 0 then
+        set YDWETriggerEvent___MoveItemEventTrigger=CreateTrigger()
+        call TriggerAddAction(YDWETriggerEvent___MoveItemEventTrigger, function YDWESyStemItemUnmovableTriggerAction)
+        call TriggerRegisterAnyUnitEventBJ(YDWETriggerEvent___MoveItemEventTrigger, EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER)
     endif
     
-    set YDWETriggerEvent__MoveItemEventQueue[YDWETriggerEvent__MoveItemEventNumber]=trg
-    set YDWETriggerEvent__MoveItemEventNumber=YDWETriggerEvent__MoveItemEventNumber + 1
+    set YDWETriggerEvent___MoveItemEventQueue[YDWETriggerEvent___MoveItemEventNumber]=trg
+    set YDWETriggerEvent___MoveItemEventNumber=YDWETriggerEvent___MoveItemEventNumber + 1
 endfunction
 function GetLastMovedItemInItemSlot takes nothing returns item
     return bj_lastMovedItemInItemSlot
@@ -5941,7 +5907,7 @@ endfunction
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //                                       Timer Pattern Union                                              //
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    function YDWETimerPattern__SingleMagic takes unit sour,unit targ,real x,real y,real h,integer uid,integer aid,integer lv,integer order returns nothing
+    function YDWETimerPattern___SingleMagic takes unit sour,unit targ,real x,real y,real h,integer uid,integer aid,integer lv,integer order returns nothing
         local unit dummy= CreateUnit(GetOwningPlayer(sour), uid, x, y, GetUnitFacing(sour))
         call UnitApplyTimedLife(dummy, 'BHwe', 1.0)
         call UnitAddAbility(dummy, aid)
@@ -5951,34 +5917,34 @@ endfunction
         //debug call BJDebugMsg("Target order")
         set dummy=null
     endfunction
-    function YDWETimerPattern__GetUnitZ takes unit u returns real
-        call MoveLocation(YDWETimerPattern__yd_loc, GetUnitX(u), GetUnitY(u))
-        return GetUnitFlyHeight(u) + GetLocationZ(YDWETimerPattern__yd_loc)
+    function YDWETimerPattern___GetUnitZ takes unit u returns real
+        call MoveLocation(YDWETimerPattern___yd_loc, GetUnitX(u), GetUnitY(u))
+        return GetUnitFlyHeight(u) + GetLocationZ(YDWETimerPattern___yd_loc)
     endfunction
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //                                            Filter Funcs                                                //
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    function YDWETimerPattern__EnemyFilter takes unit u,unit caster returns boolean
+    function YDWETimerPattern___EnemyFilter takes unit u,unit caster returns boolean
         return IsUnitType(u, UNIT_TYPE_MAGIC_IMMUNE) == false and IsUnitType(u, UNIT_TYPE_RESISTANT) == false and IsUnitType(u, UNIT_TYPE_SLEEPING) == false and GetUnitState(u, UNIT_STATE_LIFE) > 0.405 and IsUnitType(u, UNIT_TYPE_STRUCTURE) == false and IsUnitIllusion(u) == false and IsUnitHidden(u) == false and IsUnitEnemy(u, GetOwningPlayer(caster)) and IsUnitVisible(u, GetOwningPlayer(caster))
     endfunction
-    function YDWETimerPattern__TreeFilter takes nothing returns boolean
+    function YDWETimerPattern___TreeFilter takes nothing returns boolean
         local integer id= GetDestructableTypeId(GetFilterDestructable())
         return id == 'LTlt' or id == 'ATtr' or id == 'BTtw' or id == 'KTtw' or id == 'YTft' or id == 'JTct' or id == 'YTst' or id == 'YTct' or id == 'YTwt' or id == 'JTtw' or id == 'DTsh' or id == 'FTtw' or id == 'CTtr' or id == 'ITtw' or id == 'NTtw' or id == 'OTtw' or id == 'ZTtw' or id == 'WTst' or id == 'GTsh' or id == 'VTlt' or id == 'WTtw' or id == 'ATtc' or id == 'BTtc' or id == 'CTtc' or id == 'ITtc' or id == 'NTtc' or id == 'ZTtc'
     endfunction
-    function YDWETimerPattern__DamageFilter takes nothing returns boolean
+    function YDWETimerPattern___DamageFilter takes nothing returns boolean
         local unit u= GetFilterUnit()
-        local integer d= YDWETimerPattern__tmp_data
-        if not ( IsUnitInGroup(u, s__YDWETimerPattern__Thread_g[d]) ) and s__YDWETimerPattern__Thread_switch[d] != 0 and YDWETimerPattern__EnemyFilter(u , s__YDWETimerPattern__Thread_caster[d]) then
-            call UnitDamageTarget(s__YDWETimerPattern__Thread_caster[d], u, s__YDWETimerPattern__Thread_amount[d], true, true, bj_lastSetAttackType, bj_lastSetDamageType, bj_lastSetWeaponType)
-            call DestroyEffect(AddSpecialEffectTarget(s__YDWETimerPattern__Thread_dsfx[d], u, s__YDWETimerPattern__Thread_part[d]))
-            if s__YDWETimerPattern__Thread_skills[d] > '0000' and s__YDWETimerPattern__Thread_skills[d] != null and s__YDWETimerPattern__Thread_order[d] > 0 and s__YDWETimerPattern__Thread_order[d] != null then
-                call YDWETimerPattern__SingleMagic(s__YDWETimerPattern__Thread_caster[d] , u , s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[d]] , s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[d]] , GetUnitFlyHeight(s__YDWETimerPattern__Thread_obj[d]) , s__YDWETimerPattern__Thread_unitid[d] , s__YDWETimerPattern__Thread_skills[d] , s__YDWETimerPattern__Thread_level[d] , s__YDWETimerPattern__Thread_order[d])
+        local integer d= YDWETimerPattern___tmp_data
+        if not ( IsUnitInGroup(u, s__YDWETimerPattern___Thread_g[d]) ) and s__YDWETimerPattern___Thread_switch[d] != 0 and YDWETimerPattern___EnemyFilter(u , s__YDWETimerPattern___Thread_caster[d]) then
+            call UnitDamageTarget(s__YDWETimerPattern___Thread_caster[d], u, s__YDWETimerPattern___Thread_amount[d], true, true, bj_lastSetAttackType, bj_lastSetDamageType, bj_lastSetWeaponType)
+            call DestroyEffect(AddSpecialEffectTarget(s__YDWETimerPattern___Thread_dsfx[d], u, s__YDWETimerPattern___Thread_part[d]))
+            if s__YDWETimerPattern___Thread_skills[d] > '0000' and s__YDWETimerPattern___Thread_skills[d] != null and s__YDWETimerPattern___Thread_order[d] > 0 and s__YDWETimerPattern___Thread_order[d] != null then
+                call YDWETimerPattern___SingleMagic(s__YDWETimerPattern___Thread_caster[d] , u , s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[d]] , s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[d]] , GetUnitFlyHeight(s__YDWETimerPattern___Thread_obj[d]) , s__YDWETimerPattern___Thread_unitid[d] , s__YDWETimerPattern___Thread_skills[d] , s__YDWETimerPattern___Thread_level[d] , s__YDWETimerPattern___Thread_order[d])
             endif
-            if not ( s__YDWETimerPattern__Thread_recycle[d] ) then
+            if not ( s__YDWETimerPattern___Thread_recycle[d] ) then
                 //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |r A one-time.")
-                set s__YDWETimerPattern__Thread_switch[d]=0
+                set s__YDWETimerPattern___Thread_switch[d]=0
             endif
-            set s__YDWETimerPattern__Thread_target[d]=u
+            set s__YDWETimerPattern___Thread_target[d]=u
             //call GroupAddUnit(d.g, u)
             set u=null
             return true
@@ -5986,7 +5952,7 @@ endfunction
         set u=null
         return false
     endfunction
-    function YDWETimerPattern__TreeKill takes nothing returns nothing
+    function YDWETimerPattern___TreeKill takes nothing returns nothing
         local destructable d= GetEnumDestructable()
         if GetWidgetLife(d) > 0.405 then
             call KillDestructable(d)
@@ -5996,266 +5962,266 @@ endfunction
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //                                         Major Structure Code                                           //
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-        function s__YDWETimerPattern__Thread__staticgetindex takes handle h returns integer
+        function s__YDWETimerPattern___Thread__staticgetindex takes handle h returns integer
             return (LoadInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId((h)))))))) // INLINED!!
         endfunction
-        function s__YDWETimerPattern__Thread__staticsetindex takes handle h,integer value returns nothing
+        function s__YDWETimerPattern___Thread__staticsetindex takes handle h,integer value returns nothing
             call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId((h)))) )), ( value)) // INLINED!!
         endfunction
-        function s__YDWETimerPattern__Thread_flush takes handle h returns nothing
+        function s__YDWETimerPattern___Thread_flush takes handle h returns nothing
             call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId((h))))))) // INLINED!!
         endfunction
-        function s__YDWETimerPattern__Thread__set_x takes integer this,real value returns nothing
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]]=value
-            call SetUnitX(s__YDWETimerPattern__Thread_obj[this], value)
+        function s__YDWETimerPattern___Thread__set_x takes integer this,real value returns nothing
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]]=value
+            call SetUnitX(s__YDWETimerPattern___Thread_obj[this], value)
         endfunction
-        function s__YDWETimerPattern__Thread__set_y takes integer this,real value returns nothing
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]]=value
-            call SetUnitY(s__YDWETimerPattern__Thread_obj[this], value)
+        function s__YDWETimerPattern___Thread__set_y takes integer this,real value returns nothing
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]]=value
+            call SetUnitY(s__YDWETimerPattern___Thread_obj[this], value)
         endfunction
-        function s__YDWETimerPattern__Thread__set_z takes integer this,real value returns nothing
-            set s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_pos[this]]=value
-            call MoveLocation(YDWETimerPattern__yd_loc, s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]])
-            call SetUnitFlyHeight(s__YDWETimerPattern__Thread_obj[this], value - GetLocationZ(YDWETimerPattern__yd_loc), 0)
+        function s__YDWETimerPattern___Thread__set_z takes integer this,real value returns nothing
+            set s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_pos[this]]=value
+            call MoveLocation(YDWETimerPattern___yd_loc, s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]])
+            call SetUnitFlyHeight(s__YDWETimerPattern___Thread_obj[this], value - GetLocationZ(YDWETimerPattern___yd_loc), 0)
         endfunction
-        function s__YDWETimerPattern__Thread_onDestroy takes integer this returns nothing
+        function s__YDWETimerPattern___Thread_onDestroy takes integer this returns nothing
             //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |r Knockback stopped!")
-            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern__Thread_obj[this])))))))) // INLINED!!
-            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern__Thread_t[this])))))))) // INLINED!!
-            call GroupClear(s__YDWETimerPattern__Thread_g[this])
-            call DestroyGroup(s__YDWETimerPattern__Thread_g[this])
-            call PauseTimer(s__YDWETimerPattern__Thread_t[this])
-            call DestroyTimer(s__YDWETimerPattern__Thread_t[this])
-            call s__YDWETimerPattern__YDVector3_deallocate(s__YDWETimerPattern__Thread_des[this])
-            call s__YDWETimerPattern__YDVector3_deallocate(s__YDWETimerPattern__Thread_pos[this])
-            call s__YDWETimerPattern__YDVector3_deallocate(s__YDWETimerPattern__Thread_vel[this])
-            set s__YDWETimerPattern__Thread_caster[this]=null
-            set s__YDWETimerPattern__Thread_target[this]=null
-            set s__YDWETimerPattern__Thread_obj[this]=null
-            set s__YDWETimerPattern__Thread_g[this]=null
-            set s__YDWETimerPattern__Thread_t[this]=null
-            set s__YDWETimerPattern__Thread_amount[this]=0
-            set s__YDWETimerPattern__Thread_skills[this]=0
-            set s__YDWETimerPattern__Thread_order[this]=0
-            set s__YDWETimerPattern__Thread_dsfx[this]=""
-            set s__YDWETimerPattern__Thread_gsfx[this]=""
-            set s__YDWETimerPattern__Thread_wsfx[this]=""
-            set s__YDWETimerPattern__Thread_part[this]=""
+            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern___Thread_obj[this])))))))) // INLINED!!
+            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern___Thread_t[this])))))))) // INLINED!!
+            call GroupClear(s__YDWETimerPattern___Thread_g[this])
+            call DestroyGroup(s__YDWETimerPattern___Thread_g[this])
+            call PauseTimer(s__YDWETimerPattern___Thread_t[this])
+            call DestroyTimer(s__YDWETimerPattern___Thread_t[this])
+            call s__YDWETimerPattern___YDVector3_deallocate(s__YDWETimerPattern___Thread_des[this])
+            call s__YDWETimerPattern___YDVector3_deallocate(s__YDWETimerPattern___Thread_pos[this])
+            call s__YDWETimerPattern___YDVector3_deallocate(s__YDWETimerPattern___Thread_vel[this])
+            set s__YDWETimerPattern___Thread_caster[this]=null
+            set s__YDWETimerPattern___Thread_target[this]=null
+            set s__YDWETimerPattern___Thread_obj[this]=null
+            set s__YDWETimerPattern___Thread_g[this]=null
+            set s__YDWETimerPattern___Thread_t[this]=null
+            set s__YDWETimerPattern___Thread_amount[this]=0
+            set s__YDWETimerPattern___Thread_skills[this]=0
+            set s__YDWETimerPattern___Thread_order[this]=0
+            set s__YDWETimerPattern___Thread_dsfx[this]=""
+            set s__YDWETimerPattern___Thread_gsfx[this]=""
+            set s__YDWETimerPattern___Thread_wsfx[this]=""
+            set s__YDWETimerPattern___Thread_part[this]=""
         endfunction
-        function s__YDWETimerPattern__Parabola_move takes nothing returns nothing
+        function s__YDWETimerPattern___Parabola_move takes nothing returns nothing
             local integer this= (LoadInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((GetExpiredTimer()))))))))) // INLINED!!
             //local real vx = .des.x - .pos.x
             //local real vy = .des.y - .pos.y
             //local real vz = .des.z - .pos.z
             //if vx * vx + vy * vy + vz * vz > 900.0 then
-                call s__YDWETimerPattern__Thread__set_x(this,GetUnitX(s__YDWETimerPattern__Thread_obj[this]) + s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]]) //.pos.x + .vel.x
-call s__YDWETimerPattern__Thread__set_y(this,GetUnitY(s__YDWETimerPattern__Thread_obj[this]) + s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]]) //.pos.y + .vel.y
-call s__YDWETimerPattern__Thread__set_z(this,YDWETimerPattern__GetUnitZ(s__YDWETimerPattern__Thread_obj[this]) + s__YDWETimerPattern__Thread_ac[this] * s__YDWETimerPattern__Thread_step[this] * 2 + s__YDWETimerPattern__Thread_ac[this] * s__YDWETimerPattern__Thread_dist[this] + s__YDWETimerPattern__Thread_bc[this]) //.pos.z + .ac * .step * 2 + .ac * .dist + .bc
-set s__YDWETimerPattern__Thread_step[this]=s__YDWETimerPattern__Thread_step[this] + s__YDWETimerPattern__Thread_dist[this]
+                call s__YDWETimerPattern___Thread__set_x(this,GetUnitX(s__YDWETimerPattern___Thread_obj[this]) + s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]]) //.pos.x + .vel.x
+call s__YDWETimerPattern___Thread__set_y(this,GetUnitY(s__YDWETimerPattern___Thread_obj[this]) + s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]]) //.pos.y + .vel.y
+call s__YDWETimerPattern___Thread__set_z(this,YDWETimerPattern___GetUnitZ(s__YDWETimerPattern___Thread_obj[this]) + s__YDWETimerPattern___Thread_ac[this] * s__YDWETimerPattern___Thread_step[this] * 2 + s__YDWETimerPattern___Thread_ac[this] * s__YDWETimerPattern___Thread_dist[this] + s__YDWETimerPattern___Thread_bc[this]) //.pos.z + .ac * .step * 2 + .ac * .dist + .bc
+set s__YDWETimerPattern___Thread_step[this]=s__YDWETimerPattern___Thread_step[this] + s__YDWETimerPattern___Thread_dist[this]
                 //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |r high = ." + R2S(GetLocationZ(yd_loc)))
-                if (RMinBJ(RMaxBJ(((s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]])*1.0), yd_MapMinX), yd_MapMaxX)) != s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]] or (RMinBJ(RMaxBJ(((s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]])*1.0), yd_MapMinY), yd_MapMaxY)) != s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]] or s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_pos[this]] <= GetLocationZ(YDWETimerPattern__yd_loc) then // INLINED!!
-                    set s__YDWETimerPattern__Thread_switch[this]=0
+                if (RMinBJ(RMaxBJ(((s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]])*1.0), yd_MapMinX), yd_MapMaxX)) != s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]] or (RMinBJ(RMaxBJ(((s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]])*1.0), yd_MapMinY), yd_MapMaxY)) != s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]] or s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_pos[this]] <= GetLocationZ(YDWETimerPattern___yd_loc) then // INLINED!!
+                    set s__YDWETimerPattern___Thread_switch[this]=0
                 endif
-                if s__YDWETimerPattern__Thread_amount[this] > 0.0 then
+                if s__YDWETimerPattern___Thread_amount[this] > 0.0 then
                     //call this.damage(.caster, .pos.x + .vel.x, .pos.y + .vel.y, GetUnitZ(.obj), false, false)
-                    set YDWETimerPattern__tmp_data=(this)
-                    call GroupEnumUnitsInRange(s__YDWETimerPattern__Thread_g[this], s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]] + s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]] + s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]], 120.0, Condition(function YDWETimerPattern__DamageFilter))
+                    set YDWETimerPattern___tmp_data=(this)
+                    call GroupEnumUnitsInRange(s__YDWETimerPattern___Thread_g[this], s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]] + s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]] + s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]], 120.0, Condition(function YDWETimerPattern___DamageFilter))
                     //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |r Area damage.")
                 endif
             //else
                 //set .switch = 0
             //endif
-            if s__YDWETimerPattern__Thread_switch[this] == 0 then
-                call SetUnitFlyHeight(s__YDWETimerPattern__Thread_obj[this], GetUnitDefaultFlyHeight(s__YDWETimerPattern__Thread_obj[this]), 200.0)
-                call SetUnitTimeScale(s__YDWETimerPattern__Thread_obj[this], 1)
+            if s__YDWETimerPattern___Thread_switch[this] == 0 then
+                call SetUnitFlyHeight(s__YDWETimerPattern___Thread_obj[this], GetUnitDefaultFlyHeight(s__YDWETimerPattern___Thread_obj[this]), 200.0)
+                call SetUnitTimeScale(s__YDWETimerPattern___Thread_obj[this], 1)
                 //YDWETriggerEvent
-                call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern__Thread_obj[this] , 7)
-                call sc__YDWETimerPattern__Thread_deallocate(this)
+                call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern___Thread_obj[this] , 7)
+                call sc__YDWETimerPattern___Thread_deallocate(this)
             endif
         endfunction
-        function s__YDWETimerPattern__Parabola_create takes unit source,unit object,real angle,real distance,real time,real interval,real high,real damage,string attach,string deff returns integer
-            local integer this= s__YDWETimerPattern__Parabola__allocate()
+        function s__YDWETimerPattern___Parabola_create takes unit source,unit object,real angle,real distance,real time,real interval,real high,real damage,string attach,string deff returns integer
+            local integer this= s__YDWETimerPattern___Parabola__allocate()
             local real vx= 0.0
             local real vy= 0.0
             local real vz= 0.0
-            set s__YDWETimerPattern__Thread_des[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__Thread_pos[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__Thread_vel[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]]=GetUnitX(object)
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]]=GetUnitY(object)
-            set s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_pos[this]]=YDWETimerPattern__GetUnitZ(object)
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_des[this]]=s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]] + distance * Cos(angle)
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_des[this]]=s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]] + distance * Sin(angle)
-            call MoveLocation(YDWETimerPattern__yd_loc, s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_des[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_des[this]])
-            set s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_des[this]]=GetLocationZ(YDWETimerPattern__yd_loc)
-            if s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_pos[this]] > s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_des[this]] then
-                set high=high + s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_pos[this]]
+            set s__YDWETimerPattern___Thread_des[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___Thread_pos[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___Thread_vel[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]]=GetUnitX(object)
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]]=GetUnitY(object)
+            set s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_pos[this]]=YDWETimerPattern___GetUnitZ(object)
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_des[this]]=s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]] + distance * Cos(angle)
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_des[this]]=s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]] + distance * Sin(angle)
+            call MoveLocation(YDWETimerPattern___yd_loc, s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_des[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_des[this]])
+            set s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_des[this]]=GetLocationZ(YDWETimerPattern___yd_loc)
+            if s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_pos[this]] > s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_des[this]] then
+                set high=high + s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_pos[this]]
             else
-                set high=high + s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_des[this]]
+                set high=high + s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_des[this]]
             endif
-            set s__YDWETimerPattern__Thread_ac[this]=( 2 * ( s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_pos[this]] + s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_des[this]] ) - 4 * high ) / ( distance * distance )
-            set s__YDWETimerPattern__Thread_bc[this]=( s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_des[this]] - s__YDWETimerPattern__YDVector3_z[s__YDWETimerPattern__Thread_pos[this]] - s__YDWETimerPattern__Thread_ac[this] * distance * distance ) / distance
-            set s__YDWETimerPattern__Thread_dist[this]=distance * interval / time
-            set s__YDWETimerPattern__Thread_ac[this]=s__YDWETimerPattern__Thread_ac[this] * s__YDWETimerPattern__Thread_dist[this]
-            set s__YDWETimerPattern__Thread_bc[this]=s__YDWETimerPattern__Thread_bc[this] * s__YDWETimerPattern__Thread_dist[this]
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]]=s__YDWETimerPattern__Thread_dist[this] * Cos(angle)
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]]=s__YDWETimerPattern__Thread_dist[this] * Sin(angle)
-            set s__YDWETimerPattern__Thread_step[this]=0.0
-            set s__YDWETimerPattern__Thread_caster[this]=source
-            set s__YDWETimerPattern__Thread_obj[this]=object
-            set s__YDWETimerPattern__Thread_amount[this]=damage
-            set s__YDWETimerPattern__Thread_dsfx[this]=deff
-            set s__YDWETimerPattern__Thread_part[this]=attach
-            set s__YDWETimerPattern__Thread_switch[this]=1
-            set s__YDWETimerPattern__Thread_recycle[this]=true
-            set s__YDWETimerPattern__Thread_t[this]=CreateTimer()
-            set s__YDWETimerPattern__Thread_g[this]=CreateGroup()
-            call UnitAddAbility(s__YDWETimerPattern__Thread_obj[this], 'Amrf')
-            call UnitRemoveAbility(s__YDWETimerPattern__Thread_obj[this], 'Amrf')
-            call TimerStart(s__YDWETimerPattern__Thread_t[this], interval, true, function s__YDWETimerPattern__Parabola_move)
-            call GroupAddUnit(s__YDWETimerPattern__Thread_g[this], object)
+            set s__YDWETimerPattern___Thread_ac[this]=( 2 * ( s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_pos[this]] + s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_des[this]] ) - 4 * high ) / ( distance * distance )
+            set s__YDWETimerPattern___Thread_bc[this]=( s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_des[this]] - s__YDWETimerPattern___YDVector3_z[s__YDWETimerPattern___Thread_pos[this]] - s__YDWETimerPattern___Thread_ac[this] * distance * distance ) / distance
+            set s__YDWETimerPattern___Thread_dist[this]=distance * interval / time
+            set s__YDWETimerPattern___Thread_ac[this]=s__YDWETimerPattern___Thread_ac[this] * s__YDWETimerPattern___Thread_dist[this]
+            set s__YDWETimerPattern___Thread_bc[this]=s__YDWETimerPattern___Thread_bc[this] * s__YDWETimerPattern___Thread_dist[this]
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]]=s__YDWETimerPattern___Thread_dist[this] * Cos(angle)
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]]=s__YDWETimerPattern___Thread_dist[this] * Sin(angle)
+            set s__YDWETimerPattern___Thread_step[this]=0.0
+            set s__YDWETimerPattern___Thread_caster[this]=source
+            set s__YDWETimerPattern___Thread_obj[this]=object
+            set s__YDWETimerPattern___Thread_amount[this]=damage
+            set s__YDWETimerPattern___Thread_dsfx[this]=deff
+            set s__YDWETimerPattern___Thread_part[this]=attach
+            set s__YDWETimerPattern___Thread_switch[this]=1
+            set s__YDWETimerPattern___Thread_recycle[this]=true
+            set s__YDWETimerPattern___Thread_t[this]=CreateTimer()
+            set s__YDWETimerPattern___Thread_g[this]=CreateGroup()
+            call UnitAddAbility(s__YDWETimerPattern___Thread_obj[this], 'Amrf')
+            call UnitRemoveAbility(s__YDWETimerPattern___Thread_obj[this], 'Amrf')
+            call TimerStart(s__YDWETimerPattern___Thread_t[this], interval, true, function s__YDWETimerPattern___Parabola_move)
+            call GroupAddUnit(s__YDWETimerPattern___Thread_g[this], object)
             call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((object))))) )), ( ( (this)))) // INLINED!!
-            call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern__Thread_t[this]))))) )), ( ( (this)))) // INLINED!!
+            call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern___Thread_t[this]))))) )), ( ( (this)))) // INLINED!!
             return this
         endfunction
     // uniform speed
-        function s__YDWETimerPattern__Linear_move takes nothing returns nothing
+        function s__YDWETimerPattern___Linear_move takes nothing returns nothing
             local integer this= (LoadInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((GetExpiredTimer()))))))))) // INLINED!!
-            if s__YDWETimerPattern__Thread_step[this] > s__YDWETimerPattern__Thread_dist[this] then
-                call s__YDWETimerPattern__Thread__set_x(this,GetUnitX(s__YDWETimerPattern__Thread_obj[this]) + s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]]) //.pos.x + .vel.x
-call s__YDWETimerPattern__Thread__set_y(this,GetUnitY(s__YDWETimerPattern__Thread_obj[this]) + s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]]) //.pos.y + .vel.y
+            if s__YDWETimerPattern___Thread_step[this] > s__YDWETimerPattern___Thread_dist[this] then
+                call s__YDWETimerPattern___Thread__set_x(this,GetUnitX(s__YDWETimerPattern___Thread_obj[this]) + s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]]) //.pos.x + .vel.x
+call s__YDWETimerPattern___Thread__set_y(this,GetUnitY(s__YDWETimerPattern___Thread_obj[this]) + s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]]) //.pos.y + .vel.y
 //set .pos.z = GetUnitZ(.obj)
-set s__YDWETimerPattern__Thread_step[this]=s__YDWETimerPattern__Thread_step[this] - s__YDWETimerPattern__Thread_dist[this]
+set s__YDWETimerPattern___Thread_step[this]=s__YDWETimerPattern___Thread_step[this] - s__YDWETimerPattern___Thread_dist[this]
                 //call this.damage(.caster, .pos.x, .pos.y, .pos.z, true, true)
-                set YDWETimerPattern__tmp_data=(this)
-                call GroupEnumUnitsInRange(s__YDWETimerPattern__Thread_g[this], s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]] + s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]] + s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]], 120.0, Condition(function YDWETimerPattern__DamageFilter))
-                if (RMinBJ(RMaxBJ(((s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]])*1.0), yd_MapMinX), yd_MapMaxX)) != s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]] or (RMinBJ(RMaxBJ(((s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]])*1.0), yd_MapMinY), yd_MapMaxY)) != s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]] then // INLINED!!
-                    set s__YDWETimerPattern__Thread_switch[this]=0
+                set YDWETimerPattern___tmp_data=(this)
+                call GroupEnumUnitsInRange(s__YDWETimerPattern___Thread_g[this], s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]] + s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]] + s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]], 120.0, Condition(function YDWETimerPattern___DamageFilter))
+                if (RMinBJ(RMaxBJ(((s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]])*1.0), yd_MapMinX), yd_MapMaxX)) != s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]] or (RMinBJ(RMaxBJ(((s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]])*1.0), yd_MapMinY), yd_MapMaxY)) != s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]] then // INLINED!!
+                    set s__YDWETimerPattern___Thread_switch[this]=0
                 endif
             else
-                set s__YDWETimerPattern__Thread_switch[this]=0
+                set s__YDWETimerPattern___Thread_switch[this]=0
             endif
-            if s__YDWETimerPattern__Thread_switch[this] == 0 then
+            if s__YDWETimerPattern___Thread_switch[this] == 0 then
                 // YDWETriggerEvent
-                if s__YDWETimerPattern__Thread_target[this] != null then
+                if s__YDWETimerPattern___Thread_target[this] != null then
                     //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |r  |cffff0000" + GetUnitName(.target) + "|r was hit!!!")
                     //call YDWESaveUnitByString(I2S(YDWEH2I(.caster)), "MoonPriestessArrow", .target)
-                    set bj_lastAbilityTargetUnit=s__YDWETimerPattern__Thread_target[this]
-                    call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern__Thread_caster[this] , 8)
+                    set bj_lastAbilityTargetUnit=s__YDWETimerPattern___Thread_target[this]
+                    call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern___Thread_caster[this] , 8)
                 else
-                    call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern__Thread_caster[this] , 9)
+                    call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern___Thread_caster[this] , 9)
                 endif
                 //call KillUnit(.obj)
-                call RemoveUnit(s__YDWETimerPattern__Thread_obj[this])
-                call sc__YDWETimerPattern__Thread_deallocate(this)
+                call RemoveUnit(s__YDWETimerPattern___Thread_obj[this])
+                call sc__YDWETimerPattern___Thread_deallocate(this)
             endif
         endfunction
-        function s__YDWETimerPattern__Linear_create takes unit source,unit object,real angle,real distance,real time,real interval,integer uid,integer aid,integer lv,integer orderid,string attach,string sfx returns integer
-            local integer this= s__YDWETimerPattern__Linear__allocate()
-            set s__YDWETimerPattern__Thread_des[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__Thread_pos[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__Thread_vel[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__Thread_step[this]=distance
-            set s__YDWETimerPattern__Thread_dist[this]=distance * interval / time
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]]=s__YDWETimerPattern__Thread_dist[this] * Cos(angle)
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]]=s__YDWETimerPattern__Thread_dist[this] * Sin(angle)
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]]=GetUnitX(object)
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]]=GetUnitY(object)
-            set s__YDWETimerPattern__Thread_caster[this]=source
-            set s__YDWETimerPattern__Thread_obj[this]=object
-            set s__YDWETimerPattern__Thread_unitid[this]=uid
-            set s__YDWETimerPattern__Thread_skills[this]=aid
-            set s__YDWETimerPattern__Thread_level[this]=lv
-            set s__YDWETimerPattern__Thread_order[this]=orderid
-            set s__YDWETimerPattern__Thread_part[this]=attach
-            set s__YDWETimerPattern__Thread_gsfx[this]=sfx
-            set s__YDWETimerPattern__Thread_switch[this]=1
-            set s__YDWETimerPattern__Thread_recycle[this]=false
-            set s__YDWETimerPattern__Thread_t[this]=CreateTimer()
-            set s__YDWETimerPattern__Thread_g[this]=CreateGroup()
-            call TimerStart(s__YDWETimerPattern__Thread_t[this], interval, true, function s__YDWETimerPattern__Linear_move)
-            call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern__Thread_t[this]))))) )), ( ( (this)))) // INLINED!!
+        function s__YDWETimerPattern___Linear_create takes unit source,unit object,real angle,real distance,real time,real interval,integer uid,integer aid,integer lv,integer orderid,string attach,string sfx returns integer
+            local integer this= s__YDWETimerPattern___Linear__allocate()
+            set s__YDWETimerPattern___Thread_des[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___Thread_pos[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___Thread_vel[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___Thread_step[this]=distance
+            set s__YDWETimerPattern___Thread_dist[this]=distance * interval / time
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]]=s__YDWETimerPattern___Thread_dist[this] * Cos(angle)
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]]=s__YDWETimerPattern___Thread_dist[this] * Sin(angle)
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]]=GetUnitX(object)
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]]=GetUnitY(object)
+            set s__YDWETimerPattern___Thread_caster[this]=source
+            set s__YDWETimerPattern___Thread_obj[this]=object
+            set s__YDWETimerPattern___Thread_unitid[this]=uid
+            set s__YDWETimerPattern___Thread_skills[this]=aid
+            set s__YDWETimerPattern___Thread_level[this]=lv
+            set s__YDWETimerPattern___Thread_order[this]=orderid
+            set s__YDWETimerPattern___Thread_part[this]=attach
+            set s__YDWETimerPattern___Thread_gsfx[this]=sfx
+            set s__YDWETimerPattern___Thread_switch[this]=1
+            set s__YDWETimerPattern___Thread_recycle[this]=false
+            set s__YDWETimerPattern___Thread_t[this]=CreateTimer()
+            set s__YDWETimerPattern___Thread_g[this]=CreateGroup()
+            call TimerStart(s__YDWETimerPattern___Thread_t[this], interval, true, function s__YDWETimerPattern___Linear_move)
+            call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern___Thread_t[this]))))) )), ( ( (this)))) // INLINED!!
             return this
         endfunction
     // Uniform deceleration
-        function s__YDWETimerPattern__Deceleration_move takes nothing returns nothing
+        function s__YDWETimerPattern___Deceleration_move takes nothing returns nothing
             local integer this= (LoadInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((GetExpiredTimer()))))))))) // INLINED!!
-            local real l__xp= GetUnitX(s__YDWETimerPattern__Thread_obj[this]) + s__YDWETimerPattern__Thread_dist[this] * s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]]
-            local real l__yp= GetUnitY(s__YDWETimerPattern__Thread_obj[this]) + s__YDWETimerPattern__Thread_dist[this] * s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]]
-            if s__YDWETimerPattern__Thread_volume[this] == false then
+            local real l__xp= GetUnitX(s__YDWETimerPattern___Thread_obj[this]) + s__YDWETimerPattern___Thread_dist[this] * s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]]
+            local real l__yp= GetUnitY(s__YDWETimerPattern___Thread_obj[this]) + s__YDWETimerPattern___Thread_dist[this] * s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]]
+            if s__YDWETimerPattern___Thread_volume[this] == false then
                 //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |rPathable without terrain.")
                 if IsTerrainPathable(l__xp, l__yp, PATHING_TYPE_WALKABILITY) then
-                    set s__YDWETimerPattern__Thread_switch[this]=0
+                    set s__YDWETimerPattern___Thread_switch[this]=0
                 else
-                    call s__YDWETimerPattern__Thread__set_x(this,l__xp)
-                    call s__YDWETimerPattern__Thread__set_y(this,l__yp)
+                    call s__YDWETimerPattern___Thread__set_x(this,l__xp)
+                    call s__YDWETimerPattern___Thread__set_y(this,l__yp)
                 endif
             else
-                call s__YDWETimerPattern__Thread__set_x(this,l__xp)
-                call s__YDWETimerPattern__Thread__set_y(this,l__yp)
+                call s__YDWETimerPattern___Thread__set_x(this,l__xp)
+                call s__YDWETimerPattern___Thread__set_y(this,l__yp)
             endif
-            if s__YDWETimerPattern__Thread_follow[this] == 0 then
-                if GetUnitFlyHeight(s__YDWETimerPattern__Thread_obj[this]) < 5. then
-                    if IsTerrainPathable(s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]], PATHING_TYPE_FLOATABILITY) then
-                        call DestroyEffect(AddSpecialEffect(s__YDWETimerPattern__Thread_gsfx[this], s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]]))
+            if s__YDWETimerPattern___Thread_follow[this] == 0 then
+                if GetUnitFlyHeight(s__YDWETimerPattern___Thread_obj[this]) < 5. then
+                    if IsTerrainPathable(s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]], PATHING_TYPE_FLOATABILITY) then
+                        call DestroyEffect(AddSpecialEffect(s__YDWETimerPattern___Thread_gsfx[this], s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]]))
                     else
-                        call DestroyEffect(AddSpecialEffect(s__YDWETimerPattern__Thread_wsfx[this], s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]]))
+                        call DestroyEffect(AddSpecialEffect(s__YDWETimerPattern___Thread_wsfx[this], s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]]))
                     endif
                 endif
             endif
-            set s__YDWETimerPattern__Thread_follow[this]=s__YDWETimerPattern__Thread_follow[this] + 1
-            if s__YDWETimerPattern__Thread_follow[this] == 2 then
-                set s__YDWETimerPattern__Thread_follow[this]=0
+            set s__YDWETimerPattern___Thread_follow[this]=s__YDWETimerPattern___Thread_follow[this] + 1
+            if s__YDWETimerPattern___Thread_follow[this] == 2 then
+                set s__YDWETimerPattern___Thread_follow[this]=0
             endif
-            if s__YDWETimerPattern__Thread_killdest[this] then
-                call MoveRectTo(YDWETimerPattern__Area, s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]])
-                call EnumDestructablesInRect(YDWETimerPattern__Area, YDWETimerPattern__Bexpr, function YDWETimerPattern__TreeKill)
+            if s__YDWETimerPattern___Thread_killdest[this] then
+                call MoveRectTo(YDWETimerPattern___Area, s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]])
+                call EnumDestructablesInRect(YDWETimerPattern___Area, YDWETimerPattern___Bexpr, function YDWETimerPattern___TreeKill)
             endif
-            if s__YDWETimerPattern__Thread_amount[this] > 0.0 then
+            if s__YDWETimerPattern___Thread_amount[this] > 0.0 then
                 //call this.damage(.caster, .pos.x, .pos.y, 0.0, false, .recycle)
-                set YDWETimerPattern__tmp_data=(this)
-                call GroupEnumUnitsInRange(s__YDWETimerPattern__Thread_g[this], s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]], s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]], 120.0, Condition(function YDWETimerPattern__DamageFilter))
+                set YDWETimerPattern___tmp_data=(this)
+                call GroupEnumUnitsInRange(s__YDWETimerPattern___Thread_g[this], s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]], s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]], 120.0, Condition(function YDWETimerPattern___DamageFilter))
             endif
-            set s__YDWETimerPattern__Thread_dist[this]=s__YDWETimerPattern__Thread_dist[this] - s__YDWETimerPattern__Thread_step[this]
-            if s__YDWETimerPattern__Thread_dist[this] <= 0.0 or (RMinBJ(RMaxBJ(((s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]])*1.0), yd_MapMinX), yd_MapMaxX)) != s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]] or (RMinBJ(RMaxBJ(((s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]])*1.0), yd_MapMinY), yd_MapMaxY)) != s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]] then // INLINED!!
-                set s__YDWETimerPattern__Thread_switch[this]=0
+            set s__YDWETimerPattern___Thread_dist[this]=s__YDWETimerPattern___Thread_dist[this] - s__YDWETimerPattern___Thread_step[this]
+            if s__YDWETimerPattern___Thread_dist[this] <= 0.0 or (RMinBJ(RMaxBJ(((s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]])*1.0), yd_MapMinX), yd_MapMaxX)) != s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]] or (RMinBJ(RMaxBJ(((s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]])*1.0), yd_MapMinY), yd_MapMaxY)) != s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]] then // INLINED!!
+                set s__YDWETimerPattern___Thread_switch[this]=0
             endif
-            if s__YDWETimerPattern__Thread_switch[this] == 0 then
-                call SetUnitFlyHeight(s__YDWETimerPattern__Thread_obj[this], GetUnitDefaultFlyHeight(s__YDWETimerPattern__Thread_obj[this]), 200.0)
-                call SetUnitTimeScale(s__YDWETimerPattern__Thread_obj[this], 1)
+            if s__YDWETimerPattern___Thread_switch[this] == 0 then
+                call SetUnitFlyHeight(s__YDWETimerPattern___Thread_obj[this], GetUnitDefaultFlyHeight(s__YDWETimerPattern___Thread_obj[this]), 200.0)
+                call SetUnitTimeScale(s__YDWETimerPattern___Thread_obj[this], 1)
                 // YDWETriggerEvent
-                call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern__Thread_obj[this] , 6)
-                call sc__YDWETimerPattern__Thread_deallocate(this)
+                call YDWESyStemAbilityCastingOverTriggerAction(s__YDWETimerPattern___Thread_obj[this] , 6)
+                call sc__YDWETimerPattern___Thread_deallocate(this)
             endif
         endfunction
-        function s__YDWETimerPattern__Deceleration_create takes unit source,unit object,real angle,real distance,real time,real interval,real damage,boolean killtrees,boolean cycle,boolean path,string part,string geff,string weff returns integer
-            local integer this= s__YDWETimerPattern__Deceleration__allocate()
+        function s__YDWETimerPattern___Deceleration_create takes unit source,unit object,real angle,real distance,real time,real interval,real damage,boolean killtrees,boolean cycle,boolean path,string part,string geff,string weff returns integer
+            local integer this= s__YDWETimerPattern___Deceleration__allocate()
 local real vx= 0.0
             local real vy= 0.0
             local real l__l= 0.0
-            set s__YDWETimerPattern__Thread_des[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__Thread_pos[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__Thread_vel[this]=s__YDWETimerPattern__YDVector3__allocate()
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_vel[this]]=Cos(angle)
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_vel[this]]=Sin(angle)
-            set s__YDWETimerPattern__Thread_dist[this]=2 * distance * interval / time
-            set s__YDWETimerPattern__Thread_step[this]=s__YDWETimerPattern__Thread_dist[this] * interval / time
-            set s__YDWETimerPattern__YDVector3_x[s__YDWETimerPattern__Thread_pos[this]]=GetUnitX(object)
-            set s__YDWETimerPattern__YDVector3_y[s__YDWETimerPattern__Thread_pos[this]]=GetUnitY(object)
-            set s__YDWETimerPattern__Thread_caster[this]=source
-            set s__YDWETimerPattern__Thread_obj[this]=object
-            set s__YDWETimerPattern__Thread_amount[this]=damage
-            set s__YDWETimerPattern__Thread_killdest[this]=killtrees
-            set s__YDWETimerPattern__Thread_recycle[this]=cycle
-            set s__YDWETimerPattern__Thread_volume[this]=path
-            set s__YDWETimerPattern__Thread_gsfx[this]=geff
-            set s__YDWETimerPattern__Thread_wsfx[this]=weff
-            set s__YDWETimerPattern__Thread_switch[this]=1
-            set s__YDWETimerPattern__Thread_follow[this]=0
-            set s__YDWETimerPattern__Thread_g[this]=CreateGroup()
-            set s__YDWETimerPattern__Thread_t[this]=CreateTimer()
-            call TimerStart(s__YDWETimerPattern__Thread_t[this], interval, true, function s__YDWETimerPattern__Deceleration_move)
-            call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern__Thread_t[this]))))) )), ( ( (this)))) // INLINED!!
+            set s__YDWETimerPattern___Thread_des[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___Thread_pos[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___Thread_vel[this]=s__YDWETimerPattern___YDVector3__allocate()
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_vel[this]]=Cos(angle)
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_vel[this]]=Sin(angle)
+            set s__YDWETimerPattern___Thread_dist[this]=2 * distance * interval / time
+            set s__YDWETimerPattern___Thread_step[this]=s__YDWETimerPattern___Thread_dist[this] * interval / time
+            set s__YDWETimerPattern___YDVector3_x[s__YDWETimerPattern___Thread_pos[this]]=GetUnitX(object)
+            set s__YDWETimerPattern___YDVector3_y[s__YDWETimerPattern___Thread_pos[this]]=GetUnitY(object)
+            set s__YDWETimerPattern___Thread_caster[this]=source
+            set s__YDWETimerPattern___Thread_obj[this]=object
+            set s__YDWETimerPattern___Thread_amount[this]=damage
+            set s__YDWETimerPattern___Thread_killdest[this]=killtrees
+            set s__YDWETimerPattern___Thread_recycle[this]=cycle
+            set s__YDWETimerPattern___Thread_volume[this]=path
+            set s__YDWETimerPattern___Thread_gsfx[this]=geff
+            set s__YDWETimerPattern___Thread_wsfx[this]=weff
+            set s__YDWETimerPattern___Thread_switch[this]=1
+            set s__YDWETimerPattern___Thread_follow[this]=0
+            set s__YDWETimerPattern___Thread_g[this]=CreateGroup()
+            set s__YDWETimerPattern___Thread_t[this]=CreateTimer()
+            call TimerStart(s__YDWETimerPattern___Thread_t[this], interval, true, function s__YDWETimerPattern___Deceleration_move)
+            call SaveInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern___Thread_t[this]))))) )), ( ( (this)))) // INLINED!!
             return this
         endfunction
     // Jump Attack PUI
@@ -6264,7 +6230,7 @@ local real vx= 0.0
             //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |r No object!")
             return
         endif
-        call s__YDWETimerPattern__Parabola_create(u , u , Deg2Rad(face) , RMaxBJ(dis, 0) , RMaxBJ(lasttime, 0) , RMaxBJ(timeout, 0) , high , damage , part , dsfx)
+        call s__YDWETimerPattern___Parabola_create(u , u , Deg2Rad(face) , RMaxBJ(dis, 0) , RMaxBJ(lasttime, 0) , RMaxBJ(timeout, 0) , high , damage , part , dsfx)
     endfunction
     // Moon Priestess Arrow PUI
     function YDWETimerPatternMoonPriestessArrow takes unit u,real face,real dis,real lasttime,real timeout,integer lv,integer aid,integer uid,string order,string part,string dsfx returns nothing
@@ -6277,7 +6243,7 @@ local real vx= 0.0
         if sour == null then
             set sour=u
         endif
-        call s__YDWETimerPattern__Linear_create(sour , u , Deg2Rad(face) , RMaxBJ(dis, 0) , RMaxBJ(lasttime, 0) , RMaxBJ(timeout, 0) , uid , aid , IMaxBJ(lv, 1) , OrderId(order) , part , dsfx)
+        call s__YDWETimerPattern___Linear_create(sour , u , Deg2Rad(face) , RMaxBJ(dis, 0) , RMaxBJ(lasttime, 0) , RMaxBJ(timeout, 0) , uid , aid , IMaxBJ(lv, 1) , OrderId(order) , part , dsfx)
         //call YDWEFlushMissionByString(I2S(YDWEH2I(u)))
         set sour=null
     endfunction
@@ -6287,46 +6253,46 @@ local real vx= 0.0
             //debug call BJDebugMsg("|cff00ff00[YDWE] Timer Pattern : |r No object!")
             return
         endif
-        call s__YDWETimerPattern__Deceleration_create(u , u , Deg2Rad(face) , RMaxBJ(dis, 0) , RMaxBJ(lasttime, 0) , RMaxBJ(timeout, 0) , damage , killtrees , cycle , path , part , gsfx , wsfx)
+        call s__YDWETimerPattern___Deceleration_create(u , u , Deg2Rad(face) , RMaxBJ(dis, 0) , RMaxBJ(lasttime, 0) , RMaxBJ(timeout, 0) , damage , killtrees , cycle , path , part , gsfx , wsfx)
     endfunction
-    function YDWETimerPattern__Init takes nothing returns nothing
-        set YDWETimerPattern__Area=Rect(- 120.0, - 120.0, 120.0, 120.0)
-        set YDWETimerPattern__Bexpr=Filter(function YDWETimerPattern__TreeFilter)
+    function YDWETimerPattern___Init takes nothing returns nothing
+        set YDWETimerPattern___Area=Rect(- 120.0, - 120.0, 120.0, 120.0)
+        set YDWETimerPattern___Bexpr=Filter(function YDWETimerPattern___TreeFilter)
     endfunction
 
 //library YDWETimerPattern ends
 //library YDWETimerSystem:
-function YDWETimerSystem__NewTaskIndex takes nothing returns integer
- local integer h= YDWETimerSystem__TaskListIdleHead
-	if YDWETimerSystem__TaskListIdleHead < 0 then
-		if YDWETimerSystem__TaskListIdleMax >= 8000 then
+function YDWETimerSystem___NewTaskIndex takes nothing returns integer
+ local integer h= YDWETimerSystem___TaskListIdleHead
+	if YDWETimerSystem___TaskListIdleHead < 0 then
+		if YDWETimerSystem___TaskListIdleMax >= 8000 then
 			return 8100
 		else
-			set YDWETimerSystem__TaskListIdleMax=YDWETimerSystem__TaskListIdleMax + 1
-			return YDWETimerSystem__TaskListIdleMax
+			set YDWETimerSystem___TaskListIdleMax=YDWETimerSystem___TaskListIdleMax + 1
+			return YDWETimerSystem___TaskListIdleMax
 		endif
 	endif
-	set YDWETimerSystem__TaskListIdleHead=YDWETimerSystem__TaskListIdle[h]
+	set YDWETimerSystem___TaskListIdleHead=YDWETimerSystem___TaskListIdle[h]
 	return h
 endfunction
-function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
-	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
-	set YDWETimerSystem__TaskListIdleHead=index
+function YDWETimerSystem___DeleteTaskIndex takes integer index returns nothing
+	set YDWETimerSystem___TaskListIdle[index]=YDWETimerSystem___TaskListIdleHead
+	set YDWETimerSystem___TaskListIdleHead=index
 endfunction
 //�ú������д���
-function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
- local integer index= YDWETimerSystem__NewTaskIndex()
- local integer h= YDWETimerSystem__TaskListHead
- local integer t= R2I(100. * time) + YDWETimerSystem__CurrentTime
+function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
+ local integer index= YDWETimerSystem___NewTaskIndex()
+ local integer h= YDWETimerSystem___TaskListHead
+ local integer t= R2I(100. * time) + YDWETimerSystem___CurrentTime
  local integer p
-	set YDWETimerSystem__TaskListProc[index]=proc
-	set YDWETimerSystem__TaskListTime[index]=t
+	set YDWETimerSystem___TaskListProc[index]=proc
+	set YDWETimerSystem___TaskListTime[index]=t
 	loop
-		set p=YDWETimerSystem__TaskListNext[h]
-		if p < 0 or YDWETimerSystem__TaskListTime[p] >= t then
+		set p=YDWETimerSystem___TaskListNext[h]
+		if p < 0 or YDWETimerSystem___TaskListTime[p] >= t then
 		//	call BJDebugMsg("NewTask:"+I2S(index))
-			set YDWETimerSystem__TaskListNext[h]=index
-			set YDWETimerSystem__TaskListNext[index]=p
+			set YDWETimerSystem___TaskListNext[h]=index
+			set YDWETimerSystem___TaskListNext[index]=p
 			return index
 		endif
 		set h=p
@@ -6334,59 +6300,59 @@ function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
 	return index
 endfunction
 function YDWETimerSystemNewTask takes real time,trigger proc returns integer
-	return YDWETimerSystem__NewTask(time , proc)
+	return YDWETimerSystem___NewTask(time , proc)
 endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
-	return YDWETimerSystem__CurrentIndex
+	return YDWETimerSystem___CurrentIndex
 endfunction
 //ɾ����λ
-function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
-    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___RemoveUnit_CallBack takes nothing returns nothing
+    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
-    call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
+    call SaveUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveUnit), u)
 endfunction
 //�ݻټ�ʱ��
-function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
-    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___DestroyTimer_CallBack takes nothing returns nothing
+    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
-    call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
+    call SaveTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyTimer), t)
 endfunction
 //ɾ����Ʒ
-function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
-    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___RemoveItem_CallBack takes nothing returns nothing
+    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
-    call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
+    call SaveItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveItem), it)
 endfunction
 //ɾ����Ч
-function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
-    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___DestroyEffect_CallBack takes nothing returns nothing
+    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
-    call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
+    call SaveEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyEffect), e)
 endfunction
 //ɾ��������Ч
-function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
-    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___DestroyLightning_CallBack takes nothing returns nothing
+    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
- local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
-    call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
+ local integer i= YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyLightning)
+    call SaveLightningHandle(YDHT, YDWETimerSystem___TimerHandle, i, lt)
 endfunction
 //���д�����
-function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
-    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___RunTrigger_CallBack takes nothing returns nothing
+    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
-    call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
+    call SaveTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRunTrigger), trg)
 endfunction
 //ɾ��Ư������
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
@@ -6400,50 +6366,50 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagFadepoint(tt, time)
 endfunction
 //���ļ�ʱ��������
-function YDWETimerSystem__Main takes nothing returns nothing
- local integer h= YDWETimerSystem__TaskListHead
+function YDWETimerSystem___Main takes nothing returns nothing
+ local integer h= YDWETimerSystem___TaskListHead
  local integer p
 	loop
-		set YDWETimerSystem__CurrentIndex=YDWETimerSystem__TaskListNext[h]
-		exitwhen YDWETimerSystem__CurrentIndex < 0 or YDWETimerSystem__CurrentTime < YDWETimerSystem__TaskListTime[YDWETimerSystem__CurrentIndex]
+		set YDWETimerSystem___CurrentIndex=YDWETimerSystem___TaskListNext[h]
+		exitwhen YDWETimerSystem___CurrentIndex < 0 or YDWETimerSystem___CurrentTime < YDWETimerSystem___TaskListTime[YDWETimerSystem___CurrentIndex]
 		//call BJDebugMsg("Task:"+I2S(CurrentIndex))
-		call TriggerEvaluate(YDWETimerSystem__TaskListProc[YDWETimerSystem__CurrentIndex])
-		call YDWETimerSystem__DeleteTaskIndex(YDWETimerSystem__CurrentIndex)
-		set YDWETimerSystem__TaskListNext[h]=YDWETimerSystem__TaskListNext[YDWETimerSystem__CurrentIndex]
+		call TriggerEvaluate(YDWETimerSystem___TaskListProc[YDWETimerSystem___CurrentIndex])
+		call YDWETimerSystem___DeleteTaskIndex(YDWETimerSystem___CurrentIndex)
+		set YDWETimerSystem___TaskListNext[h]=YDWETimerSystem___TaskListNext[YDWETimerSystem___CurrentIndex]
 	endloop
-	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
+	set YDWETimerSystem___CurrentTime=YDWETimerSystem___CurrentTime + 1
 endfunction
 //��ʼ������
-function YDWETimerSystem__Init takes nothing returns nothing
-    set YDWETimerSystem__Timer=CreateTimer()
-	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
-	set YDWETimerSystem__CurrentTime=0
-	set YDWETimerSystem__TaskListHead=0
-	set YDWETimerSystem__TaskListNext[0]=- 1
-	set YDWETimerSystem__TaskListIdleHead=1
-	set YDWETimerSystem__TaskListIdleMax=1
-	set YDWETimerSystem__TaskListIdle[1]=- 1
+function YDWETimerSystem___Init takes nothing returns nothing
+    set YDWETimerSystem___Timer=CreateTimer()
+	set YDWETimerSystem___TimerHandle=GetHandleId(YDWETimerSystem___Timer)
+	set YDWETimerSystem___CurrentTime=0
+	set YDWETimerSystem___TaskListHead=0
+	set YDWETimerSystem___TaskListNext[0]=- 1
+	set YDWETimerSystem___TaskListIdleHead=1
+	set YDWETimerSystem___TaskListIdleMax=1
+	set YDWETimerSystem___TaskListIdle[1]=- 1
 	
-	set YDWETimerSystem__fnRemoveUnit=CreateTrigger()
-	set YDWETimerSystem__fnDestroyTimer=CreateTrigger()
-	set YDWETimerSystem__fnRemoveItem=CreateTrigger()
-	set YDWETimerSystem__fnDestroyEffect=CreateTrigger()
-	set YDWETimerSystem__fnDestroyLightning=CreateTrigger()
-	set YDWETimerSystem__fnRunTrigger=CreateTrigger()
-	call TriggerAddCondition(YDWETimerSystem__fnRemoveUnit, Condition(function YDWETimerSystem__RemoveUnit_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnDestroyTimer, Condition(function YDWETimerSystem__DestroyTimer_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnRemoveItem, Condition(function YDWETimerSystem__RemoveItem_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnDestroyEffect, Condition(function YDWETimerSystem__DestroyEffect_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnDestroyLightning, Condition(function YDWETimerSystem__DestroyLightning_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnRunTrigger, Condition(function YDWETimerSystem__RunTrigger_CallBack))
+	set YDWETimerSystem___fnRemoveUnit=CreateTrigger()
+	set YDWETimerSystem___fnDestroyTimer=CreateTrigger()
+	set YDWETimerSystem___fnRemoveItem=CreateTrigger()
+	set YDWETimerSystem___fnDestroyEffect=CreateTrigger()
+	set YDWETimerSystem___fnDestroyLightning=CreateTrigger()
+	set YDWETimerSystem___fnRunTrigger=CreateTrigger()
+	call TriggerAddCondition(YDWETimerSystem___fnRemoveUnit, Condition(function YDWETimerSystem___RemoveUnit_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyTimer, Condition(function YDWETimerSystem___DestroyTimer_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnRemoveItem, Condition(function YDWETimerSystem___RemoveItem_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyEffect, Condition(function YDWETimerSystem___DestroyEffect_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyLightning, Condition(function YDWETimerSystem___DestroyLightning_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnRunTrigger, Condition(function YDWETimerSystem___RunTrigger_CallBack))
 	
-    call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
+    call TimerStart(YDWETimerSystem___Timer, 0.01, true, function YDWETimerSystem___Main)
 endfunction
 //ѭ�������ö�����ʱ��
 function YDWETimerSystemGetRunIndex takes nothing returns integer
-    return YDWETimerSystem__TimerSystem_RunIndex
+    return YDWETimerSystem___TimerSystem_RunIndex
 endfunction
-function YDWETimerSystem__RunPeriodicTriggerFunction takes nothing returns nothing
+function YDWETimerSystem___RunPeriodicTriggerFunction takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
 	call SaveInteger(YDHT, StringHash(I2S(GetHandleId(trg))), StringHash("RunIndex"), LoadInteger(YDHT, tid, $D0002))
@@ -6452,7 +6418,7 @@ function YDWETimerSystem__RunPeriodicTriggerFunction takes nothing returns nothi
     endif
     set trg=null
 endfunction
-function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
+function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
     local integer times= LoadInteger(YDHT, tid, $D0003)
@@ -6479,9 +6445,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
         set t=CreateTimer()
 		set tid=GetHandleId(t)
     endif
-    set YDWETimerSystem__TimerSystem_RunIndex=YDWETimerSystem__TimerSystem_RunIndex + 1
+    set YDWETimerSystem___TimerSystem_RunIndex=YDWETimerSystem___TimerSystem_RunIndex + 1
 	call SaveTriggerHandle(YDHT, tid, $D0001, trg)
-	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem__TimerSystem_RunIndex)
+	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem___TimerSystem_RunIndex)
 	set index=LoadInteger(YDHT, GetHandleId(trg), 'YDTS' + data)
     set index=index + 1
 	call SaveInteger(YDHT, GetHandleId(trg), 'YDTS' + data, index)
@@ -6489,9 +6455,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
 	
     if b == false then
 		call SaveInteger(YDHT, tid, $D0003, times)
-        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes)
+        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes)
       else
-        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunction)
+        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunction)
     endif
     set t=null
 endfunction
@@ -6519,7 +6485,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Sat Jun 22 15:33:47 2019
+//   Date: Mon Jul 22 17:10:44 2019
 //   Map Author: 云杨 zei_kale
 // 
 //===========================================================================
@@ -8330,6 +8296,10 @@ local real int= I2R(GetHeroStatBJ(2, u, true))
 if (IsUnitType((u ), ( UNIT_TYPE_HERO)) != null) then // INLINED!!
 	// 神龙心法加成
 		set attack=( 1 + 0.3 * GetUnitAbilityLevel(u, 'A059') ) * 27 * udg_lilianxishu[i] * ( w1 * ( 1 + str / 500 ) * ( 1 + agi / 500 ) + w2 * 0.01 * int ) * ( 1.6 + 0.4 * GetUnitAbilityLevel(u, id) ) * ( udg_shanghaijiacheng[i] + 1. ) * shxishu
+		// 养老模式
+		if udg_yanglao then
+		    set attack=attack * 30
+		endif
 		// 9级技能伤害为原来的3倍
 		if GetUnitAbilityLevel(u, id) == 9 then
 			set attack=attack * 3
@@ -8779,11 +8749,33 @@ function clearTimer takes timer tm returns nothing
     call DestroyTimer(tm)
 endfunction
 // 武功升重系统
+function isTitle takes integer i,integer title returns boolean
+    if title <= 30 then
+        return YDWEBitwise_AND(title0[i] , ((1 ) * YDWEBitwise__C2[( title - 1)])) != 0 // INLINED!!
+    else
+        return YDWEBitwise_AND(title1[i] , ((1 ) * YDWEBitwise__C2[( title - 31)])) != 0 // INLINED!!
+    endif
+endfunction
+
+function setTitleNumber takes integer i,integer title returns nothing
+    if title <= 30 then
+        set title0[i]=YDWEBitwise_OR(title0[i] , ((1 ) * YDWEBitwise__C2[( title - 1)])) // INLINED!!
+    else
+        set title1[i]=YDWEBitwise_OR(title1[i] , ((1 ) * YDWEBitwise__C2[( title - 31)])) // INLINED!!
+    endif
+endfunction
+function isChief takes integer i,integer denomination returns boolean
+    return YDWEBitwise_AND(chief[i] , ((1 ) * YDWEBitwise__C2[( denomination - 1)])) != 0 // INLINED!!
+endfunction
+
+function setChiefNumber takes integer i,integer denomination returns nothing
+    set chief[i]=YDWEBitwise_OR(chief[i] , ((1 ) * YDWEBitwise__C2[( denomination - 1)])) // INLINED!!
+endfunction
 function QiJueCoefficient takes unit u returns integer
 	// 是否激活九阳真经残卷
  local integer jyd= JYd[1 + GetPlayerId(GetOwningPlayer(u))]
 	// 是否有王语嫣称号
- local boolean wyy= LoadBoolean(YDHT, GetHandleId(u), StringHash("神仙姐姐"))
+ local boolean wyy= isTitle(1 + GetPlayerId(GetOwningPlayer(u)) , 44)
 	// 九阳残卷、七绝、王语嫣400%升重
 	if ( UnitHaveItem(u , 'I01J') or UnitHaveItem(u , 'I0DB') ) and jyd == 1 and wyy then
 		return 8
@@ -8806,698 +8798,768 @@ function QiJueCoefficient takes unit u returns integer
 	endif
 	return 0
 endfunction
-//武功升重及掌门称号系统
-function WuGongShengChong takes unit u,integer id,real r returns nothing
- local integer level=GetUnitAbilityLevel(u, id)
- local player p=GetOwningPlayer(u)
- local integer idd= 0
- local integer i=1 + GetPlayerId(p)
- local integer jingyan= 0
-	if level > 0 and level < 7 then
-		set jingyan=( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 4 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40
-		// 慕容家训
-		if UnitHasBuffBJ(u, 'B010') then
-		    set jingyan=( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 5 + GetUnitAbilityLevel(u, 'A02V') / 2 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40
-		endif
-		// 天赋：天纵奇才 增加升重速度
-		if UnitHasBuffBJ(u, 'B01O') then
-		    set jingyan=jingyan * ( 2 + bigTalent[i] )
-		endif
-        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + jingyan)
-		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(u)), id * 2, I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id)) + "/" + I2S(R2I(r * level)))
-		if LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) > R2I(r) * level then
-		    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, 0)
-		    call IncUnitAbilityLevel(u, id)
-		    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
-			if id == 'A0DP' then // 归元吐纳功
+function kungfuLevelUp takes unit u,integer id,real r returns nothing
+    local integer level=GetUnitAbilityLevel(u, id)
+    local player p=GetOwningPlayer(u)
+    local integer i=1 + GetPlayerId(p)
+    local integer jingyan= 0
+    if level > 0 and level < 7 then
+    		set jingyan=( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 4 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40
+    		// 慕容家训
+    		if UnitHasBuffBJ(u, 'B010') then
+    		    set jingyan=( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 5 + GetUnitAbilityLevel(u, 'A02V') / 2 + 2 * udg_jwjs[i] ) * ( 2 + QiJueCoefficient(u) ) / 40
+    		endif
+    		// 天赋：天纵奇才 增加升重速度
+    		if UnitHasBuffBJ(u, 'B01O') then
+    		    set jingyan=jingyan * ( 2 + bigTalent[i] )
+    		endif
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + jingyan)
+    		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(u)), id * 2, I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id)) + "/" + I2S(R2I(r * level)))
+    		if LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) > R2I(r) * level then
+    		    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, 0)
+    		    call IncUnitAbilityLevel(u, id)
+    		    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
+                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
+    			if id == 'A0DP' then // 归元吐纳功
 set fuyuan[i]=fuyuan[i] + 2
-				set gengu[i]=gengu[i] + 2
-				set wuxing[i]=wuxing[i] + 2
-				set jingmai[i]=jingmai[i] + 2
-				set danpo[i]=danpo[i] + 2
-				set yishu[i]=yishu[i] + 2
-			endif
-        endif
-    elseif level > 0 and level < 9 then
-        if ( GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 1 + 0.6 * udg_jwjs[i] ) ) or ( ( UnitHasBuffBJ(u, 'B010') or UnitHasBuffBJ(u, 'B01O') ) and GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 2 + 0.3 * GetUnitAbilityLevel(u, 'A02V') + 0.6 * udg_jwjs[i] ) ) then
-       		if id != 'A07W' then
-	        	call IncUnitAbilityLevel(u, id)
-	        	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
-            	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
-            	if level + 1 == 9 and Ce[i] == 8 then
-					set wuxuedian[i]=wuxuedian[i] + 2
-					call DisplayTextToPlayer(p, 0, 0, "|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
-					if ( udg_jwjs[i] <= 2 ) and udg_jwjsbool[i] == false then
-						set udg_jwjs[i]=udg_jwjs[i] + 1
-						call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您练成第" + I2S(udg_jwjs[i]) + "个九重武功，练成3个可获得宗师哦")
-					endif
-					if ( udg_jwjs[i] == 3 ) and udg_jwjsbool[i] == false then
-						set udg_jwjsbool[i]=true
-						if udg_zhangmen[i] == true then
-						else
-							call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-						endif
-						call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
-						call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
-					endif
-				endif
-        	endif
-        else
-            if udg_xinggeB[i] >= 4 or UnitHaveItem(u , 'I01J') or UnitHaveItem(u , 'I0DB') or JYd[i] == 1 then
-	            if id != 'A07W' then
-	            	if UnitHasBuffBJ(u, 'B010') then
-	            	    set jingyan=LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + GetUnitAbilityLevel(u, 'A02V') / 4 + udg_jwjs[i] ) / 3 * 2
-	            	else
-	            	    set jingyan=LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + udg_jwjs[i] ) / 3 * 2
+    				set gengu[i]=gengu[i] + 2
+    				set wuxing[i]=wuxing[i] + 2
+    				set jingmai[i]=jingmai[i] + 2
+    				set danpo[i]=danpo[i] + 2
+    				set yishu[i]=yishu[i] + 2
+    			endif
+            endif
+        elseif level > 0 and level < 9 then
+            if ( GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 1 + 0.6 * udg_jwjs[i] ) ) or ( ( UnitHasBuffBJ(u, 'B010') or UnitHasBuffBJ(u, 'B01O') ) and GetRandomReal(1., r * I2R(level)) <= I2R(wuxing[i]) / 2 * ( 2 + 0.3 * GetUnitAbilityLevel(u, 'A02V') + 0.6 * udg_jwjs[i] ) ) then
+           		if id != 'A07W' then
+    	        	call IncUnitAbilityLevel(u, id)
+    	        	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
+                	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
+                	if level + 1 == 9 and Ce[i] == 8 then
+    					set wuxuedian[i]=wuxuedian[i] + 2
+    					call DisplayTextToPlayer(p, 0, 0, "|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
+    					if ( udg_jwjs[i] <= 2 ) and udg_jwjsbool[i] == false then
+    						set udg_jwjs[i]=udg_jwjs[i] + 1
+    						call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您练成第" + I2S(udg_jwjs[i]) + "个九重武功，练成3个可获得宗师哦")
+    					endif
+    					if ( udg_jwjs[i] == 3 ) and udg_jwjsbool[i] == false then
+    						set udg_jwjsbool[i]=true
+    						call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+    						call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
+    						call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
+    					endif
+    				endif
+            	endif
+            else
+                if udg_xinggeB[i] >= 4 or UnitHaveItem(u , 'I01J') or UnitHaveItem(u , 'I0DB') or JYd[i] == 1 then
+    	            if id != 'A07W' then
+    	            	if UnitHasBuffBJ(u, 'B010') then
+    	            	    set jingyan=LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + GetUnitAbilityLevel(u, 'A02V') / 4 + udg_jwjs[i] ) / 3 * 2
+    	            	else
+    	            	    set jingyan=LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) + ( 3 + udg_xinggeA[i] ) * ( wuxing[i] + 5 + GetRandomInt(0, R2I(r / 60)) ) * ( 2 + QiJueCoefficient(u) ) / 20 * ( 2 + udg_jwjs[i] ) / 3 * 2
+                		endif
+                		// 天赋：天纵奇才 增加升重速度
+                        if UnitHasBuffBJ(u, 'B01O') then
+                            set jingyan=jingyan * ( 2 + bigTalent[i] )
+                        endif
+    	            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, jingyan)
             		endif
-            		// 天赋：天纵奇才 增加升重速度
-                    if UnitHasBuffBJ(u, 'B01O') then
-                        set jingyan=jingyan * ( 2 + bigTalent[i] )
-                    endif
-	            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, jingyan)
-        		endif
-		        call SaveStr(YDHT, GetHandleId(GetOwningPlayer(u)), id * 2, I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id)) + "/" + I2S(R2I(r * level)))
-		        if LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) > R2I(r) * level then
-		            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, 0)
-		            call IncUnitAbilityLevel(u, id)
-		            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
-                    call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
-					if id == 'A0DP' then // 归元吐纳功
+    		        call SaveStr(YDHT, GetHandleId(GetOwningPlayer(u)), id * 2, I2S(LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id)) + "/" + I2S(R2I(r * level)))
+    		        if LoadInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id) > R2I(r) * level then
+    		            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id, 0)
+    		            call IncUnitAbilityLevel(u, id)
+    		            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
+                        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
+    					if id == 'A0DP' then // 归元吐纳功
 set fuyuan[i]=fuyuan[i] + 2
-						set gengu[i]=gengu[i] + 2
-						set wuxing[i]=wuxing[i] + 2
-						set jingmai[i]=jingmai[i] + 2
-						set danpo[i]=danpo[i] + 2
-						set yishu[i]=yishu[i] + 2
-					endif
-                    if level + 1 == 9 and Ce[i] == 8 then
-						set wuxuedian[i]=wuxuedian[i] + 2
-						call DisplayTextToPlayer(p, 0, 0, "|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
-						if ( udg_jwjs[i] <= 2 ) and udg_jwjsbool[i] == false then
-							set udg_jwjs[i]=udg_jwjs[i] + 1
-							call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您练成第" + I2S(udg_jwjs[i]) + "个九重武功，练成3个可获得宗师哦")
-						endif
-						if ( udg_jwjs[i] == 3 ) and udg_jwjsbool[i] == false then
-							set udg_jwjsbool[i]=true
-							if udg_zhangmen[i] == true then
-							else
-								call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-							endif
-							call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
-							call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
-						endif
-					endif
+    						set gengu[i]=gengu[i] + 2
+    						set wuxing[i]=wuxing[i] + 2
+    						set jingmai[i]=jingmai[i] + 2
+    						set danpo[i]=danpo[i] + 2
+    						set yishu[i]=yishu[i] + 2
+    					endif
+                        if level + 1 == 9 and Ce[i] == 8 then
+    						set wuxuedian[i]=wuxuedian[i] + 2
+    						call DisplayTextToPlayer(p, 0, 0, "|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
+    						if ( udg_jwjs[i] <= 2 ) and udg_jwjsbool[i] == false then
+    							set udg_jwjs[i]=udg_jwjs[i] + 1
+    							call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您练成第" + I2S(udg_jwjs[i]) + "个九重武功，练成3个可获得宗师哦")
+    						endif
+    						if ( udg_jwjs[i] == 3 ) and udg_jwjsbool[i] == false then
+    							set udg_jwjsbool[i]=true
+    							call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+    							call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
+    							call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
+    						endif
+    					endif
+                    endif
                 endif
             endif
         endif
+endfunction
+// 成为掌门
+function becomeChief takes unit u,integer denomination,string title,integer strAward,integer agiAward,integer intAward returns nothing
+    local player p=GetOwningPlayer(u)
+    local integer i=1 + GetPlayerId(p)
+    local integer special0= 6
+    local integer special1= 6
+    if denomination == 14 then // 明教
+set special1=4
+    elseif denomination == 20 then // 唐门
+set special0=1
     endif
-    //掌门系统
-    if ( IsUnitType(( u ), ( UNIT_TYPE_HERO )) != null ) and udg_zhangmen[i] == false then // INLINED!!
-if GetUnitAbilityLevel(u, 'A0C7') >= 6 and GetUnitAbilityLevel(u, 'A0C2') >= 6 and GetUnitAbilityLevel(u, 'A0C5') >= 6 and ( GetUnitAbilityLevel(u, 'A0C4') >= 6 or GetUnitAbilityLevel(u, 'A0C6') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：峨眉掌门")
-            call ModifyHeroStat(0, u, 0, 240)
-            call ModifyHeroStat(1, u, 0, 170)
-            call SetPlayerName(p, "〓峨眉掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=1
-            if GetUnitAbilityLevel(u, 'A07N') >= 1 and UnitHaveItem(u , 'I00B') then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：芷若")
-                call ModifyHeroStat(0, u, 0, 480)
-                // 九阴白骨爪加2级
-                call SetUnitAbilityLevel(u, 'A07N', IMinBJ(GetUnitAbilityLevel(u, 'A07N') + 2, 9))
-                call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07N' * 5, GetUnitAbilityLevel(u, 'A07N'))
-            	call SetPlayerName(p, "〓芷若〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set zhiruo[i]=true
-        	endif
-        	if GetUnitAbilityLevel(u, 'A0C6') >= 1 and UnitHaveItem(u , 'I09D') then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：小东邪")
-            	call ModifyHeroStat(1, u, 0, 360)
-            	call SetPlayerName(p, "〓小东邪〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("小东邪"), true)
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A0C9') >= 6 and GetUnitAbilityLevel(u, 'A0CB') >= 6 and GetUnitAbilityLevel(u, 'A0C8') >= 6 and ( GetUnitAbilityLevel(u, 'A0CA') >= 6 or GetUnitAbilityLevel(u, 'A0DI') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：丐帮帮主")
-            call ModifyHeroStat(0, u, 0, 480)
-            call SetPlayerName(p, "〓丐帮帮主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=2
-			// 学降龙、打狗，带打狗棒
-            if GetUnitAbilityLevel(u, 'A07L') >= 1 and GetUnitAbilityLevel(u, 'A07E') >= 1 and UnitHaveItem(u , 'I097') then
-                    call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：北丐")
-                    call ModifyHeroStat(0, u, 0, 480)
-                    call SetUnitAbilityLevel(u, 'A07L', IMinBJ(GetUnitAbilityLevel(u, 'A07L') + 4, 9))
-                    call SetUnitAbilityLevel(u, 'A07E', IMinBJ(GetUnitAbilityLevel(u, 'A07E') + 4, 9))
-                    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07L' * 5, GetUnitAbilityLevel(u, 'A07L'))
-                    call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
-                    call SetPlayerName(p, "〓北丐〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-        	endif
-			// 降龙3级以上，拥有擒龙控鹤，带打狗棒
-			if GetUnitAbilityLevel(u, 'A07E') >= 3 and GetUnitAbilityLevel(u, 'A03V') > 0 and UnitHaveItem(u , 'I097') then
-				call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：北乔峰")
-				call ModifyHeroStat(0, u, 0, 500)
-				call ModifyHeroStat(1, u, 0, 500)
-				call ModifyHeroStat(2, u, 0, 500)
-				// 降龙奖励到9级
-				call SetUnitAbilityLevel(u, 'A07E', 9)
-				call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07L' * 5, GetUnitAbilityLevel(u, 'A07L'))
-				call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
-				call SetPlayerName(p, "〓北乔峰〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set beiqiaofeng[i]=true
-			endif
-        elseif GetUnitAbilityLevel(u, 'A0CF') >= 6 and GetUnitAbilityLevel(u, 'A0DA') >= 6 and GetUnitAbilityLevel(u, 'A0CM') >= 6 and ( GetUnitAbilityLevel(u, 'A0CH') >= 6 or GetUnitAbilityLevel(u, 'A0DE') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：全真掌教")
-            call ModifyHeroStat(1, u, 0, 360)
-            call SetPlayerName(p, "〓全真掌教〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=3
-            if GetUnitAbilityLevel(u, 'A017') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and GetUnitAbilityLevel(u, 'A0D1') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：老顽童")
-            	call ModifyHeroStat(1, u, 0, 360)
-            	call SetUnitAbilityLevel(u, 'A017', 9)
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A017' * 5, GetUnitAbilityLevel(u, 'A017'))
-            	call SetPlayerName(p, "〓老顽童〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set laowantong[i]=true
-        	endif
-        	if GetUnitAbilityLevel(u, 'A06P') >= 1 and GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A0CH') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：中神通")
-            	call ModifyHeroStat(0, u, 0, 300)
-            	call ModifyHeroStat(1, u, 0, 300)
-            	call ModifyHeroStat(2, u, 0, 300)
-            	call SetUnitAbilityLevel(u, 'A0CH', 9)
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0CH' * 5, GetUnitAbilityLevel(u, 'A0CH'))
-            	call SetPlayerName(p, "〓中神通〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set zhongshentong[i]=true
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A0CI') >= 6 and GetUnitAbilityLevel(u, 'A0CJ') >= 6 and GetUnitAbilityLevel(u, 'A0CN') >= 6 and ( GetUnitAbilityLevel(u, 'A0CK') >= 6 or GetUnitAbilityLevel(u, 'A0DH') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：血刀掌门")
-            call ModifyHeroStat(2, u, 0, 1200)
-            call SetPlayerName(p, "〓血刀掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=4
-            if UnitHaveItem(u , 'I098') then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：血刀老祖")
-                call ModifyHeroStat(0, u, 0, 480)
-                // 一刀绝空加2级
-                call SetUnitAbilityLevel(u, 'A0DH', IMinBJ(GetUnitAbilityLevel(u, 'A0DH') + 2, 9))
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0DH' * 5, GetUnitAbilityLevel(u, 'A0DH'))
-            	call SetPlayerName(p, "〓血刀老祖〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set xuedaolaozu[i]=true
-        	endif
-        	if GetUnitAbilityLevel(u, 'A07X') >= 1 and GetUnitAbilityLevel(u, 'A06J') >= 1 and GetUnitAbilityLevel(u, 'A071') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：空心菜")
-            	call ModifyHeroStat(0, u, 0, 200)
-            	call ModifyHeroStat(1, u, 0, 200)
-            	call ModifyHeroStat(2, u, 0, 360)
-            	call SetPlayerName(p, "〓空心菜〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				// 爆伤+100%
-				set udg_baojishanghai[i]=udg_baojishanghai[i] + 5.0
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A09E') >= 6 and GetUnitAbilityLevel(u, 'A09J') >= 6 and GetUnitAbilityLevel(u, 'A09M') >= 6 and ( GetUnitAbilityLevel(u, 'A09T') >= 6 or GetUnitAbilityLevel(u, 'A09U') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：古墓掌门")
-            call ModifyHeroStat(0, u, 0, 240)
-            call ModifyHeroStat(1, u, 0, 240)
-            call SetPlayerName(p, "〓古墓掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=5
-            if GetUnitAbilityLevel(u, 'A07G') >= 1 and UnitHaveItem(u , 'I099') then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神雕侠")
-            	call ModifyHeroStat(0, u, 0, 480)
-            	call SetUnitAbilityLevel(u, 'A07G', IMinBJ(GetUnitAbilityLevel(u, 'A07G') + 3, 9))
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07G' * 5, GetUnitAbilityLevel(u, 'A07G'))
-            	call SetPlayerName(p, "〓神雕侠〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-        	endif
-        	if GetUnitAbilityLevel(u, 'A07U') >= 1 and UnitHaveItem(u , 'I09A') then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：小龙女")
-            	call ModifyHeroStat(2, u, 0, 600)
-            	call SetPlayerName(p, "〓小龙女〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-        	endif
-        	if GetUnitAbilityLevel(u, 'A07G') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and UnitHaveItem(u , 'I09C') then
-	        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神雕侠侣")
-	        	call ModifyHeroStat(0, u, 0, 480)
-            	call ModifyHeroStat(2, u, 0, 600)
-            	call SetUnitAbilityLevel(u, 'A07G', IMinBJ(GetUnitAbilityLevel(u, 'A07G') + 6, 9))
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07G' * 5, GetUnitAbilityLevel(u, 'A07G'))
-            	call SetPlayerName(p, "〓神雕侠侣〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				// 送神雕
-				call unitadditembyidswapped('I04A' , u)
-        	endif
-        	if GetUnitAbilityLevel(u, 'A07A') >= 6 then
-	        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：赤炼仙子")
-	        	call SetPlayerName(p, "〓赤炼仙子〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-	        	call SetUnitAbilityLevel(u, 'A07A', IMinBJ(GetUnitAbilityLevel(u, 'A07A') + 6, 9))
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07A' * 5, GetUnitAbilityLevel(u, 'A07A'))
-            	set chilian[i]=true
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A05G') >= 6 and GetUnitAbilityLevel(u, 'A000') >= 6 and GetUnitAbilityLevel(u, 'A05K') >= 6 and ( GetUnitAbilityLevel(u, 'A05O') >= 6 or GetUnitAbilityLevel(u, 'S000') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：少林方丈")
-            call ModifyHeroStat(0, u, 0, 170)
-            call ModifyHeroStat(1, u, 0, 190)
-            call ModifyHeroStat(2, u, 0, 480)
-            call SetPlayerName(p, "〓少林方丈〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=6
-            if GetUnitAbilityLevel(u, 'A05O') >= 1 and yishu[i] >= 32 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：扫地神僧")
-            	call ModifyHeroStat(1, u, 0, 720)
-            	call SetPlayerName(p, "〓扫地神僧〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("扫地神僧"), true)
-        	endif
-            // 拥有易筋A09D或洗髓A080，称号达摩，毕业技能到9级
-            if GetUnitAbilityLevel(u, 'A09D') >= 1 or GetUnitAbilityLevel(u, 'A080') >= 1 then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：达摩祖师")
-            	call SetPlayerName(p, "〓达摩祖师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-                call ModifyHeroStat(0, u, 0, 200)
-                call ModifyHeroStat(1, u, 0, 220)
-                call ModifyHeroStat(2, u, 0, 200)
-                if ( GetUnitAbilityLevel(u, 'A05O') >= 6 ) then
-            		call SetUnitAbilityLevel(u, 'A05O', 9)
-        		elseif ( GetUnitAbilityLevel(u, 'S000') >= 6 ) then
-            		call SetUnitAbilityLevel(u, 'S000', 9)
-        		endif
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("达摩祖师"), true)
-            endif
-            // 小无相、无相劫指、悟性31以上
-            if GetUnitAbilityLevel(u, 'A083') >= 1 or GetUnitAbilityLevel(u, 'A03P') >= 1 and wuxing[i] >= 31 then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：大轮明王")
-            	call SetPlayerName(p, "〓大轮明王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-                call ModifyHeroStat(0, u, 0, 200)
-                call ModifyHeroStat(1, u, 0, 200)
-                call ModifyHeroStat(2, u, 0, 200)
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("大轮明王"), true)
-            endif
-            // 龙象，根骨31
-            if GetUnitAbilityLevel(u, 'S002') >= 1 and gengu[i] >= 31 then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：金轮法王")
-            	call SetPlayerName(p, "〓金轮法王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-                call ModifyHeroStat(0, u, 0, 200)
-                call ModifyHeroStat(1, u, 0, 200)
-                call ModifyHeroStat(2, u, 0, 200)
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("金轮法王"), true)
-            endif
-        elseif GetUnitAbilityLevel(u, 'A04D') >= 6 and GetUnitAbilityLevel(u, 'A08S') >= 6 and GetUnitAbilityLevel(u, 'A08R') >= 6 and ( GetUnitAbilityLevel(u, 'A08Q') >= 6 or GetUnitAbilityLevel(u, 'A08V') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：武当掌门")
-            call ModifyHeroStat(0, u, 0, 240)
-            call ModifyHeroStat(2, u, 0, 600)
-            call SetPlayerName(p, "〓武当掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=7
-            if GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'A09D') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：邋遢仙人")
-				call ModifyHeroStat(1, u, 0, 420)
-				// 蓝量加500
-				call YDWEGeneralBounsSystemUnitSetBonus(u , 1 , 0 , 500)
-				call DisplayTextToPlayer(p, 0, 0, "魔法上限+500")
-            	call SetPlayerName(p, "〓邋遢仙人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-        	endif
-			// 太极拳9级，带真武剑
-            if GetUnitAbilityLevel(u, 'A08R') >= 9 and UnitHaveItem(u , 'I0DK') then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：张三丰")
-				call ModifyHeroStat(0, u, 0, 300)
-				call ModifyHeroStat(1, u, 0, 300)
-				call ModifyHeroStat(2, u, 0, 300)
-            	call SetPlayerName(p, "〓张三丰〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("张三丰"), true)
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A0BP') >= 6 and GetUnitAbilityLevel(u, 'A0BS') >= 6 and GetUnitAbilityLevel(u, 'A0BQ') >= 6 and ( GetUnitAbilityLevel(u, 'A0BT') >= 6 or GetUnitAbilityLevel(u, 'A0BV') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：星宿掌门")
-            call ModifyHeroStat(0, u, 0, 360)
-            call ModifyHeroStat(2, u, 0, 360)
-            call SetPlayerName(p, "〓星宿掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=8
-            if GetUnitAbilityLevel(u, 'A07P') >= 1 and GetUnitAbilityLevel(u, 'A083') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：星宿老仙")
-            	call ModifyHeroStat(1, u, 0, 600)
-            	call ModifyHeroStat(2, u, 0, 300)
-            	if ( GetUnitAbilityLevel(u, 'A0BT') >= 6 ) then
-            		call SetUnitAbilityLevel(u, 'A0BT', 9)
-        		elseif ( GetUnitAbilityLevel(u, 'A0BV') >= 6 ) then
-            		call SetUnitAbilityLevel(u, 'A0BV', 9)
-        		endif
-            	call SetPlayerName(p, "〓星宿老仙〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set xingxiulaoxian[i]=true
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A08W') >= 6 and GetUnitAbilityLevel(u, 'A08X') >= 6 and GetUnitAbilityLevel(u, 'A08Y') >= 6 and ( GetUnitAbilityLevel(u, 'A037') >= 6 or GetUnitAbilityLevel(u, 'A091') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：华山掌门")
-            call ModifyHeroStat(1, u, 0, 170)
-            call ModifyHeroStat(2, u, 0, 290)
-            call SetPlayerName(p, "〓华山掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=9
-            if GetUnitAbilityLevel(u, 'A07T') >= 1 and GetUnitAbilityLevel(u, 'A07J') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：君子剑")
-            	call ModifyHeroStat(0, u, 0, 600)
-                call SetUnitAbilityLevel(u, 'A07J', 9) // 辟邪剑法9级
-call unitadditembyidswapped('I069' , u) // 送辟邪残章
-call SetPlayerName(p, "〓君子剑〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("君子剑岳不群"), true)
-            endif
-            // 风清扬，学会5级独孤九剑
-            if GetUnitAbilityLevel(u, 'A07F') >= 5 then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：风清扬")
-                call ModifyHeroStat(0, u, 0, 250)
-                call ModifyHeroStat(1, u, 0, 250)
-                call ModifyHeroStat(2, u, 0, 200)
-                call SetUnitAbilityLevel(u, 'A07F', 9) // 独孤九剑9级
-call unitadditembyidswapped('I066' , u) // 送独孤残章
-call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07F' * 5, GetUnitAbilityLevel(u, 'A07F'))
-                call SetPlayerName(p, "〓风清扬〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				// 送仙鹤
-				call unitadditembyidswapped('I04B' , u)
-            endif
-        elseif GetUnitAbilityLevel(u, 'A01Z') >= 6 and GetUnitAbilityLevel(u, 'A021') >= 6 and GetUnitAbilityLevel(u, 'A0CD') >= 6 and ( GetUnitAbilityLevel(u, 'A023') >= 6 or GetUnitAbilityLevel(u, 'A024') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：恒山掌门")
-            call ModifyHeroStat(1, u, 0, 460)
-            call SetPlayerName(p, "〓恒山掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=10
-            // 前3个技能大于等于7级，获得仪琳称号
-            if GetUnitAbilityLevel(u, 'A01Z') >= 7 and GetUnitAbilityLevel(u, 'A021') >= 7 and GetUnitAbilityLevel(u, 'A0CD') >= 7 then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：仪琳")
-                call ModifyHeroStat(1, u, 0, 200)
-                call ModifyHeroStat(2, u, 0, 200)
-                // 拂尘到9级
-                call SetUnitAbilityLevel(u, 'A01Z', 9)
-                call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A01Z' * 5, GetUnitAbilityLevel(u, 'A01Z'))
-                call SetPlayerName(p, "〓仪琳〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("仪琳"), true)
-            endif
-        elseif GetUnitAbilityLevel(u, 'A02B') >= 6 and GetUnitAbilityLevel(u, 'A02C') >= 6 and GetUnitAbilityLevel(u, 'A02F') >= 6 and ( GetUnitAbilityLevel(u, 'A02G') >= 6 or GetUnitAbilityLevel(u, 'A02H') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：灵鹫宫主")
-            call ModifyHeroStat(0, u, 0, 220)
-            call ModifyHeroStat(1, u, 0, 220)
-            call ModifyHeroStat(2, u, 0, 220)
-            call SetPlayerName(p, "〓灵鹫宫主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=12
-            // 大招学八荒，同时学会生死符（冰魄加北冥）
-            if GetUnitAbilityLevel(u, 'A02G') >= 6 and GetUnitAbilityLevel(u, 'A07A') >= 1 and GetUnitAbilityLevel(u, 'A082') >= 1 then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：天山童姥")
-                call ModifyHeroStat(0, u, 0, 280)
-                call ModifyHeroStat(1, u, 0, 280)
-                call ModifyHeroStat(2, u, 0, 320)
-                // 八荒奖励2级
-				call SetUnitAbilityLevel(u, 'A02G', IMinBJ(GetUnitAbilityLevel(u, 'A02G') + 2, 9))
-				// 如意加2级
-				call SetUnitAbilityLevel(u, 'A02F', IMinBJ(GetUnitAbilityLevel(u, 'A02F') + 2, 9))
-                call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A02G' * 5, GetUnitAbilityLevel(u, 'A02G'))
-                call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A02F' * 5, GetUnitAbilityLevel(u, 'A02F'))
-                call SetPlayerName(p, "〓天山童姥〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            endif
-            // 虚竹：北冥，冰魄，玉扳指，罗汉
-            if GetUnitAbilityLevel(u, 'A07A') >= 1 and GetUnitAbilityLevel(u, 'A082') >= 1 and GetUnitAbilityLevel(u, 'A07O') >= 1 and UnitHaveItem(u , 'I0DT') then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：虚竹子")
-                call ModifyHeroStat(0, u, 0, 100)
-                call ModifyHeroStat(1, u, 0, 500)
-                call ModifyHeroStat(2, u, 0, 100)
-                call SetPlayerName(p, "〓虚竹子〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("虚竹子"), true)
-            endif
-		elseif GetUnitAbilityLevel(u, 'A08A') >= 6 and GetUnitAbilityLevel(u, 'A08B') >= 6 and GetUnitAbilityLevel(u, 'A08E') >= 6 and ( GetUnitAbilityLevel(u, 'A08G') >= 6 or GetUnitAbilityLevel(u, 'A08H') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：泰山掌门")
-            call ModifyHeroStat(0, u, 0, 320)
-            call ModifyHeroStat(1, u, 0, 220)
-            call ModifyHeroStat(2, u, 0, 120)
-            call SetPlayerName(p, "〓泰山掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=24
-            // 天门道长，学会小无相
-			 if GetUnitAbilityLevel(u, 'A083') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：天门道长")
-            	call ModifyHeroStat(0, u, 0, 300)
-				call ModifyHeroStat(1, u, 0, 600)
-            	call SetPlayerName(p, "〓天门道长〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("天门道长"), true)
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A02K') >= 6 and GetUnitAbilityLevel(u, 'A0CC') >= 6 and GetUnitAbilityLevel(u, 'A02M') >= 6 and ( GetUnitAbilityLevel(u, 'A02R') >= 6 or GetUnitAbilityLevel(u, 'A02V') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：慕容家主")
-            call ModifyHeroStat(0, u, 0, 100)
-            call ModifyHeroStat(1, u, 0, 280)
-            call ModifyHeroStat(2, u, 0, 300)
-            call SetPlayerName(p, "〓慕容家主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=13
-            // 慕容龙城，搭配斗转
-            if GetUnitAbilityLevel(u, 'A07Q') >= 1 then // +斗转星移
-call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：慕容龙城")
-                call ModifyHeroStat(0, u, 0, 200)
-                call ModifyHeroStat(1, u, 0, 250)
-                call ModifyHeroStat(2, u, 0, 200)
-                call SetPlayerName(p, "〓慕容龙城〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set muronglc[i]=true
-            endif
-        elseif GetUnitAbilityLevel(u, 'A04M') >= 6 and GetUnitAbilityLevel(u, 'A04N') >= 6 and GetUnitAbilityLevel(u, 'A04P') >= 6 and ( GetUnitAbilityLevel(u, 'A026') >= 6 or GetUnitAbilityLevel(u, 'A04R') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：衡山掌门")
-            call ModifyHeroStat(0, u, 0, 350)
-            call ModifyHeroStat(1, u, 0, 260)
-            call ModifyHeroStat(2, u, 0, 100)
-            call SetPlayerName(p, "〓衡山掌门〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=15
-            if GetUnitAbilityLevel(u, 'A04M') >= 7 and GetUnitAbilityLevel(u, 'A04N') >= 7 and GetUnitAbilityLevel(u, 'A04P') >= 7 then
-				call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：莫大先生")
-	            call SetPlayerName(p, "〓莫大先生〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				set L7[i]=1
-				loop
-					exitwhen L7[i] > wugongshu[i]
-					if ( I7[20 * ( i - 1 ) + L7[i]] != 'AEfk' ) then
-						if ( ( L7[i] == wugongshu[i] ) ) then
-							call SetUnitAbilityLevel(u, 'A04M', 9)
-							call SetUnitAbilityLevel(u, 'A04N', 9)
-							call SetUnitAbilityLevel(u, 'A04P', 9)
-            				call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A04M' * 5, 9)
-            				call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A04N' * 5, 9)
-            				call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A04P' * 5, 9)
-						endif
-					else
-						if GetUnitAbilityLevel(u, 'A026') >= 6 then
-							set idd='A04R'
-						else
-							set idd='A026'
-						endif
-						call UnitAddAbility(u, idd)
-						call UnitMakeAbilityPermanent(u, true, idd)
-						set I7[20 * ( i - 1 ) + L7[i]]=idd
-						exitwhen true
-					endif
-					set L7[i]=L7[i] + 1
-				endloop
-            endif
-        elseif GetUnitAbilityLevel(u, 'A04W') >= 6 and GetUnitAbilityLevel(u, 'A04Z') >= 6 and GetUnitAbilityLevel(u, 'A051') >= 6 and ( GetUnitAbilityLevel(u, 'A057') >= 6 or GetUnitAbilityLevel(u, 'A059') >= 6 ) then
-        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：男神龙")
-            call ModifyHeroStat(0, u, 0, 350)
-            call ModifyHeroStat(2, u, 0, 200)
-            call SetPlayerName(p, "〓男神龙〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=16
-			// 学九阳+龙象，神龙教主
-			if GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'S002') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神龙教主")
-            	call ModifyHeroStat(0, u, 0, 200)
-				call ModifyHeroStat(1, u, 0, 400)
-				call ModifyHeroStat(2, u, 0, 300)
-            	call SetPlayerName(p, "〓神龙教主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("神龙教主"), true)
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A056') >= 6 and GetUnitAbilityLevel(u, 'A054') >= 6 and GetUnitAbilityLevel(u, 'A04X') >= 6 and ( GetUnitAbilityLevel(u, 'A057') >= 6 or GetUnitAbilityLevel(u, 'A059') >= 6 ) then
-        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：女神龙")
+    if GetUnitAbilityLevel(u, X7[denomination]) >= 6 and GetUnitAbilityLevel(u, Z7[denomination]) >= 6 and GetUnitAbilityLevel(u, Y7[denomination]) >= 6 and ( GetUnitAbilityLevel(u, Q8[denomination]) >= special0 or GetUnitAbilityLevel(u, P8[denomination]) >= special1 ) then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：" + title)
+        if strAward > 0 then
+            call ModifyHeroStat(0, u, 0, strAward)
+        endif
+        if agiAward > 0 then
+            call ModifyHeroStat(1, u, 0, agiAward)
+        endif
+        if intAward > 0 then
+            call ModifyHeroStat(2, u, 0, intAward)
+        endif
+        call SetPlayerName(p, "〓" + title + "〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call setChiefNumber(i , denomination)
+    endif
+    set p=null
+endfunction
+function determineShaoLinTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 1) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A05O') >= 1 and yishu[i] >= 32 and not isTitle(i , 1) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：扫地神僧")
+            call ModifyHeroStat(1, u, 0, 720)
+            call SetPlayerName(p, "〓扫地神僧〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 1)
+        endif
+        // 拥有易筋A09D或洗髓A080，称号达摩，毕业技能到9级
+        if GetUnitAbilityLevel(u, 'A09D') >= 1 or GetUnitAbilityLevel(u, 'A080') >= 1 and not isTitle(i , 2) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：达摩祖师")
+            call SetPlayerName(p, "〓达摩祖师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
             call ModifyHeroStat(0, u, 0, 200)
-            call ModifyHeroStat(1, u, 0, 350)
-            call SetPlayerName(p, "〓女神龙〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=17
-			// 学九阴+小无相，教主夫人
-			if GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A083') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：教主夫人")
-            	call ModifyHeroStat(0, u, 0, 400)
-				call ModifyHeroStat(1, u, 0, 200)
-				call ModifyHeroStat(2, u, 0, 300)
-            	call SetPlayerName(p, "〓教主夫人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("教主夫人"), true)
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A06Y') >= 6 and GetUnitAbilityLevel(u, 'A06Z') >= 6 and GetUnitAbilityLevel(u, 'A07Y') >= 6 and ( GetUnitAbilityLevel(u, 'A070') >= 6 or GetUnitAbilityLevel(u, 'A0DP') >= 6 ) then
-        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：铁掌帮主")
-            call ModifyHeroStat(0, u, 0, 300)
-            call ModifyHeroStat(2, u, 0, 225)
-            call SetPlayerName(p, "〓铁掌帮主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=27
-			// 学乾坤+双手，铁掌水上漂
-			if GetUnitAbilityLevel(u, 'A07W') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：铁掌水上漂")
-            	call ModifyHeroStat(0, u, 0, 300)
-				call ModifyHeroStat(1, u, 0, 200)
-				call ModifyHeroStat(2, u, 0, 100)
-            	call SetPlayerName(p, "〓铁掌水上漂〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				call SaveBoolean(YDHT, GetHandleId(u), StringHash("铁掌水上漂"), true)
-        	endif
-        elseif GetUnitAbilityLevel(u, 'A098') >= 6 and GetUnitAbilityLevel(u, 'A09A') >= 6 and GetUnitAbilityLevel(u, 'A0B0') >= 6 and ( GetUnitAbilityLevel(u, 'A0B6') >= 1 or GetUnitAbilityLevel(u, 'A0B1') >= 6 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：唐门门主")
-            call ModifyHeroStat(1, u, 0, 225)
-            call ModifyHeroStat(2, u, 0, 300)
-            call SetPlayerName(p, "〓唐门门主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=28
-            // 学小无相+冰魄银针6重，搜魂侠
-            if GetUnitAbilityLevel(u, 'A083') >= 1 and GetUnitAbilityLevel(u, 'A07A') >= 1 then
-                call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：搜魂侠")
-                call ModifyHeroStat(0, u, 0, 300)
-                call ModifyHeroStat(1, u, 0, 200)
-                call ModifyHeroStat(2, u, 0, 300)
-                call SetPlayerName(p, "〓搜魂侠〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-                call SaveBoolean(YDHT, GetHandleId(u), StringHash("搜魂侠"), true)
+            call ModifyHeroStat(1, u, 0, 220)
+            call ModifyHeroStat(2, u, 0, 200)
+            if ( GetUnitAbilityLevel(u, 'A05O') >= 6 ) then
+                call SetUnitAbilityLevel(u, 'A05O', 9)
+            elseif ( GetUnitAbilityLevel(u, 'S000') >= 6 ) then
+                call SetUnitAbilityLevel(u, 'S000', 9)
             endif
-		elseif GetUnitAbilityLevel(u, 'A030') >= 6 and GetUnitAbilityLevel(u, 'A032') >= 6 and GetUnitAbilityLevel(u, 'A06R') >= 6 and ( GetUnitAbilityLevel(u, 'A034') >= 6 or GetUnitAbilityLevel(u, 'A07W') >= 4 ) then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：明教教主")
-            call ModifyHeroStat(0, u, 0, 210)
-            call ModifyHeroStat(1, u, 0, 310)
-            call ModifyHeroStat(2, u, 0, 160)
-            call SetPlayerName(p, "〓明教教主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=14
-            if GetUnitAbilityLevel(u, 'A030') >= 9 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：白眉鹰王")
-	            call SetPlayerName(p, "〓白眉鹰王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-	            call ModifyHeroStat(2, u, 0, 500)
-            endif
-            if GetUnitAbilityLevel(u, 'A032') >= 9 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：青翼幅王")
-	            call SetPlayerName(p, "〓青翼幅王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-	            call ModifyHeroStat(1, u, 0, 300)
-            endif
-            if GetUnitAbilityLevel(u, 'A06R') >= 9 and GetUnitAbilityLevel(u, 'A07M') >= 3 and UnitHaveItem(u , 'I00D') then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：金毛狮王")
-	            call SetPlayerName(p, "〓金毛狮王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-	            call SetUnitAbilityLevel(u, 'A07M', IMinBJ(GetUnitAbilityLevel(u, 'A07M') + 6, 9))
-	            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07M' * 5, GetUnitAbilityLevel(u, 'A07M'))
-	            call ModifyHeroStat(0, u, 0, 300)
-            endif
-            if GetUnitAbilityLevel(u, 'A07W') >= 6 and GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'A08R') >= 4 then
-	            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：无忌")
-	            call SetPlayerName(p, "〓无忌〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-	            call SetUnitAbilityLevel(u, 'A08R', IMinBJ(GetUnitAbilityLevel(u, 'A08R') + 3, 9))
-	            call SetUnitAbilityLevel(u, 'A07W', 7)
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07W' * 5, GetUnitAbilityLevel(u, 'A07W'))
-            	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A08R' * 5, GetUnitAbilityLevel(u, 'A08R'))
-	            call ModifyHeroStat(1, u, 0, 1000)
-	            call ModifyHeroStat(2, u, 0, 500)
-				// 送白猿
-				call unitadditembyidswapped('I0CS' , u)
-            endif
-        elseif GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A0D2') >= 1 and GetUnitAbilityLevel(u, 'A0D6') >= 1 and GetUnitAbilityLevel(u, 'A0D4') >= 1 and GetUnitAbilityLevel(u, 'A07N') >= 4 and GetUnitAbilityLevel(u, 'A0D3') >= 4 and GetUnitAbilityLevel(u, 'A0D1') >= 4 then
-            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：真·九阴真人")
-            call SetPlayerName(p, "〓真·九阴真人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            call SetUnitAbilityLevel(u, 'A07N', IMinBJ(GetUnitAbilityLevel(u, 'A07N') + 3, 9))
-            call SetUnitAbilityLevel(u, 'A0D3', IMinBJ(GetUnitAbilityLevel(u, 'A0D3') + 3, 9))
-            call SetUnitAbilityLevel(u, 'A0D1', IMinBJ(GetUnitAbilityLevel(u, 'A0D1') + 3, 9))
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07N' * 5, GetUnitAbilityLevel(u, 'A07N'))
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D3' * 5, GetUnitAbilityLevel(u, 'A0D3'))
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D1' * 5, GetUnitAbilityLevel(u, 'A0D1'))
-            call ModifyHeroStat(1, u, 0, 2900)
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=11
-        elseif GetUnitAbilityLevel(u, 'A089') >= 5 and GetUnitAbilityLevel(u, 'A084') >= 1 and GetUnitAbilityLevel(u, 'A0D2') >= 1 and UnitHaveItem(u , 'I09B') then
-        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：西毒")
-            call SetPlayerName(p, "〓西毒〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            call ModifyHeroStat(0, u, 0, 600)
-            call ModifyHeroStat(2, u, 0, 360)
-            call unitadditembyidswapped('I070' , u)
-            call SetUnitAbilityLevel(u, 'A089', IMinBJ(GetUnitAbilityLevel(u, 'A089') + 2, 9))
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A089' * 5, GetUnitAbilityLevel(u, 'A089'))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=19
-			call SaveBoolean(YDHT, GetHandleId(u), StringHash("西毒"), true)
-		elseif GetUnitAbilityLevel(u, 'A06H') >= 5 and GetUnitAbilityLevel(u, 'A018') >= 5 and UnitHaveItem(u , 'I09D') then
-        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：东邪")
-            call SetPlayerName(p, "〓东邪〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            call ModifyHeroStat(1, u, 0, 240)
-            call ModifyHeroStat(2, u, 0, 300)
-            call SetUnitAbilityLevel(u, 'A06H', 9)
-            call SetUnitAbilityLevel(u, 'A018', 9)
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A06H' * 5, GetUnitAbilityLevel(u, 'A06H'))
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A018' * 5, GetUnitAbilityLevel(u, 'A018'))
-            call unitadditembyidswapped('I04Q' , u)
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=22
-			set dongxie[i]=true
-        elseif GetUnitAbilityLevel(u, 'A06P') >= 5 and GetUnitAbilityLevel(u, 'A0CH') >= 3 and GetUnitAbilityLevel(u, 'A0D4') >= 1 and udg_runamen[i] != 5 then
-        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：南帝")
-            call SetPlayerName(p, "〓南帝〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-            call ModifyHeroStat(1, u, 0, 480)
-            call ModifyHeroStat(2, u, 0, 600)
-            call SetUnitAbilityLevel(u, 'A06P', 9)
-            call SetUnitAbilityLevel(u, 'A0CH', 7)
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A06P' * 5, GetUnitAbilityLevel(u, 'A06P'))
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0CH' * 5, GetUnitAbilityLevel(u, 'A0CH'))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=23
-        elseif GetUnitAbilityLevel(u, 'A07N') >= 5 and GetUnitAbilityLevel(u, 'A0D1') >= 5 and GetUnitAbilityLevel(u, 'A0D3') >= 5 and GetUnitAbilityLevel(u, 'A07G') >= 3 and ( GetUnitTypeId(u) == 'O023' or GetUnitTypeId(u) == 'O02H' or GetUnitTypeId(u) == 'O02I' or GetUnitTypeId(u) == 'O003' or GetUnitTypeId(u) == 'O002' ) then
-        	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：瑶琴")
-            call SetPlayerName(p, "〓瑶琴〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-			call ModifyHeroStat(0, u, 0, 700)
+            call setTitleNumber(i , 2)
+        endif
+        // 小无相、无相劫指、悟性31以上
+        if GetUnitAbilityLevel(u, 'A083') >= 1 or GetUnitAbilityLevel(u, 'A03P') >= 1 and wuxing[i] >= 31 and not isTitle(i , 3) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：大轮明王")
+            call SetPlayerName(p, "〓大轮明王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call ModifyHeroStat(0, u, 0, 200)
             call ModifyHeroStat(1, u, 0, 200)
-            call SetUnitAbilityLevel(u, 'A0D1', 9)
-            call SetUnitAbilityLevel(u, 'A0D3', 7)
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D1' * 5, GetUnitAbilityLevel(u, 'A0D1'))
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D3' * 5, GetUnitAbilityLevel(u, 'A0D3'))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=18
-			set yaoqin[i]=true
-            //自创武功命名为虾米神拳
-        elseif s__ZiZhiWuGong_name[zizhiwugong[i]] == "虾米神拳" and GetUnitAbilityLevel(u, 'A036') >= 1 and GetUnitAbilityLevel(u, 'A07I') >= 5 and udg_runamen[i] == 11 then
-			call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：小虾米")
-            call SetPlayerName(p, "〓小虾米〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-			call ModifyHeroStat(0, u, 0, 1000)
-            call ModifyHeroStat(1, u, 0, 1000)
-            call ModifyHeroStat(2, u, 0, 1000)
-            call SetUnitAbilityLevel(u, 'A07I', 9)
-            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07I' * 5, GetUnitAbilityLevel(u, 'A07I'))
-            set udg_zhangmen[i]=true
-            set udg_whichzhangmen[i]=21
-			call SaveBoolean(YDHT, GetHandleId(u), StringHash("小虾米"), true)
-		elseif GetUnitAbilityLevel(u, 'A07E') >= 5 and GetUnitAbilityLevel(u, 'A017') >= 5 and GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and udg_runamen[i] == 11 then
-			// 不能是丐帮，降龙5级、空明拳5级、九阴真经、双手互博
-			// 奖励招式300、内力500、真实300，降龙加3级，空明加3级
-			call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：郭大侠")
-			call SetPlayerName(p, "〓郭大侠〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-			call ModifyHeroStat(0, u, 0, 300)
-			call ModifyHeroStat(2, u, 0, 500)
-			call ModifyHeroStat(2, u, 0, 300)
-			call SetUnitAbilityLevel(u, 'A07E', IMinBJ(GetUnitAbilityLevel(u, 'A07E') + 3, 9))
-			call SetUnitAbilityLevel(u, 'A017', IMinBJ(GetUnitAbilityLevel(u, 'A017') + 3, 9))
-			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
-			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A017' * 5, GetUnitAbilityLevel(u, 'A017'))
-			set udg_zhangmen[i]=true
-			set udg_whichzhangmen[i]=25
-			set beixia[i]=true // 北侠
-elseif GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'A07O') >= 1 and GetUnitAbilityLevel(u, 'A07R') >= 1 and GetUnitAbilityLevel(u, 'A07T') >= 1 and GetUnitAbilityLevel(u, 'A07Q') >= 1 and GetUnitAbilityLevel(u, 'A07W') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 then
-			// 王语嫣：九阴、九阳、罗汉、吸星、葵花、斗转、乾坤、双手
-			call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神仙姐姐")
-			call SetPlayerName(p, "〓神仙姐姐〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-			call ModifyHeroStat(0, u, 0, 300)
-			call ModifyHeroStat(2, u, 0, 500)
-			call ModifyHeroStat(2, u, 0, 300)
-			call SetUnitAbilityLevel(u, 'A07E', IMinBJ(GetUnitAbilityLevel(u, 'A07E') + 3, 9))
-			call SetUnitAbilityLevel(u, 'A017', IMinBJ(GetUnitAbilityLevel(u, 'A017') + 3, 9))
-			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
-			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A017' * 5, GetUnitAbilityLevel(u, 'A017'))
-			set udg_zhangmen[i]=true
-			set udg_whichzhangmen[i]=26
-			call SaveBoolean(YDHT, GetHandleId(u), StringHash("神仙姐姐"), true)
+            call ModifyHeroStat(2, u, 0, 200)
+            call setTitleNumber(i , 3)
+        endif
+        // 龙象，根骨31
+        if GetUnitAbilityLevel(u, 'S002') >= 1 and gengu[i] >= 31 and not isTitle(i , 4) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：金轮法王")
+            call SetPlayerName(p, "〓金轮法王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call ModifyHeroStat(0, u, 0, 200)
+            call ModifyHeroStat(1, u, 0, 200)
+            call ModifyHeroStat(2, u, 0, 200)
+            call setTitleNumber(i , 4)
         endif
     endif
-    if ( IsUnitType(( u ), ( UNIT_TYPE_HERO )) != null ) and udg_whichzhangmen[i] == 10 and GetUnitAbilityLevel(u, 'A07F') >= 1 and GetUnitAbilityLevel(u, 'A09D') >= 1 and GetUnitAbilityLevel(u, 'A07R') >= 1 and GetUnitAbilityLevel(u, 'A08W') >= 1 then // INLINED!!
-call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：笑傲江湖")
-        call SetPlayerName(p, "〓笑傲江湖〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-        call ModifyHeroStat(0, u, 0, 480)
-        call ModifyHeroStat(0, u, 0, 500)
+    set p=null
+endfunction
+function determineGuMuTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 2) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A07G') >= 1 and UnitHaveItem(u , 'I099') and not isTitle(i , 5) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神雕侠")
+            call ModifyHeroStat(0, u, 0, 480)
+            call SetUnitAbilityLevel(u, 'A07G', IMinBJ(GetUnitAbilityLevel(u, 'A07G') + 3, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07G' * 5, GetUnitAbilityLevel(u, 'A07G'))
+            call SetPlayerName(p, "〓神雕侠〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 5)
+        endif
+        if GetUnitAbilityLevel(u, 'A07U') >= 1 and UnitHaveItem(u , 'I09A') and not isTitle(i , 6) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：小龙女")
+            call ModifyHeroStat(2, u, 0, 600)
+            call SetPlayerName(p, "〓小龙女〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 6)
+        endif
+        if GetUnitAbilityLevel(u, 'A07G') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and UnitHaveItem(u , 'I09C') and not isTitle(i , 7) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神雕侠侣")
+            call ModifyHeroStat(0, u, 0, 480)
+            call ModifyHeroStat(2, u, 0, 600)
+            call SetUnitAbilityLevel(u, 'A07G', IMinBJ(GetUnitAbilityLevel(u, 'A07G') + 6, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07G' * 5, GetUnitAbilityLevel(u, 'A07G'))
+            call SetPlayerName(p, "〓神雕侠侣〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            // 送神雕
+            call unitadditembyidswapped('I04A' , u)
+            call setTitleNumber(i , 7)
+        endif
+        if GetUnitAbilityLevel(u, 'A07A') >= 6 and not isTitle(i , 8) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：赤炼仙子")
+            call SetPlayerName(p, "〓赤炼仙子〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call SetUnitAbilityLevel(u, 'A07A', IMinBJ(GetUnitAbilityLevel(u, 'A07A') + 6, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07A' * 5, GetUnitAbilityLevel(u, 'A07A'))
+            call setTitleNumber(i , 8)
+        endif
+    endif
+    set p=null
+endfunction
+function determineGaiBangTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 3) - 1)])) != 0) then // INLINED!!
+        // 学降龙、打狗，带打狗棒
+        if GetUnitAbilityLevel(u, 'A07L') >= 1 and GetUnitAbilityLevel(u, 'A07E') >= 1 and UnitHaveItem(u , 'I097') and not isTitle(i , 9) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：北丐")
+            call ModifyHeroStat(0, u, 0, 480)
+            call SetUnitAbilityLevel(u, 'A07L', IMinBJ(GetUnitAbilityLevel(u, 'A07L') + 4, 9))
+            call SetUnitAbilityLevel(u, 'A07E', IMinBJ(GetUnitAbilityLevel(u, 'A07E') + 4, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07L' * 5, GetUnitAbilityLevel(u, 'A07L'))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
+            call SetPlayerName(p, "〓北丐〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 9)
+        endif
+        // 降龙3级以上，拥有擒龙控鹤，带打狗棒
+        if GetUnitAbilityLevel(u, 'A07E') >= 3 and GetUnitAbilityLevel(u, 'A03V') > 0 and UnitHaveItem(u , 'I097') and not isTitle(i , 10) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：北乔峰")
+            call ModifyHeroStat(0, u, 0, 500)
+            call ModifyHeroStat(1, u, 0, 500)
+            call ModifyHeroStat(2, u, 0, 500)
+            // 降龙奖励到9级
+            call SetUnitAbilityLevel(u, 'A07E', 9)
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07L' * 5, GetUnitAbilityLevel(u, 'A07L'))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
+            call SetPlayerName(p, "〓北乔峰〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 10)
+        endif
+    endif
+    set p=null
+endfunction
+function determineHuaShanTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 4) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A07T') >= 1 and GetUnitAbilityLevel(u, 'A07J') >= 1 and not isTitle(i , 11) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：君子剑")
+            call ModifyHeroStat(0, u, 0, 600)
+            call SetUnitAbilityLevel(u, 'A07J', 9) // 辟邪剑法9级
+call unitadditembyidswapped('I069' , u) // 送辟邪残章
+call SetPlayerName(p, "〓君子剑〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 11)
+        endif
+        // 风清扬，学会5级独孤九剑
+        if GetUnitAbilityLevel(u, 'A07F') >= 5 and not isTitle(i , 12) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：风清扬")
+            call ModifyHeroStat(0, u, 0, 250)
+            call ModifyHeroStat(1, u, 0, 250)
+            call ModifyHeroStat(2, u, 0, 200)
+            call SetUnitAbilityLevel(u, 'A07F', 9) // 独孤九剑9级
+call unitadditembyidswapped('I066' , u) // 送独孤残章
+call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07F' * 5, GetUnitAbilityLevel(u, 'A07F'))
+            call SetPlayerName(p, "〓风清扬〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            // 送仙鹤
+            call unitadditembyidswapped('I04B' , u)
+            call setTitleNumber(i , 12)
+        endif
+    endif
+    set p=null
+endfunction
+function determineQuanZhenTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 5) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A017') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and GetUnitAbilityLevel(u, 'A0D1') >= 1 and not isTitle(i , 13) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：老顽童")
+            call ModifyHeroStat(1, u, 0, 360)
+            call SetUnitAbilityLevel(u, 'A017', 9)
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A017' * 5, GetUnitAbilityLevel(u, 'A017'))
+            call SetPlayerName(p, "〓老顽童〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 13)
+        endif
+        if GetUnitAbilityLevel(u, 'A06P') >= 1 and GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A0CH') >= 1 and not isTitle(i , 14) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：中神通")
+            call ModifyHeroStat(0, u, 0, 300)
+            call ModifyHeroStat(1, u, 0, 300)
+            call ModifyHeroStat(2, u, 0, 300)
+            call SetUnitAbilityLevel(u, 'A0CH', 9)
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0CH' * 5, GetUnitAbilityLevel(u, 'A0CH'))
+            call SetPlayerName(p, "〓中神通〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 14)
+        endif
+    endif
+    set p=null
+endfunction
+function determineXueDaoTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 6) - 1)])) != 0) then // INLINED!!
+        if UnitHaveItem(u , 'I098') and not isTitle(i , 15) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：血刀老祖")
+            call ModifyHeroStat(0, u, 0, 480)
+            // 一刀绝空加2级
+            call SetUnitAbilityLevel(u, 'A0DH', IMinBJ(GetUnitAbilityLevel(u, 'A0DH') + 2, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0DH' * 5, GetUnitAbilityLevel(u, 'A0DH'))
+            call SetPlayerName(p, "〓血刀老祖〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 15)
+        endif
+        if GetUnitAbilityLevel(u, 'A07X') >= 1 and GetUnitAbilityLevel(u, 'A06J') >= 1 and GetUnitAbilityLevel(u, 'A071') >= 1 and not isTitle(i , 16) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：空心菜")
+            call ModifyHeroStat(0, u, 0, 200)
+            call ModifyHeroStat(1, u, 0, 200)
+            call ModifyHeroStat(2, u, 0, 360)
+            call SetPlayerName(p, "〓空心菜〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            // 爆伤+500%
+            set udg_baojishanghai[i]=udg_baojishanghai[i] + 5.0
+            call setTitleNumber(i , 16)
+        endif
+    endif
+    set p=null
+endfunction
+function determineHengShanTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 7) - 1)])) != 0) then // INLINED!!
+        // 前3个技能大于等于7级，获得仪琳称号
+        if GetUnitAbilityLevel(u, 'A01Z') >= 7 and GetUnitAbilityLevel(u, 'A021') >= 7 and GetUnitAbilityLevel(u, 'A0CD') >= 7 and not isTitle(i , 17) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：仪琳")
+            call ModifyHeroStat(1, u, 0, 200)
+            call ModifyHeroStat(2, u, 0, 200)
+            // 拂尘到9级
+            call SetUnitAbilityLevel(u, 'A01Z', 9)
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A01Z' * 5, GetUnitAbilityLevel(u, 'A01Z'))
+            call SetPlayerName(p, "〓仪琳〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 17)
+        endif
+        if GetUnitAbilityLevel(u, 'A07F') >= 1 and GetUnitAbilityLevel(u, 'A09D') >= 1 and GetUnitAbilityLevel(u, 'A07R') >= 1 and GetUnitAbilityLevel(u, 'A08W') >= 1 and not isTitle(i , 18) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：笑傲江湖")
+            call SetPlayerName(p, "〓笑傲江湖〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call ModifyHeroStat(0, u, 0, 480)
+            call ModifyHeroStat(0, u, 0, 500)
+            call ModifyHeroStat(2, u, 0, 600)
+            call SetUnitAbilityLevel(u, 'A07F', 9)
+            call SetUnitAbilityLevel(u, 'A08W', IMinBJ(GetUnitAbilityLevel(u, 'A08W') + 5, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07F' * 5, GetUnitAbilityLevel(u, 'A07F'))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A08W' * 5, GetUnitAbilityLevel(u, 'A08W'))
+            call setTitleNumber(i , 18)
+        endif
+    endif
+    set p=null
+endfunction
+function determineEMeiTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 8) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A07N') >= 1 and UnitHaveItem(u , 'I00B') and not isTitle(i , 19) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：芷若")
+            call ModifyHeroStat(0, u, 0, 480)
+            // 九阴白骨爪加2级
+            call SetUnitAbilityLevel(u, 'A07N', IMinBJ(GetUnitAbilityLevel(u, 'A07N') + 2, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07N' * 5, GetUnitAbilityLevel(u, 'A07N'))
+            call SetPlayerName(p, "〓芷若〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 19)
+        endif
+        if GetUnitAbilityLevel(u, 'A0C6') >= 1 and UnitHaveItem(u , 'I09D') and not isTitle(i , 20) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：小东邪")
+            call ModifyHeroStat(1, u, 0, 360)
+            call SetPlayerName(p, "〓小东邪〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 20)
+        endif
+    endif
+    set p=null
+endfunction
+function determineWuDangTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 9) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'A09D') >= 1 and not isTitle(i , 21) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：邋遢仙人")
+            call ModifyHeroStat(1, u, 0, 420)
+            // 蓝量加500
+            call YDWEGeneralBounsSystemUnitSetBonus(u , 1 , 0 , 500)
+            call DisplayTextToPlayer(p, 0, 0, "魔法上限+500")
+            call SetPlayerName(p, "〓邋遢仙人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 21)
+        endif
+        // 太极拳9级，带真武剑
+        if GetUnitAbilityLevel(u, 'A08R') >= 9 and UnitHaveItem(u , 'I0DK') and not isTitle(i , 22) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：张三丰")
+            call ModifyHeroStat(0, u, 0, 300)
+            call ModifyHeroStat(1, u, 0, 300)
+            call ModifyHeroStat(2, u, 0, 300)
+            call SetPlayerName(p, "〓张三丰〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 22)
+        endif
+    endif
+    set p=null
+endfunction
+function determineXingXiuTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 10) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A07P') >= 1 and GetUnitAbilityLevel(u, 'A083') >= 1 and not isTitle(i , 23) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：星宿老仙")
+            call ModifyHeroStat(1, u, 0, 600)
+            call ModifyHeroStat(2, u, 0, 300)
+            if ( GetUnitAbilityLevel(u, 'A0BT') >= 6 ) then
+                call SetUnitAbilityLevel(u, 'A0BT', 9)
+            elseif ( GetUnitAbilityLevel(u, 'A0BV') >= 6 ) then
+                call SetUnitAbilityLevel(u, 'A0BV', 9)
+            endif
+            call SetPlayerName(p, "〓星宿老仙〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 23)
+        endif
+    endif
+    set p=null
+endfunction
+function determineLingJiuTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 12) - 1)])) != 0) then // INLINED!!
+        // 大招学八荒，同时学会生死符（冰魄加北冥）
+        if GetUnitAbilityLevel(u, 'A02G') >= 6 and GetUnitAbilityLevel(u, 'A07A') >= 1 and GetUnitAbilityLevel(u, 'A082') >= 1 and not isTitle(i , 24) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：天山童姥")
+            call ModifyHeroStat(0, u, 0, 280)
+            call ModifyHeroStat(1, u, 0, 280)
+            call ModifyHeroStat(2, u, 0, 320)
+            // 八荒奖励2级
+            call SetUnitAbilityLevel(u, 'A02G', IMinBJ(GetUnitAbilityLevel(u, 'A02G') + 2, 9))
+            // 如意加2级
+            call SetUnitAbilityLevel(u, 'A02F', IMinBJ(GetUnitAbilityLevel(u, 'A02F') + 2, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A02G' * 5, GetUnitAbilityLevel(u, 'A02G'))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A02F' * 5, GetUnitAbilityLevel(u, 'A02F'))
+            call SetPlayerName(p, "〓天山童姥〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 24)
+        endif
+        // 虚竹：北冥，冰魄，玉扳指，罗汉
+        if GetUnitAbilityLevel(u, 'A07A') >= 1 and GetUnitAbilityLevel(u, 'A082') >= 1 and GetUnitAbilityLevel(u, 'A07O') >= 1 and UnitHaveItem(u , 'I0DT') and not isTitle(i , 25) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：虚竹子")
+            call ModifyHeroStat(0, u, 0, 100)
+            call ModifyHeroStat(1, u, 0, 500)
+            call ModifyHeroStat(2, u, 0, 100)
+            call SetPlayerName(p, "〓虚竹子〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 25)
+        endif
+    endif
+    set p=null
+endfunction
+function determineMuRongTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 13) - 1)])) != 0) then // INLINED!!
+        // 慕容龙城，搭配斗转
+        if GetUnitAbilityLevel(u, 'A07Q') >= 1 and not isTitle(i , 26) then // +斗转星移
+call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：慕容龙城")
+            call ModifyHeroStat(0, u, 0, 200)
+            call ModifyHeroStat(1, u, 0, 250)
+            call ModifyHeroStat(2, u, 0, 200)
+            call SetPlayerName(p, "〓慕容龙城〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 26)
+        endif
+    endif
+    set p=null
+endfunction
+function determineMingJiaoTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 14) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A030') >= 9 and not isTitle(i , 27) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：白眉鹰王")
+            call SetPlayerName(p, "〓白眉鹰王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call ModifyHeroStat(2, u, 0, 500)
+            call setTitleNumber(i , 27)
+        endif
+        if GetUnitAbilityLevel(u, 'A032') >= 9 and not isTitle(i , 28) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：青翼幅王")
+            call SetPlayerName(p, "〓青翼幅王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call ModifyHeroStat(1, u, 0, 300)
+            call setTitleNumber(i , 28)
+        endif
+        if GetUnitAbilityLevel(u, 'A06R') >= 9 and GetUnitAbilityLevel(u, 'A07M') >= 3 and UnitHaveItem(u , 'I00D') and not isTitle(i , 29) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：金毛狮王")
+            call SetPlayerName(p, "〓金毛狮王〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call SetUnitAbilityLevel(u, 'A07M', IMinBJ(GetUnitAbilityLevel(u, 'A07M') + 6, 9))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07M' * 5, GetUnitAbilityLevel(u, 'A07M'))
+            call ModifyHeroStat(0, u, 0, 300)
+            call setTitleNumber(i , 29)
+        endif
+        if GetUnitAbilityLevel(u, 'A07W') >= 6 and GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'A08R') >= 4 and not isTitle(i , 30) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：无忌")
+            call SetPlayerName(p, "〓无忌〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call SetUnitAbilityLevel(u, 'A08R', IMinBJ(GetUnitAbilityLevel(u, 'A08R') + 3, 9))
+            call SetUnitAbilityLevel(u, 'A07W', 7)
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07W' * 5, GetUnitAbilityLevel(u, 'A07W'))
+            call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A08R' * 5, GetUnitAbilityLevel(u, 'A08R'))
+            call ModifyHeroStat(1, u, 0, 1000)
+            call ModifyHeroStat(2, u, 0, 500)
+            // 送白猿
+            call unitadditembyidswapped('I0CS' , u)
+            call setTitleNumber(i , 30)
+        endif
+    endif
+    set p=null
+endfunction
+function determineHengShan2Title takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    local integer idd= 0
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 15) - 1)])) != 0) then // INLINED!!
+        if GetUnitAbilityLevel(u, 'A04M') >= 7 and GetUnitAbilityLevel(u, 'A04N') >= 7 and GetUnitAbilityLevel(u, 'A04P') >= 7 and not isTitle(i , 31) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：莫大先生")
+            call SetPlayerName(p, "〓莫大先生〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 31)
+            set L7[i]=1
+            loop
+                exitwhen L7[i] > wugongshu[i]
+                if ( I7[20 * ( i - 1 ) + L7[i]] != 'AEfk' ) then
+                    if ( ( L7[i] == wugongshu[i] ) ) then
+                        call SetUnitAbilityLevel(u, 'A04M', 9)
+                        call SetUnitAbilityLevel(u, 'A04N', 9)
+                        call SetUnitAbilityLevel(u, 'A04P', 9)
+                        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A04M' * 5, 9)
+                        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A04N' * 5, 9)
+                        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A04P' * 5, 9)
+                    endif
+                else
+                    if GetUnitAbilityLevel(u, 'A026') >= 6 then
+                        set idd='A04R'
+                    else
+                        set idd='A026'
+                    endif
+                    call UnitAddAbility(u, idd)
+                    call UnitMakeAbilityPermanent(u, true, idd)
+                    set I7[20 * ( i - 1 ) + L7[i]]=idd
+                    exitwhen true
+                endif
+                set L7[i]=L7[i] + 1
+            endloop
+        endif
+    endif
+    set p=null
+endfunction
+function determineShenLongTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 16) - 1)])) != 0) then // INLINED!!
+        // 学九阳+龙象，神龙教主
+        if GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'S002') >= 1 and not isTitle(i , 32) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神龙教主")
+            call ModifyHeroStat(0, u, 0, 200)
+            call ModifyHeroStat(1, u, 0, 400)
+            call ModifyHeroStat(2, u, 0, 300)
+            call SetPlayerName(p, "〓神龙教主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 32)
+        endif
+    endif
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 17) - 1)])) != 0) then // INLINED!!
+        // 学九阴+小无相，教主夫人
+        if GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A083') >= 1 and not isTitle(i , 33) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：教主夫人")
+            call ModifyHeroStat(0, u, 0, 400)
+            call ModifyHeroStat(1, u, 0, 200)
+            call ModifyHeroStat(2, u, 0, 300)
+            call SetPlayerName(p, "〓教主夫人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 33)
+        endif
+    endif
+    set p=null
+endfunction
+function determineTaiShanTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 18) - 1)])) != 0) then // INLINED!!
+        // 天门道长，学会小无相
+         if GetUnitAbilityLevel(u, 'A083') >= 1 and not isTitle(i , 34) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：天门道长")
+            call ModifyHeroStat(0, u, 0, 300)
+            call ModifyHeroStat(1, u, 0, 600)
+            call SetPlayerName(p, "〓天门道长〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 34)
+        endif
+    endif
+    set p=null
+endfunction
+function determineTieZhangTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 19) - 1)])) != 0) then // INLINED!!
+        // 学乾坤+双手，铁掌水上漂
+        if GetUnitAbilityLevel(u, 'A07W') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and not isTitle(i , 35) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：铁掌水上漂")
+            call ModifyHeroStat(0, u, 0, 300)
+            call ModifyHeroStat(1, u, 0, 200)
+            call ModifyHeroStat(2, u, 0, 100)
+            call SetPlayerName(p, "〓铁掌水上漂〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 35)
+        endif
+    endif
+    set p=null
+endfunction
+function determineTangMenTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 20) - 1)])) != 0) then // INLINED!!
+        // 学小无相+冰魄银针6重，搜魂侠
+        if GetUnitAbilityLevel(u, 'A083') >= 1 and GetUnitAbilityLevel(u, 'A07A') >= 1 and not isTitle(i , 36) then
+            call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：搜魂侠")
+            call ModifyHeroStat(0, u, 0, 300)
+            call ModifyHeroStat(1, u, 0, 200)
+            call ModifyHeroStat(2, u, 0, 300)
+            call SetPlayerName(p, "〓搜魂侠〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+            call setTitleNumber(i , 36)
+        endif
+    endif
+    set p=null
+endfunction
+function determineJiangHuTitle takes unit u returns nothing
+    local player p= GetOwningPlayer(u)
+    local integer i= 1 + GetPlayerId(p)
+    if GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A0D2') >= 1 and GetUnitAbilityLevel(u, 'A0D6') >= 1 and GetUnitAbilityLevel(u, 'A0D4') >= 1 and GetUnitAbilityLevel(u, 'A07N') >= 4 and GetUnitAbilityLevel(u, 'A0D3') >= 4 and GetUnitAbilityLevel(u, 'A0D1') >= 4 and not isTitle(i , 37) then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：真·九阴真人")
+        call SetPlayerName(p, "〓真·九阴真人〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call SetUnitAbilityLevel(u, 'A07N', IMinBJ(GetUnitAbilityLevel(u, 'A07N') + 3, 9))
+        call SetUnitAbilityLevel(u, 'A0D3', IMinBJ(GetUnitAbilityLevel(u, 'A0D3') + 3, 9))
+        call SetUnitAbilityLevel(u, 'A0D1', IMinBJ(GetUnitAbilityLevel(u, 'A0D1') + 3, 9))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07N' * 5, GetUnitAbilityLevel(u, 'A07N'))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D3' * 5, GetUnitAbilityLevel(u, 'A0D3'))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D1' * 5, GetUnitAbilityLevel(u, 'A0D1'))
+        call ModifyHeroStat(1, u, 0, 2900)
+        call setTitleNumber(i , 37)
+    endif
+    if GetUnitAbilityLevel(u, 'A089') >= 5 and GetUnitAbilityLevel(u, 'A084') >= 1 and GetUnitAbilityLevel(u, 'A0D2') >= 1 and UnitHaveItem(u , 'I09B') and not isTitle(i , 38) then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：西毒")
+        call SetPlayerName(p, "〓西毒〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call ModifyHeroStat(0, u, 0, 600)
+        call ModifyHeroStat(2, u, 0, 360)
+        call unitadditembyidswapped('I070' , u)
+        call SetUnitAbilityLevel(u, 'A089', IMinBJ(GetUnitAbilityLevel(u, 'A089') + 2, 9))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A089' * 5, GetUnitAbilityLevel(u, 'A089'))
+        call setTitleNumber(i , 38)
+    endif
+    if GetUnitAbilityLevel(u, 'A06H') >= 5 and GetUnitAbilityLevel(u, 'A018') >= 5 and UnitHaveItem(u , 'I09D') and not isTitle(i , 39) then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：东邪")
+        call SetPlayerName(p, "〓东邪〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call ModifyHeroStat(1, u, 0, 240)
+        call ModifyHeroStat(2, u, 0, 300)
+        call SetUnitAbilityLevel(u, 'A06H', 9)
+        call SetUnitAbilityLevel(u, 'A018', 9)
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A06H' * 5, GetUnitAbilityLevel(u, 'A06H'))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A018' * 5, GetUnitAbilityLevel(u, 'A018'))
+        call unitadditembyidswapped('I04Q' , u)
+        call setTitleNumber(i , 39)
+    endif
+    if GetUnitAbilityLevel(u, 'A06P') >= 5 and GetUnitAbilityLevel(u, 'A0CH') >= 3 and GetUnitAbilityLevel(u, 'A0D4') >= 1 and udg_runamen[i] != 5 and not isTitle(i , 40) then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：南帝")
+        call SetPlayerName(p, "〓南帝〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call ModifyHeroStat(1, u, 0, 480)
         call ModifyHeroStat(2, u, 0, 600)
-        call SetUnitAbilityLevel(u, 'A07F', 9)
-        call SetUnitAbilityLevel(u, 'A08W', IMinBJ(GetUnitAbilityLevel(u, 'A08W') + 5, 9))
-        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07F' * 5, GetUnitAbilityLevel(u, 'A07F'))
-        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A08W' * 5, GetUnitAbilityLevel(u, 'A08W'))
-        set udg_whichzhangmen[i]=20
+        call SetUnitAbilityLevel(u, 'A06P', 9)
+        call SetUnitAbilityLevel(u, 'A0CH', 7)
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A06P' * 5, GetUnitAbilityLevel(u, 'A06P'))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0CH' * 5, GetUnitAbilityLevel(u, 'A0CH'))
+        call setTitleNumber(i , 40)
+    endif
+    if GetUnitAbilityLevel(u, 'A07N') >= 5 and GetUnitAbilityLevel(u, 'A0D1') >= 5 and GetUnitAbilityLevel(u, 'A0D3') >= 5 and GetUnitAbilityLevel(u, 'A07G') >= 3 and ( GetUnitTypeId(u) == 'O023' or GetUnitTypeId(u) == 'O02H' or GetUnitTypeId(u) == 'O02I' or GetUnitTypeId(u) == 'O003' or GetUnitTypeId(u) == 'O002' ) and not isTitle(i , 41) then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：瑶琴")
+        call SetPlayerName(p, "〓瑶琴〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call ModifyHeroStat(0, u, 0, 700)
+        call ModifyHeroStat(1, u, 0, 200)
+        call SetUnitAbilityLevel(u, 'A0D1', 9)
+        call SetUnitAbilityLevel(u, 'A0D3', 7)
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D1' * 5, GetUnitAbilityLevel(u, 'A0D1'))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A0D3' * 5, GetUnitAbilityLevel(u, 'A0D3'))
+        call setTitleNumber(i , 41)
+    endif
+        //自创武功命名为虾米神拳
+    if s__ZiZhiWuGong_name[zizhiwugong[i]] == "虾米神拳" and GetUnitAbilityLevel(u, 'A036') >= 1 and GetUnitAbilityLevel(u, 'A07I') >= 5 and udg_runamen[i] == 11 and not isTitle(i , 42) then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：小虾米")
+        call SetPlayerName(p, "〓小虾米〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call ModifyHeroStat(0, u, 0, 1000)
+        call ModifyHeroStat(1, u, 0, 1000)
+        call ModifyHeroStat(2, u, 0, 1000)
+        call SetUnitAbilityLevel(u, 'A07I', 9)
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07I' * 5, GetUnitAbilityLevel(u, 'A07I'))
+        call setTitleNumber(i , 42)
+    endif
+    if GetUnitAbilityLevel(u, 'A07E') >= 5 and GetUnitAbilityLevel(u, 'A017') >= 5 and GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and udg_runamen[i] == 11 and not isTitle(i , 43) then
+        // 不能是丐帮，降龙5级、空明拳5级、九阴真经、双手互博
+        // 奖励招式300、内力500、真实300，降龙加3级，空明加3级
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：郭大侠")
+        call SetPlayerName(p, "〓郭大侠〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call ModifyHeroStat(0, u, 0, 300)
+        call ModifyHeroStat(2, u, 0, 500)
+        call ModifyHeroStat(2, u, 0, 300)
+        call SetUnitAbilityLevel(u, 'A07E', IMinBJ(GetUnitAbilityLevel(u, 'A07E') + 3, 9))
+        call SetUnitAbilityLevel(u, 'A017', IMinBJ(GetUnitAbilityLevel(u, 'A017') + 3, 9))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A017' * 5, GetUnitAbilityLevel(u, 'A017'))
+        call setTitleNumber(i , 43)
+    endif
+    if GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A0DN') >= 1 and GetUnitAbilityLevel(u, 'A07O') >= 1 and GetUnitAbilityLevel(u, 'A07R') >= 1 and GetUnitAbilityLevel(u, 'A07T') >= 1 and GetUnitAbilityLevel(u, 'A07Q') >= 1 and GetUnitAbilityLevel(u, 'A07W') >= 1 and GetUnitAbilityLevel(u, 'A07U') >= 1 and not isTitle(i , 44) then
+        // 王语嫣：九阴、九阳、罗汉、吸星、葵花、斗转、乾坤、双手
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：神仙姐姐")
+        call SetPlayerName(p, "〓神仙姐姐〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+        call ModifyHeroStat(0, u, 0, 300)
+        call ModifyHeroStat(2, u, 0, 500)
+        call ModifyHeroStat(2, u, 0, 300)
+        call SetUnitAbilityLevel(u, 'A07E', IMinBJ(GetUnitAbilityLevel(u, 'A07E') + 3, 9))
+        call SetUnitAbilityLevel(u, 'A017', IMinBJ(GetUnitAbilityLevel(u, 'A017') + 3, 9))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
+        call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A017' * 5, GetUnitAbilityLevel(u, 'A017'))
+        call setTitleNumber(i , 44)
+    endif
+    set p=null
+endfunction
+//武功升重及掌门称号系统
+function WuGongShengChong takes unit u,integer id,real r returns nothing
+    local integer level=GetUnitAbilityLevel(u, id)
+    local player p=GetOwningPlayer(u)
+    local integer i=1 + GetPlayerId(p)
+    // 武功升重
+    call kungfuLevelUp(u , id , r)
+    //掌门系统
+    if ( IsUnitType(( u ), ( UNIT_TYPE_HERO )) != null ) then
+        call becomeChief(u , 1 , "少林方丈" , 170 , 190 , 480)
+        call becomeChief(u , 2 , "古墓掌门" , 240 , 240 , 0)
+        call becomeChief(u , 3 , "丐帮帮主" , 480 , 0 , 0)
+        call becomeChief(u , 4 , "华山掌门" , 0 , 170 , 290)
+        call becomeChief(u , 5 , "全真掌教" , 0 , 360 , 0)
+        call becomeChief(u , 6 , "血刀掌门" , 0 , 0 , 1200)
+        call becomeChief(u , 7 , "恒山掌门" , 0 , 460 , 0)
+        call becomeChief(u , 8 , "峨眉掌门" , 240 , 170 , 0)
+        call becomeChief(u , 9 , "武当掌门" , 240 , 0 , 600)
+        call becomeChief(u , 10 , "星宿掌门" , 0 , 600 , 300)
+        call becomeChief(u , 12 , "灵鹫宫主" , 220 , 220 , 220)
+        call becomeChief(u , 13 , "慕容家主" , 100 , 280 , 300)
+        call becomeChief(u , 14 , "明教教主" , 210 , 310 , 160)
+        call becomeChief(u , 15 , "衡山掌门" , 350 , 260 , 100)
+        call becomeChief(u , 16 , "男神龙" , 350 , 0 , 200)
+        call becomeChief(u , 17 , "女神龙" , 200 , 350 , 0)
+        call becomeChief(u , 18 , "泰山掌门" , 320 , 220 , 120)
+        call becomeChief(u , 19 , "铁掌帮主" , 300 , 0 , 225)
+        call becomeChief(u , 20 , "唐门门主" , 0 , 225 , 300)
+        call determineShaoLinTitle(u)
+        call determineGuMuTitle(u)
+        call determineGaiBangTitle(u)
+        call determineHuaShanTitle(u)
+        call determineQuanZhenTitle(u)
+        call determineXueDaoTitle(u)
+        call determineHengShanTitle(u)
+        call determineEMeiTitle(u)
+        call determineWuDangTitle(u)
+        call determineXingXiuTitle(u)
+        call determineLingJiuTitle(u)
+        call determineMuRongTitle(u)
+        call determineMingJiaoTitle(u)
+        call determineHengShan2Title(u)
+        call determineShenLongTitle(u)
+        call determineTaiShanTitle(u)
+        call determineTieZhangTitle(u)
+        call determineTangMenTitle(u)
+        call determineJiangHuTitle(u)
     endif
     set p=null
 endfunction
@@ -10438,6 +10500,7 @@ function ChooseMoShi takes nothing returns nothing
         call DialogSetMessage(udg_index, "请选择游戏模式，20秒时间")
         set udg_index0=DialogAddButtonBJ(udg_index, "|cFF00CC00普通模式（无积分）")
         set udg_index1=DialogAddButtonBJ(udg_index, "|cFFCC0066特殊事件模式（推荐）")
+        set udg_index2=DialogAddButtonBJ(udg_index, "|cFFCC7766养老模式（30倍伤害，无积分）")
         set udg_index3=DialogAddButtonBJ(udg_index, "|cFF6600FF挑战模式（3倍积分）")
         call DialogDisplayBJ(true, udg_index, Player(0))
 		// 开启计时器，20s不选模式默认选择特殊模式
@@ -10506,6 +10569,12 @@ function ChooseMoShi_Action takes nothing returns nothing
     if GetClickedButton() == udg_index1 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff00FFFF主机选择了特殊事件模式")
         set udg_teshushijian=true
+    endif
+    if GetClickedButton() == udg_index2 then
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff00FFFF主机选择了养老模式")
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff00FFFF养老模式下，伤害为其他模式下的30倍，通关和打伤害均不给积分")
+        set udg_teshushijian=true
+        set udg_yanglao=true
     endif
     if GetClickedButton() == udg_index3 then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff00FFFF主机选择了挑战模式")
@@ -11025,6 +11094,10 @@ function Victory takes nothing returns nothing
 	set cx=cx + 3
 	call SaveInteger(YDHT, id, - $3021938A, cx)
 	call SaveInteger(YDHT, id, - $1317DA19, cx)
+	if udg_yanglao then
+	    call DisplayTextToPlayer(Player(i - 1), 0, 0, "|CFF99CC00养老模式下无积分")
+	    return
+	endif
 	// 速通模式3倍积分
 	if tiaoZhanIndex == 1 then
 		set get_zdl=get_zdl * 3
@@ -11797,10 +11870,7 @@ function HeroLevel takes nothing returns nothing
 		endif
 		if ( GetUnitLevel(u) == 80 ) then
 			set juexuelingwu[i]=juexuelingwu[i] + 50
-			if udg_zhangmen[i] == true then
-			else
-				call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓练气大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-			endif
+			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓练气大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得练气大师")
 			call SetPlayerName(p, "〓练气大师〓" + GetPlayerName(p))
 		endif
@@ -12563,10 +12633,7 @@ function CollectGuDong_Actions takes nothing returns nothing
     if udg_jdds[i] >= 10 and udg_jddsbool[i] == false and Ce[i] == 4 then
 		set wuxing[i]=wuxing[i] + 10 // 悟性加10
 set udg_jddsbool[i]=true
-	    if udg_zhangmen[i] == true then
-		else
-			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓鉴定大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-		endif
+		call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓鉴定大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得鉴定大师")
 		call SetPlayerName(p, "〓鉴定大师〓" + GetPlayerName(p))
 	endif
@@ -13805,10 +13872,7 @@ function WuPinHeCheng takes nothing returns nothing
 	if Ce[i] == 2 and udg_dzds[i] >= 5 and udg_dzdsbool[i] == false then
 		set udg_dzdsbool[i]=true
 		call DZDSBuShuXing(udg_hero[i])
-		if udg_zhangmen[i] == true then
-		else
-			call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())), "〓锻造大师〓" + LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
-		endif
+		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())), "〓锻造大师〓" + LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(GetOwningPlayer(GetTriggerUnit())) + "获得锻造大师")
 		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓" + GetPlayerName(GetOwningPlayer(GetTriggerUnit())))
 	endif
@@ -13823,10 +13887,7 @@ endfunction
 	if Ce[i] == 2 and udg_dzds[i] >= 5 and udg_dzdsbool[i] == false then
 		set udg_dzdsbool[i]=true
 		call DZDSBuShuXing(udg_hero[i])
-		if udg_zhangmen[i] == true then
-		else
-			call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())), "〓锻造大师〓" + LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
-		endif
+		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())), "〓锻造大师〓" + LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(GetOwningPlayer(GetTriggerUnit())) + "获得锻造大师")
 		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓" + GetPlayerName(GetOwningPlayer(GetTriggerUnit())))
 	endif
@@ -14111,7 +14172,7 @@ function CeShiJieShu takes nothing returns nothing
 		call DzAPI_Map_StoreReal(Player(GetPlayerId(GetOwningPlayer(GetTriggerUnit()))) , "maxDamage" , ceshizongshanghai)
 	endif
 	// 计算积分，伤害超过13位触发
-	if StringLength(R2S(ceshizongshanghai)) - 4 > 13 and ceshizongshanghai > curMaxDamage then
+	if StringLength(R2S(ceshizongshanghai)) - 4 > 13 and ceshizongshanghai > curMaxDamage and not udg_yanglao then
 		set curMaxDamage=ceshizongshanghai
 		call shangHaiBonus(ceshizongshanghai)
 	endif
@@ -16302,7 +16363,7 @@ function ItemChongFu takes nothing returns nothing
                 set udg_yifushu[i]=udg_yifushu[i] + 1
             endif
             if ( GetItemType(UnitItemInSlotBJ(u, E8)) == ITEM_TYPE_ARTIFACT or GetItemType(UnitItemInSlotBJ(u, E8)) == ITEM_TYPE_PURCHASABLE ) then
-                if ( ( GetItemType(UnitItemInSlotBJ(u, E8)) == GetItemType(GetManipulatedItem()) ) and ( UnitItemInSlotBJ(u, E8) != GetManipulatedItem() ) and Ce[i] != 7 and LoadBoolean(YDHT, GetHandleId(u), StringHash("君子剑岳不群")) == false ) then
+                if ( ( GetItemType(UnitItemInSlotBJ(u, E8)) == GetItemType(GetManipulatedItem()) ) and ( UnitItemInSlotBJ(u, E8) != GetManipulatedItem() ) and Ce[i] != 7 and not isTitle(i , 11) ) then
                     call UnitRemoveItemSwapped(UnitItemInSlotBJ(u, E8), u)
                     call DisplayTimedTextToPlayer(p, 0, 0, 30, "|cffff0000非丫鬟角色最多只能携带一件武器和衣服")
                 endif
@@ -16310,7 +16371,7 @@ function ItemChongFu takes nothing returns nothing
 		endif
 		set E8=E8 + 1
 	endloop
-	if ( Ce[i] == 7 or LoadBoolean(YDHT, GetHandleId(u), StringHash("君子剑岳不群")) ) and udg_junzhu[i] == false then
+	if ( Ce[i] == 7 or isTitle(i , 11) ) and udg_junzhu[i] == false then
 		if GetItemType(GetManipulatedItem()) == ITEM_TYPE_ARTIFACT and udg_wuqishu[i] >= 3 then
 			call UnitRemoveItemSwapped(GetManipulatedItem(), u)
 			call DisplayTimedTextToPlayer(p, 0, 0, 30, "|cffff0000丫鬟最多只能携带两件武器")
@@ -21940,10 +22001,7 @@ function WanChengWuPin takes nothing returns nothing
 			else
 				if udg_xbdsbool[i] == false then
 					set udg_xbdsbool[i]=true
-					if udg_zhangmen[i] == true then
-					else
-						call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓寻宝大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-					endif
+					call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓寻宝大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 					call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得寻宝大师")
 					call SetPlayerName(p, "〓寻宝大师〓" + GetPlayerName(p))
 				endif
@@ -22140,9 +22198,7 @@ call DisplayTimedTextToPlayer(Player(i), 0, 0, 5, "|cFF66CC00获取精钢剑，�
 		call DisplayTimedTextToPlayer(Player(i), 0, 0, 5, "|cFF66CC00获取桃花岛传送符，扣除4积分")
 		call jfChange(i , jf4)
 	elseif ( ( GetItemTypeId(GetManipulatedItem()) == 'I0DG' ) ) and udg_jf[i] >= jf5 and ( jf_useMax[i] + jf5 ) <= jf_max then
-		// 重置门派称号
-		set udg_zhangmen[i + 1]=false
-		set udg_whichzhangmen[i + 1]=0
+		// 重置门派称号 FIXME
 		call DisplayTimedTextToPlayer(Player(i), 0, 0, 5, "|cFF66CC00重置门派称号成功，扣除14积分")
 		call jfChange(i , jf5)
 	elseif ( ( GetItemTypeId(GetManipulatedItem()) == 'I0DH' ) ) and udg_jf[i] >= jf6 and ( jf_useMax[i] + jf6 ) <= jf_max then
@@ -22301,7 +22357,7 @@ local player p=GetOwningPlayer(u)
 local integer i=1 + GetPlayerId(p)
 	if muRongOnlyFlag[i] == 0 then
 		if udg_runamen[i] == 13 then
-			if muronglc[i] and GetHeroLevel(udg_hero[i]) > 100 then
+			if isTitle(i , 26) and GetHeroLevel(udg_hero[i]) > 100 then
 				set muRongOnlyFlag[i]=1 // 慕容任务标记已完成
 call unitadditembyidswapped('I0DS' , u)
 				call DisplayTextToPlayer(p, 0, 0, "|cFFFFCC00慕容复：|r |cFF99FFCC你小子没让我失望，这是你的奖励！|r\n")
@@ -24987,10 +25043,7 @@ function H0 takes nothing returns nothing
 		call DisplayTextToPlayer(Player(- 1 + ( i )), 0, 0, "|cFFFFCC00使用成功|r|cFF99FFCC真实伤害提升50|r")
 		if Ce[i] == 7 and udg_junzhu[i] == false then
 			set udg_junzhu[i]=true
-			if udg_zhangmen[i] == true then
-			else
-				call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓郡主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-			endif
+			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓郡主〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得郡主")
 			call SetPlayerName(p, "〓郡主〓" + GetPlayerName(p))
 		endif
@@ -25513,10 +25566,7 @@ function LianSomeDan takes unit u,item it,integer dan,integer l__ys,integer y1,i
 				endif
 				if ( udg_ldds[i] == 5 ) and udg_lddsbool[i] == false then
 					set udg_lddsbool[i]=true
-					if udg_zhangmen[i] == true then
-					else
-						call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓炼丹大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-					endif
+					call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓炼丹大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 					call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得炼丹大师")
 					call SetPlayerName(p, "〓炼丹大师〓" + GetPlayerName(p))
 				endif
@@ -29579,8 +29629,8 @@ function cc takes nothing returns nothing
 	set ce[i]=( 70 * GetUnitAbilityLevel(u, 'A05O') )
 	call YDWEGeneralBounsSystemUnitSetBonus(u , 2 , 0 , ( 70 * GetUnitAbilityLevel(u, 'A05O') ))
 	if ( ( gengu[i] >= 20 ) ) then
-		// 金钟罩效果4倍
-		if LoadBoolean(YDHT, GetHandleId(u), StringHash("扫地神僧")) or LoadBoolean(YDHT, GetHandleId(u), StringHash("达摩祖师")) then
+		// 扫地神僧或达摩祖师称号：金钟罩效果4倍
+		if isTitle(i , 1) or isTitle(i , 2) then
 			set D7[i]=( D7[i] * 4. )
 		else
 			set D7[i]=( D7[i] * 2. )
@@ -29637,8 +29687,8 @@ function Hc takes nothing returns nothing
 	        call AddSpecialEffectLocBJ(loc2, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl")
 	        call DestroyEffect(bj_lastCreatedEffect)
 	        call RemoveLocation(loc2)
-			if LoadBoolean(YDHT, GetHandleId(u), StringHash("扫地神僧")) then
-				set shxishu=shxishu * 10
+			if isTitle(i , 1) then // 扫地神僧称号
+set shxishu=shxishu * 10
 			endif
 	        set shanghai=ShangHaiGongShi(u , uc , 20. , 20. , shxishu , 'A05O')
 	        call WuGongShangHai(u , uc , shanghai)
@@ -29656,9 +29706,9 @@ function Hc takes nothing returns nothing
 	        set ce[i]=70 * GetUnitAbilityLevel(u, 'A05O')
 	        call YDWEGeneralBounsSystemUnitSetBonus(GetTriggerUnit() , 2 , 0 , ( 70 * GetUnitAbilityLevel(u, 'A05O') ))
 	        if ( ( gengu[( 1 + GetPlayerId(GetOwningPlayer(u)) )] >= 20 ) ) then
-	            // 金钟罩效果4倍
-				if LoadBoolean(YDHT, GetHandleId(u), StringHash("扫地神僧")) or LoadBoolean(YDHT, GetHandleId(u), StringHash("达摩祖师")) then
-					set D7[i]=( D7[i] * 4. )
+	            // 扫地神僧或达摩祖师称号：金钟罩效果4倍
+                if isTitle(i , 1) or isTitle(i , 2) then
+                    set D7[i]=( D7[i] * 4. )
 				else
 					set D7[i]=( D7[i] * 2. )
 				endif
@@ -29687,7 +29737,8 @@ function Jc takes nothing returns nothing
 	    set F7[i]=( F7[i] + 1 )
 	    if ( ( F7[i] >= 10 ) ) then
 	        set F7[i]=( F7[i] - 10 )
-			if LoadBoolean(YDHT, GetHandleId(GetKillingUnit()), StringHash("达摩祖师")) then
+	        // 达摩祖师称号
+			if isTitle(i , 2) then
 	        	call ModifyHeroStat(0, GetKillingUnit(), 0, 1)
 	        	call ModifyHeroStat(1, GetKillingUnit(), 0, 1)
 	        	call ModifyHeroStat(2, GetKillingUnit(), 0, 1)
@@ -29772,7 +29823,7 @@ function Sc takes nothing returns nothing
 endfunction
 //金轮法王龙象效果
 function isJinLunLongXiang takes nothing returns boolean
-	return GetUnitAbilityLevel(GetAttacker(), 'S002') >= 1 and LoadBoolean(YDHT, GetHandleId(GetAttacker()), StringHash("金轮法王"))
+	return GetUnitAbilityLevel(GetAttacker(), 'S002') >= 1 and isTitle(1 + GetPlayerId(GetOwningPlayer(GetAttacker())) , 4)
 endfunction
 function jinLunLongXiang takes nothing returns nothing
  local unit u= GetAttacker()
@@ -30808,7 +30859,7 @@ function XueDaoJing_Action2 takes nothing returns nothing
 	    set shxishu=shxishu * 4
     endif
 	// 一刀绝空2倍
-	if xuedaolaozu[i] then
+	if isTitle(i , 15) then
 		set shxishu=shxishu * 2
 	endif
 	set shanghai=ShangHaiGongShi(u , uc , 200 , 1200 , shxishu , 'A0DH')
@@ -31223,8 +31274,8 @@ function EMeiJiuYang takes nothing returns nothing
 	if GetUnitAbilityLevel(u, 'A083') >= 1 then
 		call YDWEGeneralBounsSystemUnitSetBonus(u , 1 , 0 , 20)
 	endif
-    if LoadBoolean(YDHT, GetHandleId(u), StringHash("小东邪")) then
-        call YDWEGeneralBounsSystemUnitSetBonus(u , 1 , 0 , 20)
+    if isTitle(i , 20) then // 小东邪
+call YDWEGeneralBounsSystemUnitSetBonus(u , 1 , 0 , 20)
         set r=r + 500.
     endif
     call GroupEnumUnitsInRange(g, x, y, r, Condition(function EMeiJiuYang_Condition))
@@ -31433,7 +31484,7 @@ function jD takes nothing returns nothing
 		call DisplayTextToPlayer(p, 0, 0, "绝学领悟力+1")
     endif
 	// 张三丰称号
-	if LoadBoolean(YDHT, GetHandleId(u), StringHash("张三丰")) then
+	if isTitle(i , 22) then
 	    // 每次触发太极拳，绝学加1
 		set juexuelingwu[i]=juexuelingwu[i] + 1
 		call DisplayTextToPlayer(p, 0, 0, "绝学领悟力+1")
@@ -32663,7 +32714,7 @@ function y3 takes nothing returns nothing
         if UnitHaveItem(u , 'I0AM') then
 	    	set shxishu=shxishu * 1.8
     	endif
-        if xingxiulaoxian[i] then
+        if isTitle(i , 23) then
 	    	set shxishu=shxishu * 4
     	endif
         set shanghai=ShangHaiGongShi(u , uc , 16. , 16. , shxishu , 'A0BQ')
@@ -32678,7 +32729,7 @@ function y3 takes nothing returns nothing
             if UnitHaveItem(u , 'I0AM') then
 	    		set shxishu=shxishu * 1.8
     		endif
-            if xingxiulaoxian[i] then
+            if isTitle(i , 23) then
 	    	    set shxishu=shxishu * 4
     	    endif
             set shanghai=ShangHaiGongShi(u , uc , 20. , 20. , shxishu , 'A0BQ')
@@ -32924,7 +32975,7 @@ function L3 takes nothing returns nothing
     if UnitHaveItem(u , 'I0AM') then
 	    set shxishu=shxishu * 1.8
     endif
-    if xingxiulaoxian[i] then
+    if isTitle(i , 23) then
         set shxishu=shxishu * 4
     endif
     set shanghai=ShangHaiGongShi(u , uc , 60. , 60. , shxishu , 'A0BV')
@@ -32937,7 +32988,7 @@ function MM3 takes nothing returns nothing
     local integer cx=LoadInteger(YDHT, id, - $3021938A)
     local integer gailv= 80
 // 星宿老仙，心法90%概率重生
-if xingxiulaoxian[1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit()))] then
+if isTitle(1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit())) , 23) then
         set gailv=90
     endif
     set cx=cx + 3
@@ -33602,7 +33653,8 @@ function IsFuChenMaJia takes nothing returns boolean
 	return GetUnitTypeId(GetEventDamageSource()) == 'h00F' and IsUnitEnemy(GetTriggerUnit(), GetOwningPlayer(GetEventDamageSource()))
 endfunction
 function FuChenMaJia takes nothing returns nothing
- local unit u=udg_hero[1 + GetPlayerId(GetOwningPlayer(GetEventDamageSource()))]
+    local integer i= 1 + GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
+ local unit u=udg_hero[i]
  local unit uc=GetTriggerUnit()
  local real shxishu=1
     local real shanghai=0.
@@ -33620,8 +33672,8 @@ function FuChenMaJia takes nothing returns nothing
 	if UnitHaveItem(u , 'I0DU') then
 	    set shxishu=shxishu * 2
     endif
-	// 仪琳，拂尘功附带封穴
-	if LoadBoolean(YDHT, GetHandleId(u), StringHash("仪琳")) then
+	// 仪琳拂尘功附带封穴
+	if isTitle(i , 17) then
 		call WanBuff(u , uc , 11)
 	endif
     set shanghai=ShangHaiGongShi(u , uc , r1 , r1 , shxishu , 'A01Z')
@@ -34765,9 +34817,9 @@ function LiuYangBeiDong takes nothing returns nothing
 	set u=null
 	set loc=null
 endfunction
-// 虚竹，北冥杀怪加内力
+// 虚竹子称号：北冥杀怪加内力
 function isXuZhuBeiMing takes nothing returns boolean
-	return ( ( GetUnitAbilityLevel(GetKillingUnit(), 'A082') != 0 ) ) and LoadBoolean(YDHT, GetHandleId(GetKillingUnit()), StringHash("虚竹子"))
+	return GetUnitAbilityLevel(GetKillingUnit(), 'A082') != 0 and isTitle(1 + GetPlayerId(GetOwningPlayer(GetKillingUnit())) , 25)
 endfunction
 function xuZhuBeiMing takes nothing returns nothing
  local unit u= GetKillingUnit()
@@ -34954,8 +35006,8 @@ if GetUnitAbilityLevel(u, 'A071') >= 1 then
 		call WuGongShengChong(u , 'A0CC' , 600)
 		//call SetUnitAnimation(u, "attack, slam")
 		call DestroyEffect(AddSpecialEffectLocBJ(loc, "Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl"))
-		// 真斗转加内力改成慕容龙城称号加内力
-		if muronglc[i] then
+		// 慕容龙城称号加内力
+		if isTitle(i , 26) then
 			call ModifyHeroStat(1, u, 0, 20 * GetUnitAbilityLevel(u, 'A0CC'))
 			call YDWEPolledWaitNull(15. + 2 * GetUnitAbilityLevel(u, 'A0CC'))
 			call ModifyHeroStat(1, u, 1, 20 * GetUnitAbilityLevel(u, 'A0CC'))
@@ -35116,7 +35168,7 @@ function XingYiBeiDong takes nothing returns nothing
  local location loc= GetUnitLoc(uc)
  local real shxishu= 1.
  local real shanghai= 0.
-	if GetUnitAbilityLevel(u, 'A07W') >= 1 or muronglc[1 + GetPlayerId(GetOwningPlayer(u))] then
+	if GetUnitAbilityLevel(u, 'A07W') >= 1 or isTitle(1 + GetPlayerId(GetOwningPlayer(u)) , 26) then
 		call AddSpecialEffectLocBJ(loc, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl")
 		call DestroyEffect(bj_lastCreatedEffect)
 		set shanghai=ShangHaiGongShi(u , uc , 50. , 50. , shxishu , 'A02R')
@@ -35859,7 +35911,7 @@ function XiaoLian_Action takes nothing returns nothing
 	    set shxishu=shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT, GetHandleId(u), StringHash("教主夫人")) then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)) , 33) then
         set shxishu=shxishu * 2
     endif
 	call DestroyEffect(AddSpecialEffect("Abilities\\Spells\\Human\\Polymorph\\PolyMorphDoneGround.mdl", x, y))
@@ -35927,7 +35979,7 @@ function XiaoLian_Action_1 takes nothing returns nothing
 	    set shxishu=shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT, GetHandleId(u), StringHash("教主夫人")) then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)) , 33) then
         set shxishu=shxishu * 2
     endif
 	set shanghai=ShangHaiGongShi(u , uc , 8 , 11 , shxishu , 'A056')
@@ -36106,7 +36158,7 @@ call WuGongShengChong(u , 'A051' , 150.)
         set gailv=gailv + 40
     endif
     // 神龙教主加成
-    if LoadBoolean(YDHT, GetHandleId(u), StringHash("神龙教主")) then
+    if isTitle(i , 32) then
         set beishu=beishu * 2
         set gailv=gailv + 10
     endif
@@ -36186,7 +36238,7 @@ function birdDamage takes unit u,unit l__ut returns nothing
 	    set shxishu=shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT, GetHandleId(u), StringHash("教主夫人")) then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)) , 33) then
         set shxishu=shxishu * 2
     endif
     set shanghai=ShangHaiGongShi(u , l__ut , 30 , 20 , shxishu , 'A054')
@@ -36388,11 +36440,11 @@ function Trig_ciZhenSaoSheFunc007Conditions takes nothing returns boolean
 	    set shxishu=shxishu * 2
     endif
     // 神龙教主加成
-    if LoadBoolean(YDHT, GetHandleId(u), StringHash("神龙教主")) then
+    if isTitle(i , 32) then
         set shxishu=shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT, GetHandleId(u), StringHash("教主夫人")) then
+    if isTitle(i , 33) then
         set shxishu=shxishu * 2
     endif
     set ydl_timer=null
@@ -36794,7 +36846,7 @@ function XianTian_Action takes nothing returns nothing
  local real shxishu=1.
  local real shanghai=0.
  local location loc=GetUnitLoc(uc)
-    if zhongshentong[i] then
+    if isTitle(i , 14) then
         set shxishu=shxishu * 5
     endif
     // 专属加成
@@ -37377,7 +37429,7 @@ function biYuAction takes nothing returns nothing
 	    set shxishu=shxishu + 2.0
     endif
     // 搜魂侠加成
-    if LoadBoolean(YDHT, GetHandleId(GetAttacker()), StringHash("搜魂侠")) then
+    if isTitle(i , 36) then
         set shxishu=shxishu * 2
     endif
     // 子午砂
@@ -38102,7 +38154,7 @@ function DaiZongRuHe takes nothing returns nothing
 	if UnitHaveItem(GetTriggerUnit() , 'I0E2') then
 	    set extraHit=extraHit * 3
   endif
-	if LoadBoolean(YDHT, GetHandleId(GetTriggerUnit()), StringHash("天门道长")) then
+	if isTitle(i , 34) then
 			set extraHit=extraHit * 2
 	endif
 	call WuGongShengChong(GetTriggerUnit() , 'A08B' , 100) //武功升重
@@ -38355,7 +38407,7 @@ function TanZhiShangHai_Action takes nothing returns nothing
     local unit uc=GetEnumUnit()
     local real shxishu=1. + gengu[i] / 20
     local real shanghai=0.
-	if dongxie[i] then
+	if isTitle(i , 39) then
 		set shxishu=shxishu * 5
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 30.8 , 30.8 , shxishu , 'A06H')
@@ -38380,7 +38432,7 @@ function TanZhiShangHai takes nothing returns nothing
     if GetUnitAbilityLevel(u, 'A085') != 0 and GetUnitAbilityLevel(u, 'A06P') != 0 and GetUnitAbilityLevel(u, 1093679152) != 0 and GetUnitAbilityLevel(u, 1093679152) != 0 and GetUnitAbilityLevel(u, 1395666994) != 0 and GetUnitAbilityLevel(u, 'A07U') != 0 then
     	set shxishu=shxishu * 6 * 2
 	endif
-	if dongxie[i] then
+	if isTitle(i , 39) then
 		set shxishu=shxishu * 5
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 30.8 , 30.8 , shxishu , 'A06H')
@@ -38430,7 +38482,7 @@ function eF takes nothing returns nothing
     set level=GetUnitAbilityLevel(uc, 'A07A')
     call YDWEPolledWaitNull(5.0)
 	// 5s后判断如果是赤练仙子，立刻重置cd
-    if chilian[1 + GetPlayerId(GetOwningPlayer(uc))] == true then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(uc)) , 8) then
 	    call UnitRemoveAbility(uc, 'A07A')
 	    call UnitAddAbility(uc, 'A07A')
 	    call SetUnitAbilityLevel(uc, 'A07A', level)
@@ -38458,8 +38510,8 @@ function hF takes nothing returns nothing
     if GetUnitAbilityLevel(u, 1093678932) != 0 and GetUnitAbilityLevel(u, 'A083') != 0 and GetUnitAbilityLevel(u, 'A07S') != 0 and GetUnitAbilityLevel(u, 1093679154) != 0 then
     	set shxishu=shxishu * 4 * 2
 	endif
-	if chilian[i] then
-		set shxishu=shxishu * 5
+	if isTitle(i , 8) then // 赤炼仙子
+set shxishu=shxishu * 5
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 26 , 26 , shxishu , 'A07A')
     call WuGongShangHai(u , uc , shanghai)
@@ -38470,8 +38522,8 @@ function hF takes nothing returns nothing
         call IssueTargetOrderById(bj_lastCreatedUnit, $D0102, GetTriggerUnit())
         call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 2.)
     endif
-    if ( ( GetUnitAbilityLevel(u, 1093679154) != 0 ) ) or chilian[i] then
-        call CreateNUnitsAtLoc(1, 'e000', GetOwningPlayer(u), loc, bj_UNIT_FACING)
+    if ( ( GetUnitAbilityLevel(u, 1093679154) != 0 ) ) and isTitle(i , 8) then // 赤炼仙子
+call CreateNUnitsAtLoc(1, 'e000', GetOwningPlayer(u), loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
         call UnitAddAbility(bj_lastCreatedUnit, 1093678916)
         call IssueTargetOrderById(bj_lastCreatedUnit, $D00F1, GetTriggerUnit())
@@ -38500,12 +38552,12 @@ function kF takes nothing returns nothing
     if GetUnitAbilityLevel(u, 1093678932) != 0 and GetUnitAbilityLevel(u, 'A083') != 0 and GetUnitAbilityLevel(u, 'A07S') != 0 and GetUnitAbilityLevel(u, 1093679154) != 0 then
     	set shxishu=shxishu * 4 * 2
 	endif
-	if chilian[i] then
-		set shxishu=shxishu * 5
+	if isTitle(i , 8) then // 赤炼仙子
+set shxishu=shxishu * 5
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 6 , 6 , shxishu , 'A07A')
-    if chilian[i] then
-	    set shanghai=ShangHaiGongShi(u , uc , 26 , 26 , shxishu , 'A07A')
+    if isTitle(i , 8) then // 赤炼仙子
+set shanghai=ShangHaiGongShi(u , uc , 26 , 26 , shxishu , 'A07A')
     endif
     call WuGongShangHai(u , uc , shanghai)
     set u=null
@@ -39098,8 +39150,8 @@ function UF takes nothing returns nothing
         set shxishu=shxishu + .6
     endif
 	// 九阴真人加成20倍
-    if udg_whichzhangmen[1 + GetPlayerId(GetOwningPlayer(u))] == 11 then
-	        set shxishu=shxishu * 20
+    if isTitle(i , 37) then
+	    set shxishu=shxishu * 20
     endif
     if GetUnitAbilityLevel(u, 1093678930) != 0 and GetUnitAbilityLevel(u, 'A06H') != 0 and GetUnitAbilityLevel(u, 'A089') != 0 and GetUnitAbilityLevel(u, 'A07S') != 0 and GetUnitAbilityLevel(u, 1093679154) != 0 then
     	set shxishu=shxishu * 5 * 2
@@ -39109,14 +39161,14 @@ function UF takes nothing returns nothing
     call WuGongShengChong(GetEventDamageSource() , 'A07N' , 3000.)
 	set level=GetUnitAbilityLevel(u, 'A07N')
 	// 3s后判断如果是九阴真人，立刻重置cd
-    if udg_whichzhangmen[1 + GetPlayerId(GetOwningPlayer(u))] == 11 then
+    if isTitle(i , 37) then
 		call YDWEPolledWaitNull(3.0)
 	    call UnitRemoveAbility(u, 'A07N')
 	    call UnitAddAbility(u, 'A07N')
 	    call SetUnitAbilityLevel(u, 'A07N', level)
 	endif
 	// 5s后判断如果是芷若，立刻重置cd
-    if zhiruo[1 + GetPlayerId(GetOwningPlayer(u))] then
+    if isTitle(i , 19) then
 		call YDWEPolledWaitNull(5.0)
 	    call UnitRemoveAbility(u, 'A07N')
 	    call UnitAddAbility(u, 'A07N')
@@ -39150,8 +39202,8 @@ function KongMing_Action takes nothing returns nothing
     if GetUnitAbilityLevel(u, 'A07S') >= 1 and GetUnitAbilityLevel(u, 'A0D1') >= 1 and GetUnitAbilityLevel(u, 'A06P') != 0 and GetUnitAbilityLevel(u, 'A07U') != 0 and GetUnitAbilityLevel(GetTriggerUnit(), 'A018') != 0 then
     	set shxishu=shxishu * 5 * 2
 	endif
-	if laowantong[i] or beixia[i] then
-	 	set shxishu=shxishu * 5
+	if isTitle(i , 13) or isTitle(i , 43) then // 老顽童或北侠
+set shxishu=shxishu * 5
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 10 , 8 , shxishu , 'A017')
     call WuGongShangHai(u , uc , shanghai)
@@ -39176,7 +39228,7 @@ call WuGongShengChong(u , 'A017' , 1200.)
 	// 搭配双手，范围伤害
     if GetUnitAbilityLevel(u, 'A07U') != 0 then
 		// 老顽童或者北侠称号，范围3倍
-		if laowantong[i] or beixia[i] then
+		if isTitle(i , 13) or isTitle(i , 43) then
 			set range=3
 		endif
 	    call GroupEnumUnitsInRangeOfLoc(g, loc, 400 * range, Condition(function KongMing_Condition))
@@ -39227,7 +39279,7 @@ function BiHai_Action takes nothing returns nothing
 	set yinlv[3]="角!"
 	set yinlv[4]="徵!"
 	set yinlv[5]="羽!"
-	if dongxie[i] then
+	if isTitle(i , 39) then
 		set shxishu=shxishu * 10
 	endif
 	if GetUnitAbilityLevel(u, 'A06H') >= 1 then
@@ -39429,11 +39481,11 @@ function eG takes nothing returns nothing
  local real shanghai=0.
  local real shxishu=jueXueXiShu(i)
 	// 北乔峰称号加强降龙伤害
-	if beiqiaofeng[i] then
+	if isTitle(i , 10) then
 		set shxishu=shxishu * 5
 	endif
 	// 北丐或北侠称号加强降龙伤害
-	if beigai[i] or beixia[i] then
+	if isTitle(i , 9) or isTitle(i , 43) then
 		set shxishu=shxishu * 3
 	endif
 	call DestroyEffect(AddSpecialEffectLocBJ(loc, "Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl"))
@@ -39667,7 +39719,7 @@ function GG takes nothing returns nothing
  local integer i=1 + GetPlayerId(GetOwningPlayer(u))
  local real shxishu=jueXueXiShu(i)
  local real shanghai=0.
-	if LoadBoolean(YDHT, GetHandleId(u), StringHash("小虾米")) then
+	if isTitle(i , 42) then
 		set shxishu=shxishu * 3
 	endif
 	call DestroyEffect(AddSpecialEffectLocBJ(loc, "war3mapImported\\CrimsonWake.mdx"))
@@ -39873,7 +39925,7 @@ function i6 takes nothing returns nothing
 	    set shxishu=shxishu * 8
     endif
 	// 西毒称号加成
-	if LoadBoolean(YDHT, GetHandleId(u), StringHash("西毒")) then
+	if isTitle(i , 38) then
 		set shxishu=shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 45. , 45. , shxishu , 'A089')
@@ -39979,7 +40031,7 @@ function Q6 takes nothing returns nothing
  local real shxishu=jueXueXiShu(i)
  local real shanghai=0.
 	// 北丐打狗5倍
-	if beigai[i] then
+	if isTitle(i , 9) then
 		set shxishu=shxishu * 5
 	endif
 	if UnitHaveItem(u , 'I097') then
@@ -40302,7 +40354,7 @@ function rH takes nothing returns nothing
     local real shxishu=jueXueXiShu(i)
     local real shanghai=0.
 	// 北丐打狗5倍
-	if beigai[i] then
+	if isTitle(i , 9) then
 		set shxishu=shxishu * 5
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 35. , 35. , shxishu , 'A07L')
@@ -40324,11 +40376,11 @@ function vH takes nothing returns nothing
  local real shanghai=0.
  local real shxishu=jueXueXiShu(i)
 	// 北乔峰称号加强降龙伤害
-	if beiqiaofeng[i] then
+	if isTitle(i , 10) then
 		set shxishu=shxishu * 5
 	endif
 	// 北丐或北侠称号加强降龙伤害
-	if beigai[i] or beixia[i] then
+	if isTitle(i , 9) or isTitle(i , 43) then
 		set shxishu=shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 70. , 70. , shxishu , 'A07E')
@@ -40368,11 +40420,11 @@ function XLES_Action takes nothing returns nothing
  local real shanghai=0.
  local real shxishu=jueXueXiShu(i)
 	// 北乔峰称号加强降龙伤害
-	if beiqiaofeng[i] then
+	if isTitle(i , 10) then
 		set shxishu=shxishu * 5
 	endif
 	// 北丐或北侠称号加强降龙伤害
-	if beigai[i] or beixia[i] then
+	if isTitle(i , 9) or isTitle(i , 43) then
 		set shxishu=shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 80. , 80. , shxishu , 'A07E')
@@ -40531,7 +40583,7 @@ function GH takes nothing returns nothing
     local real shxishu=jueXueXiShu(i)
     local real shanghai=0.
 	// 西毒称号加成
-	if LoadBoolean(YDHT, GetHandleId(u), StringHash("西毒")) then
+	if isTitle(i , 38) then
 		set shxishu=shxishu * 3
 	endif
     set shanghai=ShangHaiGongShi(u , uc , 42. , 42. , shxishu , 'A089')
@@ -40783,7 +40835,7 @@ function qI takes nothing returns nothing
  local integer i=1 + GetPlayerId(GetOwningPlayer(u))
  local real shxishu=jueXueXiShu(i)
  local real shanghai=0.
-	if LoadBoolean(YDHT, GetHandleId(u), StringHash("小虾米")) then
+	if isTitle(i , 42) then
 		set shxishu=shxishu * 3
 	endif
 	call DestroyEffect(AddSpecialEffectLocBJ(loc, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl"))
@@ -41164,10 +41216,10 @@ endfunction
         if GetUnitAbilityLevel(GetAttacker(), 'A07S') >= 1 then
 	        set shxishu=shxishu + 1.
         endif
-        if udg_whichzhangmen[1 + GetPlayerId(GetOwningPlayer(u))] == 11 then
-	        set shxishu=shxishu * 20
+        if isTitle(1 + GetPlayerId(GetOwningPlayer(u)) , 37) then // 九阴真人
+set shxishu=shxishu * 20
         endif
-		if yaoqin[i] then
+		if isTitle(i , 41) then
 			set shxishu=shxishu * 10
 		endif
         set shanghai=ShangHaiGongShi(u , uc , 30. , 30. , shxishu , 'A0D1')
@@ -41201,8 +41253,8 @@ endfunction
 		        if GetUnitAbilityLevel(u, 'A07S') >= 1 then
 	                set shxishu=shxishu + 1.
                 endif
-		        if udg_whichzhangmen[1 + GetPlayerId(GetOwningPlayer(u))] == 11 then
-	                set shxishu=shxishu * 20
+		        if isTitle(i , 37) then // 九阴真人
+set shxishu=shxishu * 20
                 endif
                 if ( ( GetUnitAbilityLevel(u, 'A0D2') != 0 ) and ( GetRandomInt(1, $A) < 5 ) and ( UnitHasBuffBJ(uc, 'Bcri') == false ) ) then
                     call WanBuff(u , uc , 4)
@@ -41233,7 +41285,7 @@ function DI takes nothing returns nothing
     local integer i=1 + GetPlayerId(GetOwningPlayer(GetKillingUnit()))
  local integer beishu= 1
 // 九阴真人称号
-if udg_whichzhangmen[i] == 11 then
+if isTitle(i , 37) then
 		set beishu=2
 	endif
     set cx=cx + 3
@@ -41313,7 +41365,7 @@ function GI takes nothing returns nothing
 endfunction
 function isShuangShouBeiDong takes nothing returns boolean
 	// 学会双手，老顽童或郭大侠称号
-	return GetUnitAbilityLevel(GetAttacker(), 'A07U') >= 1 and ( laowantong[1 + GetPlayerId(GetOwningPlayer(GetAttacker()))] or beixia[1 + GetPlayerId(GetOwningPlayer(GetAttacker()))] )
+	return GetUnitAbilityLevel(GetAttacker(), 'A07U') >= 1 and ( isTitle(1 + GetPlayerId(GetOwningPlayer(GetAttacker())) , 13) or isTitle(1 + GetPlayerId(GetOwningPlayer(GetAttacker())) , 43) )
 endfunction
 function shuangShouBeiDong takes nothing returns nothing
  local unit u=GetAttacker()
@@ -41398,7 +41450,7 @@ function YiLiaoPian takes nothing returns nothing
  local unit u=GetTriggerUnit()
     local unit uc=GetSpellTargetUnit()
     call SetWidgetLife(uc, GetWidgetLife(u) + 20000)
-    if udg_whichzhangmen[1 + GetPlayerId(GetOwningPlayer(u))] == 11 then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)) , 37) then
 	    call SetWidgetLife(uc, GetWidgetLife(u) + 380000)
     endif
     set u=null
@@ -42460,7 +42512,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A03J') != 0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i] == 7 and GetUnitAbilityLevel(u, 'A08R') == 9 then
+				if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 9) - 1)])) != 0) and GetUnitAbilityLevel(u, 'A08R') == 9 then // INLINED!!
 					set j=1
 		        	loop
 		        	exitwhen j > wugongshu[i]
@@ -42493,7 +42545,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A039') != 0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i] == 6 and GetUnitAbilityLevel(u, 'A05K') == 9 then
+				if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 1) - 1)])) != 0) and GetUnitAbilityLevel(u, 'A05K') == 9 then // INLINED!!
 					set j=1
 		        	loop
 		        	exitwhen j > wugongshu[i]
@@ -42526,7 +42578,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A03F') != 0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i] == 5 and GetUnitAbilityLevel(u, 'A09M') == 9 then
+				if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 2) - 1)])) != 0) and GetUnitAbilityLevel(u, 'A09M') == 9 then // INLINED!!
 					set j=1
 		        	loop
 		        	exitwhen j > wugongshu[i]
@@ -42559,7 +42611,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A03G') != 0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i] == 3 and GetUnitAbilityLevel(u, 'A0CM') == 9 then
+				if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 5) - 1)])) != 0) and GetUnitAbilityLevel(u, 'A0CM') == 9 then // INLINED!!
 					set j=1
 		        	loop
 		        	exitwhen j > wugongshu[i]
@@ -42592,7 +42644,7 @@ function XueZhenFa takes nothing returns nothing
             if GetUnitAbilityLevel(u, 'A03G') != 0 then
                 call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
             else
-                if udg_whichzhangmen[i] == 28 and GetUnitAbilityLevel(u, 'A09A') == 9 then // 唐门门主、漫天飞花达到9级
+                if (YDWEBitwise_AND(chief[(i )] , ((1 ) * YDWEBitwise__C2[( ( 20) - 1)])) != 0) and GetUnitAbilityLevel(u, 'A09A') == 9 then // 唐门门主、漫天飞花达到9级 // INLINED!!
 set j=1
                     loop
                     exitwhen j > wugongshu[i]
@@ -42734,8 +42786,8 @@ function WuXiangShangHai takes nothing returns nothing
 	if UnitHasBuffBJ(uc, 'Bfro') then
 		set shxishu=shxishu * 3
 	endif
-	if LoadBoolean(YDHT, GetHandleId(u), StringHash("大轮明王")) then
-		set shxishu=shxishu * 5
+	if isTitle(i , 3) then // 大轮明王
+set shxishu=shxishu * 5
 	endif
 	set shxishu=shxishu * ( 1. + I2R(danpo[i]) / 20 + I2R(juexuelingwu[i]) )
 	set shanghai=ShangHaiGongShi(u , uc , 14. , 19. , shxishu , 'A03P')
@@ -43765,10 +43817,7 @@ function YeLianWuQi takes nothing returns nothing
 			endif
 			if udg_bqds[i] >= 5 and udg_bqdsbool[i] == false and Ce[i] == 3 then
 			    set udg_bqdsbool[i]=true
-			    if udg_zhangmen[i] == true then
-				else
-					call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓兵器大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
-				endif
+				call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓兵器大师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得兵器大师")
 				call SetPlayerName(p, "〓兵器大师〓" + GetPlayerName(p))
 			endif
@@ -48806,10 +48855,11 @@ set bonus_wugong[i]=0
 		set bonus_baoshang[i]=0
 		// 初始化最高伤害
 		set max_damage[i]=0
-		set udg_zhangmen[i]=false
-		set udg_whichzhangmen[i]=0
 		set wugongshu[i]=11 // 11格
 set udg_zhemei[i]=0
+		set chief[i]=0
+		set title0[i]=0
+		set title1[i]=0
 		set wuxing[i]=9
 		set jingmai[i]=9
 		set gengu[i]=9
@@ -49761,19 +49811,19 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs15562437")
+call ExecuteFunc("jasshelper__initstructs30970750")
 call ExecuteFunc("UniMissileSystem3D___Init")
 call ExecuteFunc("init")
-call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
+call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
 call ExecuteFunc("InitializeYD")
-call ExecuteFunc("YDWEBitwise___onInit")
-call ExecuteFunc("YDWEGeneralBounsSystem__Initialize")
+call ExecuteFunc("YDWEBitwise__onInit")
+call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
 call ExecuteFunc("YDWELogarithm__onInit")
 call ExecuteFunc("YDWESync__onInit")
 call ExecuteFunc("YDWEPreloadSL__Init")
 call ExecuteFunc("YDWEStringFormula__Init")
-call ExecuteFunc("YDWETimerPattern__Init")
-call ExecuteFunc("YDWETimerSystem__Init")
+call ExecuteFunc("YDWETimerPattern___Init")
+call ExecuteFunc("YDWETimerSystem___Init")
 
     call InitGlobals()
     call InitCustomTriggers()
@@ -49804,9 +49854,6 @@ function config takes nothing returns nothing
     call InitCustomTeams()
     call InitAllyPriorities()
 endfunction
-//===========================================================================
-//ϵͳ-TimerSystem
-//===========================================================================
 //===========================================================================  
 //===========================================================================  
 //�Զ����¼� 
@@ -49816,11 +49863,14 @@ endfunction
 //修改生命
 //===========================================================================
 //===========================================================================
-//��Ծϵͳ 
+//ϵͳ-TimerSystem
 //===========================================================================
      
  
                  
+//===========================================================================
+//��Ծϵͳ 
+//===========================================================================
 
 
 
@@ -49911,29 +49961,29 @@ local integer this=f__arg_this
             call FlushChildHashtable(YDHT, StringHash(("YDWEStringFormula." + I2S(this)))) // INLINED!!
    return true
 endfunction
-function sa__YDWETimerPattern__Thread_onDestroy takes nothing returns boolean
+function sa__YDWETimerPattern___Thread_onDestroy takes nothing returns boolean
 local integer this=f__arg_this
-            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern__Thread_obj[this])))))))) // INLINED!!
-            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern__Thread_t[this])))))))) // INLINED!!
-            call GroupClear(s__YDWETimerPattern__Thread_g[this])
-            call DestroyGroup(s__YDWETimerPattern__Thread_g[this])
-            call PauseTimer(s__YDWETimerPattern__Thread_t[this])
-            call DestroyTimer(s__YDWETimerPattern__Thread_t[this])
-            call s__YDWETimerPattern__YDVector3_deallocate(s__YDWETimerPattern__Thread_des[this])
-            call s__YDWETimerPattern__YDVector3_deallocate(s__YDWETimerPattern__Thread_pos[this])
-            call s__YDWETimerPattern__YDVector3_deallocate(s__YDWETimerPattern__Thread_vel[this])
-            set s__YDWETimerPattern__Thread_caster[this]=null
-            set s__YDWETimerPattern__Thread_target[this]=null
-            set s__YDWETimerPattern__Thread_obj[this]=null
-            set s__YDWETimerPattern__Thread_g[this]=null
-            set s__YDWETimerPattern__Thread_t[this]=null
-            set s__YDWETimerPattern__Thread_amount[this]=0
-            set s__YDWETimerPattern__Thread_skills[this]=0
-            set s__YDWETimerPattern__Thread_order[this]=0
-            set s__YDWETimerPattern__Thread_dsfx[this]=""
-            set s__YDWETimerPattern__Thread_gsfx[this]=""
-            set s__YDWETimerPattern__Thread_wsfx[this]=""
-            set s__YDWETimerPattern__Thread_part[this]=""
+            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern___Thread_obj[this])))))))) // INLINED!!
+            call RemoveSavedInteger(YDHT, StringHash(("YDWETimerPattern." )), StringHash(( I2S((GetHandleId(((s__YDWETimerPattern___Thread_t[this])))))))) // INLINED!!
+            call GroupClear(s__YDWETimerPattern___Thread_g[this])
+            call DestroyGroup(s__YDWETimerPattern___Thread_g[this])
+            call PauseTimer(s__YDWETimerPattern___Thread_t[this])
+            call DestroyTimer(s__YDWETimerPattern___Thread_t[this])
+            call s__YDWETimerPattern___YDVector3_deallocate(s__YDWETimerPattern___Thread_des[this])
+            call s__YDWETimerPattern___YDVector3_deallocate(s__YDWETimerPattern___Thread_pos[this])
+            call s__YDWETimerPattern___YDVector3_deallocate(s__YDWETimerPattern___Thread_vel[this])
+            set s__YDWETimerPattern___Thread_caster[this]=null
+            set s__YDWETimerPattern___Thread_target[this]=null
+            set s__YDWETimerPattern___Thread_obj[this]=null
+            set s__YDWETimerPattern___Thread_g[this]=null
+            set s__YDWETimerPattern___Thread_t[this]=null
+            set s__YDWETimerPattern___Thread_amount[this]=0
+            set s__YDWETimerPattern___Thread_skills[this]=0
+            set s__YDWETimerPattern___Thread_order[this]=0
+            set s__YDWETimerPattern___Thread_dsfx[this]=""
+            set s__YDWETimerPattern___Thread_gsfx[this]=""
+            set s__YDWETimerPattern___Thread_wsfx[this]=""
+            set s__YDWETimerPattern___Thread_part[this]=""
    return true
 endfunction
 function sa__YDWEStringFormula__Sorting_onDestroy takes nothing returns boolean
@@ -49953,7 +50003,7 @@ function sa___prototype3_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs15562437 takes nothing returns nothing
+function jasshelper__initstructs30970750 takes nothing returns nothing
     set st__ShopWeapon_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__ShopWeapon_onDestroy,Condition( function sa__ShopWeapon_onDestroy))
     set st__ShopWeapon_PickUpWeapon=CreateTrigger()
@@ -49969,11 +50019,11 @@ function jasshelper__initstructs15562437 takes nothing returns nothing
     set st__YDWEStringFormula__Inventory_onDestroy[2]=CreateTrigger()
     set st__YDWEStringFormula__Inventory_onDestroy[3]=st__YDWEStringFormula__Inventory_onDestroy[2]
     call TriggerAddCondition(st__YDWEStringFormula__Inventory_onDestroy[2],Condition( function sa__YDWEStringFormula__Inventory_onDestroy))
-    set st__YDWETimerPattern__Thread_onDestroy[10]=CreateTrigger()
-    set st__YDWETimerPattern__Thread_onDestroy[11]=st__YDWETimerPattern__Thread_onDestroy[10]
-    set st__YDWETimerPattern__Thread_onDestroy[12]=st__YDWETimerPattern__Thread_onDestroy[10]
-    set st__YDWETimerPattern__Thread_onDestroy[13]=st__YDWETimerPattern__Thread_onDestroy[10]
-    call TriggerAddCondition(st__YDWETimerPattern__Thread_onDestroy[10],Condition( function sa__YDWETimerPattern__Thread_onDestroy))
+    set st__YDWETimerPattern___Thread_onDestroy[10]=CreateTrigger()
+    set st__YDWETimerPattern___Thread_onDestroy[11]=st__YDWETimerPattern___Thread_onDestroy[10]
+    set st__YDWETimerPattern___Thread_onDestroy[12]=st__YDWETimerPattern___Thread_onDestroy[10]
+    set st__YDWETimerPattern___Thread_onDestroy[13]=st__YDWETimerPattern___Thread_onDestroy[10]
+    call TriggerAddCondition(st__YDWETimerPattern___Thread_onDestroy[10],Condition( function sa__YDWETimerPattern___Thread_onDestroy))
     set st__YDWEStringFormula__Sorting_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__YDWEStringFormula__Sorting_onDestroy,Condition( function sa__YDWEStringFormula__Sorting_onDestroy))
     set st___prototype3[1]=CreateTrigger()

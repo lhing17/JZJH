@@ -81,7 +81,7 @@ function XiaoLian_Action takes nothing returns nothing
 	    set shxishu = shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT,GetHandleId(u),StringHash("教主夫人")) then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)), 33) then
         set shxishu = shxishu * 2
     endif
 	call DestroyEffect(AddSpecialEffect("Abilities\\Spells\\Human\\Polymorph\\PolyMorphDoneGround.mdl", x, y))
@@ -150,7 +150,7 @@ function XiaoLian_Action_1 takes nothing returns nothing
 	    set shxishu = shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT,GetHandleId(u),StringHash("教主夫人")) then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)), 33) then
         set shxishu = shxishu * 2
     endif
 	set shanghai=ShangHaiGongShi(u,uc,8,11,shxishu,'A056')
@@ -331,7 +331,7 @@ function DiQingXiangLong takes nothing returns nothing
         set gailv = gailv + 40
     endif
     // 神龙教主加成
-    if LoadBoolean(YDHT,GetHandleId(u),StringHash("神龙教主")) then
+    if isTitle(i, 32) then
         set beishu = beishu *2
         set gailv = gailv + 10
     endif
@@ -416,7 +416,7 @@ function birdDamage takes unit u, unit ut returns nothing
 	    set shxishu = shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT,GetHandleId(u),StringHash("教主夫人")) then
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)), 33) then
         set shxishu = shxishu * 2
     endif
     set shanghai=ShangHaiGongShi(u,ut,30,20,shxishu,'A054')
@@ -639,11 +639,11 @@ function Trig_ciZhenSaoSheFunc007Conditions takes nothing returns boolean
 	    set shxishu = shxishu * 2
     endif
     // 神龙教主加成
-    if LoadBoolean(YDHT,GetHandleId(u),StringHash("神龙教主")) then
+    if isTitle(i, 32) then
         set shxishu = shxishu * 2
     endif
     // 教主夫人加成
-    if LoadBoolean(YDHT,GetHandleId(u),StringHash("教主夫人")) then
+    if isTitle(i, 33) then
         set shxishu = shxishu * 2
     endif
     set ydl_timer = null

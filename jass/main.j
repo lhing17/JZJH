@@ -90,32 +90,12 @@ globals
 	unit udg_yechadanwei=null
 	unit udg_miejuedanwei=null
 	integer array wugongshu
-	integer array udg_whichzhangmen
 	integer array udg_zhemei
-	boolean array udg_zhangmen
 
-	boolean array chilian
-	boolean array zhiruo // 是否获得芷若
-	// 是否获得老顽童称号
-	boolean array  laowantong
-	// 是否获得中神通称号
-	boolean array  zhongshentong
-	// 是否获得血刀老祖称号
-	boolean array  xuedaolaozu
-	// 是否获得星宿老仙称号
-	boolean array  xingxiulaoxian
-	// 是否获得东邪称号
-	boolean array  dongxie
-	// 是否获得瑶琴称号
-	boolean array  yaoqin
-	// 是否获得北丐称号
-	boolean array beigai
-	// 是否获得北乔峰称号
-	boolean array beiqiaofeng
-	// 是否获得北侠称号
-	boolean array beixia
-	// 是否获得慕容龙城称号
-	boolean array muronglc
+	integer array chief // 掌门标识，使用2进制的方式标注获得了哪个门派的掌门
+	integer array title0 // 称号标识，使用2进制的方式标注获得了哪个称号
+	integer array title1 // 称号标识，使用2进制的方式标注获得了哪个称号
+
 	// 战斗力数组，每位玩家的战斗力
 	integer array udg_zdl
 	// 积分数组
@@ -147,8 +127,9 @@ globals
 	integer udg_nandu=0
 
 	boolean udg_shifoufomie=false
-	boolean udg_teshushijian=false
-	boolean udg_yunyangxianshen=false
+	boolean udg_teshushijian = false
+	boolean udg_yanglao = false
+	boolean udg_yunyangxianshen = false
 	boolean udg_sutong = false
 	boolean taohuakai=false
 	dialog udg_index=null
@@ -2116,11 +2097,11 @@ function main1 takes nothing returns nothing
 		set bonus_baoshang[i] = 0
 		// 初始化最高伤害
 		set max_damage[i] = 0
-
-		set udg_zhangmen[i]=false
-		set udg_whichzhangmen[i]=0
 		set wugongshu[i]=11 // 11格
 		set udg_zhemei[i]=0
+		set chief[i]=0
+		set title0[i]=0
+		set title1[i]=0
 		set wuxing[i]=9
 		set jingmai[i]=9
 		set gengu[i]=9

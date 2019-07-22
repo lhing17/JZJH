@@ -440,7 +440,7 @@ function biYuAction takes nothing returns nothing
 	    set shxishu = shxishu + 2.0
     endif
     // 搜魂侠加成
-    if LoadBoolean(YDHT,GetHandleId(GetAttacker()),StringHash("搜魂侠")) then
+    if isTitle(i, 36) then
         set shxishu = shxishu * 2
     endif
     // 子午砂

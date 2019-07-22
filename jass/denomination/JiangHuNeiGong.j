@@ -98,10 +98,10 @@ endfunction
         if GetUnitAbilityLevel(GetAttacker(),'A07S')>=1 then
 	        set shxishu=shxishu+1.
         endif
-        if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
-	        set shxishu=shxishu*20
+        if isTitle(1+GetPlayerId(GetOwningPlayer(u)), 37) then // 九阴真人
+	        set shxishu=shxishu * 20
         endif
-		if yaoqin[i] then
+		if isTitle(i, 41) then
 			set shxishu=shxishu*10
 		endif
         set shanghai=ShangHaiGongShi(u,uc,30.,30.,shxishu,'A0D1')
@@ -136,7 +136,7 @@ endfunction
 		        if GetUnitAbilityLevel(u,'A07S')>=1 then
 	                set shxishu=shxishu+1.
                 endif
-		        if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
+		        if isTitle(i, 37) then // 九阴真人
 	                set shxishu=shxishu*20
                 endif
                 if((GetUnitAbilityLevel(u,'A0D2')!=0)and(GetRandomInt(1,$A)<5)and(UnitHasBuffBJ(uc,'Bcri')==false))then
@@ -170,7 +170,7 @@ function DI takes nothing returns nothing
     local integer i=1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))
 	local integer beishu = 1 // 内功加成倍数
 	// 九阴真人称号
-	if udg_whichzhangmen[i]==11 then
+	if isTitle(i, 37) then
 		set beishu = 2
 	endif
     set cx=cx+3
@@ -252,7 +252,7 @@ function GI takes nothing returns nothing
 endfunction
 function isShuangShouBeiDong takes nothing returns boolean
 	// 学会双手，老顽童或郭大侠称号
-	return GetUnitAbilityLevel(GetAttacker(),'A07U') >= 1 and (laowantong[1+GetPlayerId(GetOwningPlayer(GetAttacker()))] or beixia[1+GetPlayerId(GetOwningPlayer(GetAttacker()))])
+	return GetUnitAbilityLevel(GetAttacker(),'A07U') >= 1 and (isTitle(1+GetPlayerId(GetOwningPlayer(GetAttacker())), 13) or isTitle(1+GetPlayerId(GetOwningPlayer(GetAttacker())), 43))
 endfunction
 function shuangShouBeiDong takes nothing returns nothing
 	local unit u=GetAttacker()
@@ -338,8 +338,8 @@ function YiLiaoPian takes nothing returns nothing
 	local unit u=GetTriggerUnit()
     local unit uc=GetSpellTargetUnit()
     call SetWidgetLife(uc,GetWidgetLife(u)+20000)
-    if udg_whichzhangmen[1+GetPlayerId(GetOwningPlayer(u))]==11 then
-	    call SetWidgetLife(uc,GetWidgetLife(u)+380000)
+    if isTitle(1 + GetPlayerId(GetOwningPlayer(u)), 37) then
+	    call SetWidgetLife(uc,GetWidgetLife(u) + 380000)
     endif
     set u = null
     set uc = null

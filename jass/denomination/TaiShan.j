@@ -195,7 +195,7 @@ function DaiZongRuHe takes nothing returns nothing
 	if UnitHaveItem(GetTriggerUnit(), 'I0E2') then
 	    set extraHit = extraHit * 3
   endif
-	if LoadBoolean(YDHT,GetHandleId(GetTriggerUnit()),StringHash("天门道长")) then
+	if isTitle(i, 34) then
 			set extraHit = extraHit * 2
 	endif
 	call WuGongShengChong(GetTriggerUnit(), 'A08B', 100) //武功升重

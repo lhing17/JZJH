@@ -102,7 +102,8 @@ function IsFuChenMaJia takes nothing returns boolean
 	return GetUnitTypeId(GetEventDamageSource())=='h00F' and IsUnitEnemy(GetTriggerUnit(),GetOwningPlayer(GetEventDamageSource()))
 endfunction
 function FuChenMaJia takes nothing returns nothing
-	local unit u=udg_hero[1+GetPlayerId(GetOwningPlayer(GetEventDamageSource()))]
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(GetEventDamageSource()))
+	local unit u=udg_hero[i]
 	local unit uc=GetTriggerUnit()
 	local real shxishu=1
     local real shanghai=0.
@@ -120,8 +121,8 @@ function FuChenMaJia takes nothing returns nothing
 	if UnitHaveItem(u, 'I0DU') then
 	    set shxishu = shxishu * 2
     endif
-	// 仪琳，拂尘功附带封穴
-	if LoadBoolean(YDHT,GetHandleId(u),StringHash("仪琳")) then
+	// 仪琳拂尘功附带封穴
+	if isTitle(i, 17) then
 		call WanBuff(u,uc,11)
 	endif
     set shanghai=ShangHaiGongShi(u,uc,r1,r1,shxishu,'A01Z')

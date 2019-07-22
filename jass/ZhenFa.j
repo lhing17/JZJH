@@ -549,7 +549,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A03J')!=0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i]==7 and GetUnitAbilityLevel(u, 'A08R')==9 then
+				if isChief(i, 9) and GetUnitAbilityLevel(u, 'A08R')==9 then
 					set j=1
 		        	loop
 		        	exitwhen j>wugongshu[i]
@@ -584,7 +584,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A039')!=0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i]==6 and GetUnitAbilityLevel(u, 'A05K')==9 then
+				if isChief(i, 1) and GetUnitAbilityLevel(u, 'A05K')==9 then
 					set j=1
 		        	loop
 		        	exitwhen j>wugongshu[i]
@@ -618,7 +618,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A03F')!=0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i]==5 and GetUnitAbilityLevel(u, 'A09M')==9 then
+				if isChief(i, 2) and GetUnitAbilityLevel(u, 'A09M')==9 then
 					set j=1
 		        	loop
 		        	exitwhen j>wugongshu[i]
@@ -652,7 +652,7 @@ function XueZhenFa takes nothing returns nothing
 			if GetUnitAbilityLevel(u, 'A03G')!=0 then
 				call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
 			else
-				if udg_whichzhangmen[i]==3 and GetUnitAbilityLevel(u, 'A0CM')==9 then
+				if isChief(i, 5) and GetUnitAbilityLevel(u, 'A0CM')==9 then
 					set j=1
 		        	loop
 		        	exitwhen j>wugongshu[i]
@@ -686,7 +686,7 @@ function XueZhenFa takes nothing returns nothing
             if GetUnitAbilityLevel(u, 'A03G')!=0 then
                 call DisplayTextToPlayer(p, 0, 0, "|cff00FF66您已经修行过该阵法")
             else
-                if udg_whichzhangmen[i]==28 and GetUnitAbilityLevel(u, 'A09A')==9 then // 唐门门主、漫天飞花达到9级
+                if isChief(i, 20) and GetUnitAbilityLevel(u, 'A09A')==9 then // 唐门门主、漫天飞花达到9级
                     set j=1
                     loop
                     exitwhen j>wugongshu[i]

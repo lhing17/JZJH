@@ -495,7 +495,7 @@ function XueDaoJing_Action2 takes nothing returns nothing
 	    set shxishu=shxishu*4
     endif
 	// 一刀绝空2倍
-	if xuedaolaozu[i] then
+	if isTitle(i, 15) then
 		set shxishu = shxishu*2
 	endif
 	set shanghai=ShangHaiGongShi(u,uc,200,1200,shxishu,'A0DH')

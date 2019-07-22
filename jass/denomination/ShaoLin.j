@@ -247,8 +247,8 @@ function cc takes nothing returns nothing
 	set ce[i]=(70*GetUnitAbilityLevel(u,'A05O'))
 	call YDWEGeneralBounsSystemUnitSetBonus(u,2,0,(70*GetUnitAbilityLevel(u,'A05O')))
 	if((gengu[i]>=20))then
-		// 金钟罩效果4倍
-		if LoadBoolean(YDHT, GetHandleId(u), StringHash("扫地神僧")) or LoadBoolean(YDHT,GetHandleId(u),StringHash("达摩祖师")) then
+		// 扫地神僧或达摩祖师称号：金钟罩效果4倍
+		if isTitle(i, 1) or isTitle(i, 2) then
 			set D7[i]=(D7[i]*4.)
 		else
 			set D7[i]=(D7[i]*2.)
@@ -305,7 +305,7 @@ function Hc takes nothing returns nothing
 	        call AddSpecialEffectLocBJ(loc2,"Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl")
 	        call DestroyEffect(bj_lastCreatedEffect)
 	        call RemoveLocation(loc2)
-			if LoadBoolean(YDHT, GetHandleId(u), StringHash("扫地神僧")) then
+			if isTitle(i, 1) then // 扫地神僧称号
 				set shxishu=shxishu*10
 			endif
 	        set shanghai=ShangHaiGongShi(u,uc,20.,20.,shxishu,'A05O')
@@ -324,9 +324,9 @@ function Hc takes nothing returns nothing
 	        set ce[i]=70*GetUnitAbilityLevel(u,'A05O')
 	        call YDWEGeneralBounsSystemUnitSetBonus(GetTriggerUnit(),2,0,(70*GetUnitAbilityLevel(u,'A05O')))
 	        if((gengu[(1+GetPlayerId(GetOwningPlayer(u)))]>=20))then
-	            // 金钟罩效果4倍
-				if LoadBoolean(YDHT, GetHandleId(u), StringHash("扫地神僧")) or LoadBoolean(YDHT,GetHandleId(u),StringHash("达摩祖师")) then
-					set D7[i]=(D7[i]*4.)
+	            // 扫地神僧或达摩祖师称号：金钟罩效果4倍
+                if isTitle(i, 1) or isTitle(i, 2) then
+                    set D7[i]=(D7[i]*4.)
 				else
 					set D7[i]=(D7[i]*2.)
 				endif
@@ -355,7 +355,8 @@ function Jc takes nothing returns nothing
 	    set F7[i]=(F7[i]+1)
 	    if((F7[i]>=10))then
 	        set F7[i]=(F7[i]-10)
-			if LoadBoolean(YDHT,GetHandleId(GetKillingUnit()),StringHash("达摩祖师")) then
+	        // 达摩祖师称号
+			if isTitle(i, 2) then
 	        	call ModifyHeroStat(0,GetKillingUnit(),0,1)
 	        	call ModifyHeroStat(1,GetKillingUnit(),0,1)
 	        	call ModifyHeroStat(2,GetKillingUnit(),0,1)
@@ -441,7 +442,7 @@ endfunction
 
 //金轮法王龙象效果
 function isJinLunLongXiang takes nothing returns boolean
-	return GetUnitAbilityLevel(GetAttacker(),'S002')>=1 and LoadBoolean(YDHT,GetHandleId(GetAttacker()),StringHash("金轮法王"))
+	return GetUnitAbilityLevel(GetAttacker(),'S002')>=1 and isTitle(1 + GetPlayerId(GetOwningPlayer(GetAttacker())), 4)
 endfunction
 function jinLunLongXiang takes nothing returns nothing
 	local unit u = GetAttacker()
