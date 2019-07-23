@@ -5,6 +5,27 @@
 
 #include "../library/common_func.j"
 
+function getDeputyString takes integer i, integer deputy, string deputyStr returns string
+    if Deputy_isMaster(i, deputy) then
+        return deputyStr
+    endif
+    return ""
+endfunction
+
+function getChiefString takes integer i, integer denomination, string chiefStr returns string
+    if isChief(i, denomination) then
+        return chiefStr
+    endif
+    return ""
+endfunction
+
+function getTitleString takes integer i, integer title, string titleStr returns string
+    if isTitle(i, title) then
+        return titleStr
+    endif
+    return ""
+endfunction
+
 function KeyInput takes nothing returns nothing
 	local string s=GetEventPlayerChatString()
 	local item it=null
@@ -67,6 +88,88 @@ function KeyInput takes nothing returns nothing
 			set zizhiwugong[i].name = SubStringBJ(s, 3, 40)
 			call DisplayTextToPlayer(p,0,0,"|cFFFF0000自创武功已更名为"+SubStringBJ(s, 3, 40))
 		endif
+	endif
+	// 查看称号
+	if s == "ckch" or s == "CKCH" then
+	    set s = ""
+	    set s = s + getDeputyString(i, LIAN_DAN, "炼丹大师 ")
+	    set s = s + getDeputyString(i, DUAN_ZAO, "锻造大师 ")
+	    set s = s + getDeputyString(i, BING_QI, "兵器大师 ")
+	    set s = s + getDeputyString(i, JIAN_DING, "鉴定大师 ")
+	    set s = s + getDeputyString(i, LIAN_QI, "练所大师 ")
+	    set s = s + getDeputyString(i, XUN_BAO, "寻宝大师 ")
+	    set s = s + getDeputyString(i, YA_HUAN, "郡主 ")
+	    set s = s + getDeputyString(i, JING_WU, "精武宗师 ")
+	    call DisplayTextToPlayer(p,0,0,"|cFFFF0000当前已获得副职宗师：" + s)
+
+	    set s = ""
+	    set s = s + getChiefString(i, 1, "少林方丈 ")
+        set s = s + getChiefString(i, 2, "古墓掌门 ")
+        set s = s + getChiefString(i, 3, "丐帮帮主 ")
+        set s = s + getChiefString(i, 4, "华山掌门 ")
+        set s = s + getChiefString(i, 5, "全真掌教 ")
+        set s = s + getChiefString(i, 6, "血刀掌门 ")
+        set s = s + getChiefString(i, 7, "恒山掌门 ")
+        set s = s + getChiefString(i, 8, "峨眉掌门 ")
+        set s = s + getChiefString(i, 9, "武当掌门 ")
+        set s = s + getChiefString(i, 10, "星宿掌门 ")
+        set s = s + getChiefString(i, 12, "灵鹫宫主 ")
+        set s = s + getChiefString(i, 13, "慕容家主 ")
+        set s = s + getChiefString(i, 14, "明教教主 ")
+        set s = s + getChiefString(i, 15, "衡山掌门 ")
+        set s = s + getChiefString(i, 16, "男神龙 ")
+        set s = s + getChiefString(i, 17, "女神龙 ")
+        set s = s + getChiefString(i, 18, "泰山掌门 ")
+        set s = s + getChiefString(i, 19, "铁掌帮主 ")
+        set s = s + getChiefString(i, 20, "唐门门主 ")
+        call DisplayTextToPlayer(p,0,0,"|cFF00FF00当前已获得掌门：" + s)
+
+        set s = ""
+	    set s = s + getTitleString(i, 1, "扫地神僧 ")
+        set s = s + getTitleString(i, 2, "达摩祖师 ")
+        set s = s + getTitleString(i, 3, "大轮明王 ")
+        set s = s + getTitleString(i, 4, "金轮法王 ")
+        set s = s + getTitleString(i, 5, "神雕侠 ")
+        set s = s + getTitleString(i, 6, "小龙女 ")
+        set s = s + getTitleString(i, 7, "神雕侠侣 ")
+        set s = s + getTitleString(i, 8, "赤炼仙子 ")
+        set s = s + getTitleString(i, 9, "北丐 ")
+        set s = s + getTitleString(i, 10, "北乔峰 ")
+        set s = s + getTitleString(i, 11, "君子剑 ")
+        set s = s + getTitleString(i, 12, "风清扬 ")
+        set s = s + getTitleString(i, 13, "老顽童 ")
+        set s = s + getTitleString(i, 14, "中神通 ")
+        set s = s + getTitleString(i, 15, "血刀老祖 ")
+        set s = s + getTitleString(i, 16, "空心菜 ")
+        set s = s + getTitleString(i, 17, "仪琳 ")
+        set s = s + getTitleString(i, 18, "笑傲江湖 ")
+        set s = s + getTitleString(i, 19, "芷若 ")
+        set s = s + getTitleString(i, 20, "小东邪 ")
+        set s = s + getTitleString(i, 21, "邋遢仙人 ")
+        set s = s + getTitleString(i, 22, "张三丰 ")
+        set s = s + getTitleString(i, 23, "星宿老仙 ")
+        set s = s + getTitleString(i, 24, "天山童姥 ")
+        set s = s + getTitleString(i, 25, "虚竹子 ")
+        set s = s + getTitleString(i, 26, "慕容龙城 ")
+        set s = s + getTitleString(i, 27, "白眉鹰王 ")
+        set s = s + getTitleString(i, 28, "青翼蝠王 ")
+        set s = s + getTitleString(i, 29, "金毛狮王 ")
+        set s = s + getTitleString(i, 30, "无忌 ")
+        set s = s + getTitleString(i, 31, "莫大先生 ")
+        set s = s + getTitleString(i, 32, "神龙教主 ")
+        set s = s + getTitleString(i, 33, "教主夫人 ")
+        set s = s + getTitleString(i, 34, "天门道长 ")
+        set s = s + getTitleString(i, 35, "铁掌水上漂 ")
+        set s = s + getTitleString(i, 36, "搜魂侠 ")
+        set s = s + getTitleString(i, 37, "九阴真人 ")
+        set s = s + getTitleString(i, 38, "西毒 ")
+        set s = s + getTitleString(i, 39, "东邪 ")
+        set s = s + getTitleString(i, 40, "南帝 ")
+        set s = s + getTitleString(i, 41, "瑶琴 ")
+        set s = s + getTitleString(i, 42, "小虾米 ")
+        set s = s + getTitleString(i, 43, "郭大侠 ")
+        set s = s + getTitleString(i, 44, "神仙姐姐 ")
+	    call DisplayTextToPlayer(p,0,0,"|cFFFFFF00当前已获得称号：" + s)
 	endif
 	if s=="ckwg" or s=="CKWG" then
 		call DisplayTextToPlayer(p,0,0,"|cFFFF0000剩余自创武功点："+I2S(wuxuedian[i]))

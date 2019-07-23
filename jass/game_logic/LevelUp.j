@@ -169,7 +169,7 @@ function kungfuLevelUp takes unit u,integer id,real r returns nothing
     					endif
     					if ( udg_jwjs[i] == 3 ) and not Deputy_isMaster(i, JING_WU) then
     						call Deputy_setMaster(i, JING_WU)
-    						call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+    						// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     						call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
     						call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
     					endif
@@ -212,7 +212,7 @@ function kungfuLevelUp takes unit u,integer id,real r returns nothing
     						endif
     						if ( udg_jwjs[i] == 3 ) and not Deputy_isMaster(i, JING_WU) then
     							call Deputy_setMaster(i, JING_WU)
-    							call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+    							// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     							call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
     							call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
     						endif
@@ -236,7 +236,7 @@ function becomeChief takes unit u, integer denomination, string title, integer s
     elseif denomination == 20 then // 唐门
         set special0 = 1
     endif
-    if GetUnitAbilityLevel(u, X7[denomination]) >= 6 and GetUnitAbilityLevel(u, Z7[denomination]) >= 6 \
+    if not isChief(i, denomination) and GetUnitAbilityLevel(u, X7[denomination]) >= 6 and GetUnitAbilityLevel(u, Z7[denomination]) >= 6 \
             and GetUnitAbilityLevel(u, Y7[denomination]) >= 6 \
             and ( GetUnitAbilityLevel(u, Q8[denomination]) >= special0 or GetUnitAbilityLevel(u, P8[denomination]) >= special1 ) then
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：" + title)

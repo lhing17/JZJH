@@ -503,7 +503,7 @@ function H0 takes nothing returns nothing
 		call DisplayTextToPlayer(Player(-1+(i)),0,0,"|cFFFFCC00使用成功|r|cFF99FFCC真实伤害提升50|r")
 		if Deputy_isDeputy(i, YA_HUAN) and not Deputy_isMaster(i, YA_HUAN) then
 			call Deputy_setMaster(i, YA_HUAN)
-			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓郡主〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+			// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓郡主〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得郡主")
 			call SetPlayerName(p, "〓郡主〓"+GetPlayerName(p))
 		endif
@@ -1026,7 +1026,7 @@ function LianSomeDan takes unit u, item it, integer dan, integer ys, integer y1,
 				endif
 				if (udg_ldds[i]==5) and not Deputy_isMaster(i, LIAN_DAN) then
 				    call Deputy_setMaster(i, LIAN_DAN)
-					call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓炼丹大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+					// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓炼丹大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 					call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得炼丹大师")
 					call SetPlayerName(p, "〓炼丹大师〓"+GetPlayerName(p))
 				endif

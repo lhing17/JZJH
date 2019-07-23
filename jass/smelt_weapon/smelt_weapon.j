@@ -204,7 +204,7 @@ function YeLianWuQi takes nothing returns nothing
 			endif
 			if udg_bqds[i]>=5 and not Deputy_isMaster(i, BING_QI) and Deputy_isDeputy(i, BING_QI) then
 			    call Deputy_setMaster(i, BING_QI)
-				call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓兵器大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
+				// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓兵器大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得兵器大师")
 				call SetPlayerName(p, "〓兵器大师〓"+GetPlayerName(p))
 			endif
