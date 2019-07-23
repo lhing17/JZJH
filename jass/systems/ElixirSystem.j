@@ -7,13 +7,13 @@ function WO takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		set yongdanshu[i]=yongdanshu[i]+1
 		set yishu[i]=yishu[i]+1
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC医术+1|r")
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前医术为：|r|cFF99FFCC"+I2S(yishu[i]))
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -34,13 +34,13 @@ function ZO takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		set yongdanshu[i]=yongdanshu[i]+1
 		set wuxing[i]=wuxing[i]+1
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC悟性+1|r")
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前悟性为：|r|cFF99FFCC"+I2S(wuxing[i]))
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -61,13 +61,13 @@ function f0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		set yongdanshu[i]=yongdanshu[i]+1
 		set gengu[i]=gengu[i]+1
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC根骨+1|r")
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前根骨为：|r|cFF99FFCC"+I2S(gengu[i]))
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -88,13 +88,13 @@ function i0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		set yongdanshu[i]=yongdanshu[i]+1
 		set fuyuan[i]=fuyuan[i]+1
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC福缘+1|r")
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前福缘为：|r|cFF99FFCC"+I2S(fuyuan[i]))
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -115,13 +115,13 @@ function m0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		set yongdanshu[i]=yongdanshu[i]+1
 		set jingmai[i]=jingmai[i]+1
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC经脉+1|r")
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前经脉为：|r|cFF99FFCC"+I2S(jingmai[i]))
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -142,13 +142,13 @@ function p0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		set yongdanshu[i]=yongdanshu[i]+1
 		set danpo[i]=danpo[i]+1
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC胆魄+1|r")
 		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前胆魄为：|r|cFF99FFCC"+I2S(danpo[i]))
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -169,7 +169,7 @@ function s0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((yongdanshu[i]<$A)) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if((yongdanshu[i]<$A)) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		call DialogSetMessage(v8[i],"请选择要减1的属性")
 		call DialogAddButtonBJ(v8[i],"根骨")
 		set w8[i]=bj_lastCreatedButton
@@ -273,7 +273,7 @@ function y0 takes nothing returns nothing
 	call DialogClear(D8[i])
 	set yongdanshu[i]=(yongdanshu[i]+1)
 	call PlaySoundOnUnitBJ(Eh,100,udg_hero[i])
-	if Ce[i]!=1 then
+	if not Deputy_isDeputy(i, LIAN_DAN) then
 	    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 	else
 	    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -287,7 +287,7 @@ function a0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<$A) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if (yongdanshu[i]<$A) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		if((GetRandomInt(1,5)==3))then
 			if((GetRandomInt(1,6)==1))then
 				set yishu[i]=(yishu[i]+1)
@@ -369,7 +369,7 @@ function a0 takes nothing returns nothing
 		endif
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		set yongdanshu[i]=(yongdanshu[i]+1)
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -390,7 +390,7 @@ function C0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((yongdanshu[i]<$A)) or (yongdanshu[i]<15 and Ce[i]==1 ) then
+	if((yongdanshu[i]<$A)) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		call DialogSetMessage(v8[i],"请选择要+6的属性")
 		call DialogAddButtonBJ(v8[i],"根骨")
 		set w8[i]=bj_lastCreatedButton
@@ -480,7 +480,7 @@ function E0 takes nothing returns nothing
 		call DisplayTextToPlayer(p,0,0,"|cFF99FFCC其它属性-1|r")
 		set yongdanshu[i]=(yongdanshu[i]+1)
 		call PlaySoundOnUnitBJ(Eh,100,udg_hero[i])
-		if Ce[i]!=1 then
+		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
@@ -496,13 +496,13 @@ function H0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((v9[i]==false or udg_junzhu[i]==true))then
+	if v9[i]==false or Deputy_isMaster(i, YA_HUAN)then
 		set v9[i]=true
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call ModifyHeroStat(2,udg_hero[i],0,50)
 		call DisplayTextToPlayer(Player(-1+(i)),0,0,"|cFFFFCC00使用成功|r|cFF99FFCC真实伤害提升50|r")
-		if Ce[i]==7 and udg_junzhu[i]==false then
-			set udg_junzhu[i]=true
+		if Deputy_isDeputy(i, YA_HUAN) and not Deputy_isMaster(i, YA_HUAN) then
+			call Deputy_setMaster(i, YA_HUAN)
 			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓郡主〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得郡主")
 			call SetPlayerName(p, "〓郡主〓"+GetPlayerName(p))
@@ -523,7 +523,7 @@ function J0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((w9[i]==false or udg_junzhu[i]==true))then
+	if((w9[i]==false or Deputy_isMaster(i, YA_HUAN)))then
 		set w9[i]=true
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call UnitAddAbility(udg_hero[i],1093678923)
@@ -544,7 +544,7 @@ function M0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((y9[i]==false or udg_junzhu[i]==true))then
+	if((y9[i]==false or Deputy_isMaster(i, YA_HUAN)))then
 		set y9[i]=true
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		call ModifyHeroStat(1,udg_hero[i],0,40)
@@ -565,7 +565,7 @@ function P0 takes nothing returns nothing
 	local unit u = GetTriggerUnit()
 	local player p = GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
-	if((x9[i]==false or udg_junzhu[i]==true))then
+	if((x9[i]==false or Deputy_isMaster(i, YA_HUAN)))then
 		set x9[i]=true
 		call PlaySoundOnUnitBJ(Eh,100,u)
 		set juexuelingwu[i]=(juexuelingwu[i]+1)
@@ -924,7 +924,7 @@ function CorresDan takes integer dan returns integer
 endfunction
 function EP takes nothing returns boolean
 	if (GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and isLianDanItem(GetManipulatedItem()) then
-    	if Ce[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]!=1 and UnitHaveItem(udg_hero[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))],'I0AM')==false then
+    	if not Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), LIAN_DAN) and UnitHaveItem(udg_hero[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))],'I0AM')==false then
     		call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,"|cFFFFCC00你不是炼丹师，并且未携带神木王鼎，不可以炼制丹药")
     		call AdjustPlayerStateBJ(2000,GetOwningPlayer(GetTriggerUnit()),PLAYER_STATE_RESOURCE_GOLD)
     		return false
@@ -1012,7 +1012,7 @@ function LianSomeDan takes unit u, item it, integer dan, integer ys, integer y1,
 				set que = que+y2-yang
 				call DisplayTimedTextToPlayer(p,0,0,5.,"|cff00ff33阳性缺"+ I2S(y2-yang)+"，炼制成功率降低了"+I2S((y2-yang)*5)+"%")
 			endif
-			if (udg_lddsbool[i]) then
+			if Deputy_isMaster(i, LIAN_DAN) then
 				set que = que - 4
 				call DisplayTimedTextToPlayer(p,0,0,5.,"|cff00ff33由于你是炼丹大师，炼制成功率提高20%")
 			endif
@@ -1021,11 +1021,11 @@ function LianSomeDan takes unit u, item it, integer dan, integer ys, integer y1,
 				call DisplayTimedTextToPlayer(p,0,0,5.,"|cff00ffff恭喜炼制成功！")
 				set biYuAddition[i] = biYuAddition[i] + 0.5
 				set udg_ldds[i] = udg_ldds[i] + 1
-				if (udg_ldds[i]<=5) and udg_lddsbool[i] == false then
+				if (udg_ldds[i]<=5) and not Deputy_isMaster(i, LIAN_DAN) then
 					call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您炼成第"+I2S(udg_ldds[i])+"颗丹药，炼成5颗可获得大师哦")
 				endif
-				if (udg_ldds[i]==5) and udg_lddsbool[i] == false then
-					set udg_lddsbool[i] = true
+				if (udg_ldds[i]==5) and not Deputy_isMaster(i, LIAN_DAN) then
+				    call Deputy_setMaster(i, LIAN_DAN)
 					call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓炼丹大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 					call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得炼丹大师")
 					call SetPlayerName(p, "〓炼丹大师〓"+GetPlayerName(p))

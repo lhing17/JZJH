@@ -6,10 +6,42 @@ globals
 	 */
 	constant integer MAX_WU_GONG_NUM = 56 // 江湖、绝学、绝内的最大武功种类数
 	constant integer MAX_BAN_LV_NUM = 14
+	constant integer LIAN_DAN = 1 // 炼丹师
+	constant integer DUAN_ZAO = 2 // 锻造师
+	constant integer BING_QI = 3 // 兵器师
+	constant integer JIAN_DING = 4 // 鉴定师
+	constant integer LIAN_QI = 5 // 练气师
+	constant integer XUN_BAO = 6 // 寻宝师
+	constant integer YA_HUAN = 7 // 丫鬟
+	constant integer JING_WU = 8 // 精武师
+    constant integer MAX_DEPUTY = 8 // 最大副职数（根据目前的设计，这一值不能超过30）
+
 endglobals
+library Deputy requires YDWEBitwise
+    // 判断是否具备某副职
+    public function isDeputy takes integer i, integer whichDeputy returns boolean
+        return YDWEBitwise_AND(deputy[i], YDWEBitwise_LShift(1, whichDeputy - 1)) != 0
+    endfunction
+
+    // 设置副职
+    public function setDeputy takes integer i, integer whichDeputy returns nothing
+        set deputy[i] = YDWEBitwise_OR(deputy[i], YDWEBitwise_LShift(1, whichDeputy - 1))
+    endfunction
+
+    // 判断是否具备某副职的大师
+    public function isMaster takes integer i, integer whichMaster returns boolean
+        return YDWEBitwise_AND(master[i], YDWEBitwise_LShift(1, whichMaster - 1)) != 0
+    endfunction
+
+    // 设置副职大师
+    public function setMaster takes integer i, integer whichMaster returns nothing
+        set master[i] = YDWEBitwise_OR(master[i], YDWEBitwise_LShift(1, whichMaster - 1))
+    endfunction
+endlibrary
+
 
 //==================武器契合度系统开始==================//
-library WuQiQiHeSystem initializer init
+library WuQiQiHeSystem initializer init requires Deputy
     //武器等级
     function WeaponLevel takes integer itemid returns integer
 	    //call BJDebugMsg("什么情况3")
@@ -98,14 +130,14 @@ library WuQiQiHeSystem initializer init
         elseif level==7 then
             set r=2.0
         endif
-        if LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)<3000. * (1+WeaponLevel(itemid)) or (LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)<5000. * (1+WeaponLevel(itemid)) and Ce[1+GetPlayerId(GetOwningPlayer(u))]==3) then
+        if LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)<3000. * (1+WeaponLevel(itemid)) or (LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)<5000. * (1+WeaponLevel(itemid)) and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(u)), BING_QI)) then
             if(ModuloInteger(GetUnitPointValue(uc),50)!=0) and (GetUnitPointValue(uc)/100==1 or GetUnitPointValue(uc)/100>=5)  then
                 call SaveReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid,LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)+r*200*udg_lilianxishu[1+GetPlayerId(GetOwningPlayer(u))]*wugongxiuwei[1+GetPlayerId(GetOwningPlayer(u))])
             else
                 call SaveReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid,LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)+r*2*udg_lilianxishu[1+GetPlayerId(GetOwningPlayer(u))]*wugongxiuwei[1+GetPlayerId(GetOwningPlayer(u))])
             endif
         endif
-        if udg_bqdsbool[1+GetPlayerId(GetOwningPlayer(u))]==true and LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)<10000. * (1+WeaponLevel(itemid))  then
+        if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(u)), BING_QI) and LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)<10000. * (1+WeaponLevel(itemid))  then
 	        call SaveReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid,LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)+r*6*udg_lilianxishu[1+GetPlayerId(GetOwningPlayer(u))]*wugongxiuwei[1+GetPlayerId(GetOwningPlayer(u))])
         endif
         //call BJDebugMsg("什么情况2，"+R2S(r)+","+R2S(LoadReal(YDHT,GetHandleId(GetOwningPlayer(u)),itemid)))
@@ -139,7 +171,7 @@ library WuQiQiHeSystem initializer init
 		    	//非镇妖
 		    	if GetItemTypeId(it)!='I02S' and GetItemTypeId(it)!='I02M' and GetItemTypeId(it)!='I02Q' and GetItemTypeId(it)!='I02R' and GetItemTypeId(it)!='I02P'  then
 			        call WeaponQiHe(u,GetTriggerUnit(),GetItemTypeId(it))
-			        if udg_bqdsbool[j]==false and Ce[j]==3 then
+			        if not Deputy_isMaster(i, BING_QI) and Deputy_isDeputy(j, BING_QI) then
 			        	if LoadBoolean(YDHT, GetHandleId(GetOwningPlayer(u)), GetItemTypeId(it))==false and LoadReal(YDHT, GetHandleId(GetOwningPlayer(u)), GetItemTypeId(it))>=5000. * (1+WeaponLevel(GetItemTypeId(it)))  then
 				    	    //set udg_bqds[j] = udg_bqds[j] + 1
 				    	    call SaveBoolean(YDHT, GetHandleId(GetOwningPlayer(u)), GetItemTypeId(it), true)
@@ -147,7 +179,7 @@ library WuQiQiHeSystem initializer init
 			        	endif
 		        	endif
 		    	    if LoadInteger(YDHT,GetHandleId(it),0)>0 then
-			    	    if  Ce[1+GetPlayerId(GetOwningPlayer(u))]!=3 then
+			    	    if not Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(u)), BING_QI) then
 			        	    call SaveInteger(YDHT,GetHandleId(it),0,LoadInteger(YDHT,GetHandleId(it),0)-1)
 		        	    endif
 		    	    endif
@@ -306,7 +338,7 @@ function BaoWuDiaoLuo takes unit u, unit ut, integer baolv1, integer id1, intege
 	if id1==0 then
 		set j = 0
 	endif
-	if (GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=35 and Ce[i]==6)) then
+	if (GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=35 and Deputy_isDeputy(i, XUN_BAO))) then
 		set MM7=2
 	else
 		set MM7=1
@@ -324,7 +356,7 @@ function BaoWuDiaoLuo takes unit u, unit ut, integer baolv1, integer id1, intege
 		if (baolv2!=0) then
 			if((GetRandomInt(1,100)<=baolv2))then
 				call createitemloc(id5,loc)
-				if IsYaoCao(id5) and udg_lddsbool[i]==true then
+				if IsYaoCao(id5) and Deputy_isMaster(i, LIAN_DAN) then
 					call createitemloc(id5,loc)
 				endif
 			endif
@@ -346,7 +378,7 @@ function dropItem takes unit u, integer itemId, integer itemId2, integer possibi
 	local player p = GetOwningPlayer(u)
 	local integer i = 1+GetPlayerId(p)
 	local location loc = GetUnitLoc(u)
-	if(GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=30 and Ce[i]==6))then
+	if(GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(i, XUN_BAO)))then
 		set MM7=2
 	else
 		set MM7=1
@@ -1917,5 +1949,6 @@ function clearTimer takes timer tm returns nothing
     call PauseTimer(tm)
     call DestroyTimer(tm)
 endfunction
+
 
 #endif //CommonFuncIncluded

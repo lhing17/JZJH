@@ -93,8 +93,10 @@ globals
 	integer array udg_zhemei
 
 	integer array chief // 掌门标识，使用2进制的方式标注获得了哪个门派的掌门
-	integer array title0 // 称号标识，使用2进制的方式标注获得了哪个称号
-	integer array title1 // 称号标识，使用2进制的方式标注获得了哪个称号
+	integer array title0 // 称号标识，使用2进制的方式标注获得了哪个称号 1-30
+	integer array title1 // 称号标识，使用2进制的方式标注获得了哪个称号 31-60
+	integer array deputy // 副职标识
+	integer array master // 大师标识
 
 	// 战斗力数组，每位玩家的战斗力
 	integer array udg_zdl
@@ -372,13 +374,6 @@ globals
 	integer array udg_bqds
 	integer array udg_dzds
 	integer array udg_jwjs
-	boolean array udg_jddsbool
-	boolean array udg_lddsbool
-	boolean array udg_xbdsbool
-	boolean array udg_bqdsbool
-	boolean array udg_dzdsbool
-	boolean array udg_jwjsbool
-	boolean array udg_junzhu
 	boolean array Z8
 	boolean array d9
 	boolean array e9
@@ -518,7 +513,6 @@ globals
 	integer array YaoCao
 	integer array ShiPin
 	integer array ZhuangBei
-	integer array Ce
 	integer array ce
 	boolean array De
 	boolean array Ee
@@ -1348,7 +1342,7 @@ function Zw takes nothing returns nothing
 	// call CreateTextTagLocBJ("新手教官",Location(420,-597),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("地图等级福利",Location(-1500,-113),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("积分商店",Location(-1500,-1344),120.0,15.,100.,100.,.0,50.)
-	call CreateTextTagLocBJ("决战江湖1.6.20名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
+	call CreateTextTagLocBJ("决战江湖1.6.21名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
 	set v7[1]=GetRectCenter(Ie)
 	set v7[2]=GetRectCenter(le)
 	set v7[3]=GetRectCenter(Je)
@@ -1391,7 +1385,7 @@ function Zw takes nothing returns nothing
 	call CreateTimerDialogBJ(bj_lastStartedTimer,"邪教进攻倒计时：")
 	call TimerDialogDisplay(bj_lastCreatedTimerDialog,true)
 	set z7[3]=bj_lastCreatedTimerDialog
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.20|r")
+	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.21|r")
 	// 获取服务器全局存档，信息提示
 	set info = DzAPI_Map_GetMapConfig("info")
 	if info != "无" then
@@ -2057,18 +2051,11 @@ function main1 takes nothing returns nothing
 	loop
 		exitwhen(i>16)
 		set udg_jdds[i] = 0
-		set udg_jddsbool[i] = false
 		set udg_ldds[i] = 0
-		set udg_lddsbool[i] = false
 		set udg_xbds[i] = 0
-		set udg_xbdsbool[i] = false
 		set udg_bqds[i] = 0
-		set udg_bqdsbool[i] = false
 		set udg_dzds[i] = 0
-		set udg_dzdsbool[i] = false
 		set udg_jwjs[i] = 0
-		set udg_jwjsbool[i] = false
-		set udg_junzhu[i] = false
 		set juexuelingwu[i]=1
 		set udg_baojishanghai[i]=1.5
 		set udg_baojilv[i]=.03
@@ -2099,9 +2086,13 @@ function main1 takes nothing returns nothing
 		set max_damage[i] = 0
 		set wugongshu[i]=11 // 11格
 		set udg_zhemei[i]=0
-		set chief[i]=0
-		set title0[i]=0
-		set title1[i]=0
+
+		set chief[i]=0 // 掌门称号
+		set title0[i]=0 // 称号1 1-30
+		set title1[i]=0 // 称号2 31-60
+		set deputy[i] = 0 // 副职
+		set master[i] = 0 // 大师
+
 		set wuxing[i]=9
 		set jingmai[i]=9
 		set gengu[i]=9
@@ -2213,7 +2204,6 @@ function main1 takes nothing returns nothing
 		set he[i]=false
 		set je[i]=DialogCreate()
 		set te[i]=0
-		set Ce[i]=0
 		set ce[i]=0
 		set De[i]=false
 		set Ee[i]=false

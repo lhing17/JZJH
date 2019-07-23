@@ -53,7 +53,7 @@ function eR takes nothing returns nothing
 	endif
 	if GetUnitTypeId(GetTriggerUnit())=='nw2w' then
 		set LLguaiG[i] = 1
-		if Ce[i]==8 then
+		if Deputy_isDeputy(i, JING_WU) then
 			if GetRandomReal(1, 100)<=40. then
 				call createitemloc('I0C6',GetUnitLoc(u))
 			endif

@@ -74,7 +74,7 @@ struct ShopWeapon
 			set  this.zhuanshu = true
 		endif
 
-		if xiuxing[1+GetPlayerId(GetOwningPlayer(u))]<min_xiuxing and this.zhuanshu == false and Ce[1+GetPlayerId(GetOwningPlayer(u))]!=3 then
+		if xiuxing[1+GetPlayerId(GetOwningPlayer(u))]<min_xiuxing and this.zhuanshu == false and not Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(u)), BING_QI) then
 			call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "需历练"+I2S(min_xiuxing)+"以上方可冶炼该武器")
 			call AdjustPlayerStateBJ(30000, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
 			return false
@@ -128,7 +128,7 @@ struct ShopWeapon
 		if udg_runamen[1+GetPlayerId(GetOwningPlayer(u))] == 11 and (GetItemTypeId(it) == 'I09B' or GetItemTypeId(it) == 'I09D') then
 			set  this.zhuanshu = true
 		endif
-		if xiuxing[1+GetPlayerId(GetOwningPlayer(u))]<min_xiuxing-1 and this.zhuanshu == false and Ce[1+GetPlayerId(GetOwningPlayer(u))]!=3 then
+		if xiuxing[1+GetPlayerId(GetOwningPlayer(u))]<min_xiuxing-1 and this.zhuanshu == false and not Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(u)), BING_QI) then
 			call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "需历练"+I2S(min_xiuxing-1)+"以上方可使用该武器")
 			call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
 			call SaveItemHandle(YDHT, GetHandleId(t), 1, it)
@@ -198,12 +198,12 @@ function YeLianWuQi takes nothing returns nothing
 	else
 		if GetRandomReal(0., 100.)<sjgl then
 			call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000恭喜你，冶炼成功")
-			if udg_bqdsbool[i]==false and Ce[i]==3 then
+			if not Deputy_isMaster(i, BING_QI) and Deputy_isDeputy(i, BING_QI) then
 				set udg_bqds[i] = udg_bqds[i] + 1
 				call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您冶炼成功第"+I2S(udg_bqds[i])+"次，您需要冶炼成功5次才能获得兵器大师哦")
 			endif
-			if udg_bqds[i]>=5 and udg_bqdsbool[i]==false and Ce[i]==3 then
-			    set udg_bqdsbool[i]=true
+			if udg_bqds[i]>=5 and not Deputy_isMaster(i, BING_QI) and Deputy_isDeputy(i, BING_QI) then
+			    call Deputy_setMaster(i, BING_QI)
 				call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓兵器大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得兵器大师")
 				call SetPlayerName(p, "〓兵器大师〓"+GetPlayerName(p))
@@ -231,7 +231,7 @@ function YeLianWuQi takes nothing returns nothing
 				//set wdxx=LoadReal(YDHT,GetHandleId(it),StringHash("吸血"))
 				// set gjsd=LoadReal(YDHT,GetHandleId(it),StringHash("攻击速度"))
 			endif
-			if udg_bqdsbool[i] then
+			if Deputy_isMaster(i, BING_QI) then
 				set sjgl = sjgl * GetGeoNormRandomReal(0.78, 0.95)
 			else
 				set sjgl = sjgl * GetGeoNormRandomReal(0.68, 0.95)

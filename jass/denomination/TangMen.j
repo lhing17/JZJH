@@ -436,7 +436,7 @@ function biYuAction takes nothing returns nothing
 		set shxishu = shxishu + 2.0
 	endif
 	// 神木王鼎或炼丹师
-	if UnitHaveItem(GetAttacker(), 'I0AM') or Ce[i] == 1 then
+	if UnitHaveItem(GetAttacker(), 'I0AM') or Deputy_isDeputy(i, LIAN_DAN) then
 	    set shxishu = shxishu + 2.0
     endif
     // 搜魂侠加成

@@ -4,7 +4,7 @@ function IsTaoHua takes nothing returns boolean
 endfunction
 function TaoHuaDao takes nothing returns nothing
 	if (GetItemTypeId(GetManipulatedItem())=='I09S') then
-		if taohuakai==true or udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==true or udg_runamen[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==3 then
+		if taohuakai==true or Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), XUN_BAO) or udg_runamen[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==3 then
 			if((UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO)))then
 				call SetUnitPosition(GetTriggerUnit(),9631,1139)
 				call PanCameraToTimedForPlayer(GetOwningPlayer(GetTriggerUnit()),9631,1139,0)
@@ -96,15 +96,15 @@ function TaoHuaGun takes nothing returns nothing
 			// 90级才爆武器
 			if GetUnitLevel(u)>=90 then
 				// 黄药师掉落玉箫60%概率，寻宝大师90%
-				if GetUnitTypeId(GetTriggerUnit())=='ogrk' and ((GetRandomInt(1,100)<=60) or (GetRandomInt(1,100)<=90 and udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true)) then
+				if GetUnitTypeId(GetTriggerUnit())=='ogrk' and ((GetRandomInt(1,100)<=60) or (GetRandomInt(1,100)<=90 and Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO))) then
 					call unitadditembyidswapped('I0A1',u)
 				endif
 				// 欧阳锋掉落蛇杖
-				if GetUnitTypeId(GetTriggerUnit())=='nslf' and ((GetRandomInt(1,100)<=40) or (GetRandomInt(1,100)<=80 and udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true)) then
+				if GetUnitTypeId(GetTriggerUnit())=='nslf' and ((GetRandomInt(1,100)<=40) or (GetRandomInt(1,100)<=80 and Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO))) then
 					call unitadditembyidswapped('I09B',u)
 				endif
 				// 洪七公掉落打狗棒
-				if GetUnitTypeId(GetTriggerUnit())=='nwnr' and ((GetRandomInt(1,100)<=60) or (GetRandomInt(1,100)<=90 and udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true)) then
+				if GetUnitTypeId(GetTriggerUnit())=='nwnr' and ((GetRandomInt(1,100)<=60) or (GetRandomInt(1,100)<=90 and Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO))) then
 					call unitadditembyidswapped('I097',u)
 				endif
 			else
@@ -112,17 +112,17 @@ function TaoHuaGun takes nothing returns nothing
 			endif
 			
 
-			if GetUnitTypeId(GetTriggerUnit())=='o021' and ((GetRandomInt(1,100)<=30) or (GetRandomInt(1,100)<=70 and udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true)) then
+			if GetUnitTypeId(GetTriggerUnit())=='o021' and ((GetRandomInt(1,100)<=30) or (GetRandomInt(1,100)<=70 and Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO))) then
 				call unitadditembyidswapped('I067',u)
 			endif
-			if GetUnitTypeId(GetTriggerUnit())=='o022' and ((GetRandomInt(1,100)<=30) or (GetRandomInt(1,100)<=70 and udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true)) then
+			if GetUnitTypeId(GetTriggerUnit())=='o022' and ((GetRandomInt(1,100)<=30) or (GetRandomInt(1,100)<=70 and Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO))) then
 				call unitadditembyidswapped('I061',u)
 			endif
-			if GetUnitTypeId(GetTriggerUnit())=='n00A' and ((GetRandomInt(1,100)<=30) or (GetRandomInt(1,100)<=70 and udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true)) then
+			if GetUnitTypeId(GetTriggerUnit())=='n00A' and ((GetRandomInt(1,100)<=30) or (GetRandomInt(1,100)<=70 and Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO))) then
 				call unitadditembyidswapped('I060',u)
 			endif
 			// 失心疯n00D，寻宝大师100%爆逆九阴
-			if GetUnitTypeId(GetTriggerUnit())=='n00D' and ((GetRandomInt(1,100)<=80) or (GetRandomInt(1,100)<=100 and udg_xbdsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true)) then
+			if GetUnitTypeId(GetTriggerUnit())=='n00D' and ((GetRandomInt(1,100)<=80) or (GetRandomInt(1,100)<=100 and Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO))) then
 				call unitadditembyidswapped('I09G',u) // 逆九阴
 			endif
 		endif

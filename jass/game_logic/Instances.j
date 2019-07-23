@@ -12,7 +12,7 @@ function XI takes nothing returns nothing
 	call SaveInteger(YDHT,id,-$3021938A,cx)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
 	call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 		set MM7=2
 	else
 		set MM7=1
@@ -93,7 +93,7 @@ function jl takes nothing returns nothing
 		//火功头陀
 	elseif (GetUnitTypeId(GetTriggerUnit())=='otau') then
 		call BaoWuDiaoLuo(GetKillingUnit(), GetTriggerUnit() , 100, 'I02Z', 'I03D', 0, 0, 0, 0)
-		if GetRandomReal(1, 100)<=3. or (GetRandomReal(1, 100)<=6. and Ce[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==8) then
+		if GetRandomReal(1, 100)<=3. or (GetRandomReal(1, 100)<=6. and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), JING_WU)) then
 		    // FIXME leak
 			call createitemloc('I0C5',GetUnitLoc(GetKillingUnit()))
 		endif
@@ -102,7 +102,7 @@ function jl takes nothing returns nothing
 		//毒手药王
 	elseif (GetUnitTypeId(GetTriggerUnit())=='uaco') then
 		call BaoWuDiaoLuo(GetKillingUnit(), GetTriggerUnit() , 100, 'I02L', 'I02N', 'I02K', 0, 0, 0)
-		if GetRandomReal(1, 100)<=50. or Ce[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==8 then
+		if GetRandomReal(1, 100)<=50. or Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), JING_WU) then
 		    // FIXME leak
 			call createitemloc('I0CB',GetUnitLoc(GetKillingUnit()))
 		endif
@@ -163,7 +163,7 @@ function Rl takes nothing returns nothing
 	call DisplayTextToPlayer(GetOwningPlayer(GetKillingUnit()),0,0,"|cff00ff00击杀林朝英，获得江湖声望+50")
 	//call BJDebugMsg(I2S(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(42, 46), 2)))
 	call BaoWuDiaoLuo(GetKillingUnit(), GetTriggerUnit() , 100, udg_jianghu[GetRandomInt(1,18)], 0, 0, 0, 0, 0)
-	if Ce[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==8 then
+	if Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), JING_WU) then
 		if GetRandomReal(1, 100)<=10. then
 		call createitemloc('I0C4',loc)
 		endif
@@ -190,7 +190,7 @@ function Rl takes nothing returns nothing
 			call createitemloc('I0CJ',loc)
 		endif
 	endif
-	if udg_lddsbool[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==true then
+	if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), LIAN_DAN) then
 		call createitemloc(YaoCao[9],loc)
 	endif
 	set i = 0
@@ -254,7 +254,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -297,7 +297,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -336,7 +336,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -369,7 +369,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -383,7 +383,7 @@ else
 call createitemloc(1227895094,LoadLocationHandle(YDHT,id*cx,$1769D332))
 endif
 //擒龙控鹤
-if GetRandomReal(1, 100)<=10. or(GetRandomReal(1, 100)<=20. and Ce[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==8) then
+if GetRandomReal(1, 100)<=10. or(GetRandomReal(1, 100)<=20. and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), JING_WU)) then
 	call createitemloc('I0CC',LoadLocationHandle(YDHT,id*cx,$1769D332))
 endif
 set N7=N7+1
@@ -402,7 +402,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -431,7 +431,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -460,7 +460,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -549,7 +549,7 @@ call RemoveLocation(LoadLocationHandle(YDHT,id*cx,-$185C9FC2))
 call SaveLocationHandle(YDHT,id*cx,-$185C9FC2,pu(LoadLocationHandle(YDHT,id*cx,$1769D332),GetRandomReal(30.,120.),(GetRandomReal(0,360.))))
 call createitemloc('texp',LoadLocationHandle(YDHT,id*cx,-$185C9FC2))
 call createitemloc(YaoCao[10],LoadLocationHandle(YDHT,id*cx,$1769D332))
-if udg_lddsbool[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))] then
+if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), LIAN_DAN) then
     call createitemloc(YaoCao[10],LoadLocationHandle(YDHT,id*cx,$1769D332))
 endif
 call RemoveLocation(LoadLocationHandle(YDHT,id*cx,$1769D332))
@@ -586,7 +586,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -625,7 +625,7 @@ function H1 takes nothing returns nothing
 	local location loc = GetUnitLoc(u)
 	set shengwang[i] = shengwang[i] + 100
 	call DisplayTextToPlayer(p,0,0,"|cff00ff00击杀扫地神僧，获得江湖声望+100")
-	if (GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=30 and Ce[i]==6)) then
+	if (GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(i, XUN_BAO))) then
 		set MM7=2
 	else
 		set MM7=1
@@ -635,7 +635,7 @@ function H1 takes nothing returns nothing
 		exitwhen N7>MM7
 		call createitemloc(udg_juexue[GetRandomInt(1,10)],loc)
 		call createitemloc(YaoCao[9],loc)
-		if Ce[i]==8 then
+		if Deputy_isDeputy(i, JING_WU) then
 			if GetRandomReal(1, 100)<=10. then
 				call createitemloc('I0C3',loc)
 			endif
@@ -656,7 +656,7 @@ function H1 takes nothing returns nothing
 				call createitemloc('I0CD',loc)
 			endif
 		endif
-		if udg_lddsbool[i]==true then
+		if Deputy_isMaster(i, LIAN_DAN) then
 			call createitemloc(YaoCao[9],loc)
 		endif
 		set N7=N7+1
@@ -677,7 +677,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -689,7 +689,7 @@ call createitemloc('I09I',LoadLocationHandle(YDHT,id*cx,$1769D332))
 if((GetRandomInt(1,50)<=30))then
 call createitemloc(YaoCao[6],LoadLocationHandle(YDHT,id*cx,$1769D332))
 call createitemloc('I0EQ',LoadLocationHandle(YDHT,id*cx,$1769D332))
-if udg_lddsbool[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))] then
+if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), LIAN_DAN) then
     call createitemloc(YaoCao[6],LoadLocationHandle(YDHT,id*cx,$1769D332))
 endif
 endif
@@ -709,7 +709,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -747,7 +747,7 @@ function O1 takes nothing returns boolean
 endfunction
 function P1 takes nothing returns nothing
 	local location loc=GetUnitLoc(GetTriggerUnit())
-	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 		set MM7=2
 	else
 		set MM7=1
@@ -772,7 +772,7 @@ function R1 takes nothing returns boolean
 endfunction
 function S1 takes nothing returns nothing
 	local location loc=GetUnitLoc(GetTriggerUnit())
-	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 		set MM7=2
 	else
 		set MM7=1
@@ -801,7 +801,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -838,7 +838,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -877,7 +877,7 @@ function eJ takes nothing returns nothing
 	call SaveInteger(YDHT,id,-$3021938A,cx)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
 	call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+	if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 		set MM7=2
 	else
 		set MM7=1
@@ -921,7 +921,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -964,7 +964,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -987,7 +987,7 @@ function oJ takes nothing returns nothing
 	local player p = GetOwningPlayer(u)
 	local integer i = 1+GetPlayerId(p)
 	local location loc = GetUnitLoc(u)
-	if(GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=30 and Ce[i]==6))then
+	if(GetRandomInt(1,1000)<=fuyuan[i] or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(i, XUN_BAO)))then
 		set MM7=2
 	else
 		set MM7=1
@@ -1026,7 +1026,7 @@ call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
 set shengwang[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]=(shengwang[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]+$C8)
 call DisplayTextToPlayer(GetOwningPlayer(GetKillingUnit()),0,0,"|cff00ff00击杀黄裳，获得江湖声望+200")
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -1064,7 +1064,7 @@ endif
 endif
 endif
 call createitemloc(YaoCao[12],LoadLocationHandle(YDHT,id*cx,$1769D332))
-if udg_lddsbool[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))] then
+if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), LIAN_DAN) then
     call createitemloc(YaoCao[12],LoadLocationHandle(YDHT,id*cx,$1769D332))
 endif
 set N7=N7+1
@@ -1083,7 +1083,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -1122,7 +1122,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -1161,7 +1161,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -1185,7 +1185,7 @@ call SaveInteger(YDHT,id*cx,-$6F9D2AE1,0)
 call SetItemUserData(bj_lastCreatedItem,(((((((((LoadInteger(YDHT,id*cx,-$5E9EB4B3)*$5F5E100)+(LoadInteger(YDHT,id*cx,$648579A8)*$989680))+(LoadInteger(YDHT,id*cx,-$180E5D51)*$F4240))+(LoadInteger(YDHT,id*cx,-$77543A28)*$186A0))+(LoadInteger(YDHT,id*cx,-$2D2EBEF5)*$2710))+(LoadInteger(YDHT,id*cx,1732931645)*$3E8))+(LoadInteger(YDHT,id*cx,-$4E51D54A)*100))+(LoadInteger(YDHT,id*cx,$44078039)*$A))+LoadInteger(YDHT,id*cx,-$6F9D2AE1)))
 endif
 call createitemloc(YaoCao[8],LoadLocationHandle(YDHT,id*cx,$1769D332))
-if udg_lddsbool[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))] then
+if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), LIAN_DAN) then
     call createitemloc(YaoCao[8],LoadLocationHandle(YDHT,id*cx,$1769D332))
 endif
 set N7=N7+1
@@ -1204,7 +1204,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -1289,7 +1289,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -1357,11 +1357,11 @@ function KK takes nothing returns nothing
 			endif
 		endif
 		// 寻宝摧心掌爆率翻倍
-		if GetRandomInt(1, 100) <=10 or (Ce[i]==6 and GetRandomInt(1,100) <= 20) then
+		if GetRandomInt(1, 100) <=10 or (Deputy_isDeputy(i, XUN_BAO) and GetRandomInt(1,100) <= 20) then
 			call unitadditembyidswapped('I09K',u)
 		endif
 		// 寻宝新手神器爆率翻倍
-		if GetRandomInt(1, 100) <=10 or (Ce[i]==6 and GetRandomInt(1,100) <= 20) then
+		if GetRandomInt(1, 100) <=10 or (Deputy_isDeputy(i, XUN_BAO) and GetRandomInt(1,100) <= 20) then
 			call unitadditembyidswapped('I0DJ',u)
 		endif
 	elseif GetUnitTypeId(uc)=='nlv3' then
@@ -1391,7 +1391,7 @@ function IsFuBen takes item it returns boolean
 endfunction
 function ShenMiGuaiWu takes unit u, location loc, integer FBNum, integer gw1, integer gw2, integer gw3 returns nothing
 	local integer i = 1+GetPlayerId(GetOwningPlayer(u))
-	if (GetRandomInt(1,100)<=20 and udg_jddsbool[i]==false)then
+	if (GetRandomInt(1,100)<=20 and not Deputy_isMaster(i, JIAN_DING))then
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cFFFFCC33载入神秘怪物：|cFF33FFFF无")
 	else
 		if((GetRandomInt(1,60)<=20))then
@@ -1407,7 +1407,7 @@ function ShenMiGuaiWu takes unit u, location loc, integer FBNum, integer gw1, in
 endfunction
 function XiYouDiaoLuo takes unit u, integer FBNum, integer dl1, integer dl2, integer dl3, integer dl4 returns nothing
 	local integer i = 1+GetPlayerId(GetOwningPlayer(u))
-	if((GetRandomInt(1,100)<=20 and udg_jddsbool[i]==false))then
+	if((GetRandomInt(1,100)<=20 and not Deputy_isMaster(i, JIAN_DING)))then
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cFFFFCC33载入稀有掉落：|cFF33FFFF无")
 		set q8[FBNum]='crys'
 	else
@@ -1428,7 +1428,7 @@ endfunction
 function QiYuanNPC takes unit u, integer FBNum, integer id, integer id2, rect rt1, rect rt2, rect rt3, rect rt4, rect rt5, rect rt6 returns nothing
 	local location loc3 = null
 	local integer i = 1+GetPlayerId(GetOwningPlayer(u))
-	if((GetRandomInt(1,100)<=50 and udg_jddsbool[i]==false))then
+	if((GetRandomInt(1,100)<=50 and not Deputy_isMaster(i, JIAN_DING)))then
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cFFFFCC33载入奇缘NPC：|cFF33FFFF无")
 	else
 		if (id!='crys') then
@@ -1647,7 +1647,7 @@ function LL takes nothing returns nothing
 	local player p = GetOwningPlayer(u)
 	local integer i = 1+GetPlayerId(p)
 	local location loc = GetUnitLoc(u)
-	if((GetRandomInt(1,1000)<=fuyuan[i]) or (GetRandomInt(1, 100)<=30 and Ce[i]==6))then
+	if((GetRandomInt(1,1000)<=fuyuan[i]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(i, XUN_BAO)))then
 		set MM7=2
 	else
 		set MM7=1
@@ -1709,7 +1709,7 @@ function RL takes nothing returns nothing
 	else
 		call SetPlayerStateBJ(p,PLAYER_STATE_RESOURCE_GOLD,0)
 		call DisplayTextToPlayer(p,0,0,"赌输了！！")
-		if GetRandomInt(1, 100)<=50 or Ce[i]==8 then
+		if GetRandomInt(1, 100)<=50 or Deputy_isDeputy(i, JING_WU) then
 		// FIXME leak
 			call createitemloc('I0C2',GetUnitLoc(udg_hero[i]))
 		endif
@@ -1746,7 +1746,7 @@ function UL takes nothing returns nothing
 	else
 		call SetPlayerStateBJ(p,PLAYER_STATE_RESOURCE_GOLD,(GetPlayerState(p,PLAYER_STATE_RESOURCE_GOLD)*3/4))
 		call DisplayTextToPlayer(p,0,0,"赌输了！！")
-		if GetRandomInt(1, 100)<=50 or Ce[i]==8 then
+		if GetRandomInt(1, 100)<=50 or Deputy_isDeputy(i, JING_WU) then
 		// FIXME leak
 			call createitemloc('I0C2',GetUnitLoc(udg_hero[i]))
 		endif
@@ -1783,7 +1783,7 @@ function XL takes nothing returns nothing
 	else
 		call SetPlayerStateBJ(p,PLAYER_STATE_RESOURCE_GOLD,(GetPlayerState(p,PLAYER_STATE_RESOURCE_GOLD)/2))
 		call DisplayTextToPlayer(p,0,0,"赌输了！！")
-		if GetRandomInt(1, 100)<=50 or Ce[i]==8 then
+		if GetRandomInt(1, 100)<=50 or Deputy_isDeputy(i, JING_WU) then
 		// FIXME leak
 			call createitemloc('I0C2',GetUnitLoc(udg_hero[i]))
 		endif
@@ -1810,7 +1810,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -2023,7 +2023,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -2320,7 +2320,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -2385,7 +2385,7 @@ call SaveInteger(YDHT,id*cx,-$5E9EB4B3,(1+GetPlayerId(GetOwningPlayer(GetKilling
 set u9=(u9+1)
 if((u9>=7))then
 set u9=0
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -2451,7 +2451,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1
@@ -2546,7 +2546,7 @@ set cx=cx+3
 call SaveInteger(YDHT,id,-$3021938A,cx)
 call SaveInteger(YDHT,id,-$1317DA19,cx)
 call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
-if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Ce[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]==6))then
+if((GetRandomInt(1,1000)<=fuyuan[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))]) or (GetRandomInt(1, 100)<=30 and Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), XUN_BAO)))then
 set MM7=2
 else
 set MM7=1

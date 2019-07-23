@@ -160,15 +160,15 @@ function kungfuLevelUp takes unit u,integer id,real r returns nothing
     	        	call IncUnitAbilityLevel(u, id)
     	        	call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), id * 5, GetUnitAbilityLevel(u, id))
                 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "领悟了武功：" + GetObjectName(id) + "第" + I2S(level + 1) + "重")
-                	if level + 1 == 9 and Ce[i] == 8 then
+                	if level + 1 == 9 and Deputy_isDeputy(i, JING_WU) then
     					set wuxuedian[i]=wuxuedian[i] + 2
     					call DisplayTextToPlayer(p, 0, 0, "|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
-    					if ( udg_jwjs[i] <= 2 ) and udg_jwjsbool[i] == false then
+    					if ( udg_jwjs[i] <= 2 ) and not Deputy_isMaster(i, JING_WU) then
     						set udg_jwjs[i]=udg_jwjs[i] + 1
     						call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您练成第" + I2S(udg_jwjs[i]) + "个九重武功，练成3个可获得宗师哦")
     					endif
-    					if ( udg_jwjs[i] == 3 ) and udg_jwjsbool[i] == false then
-    						set udg_jwjsbool[i]=true
+    					if ( udg_jwjs[i] == 3 ) and not Deputy_isMaster(i, JING_WU) then
+    						call Deputy_setMaster(i, JING_WU)
     						call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     						call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
     						call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
@@ -203,15 +203,15 @@ function kungfuLevelUp takes unit u,integer id,real r returns nothing
     						set danpo[i] = danpo[i] + 2
     						set yishu[i] = yishu[i] + 2
     					endif
-                        if level + 1 == 9 and Ce[i] == 8 then
+                        if level + 1 == 9 and Deputy_isDeputy(i, JING_WU) then
     						set wuxuedian[i]=wuxuedian[i] + 2
     						call DisplayTextToPlayer(p, 0, 0, "|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
-    						if ( udg_jwjs[i] <= 2 ) and udg_jwjsbool[i] == false then
+    						if ( udg_jwjs[i] <= 2 ) and not Deputy_isMaster(i, JING_WU) then
     							set udg_jwjs[i]=udg_jwjs[i] + 1
     							call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00恭喜您练成第" + I2S(udg_jwjs[i]) + "个九重武功，练成3个可获得宗师哦")
     						endif
-    						if ( udg_jwjs[i] == 3 ) and udg_jwjsbool[i] == false then
-    							set udg_jwjsbool[i]=true
+    						if ( udg_jwjs[i] == 3 ) and not Deputy_isMaster(i, JING_WU) then
+    							call Deputy_setMaster(i, JING_WU)
     							call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     							call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
     							call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))

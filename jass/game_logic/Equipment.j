@@ -77,111 +77,111 @@ function dz takes nothing returns nothing
 	call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff装备剩余凹槽："+I2S(ii6))
 	call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff镶嵌效果：")
 	if(ii7==1)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+3")
 		endif
 	elseif(ii7==2)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+3")
 		endif
 	elseif(ii7==3)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+3")
 		endif
 	elseif(ii7==4)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+3")
 		endif
 	elseif(ii7==5)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+3")
 		endif
 	elseif(ii7==6)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+3")
 		endif
 	endif
 	if(ii8==1)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+3")
 		endif
 	elseif(ii8==2)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+3")
 		endif
 	elseif(ii8==3)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+3")
 		endif
 	elseif(ii8==4)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+3")
 		endif
 	elseif(ii8==5)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+3")
 		endif
 	elseif(ii8==6)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+3")
 		endif
 	endif
 	if(ii9==1)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+3")
 		endif
 	elseif(ii9==2)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+3")
 		endif
 	elseif(ii9==3)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+3")
 		endif
 	elseif(ii9==4)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+3")
 		endif
 	elseif(ii9==5)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+3")
 		endif
 	elseif(ii9==6)then
-		if udg_dzdsbool[i]==false then
+		if not Deputy_isMaster(i, DUAN_ZAO) then
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+3")
@@ -271,7 +271,7 @@ function gz takes nothing returns nothing
 		call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff装备剩余凹槽："+I2S(ii6))
 		call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff镶嵌效果：")
 		if(ii7==1)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 				set gengu[i] = gengu[i] + 1
 			else
@@ -279,7 +279,7 @@ function gz takes nothing returns nothing
 				set gengu[i] = gengu[i] + 3
 			endif
 		elseif(ii7==2)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 				set wuxing[i] = wuxing[i] + 1
 			else
@@ -287,7 +287,7 @@ function gz takes nothing returns nothing
 				set wuxing[i] = wuxing[i] + 3
 			endif
 		elseif(ii7==3)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 				set jingmai[i] = jingmai[i] + 1
 			else
@@ -295,7 +295,7 @@ function gz takes nothing returns nothing
 				set jingmai[i] = jingmai[i] + 3
 			endif
 		elseif(ii7==4)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 				set fuyuan[i] = fuyuan[i] + 1
 			else
@@ -303,7 +303,7 @@ function gz takes nothing returns nothing
 				set fuyuan[i] = fuyuan[i] + 3
 			endif
 		elseif(ii7==5)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 				set danpo[i] = danpo[i] + 1
 			else
@@ -311,7 +311,7 @@ function gz takes nothing returns nothing
 				set danpo[i] = danpo[i] + 3
 			endif
 		elseif(ii7==6)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 				set yishu[i] = yishu[i] + 1
 			else
@@ -320,7 +320,7 @@ function gz takes nothing returns nothing
 			endif
 		endif
 		if(ii8==1)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 				set gengu[i] = gengu[i] + 1
 			else
@@ -328,7 +328,7 @@ function gz takes nothing returns nothing
 				set gengu[i] = gengu[i] + 3
 			endif
 		elseif(ii8==2)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 				set wuxing[i] = wuxing[i] + 1
 			else
@@ -336,7 +336,7 @@ function gz takes nothing returns nothing
 				set wuxing[i] = wuxing[i] + 3
 			endif
 		elseif(ii8==3)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 				set jingmai[i] = jingmai[i] + 1
 			else
@@ -344,7 +344,7 @@ function gz takes nothing returns nothing
 				set jingmai[i] = jingmai[i] + 3
 			endif
 		elseif(ii8==4)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 				set fuyuan[i] = fuyuan[i] + 1
 			else
@@ -352,7 +352,7 @@ function gz takes nothing returns nothing
 				set fuyuan[i] = fuyuan[i] + 3
 			endif
 		elseif(ii8==5)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 				set danpo[i] = danpo[i] + 1
 			else
@@ -360,7 +360,7 @@ function gz takes nothing returns nothing
 				set danpo[i] = danpo[i] + 3
 			endif
 		elseif(ii8==6)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 				set yishu[i] = yishu[i] + 1
 			else
@@ -369,7 +369,7 @@ function gz takes nothing returns nothing
 			endif
 		endif
 		if(ii9==1)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 				set gengu[i] = gengu[i] + 1
 			else
@@ -377,7 +377,7 @@ function gz takes nothing returns nothing
 				set gengu[i] = gengu[i] + 3
 			endif
 		elseif(ii9==2)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 				set wuxing[i] = wuxing[i] + 1
 			else
@@ -385,7 +385,7 @@ function gz takes nothing returns nothing
 				set wuxing[i] = wuxing[i] + 3
 			endif
 		elseif(ii9==3)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 				set jingmai[i] = jingmai[i] + 1
 			else
@@ -393,7 +393,7 @@ function gz takes nothing returns nothing
 				set jingmai[i] = jingmai[i] + 3
 			endif
 		elseif(ii9==4)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 				set fuyuan[i] = fuyuan[i] + 1
 			else
@@ -401,7 +401,7 @@ function gz takes nothing returns nothing
 				set fuyuan[i] = fuyuan[i] + 3
 			endif
 		elseif(ii9==5)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 				set danpo[i] = danpo[i] + 1
 			else
@@ -409,7 +409,7 @@ function gz takes nothing returns nothing
 				set danpo[i] = danpo[i] + 3
 			endif
 		elseif(ii9==6)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 				set yishu[i] = yishu[i] + 1
 			else
@@ -588,7 +588,7 @@ function jz takes nothing returns nothing
 		call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff装备剩余凹槽："+I2S(ii6))
 		call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff镶嵌效果：")
 		if(ii7==1)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 				set gengu[i] = gengu[i] - 1
 			else
@@ -596,7 +596,7 @@ function jz takes nothing returns nothing
 				set gengu[i] = gengu[i] - 3
 			endif
 		elseif(ii7==2)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 				set wuxing[i] = wuxing[i] - 1
 			else
@@ -604,7 +604,7 @@ function jz takes nothing returns nothing
 				set wuxing[i] = wuxing[i] - 3
 			endif
 		elseif(ii7==3)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 				set jingmai[i] = jingmai[i] - 1
 			else
@@ -612,7 +612,7 @@ function jz takes nothing returns nothing
 				set jingmai[i] = jingmai[i] - 3
 			endif
 		elseif(ii7==4)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 				set fuyuan[i] = fuyuan[i] - 1
 			else
@@ -620,7 +620,7 @@ function jz takes nothing returns nothing
 				set fuyuan[i] = fuyuan[i] - 3
 			endif
 		elseif(ii7==5)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 				set danpo[i] = danpo[i] - 1
 			else
@@ -628,7 +628,7 @@ function jz takes nothing returns nothing
 				set danpo[i] = danpo[i] - 3
 			endif
 		elseif(ii7==6)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 				set yishu[i] = yishu[i] - 1
 			else
@@ -637,7 +637,7 @@ function jz takes nothing returns nothing
 			endif
 		endif
 		if(ii8==1)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 				set gengu[i] = gengu[i] - 1
 			else
@@ -645,7 +645,7 @@ function jz takes nothing returns nothing
 				set gengu[i] = gengu[i] - 3
 			endif
 		elseif(ii8==2)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 				set wuxing[i] = wuxing[i] - 1
 			else
@@ -653,7 +653,7 @@ function jz takes nothing returns nothing
 				set wuxing[i] = wuxing[i] - 3
 			endif
 		elseif(ii8==3)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 				set jingmai[i] = jingmai[i] - 1
 			else
@@ -661,7 +661,7 @@ function jz takes nothing returns nothing
 				set jingmai[i] = jingmai[i] - 3
 			endif
 		elseif(ii8==4)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 				set fuyuan[i] = fuyuan[i] - 1
 			else
@@ -669,7 +669,7 @@ function jz takes nothing returns nothing
 				set fuyuan[i] = fuyuan[i] - 3
 			endif
 		elseif(ii8==5)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 				set danpo[i] = danpo[i] - 1
 			else
@@ -677,7 +677,7 @@ function jz takes nothing returns nothing
 				set danpo[i] = danpo[i] - 3
 			endif
 		elseif(ii8==6)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 				set yishu[i] = yishu[i] - 1
 			else
@@ -686,7 +686,7 @@ function jz takes nothing returns nothing
 			endif
 		endif
 		if (ii9==1)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff根骨+1")
 				set gengu[i] = gengu[i] - 1
 			else
@@ -694,7 +694,7 @@ function jz takes nothing returns nothing
 				set gengu[i] = gengu[i] - 3
 			endif
 		elseif(ii9==2)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff悟性+1")
 				set wuxing[i] = wuxing[i] - 1
 			else
@@ -702,7 +702,7 @@ function jz takes nothing returns nothing
 				set wuxing[i] = wuxing[i] - 3
 			endif
 		elseif(ii9==3)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff经脉+1")
 				set jingmai[i] = jingmai[i] - 1
 			else
@@ -710,7 +710,7 @@ function jz takes nothing returns nothing
 				set jingmai[i] = jingmai[i] - 3
 			endif
 		elseif(ii9==4)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff福缘+1")
 				set fuyuan[i] = fuyuan[i] - 1
 			else
@@ -718,7 +718,7 @@ function jz takes nothing returns nothing
 				set fuyuan[i] = fuyuan[i] - 3
 			endif
 		elseif(ii9==5)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff胆魄+1")
 				set danpo[i] = danpo[i] - 1
 			else
@@ -726,7 +726,7 @@ function jz takes nothing returns nothing
 				set danpo[i] = danpo[i] - 3
 			endif
 		elseif(ii9==6)then
-			if udg_dzdsbool[i]==false then
+			if not Deputy_isMaster(i, DUAN_ZAO) then
 				call DisplayTimedTextToPlayer(p,0,0,15.,"|cFFff66ff医术+1")
 				set yishu[i] = yishu[i] - 1
 			else
@@ -935,7 +935,7 @@ function ItemChongFu takes nothing returns nothing
                 set udg_yifushu[i]=udg_yifushu[i]+1
             endif
             if (GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_ARTIFACT or GetItemType(UnitItemInSlotBJ(u,E8))==ITEM_TYPE_PURCHASABLE) then
-                if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and Ce[i]!=7 and not isTitle(i, 11)) then
+                if((GetItemType(UnitItemInSlotBJ(u,E8))==GetItemType(GetManipulatedItem()))and(UnitItemInSlotBJ(u,E8)!=GetManipulatedItem()) and not Deputy_isDeputy(i, YA_HUAN) and not isTitle(i, 11)) then
                     call UnitRemoveItemSwapped(UnitItemInSlotBJ(u,E8),u)
                     call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000非丫鬟角色最多只能携带一件武器和衣服")
                 endif
@@ -944,7 +944,7 @@ function ItemChongFu takes nothing returns nothing
 		endif
 		set E8=E8+1
 	endloop
-	if (Ce[i]==7 or isTitle(i, 11)) and udg_junzhu[i]==false then
+	if (Deputy_isDeputy(i, YA_HUAN) or isTitle(i, 11)) and not Deputy_isMaster(i, YA_HUAN) then
 		if GetItemType(GetManipulatedItem())==ITEM_TYPE_ARTIFACT and udg_wuqishu[i]>=3 then
 			call UnitRemoveItemSwapped(GetManipulatedItem(),u)
 			call DisplayTimedTextToPlayer(p,0,0,30,"|cffff0000丫鬟最多只能携带两件武器")
@@ -1268,7 +1268,7 @@ endfunction
 //-------镶嵌宝石系统开始-------//
 function IsXiangQian takes item it, unit u returns boolean
 	if GetItemTypeId(it)=='I05R' or GetItemTypeId(it)=='I05Q' or GetItemTypeId(it)=='I05M' or GetItemTypeId(it)=='I05O' or GetItemTypeId(it)=='I05P' or GetItemTypeId(it)=='I05N' then
-		if Ce[1+GetPlayerId(GetOwningPlayer(u))]!=2 then
+		if not Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(u)), DUAN_ZAO) then
 			call DisplayTextToPlayer(GetOwningPlayer(u),0,0,"|cFFFFCC00你不是锻造师，不可以镶嵌宝石")
 			call AdjustPlayerStateBJ(20000,GetOwningPlayer(u),PLAYER_STATE_RESOURCE_GOLD)
 			return false

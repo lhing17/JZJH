@@ -1194,25 +1194,32 @@ function SystemWindow takes nothing returns nothing
 		call DuoMianBan(bj_lastCreatedMultiboard,2,4*i-3,"|c0000FF00"+"等级："+I2S(GetUnitLevel(udg_hero[i])))
 		call DuoMianBan(bj_lastCreatedMultiboard,3,4*i-3,"|cFF00CCFF"+udg_menpainame[udg_runamen[i]])
 		call DuoMianBan(bj_lastCreatedMultiboard,4,4*i-3,"|cFFFF6600"+"最高伤害："+s)
-		if Ce[i] == 1 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"炼丹师")
-		elseif Ce[i] == 2 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"锻造师")
-		elseif Ce[i] == 3 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"兵器师")
-		elseif Ce[i] == 4 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"鉴定师")
-		elseif Ce[i] == 5 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"练气师")
-		elseif Ce[i] == 6 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"寻宝师")
-		elseif Ce[i] == 7 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"丫鬟")
-		elseif Ce[i] == 8 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"精武师")
-		else
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"未选择")
+		set s = "|c00FFEE99"
+		if Deputy_isDeputy(i, LIAN_DAN) then
+		    set s = s + "丹"
 		endif
+		if Deputy_isDeputy(i, DUAN_ZAO) then
+			set s = s + "锻"
+	    endif
+		if Deputy_isDeputy(i, BING_QI) then
+			set s = s + "兵"
+		endif
+		if Deputy_isDeputy(i, JIAN_DING) then
+			set s = s + "鉴"
+		endif
+		if Deputy_isDeputy(i, LIAN_QI) then
+			set s = s + "气"
+		endif
+		if Deputy_isDeputy(i, XUN_BAO) then
+		    set s = s + "宝"
+		endif
+		if Deputy_isDeputy(i, YA_HUAN) then
+		    set s = s + "丫"
+		endif
+		if Deputy_isDeputy(i, JING_WU) then
+			set s = s + "武"
+		endif
+		call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3, s)
 		if (I7[20*(i-1)+1]!='AEfk') then
 			call DuoMianBan(bj_lastCreatedMultiboard,1,4*i-2,"|c0000FF00"+GetObjectName(I7[20*(i-1)+1]))
 		endif
@@ -1273,25 +1280,32 @@ function uuyy takes nothing returns nothing
 		call DuoMianBan(bj_lastCreatedMultiboard,2,4*i-3,"|c0000FF00"+"等级："+I2S(GetUnitLevel(udg_hero[i])))
 		call DuoMianBan(bj_lastCreatedMultiboard,3,4*i-3,"|cFF00CCFF"+udg_menpainame[udg_runamen[i]])
 		call DuoMianBan(bj_lastCreatedMultiboard,4,4*i-3,"|cFFFF6600"+"最高伤害："+s)
-		if Ce[i] == 1 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"炼丹师")
-		elseif Ce[i] == 2 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"锻造师")
-		elseif Ce[i] == 3 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"兵器师")
-		elseif Ce[i] == 4 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"鉴定师")
-		elseif Ce[i] == 5 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"练气师")
-		elseif Ce[i] == 6 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"寻宝师")
-		elseif Ce[i] == 7 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"丫鬟")
-		elseif Ce[i] == 8 then
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"精武师")
-		else
-			call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3,"|c00FFEE99"+"未选择")
-		endif
+		set s = "|c00FFEE99"
+        if Deputy_isDeputy(i, LIAN_DAN) then
+            set s = s + "丹"
+        endif
+        if Deputy_isDeputy(i, DUAN_ZAO) then
+            set s = s + "锻"
+        endif
+        if Deputy_isDeputy(i, BING_QI) then
+            set s = s + "兵"
+        endif
+        if Deputy_isDeputy(i, JIAN_DING) then
+            set s = s + "鉴"
+        endif
+        if Deputy_isDeputy(i, LIAN_QI) then
+            set s = s + "气"
+        endif
+        if Deputy_isDeputy(i, XUN_BAO) then
+            set s = s + "宝"
+        endif
+        if Deputy_isDeputy(i, YA_HUAN) then
+            set s = s + "丫"
+        endif
+        if Deputy_isDeputy(i, JING_WU) then
+            set s = s + "武"
+        endif
+        call DuoMianBan(bj_lastCreatedMultiboard,5,4*i-3, s)
 		if (I7[20*(i-1)+1]!='AEfk') then
 			call DuoMianBan(bj_lastCreatedMultiboard,1,4*i-2,"|c0000FF00"+GetObjectName(I7[20*(i-1)+1]))
 		endif
@@ -1394,7 +1408,7 @@ function RenWuShuXing takes nothing returns nothing
 	call DisplayTextToPlayer(p,0,0,("|cFF33FF00武学修为：第"+(I2S(wugongxiuwei[i])+"层")))
 	call DisplayTextToPlayer(p,0,0,("|cFF33FF00江湖声望："+I2S(shengwang[i])))
 	call DisplayTextToPlayer(p,0,0,("|cFF33FF00守家积分："+I2S(shoujiajf[i])))
-	if Ce[i]!=1 then
+	if not Deputy_isDeputy(i, LIAN_DAN) then
 	    call DisplayTextToPlayer(p,0,0,("|cFF33FF00当前用丹数量："+(I2S(yongdanshu[i])+" / 10")))
 	else
 	    call DisplayTextToPlayer(p,0,0,("|cFF33FF00当前用丹数量："+(I2S(yongdanshu[i])+" / 15")))
@@ -1552,7 +1566,7 @@ function Victory takes nothing returns nothing
 	// 获胜标识
 	set is_victory = true
 
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.20的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.21的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT,id*cx,-$5E9EB4B3,40.)
@@ -1567,7 +1581,7 @@ function Victory takes nothing returns nothing
 	call TimerStart(ky,.04,true,function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.20的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.21的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
@@ -1582,7 +1596,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
 	local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.20的游戏总评分："+(I2S(ae)+"分（战败）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.21的游戏总评分："+(I2S(ae)+"分（战败）")))
 	set i = 1
 	loop
 		exitwhen i >= 6
@@ -1625,7 +1639,7 @@ function PlayerDeath takes nothing returns nothing
 	call GroupRemoveUnit(s9,u)
 	call GroupRemoveUnit(r9,u)
 	if (UnitHaveItem(u,'I02S') or UnitHaveItem(u,1227895373) or UnitHaveItem(u,1227895377) or UnitHaveItem(u,1227895378) or UnitHaveItem(u,1227895376)) then
-		if Ce[i]!=3 then
+		if not Deputy_isDeputy(i, BING_QI) then
 			call DisplayTextToPlayer(p,0,0,"|cFFff0000养武消失了")
 		endif
 	endif
@@ -1641,7 +1655,7 @@ function PlayerReviveA takes nothing returns nothing
 	call RemoveLocation(Q4)
 	set he[1]=false
 	if(((UnitHaveItem(udg_hero[1],'I02S'))or(UnitHaveItem(udg_hero[1],1227895373))or(UnitHaveItem(udg_hero[1],1227895377))or(UnitHaveItem(udg_hero[1],1227895378))or(UnitHaveItem(udg_hero[1],1227895376))))then
-		if Ce[1]!=3 then
+		if not Deputy_isDeputy(1, BING_QI) then
 			call RemoveItem(FetchUnitItem(udg_hero[1],'I02S'))
 			call RemoveItem(FetchUnitItem(udg_hero[1],1227895373))
 			call RemoveItem(FetchUnitItem(udg_hero[1],1227895377))
@@ -1665,7 +1679,7 @@ function PlayerReviveB takes nothing returns nothing
 	call RemoveLocation(Q4)
 	set he[2]=false
 	if(((UnitHaveItem(udg_hero[2],'I02S'))or(UnitHaveItem(udg_hero[2],1227895373))or(UnitHaveItem(udg_hero[2],1227895377))or(UnitHaveItem(udg_hero[2],1227895378))or(UnitHaveItem(udg_hero[2],1227895376))))then
-		if Ce[2]!=3 then
+		if not Deputy_isDeputy(2, BING_QI) then
 			call RemoveItem(FetchUnitItem(udg_hero[2],'I02S'))
 			call RemoveItem(FetchUnitItem(udg_hero[2],1227895373))
 			call RemoveItem(FetchUnitItem(udg_hero[2],1227895377))
@@ -1689,7 +1703,7 @@ function PlayerReviveC takes nothing returns nothing
 	call RemoveLocation(Q4)
 	set he[3]=false
 	if(((UnitHaveItem(udg_hero[3],'I02S'))or(UnitHaveItem(udg_hero[3],1227895373))or(UnitHaveItem(udg_hero[3],1227895377))or(UnitHaveItem(udg_hero[3],1227895378))or(UnitHaveItem(udg_hero[3],1227895376))))then
-		if Ce[3]!=3 then
+		if not Deputy_isDeputy(3, BING_QI) then
 			call RemoveItem(FetchUnitItem(udg_hero[3],'I02S'))
 			call RemoveItem(FetchUnitItem(udg_hero[3],1227895373))
 			call RemoveItem(FetchUnitItem(udg_hero[3],1227895377))
@@ -1713,7 +1727,7 @@ function PlayerReviveD takes nothing returns nothing
 	call RemoveLocation(Q4)
 	set he[4]=false
 	if(((UnitHaveItem(udg_hero[4],'I02S'))or(UnitHaveItem(udg_hero[4],1227895373))or(UnitHaveItem(udg_hero[4],1227895377))or(UnitHaveItem(udg_hero[4],1227895378))or(UnitHaveItem(udg_hero[4],1227895376))))then
-		if Ce[4]!=3 then
+		if not Deputy_isDeputy(4, BING_QI) then
 			call RemoveItem(FetchUnitItem(udg_hero[4],'I02S'))
 			call RemoveItem(FetchUnitItem(udg_hero[4],1227895373))
 			call RemoveItem(FetchUnitItem(udg_hero[4],1227895377))
@@ -1737,7 +1751,7 @@ function PlayerReviveE takes nothing returns nothing
 	call RemoveLocation(Q4)
 	set he[5]=false
 	if(((UnitHaveItem(udg_hero[5],'I02S'))or(UnitHaveItem(udg_hero[5],1227895373))or(UnitHaveItem(udg_hero[5],1227895377))or(UnitHaveItem(udg_hero[5],1227895378))or(UnitHaveItem(udg_hero[5],1227895376))))then
-		if Ce[5]!=3 then
+		if not Deputy_isDeputy(5, BING_QI) then
 			call RemoveItem(FetchUnitItem(udg_hero[5],'I02S'))
 			call RemoveItem(FetchUnitItem(udg_hero[5],1227895373))
 			call RemoveItem(FetchUnitItem(udg_hero[5],1227895377))
@@ -2293,7 +2307,7 @@ function HeroLevel takes nothing returns nothing
 	local player p = GetOwningPlayer(u)
 	local integer i = 1+GetPlayerId(p)
 	local location loc = null
-	if (Ce[i]==5) then
+	if (Deputy_isDeputy(i, LIAN_QI)) then
 		if GetRandomInt(1, 3)==1 then
 			call ModifyHeroStat(0, u, 0, GetRandomInt(4, 12))
 		elseif GetRandomInt(1, 2) ==1 then
@@ -2301,7 +2315,8 @@ function HeroLevel takes nothing returns nothing
 		else
 			call ModifyHeroStat(2, u, 0, GetRandomInt(4, 12))
 		endif
-		if (GetUnitLevel(u)==80) then
+		if (GetUnitLevel(u) >= 80) and not Deputy_isMaster(i, LIAN_QI) then
+		    call Deputy_setMaster(i, LIAN_QI)
 			set juexuelingwu[i] = juexuelingwu[i]+50
 			call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓练气大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得练气大师")
@@ -2913,7 +2928,7 @@ function A5 takes nothing returns nothing
 	loop
 		exitwhen i>10
 		if (GetItemTypeId(UnitItemInSlotBJ(u,1))==gudong[i]) then
-			if Ce[1+GetPlayerId(p)]!=4 then
+			if not Deputy_isDeputy(1+GetPlayerId(p), JIAN_DING) then
 				call DisplayTimedTextToPlayer(p,0,0,30,("|CFF00FF00卖出"+GetItemName(UnitItemInSlotBJ(u,1))+"，获得金钱+"+I2S(pd[i])))
 				call AdjustPlayerStateBJ(pd[i], p, PLAYER_STATE_RESOURCE_GOLD)
 			else
@@ -2942,7 +2957,7 @@ function b5 takes nothing returns nothing
 		loop
 			exitwhen i>10
 			if((GetItemTypeId(UnitItemInSlotBJ(u,j))==gudong[i]))then
-				if Ce[1+GetPlayerId(p)]!=4 then
+				if not Deputy_isDeputy(1+GetPlayerId(p), JIAN_DING) then
 					call DisplayTimedTextToPlayer(p,0,0,30,("|CFF00FF00卖出"+(GetItemName(UnitItemInSlotBJ(u,j))+("，获得金钱+"+I2S(pd[i])))))
 					call AdjustPlayerStateBJ(pd[i],GetOwningPlayer(GetTriggerUnit()),PLAYER_STATE_RESOURCE_GOLD)
 				else
@@ -2967,7 +2982,7 @@ function CollectGuDong_Actions takes nothing returns nothing
 	local player p=GetOwningPlayer(u)
 	local integer i = 1 + GetPlayerId(p)
     if GetItemTypeId(GetManipulatedItem())=='I093' then
-	    if Ce[i] == 4 then
+	    if Deputy_isDeputy(i, JIAN_DING) then
         	if udg_gudongD==0 then
 	    	    call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00我自幼喜欢收集古董，如果你能收集一套D等级古董，我将送你一本秘籍")
 	    	    set udg_gudongD=1
@@ -2979,7 +2994,7 @@ function CollectGuDong_Actions takes nothing returns nothing
         	        call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00谢谢你的古董，这本江湖秘籍送给你了")
         	        call unitadditembyidswapped(udg_jianghu[GetRandomInt(1,18)],u)
         	        set udg_jdds[i] = udg_jdds[i] + 2
-        	        if udg_jdds[i]<=10 and udg_jddsbool[i]==false and Ce[i]==4 then
+        	        if udg_jdds[i]<=10 and not Deputy_isMaster(i, JIAN_DING) and Deputy_isDeputy(i, JIAN_DING) then
 	    	            call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00您的鉴定师已经得了"+I2S(udg_jdds[i])+"分，得到10分可获得鉴定大师哦")
         	        endif
         	        //if Ce[1+GetPlayerId(p)]==4 then
@@ -2995,7 +3010,7 @@ function CollectGuDong_Actions takes nothing returns nothing
         	call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00非鉴定师不能接此任务")
     	endif
     elseif GetItemTypeId(GetManipulatedItem())=='I094' then
-    	if Ce[i] == 4 then
+    	if Deputy_isDeputy(i, JIAN_DING) then
         	if udg_gudongC==0 then
 	    	    call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00我自幼喜欢收集古董，如果你能收集一套C等级古董，我将送你一本秘籍")
 	    	    set udg_gudongC=1
@@ -3007,7 +3022,7 @@ function CollectGuDong_Actions takes nothing returns nothing
         	        call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00谢谢你的古董，这本绝学秘籍送给你了")
         	        call unitadditembyidswapped(udg_juexue[GetRandomInt(1,10)],u)
         	        set udg_jdds[i] = udg_jdds[i] + 4
-        	        if udg_jdds[i]<=10 and udg_jddsbool[i]==false and Ce[i]==4 then
+        	        if udg_jdds[i]<=10 and not Deputy_isMaster(i, JIAN_DING) and Deputy_isDeputy(i, JIAN_DING) then
 	    	    	    call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00您的鉴定师已经得了"+I2S(udg_jdds[i])+"分，得到10分可获得鉴定大师哦")
         	    	endif
         	     //   if Ce[1+GetPlayerId(p)]==4 then
@@ -3023,7 +3038,7 @@ function CollectGuDong_Actions takes nothing returns nothing
         	call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00非鉴定师不能接此任务")
     	endif
     elseif GetItemTypeId(GetManipulatedItem())=='I095' then
-    	if Ce[i] == 4 then
+    	if Deputy_isDeputy(i, JIAN_DING) then
         	if udg_gudongB==0 then
 	    	    call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00我自幼喜欢收集古董，如果你能收集一套B等级古董，我将送你一本秘籍")
 	    	    set udg_gudongB=1
@@ -3035,7 +3050,7 @@ function CollectGuDong_Actions takes nothing returns nothing
         	        call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00谢谢你的古董，这本绝内秘籍送给你了")
         	        call unitadditembyidswapped(udg_juenei[GetRandomInt(1,8)],u)
         	        set udg_jdds[i] = udg_jdds[i] + 6
-        	        if udg_jdds[i]<=10 and udg_jddsbool[i]==false and Ce[i]==4 then
+        	        if udg_jdds[i]<=10 and not Deputy_isMaster(i, JIAN_DING) and Deputy_isDeputy(i, JIAN_DING) then
 	    	    	    call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00您的鉴定师已经得了"+I2S(udg_jdds[i])+"分，得到10分可获得鉴定大师哦")
         	    	endif
         	     //   if Ce[1+GetPlayerId(p)]==4 then
@@ -3051,7 +3066,7 @@ function CollectGuDong_Actions takes nothing returns nothing
         	call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00非鉴定师不能接此任务")
     	endif
     elseif GetItemTypeId(GetManipulatedItem())=='I096' then
-    	if Ce[i] == 4 then
+    	if Deputy_isDeputy(i, JIAN_DING) then
         	if udg_gudongA==0 then
 	    	    call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00我自幼喜欢收集古董，如果你能收集两个A等级古董，我将送你一本秘籍")
 	    	    set udg_gudongA=1
@@ -3063,7 +3078,7 @@ function CollectGuDong_Actions takes nothing returns nothing
 			            call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00谢谢你的古董，这本残章送给你了")
         	            call unitadditembyidswapped(udg_canzhang[GetRandomInt(1,10)],u)
         	            set udg_jdds[i] = udg_jdds[i] + 10
-        	            if udg_jdds[i]<=10 and udg_jddsbool[i]==false and Ce[i]==4 then
+        	            if udg_jdds[i]<=10 and not Deputy_isMaster(i, JIAN_DING) and Deputy_isDeputy(i, JIAN_DING) then
 	    	        	    call DisplayTextToPlayer(p, 0, 0, "|CFF66FF00您的鉴定师已经得了"+I2S(udg_jdds[i])+"分，得到10分可获得鉴定大师哦")
         	        	endif
         	         //   if Ce[1+GetPlayerId(p)]==4 then
@@ -3083,9 +3098,9 @@ function CollectGuDong_Actions takes nothing returns nothing
         	call DisplayTimedTextToPlayer(p,0,0,15,"|CFF00FF00非鉴定师不能接此任务")
     	endif
     endif
-    if udg_jdds[i]>=10 and udg_jddsbool[i]==false and Ce[i]==4 then
+    if udg_jdds[i]>=10 and not Deputy_isMaster(i, JIAN_DING) and Deputy_isDeputy(i, JIAN_DING) then
 		set wuxing[i]=wuxing[i]+10 // 悟性加10
-	    set udg_jddsbool[i]=true
+	    call Deputy_setMaster(i, JIAN_DING)
 		call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓鉴定大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得鉴定大师")
 		call SetPlayerName(p, "〓鉴定大师〓"+GetPlayerName(p))
@@ -4228,7 +4243,7 @@ endfunction
 //合成物品
 function HeCheng_Conditions takes nothing returns boolean
 	//call BJDebugMsg(I2S(GetUnitTypeId(GetTriggerUnit())))
-    return Ce[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==2 or GetItemTypeId(GetManipulatedItem()) == 'I099' or GetItemTypeId(GetManipulatedItem()) == 'I09A' or GetItemTypeId(GetManipulatedItem()) == 'I09B' or GetItemTypeId(GetManipulatedItem()) == 'I09D'  or GetItemTypeId(GetManipulatedItem()) == 'I0DL' or GetItemTypeId(GetManipulatedItem()) == 'I0DJ' or GetItemTypeId(GetManipulatedItem()) == 'I02T'
+    return Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), DUAN_ZAO) or GetItemTypeId(GetManipulatedItem()) == 'I099' or GetItemTypeId(GetManipulatedItem()) == 'I09A' or GetItemTypeId(GetManipulatedItem()) == 'I09B' or GetItemTypeId(GetManipulatedItem()) == 'I09D'  or GetItemTypeId(GetManipulatedItem()) == 'I0DL' or GetItemTypeId(GetManipulatedItem()) == 'I0DJ' or GetItemTypeId(GetManipulatedItem()) == 'I02T'
 endfunction
 function HeCheng_Actions takes nothing returns nothing
 	//二合一
@@ -4352,13 +4367,13 @@ endfunction
 function WuPinHeCheng takes nothing returns nothing
 	local item it=GetLastCombinedItem()
 	local integer i = 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit()))
-	if Ce[i]==2 and LoadBoolean(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetItemTypeId(it))==false and udg_dzds[i]<=5 then
+	if Deputy_isDeputy(i, DUAN_ZAO) and LoadBoolean(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetItemTypeId(it))==false and udg_dzds[i]<=5 then
 		set udg_dzds[i] = udg_dzds[i] + 1
 		call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, "|CFF66FF00恭喜您锻造成功第"+I2S(udg_dzds[i])+"件装备，锻造成功5件装备可以获得锻造大师哦")
 		call SaveBoolean(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetItemTypeId(it), true)
 	endif
-	if Ce[i]==2 and udg_dzds[i]>=5 and udg_dzdsbool[i]==false then
-		set udg_dzdsbool[i] = true
+	if Deputy_isDeputy(i, DUAN_ZAO) and udg_dzds[i]>=5 and not Deputy_isMaster(i, DUAN_ZAO) then
+		call Deputy_setMaster(i, DUAN_ZAO)
 		call DZDSBuShuXing(udg_hero[i])
 		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"获得锻造大师")
@@ -4371,12 +4386,12 @@ endfunction
  * 合成加锻造数量
  */
  function HeCheng2_Dzds takes integer i returns nothing 
-	if Ce[i] == 2 and udg_dzds[i]<=5 then
+	if Deputy_isDeputy(i, DUAN_ZAO) and udg_dzds[i]<=5 then
 		set udg_dzds[i] = udg_dzds[i] +1
 		call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, "|CFF66FF00恭喜您锻造成功第"+I2S(udg_dzds[i])+"件装备，锻造成功5件装备可以获得锻造大师哦")
 	endif
-	if Ce[i]==2 and udg_dzds[i]>=5 and udg_dzdsbool[i]==false then
-		set udg_dzdsbool[i] = true
+	if Deputy_isDeputy(i, DUAN_ZAO) and udg_dzds[i]>=5 and not Deputy_isMaster(i, DUAN_ZAO) then
+		call Deputy_setMaster(i, DUAN_ZAO)
 		call DZDSBuShuXing(udg_hero[i])
 		call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"获得锻造大师")
@@ -4386,7 +4401,7 @@ endfunction
 
 //合成物品2，自由或者副职锻造可以合成
 function HeCheng2_Conditions takes nothing returns boolean
-    return ((udg_runamen[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]== 11 or Ce[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==2) and GetUnitTypeId(GetTriggerUnit())=='nvul' )
+    return ((udg_runamen[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]== 11 or Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), DUAN_ZAO)) and GetUnitTypeId(GetTriggerUnit())=='nvul' )
 endfunction
 function HeCheng2_Actions takes nothing returns nothing
 	local unit u = GetTriggerUnit()
@@ -4785,7 +4800,7 @@ function KillGuai takes nothing returns nothing
 	        call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
 	        if((GetRandomInt(1,50)<=5))then
 	            call createitemloc(YaoCao[GetRandomInt(1,12)],LoadLocationHandle(YDHT,id*cx,$1769D332))
-	            if udg_lddsbool[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))] then
+	            if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), LIAN_DAN) then
 		            call createitemloc(YaoCao[GetRandomInt(1,12)],LoadLocationHandle(YDHT,id*cx,$1769D332))
 	            endif
 	        endif
@@ -4824,7 +4839,7 @@ function KillGuai takes nothing returns nothing
 	            call SaveLocationHandle(YDHT,id*cx,$1769D332,GetUnitLoc(GetTriggerUnit()))
 	            call createitemloc(YaoCao[GetRandomInt(1,12)],LoadLocationHandle(YDHT,id*cx,$1769D332))
 	            call createitemloc(YaoCao[GetRandomInt(1,12)],LoadLocationHandle(YDHT,id*cx,$1769D332))
-	            if udg_lddsbool[(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())))] then
+	            if Deputy_isMaster(1+GetPlayerId(GetOwningPlayer(GetKillingUnit())), LIAN_DAN) then
 		            call createitemloc(YaoCao[GetRandomInt(1,12)],LoadLocationHandle(YDHT,id*cx,$1769D332))
 		            call createitemloc(YaoCao[GetRandomInt(1,12)],LoadLocationHandle(YDHT,id*cx,$1769D332))
 	            endif
@@ -4915,7 +4930,7 @@ function sQ takes nothing returns nothing
 		call AdjustPlayerStateBJ(10000, p, PLAYER_STATE_RESOURCE_GOLD)
 		call DisplayTimedTextToPlayer(p,0,0,15,"|cFFFFCC00等级高于100无法购买等级")
 	else
-		if Ce[i]==5 then
+		if Deputy_isDeputy(i, LIAN_QI) then
 			call AdjustPlayerStateBJ(10000, p, PLAYER_STATE_RESOURCE_GOLD)
 			call DisplayTimedTextToPlayer(p,0,0,15,"|cFFFFCC00选择该副职无法购买等级")
 		else
@@ -5007,57 +5022,76 @@ function yQ takes nothing returns nothing
 	set u = null
 	set p = null
 endfunction
+
+// 判断某玩家是否可以加入副职
+// 如果未加入副职，可以加入
+// 如果已加入副职且该副职成为宗师，可以重新加入
+function canJoinDeputy takes integer i returns boolean
+    local integer j = 1
+    if deputy[i] == 0 then
+        return true
+    endif
+    loop
+        exitwhen j > MAX_DEPUTY
+        if Deputy_isDeputy(i, j) and not Deputy_isMaster(i, j) then
+            return false
+        endif
+        set j = j + 1
+    endloop
+    return true
+endfunction
+
+function notYetJoinDeputy takes integer i, integer whichDeputy returns boolean
+    if Deputy_isDeputy(i, whichDeputy) then
+        call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 5.,"|cffffff00已经加入过该副职了，不能重复加入")
+        return false
+    endif
+    return true
+endfunction
+
 //加入副职
 function AQ takes nothing returns boolean
 	return ((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())=='I08Q' or GetItemTypeId(GetManipulatedItem())=='I0A4' or GetItemTypeId(GetManipulatedItem())=='I0A5' or GetItemTypeId(GetManipulatedItem())=='I0A6' or GetItemTypeId(GetManipulatedItem())=='I0A7' or GetItemTypeId(GetManipulatedItem())=='I08S' or GetItemTypeId(GetManipulatedItem())=='I08T' or GetItemTypeId(GetManipulatedItem())=='I0CG'))
 endfunction
 function aQ takes nothing returns nothing
 	local integer i = 1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))
-	if((Ce[i]==0))then
-		if (GetItemTypeId(GetManipulatedItem())=='I08Q') then
+	if canJoinDeputy(i) then
+		if (GetItemTypeId(GetManipulatedItem())=='I08Q') and notYetJoinDeputy(i, LIAN_DAN) then
 			set yishu[i]=yishu[i]+5
-			set Ce[i]=1
+			call Deputy_setDeputy(i, LIAN_DAN)
 			call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为炼丹师，获得医术+5")
-		elseif (GetItemTypeId(GetManipulatedItem())=='I08S') then
-			if ( GetUnitTypeId(udg_hero[( 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit())) )]) != 'O002' and GetUnitTypeId(udg_hero[( 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit())) )]) != 'O003' and GetUnitTypeId(udg_hero[( 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit())) )]) != 'O023' and GetUnitTypeId(udg_hero[( 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit())) )]) != 'O02H' and GetUnitTypeId(udg_hero[( 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit())) )]) != 'O02I' ) then
-                set gengu[i]=( gengu[i] + 5 )
-                set Ce[i]=2
-                call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, 5., "|cffffff00恭喜成为锻造师，获得根骨+5")
-            else
-                call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, 5., "|cffffff00女性角色不可加入该副职")
-            endif
-		elseif (GetItemTypeId(GetManipulatedItem())=='I08T') then
+		elseif (GetItemTypeId(GetManipulatedItem())=='I08S') and notYetJoinDeputy(i, DUAN_ZAO) then
+            set gengu[i]=( gengu[i] + 5 )
+            call Deputy_setDeputy(i, DUAN_ZAO)
+            call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, 5., "|cffffff00恭喜成为锻造师，获得根骨+5")
+		elseif (GetItemTypeId(GetManipulatedItem())=='I08T') and notYetJoinDeputy(i, BING_QI) then
 			set danpo[i]=(danpo[i]+5)
-			set Ce[i]=3
+			call Deputy_setDeputy(i, BING_QI)
 			call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为兵器师，获得胆魄+5")
-		elseif (GetItemTypeId(GetManipulatedItem())=='I0A4') then
+		elseif (GetItemTypeId(GetManipulatedItem())=='I0A4') and notYetJoinDeputy(i, JIAN_DING) then
 			set wuxing[i]=wuxing[i]+5
-			set Ce[i]=4
+			call Deputy_setDeputy(i, JIAN_DING)
 			call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为鉴定师，获得悟性+5")
 			//call UnitAddAbility(P4[i], 'A08O')
-		elseif (GetItemTypeId(GetManipulatedItem())=='I0A5') then
+		elseif (GetItemTypeId(GetManipulatedItem())=='I0A5') and notYetJoinDeputy(i, LIAN_QI) then
 			set jingmai[i]=jingmai[i]+5
-			set Ce[i]=5
+			call Deputy_setDeputy(i, LIAN_QI)
 			call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为练气师，获得经脉+5")
-		elseif (GetItemTypeId(GetManipulatedItem())=='I0A6') then
+		elseif (GetItemTypeId(GetManipulatedItem())=='I0A6') and notYetJoinDeputy(i, XUN_BAO) then
 			set fuyuan[i]=fuyuan[i]+5
-			set Ce[i]=6
+			call Deputy_setDeputy(i, XUN_BAO)
 			call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为寻宝师，获得福缘+5")
-		elseif (GetItemTypeId(GetManipulatedItem())=='I0A7') then
-			if (GetUnitTypeId(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))])=='O002' or GetUnitTypeId(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))])=='O003' or GetUnitTypeId(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))])=='O023' or GetUnitTypeId(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))])=='O02H' or GetUnitTypeId(udg_hero[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))])=='O02I') then
-				set Ce[i]=7
-				call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为丫鬟，获得全属性+1")
-				set danpo[i] = danpo[i]+1
-				set wuxing[i] = wuxing[i]+1
-				set gengu[i] = gengu[i]+1
-				set fuyuan[i] = fuyuan[i]+1
-				set jingmai[i] = jingmai[i]+1
-				set yishu[i] = yishu[i]+1
-			else
-				call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00男性角色不可加入该副职")
-			endif
-		elseif ( GetItemTypeId(GetManipulatedItem()) == 'I0CG' ) then
-			set Ce[i]=8
+		elseif (GetItemTypeId(GetManipulatedItem())=='I0A7') and notYetJoinDeputy(i, YA_HUAN) then
+            call Deputy_setDeputy(i, YA_HUAN)
+            call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffffff00恭喜成为丫鬟，获得全属性+1")
+            set danpo[i] = danpo[i]+1
+            set wuxing[i] = wuxing[i]+1
+            set gengu[i] = gengu[i]+1
+            set fuyuan[i] = fuyuan[i]+1
+            set jingmai[i] = jingmai[i]+1
+            set yishu[i] = yishu[i]+1
+		elseif ( GetItemTypeId(GetManipulatedItem()) == 'I0CG' ) and notYetJoinDeputy(i, JING_WU) then
+			call Deputy_setDeputy(i, JING_WU)
 			call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, 5., "|cffffff00恭喜成为精武师，获得全属性+1")
 			set danpo[i]=danpo[i] + 1
 			set wuxing[i]=wuxing[i] + 1
@@ -5067,7 +5101,7 @@ function aQ takes nothing returns nothing
 			set yishu[i]=yishu[i] + 1
 		endif
 	else
-		call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffff0000你已经加入专精了！（每个角色只能选择一种专精，也可以不选择）")
+		call DisplayTimedTextToPlayer(GetOwningPlayer(GetTriggerUnit()),0,0,5.,"|cffff0000你已经加入副职了，只有成为宗师才可以再次加入")
 	endif
 endfunction
 
