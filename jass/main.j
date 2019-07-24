@@ -1072,12 +1072,6 @@ globals
 	trigger uq=null
 	trigger vq=null
 	trigger xq=null
-	trigger yq=null
-	trigger zq=null
-	trigger Aq=null
-	trigger aq=null
-	trigger Bq=null
-	trigger bq=null
 	trigger Cq=null
 	trigger cq=null
 	trigger Dq=null

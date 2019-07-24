@@ -1,7 +1,18 @@
 //-------各种丹药开始-------//
-//医术丹
+
+// 提示达到属性丹药使用上限
+function reachDanLimitHint takes integer itemId, unit u returns nothing
+    call unitadditembyidswapped(itemId, u)
+    call PlaySoundOnUnitBJ(Gh,100,u)
+    call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
+endfunction
+
+//属性丹
 function VO takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895375))
+	return GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER and \
+	(GetItemTypeId(GetManipulatedItem())==1227895375 or GetItemTypeId(GetManipulatedItem())==1227895370 \
+	or GetItemTypeId(GetManipulatedItem())==1227895363 or GetItemTypeId(GetManipulatedItem())==1227895368 \
+	or GetItemTypeId(GetManipulatedItem())==1227895369 or GetItemTypeId(GetManipulatedItem())==1227895365)
 endfunction
 function WO takes nothing returns nothing
 	local unit u = GetTriggerUnit()
@@ -9,158 +20,44 @@ function WO takes nothing returns nothing
 	local integer i = 1 + GetPlayerId(p)
 	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
 		set yongdanshu[i]=yongdanshu[i]+1
-		set yishu[i]=yishu[i]+1
 		call PlaySoundOnUnitBJ(Eh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC医术+1|r")
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前医术为：|r|cFF99FFCC"+I2S(yishu[i]))
+		if GetItemTypeId(GetManipulatedItem())==1227895375 then
+            set yishu[i]=yishu[i]+1
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC医术+1|r")
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前医术为：|r|cFF99FFCC"+I2S(yishu[i]))
+        elseif GetItemTypeId(GetManipulatedItem())==1227895370 then
+            set wuxing[i]=wuxing[i]+1
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC悟性+1|r")
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前悟性为：|r|cFF99FFCC"+I2S(wuxing[i]))
+        elseif GetItemTypeId(GetManipulatedItem())==1227895363 then
+            set gengu[i]=gengu[i]+1
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC根骨+1|r")
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前根骨为：|r|cFF99FFCC"+I2S(gengu[i]))
+        elseif GetItemTypeId(GetManipulatedItem())==1227895368 then
+            set fuyuan[i]=fuyuan[i]+1
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC福缘+1|r")
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前福缘为：|r|cFF99FFCC"+I2S(fuyuan[i]))
+        elseif GetItemTypeId(GetManipulatedItem())==1227895369 then
+            set jingmai[i]=jingmai[i]+1
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC经脉+1|r")
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前经脉为：|r|cFF99FFCC"+I2S(jingmai[i]))
+        elseif GetItemTypeId(GetManipulatedItem())==1227895365 then
+            set danpo[i]=danpo[i]+1
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC胆魄+1|r")
+            call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前胆魄为：|r|cFF99FFCC"+I2S(danpo[i]))
+        endif
 		if not Deputy_isDeputy(i, LIAN_DAN) then
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
 		else
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
 		endif
 	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
+	    call reachDanLimitHint(GetItemTypeId(GetManipulatedItem()), u)
 	endif
 	set u = null
 	set p = null
 endfunction
-//悟性丹
-function YO takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895370))
-endfunction
-function ZO takes nothing returns nothing
-	local unit u = GetTriggerUnit()
-	local player p = GetOwningPlayer(u)
-	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
-		set yongdanshu[i]=yongdanshu[i]+1
-		set wuxing[i]=wuxing[i]+1
-		call PlaySoundOnUnitBJ(Eh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC悟性+1|r")
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前悟性为：|r|cFF99FFCC"+I2S(wuxing[i]))
-		if not Deputy_isDeputy(i, LIAN_DAN) then
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
-		else
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
-		endif
-	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
-	endif
-	set u = null
-	set p = null
-endfunction
-//根骨丹
-function e0 takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895363))
-endfunction
-function f0 takes nothing returns nothing
-	local unit u = GetTriggerUnit()
-	local player p = GetOwningPlayer(u)
-	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
-		set yongdanshu[i]=yongdanshu[i]+1
-		set gengu[i]=gengu[i]+1
-		call PlaySoundOnUnitBJ(Eh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC根骨+1|r")
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前根骨为：|r|cFF99FFCC"+I2S(gengu[i]))
-		if not Deputy_isDeputy(i, LIAN_DAN) then
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
-		else
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
-		endif
-	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
-	endif
-	set u = null
-	set p = null
-endfunction
-//福缘丹
-function h0 takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895368))
-endfunction
-function i0 takes nothing returns nothing
-	local unit u = GetTriggerUnit()
-	local player p = GetOwningPlayer(u)
-	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
-		set yongdanshu[i]=yongdanshu[i]+1
-		set fuyuan[i]=fuyuan[i]+1
-		call PlaySoundOnUnitBJ(Eh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC福缘+1|r")
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前福缘为：|r|cFF99FFCC"+I2S(fuyuan[i]))
-		if not Deputy_isDeputy(i, LIAN_DAN) then
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
-		else
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
-		endif
-	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
-	endif
-	set u = null
-	set p = null
-endfunction
-//经脉丹
-function k0 takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895369))
-endfunction
-function m0 takes nothing returns nothing
-	local unit u = GetTriggerUnit()
-	local player p = GetOwningPlayer(u)
-	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
-		set yongdanshu[i]=yongdanshu[i]+1
-		set jingmai[i]=jingmai[i]+1
-		call PlaySoundOnUnitBJ(Eh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC经脉+1|r")
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前经脉为：|r|cFF99FFCC"+I2S(jingmai[i]))
-		if not Deputy_isDeputy(i, LIAN_DAN) then
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
-		else
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
-		endif
-	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
-	endif
-	set u = null
-	set p = null
-endfunction
-//胆魄丹
-function o0 takes nothing returns boolean
-	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895365))
-endfunction
-function p0 takes nothing returns nothing
-	local unit u = GetTriggerUnit()
-	local player p = GetOwningPlayer(u)
-	local integer i = 1 + GetPlayerId(p)
-	if (yongdanshu[i]<10) or (yongdanshu[i]<15 and Deputy_isDeputy(i, LIAN_DAN) ) then
-		set yongdanshu[i]=yongdanshu[i]+1
-		set danpo[i]=danpo[i]+1
-		call PlaySoundOnUnitBJ(Eh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00使用成功|r|cFF99FFCC胆魄+1|r")
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00当前胆魄为：|r|cFF99FFCC"+I2S(danpo[i]))
-		if not Deputy_isDeputy(i, LIAN_DAN) then
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 10")))
-		else
-		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
-		endif
-	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
-	endif
-	set u = null
-	set p = null
-endfunction
+
 //乾坤丹
 function r0 takes nothing returns boolean
 	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())==1227895371))
@@ -188,9 +85,7 @@ function s0 takes nothing returns nothing
 		call DialogDisplay(p,v8[i],true)
 		set b8[i]=true
 	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
+		call reachDanLimitHint(GetItemTypeId(GetManipulatedItem()), u)
 	endif
 	set u = null
 	set p = null
@@ -375,9 +270,7 @@ function a0 takes nothing returns nothing
 		    call DisplayTextToPlayer(p,0,0,("|cFFFFCC00当前已经服用属性丹数量：|r|cFF99FFCC"+(I2S(yongdanshu[i])+" / 15")))
 		endif
 	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
+	    call reachDanLimitHint(GetItemTypeId(GetManipulatedItem()), u)
 	endif
 	set u = null
 	set p = null
@@ -409,9 +302,7 @@ function C0 takes nothing returns nothing
 		call DialogDisplay(p,v8[i],true)
 		set c8[i]=true
 	else
-		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
-		call PlaySoundOnUnitBJ(Gh,100,u)
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00你在本次游戏里已经达到了使用属性丹上限，无法再使用本类道具")
+		call reachDanLimitHint(GetItemTypeId(GetManipulatedItem()), u)
 	endif
 	set u = null
 	set p = null
@@ -488,6 +379,8 @@ function E0 takes nothing returns nothing
 	endif
 	set p = null
 endfunction
+
+
 //黑玉断续膏
 function G0 takes nothing returns boolean
 	return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())=='I04P'))
@@ -891,10 +784,9 @@ endfunction
 //-------各种丹药结束-------//
 //----------炼丹系统开始----------//
 function isLianDanItem takes item it returns boolean
-	if (GetItemTypeId(it)=='I07L' or GetItemTypeId(it)=='I07M' or GetItemTypeId(it)=='I07N' or GetItemTypeId(it)=='I07O' or GetItemTypeId(it)=='I07P' or GetItemTypeId(it)=='I07Q' or GetItemTypeId(it)=='I07R' or GetItemTypeId(it)=='I07J' or GetItemTypeId(it)=='I07I' or GetItemTypeId(it)=='I07K' or GetItemTypeId(it)=='I05K') then
-		return true
-	endif
-	return false
+	return (GetItemTypeId(it)=='I07L' or GetItemTypeId(it)=='I07M' or GetItemTypeId(it)=='I07N' \
+	or GetItemTypeId(it)=='I07O' or GetItemTypeId(it)=='I07P' or GetItemTypeId(it)=='I07Q' or GetItemTypeId(it)=='I07R' \
+	 or GetItemTypeId(it)=='I07J' or GetItemTypeId(it)=='I07I' or GetItemTypeId(it)=='I07K' or GetItemTypeId(it)=='I05K')
 endfunction
 function CorresDan takes integer dan returns integer
 	if (dan == 'I07L') then
@@ -1057,30 +949,10 @@ endfunction
 
 function ElixirSystem_Trigger takes nothing returns nothing
 	local trigger t = CreateTrigger()
-	set yq=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(yq,EVENT_PLAYER_UNIT_USE_ITEM)
-	call TriggerAddCondition(yq,Condition(function VO))
-	call TriggerAddAction(yq,function WO)
-	set zq=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(zq,EVENT_PLAYER_UNIT_USE_ITEM)
-	call TriggerAddCondition(zq,Condition(function YO))
-	call TriggerAddAction(zq,function ZO)
-	set Aq=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(Aq,EVENT_PLAYER_UNIT_USE_ITEM)
-	call TriggerAddCondition(Aq,Condition(function e0))
-	call TriggerAddAction(Aq,function f0)
-	set aq=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(aq,EVENT_PLAYER_UNIT_USE_ITEM)
-	call TriggerAddCondition(aq,Condition(function h0))
-	call TriggerAddAction(aq,function i0)
-	set Bq=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(Bq,EVENT_PLAYER_UNIT_USE_ITEM)
-	call TriggerAddCondition(Bq,Condition(function k0))
-	call TriggerAddAction(Bq,function m0)
-	set bq=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(bq,EVENT_PLAYER_UNIT_USE_ITEM)
-	call TriggerAddCondition(bq,Condition(function o0))
-	call TriggerAddAction(bq,function p0)
+	set t = CreateTrigger()
+	call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_USE_ITEM)
+	call TriggerAddCondition(t, Condition(function VO))
+	call TriggerAddAction(t, function WO)
 	set Cq=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(Cq,EVENT_PLAYER_UNIT_USE_ITEM)
 	call TriggerAddCondition(Cq,Condition(function r0))
