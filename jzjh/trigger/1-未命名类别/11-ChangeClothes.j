@@ -1,4 +1,4 @@
-//TESH.scrollpos=50
+//TESH.scrollpos=26
 //TESH.alwaysfold=0
 function Trig_ChangeClothesConditions takes nothing returns boolean
     return (udg_vip[1+GetPlayerId(GetTriggerPlayer())]>=1)and (((GetUnitTypeId(udg_hero[1+GetPlayerId(GetTriggerPlayer())]) == 'O02H') or (GetUnitTypeId(udg_hero[1+GetPlayerId(GetTriggerPlayer())]) == 'O023') or (GetUnitTypeId(udg_hero[1+GetPlayerId(GetTriggerPlayer())]) == 'O02I')))

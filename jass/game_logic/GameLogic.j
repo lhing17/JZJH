@@ -1566,7 +1566,7 @@ function Victory takes nothing returns nothing
 	// 获胜标识
 	set is_victory = true
 
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.21的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.22的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT,id*cx,-$5E9EB4B3,40.)
@@ -1581,7 +1581,7 @@ function Victory takes nothing returns nothing
 	call TimerStart(ky,.04,true,function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.21的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.22的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
@@ -1596,7 +1596,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
 	local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.21的游戏总评分："+(I2S(ae)+"分（战败）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.22的游戏总评分："+(I2S(ae)+"分（战败）")))
 	set i = 1
 	loop
 		exitwhen i >= 6
@@ -2284,6 +2284,36 @@ function Da takes nothing returns nothing
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl")
 	call DestroyEffect(bj_lastCreatedEffect)
 endfunction
+
+// 鸟切换皮肤的技能
+function isSwitchSkin takes nothing returns boolean
+    return GetSpellAbilityId() == 'A0B7' or GetSpellAbilityId() == 'A0B8'
+endfunction
+
+function switchSkin takes nothing returns nothing
+    local unit u = GetTriggerUnit()
+    local player p = GetOwningPlayer(u)
+    local location loc = GetUnitLoc(u)
+    local integer i = 1 + GetPlayerId(p)
+    if GetSpellAbilityId() == 'A0B7' then
+        call CreateNUnitsAtLoc(1, 'n00W', p, loc, GetUnitFacing(u))
+    else
+        call CreateNUnitsAtLoc(1, 'n00V', p, loc, GetUnitFacing(u))
+    endif
+    set P4[i] = bj_lastCreatedUnit
+    set B7=1
+    loop
+        exitwhen B7>6
+        call UnitAddItem(P4[i], UnitItemInSlotBJ(u, B7))
+        set B7=B7+1
+    endloop
+    call RemoveUnit(u)
+    call RemoveLocation(loc)
+    set loc = null
+    set u = null
+    set p = null
+endfunction
+
 //切换物品
 function IsQieHuanItem takes nothing returns boolean
 	return((GetSpellAbilityId()=='A00M')and(he[(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())))]==false))
@@ -4401,7 +4431,7 @@ endfunction
 
 //合成物品2，自由或者副职锻造可以合成
 function HeCheng2_Conditions takes nothing returns boolean
-    return ((udg_runamen[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]== 11 or Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), DUAN_ZAO)) and GetUnitTypeId(GetTriggerUnit())=='nvul' )
+    return ((udg_runamen[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]== 11 or Deputy_isDeputy(1+GetPlayerId(GetOwningPlayer(GetTriggerUnit())), DUAN_ZAO)) and (GetUnitTypeId(GetTriggerUnit())=='nvul' or GetUnitTypeId(GetTriggerUnit())=='n00W' or GetUnitTypeId(GetTriggerUnit())=='n00V'))
 endfunction
 function HeCheng2_Actions takes nothing returns nothing
 	local unit u = GetTriggerUnit()
@@ -5544,6 +5574,11 @@ function GameLogic_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(sj,EVENT_PLAYER_UNIT_SPELL_EFFECT)
 	call TriggerAddCondition(sj,Condition(function ca))
 	call TriggerAddAction(sj,function Da)
+	// 鸟的换肤技能
+    set t = CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+    call TriggerAddCondition(t,Condition(function isSwitchSkin))
+    call TriggerAddAction(t,function switchSkin)
 	// 轻功系统
 	set t=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_SPELL_EFFECT)
