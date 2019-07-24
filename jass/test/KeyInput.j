@@ -96,7 +96,7 @@ function KeyInput takes nothing returns nothing
 	    set s = s + getDeputyString(i, DUAN_ZAO, "锻造大师 ")
 	    set s = s + getDeputyString(i, BING_QI, "兵器大师 ")
 	    set s = s + getDeputyString(i, JIAN_DING, "鉴定大师 ")
-	    set s = s + getDeputyString(i, LIAN_QI, "练所大师 ")
+	    set s = s + getDeputyString(i, LIAN_QI, "练气大师 ")
 	    set s = s + getDeputyString(i, XUN_BAO, "寻宝大师 ")
 	    set s = s + getDeputyString(i, YA_HUAN, "郡主 ")
 	    set s = s + getDeputyString(i, JING_WU, "精武宗师 ")
