@@ -20,6 +20,7 @@
 #include "game_logic/EnhanceDefense.j"
 #include "game_logic/NpcHint.j"
 #include "game_logic/ShowHealthPoint.j"
+#include "game_logic/BlizzardEvent.j"
 
 #include "systems/ElixirSystem.j"
 #include "systems/Activity.j"
@@ -2305,6 +2306,7 @@ function main1 takes nothing returns nothing
 	call InitGlobalVariables() //初始化全局变量
 	
 	call KeyInputSystem() //键盘输入系统
+	call BlizzardEventSystem() //暴雪新API系统
 	call SmeltingWeaponSystem()//决战江湖1.4之大辽金匠
 	call CreateDestructables() //创建可破坏物
 	call Cuns() //存储装备属性

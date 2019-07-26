@@ -53,3 +53,4 @@ function showHealthPoint takes nothing returns nothing
 	endloop
 	call TriggerAddAction(t,function toggleHint)
 endfunction
+
