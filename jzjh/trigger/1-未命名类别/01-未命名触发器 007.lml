@@ -1,7 +1,4 @@
 事件
-    DzTriggerRegisterKeyEventTrg
-        预设: GameKeyAction_Press
-        预设: GameKey_A
 条件
 动作
     YDWETimerPatternRushSlide

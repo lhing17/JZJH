@@ -2,6 +2,7 @@
 #include "library/BlizzardAPI.j"
 #include "library/YDWEBitwise.j"
 #include "library/DzAPI.j"
+#include "library/UI.j"
 #include "library/common_func.j"
 #include "game_logic/LevelUp.j"
 #include "library/buff.j"
@@ -21,6 +22,7 @@
 #include "game_logic/NpcHint.j"
 #include "game_logic/ShowHealthPoint.j"
 #include "game_logic/BlizzardEvent.j"
+#include "game_logic/EverySecond.j"
 
 #include "systems/ElixirSystem.j"
 #include "systems/Activity.j"
@@ -683,7 +685,6 @@ globals
 	trigger lh=null
 	trigger Jh=null
 	trigger Kh=null
-	trigger Lh=null
 	trigger Mh=null
 	trigger Nh=null
 	trigger Oh=null
@@ -1332,12 +1333,12 @@ function Zw takes nothing returns nothing
 	call AddSpecialEffectTargetUnitBJ("overhead",At,"Objects\\RandomObject\\RandomObject.mdl")
 	call AddSpecialEffectTargetUnitBJ("overhead",Bt,"Objects\\RandomObject\\RandomObject.mdl")
 	call AddSpecialEffectTargetUnitBJ("overhead",gg_unit_N007_0055,"Abilities\\Spells\\Other\\TalkToMe\\TalkToMe.mdl")
-	call CreateTextTagUnitBJ("点我加门派后可离开此地",Rs,.0,15.,100.,100.,.0,50.)
+	call CreateTextTagUnitBJ("点我选门派",Rs,.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagUnitBJ("新手教官",SuiFeng,.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("新手教官",Location(420,-597),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("地图等级福利",Location(-1500,-113),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("积分商店",Location(-1500,-1344),120.0,15.,100.,100.,.0,50.)
-	call CreateTextTagLocBJ("决战江湖1.6.22名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
+	call CreateTextTagLocBJ("决战江湖名人榜",GetRectCenter(uh),100.,$A,100,100,.0,50.)
 	set v7[1]=GetRectCenter(Ie)
 	set v7[2]=GetRectCenter(le)
 	set v7[3]=GetRectCenter(Je)
@@ -1380,20 +1381,7 @@ function Zw takes nothing returns nothing
 	call CreateTimerDialogBJ(bj_lastStartedTimer,"邪教进攻倒计时：")
 	call TimerDialogDisplay(bj_lastCreatedTimerDialog,true)
 	set z7[3]=bj_lastCreatedTimerDialog
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000欢迎来到|cffff00de金庸群侠传之决战江湖1.6.22|r")
-	// 获取服务器全局存档，信息提示
-	set info = DzAPI_Map_GetMapConfig("info")
-	if info != "无" then
-		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cffff00de"+info+"|r")
-		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cffff00de"+info+"|r")
-		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cffff00de"+info+"|r")
-	endif
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000游戏初期您可以完成难度为一星到二星的任务来提升角色的能力，游戏前期金钱较匮乏，可以在守家积分商店使用积分兑换金钱，关于游戏的各个系统，请查看F9任务面板，欢迎前往游戏专区论坛jzjhbbs.uuu9.com查看游戏攻略以及提出您的宝贵意见|R")
-	call YDWEPolledWaitNull(40.)
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000由于制作和测试时间紧张，如遇游戏里有BUG或不舒适的体验给你带来不愉快，尽情谅解，欢迎前往游戏专区论坛jzjhbbs.uuu9.com提出您的宝贵意见。游戏中的特殊玩法，请到NPC随风而逝de风处查看，在基地右侧|R")
-	call YDWEPolledWaitNull(40.)
-	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,30,"|cfffff000游戏里的相关指令\n按键Esc：|cFFCCFF33查看人物属性|r\n输入“sj”：|cFFCCFF33恢复视角|r\n输入“bl”：|cFFCCFF33查看伴侣属性|r\n输入“jy”：|cFFCCFF33将剑意转化为性格属性|r\n输入“cx”：|cFFCCFF33查询存档|r\n输入“up”：|cFFCCFF33普通模式提高难度（只能提不能降）|r\n输入“fb”：|cFFCCFF33查询副本重置时间|r\n输入“yx”：|cFFCCFF33查询宝宝携带草药的总药性|r\n输入属性拼音首字母加数值如fy5：|cFFCCFF33增加相应点数的自由属性（福缘+5）|r\n游戏开始2分钟内输入“sw”：|cFFCCFF33试玩模式|r\n更多游戏帮助，请按F9打开任务面板进行查询")
-	call YDWEPolledWaitNull(40.)
+	call YDWEPolledWaitNull(120.)
 	call TriggerExecute(ss)
 	set hd=true
 endfunction
@@ -2344,4 +2332,5 @@ function main2 takes nothing returns nothing
 	call npcHint() // NPC提示
 	call showHealthPoint() //展示单位血量
 	call talent() //天赋系统
+	call EverySecond() // 记录游戏时间
 endfunction

@@ -1524,6 +1524,19 @@ function WuGongShangHai takes unit u, unit uc, real shanghai returns nothing
 endfunction
 
 
+function createPartnerAndTownPortalDummy takes integer i, location loc returns nothing
+    local player p = Player(i - 1)
+    call CreateNUnitsAtLoc(1,'nvul',p,loc,bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, 'O02W', p, loc, bj_UNIT_FACING)
+    call SuspendHeroXP(bj_lastCreatedUnit,true)
+    call CreateNUnitsAtLoc(1, 'O02X', p, loc, bj_UNIT_FACING)
+    call SuspendHeroXP(bj_lastCreatedUnit,true)
+    call CreateNUnitsAtLoc(1, 'O02Y', p, loc, bj_UNIT_FACING)
+    call SuspendHeroXP(bj_lastCreatedUnit,true)
+    call SetPlayerMaxHeroesAllowed(0, p)
+    set p = null
+endfunction
+
 /**	
  * 重随机门派后调整属性点（原先的属性点加成去掉）
  * @param i 玩家角标
@@ -1716,7 +1729,8 @@ function randomMenpai takes player p,integer status returns nothing
 		set yishu[i]=(yishu[i]+2)
 	endif
 	if status == 1 then
-		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933获得武功：凌波微步，你可以在主城和传送石之间任意传送了，请在NPC郭靖处选择副职")
+		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFF00FFFF提示：|r请在NPC|CFF00EE00郭靖|r处选择副职")
+		call PingMinimapForPlayer(p, -2075, -312, 3)
 		call UnitAddAbility(udg_hero[i],'A05R')
 		call AddCharacterABuff(udg_hero[i], udg_xinggeA[i])
 		call AddCharacterBBuff(udg_hero[i], udg_xinggeB[i])
@@ -1730,7 +1744,7 @@ function randomMenpai takes player p,integer status returns nothing
 		set Q4=GetRandomLocInRect(He)
 		call SetUnitPositionLoc(udg_hero[i],Q4)
 		call PanCameraToTimedLocForPlayer(p,Q4,0)
-		call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+		call createPartnerAndTownPortalDummy(i, Q4)
 		call AdjustPlayerStateBJ(50,p,PLAYER_STATE_RESOURCE_LUMBER)
 		set P4[i]=bj_lastCreatedUnit
 		call RemoveLocation(Q4)

@@ -398,7 +398,7 @@ function H0 takes nothing returns nothing
 			call Deputy_setMaster(i, YA_HUAN)
 			// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓郡主〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得郡主")
-			call SetPlayerName(p, "〓郡主〓"+GetPlayerName(p))
+			call SetPlayerName(p, "〓郡主〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 		endif
 	else
 		call unitadditembyidswapped(GetItemTypeId(GetManipulatedItem()),u)
@@ -920,7 +920,7 @@ function LianSomeDan takes unit u, item it, integer dan, integer ys, integer y1,
 				    call Deputy_setMaster(i, LIAN_DAN)
 					// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓炼丹大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 					call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得炼丹大师")
-					call SetPlayerName(p, "〓炼丹大师〓"+GetPlayerName(p))
+					call SetPlayerName(p, "〓炼丹大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				endif
 			else
 				call DisplayTimedTextToPlayer(p,0,0,5.,"|cffff0000炼制失败！")

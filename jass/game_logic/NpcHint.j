@@ -27,4 +27,5 @@ function npcHint takes nothing returns nothing
     call createTagForNpc("历练传送", -2081.6, -1962.8)
     call createTagForNpc("宝石商人", 598.6, -2015.8)
     call createTagForNpc("选择副职", -2053.7, -339.5)
+    call createTagForNpc("新手任务", 1847, -2694)
 endfunction

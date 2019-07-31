@@ -171,7 +171,7 @@ function kungfuLevelUp takes unit u,integer id,real r returns nothing
     						call Deputy_setMaster(i, JING_WU)
     						// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     						call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
-    						call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
+    						call SetPlayerName(p, "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     					endif
     				endif
             	endif
@@ -214,7 +214,7 @@ function kungfuLevelUp takes unit u,integer id,real r returns nothing
     							call Deputy_setMaster(i, JING_WU)
     							// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     							call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜" + GetPlayerName(p) + "获得精武宗师")
-    							call SetPlayerName(p, "〓精武宗师〓" + GetPlayerName(p))
+    							call SetPlayerName(p, "〓精武宗师〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
     						endif
     					endif
                     endif

@@ -284,7 +284,7 @@ function WanChengWuPin takes nothing returns nothing
 					call Deputy_setMaster(i, XUN_BAO)
 					// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓寻宝大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 					call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得寻宝大师")
-					call SetPlayerName(p, "〓寻宝大师〓"+GetPlayerName(p))
+					call SetPlayerName(p, "〓寻宝大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 				endif
 			endif
 		endif

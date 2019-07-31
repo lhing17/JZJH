@@ -12,3 +12,4 @@ function BlizzardEventSystem takes nothing returns nothing
     //call DzTriggerRegisterKeyEvent(t, 'G', 1, true, "townPortal")
     //set t = null
 endfunction
+

@@ -129,8 +129,8 @@ library FrameLibrary initializer init
         method setText takes string str returns nothing
             call DzFrameSetText(id, str)
         endmethod
-        method setPoint takes integer a1, Frame tar, integer a2, real x, real y returns nothing
-            call DzFrameSetPoint(id, a1, tar.id, a2, x, y)
+        method setPoint takes integer a, Frame tar, integer b, real x, real y returns nothing
+            call DzFrameSetPoint(id, a, tar.id, b, x, y)
         endmethod
         method setColor255 takes integer r, integer g, integer b returns nothing
             call DzFrameSetTextColor(id, DzGetColor(255, r, g, b))
@@ -180,8 +180,8 @@ library FrameLibrary initializer init
         local integer f = DzFrameGetTooltip()
         local real size = 0.75
         set GUI = Frame.getFrame(DzGetGameUI())
-        call DzFrameClearAllPoints(f)
-        call DzFrameSetPoint(f, 7, DzGetGameUI(), 7, 0, .14)
+        //call DzFrameClearAllPoints(f)
+        //call DzFrameSetPoint(f, 7, DzGetGameUI(), 7, 0, .14)
     endfunction
 endlibrary
 

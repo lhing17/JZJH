@@ -392,104 +392,6 @@ function KeyInput takes nothing returns nothing
 	if s=="www.juezhanjianghu.com" and udg_runamen[i]==0 and udg_hero[i]!=null then
 		call DisplayTextToPlayer(p,0,0,"|cFF00FFFF灵鹫宫已加入积分兑换，请输入hg选择自由门派后去基地左下方兑换")
 	endif
-	// if s=="www.juezhanjianghu.com" and udg_runamen[i]==0 and udg_hero[i]!=null then
-	// 	set udg_runamen[i]=12
-	// 	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"选择了隐藏门派〓灵鹫宫〓|r")
-	//     call SetPlayerName(p,"〓灵鹫宫〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
-	//     set danpo[i]=(danpo[i]+2)
-	// 	set jingmai[i]=(jingmai[i]+2)
-	// 	set fuyuan[i]=(fuyuan[i]+1)
-	// 	call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933获得武功：凌波微步，你可以在主城和传送石之间任意传送了")
-	// 	call AddCharacterABuff(udg_hero[i], udg_xinggeA[i])
-    //     call AddCharacterBBuff(udg_hero[i], udg_xinggeB[i])
-	//     call UnitAddAbility(udg_hero[i],'A05R')
-	//     if udg_vip[i]<2 and udg_elevenvip[i]<1 then
-	//     	call UnitAddAbility(udg_hero[i],'A040')
-	//     	call UnitAddAbility(udg_hero[i],'A041')
-	//     	call UnitAddAbility(udg_hero[i],'A042')
-	//     endif
-	//     set I7[(((i-1)*20)+8)]='A05R'
-	//     call UnitRemoveAbility(udg_hero[i],'Avul')
-	//     set Q4=GetRandomLocInRect(He)
-	//     call SetUnitPositionLoc(udg_hero[i],Q4)
-	//     call PanCameraToTimedLocForPlayer(p,Q4,0)
-	//     call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
-	//     set P4[i]=bj_lastCreatedUnit
-	//     call RemoveLocation(Q4)
-	//     call UnitAddItemByIdSwapped(1227896394,udg_hero[i])
-	// endif
-
-	// if s == "my gao v" and udg_vip[i] == 1 and udg_elevenvip[i] == 1 and udg_changevip[i] == 1 then
-	// 	call DisplayTextToPlayer(p, 0, 0, I2S(NameProdVIP(LoadStr(YDHT, GetHandleId(p), GetHandleId(p)*2), 3)/10000))
-	// endif
-	//存青龙之戒
-	// if s == "saveql" and UnitHaveItem(udg_hero[i], 'I0CQ') then
-		// set str = GetPlayerName(p)
-		// call SetPlayerName(p, LoadStr(YDHT, GetHandleId(p), GetHandleId(p)*2))
-		// set it = FetchUnitItem(udg_hero[i], 'I0CQ')
-		// call YDWE_PreloadSL_Set( p, "青龙", 6, 1 )
-		// call YDWE_PreloadSL_Set( p, "招式伤害", 7, LoadInteger(YDHT,GetHandleId(it),StringHash("招式伤害")) )
-		// call YDWE_PreloadSL_Set( p, "内力", 8, LoadInteger(YDHT,GetHandleId(it),StringHash("内力")) )
-		// call YDWE_PreloadSL_Set( p, "真实伤害", 9, LoadInteger(YDHT,GetHandleId(it),StringHash("真实伤害")) )
-		// call YDWE_PreloadSL_Set( p, "暴击伤害", 10, LoadInteger(YDHT,GetHandleId(it),StringHash("暴击伤害")) )
-		// call YDWE_PreloadSL_Set( p, "绝学领悟", 11, LoadInteger(YDHT,GetHandleId(it),StringHash("绝学领悟")) )
-		// call YDWE_PreloadSL_Set( p, "根骨", 12, LoadInteger(YDHT,GetHandleId(it),StringHash("根骨")) )
-		// call YDWE_PreloadSL_Set( p, "胆魄", 13, LoadInteger(YDHT,GetHandleId(it),StringHash("胆魄")) )
-		// call YDWE_PreloadSL_Set( p, "医术", 14, LoadInteger(YDHT,GetHandleId(it),StringHash("医术")) )
-		// call YDWE_PreloadSL_Set( p, "经脉", 15, LoadInteger(YDHT,GetHandleId(it),StringHash("经脉")) )
-		// call YDWE_PreloadSL_Set( p, "悟性", 16, LoadInteger(YDHT,GetHandleId(it),StringHash("悟性")) )
-		// call YDWE_PreloadSL_Set( p, "福缘", 17, LoadInteger(YDHT,GetHandleId(it),StringHash("福缘")) )
-		// call YDWE_PreloadSL_Set( p, "杀人数", 18, LoadInteger(YDHT,GetHandleId(it),StringHash("杀人数")) )
-		// set udg_loadql[i] = true
-		// call YDWE_PreloadSL_Save( p, "JueZhan", "VIP", SAV_NUM)
-		// call DisplayTextToPlayer(p, 0, 0, "|CFFff9933青龙之戒状态已保存")
-		// call SetPlayerName(p, str)
-		// //call SaveQingLongZhiJie()
-	// endif
-	// if s == "loadql" and udg_loadql[i] == false then
-		// //call BJDebugMsg("青龙在这")
-
-		// //call YDWE_PreloadSL_Load( p, "JueZhan", "VIP", 18 )
-		// if ((bj_lastLoadPreloadSLResult == true)) then
-			// //call BJDebugMsg("青龙在这2")
-        	// if YDWE_PreloadSL_Get(p, "ID", 1) == StringHash(LoadStr(YDHT, GetHandleId(p), GetHandleId(p)*2)) and YDWE_PreloadSL_Get(p, "青龙之戒", 6) == 1 then
-        		// //call BJDebugMsg("青龙在这3")
-        		// set loc = GetUnitLoc(udg_hero[i])
-				// set it = CreateItemLoc('I0CQ', loc)
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("招式伤害"), YDWE_PreloadSL_Get(p, "招式伤害", 7))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("内力"), YDWE_PreloadSL_Get(p, "内力", 8))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("真实伤害"), YDWE_PreloadSL_Get(p, "真实伤害", 9))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("暴击伤害"), YDWE_PreloadSL_Get(p, "暴击伤害", 10))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("绝学领悟"), YDWE_PreloadSL_Get(p, "绝学领悟", 11))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("根骨"), YDWE_PreloadSL_Get(p, "根骨", 12))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("胆魄"), YDWE_PreloadSL_Get(p, "胆魄", 13))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("医术"), YDWE_PreloadSL_Get(p, "医术", 14))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("经脉"), YDWE_PreloadSL_Get(p, "经脉", 15))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("悟性"), YDWE_PreloadSL_Get(p, "悟性", 16))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("福缘"), YDWE_PreloadSL_Get(p, "福缘", 17))
-				// call SaveInteger(YDHT,GetHandleId(it),StringHash("杀人数"), YDWE_PreloadSL_Get(p, "杀人数", 18))
-				// call DisplayTextToPlayer(p, 0, 0, "|CFFff9933青龙之戒已读取")
-				// set udg_loadql[i] = true
-				// call RemoveLocation(loc)
-				// set loc = null
-        	// endif
-
-    	// endif
-	// endif
-	// //查看青龙之戒
-	// if s == "ckql" then
-		// if UnitHaveItem(udg_hero[i], 'I0CQ') == false then
-			// call DisplayTextToPlayer(p,0,0,"|cFFFF0000当前未装备青龙之戒")
-		// else
-			// set it = FetchUnitItem(udg_hero[i], 'I0CQ')
-			// call DisplayTextToPlayer(p,0,0,"|cFFE500AF当前累积杀敌数："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("杀人数"))))
-	    	// call DisplayTextToPlayer(p,0,0,"|cFFE500AF招式伤害："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("招式伤害")))+" 内力："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("内力")))+" 真实伤害："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("真实伤害"))))
-	    	// call DisplayTextToPlayer(p,0,0,"|cFFFF0033暴击伤害："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("暴击伤害")))+"% 绝学领悟："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("绝学领悟"))))
-	    	// call DisplayTextToPlayer(p,0,0,"|cFFFFFF33根骨："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("根骨")))+" 胆魄："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("胆魄"))))
-	    	// call DisplayTextToPlayer(p,0,0,"|cFFFFFF33医术："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("医术")))+" 经脉："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("经脉"))))
-	    	// call DisplayTextToPlayer(p,0,0,"|cFFFFFF33悟性："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("悟性")))+" 福缘："+I2S(LoadInteger(YDHT,GetHandleId(it),StringHash("福缘"))))
-		// endif
-	// endif
 
 	if s=="jzjh.uuu9.com" and udg_runamen[i]==0 and udg_hero[i]!=null then
 		set udg_runamen[i]=13
@@ -510,7 +412,7 @@ function KeyInput takes nothing returns nothing
 	    set Q4=GetRandomLocInRect(He)
 	    call SetUnitPositionLoc(udg_hero[i],Q4)
 	    call PanCameraToTimedLocForPlayer(p,Q4,0)
-	    call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+	    call createPartnerAndTownPortalDummy(i, Q4)
 	    set P4[i]=bj_lastCreatedUnit
 	    call RemoveLocation(Q4)
 	    call UnitAddItemByIdSwapped(1227896394,udg_hero[i])

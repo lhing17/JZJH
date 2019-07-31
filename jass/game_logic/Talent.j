@@ -15,7 +15,7 @@ function addTalent takes nothing returns nothing
                 set j = GetRandomInt(1, MAX_TALENT_NUM)
                 call UnitAddAbility(udg_hero[i], 'A08M')
                 call SetPlayerAbilityAvailable(Player(i-1), 'A08M', false)
-                call DisplayTextToPlayer(Player(i-1), 0, 0, "随机到天赋"+I2S(j))
+                // call DisplayTextToPlayer(Player(i-1), 0, 0, "随机到天赋"+I2S(j))
                 set udg_talent[i] = j
                 call SetUnitAbilityLevel(udg_hero[i], 'A08L', j)
             endif

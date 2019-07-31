@@ -149,7 +149,7 @@ function SelectHero takes nothing returns nothing
         	call PanCameraToTimedLocForPlayer(p,Q4,0)
     	endif
         if(u==K4[1])then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00若蝶|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC古墓 丐帮 全真 恒山 峨眉 武当 星宿 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊） 神龙教（女）|r\n\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00若蝶|r，请选择门派后开启江湖之旅")
 			set gengu[i]=(gengu[i]+2)
 			set danpo[i]=(danpo[i]+2)
 			set jingmai[i]=(jingmai[i]+2)
@@ -160,7 +160,7 @@ function SelectHero takes nothing returns nothing
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif(u==K4[2])then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00潇侠|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC少林 古墓 丐帮 华山 全真 峨眉 武当 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊） 神龙教（男）|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00潇侠|r，请选择门派后开启江湖之旅")
 			set gengu[i]=(gengu[i]+2)
 			set danpo[i]=(danpo[i]+2)
 			set jingmai[i]=(jingmai[i]+2)
@@ -171,7 +171,7 @@ function SelectHero takes nothing returns nothing
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[3]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00莫言|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC古墓 丐帮 华山 血刀 恒山 峨眉 星宿 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊）  神龙教（女）|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00莫言|r，请选择门派后开启江湖之旅")
 			set gengu[i]=(gengu[i]+2)
 			set danpo[i]=(danpo[i]+8)
 			set jingmai[i]=(jingmai[i]+2)
@@ -182,7 +182,7 @@ function SelectHero takes nothing returns nothing
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[4]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00浪云|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC少林 古墓 丐帮 华山 血刀 武当 星宿 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊）  神龙教（男）|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00浪云|r，请选择门派后开启江湖之旅")
 			set gengu[i]=(gengu[i]+2)
 			set danpo[i]=(danpo[i]+2)
 			set jingmai[i]=(jingmai[i]+8)
@@ -193,7 +193,7 @@ function SelectHero takes nothing returns nothing
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[5]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00魔君|r\n请选择下列门派后开启江湖之旅：\n|CFF00FFCC少林 华山 全真 血刀 峨眉 武当 星宿 灵鹫宫（隐藏） 姑苏慕容（隐藏） 明教（特殊）  神龙教（男）|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00魔君|r，请选择门派后开启江湖之旅")
 			set gengu[i]=(gengu[i]+8)
 			set danpo[i]=(danpo[i]+2)
 			set jingmai[i]=(jingmai[i]+2)
@@ -204,7 +204,7 @@ function SelectHero takes nothing returns nothing
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif (u==K4[6]) then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00兰馨|r\n请选择任意门派后开启江湖之旅|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00兰馨|r，请选择门派后开启江湖之旅|r\n")
             set gengu[i]=(gengu[i]+3)
             set danpo[i]=(danpo[i]+3)
             set jingmai[i]=(jingmai[i]+3)
@@ -215,7 +215,7 @@ function SelectHero takes nothing returns nothing
             set udg_xinggeB[i]=GetRandomInt(3,5)
             call RemoveUnit(vipbanlv[i])
         elseif (u==K4[7]) then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00瑾轩|r\n请选择任意门派后开启江湖之旅|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00瑾轩|r，请选择门派后开启江湖之旅|r\n")
             set gengu[i]=(gengu[i]+3)
             set danpo[i]=(danpo[i]+3)
             set jingmai[i]=(jingmai[i]+3)
@@ -235,43 +235,42 @@ function SelectHero takes nothing returns nothing
         	set udg_hero[i]=bj_lastCreatedUnit
         	set O4=(O4+1)
         	call RemoveLocation(Q4)
-        	call DisplayTimedTextToPlayer(p,0,0,10.,"|CFFFF0000请从天下门派处选择你喜欢的门派后方可离开此地|r")
-        	call DisplayTimedTextToPlayer(p,0,0,10.,"|CFFFF0000输入-random可随机选择门派并获得额外60个木头，选取方式请到F9中寻找|r")
+        	call DisplayTimedTextToPlayer(p,0,0,10.,"|CFF00FFFF提示：|r输入|CFF00EE00-random|r可随机选择门派|r")
     	endif
     else
         set L4[i]=u
         if((u==K4[1]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00若蝶|r\n可加入门派：\n|CFF00FFCC古墓 丐帮 全真 恒山 峨眉 武当 灵鹫宫 姑苏慕容 明教  神龙教（女）|r\n基础全属性+9\n额外属性\n|cFF00FF00悟性+5 福缘+2 医术+3\n|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00若蝶|r\n额外属性：|cFF00FF00悟性\n|r")
             call SetUnitAnimation(u,"attack")
             call YDWEPolledWaitNull(2)
             call ResetUnitAnimation(K4[1])
         elseif((u==K4[2]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00潇侠|r\n可加入门派：\n|CFF00FFCC少林 古墓 丐帮 华山 全真 峨眉 武当 灵鹫宫 姑苏慕容 明教  神龙教（男）|r\n基础全属性+9\n额外属性\n|cFF00FF00根骨+2 悟性+2 福缘+5 胆魄+1\n|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00潇侠|r\n额外属性：|cFF00FF00福缘\n|r")
             call SetUnitAnimation(u,"attack")
             call YDWEPolledWaitNull(2)
             call ResetUnitAnimation(K4[2])
         elseif((u==K4[3]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00莫言|r\n可加入门派：\n|CFF00FFCC古墓 丐帮 华山 血刀 恒山 峨眉 灵鹫宫 姑苏慕容 明教  神龙教（女）|r\n基础全属性+9\n额外属性\n|cFF00FF00悟性+2 经脉+1 胆魄+5 医术+2\n|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00莫言|r\n额外属性：|cFF00FF00胆魄\n|r")
             call SetUnitAnimation(u,"attack")
             call YDWEPolledWaitNull(2)
             call ResetUnitAnimation(K4[3])
         elseif((u==K4[4]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00浪云|r\n可加入门派：\n|CFF00FFCC少林 古墓 丐帮 华山 血刀 武当 灵鹫宫 姑苏慕容 明教  神龙教（男）|r\n基础全属性+9\n额外属性\n|cFF00FF00根骨+3 经脉+5 医术+2\n|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00浪云|r\n额外属性：|cFF00FF00经脉\n|r")
             call SetUnitAnimation(u,"attack")
             call YDWEPolledWaitNull(2)
             call ResetUnitAnimation(K4[4])
         elseif((u==K4[5]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00魔君|r\n可加入门派：\n|CFF00FFCC少林 华山 全真 血刀 峨眉 武当 灵鹫宫 姑苏慕容 明教  神龙教（男）|r\n基础全属性+9\n额外属性\n|cFF00FF00根骨+5 经脉+3 胆魄+2\n|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00魔君|r\n额外属性：|cFF00FF00根骨\n|r")
             call SetUnitAnimation(u,"attack")
             call YDWEPolledWaitNull(2)
             call ResetUnitAnimation(K4[5])
         elseif((u==K4[6]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00兰馨|r\n可加入门派：\n|CFF00FFCC全部门派|r\n基础全属性+9\n额外属性\n|cFF00FF00全属性+3\n|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00兰馨|r\n额外属性：|cFF00FF00全属性\n|r")
             call SetUnitAnimation(u,"attack")
             call YDWEPolledWaitNull(2)
             call ResetUnitAnimation(K4[6])
         elseif((u==K4[7]))then
-            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00瑾轩|r\n可加入门派：\n|CFF00FFCC全部门派|r\n基础全属性+9\n额外属性\n|cFF00FF00全属性+3\n|r\n")
+            call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00瑾轩|r\n额外属性：|cFF00FF00全属性\n|r")
             call SetUnitAnimation(u,"attack")
             call YDWEPolledWaitNull(2)
             call ResetUnitAnimation(K4[7])
@@ -280,33 +279,15 @@ function SelectHero takes nothing returns nothing
     set p=null
     set u=null
 endfunction
-//选择门派
-function kx takes nothing returns boolean
-	return((GetTriggerUnit()==Rs)and(udg_runamen[(1+GetPlayerId(GetTriggerPlayer()))]==0))
-endfunction
 
-function MenPai takes nothing returns nothing
-	if((GetUnitTypeId(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))])=='O002'))then
-		call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,15.,"当前可加入以下门派：\n|CFF00FFCC古墓 丐帮 全真 恒山 峨眉 武当 灵鹫宫 姑苏慕容 明教|r\n")
-	elseif((GetUnitTypeId(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))])=='O001'))then
-		call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,15.,"当前可加入以下门派：\n|CFF00FFCC少林 古墓 丐帮 华山 全真 峨眉 武当 灵鹫宫 姑苏慕容 明教|r\n")
-	elseif((GetUnitTypeId(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))])=='O003'))then
-		call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,15.,"当前可加入以下门派：\n|CFF00FFCC古墓 丐帮 华山 血刀 恒山 峨眉 灵鹫宫 姑苏慕容 明教|r\n")
-	elseif((GetUnitTypeId(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))])=='O004'))then
-		call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,15.,"当前可加入以下门派：\n|CFF00FFCC少林 古墓 丐帮 华山 血刀 武当 灵鹫宫 姑苏慕容 明教|r\n")
-	elseif((GetUnitTypeId(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))])=='O000'))then
-		call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,15.,"当前可加入以下门派：\n|CFF00FFCC少林 华山 全真 血刀 峨眉 武当 灵鹫宫 姑苏慕容 明教|r\n")
-	elseif((GetUnitTypeId(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))])=='O023'))then
-		call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,15.,"当前可加入任意门派|r\n")
-	elseif((GetUnitTypeId(udg_hero[(1+GetPlayerId(GetTriggerPlayer()))])=='O02J'))then
-		call DisplayTimedTextToPlayer(GetTriggerPlayer(),0,0,15.,"当前可加入任意门派|r\n")
-	endif
-endfunction
 
 //选择门派加入
 function WuMenPai_Condition takes nothing returns boolean
     return UnitTypeNotNull(GetLeavingUnit(),UNIT_TYPE_HERO) and udg_runamen[1+GetPlayerId(GetOwningPlayer(GetLeavingUnit()))]==0 and GetPlayerController(GetOwningPlayer(GetLeavingUnit()))==MAP_CONTROL_USER
 endfunction
+
+
+
 //自由门派
 function WuMenPai_Action takes nothing returns nothing
     local unit u=GetLeavingUnit()
@@ -329,7 +310,7 @@ function WuMenPai_Action takes nothing returns nothing
     set Q4=GetRandomLocInRect(He)
     call SetUnitPositionLoc(u,Q4)
     call PanCameraToTimedLocForPlayer(p,Q4,0)
-    call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+    call createPartnerAndTownPortalDummy(i, Q4)
     call AdjustPlayerStateBJ(60,p,PLAYER_STATE_RESOURCE_LUMBER)
     set P4[i]=bj_lastCreatedUnit
     set udg_shuxing[i]=udg_shuxing[i]+5
@@ -470,7 +451,7 @@ function JiaRuMenPai takes nothing returns nothing
 	      set Q4=GetRandomLocInRect(He)
 	      call SetUnitPositionLoc(u,Q4)
 	      call PanCameraToTimedLocForPlayer(p,Q4,0)
-	      call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+	      call createPartnerAndTownPortalDummy(i, Q4)
 	      set P4[i]=bj_lastCreatedUnit
 	      set gengu[i]=(gengu[i]+3)
 	      set jingmai[i]=(jingmai[i]+2)
@@ -498,7 +479,7 @@ function JiaRuMenPai takes nothing returns nothing
 			set Q4=GetRandomLocInRect(He)
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set danpo[i]=(danpo[i]+3)
 			set jingmai[i]=(jingmai[i]+2)
@@ -526,7 +507,7 @@ function JiaRuMenPai takes nothing returns nothing
 			set Q4=GetRandomLocInRect(He)
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set wuxing[i]=(wuxing[i]+3)
 			set danpo[i]=(danpo[i]+2)
@@ -554,7 +535,7 @@ function JiaRuMenPai takes nothing returns nothing
 			set Q4=GetRandomLocInRect(He)
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set jingmai[i]=(jingmai[i]+3)
 			set fuyuan[i]=(fuyuan[i]+2)
@@ -582,7 +563,7 @@ function JiaRuMenPai takes nothing returns nothing
 			set Q4=GetRandomLocInRect(He)
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set gengu[i]=(gengu[i]+2)
 			set danpo[i]=(danpo[i]+3)
@@ -610,7 +591,7 @@ function JiaRuMenPai takes nothing returns nothing
 			set Q4=GetRandomLocInRect(He)
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set yishu[i]=(yishu[i]+3)
 			set fuyuan[i]=(fuyuan[i]+2)
@@ -639,7 +620,7 @@ function JiaRuMenPai takes nothing returns nothing
 			set Q4=GetRandomLocInRect(He)
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set yishu[i]=(yishu[i]+1)
 			set jingmai[i]=(jingmai[i]+1)
@@ -668,7 +649,7 @@ function JiaRuMenPai takes nothing returns nothing
 			call UnitRemoveAbility(u,'Avul')
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set danpo[i]=(danpo[i]+2)
 			set yishu[i]=(yishu[i]+1)
@@ -697,7 +678,7 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call UnitRemoveAbility(u,'Avul')
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set gengu[i]=(gengu[i]+1)
 			set jingmai[i]=(jingmai[i]+2)
@@ -726,7 +707,7 @@ function JiaRuMenPai takes nothing returns nothing
 			set Q4=GetRandomLocInRect(He)
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
-			call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+			call createPartnerAndTownPortalDummy(i, Q4)
 			set P4[i]=bj_lastCreatedUnit
 			set wuxing[i]=(wuxing[i]+2)
 			set jingmai[i]=(jingmai[i]+1)
@@ -755,7 +736,7 @@ function JiaRuMenPai takes nothing returns nothing
 	    	set Q4=GetRandomLocInRect(He)
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
-	    	call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+	    	call createPartnerAndTownPortalDummy(i, Q4)
 	    	set P4[i]=bj_lastCreatedUnit
 	    	set wuxing[i]=(wuxing[i]+3)
 	    	set yishu[i]=(yishu[i]+2)
@@ -783,7 +764,7 @@ function JiaRuMenPai takes nothing returns nothing
 	    	set Q4=GetRandomLocInRect(He)
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
-	    	call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+	    	call createPartnerAndTownPortalDummy(i, Q4)
 	    	set P4[i]=bj_lastCreatedUnit
 	    	set gengu[i]=gengu[i]+2
 	    	set fuyuan[i] = fuyuan[i] + 2
@@ -808,7 +789,7 @@ function JiaRuMenPai takes nothing returns nothing
 	    	set Q4=GetRandomLocInRect(He)
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
-	    	call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+	    	call createPartnerAndTownPortalDummy(i, Q4)
 	    	set P4[i]=bj_lastCreatedUnit
 	    	set gengu[i]=gengu[i]+2
 	    	set fuyuan[i] = fuyuan[i] + 2
@@ -835,7 +816,7 @@ function JiaRuMenPai takes nothing returns nothing
 	    	set Q4=GetRandomLocInRect(He)
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
-	    	call CreateNUnitsAtLoc(1,'nvul',p,Q4,bj_UNIT_FACING)
+	    	call createPartnerAndTownPortalDummy(i, Q4)
 	    	set P4[i]=bj_lastCreatedUnit
 			set gengu[i] = gengu[i] + 3
 	    	set wuxing[i] = wuxing[i] + 1
@@ -2350,7 +2331,7 @@ function HeroLevel takes nothing returns nothing
 			set juexuelingwu[i] = juexuelingwu[i]+50
 			// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓练气大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得练气大师")
-			call SetPlayerName(p, "〓练气大师〓"+GetPlayerName(p))
+			call SetPlayerName(p, "〓练气大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 		endif
 	endif
 	
@@ -3133,7 +3114,7 @@ function CollectGuDong_Actions takes nothing returns nothing
 	    call Deputy_setMaster(i, JIAN_DING)
 		// call SaveStr(YDHT, GetHandleId(p), GetHandleId(p),"〓鉴定大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(p)+"获得鉴定大师")
-		call SetPlayerName(p, "〓鉴定大师〓"+GetPlayerName(p))
+		call SetPlayerName(p, "〓鉴定大师〓"+LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 	endif
 	set u=null
 	set p=null
@@ -4407,7 +4388,7 @@ function WuPinHeCheng takes nothing returns nothing
 		call DZDSBuShuXing(udg_hero[i])
 		// call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"获得锻造大师")
-		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓"+GetPlayerName(GetOwningPlayer(GetTriggerUnit())))
+		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 	endif
     set it=null
 endfunction
@@ -4425,7 +4406,7 @@ endfunction
 		call DZDSBuShuXing(udg_hero[i])
 		// call SaveStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit())),"〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|CFF66FF00恭喜"+GetPlayerName(GetOwningPlayer(GetTriggerUnit()))+"获得锻造大师")
-		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓"+GetPlayerName(GetOwningPlayer(GetTriggerUnit())))
+		call SetPlayerName(GetOwningPlayer(GetTriggerUnit()), "〓锻造大师〓"+LoadStr(YDHT, GetHandleId(GetOwningPlayer(GetTriggerUnit())), GetHandleId(GetOwningPlayer(GetTriggerUnit()))))
 	endif
  endfunction
 
@@ -5335,6 +5316,25 @@ function LingJiuGongJinGong takes nothing returns nothing
 	endif
 endfunction
 
+function isF2TownPortal takes nothing returns boolean
+    return GetUnitTypeId(GetTriggerUnit()) == 'O02W' or GetUnitTypeId(GetTriggerUnit()) == 'O02X' or GetUnitTypeId(GetTriggerUnit()) == 'O02Y'
+endfunction
+function f2TownPortal takes nothing returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(GetTriggerUnit()))
+    if GetUnitTypeId(GetTriggerUnit()) == 'O02X' then
+        call SetUnitPosition(udg_hero[i],-869,796)
+        call PanCameraToTimedForPlayer(GetOwningPlayer(GetTriggerUnit()),-869,796,0)
+    elseif GetUnitTypeId(GetTriggerUnit()) == 'O02Y' then
+        call SetUnitPosition(udg_hero[i],-869,-2000)
+        call PanCameraToTimedForPlayer(GetOwningPlayer(GetTriggerUnit()),-869,-2000,0)
+    else
+        call SetUnitPosition(udg_hero[i],-1174,-678)
+        call PanCameraToTimedForPlayer(GetOwningPlayer(GetTriggerUnit()),-1174,-678,0)
+	endif
+    call ClearSelectionForPlayer(GetOwningPlayer(GetTriggerUnit()))
+    call SelectUnitForPlayerSingle(udg_hero[i],GetOwningPlayer(GetTriggerUnit()))
+endfunction
+
 /*
  * 游戏逻辑触发器
  */
@@ -5357,15 +5357,6 @@ function GameLogic_Trigger takes nothing returns nothing
 	call TriggerRegisterPlayerSelectionEventBJ(Jh,Player(4),true)
 	call TriggerAddCondition(Jh,Condition(function fx))
 	call TriggerAddAction(Jh,function SelectHero)
-	//查看当前可加入门派
-	set Lh=CreateTrigger()
-	call TriggerRegisterPlayerSelectionEventBJ(Lh,Player(0),true)
-	call TriggerRegisterPlayerSelectionEventBJ(Lh,Player(1),true)
-	call TriggerRegisterPlayerSelectionEventBJ(Lh,Player(2),true)
-	call TriggerRegisterPlayerSelectionEventBJ(Lh,Player(3),true)
-	call TriggerRegisterPlayerSelectionEventBJ(Lh,Player(4),true)
-	call TriggerAddCondition(Lh,Condition(function kx))
-	call TriggerAddAction(Lh,function MenPai)
 	// 加入门派
 	set Mh=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(Mh,EVENT_PLAYER_UNIT_PICKUP_ITEM)
@@ -5961,6 +5952,16 @@ function GameLogic_Trigger takes nothing returns nothing
 	set t=CreateTrigger()
 	call TriggerRegisterTimerEventPeriodic(t,1000.00)
 	call TriggerAddAction(t,function MoJiaoJiuRen)
+
+	// F2回城 F3城前 F4城后
+    set t=CreateTrigger()
+    call TriggerRegisterPlayerSelectionEventBJ(t,Player(0),true)
+    call TriggerRegisterPlayerSelectionEventBJ(t,Player(1),true)
+    call TriggerRegisterPlayerSelectionEventBJ(t,Player(2),true)
+    call TriggerRegisterPlayerSelectionEventBJ(t,Player(3),true)
+    call TriggerRegisterPlayerSelectionEventBJ(t,Player(4),true)
+    call TriggerAddCondition(t,Condition(function isF2TownPortal))
+    call TriggerAddAction(t,function f2TownPortal)
 	set t = null
 endfunction
 
