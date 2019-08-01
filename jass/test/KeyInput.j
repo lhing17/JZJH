@@ -413,7 +413,6 @@ function KeyInput takes nothing returns nothing
 	    call SetUnitPositionLoc(udg_hero[i],Q4)
 	    call PanCameraToTimedLocForPlayer(p,Q4,0)
 	    call createPartnerAndTownPortalDummy(i, Q4)
-	    set P4[i]=bj_lastCreatedUnit
 	    call RemoveLocation(Q4)
 	    call UnitAddItemByIdSwapped(1227896394,udg_hero[i])
 	endif

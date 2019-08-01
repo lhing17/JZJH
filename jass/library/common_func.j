@@ -1527,6 +1527,7 @@ endfunction
 function createPartnerAndTownPortalDummy takes integer i, location loc returns nothing
     local player p = Player(i - 1)
     call CreateNUnitsAtLoc(1,'nvul',p,loc,bj_UNIT_FACING)
+    set P4[i]=bj_lastCreatedUnit
     call CreateNUnitsAtLoc(1, 'O02W', p, loc, bj_UNIT_FACING)
     call SuspendHeroXP(bj_lastCreatedUnit,true)
     call CreateNUnitsAtLoc(1, 'O02X', p, loc, bj_UNIT_FACING)
@@ -1746,7 +1747,6 @@ function randomMenpai takes player p,integer status returns nothing
 		call PanCameraToTimedLocForPlayer(p,Q4,0)
 		call createPartnerAndTownPortalDummy(i, Q4)
 		call AdjustPlayerStateBJ(50,p,PLAYER_STATE_RESOURCE_LUMBER)
-		set P4[i]=bj_lastCreatedUnit
 		call RemoveLocation(Q4)
 		call UnitAddItemByIdSwapped(1227896394,udg_hero[i])
 	endif

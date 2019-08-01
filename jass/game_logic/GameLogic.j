@@ -312,7 +312,6 @@ function WuMenPai_Action takes nothing returns nothing
     call PanCameraToTimedLocForPlayer(p,Q4,0)
     call createPartnerAndTownPortalDummy(i, Q4)
     call AdjustPlayerStateBJ(60,p,PLAYER_STATE_RESOURCE_LUMBER)
-    set P4[i]=bj_lastCreatedUnit
     set udg_shuxing[i]=udg_shuxing[i]+5
     call RemoveLocation(Q4)
     call UnitAddItemByIdSwapped(1227896394,u)
@@ -452,7 +451,6 @@ function JiaRuMenPai takes nothing returns nothing
 	      call SetUnitPositionLoc(u,Q4)
 	      call PanCameraToTimedLocForPlayer(p,Q4,0)
 	      call createPartnerAndTownPortalDummy(i, Q4)
-	      set P4[i]=bj_lastCreatedUnit
 	      set gengu[i]=(gengu[i]+3)
 	      set jingmai[i]=(jingmai[i]+2)
 	      call RemoveLocation(Q4)
@@ -480,7 +478,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set danpo[i]=(danpo[i]+3)
 			set jingmai[i]=(jingmai[i]+2)
 			call RemoveLocation(Q4)
@@ -508,7 +505,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set wuxing[i]=(wuxing[i]+3)
 			set danpo[i]=(danpo[i]+2)
 			call RemoveLocation(Q4)
@@ -536,7 +532,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set jingmai[i]=(jingmai[i]+3)
 			set fuyuan[i]=(fuyuan[i]+2)
 			call RemoveLocation(Q4)
@@ -564,7 +559,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set gengu[i]=(gengu[i]+2)
 			set danpo[i]=(danpo[i]+3)
 			call RemoveLocation(Q4)
@@ -592,7 +586,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set yishu[i]=(yishu[i]+3)
 			set fuyuan[i]=(fuyuan[i]+2)
 			call RemoveLocation(Q4)
@@ -621,7 +614,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set yishu[i]=(yishu[i]+1)
 			set jingmai[i]=(jingmai[i]+1)
 			set fuyuan[i]=(fuyuan[i]+3)
@@ -650,7 +642,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set danpo[i]=(danpo[i]+2)
 			set yishu[i]=(yishu[i]+1)
 			set jingmai[i]=(jingmai[i]+2)
@@ -679,7 +670,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call UnitRemoveAbility(u,'Avul')
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set gengu[i]=(gengu[i]+1)
 			set jingmai[i]=(jingmai[i]+2)
 			set fuyuan[i]=(fuyuan[i]+2)
@@ -708,7 +698,6 @@ function JiaRuMenPai takes nothing returns nothing
 			call SetUnitPositionLoc(u,Q4)
 			call PanCameraToTimedLocForPlayer(p,Q4,0)
 			call createPartnerAndTownPortalDummy(i, Q4)
-			set P4[i]=bj_lastCreatedUnit
 			set wuxing[i]=(wuxing[i]+2)
 			set jingmai[i]=(jingmai[i]+1)
 			set fuyuan[i]=(fuyuan[i]+2)
@@ -737,7 +726,6 @@ function JiaRuMenPai takes nothing returns nothing
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
 	    	call createPartnerAndTownPortalDummy(i, Q4)
-	    	set P4[i]=bj_lastCreatedUnit
 	    	set wuxing[i]=(wuxing[i]+3)
 	    	set yishu[i]=(yishu[i]+2)
 	    	call RemoveLocation(Q4)
@@ -765,7 +753,6 @@ function JiaRuMenPai takes nothing returns nothing
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
 	    	call createPartnerAndTownPortalDummy(i, Q4)
-	    	set P4[i]=bj_lastCreatedUnit
 	    	set gengu[i]=gengu[i]+2
 	    	set fuyuan[i] = fuyuan[i] + 2
 	    	set danpo[i] = danpo[i] + 1
@@ -790,7 +777,6 @@ function JiaRuMenPai takes nothing returns nothing
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
 	    	call createPartnerAndTownPortalDummy(i, Q4)
-	    	set P4[i]=bj_lastCreatedUnit
 	    	set gengu[i]=gengu[i]+2
 	    	set fuyuan[i] = fuyuan[i] + 2
 	    	set danpo[i] = danpo[i] + 1
@@ -817,7 +803,6 @@ function JiaRuMenPai takes nothing returns nothing
 	    	call SetUnitPositionLoc(u,Q4)
 	    	call PanCameraToTimedLocForPlayer(p,Q4,0)
 	    	call createPartnerAndTownPortalDummy(i, Q4)
-	    	set P4[i]=bj_lastCreatedUnit
 			set gengu[i] = gengu[i] + 3
 	    	set wuxing[i] = wuxing[i] + 1
 	    	set yishu[i] = yishu[i] + 1
