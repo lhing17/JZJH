@@ -10,6 +10,7 @@ library FrameLibrary initializer init
         integer id = 0
         boolean isShow = true
         boolean isEnable = true
+        boolean hover = false
         method numadd takes nothing returns nothing
             set num = num + 1
         endmethod
@@ -74,6 +75,13 @@ library FrameLibrary initializer init
             call f.numadd()
             set f.id = DzCreateFrameByTagName("TEXT", "Frame_Text" + I2S(num), parent.id, ff, 0)
             call DzFrameSetText(f.id, str)
+            call SaveInteger(HT, FRAME_ID, f.id, f)
+            return f
+        endmethod
+        static method newTextButton takes Frame parent returns Frame
+            local Frame f = Frame.allocate()
+            call f.numadd()
+            set f.id = DzCreateFrameByTagName("GLUETEXTBUTTON", "Frame_Button" + I2S(num), parent.id, "template", 0)
             call SaveInteger(HT, FRAME_ID, f.id, f)
             return f
         endmethod
@@ -158,6 +166,24 @@ library FrameLibrary initializer init
             call DzFrameShow(id, true)
             set isShow = true
         endmethod
+        method toggle takes nothing returns nothing
+            if isShow then
+                call DzFrameShow(id, false)
+                set isShow = false
+            else
+                call DzFrameShow(id, true)
+                set isShow = true
+            endif
+        endmethod
+        method toggerHover takes string path0, string path1 returns nothing
+            if hover then
+                set hover = false
+                call DzFrameSetTexture(id, path0, 0)
+            else
+                set hover = true
+                call DzFrameSetTexture(id, path1, 0)
+            endif
+        endmethod
         method enable takes nothing returns nothing
             call DzFrameSetEnable(id, true)
             set isEnable = true
@@ -180,6 +206,9 @@ library FrameLibrary initializer init
         local integer f = DzFrameGetTooltip()
         local real size = 0.75
         set GUI = Frame.getFrame(DzGetGameUI())
+
+        //call openBoardButton.setText("任务")
+
         //call DzFrameClearAllPoints(f)
         //call DzFrameSetPoint(f, 7, DzGetGameUI(), 7, 0, .14)
     endfunction
