@@ -1,6 +1,7 @@
 globals
     Frame array zwidget
     Frame array zbutton
+    string array attrStr
     // UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
     constant integer TOPLEFT = 0
     constant integer TOP = 1
@@ -37,9 +38,15 @@ function toggleFuncBoard takes nothing returns nothing
     endif
 endfunction
 
+function toggleAttrBoard takes nothing returns nothing
+    if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+        call zwidget[14].toggle()
+    endif
+endfunction
+
 function toggleOpenButton takes nothing returns nothing
     if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
-        call zwidget[1].toggerHover("war3mapImported\\attr0.tga", "war3mapImported\\attr1.tga")
+        call zwidget[1].toggerHover("war3mapImported\\func0.tga", "war3mapImported\\func1.tga")
     endif
 endfunction
 
@@ -81,7 +88,7 @@ function toggleWidget11 takes nothing returns nothing
 endfunction
 function toggleWidget12 takes nothing returns nothing
     if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
-        call zwidget[12].toggerHover("war3mapImported\\func0.tga", "war3mapImported\\func1.tga")
+        call zwidget[12].toggerHover("war3mapImported\\attr0.tga", "war3mapImported\\attr1.tga")
     endif
 endfunction
 
@@ -90,7 +97,7 @@ function drawUI_Conditions takes nothing returns boolean
     call DzLoadToc("ui\\custom.toc")
 
     // 创建功能开启按钮背景
-    set zwidget[1] = Frame.newImage1(GUI, "war3mapImported\\attr0.tga", 0.04, 0.053)
+    set zwidget[1] = Frame.newImage1(GUI, "war3mapImported\\func0.tga", 0.04, 0.053)
     call zwidget[1].setPoint(1, Frame.getFrame(DzFrameGetHeroBarButton(3)), 7, 0.0, -0.016)
     call zwidget[1].setAlpha(255)
 
@@ -186,17 +193,79 @@ function drawUI_Conditions takes nothing returns boolean
     call zbutton[9].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget11)
 
     // 创建属性开启按钮背景
-    set zwidget[12] = Frame.newImage1(GUI, "war3mapImported\\func0.tga", 0.04, 0.053)
+    set zwidget[12] = Frame.newImage1(GUI, "war3mapImported\\attr0.tga", 0.04, 0.053)
     call zwidget[12].setPoint(1, zwidget[1], 7, 0.0, -0.016)
     call zwidget[12].setAlpha(255)
 
     // 创建属性介绍
     set zwidget[13]= Frame.newText1(zwidget[12], "属性", "TXA10")
     call zwidget[13].setPoint(4, zwidget[12], 4, 0, 0)
+
+
+    // 属性界面
+    set zwidget[14] = Frame.newImage1(GUI, "war3mapImported\\blackback.tga", 0.3, 0.3)
+    call zwidget[14].setPoint(4, GUI, 4, 0.0, 0.08)
+    call zwidget[14].hide()
+
+    // 显示属性
+    set attrStr[1] = "暴击率"
+    set attrStr[2] = "0%"
+    set attrStr[3] = "暴击伤害"
+    set attrStr[4] = "0%"
+    set attrStr[5] = "伤害加成"
+    set attrStr[6] = "0%"
+    set attrStr[7] = "伤害吸收"
+    set attrStr[8] = "0%"
+    set attrStr[9] = "根骨"
+    set attrStr[10] = "0"
+    set attrStr[11] = "悟性"
+    set attrStr[12] = "0"
+    set attrStr[13] = "经脉"
+    set attrStr[14] = "0"
+    set attrStr[15] = "福缘"
+    set attrStr[16] = "0"
+    set attrStr[17] = "胆魄"
+    set attrStr[18] = "0"
+    set attrStr[19] = "医术"
+    set attrStr[20] = "0"
+
+
+    set zwidget[101]= Frame.newText1(zwidget[14], "暴击率", "TXA15")
+    call zwidget[101].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.01, -0.03)
+    call zwidget[101].setColor255(0, 255, 255)
+
+    set zwidget[102]= Frame.newText1(zwidget[14], "0%", "TXA15")
+    call zwidget[102].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.085, -0.03)
+    call zwidget[102].setColor255(255, 255, 255)
+
+    set zwidget[103]= Frame.newText1(zwidget[14], "暴击伤害", "TXA15")
+    call zwidget[103].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.16, -0.03)
+    call zwidget[103].setColor255(0, 255, 255)
+
+    set zwidget[104]= Frame.newText1(zwidget[14], "0%", "TXA15")
+    call zwidget[104].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.235, -0.03)
+    call zwidget[104].setColor255(255, 255, 255)
+
+    set zwidget[105]= Frame.newText1(zwidget[14], "伤害加成", "TXA15")
+    call zwidget[105].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.01, -0.06)
+    call zwidget[105].setColor255(0, 255, 255)
+
+    set zwidget[106]= Frame.newText1(zwidget[14], "0%", "TXA15")
+    call zwidget[106].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.085, -0.06)
+    call zwidget[106].setColor255(255, 255, 255)
+
+    set zwidget[107]= Frame.newText1(zwidget[14], "伤害吸收", "TXA15")
+    call zwidget[107].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.16, -0.06)
+    call zwidget[107].setColor255(0, 255, 255)
+
+    set zwidget[108]= Frame.newText1(zwidget[14], "0%", "TXA15")
+    call zwidget[108].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.235, -0.06)
+    call zwidget[108].setColor255(255, 255, 255)
+
     // 创建属性开启按钮
     set zbutton[10] = Frame.newTextButton(zwidget[12])
     call zbutton[10].setAllPoints(zwidget[12])
-    call zbutton[10].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
+    call zbutton[10].regEvent(FRAME_EVENT_PRESSED, function toggleAttrBoard)
     call zbutton[10].regEvent(FRAME_MOUSE_ENTER, function toggleWidget12)
     call zbutton[10].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget12)
 
@@ -225,6 +294,9 @@ function drawUI_Conditions takes nothing returns boolean
     set zwidget[1008] = Frame.newText1(zwidget[3], "狼皮任务（15/10）", "TXA15")
     call zwidget[1008].setPoint(TOPLEFT, zwidget[3], TOPLEFT, 0.11, -0.255)
     call zwidget[1008].setColor255(0, 0, 0)
+
+
+
 
     return false
 endfunction

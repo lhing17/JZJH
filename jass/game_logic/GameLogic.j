@@ -74,7 +74,7 @@ function JiDiAiDa_Actions takes nothing returns nothing
 	//==============反仇恨机制定义单位组==============
 	local group g=CreateGroup()
 	//==============反仇恨机制定义单位组==============
-    if GetRandomInt(30,50) == 48 then
+    if GetRandomInt(1,50) == 48 then
 	    call PingMinimapForForce(bj_FORCE_ALL_PLAYERS,GetUnitX(udg_ZhengPaiWL),GetUnitY(udg_ZhengPaiWL),1)
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFCCFF00正派武林受到攻击，请赶紧回防")
     endif
