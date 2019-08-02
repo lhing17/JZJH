@@ -23,6 +23,7 @@
 #include "game_logic/ShowHealthPoint.j"
 #include "game_logic/BlizzardEvent.j"
 #include "game_logic/EverySecond.j"
+#include "game_logic/PetSkill.j"
 #include "game_logic/JZUI.j"
 
 #include "systems/ElixirSystem.j"
@@ -2334,5 +2335,7 @@ function main2 takes nothing returns nothing
 	call showHealthPoint() //展示单位血量
 	call talent() //天赋系统
 	call EverySecond() // 记录游戏时间
+	call initPetSkill() // 宠物技能
 	call initUI() // 初始化UI
+
 endfunction

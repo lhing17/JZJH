@@ -67,7 +67,7 @@ function JiDiAiDa_Conditions takes nothing returns boolean
 	return(GetPlayerController(GetOwningPlayer(GetAttacker()))==MAP_CONTROL_COMPUTER)
 endfunction
 function laojiayouren takes nothing returns boolean
-    return (IsUnitAlly(GetFilterUnit(), Player(0))) and (IsUnitType(GetFilterUnit(),UNIT_TYPE_HERO)) and (GetPlayerController(GetOwningPlayer(GetFilterUnit()))==MAP_CONTROL_USER)
+    return (IsUnitAlly(GetFilterUnit(), Player(0))) and (IsUnitType(GetFilterUnit(),UNIT_TYPE_HERO) or GetUnitTypeId(GetFilterUnit())=='n00X') and (GetPlayerController(GetOwningPlayer(GetFilterUnit()))==MAP_CONTROL_USER)
 endfunction
 
 function JiDiAiDa_Actions takes nothing returns nothing
@@ -4883,6 +4883,9 @@ function Ya takes nothing returns nothing
 			call createitem(gudong[GetRandomInt(1,(6+(udg_boshu/5)))],x,y)
 		endif
 	endif
+	if (GetUnitTypeId(P4[i]) == 'n00V' and GetRandomInt(1, 100) <= 10) then
+	    call AdjustPlayerStateBJ(1,GetOwningPlayer(GetKillingUnit()),PLAYER_STATE_RESOURCE_LUMBER)
+	endif
 	set u = null
 	set p = null
 endfunction
@@ -4897,6 +4900,9 @@ function eB takes nothing returns nothing
 	elseif((ModuloInteger(GetUnitPointValue(GetTriggerUnit()),10)==2))then
 		set shengwang[i]=shengwang[i]+10
 	endif
+	if (GetUnitTypeId(P4[i]) == 'n00V' and GetRandomInt(1, 100) <= 10) then
+        call AdjustPlayerStateBJ(1,GetOwningPlayer(GetKillingUnit()),PLAYER_STATE_RESOURCE_LUMBER)
+    endif
 endfunction
 
 

@@ -31,7 +31,7 @@ globals
     constant integer FRAME_SPRITE_ANIM_UPDATE = 13
 endglobals
 
-function openBoard takes nothing returns nothing
+function toggleFuncBoard takes nothing returns nothing
     if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
         call zwidget[3].toggle()
     endif
@@ -39,7 +39,7 @@ endfunction
 
 function toggleOpenButton takes nothing returns nothing
     if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
-        call zwidget[1].toggerHover("war3mapImported\\Jiemian_xxk0.tga", "war3mapImported\\Jiemian_xxk1.tga")
+        call zwidget[1].toggerHover("war3mapImported\\attr0.tga", "war3mapImported\\attr1.tga")
     endif
 endfunction
 
@@ -79,12 +79,18 @@ function toggleWidget11 takes nothing returns nothing
         call zwidget[11].toggerHover("war3mapImported\\non_open01.tga", "war3mapImported\\non_open02.tga")
     endif
 endfunction
+function toggleWidget12 takes nothing returns nothing
+    if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+        call zwidget[12].toggerHover("war3mapImported\\func0.tga", "war3mapImported\\func1.tga")
+    endif
+endfunction
+
 
 function drawUI_Conditions takes nothing returns boolean
     call DzLoadToc("ui\\custom.toc")
 
     // 创建功能开启按钮背景
-    set zwidget[1] = Frame.newImage1(GUI, "war3mapImported\\Jiemian_xxk0.tga", 0.04, 0.02)
+    set zwidget[1] = Frame.newImage1(GUI, "war3mapImported\\attr0.tga", 0.04, 0.053)
     call zwidget[1].setPoint(1, Frame.getFrame(DzFrameGetHeroBarButton(3)), 7, 0.0, -0.016)
     call zwidget[1].setAlpha(255)
 
@@ -94,7 +100,7 @@ function drawUI_Conditions takes nothing returns boolean
     // 创建功能开启按钮
     set zbutton[1] = Frame.newTextButton(zwidget[1])
     call zbutton[1].setAllPoints(zwidget[1])
-    call zbutton[1].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[1].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[1].regEvent(FRAME_MOUSE_ENTER, function toggleOpenButton)
     call zbutton[1].regEvent(FRAME_MOUSE_LEAVE, function toggleOpenButton)
     //call DzFrameSetScript(udg_UI_Gn_AN[1], 2, "Trig_GN_JiemianAActions", false)
@@ -112,7 +118,7 @@ function drawUI_Conditions takes nothing returns boolean
     // 关闭按钮
     set zbutton[2] = Frame.newTextButton(zwidget[4])
     call zbutton[2].setAllPoints(zwidget[4])
-    call zbutton[2].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[2].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
 
     // 任务面板
     set zwidget[5] = Frame.newImage1(zwidget[3], "war3mapImported\\achievement01.tga", 0.04, 0.015)
@@ -120,7 +126,7 @@ function drawUI_Conditions takes nothing returns boolean
 
     set zbutton[3] = Frame.newTextButton(zwidget[5])
     call zbutton[3].setAllPoints(zwidget[5])
-    call zbutton[3].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[3].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[3].regEvent(FRAME_MOUSE_ENTER, function toggleWidget5)
     call zbutton[3].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget5)
 
@@ -130,7 +136,7 @@ function drawUI_Conditions takes nothing returns boolean
 
     set zbutton[4] = Frame.newTextButton(zwidget[6])
     call zbutton[4].setAllPoints(zwidget[6])
-    call zbutton[4].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[4].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[4].regEvent(FRAME_MOUSE_ENTER, function toggleWidget6)
     call zbutton[4].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget6)
 
@@ -139,7 +145,7 @@ function drawUI_Conditions takes nothing returns boolean
 
     set zbutton[5] = Frame.newTextButton(zwidget[7])
     call zbutton[5].setAllPoints(zwidget[7])
-    call zbutton[5].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[5].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[5].regEvent(FRAME_MOUSE_ENTER, function toggleWidget7)
     call zbutton[5].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget7)
 
@@ -148,7 +154,7 @@ function drawUI_Conditions takes nothing returns boolean
 
     set zbutton[6] = Frame.newTextButton(zwidget[8])
     call zbutton[6].setAllPoints(zwidget[8])
-    call zbutton[6].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[6].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[6].regEvent(FRAME_MOUSE_ENTER, function toggleWidget8)
     call zbutton[6].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget8)
 
@@ -157,7 +163,7 @@ function drawUI_Conditions takes nothing returns boolean
 
     set zbutton[7] = Frame.newTextButton(zwidget[9])
     call zbutton[7].setAllPoints(zwidget[9])
-    call zbutton[7].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[7].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[7].regEvent(FRAME_MOUSE_ENTER, function toggleWidget9)
     call zbutton[7].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget9)
 
@@ -166,7 +172,7 @@ function drawUI_Conditions takes nothing returns boolean
 
     set zbutton[8] = Frame.newTextButton(zwidget[10])
     call zbutton[8].setAllPoints(zwidget[10])
-    call zbutton[8].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[8].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[8].regEvent(FRAME_MOUSE_ENTER, function toggleWidget10)
     call zbutton[8].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget10)
 
@@ -175,9 +181,24 @@ function drawUI_Conditions takes nothing returns boolean
 
     set zbutton[9] = Frame.newTextButton(zwidget[11])
     call zbutton[9].setAllPoints(zwidget[11])
-    call zbutton[9].regEvent(FRAME_EVENT_PRESSED, function openBoard)
+    call zbutton[9].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
     call zbutton[9].regEvent(FRAME_MOUSE_ENTER, function toggleWidget11)
     call zbutton[9].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget11)
+
+    // 创建属性开启按钮背景
+    set zwidget[12] = Frame.newImage1(GUI, "war3mapImported\\func0.tga", 0.04, 0.053)
+    call zwidget[12].setPoint(1, zwidget[1], 7, 0.0, -0.016)
+    call zwidget[12].setAlpha(255)
+
+    // 创建属性介绍
+    set zwidget[13]= Frame.newText1(zwidget[12], "属性", "TXA10")
+    call zwidget[13].setPoint(4, zwidget[12], 4, 0, 0)
+    // 创建属性开启按钮
+    set zbutton[10] = Frame.newTextButton(zwidget[12])
+    call zbutton[10].setAllPoints(zwidget[12])
+    call zbutton[10].regEvent(FRAME_EVENT_PRESSED, function toggleFuncBoard)
+    call zbutton[10].regEvent(FRAME_MOUSE_ENTER, function toggleWidget12)
+    call zbutton[10].regEvent(FRAME_MOUSE_LEAVE, function toggleWidget12)
 
     set zwidget[1000] = Frame.newText1(zwidget[3], "杀狼任务（5/6）", "TXA15")
     call zwidget[1000].setPoint(TOPLEFT, zwidget[3], TOPLEFT, 0.11, -0.035)
