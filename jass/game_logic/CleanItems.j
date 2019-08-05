@@ -59,7 +59,6 @@ endfunction
 
 function doCleanItems takes nothing returns nothing
     call RemoveItem(GetEnumItem())
-    set readyToClear[1 + GetPlayerId(GetTriggerPlayer())] = false
 endfunction
 
 function cleanItemActions takes nothing returns nothing
@@ -72,6 +71,7 @@ function cleanItemActions takes nothing returns nothing
             set readyToClear[i] = true
         else
             call EnumItemsInRect(bj_mapInitialPlayableArea, Condition(function isNotBook), function doCleanItems)
+            set readyToClear[i] = false
         endif
     endif
     set p = null

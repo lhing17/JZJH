@@ -1964,5 +1964,17 @@ function clearTimer takes timer tm returns nothing
     call DestroyTimer(tm)
 endfunction
 
+/*
+ * 增加全属性
+ */
+function addAllAttrs takes integer i, integer num returns nothing
+    set gengu[i] = gengu[i] + num
+    set danpo[i] = danpo[i] + num
+    set jingmai[i] = jingmai[i] + num
+    set wuxing[i] = wuxing[i] + num
+    set yishu[i] = yishu[i] + num
+    set fuyuan[i] = fuyuan[i] + num
+endfunction
+
 
 #endif //CommonFuncIncluded

@@ -19,6 +19,7 @@
 // 17. 伴侣系统
 // 18. 整理地图上物品
 // 19. 其他琐碎逻辑
+// 20. F2 F3 F4回城
 //---------------------------------
 
 
@@ -138,6 +139,12 @@ function fx takes nothing returns boolean
 	return(((udg_hashero[(1+GetPlayerId(GetTriggerPlayer()))]==false)and(IsUnitInGroup(GetTriggerUnit(),i7))))
 endfunction
 
+function playAttackAnimation takes unit u returns nothing
+    call SetUnitAnimation(u,"attack")
+    call YDWEPolledWaitNull(2)
+    call ResetUnitAnimation(u)
+endfunction
+
 function SelectHero takes nothing returns nothing
     local player p=GetTriggerPlayer()
     local integer i=1+GetPlayerId(p)
@@ -150,78 +157,48 @@ function SelectHero takes nothing returns nothing
     	endif
         if(u==K4[1])then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00若蝶|r，请选择门派后开启江湖之旅")
-			set gengu[i]=(gengu[i]+2)
-			set danpo[i]=(danpo[i]+2)
-			set jingmai[i]=(jingmai[i]+2)
-			set wuxing[i]=wuxing[i]+8
-			set yishu[i]=yishu[i]+2
-			set fuyuan[i]=fuyuan[i]+2
+            call addAllAttrs(i, 2)
+			set wuxing[i] = wuxing[i] + 6
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif(u==K4[2])then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00潇侠|r，请选择门派后开启江湖之旅")
-			set gengu[i]=(gengu[i]+2)
-			set danpo[i]=(danpo[i]+2)
-			set jingmai[i]=(jingmai[i]+2)
-			set wuxing[i]=wuxing[i]+2
-			set yishu[i]=yishu[i]+2
-			set fuyuan[i]=fuyuan[i]+8
+            call addAllAttrs(i, 2)
+            set fuyuan[i] = fuyuan[i] + 6
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[3]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00莫言|r，请选择门派后开启江湖之旅")
-			set gengu[i]=(gengu[i]+2)
-			set danpo[i]=(danpo[i]+8)
-			set jingmai[i]=(jingmai[i]+2)
-			set wuxing[i]=wuxing[i]+2
-			set yishu[i]=yishu[i]+2
-			set fuyuan[i]=fuyuan[i]+2
+            call addAllAttrs(i, 2)
+            set danpo[i] = danpo[i] + 6
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[4]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00浪云|r，请选择门派后开启江湖之旅")
-			set gengu[i]=(gengu[i]+2)
-			set danpo[i]=(danpo[i]+2)
-			set jingmai[i]=(jingmai[i]+8)
-			set wuxing[i]=wuxing[i]+2
-			set yishu[i]=yishu[i]+2
-			set fuyuan[i]=fuyuan[i]+2
+            call addAllAttrs(i, 2)
+            set jingmai[i] = jingmai[i] + 6
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif((u==K4[5]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00魔君|r，请选择门派后开启江湖之旅")
-			set gengu[i]=(gengu[i]+8)
-			set danpo[i]=(danpo[i]+2)
-			set jingmai[i]=(jingmai[i]+2)
-			set wuxing[i]=wuxing[i]+2
-			set yishu[i]=yishu[i]+2
-			set fuyuan[i]=fuyuan[i]+2
+            call addAllAttrs(i, 2)
+            set gengu[i] = gengu[i] + 6
 			set udg_xinggeA[i]=GetRandomInt(3,5)
 			set udg_xinggeB[i]=GetRandomInt(3,5)
 	        call RemoveUnit(vipbanlv[i])
         elseif (u==K4[6]) then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00兰馨|r，请选择门派后开启江湖之旅|r\n")
-            set gengu[i]=(gengu[i]+3)
-            set danpo[i]=(danpo[i]+3)
-            set jingmai[i]=(jingmai[i]+3)
-            set wuxing[i]=wuxing[i]+3
-            set yishu[i]=yishu[i]+3
-            set fuyuan[i]=fuyuan[i]+3
+            call addAllAttrs(i, 3)
             set udg_xinggeA[i]=GetRandomInt(3,5)
             set udg_xinggeB[i]=GetRandomInt(3,5)
             call RemoveUnit(vipbanlv[i])
         elseif (u==K4[7]) then
             call DisplayTimedTextToPlayer(p,0,0,15.,"恭喜获得英雄：|CFFCCFF00瑾轩|r，请选择门派后开启江湖之旅|r\n")
-            set gengu[i]=(gengu[i]+3)
-            set danpo[i]=(danpo[i]+3)
-            set jingmai[i]=(jingmai[i]+3)
-            set wuxing[i]=wuxing[i]+3
-            set yishu[i]=yishu[i]+3
-            set fuyuan[i]=fuyuan[i]+3
+            call addAllAttrs(i, 3)
             set udg_xinggeA[i]=GetRandomInt(3,5)
             set udg_xinggeB[i]=GetRandomInt(3,5)
             call RemoveUnit(vipbanlv[i])
@@ -233,47 +210,33 @@ function SelectHero takes nothing returns nothing
         	call AddSpecialEffectTargetUnitBJ("overhead",bj_lastCreatedUnit,"Abilities\\Spells\\Other\\Awaken\\Awaken.mdl")
         	call DestroyEffect(bj_lastCreatedEffect)
         	set udg_hero[i]=bj_lastCreatedUnit
-        	set O4=(O4+1)
+        	set O4 = O4 + 1
         	call RemoveLocation(Q4)
-        	call DisplayTimedTextToPlayer(p,0,0,10.,"|CFF00FFFF提示：|r输入|CFF00EE00-random|r可随机选择门派|r")
+        	call DisplayTimedTextToPlayer(p, 0, 0, 10.,"|CFF00FFFF提示：|r输入|CFF00EE00-random|r可随机选择门派|r")
     	endif
     else
         set L4[i]=u
         if((u==K4[1]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00若蝶|r\n额外属性：|cFF00FF00悟性\n|r")
-            call SetUnitAnimation(u,"attack")
-            call YDWEPolledWaitNull(2)
-            call ResetUnitAnimation(K4[1])
+            call playAttackAnimation(u)
         elseif((u==K4[2]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00潇侠|r\n额外属性：|cFF00FF00福缘\n|r")
-            call SetUnitAnimation(u,"attack")
-            call YDWEPolledWaitNull(2)
-            call ResetUnitAnimation(K4[2])
+            call playAttackAnimation(u)
         elseif((u==K4[3]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00莫言|r\n额外属性：|cFF00FF00胆魄\n|r")
-            call SetUnitAnimation(u,"attack")
-            call YDWEPolledWaitNull(2)
-            call ResetUnitAnimation(K4[3])
+            call playAttackAnimation(u)
         elseif((u==K4[4]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00浪云|r\n额外属性：|cFF00FF00经脉\n|r")
-            call SetUnitAnimation(u,"attack")
-            call YDWEPolledWaitNull(2)
-            call ResetUnitAnimation(K4[4])
+            call playAttackAnimation(u)
         elseif((u==K4[5]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00魔君|r\n额外属性：|cFF00FF00根骨\n|r")
-            call SetUnitAnimation(u,"attack")
-            call YDWEPolledWaitNull(2)
-            call ResetUnitAnimation(K4[5])
+            call playAttackAnimation(u)
         elseif((u==K4[6]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00兰馨|r\n额外属性：|cFF00FF00全属性\n|r")
-            call SetUnitAnimation(u,"attack")
-            call YDWEPolledWaitNull(2)
-            call ResetUnitAnimation(K4[6])
+            call playAttackAnimation(u)
         elseif((u==K4[7]))then
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFCCFF00瑾轩|r\n额外属性：|cFF00FF00全属性\n|r")
-            call SetUnitAnimation(u,"attack")
-            call YDWEPolledWaitNull(2)
-            call ResetUnitAnimation(K4[7])
+            call playAttackAnimation(u)
         endif
     endif
     set p=null
@@ -285,8 +248,6 @@ endfunction
 function WuMenPai_Condition takes nothing returns boolean
     return UnitTypeNotNull(GetLeavingUnit(),UNIT_TYPE_HERO) and udg_runamen[1+GetPlayerId(GetOwningPlayer(GetLeavingUnit()))]==0 and GetPlayerController(GetOwningPlayer(GetLeavingUnit()))==MAP_CONTROL_USER
 endfunction
-
-
 
 //自由门派
 function WuMenPai_Action takes nothing returns nothing
@@ -1150,7 +1111,7 @@ function SystemWindow takes nothing returns nothing
         else
         	set s = R2S(udg_MaxDamage[i])+"亿亿"
         endif
-        call MultiboardSetTitleText(bj_lastCreatedMultiboard,"|cFFFFCC33这并不是系统窗口")
+        call MultiboardSetTitleText(bj_lastCreatedMultiboard,"|cFFFFCC33系统窗口")
 		call DuoMianBan(bj_lastCreatedMultiboard,1,4*i-3,"|c00FF0080"+GetPlayerName(Player(i-1)))
 		call DuoMianBan(bj_lastCreatedMultiboard,2,4*i-3,"|c0000FF00"+"等级："+I2S(GetUnitLevel(udg_hero[i])))
 		call DuoMianBan(bj_lastCreatedMultiboard,3,4*i-3,"|cFF00CCFF"+udg_menpainame[udg_runamen[i]])
@@ -1236,7 +1197,7 @@ function uuyy takes nothing returns nothing
         else
         	set s = I2S(R2I(udg_MaxDamage[i]/10000000000000000.))+"亿亿"
         endif
-        call MultiboardSetTitleText(bj_lastCreatedMultiboard,"|cFFFFCC33这并不是系统窗口")
+        call MultiboardSetTitleText(bj_lastCreatedMultiboard,"|cFFFFCC33系统窗口")
 		call DuoMianBan(bj_lastCreatedMultiboard,1,4*i-3,"|c00FF0080"+GetPlayerName(Player(i-1)))
 		call DuoMianBan(bj_lastCreatedMultiboard,2,4*i-3,"|c0000FF00"+"等级："+I2S(GetUnitLevel(udg_hero[i])))
 		call DuoMianBan(bj_lastCreatedMultiboard,3,4*i-3,"|cFF00CCFF"+udg_menpainame[udg_runamen[i]])
@@ -2516,7 +2477,7 @@ function HeroLevel takes nothing returns nothing
 		call RemoveLocation(loc)
 	endif
 	if (GetUnitLevel(u)>=80 and jiawuxue[i]==false) then
-		call DisplayTimedTextToPlayer(p,0,0,30.,"|cff66ff00恭喜你升到了80级，获得5个自创武学点（vip玩家获得7个），在通过历练6以后你可以到聚贤庄游坦之处自创武学")
+		call DisplayTimedTextToPlayer(p,0,0,30.,"|cff66ff00恭喜你升到了80级，获得7个自创武学点，在通过历练6以后你可以到聚贤庄游坦之处自创武学")
 		set wuxuedian[i] = wuxuedian[i] + 5
 		if udg_vip[i] >=1 then
 			set wuxuedian[i] = wuxuedian[i] + 2

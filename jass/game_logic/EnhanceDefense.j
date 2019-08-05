@@ -4,7 +4,7 @@
 function isUnitAttacker takes integer id returns boolean
     local integer i = 1
     loop
-        exitwhen i > 28 
+        exitwhen i > 28
         if id == y7[i] then
             return true
         endif
@@ -16,7 +16,7 @@ endfunction
 function isUnitAttackerBoss takes integer id returns boolean
     local integer i = 1
     loop
-        exitwhen i > 8 
+        exitwhen i > 8
         if id == u7[i] then
             return true
         endif
@@ -38,6 +38,7 @@ function doEnhanceDefense takes nothing returns nothing
     set u = null
 endfunction
 
+// 对数盾减伤
 function shieldReduceDamage takes nothing returns nothing
     local unit u = GetTriggerUnit()
     local integer boss_index = 0
@@ -45,7 +46,7 @@ function shieldReduceDamage takes nothing returns nothing
     if LoadReal(YDHT, GetHandleId(u), $FED) > 0 then
         set boss_index = (udg_boshu - 1) / 4 + 1
         //call BJDebugMsg(R2S(YDWELogarithmLg(GetEventDamage())))
-        set loss = Pow(2,YDWELogarithmLg(GetEventDamage())) * 100 / Pow(2, 10 + boss_index)
+        set loss = Pow(2,YDWELogarithmLg(GetEventDamage())) * 100 / Pow(2, 9 + boss_index)
         call EXSetEventDamage(0)
         call SaveReal(YDHT, GetHandleId(u), $FED, LoadReal(YDHT, GetHandleId(u), $FED) - loss)
     endif

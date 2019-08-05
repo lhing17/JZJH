@@ -129,7 +129,7 @@ function ZiZhiShangHai_Action takes nothing returns nothing
 		endif
 		set j = j + 1
 	endloop
-	set shxishu = shxishu*(1. + 0.5 * I2R(zizhiwugong[i].xishu))
+	set shxishu = shxishu*(1. + 0.3 * I2R(zizhiwugong[i].xishu))
 	set shanghai=ShangHaiGongShi(u,uc,25., 25.,shxishu,'A036')
 	call CreateTextTagLocBJ(zizhiwugong[i].name,loc,0,14.,GetRandomReal(0., 100),GetRandomReal(0., 100),GetRandomReal(0., 100),.0)
 	call Nw(3,bj_lastCreatedTextTag)
