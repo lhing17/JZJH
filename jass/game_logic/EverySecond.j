@@ -9,9 +9,9 @@ function EverySecond_Conditions takes nothing returns boolean
         // 获取服务器全局存档，信息提示
         set info = DzAPI_Map_GetMapConfig("info")
         if info != "无" then
-            call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|CFF00FFFF提示：|r|cffff00de"+info+"|r")
-            call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|CFF00FFFF提示：|r|cffff00de"+info+"|r")
-            call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|CFF00FFFF提示：|r|cffff00de"+info+"|r")
+            call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|CFF00FFFF公告：|r|cffff00de"+info+"|r")
+            call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|CFF00FFFF公告：|r|cffff00de"+info+"|r")
+            call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|CFF00FFFF公告：|r|cffff00de"+info+"|r")
         endif
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|CFF00FFFF提示：|r按|CFF00EE00F9|r进入任务面板可查看游戏各个系统|r")
     elseif passed_time == 80 then
