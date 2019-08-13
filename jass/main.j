@@ -29,6 +29,7 @@
 #include "systems/ElixirSystem.j"
 #include "systems/Activity.j"
 
+
 #include "test/najitest.j"
 #include "test/KeyInput.j"
 #include "TaoHuaDao.j"
@@ -68,6 +69,7 @@
 #include "CreateDestructables.j"
 #include "CreateUnitsAndInitEnvironments.j"
 
+#include "systems/UnitAttack.j"
 
 
 #include "InitialSave.j"

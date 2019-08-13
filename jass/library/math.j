@@ -12,3 +12,4 @@ function getDistanceBetweenPointAndLine takes real x0, real y0, real x1, real y1
     set distance = RAbsBJ(dividend / divisor)
     return distance
 endfunction
+
