@@ -29,6 +29,10 @@ function UnitAttack_Conditions takes nothing returns boolean
 	local real y = 0
 	local unit dummy = null
 
+	// 嵩山剑法
+	if isSongShanJian(u, ut) then
+		call songShanJianFa(u, ut)
+	endif
 
 
 

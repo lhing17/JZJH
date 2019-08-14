@@ -6,7 +6,7 @@ endglobals
 
 function showHealthPointAction takes nothing returns nothing
     local integer i = 1 + GetPlayerId(GetTriggerPlayer())
-    if showHint[i] and GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) >= 999999 then
+    if showHint[i] and IsUnitEnemy(GetTriggerUnit(), GetTriggerPlayer()) and GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) >= 999999 then
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "单位"+GetUnitName(GetTriggerUnit())+"|r的血量为"+R2S(GetWidgetLife(GetTriggerUnit()))+" / " + R2S(GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE)))
     endif
     if showHint[i] and LoadReal(YDHT, GetHandleId(GetTriggerUnit()), $FED) > 0 then

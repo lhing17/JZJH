@@ -53,6 +53,7 @@
 #include "denomination/TangMen.j"
 #include "denomination/TieZhang.j"
 #include "denomination/TaiShan.j"
+#include "denomination/SongShan.j"
 
 #include "denomination/JiangHuWuGong.j"
 #include "denomination/JueShiWuGong.j"
@@ -70,6 +71,7 @@
 #include "CreateUnitsAndInitEnvironments.j"
 
 #include "systems/UnitAttack.j"
+#include "systems/UseAbility.j"
 
 
 #include "InitialSave.j"
@@ -2339,5 +2341,8 @@ function main2 takes nothing returns nothing
 	call EverySecond() // 记录游戏时间
 	call initPetSkill() // 宠物技能
 	call initUI() // 初始化UI
+
+	call UnitAttack() // 注册单位攻击事件
+	call UseAbility() // 注册使用技能事件
 
 endfunction
