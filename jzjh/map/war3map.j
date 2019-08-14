@@ -18,58 +18,58 @@ constant real MaxSpeed__MIN_SPEED= 500.0
 //endglobals from MaxSpeed
 //globals from UniMissileSystem3D:
 constant boolean LIBRARY_UniMissileSystem3D=true
-real array UniMissileSystem3D___SP
-real array UniMissileSystem3D___RA
-real array UniMissileSystem3D___DM
-real array UniMissileSystem3D___DI
-real array UniMissileSystem3D___AN
-real array UniMissileSystem3D___ANZ
-real array UniMissileSystem3D___HE
-real array UniMissileSystem3D___HEMax
-real array UniMissileSystem3D___SH
-real array UniMissileSystem3D___US
-real array UniMissileSystem3D___MX
-real array UniMissileSystem3D___MY
-real array UniMissileSystem3D___MZ
-real array UniMissileSystem3D___ARC
-real array UniMissileSystem3D___HP
-real array UniMissileSystem3D___OF
-real array UniMissileSystem3D___OS
-real array UniMissileSystem3D___TIM
-real array UniMissileSystem3D___LT
-real array UniMissileSystem3D___SZ
-real array UniMissileSystem3D___RI
-real array UniMissileSystem3D___R01
-real array UniMissileSystem3D___R02
-real array UniMissileSystem3D___MGra
-real array UniMissileSystem3D___LOC
-real array UniMissileSystem3D___OH
-real UniMissileSystem3D___Gravity=0.40
-unit array UniMissileSystem3D___MU
-unit array UniMissileSystem3D___MT
-unit UniMissileSystem3D___DamageUnit
-string array UniMissileSystem3D___EF
-effect array UniMissileSystem3D___EFL
-real array UniMissileSystem3D___ACC
-real array UniMissileSystem3D___MaxS
-real array UniMissileSystem3D___SPX
-real array UniMissileSystem3D___SPY
-real array UniMissileSystem3D___LastX
-real array UniMissileSystem3D___LastY
-real array UniMissileSystem3D___MKs
-integer array UniMissileSystem3D___IN
-integer UniMissileSystem3D___Top=- 1
-real UniMissileSystem3D___TIMOut=0.03
-group UniMissileSystem3D___DamageGroup
-timer UniMissileSystem3D___TIMr
-location UniMissileSystem3D___HeroLoc
-location array UniMissileSystem3D___MLoc
-player array UniMissileSystem3D___LastOwner
+real array UniMissileSystem3D__SP
+real array UniMissileSystem3D__RA
+real array UniMissileSystem3D__DM
+real array UniMissileSystem3D__DI
+real array UniMissileSystem3D__AN
+real array UniMissileSystem3D__ANZ
+real array UniMissileSystem3D__HE
+real array UniMissileSystem3D__HEMax
+real array UniMissileSystem3D__SH
+real array UniMissileSystem3D__US
+real array UniMissileSystem3D__MX
+real array UniMissileSystem3D__MY
+real array UniMissileSystem3D__MZ
+real array UniMissileSystem3D__ARC
+real array UniMissileSystem3D__HP
+real array UniMissileSystem3D__OF
+real array UniMissileSystem3D__OS
+real array UniMissileSystem3D__TIM
+real array UniMissileSystem3D__LT
+real array UniMissileSystem3D__SZ
+real array UniMissileSystem3D__RI
+real array UniMissileSystem3D__R01
+real array UniMissileSystem3D__R02
+real array UniMissileSystem3D__MGra
+real array UniMissileSystem3D__LOC
+real array UniMissileSystem3D__OH
+real UniMissileSystem3D__Gravity=0.40
+unit array UniMissileSystem3D__MU
+unit array UniMissileSystem3D__MT
+unit UniMissileSystem3D__DamageUnit
+string array UniMissileSystem3D__EF
+effect array UniMissileSystem3D__EFL
+real array UniMissileSystem3D__ACC
+real array UniMissileSystem3D__MaxS
+real array UniMissileSystem3D__SPX
+real array UniMissileSystem3D__SPY
+real array UniMissileSystem3D__LastX
+real array UniMissileSystem3D__LastY
+real array UniMissileSystem3D__MKs
+integer array UniMissileSystem3D__IN
+integer UniMissileSystem3D__Top=- 1
+real UniMissileSystem3D__TIMOut=0.03
+group UniMissileSystem3D__DamageGroup
+timer UniMissileSystem3D__TIMr
+location UniMissileSystem3D__HeroLoc
+location array UniMissileSystem3D__MLoc
+player array UniMissileSystem3D__LastOwner
 boolean MissileTimerPause=false
-real UniMissileSystem3D___map_max_X
-real UniMissileSystem3D___map_max_Y
-real UniMissileSystem3D___map_min_X
-real UniMissileSystem3D___map_min_Y
+real UniMissileSystem3D__map_max_X
+real UniMissileSystem3D__map_max_Y
+real UniMissileSystem3D__map_min_X
+real UniMissileSystem3D__map_min_Y
 //endglobals from UniMissileSystem3D
 //globals from YDTriggerSaveLoadSystem:
 constant boolean LIBRARY_YDTriggerSaveLoadSystem=true
@@ -174,9 +174,9 @@ constant boolean LIBRARY_YDWEPreloadSL=true
     /// ÿ�����ռ�õĿռ�[500*id, 500*(id-1))
     /// �±�Խ��û�н��м�飬�ƺ�û�����Ҫ��˭Ҫ���ó���500...��ȥ����- -
     /// 
-integer array YDWEPreloadSL__Code
-integer array YDWEPreloadSL__CodeHI
-integer array YDWEPreloadSL__CodeLO
+integer array YDWEPreloadSL___Code
+integer array YDWEPreloadSL___CodeHI
+integer array YDWEPreloadSL___CodeLO
 boolean bj_lastLoadPreloadSLResult
 string array udg_YDWE_PreloadSL_List
 string udg_YDWE_PreloadSL_CurrentDir= ""
@@ -2753,19 +2753,19 @@ endfunction
 //library MaxSpeed ends
 //library UniMissileSystem3D:
 // 计算两点间的距离
-function UniMissileSystem3D___DistanceBetweenXY takes real x1,real x2,real y1,real y2 returns real
+function UniMissileSystem3D__DistanceBetweenXY takes real x1,real x2,real y1,real y2 returns real
     return SquareRoot(( x1 - x2 ) * ( x1 - x2 ) + ( y1 - y2 ) * ( y1 - y2 ))
 endfunction
 // 计算两点间的角度（角度制）
-function UniMissileSystem3D___AngleBetweenXY takes real x1,real x2,real y1,real y2 returns real
+function UniMissileSystem3D__AngleBetweenXY takes real x1,real x2,real y1,real y2 returns real
     return bj_RADTODEG * Atan2(y2 - y1, x2 - x1)
 endfunction
 // 计算两个单位间的角度
-function UniMissileSystem3D___GetAngleBetweenUnits takes unit l__A,unit l__B returns real
+function UniMissileSystem3D__GetAngleBetweenUnits takes unit l__A,unit l__B returns real
     return Atan2(GetUnitY(l__B) - GetUnitY(l__A), GetUnitX(l__B) - GetUnitX(l__A))
 endfunction
 // 计算两个单位间的距离
-function UniMissileSystem3D___DistanceBetweenUnits takes unit l__A,unit l__B returns real
+function UniMissileSystem3D__DistanceBetweenUnits takes unit l__A,unit l__B returns real
     local real x1=GetUnitX(l__A)
     local real x2=GetUnitX(l__B)
     local real y1=GetUnitY(l__A)
@@ -2776,7 +2776,7 @@ endfunction
 // s = v0 * t + 1/2 * a * t * t
 // a * t * t  + 2 * v0 * t - 2 * s = 0
 // time1 = (- 2 * v0 + SquareRoot ( 4 * v0 *v0 + 8 * a * s)) / (2 * a)
-function UniMissileSystem3D___GetAcceleratedTime takes real dis,real originspeed,real accel returns real
+function UniMissileSystem3D__GetAcceleratedTime takes real dis,real originspeed,real accel returns real
     local real time1=0.0
     local real time2=0.0
     set time1=( - 1 * originspeed + SquareRoot(Pow(originspeed, 2.0) + 2 * accel * dis) ) / accel
@@ -2793,68 +2793,68 @@ function UniMissileSystem3D___GetAcceleratedTime takes real dis,real originspeed
     return time2
 endfunction
 // 登记弹幕
-function UniMissileSystem3D___MRegister takes unit missile returns nothing
+function UniMissileSystem3D__MRegister takes unit missile returns nothing
     call UnitAddAbility(missile, 'Arav') // 风暴之鸦
 call UnitRemoveAbility(missile, 'Arav')
     call SetUnitPosition(missile, GetUnitX(missile), GetUnitY(missile))
     call SetUnitAnimationByIndex(missile, 90)
 endfunction
 // 将i从栈中移除，使用栈顶元素补充i
-function UniMissileSystem3D___MPop takes integer i returns nothing
-     if GetUnitState(UniMissileSystem3D___MU[i], UNIT_STATE_LIFE) > 0.4 then
-        call KillUnit(UniMissileSystem3D___MU[i])
+function UniMissileSystem3D__MPop takes integer i returns nothing
+     if GetUnitState(UniMissileSystem3D__MU[i], UNIT_STATE_LIFE) > 0.4 then
+        call KillUnit(UniMissileSystem3D__MU[i])
      endif
-     call DestroyEffect(UniMissileSystem3D___EFL[i])
-     set UniMissileSystem3D___MU[i]=UniMissileSystem3D___MU[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___SP[i]=UniMissileSystem3D___SP[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___RA[i]=UniMissileSystem3D___RA[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___DM[i]=UniMissileSystem3D___DM[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___DI[i]=UniMissileSystem3D___DI[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___AN[i]=UniMissileSystem3D___AN[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___HE[i]=UniMissileSystem3D___HE[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___HEMax[i]=UniMissileSystem3D___HEMax[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___US[i]=UniMissileSystem3D___US[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___ARC[i]=UniMissileSystem3D___ARC[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___HP[i]=UniMissileSystem3D___HP[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___EF[i]=UniMissileSystem3D___EF[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___EFL[i]=UniMissileSystem3D___EFL[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___SH[i]=UniMissileSystem3D___SH[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___MGra[i]=UniMissileSystem3D___MGra[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___LOC[i]=UniMissileSystem3D___LOC[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___TIM[i]=UniMissileSystem3D___TIM[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___LT[i]=UniMissileSystem3D___LT[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___SZ[i]=UniMissileSystem3D___SZ[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___RI[i]=UniMissileSystem3D___RI[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___R01[i]=UniMissileSystem3D___R01[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___R02[i]=UniMissileSystem3D___R02[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___MT[i]=UniMissileSystem3D___MT[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___OH[i]=UniMissileSystem3D___OH[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___OS[i]=UniMissileSystem3D___OS[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___OF[i]=UniMissileSystem3D___OF[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___ACC[i]=UniMissileSystem3D___ACC[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___MaxS[i]=UniMissileSystem3D___MaxS[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___MKs[i]=UniMissileSystem3D___MKs[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SPX[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SPY[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___LastX[i]=UniMissileSystem3D___LastX[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___LastY[i]=UniMissileSystem3D___LastY[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___IN[i]=UniMissileSystem3D___IN[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___LastOwner[i]=UniMissileSystem3D___LastOwner[UniMissileSystem3D___Top]
-     set UniMissileSystem3D___MU[UniMissileSystem3D___Top]=null
-     set UniMissileSystem3D___MT[UniMissileSystem3D___Top]=null
-     set UniMissileSystem3D___Top=UniMissileSystem3D___Top - 1
+     call DestroyEffect(UniMissileSystem3D__EFL[i])
+     set UniMissileSystem3D__MU[i]=UniMissileSystem3D__MU[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__SP[i]=UniMissileSystem3D__SP[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__RA[i]=UniMissileSystem3D__RA[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__DM[i]=UniMissileSystem3D__DM[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__DI[i]=UniMissileSystem3D__DI[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__AN[i]=UniMissileSystem3D__AN[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__HE[i]=UniMissileSystem3D__HE[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__HEMax[i]=UniMissileSystem3D__HEMax[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__US[i]=UniMissileSystem3D__US[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__ARC[i]=UniMissileSystem3D__ARC[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__HP[i]=UniMissileSystem3D__HP[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__EF[i]=UniMissileSystem3D__EF[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__EFL[i]=UniMissileSystem3D__EFL[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__SH[i]=UniMissileSystem3D__SH[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__MGra[i]=UniMissileSystem3D__MGra[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__LOC[i]=UniMissileSystem3D__LOC[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__TIM[i]=UniMissileSystem3D__TIM[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__LT[i]=UniMissileSystem3D__LT[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__SZ[i]=UniMissileSystem3D__SZ[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__RI[i]=UniMissileSystem3D__RI[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__R01[i]=UniMissileSystem3D__R01[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__R02[i]=UniMissileSystem3D__R02[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__MT[i]=UniMissileSystem3D__MT[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__OH[i]=UniMissileSystem3D__OH[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__OS[i]=UniMissileSystem3D__OS[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__OF[i]=UniMissileSystem3D__OF[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__ACC[i]=UniMissileSystem3D__ACC[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__MaxS[i]=UniMissileSystem3D__MaxS[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__MKs[i]=UniMissileSystem3D__MKs[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SPX[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SPY[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__LastX[i]=UniMissileSystem3D__LastX[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__LastY[i]=UniMissileSystem3D__LastY[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__IN[i]=UniMissileSystem3D__IN[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__LastOwner[i]=UniMissileSystem3D__LastOwner[UniMissileSystem3D__Top]
+     set UniMissileSystem3D__MU[UniMissileSystem3D__Top]=null
+     set UniMissileSystem3D__MT[UniMissileSystem3D__Top]=null
+     set UniMissileSystem3D__Top=UniMissileSystem3D__Top - 1
 endfunction
 // 判断是否越界
-function UniMissileSystem3D___MLimit takes real x,real y returns boolean
-     if x > UniMissileSystem3D___map_max_X or x < UniMissileSystem3D___map_min_X or y > UniMissileSystem3D___map_max_Y or y < UniMissileSystem3D___map_min_Y then //边界判定
+function UniMissileSystem3D__MLimit takes real x,real y returns boolean
+     if x > UniMissileSystem3D__map_max_X or x < UniMissileSystem3D__map_min_X or y > UniMissileSystem3D__map_max_Y or y < UniMissileSystem3D__map_min_Y then //边界判定
         return true
      else
         return false
      endif
 endfunction
 // 弹幕循环
-function UniMissileSystem3D___MLoop takes nothing returns nothing
-     local integer i=UniMissileSystem3D___Top
+function UniMissileSystem3D__MLoop takes nothing returns nothing
+     local integer i=UniMissileSystem3D__Top
      local real array x
      local real array y
      local real array zLoc
@@ -2880,103 +2880,103 @@ function UniMissileSystem3D___MLoop takes nothing returns nothing
          exitwhen i < 0
          set addh=0.0
          set udis=0.0
-         set x[1]=GetUnitX(UniMissileSystem3D___MU[i])
-         set y[1]=GetUnitY(UniMissileSystem3D___MU[i])
-         set height=GetUnitFlyHeight(UniMissileSystem3D___MU[i])
-         if UniMissileSystem3D___DI[i] <= 0.0 or GetUnitState(UniMissileSystem3D___MU[i], UNIT_STATE_LIFE) < 0.4 or height <= 0.1 or UniMissileSystem3D___HP[i] <= 0.0 or UniMissileSystem3D___MLimit(x[1] , y[1]) == true or height >= 9999.1 then
-             call UniMissileSystem3D___MPop(i)
+         set x[1]=GetUnitX(UniMissileSystem3D__MU[i])
+         set y[1]=GetUnitY(UniMissileSystem3D__MU[i])
+         set height=GetUnitFlyHeight(UniMissileSystem3D__MU[i])
+         if UniMissileSystem3D__DI[i] <= 0.0 or GetUnitState(UniMissileSystem3D__MU[i], UNIT_STATE_LIFE) < 0.4 or height <= 0.1 or UniMissileSystem3D__HP[i] <= 0.0 or UniMissileSystem3D__MLimit(x[1] , y[1]) == true or height >= 9999.1 then
+             call UniMissileSystem3D__MPop(i)
          else
-             if UniMissileSystem3D___MT[i] != null then
-                set UniMissileSystem3D___AN[i]=UniMissileSystem3D___AngleBetweenXY(x[1] , GetUnitX(UniMissileSystem3D___MT[i]) , y[1] , GetUnitY(UniMissileSystem3D___MT[i]))
-                set ang=UniMissileSystem3D___AN[i] * bj_DEGTORAD
-                if UniMissileSystem3D___IN[i] == 0 then
-                   set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SP[i] * Cos(ang)
-                   set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SP[i] * Sin(ang)
+             if UniMissileSystem3D__MT[i] != null then
+                set UniMissileSystem3D__AN[i]=UniMissileSystem3D__AngleBetweenXY(x[1] , GetUnitX(UniMissileSystem3D__MT[i]) , y[1] , GetUnitY(UniMissileSystem3D__MT[i]))
+                set ang=UniMissileSystem3D__AN[i] * bj_DEGTORAD
+                if UniMissileSystem3D__IN[i] == 0 then
+                   set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SP[i] * Cos(ang)
+                   set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SP[i] * Sin(ang)
                 else
-                   set ang=ang + UniMissileSystem3D___OF[i]
-                   set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SPX[i] * UniMissileSystem3D___MKs[i] + UniMissileSystem3D___ACC[i] * Cos(ang)
-                   set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SPY[i] * UniMissileSystem3D___MKs[i] + UniMissileSystem3D___ACC[i] * Sin(ang)
+                   set ang=ang + UniMissileSystem3D__OF[i]
+                   set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SPX[i] * UniMissileSystem3D__MKs[i] + UniMissileSystem3D__ACC[i] * Cos(ang)
+                   set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SPY[i] * UniMissileSystem3D__MKs[i] + UniMissileSystem3D__ACC[i] * Sin(ang)
                 endif
-                if IsUnitType(UniMissileSystem3D___MT[i], UNIT_TYPE_DEAD) == true then
-                   set UniMissileSystem3D___MT[i]=null
+                if IsUnitType(UniMissileSystem3D__MT[i], UNIT_TYPE_DEAD) == true then
+                   set UniMissileSystem3D__MT[i]=null
                 endif
-                set udis=UniMissileSystem3D___DistanceBetweenUnits(UniMissileSystem3D___MT[i] , UniMissileSystem3D___MU[i]) / 100.
+                set udis=UniMissileSystem3D__DistanceBetweenUnits(UniMissileSystem3D__MT[i] , UniMissileSystem3D__MU[i]) / 100.
                 if udis == 0. then
                    set udis=0.01
                 endif
-                set targetheight=GetUnitFlyHeight(UniMissileSystem3D___MT[i])
-                if RAbsBJ(height - targetheight) > UniMissileSystem3D___RA[i] then
+                set targetheight=GetUnitFlyHeight(UniMissileSystem3D__MT[i])
+                if RAbsBJ(height - targetheight) > UniMissileSystem3D__RA[i] then
                    if targetheight > height then
-                      set addh=RAbsBJ(UniMissileSystem3D___SP[i]) / udis
+                      set addh=RAbsBJ(UniMissileSystem3D__SP[i]) / udis
                       if addh + height > targetheight then
                          set addh=addh / 10.
-                         call SetUnitFlyHeight(UniMissileSystem3D___MU[i], targetheight, 0.0)
+                         call SetUnitFlyHeight(UniMissileSystem3D__MU[i], targetheight, 0.0)
                          set height=targetheight
                       endif
                    elseif targetheight < height then
-                          set addh=RAbsBJ(UniMissileSystem3D___SP[i]) * ( - 1. ) / udis
+                          set addh=RAbsBJ(UniMissileSystem3D__SP[i]) * ( - 1. ) / udis
                           if addh + height < targetheight then
-                             call SetUnitFlyHeight(UniMissileSystem3D___MU[i], targetheight, 0.0)
+                             call SetUnitFlyHeight(UniMissileSystem3D__MU[i], targetheight, 0.0)
                              set height=targetheight
                           endif
                    endif
                 endif
              else
-                set ang=UniMissileSystem3D___AN[i] * bj_DEGTORAD
-                set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___SP[i] * Cos(ang)
-                set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___SP[i] * Sin(ang)
-                if UniMissileSystem3D___LOC[i] == 0.0 then
-                   set UniMissileSystem3D___SP[i]=UniMissileSystem3D___SP[i] + UniMissileSystem3D___ACC[i]
+                set ang=UniMissileSystem3D__AN[i] * bj_DEGTORAD
+                set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__SP[i] * Cos(ang)
+                set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__SP[i] * Sin(ang)
+                if UniMissileSystem3D__LOC[i] == 0.0 then
+                   set UniMissileSystem3D__SP[i]=UniMissileSystem3D__SP[i] + UniMissileSystem3D__ACC[i]
                 else
-                   if UniMissileSystem3D___SP[i] <= UniMissileSystem3D___MaxS[i] then
-                     set UniMissileSystem3D___SP[i]=UniMissileSystem3D___SP[i] + UniMissileSystem3D___ACC[i]
+                   if UniMissileSystem3D__SP[i] <= UniMissileSystem3D__MaxS[i] then
+                     set UniMissileSystem3D__SP[i]=UniMissileSystem3D__SP[i] + UniMissileSystem3D__ACC[i]
                    else
-                     set UniMissileSystem3D___SP[i]=UniMissileSystem3D___MaxS[i]
+                     set UniMissileSystem3D__SP[i]=UniMissileSystem3D__MaxS[i]
                    endif
                 endif
              endif
-             set x[2]=x[1] + UniMissileSystem3D___SPX[i]
-             set y[2]=y[1] + UniMissileSystem3D___SPY[i]
-             set UniMissileSystem3D___MLoc[1]=Location(x[1], y[1])
-             set UniMissileSystem3D___MLoc[2]=Location(x[2], y[2])
-             set zLoc[1]=GetLocationZ(UniMissileSystem3D___MLoc[1])
-             set zLoc[2]=GetLocationZ(UniMissileSystem3D___MLoc[2])
-             call SetUnitX(UniMissileSystem3D___MU[i], x[2])
-             call SetUnitY(UniMissileSystem3D___MU[i], y[2])
-             set UniMissileSystem3D___LastX[i]=x[2]
-             set UniMissileSystem3D___LastY[i]=y[2]
-             set addxy=UniMissileSystem3D___DistanceBetweenXY(x[2] , x[1] , y[2] , y[1])
-             call SetUnitFacing(UniMissileSystem3D___MU[i], UniMissileSystem3D___AN[i])
-             call GroupEnumUnitsInRange(UniMissileSystem3D___DamageGroup, x[2], y[2], UniMissileSystem3D___RA[i], null)
+             set x[2]=x[1] + UniMissileSystem3D__SPX[i]
+             set y[2]=y[1] + UniMissileSystem3D__SPY[i]
+             set UniMissileSystem3D__MLoc[1]=Location(x[1], y[1])
+             set UniMissileSystem3D__MLoc[2]=Location(x[2], y[2])
+             set zLoc[1]=GetLocationZ(UniMissileSystem3D__MLoc[1])
+             set zLoc[2]=GetLocationZ(UniMissileSystem3D__MLoc[2])
+             call SetUnitX(UniMissileSystem3D__MU[i], x[2])
+             call SetUnitY(UniMissileSystem3D__MU[i], y[2])
+             set UniMissileSystem3D__LastX[i]=x[2]
+             set UniMissileSystem3D__LastY[i]=y[2]
+             set addxy=UniMissileSystem3D__DistanceBetweenXY(x[2] , x[1] , y[2] , y[1])
+             call SetUnitFacing(UniMissileSystem3D__MU[i], UniMissileSystem3D__AN[i])
+             call GroupEnumUnitsInRange(UniMissileSystem3D__DamageGroup, x[2], y[2], UniMissileSystem3D__RA[i], null)
              loop
-                 set UniMissileSystem3D___DamageUnit=FirstOfGroup(UniMissileSystem3D___DamageGroup)
-                 if GetUnitState(UniMissileSystem3D___DamageUnit, UNIT_STATE_LIFE) > 0.4 and ( UniMissileSystem3D___MT[i] == UniMissileSystem3D___DamageUnit or IsUnitEnemy(UniMissileSystem3D___DamageUnit, GetOwningPlayer(UniMissileSystem3D___MU[i])) ) then
-                     if RAbsBJ(height - GetUnitFlyHeight(UniMissileSystem3D___DamageUnit)) <= UniMissileSystem3D___RA[i] then
-                        call UnitDamageTarget(UniMissileSystem3D___MU[i], UniMissileSystem3D___DamageUnit, UniMissileSystem3D___DM[i], true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-                        set UniMissileSystem3D___HP[i]=UniMissileSystem3D___HP[i] - 1.
-                        set UniMissileSystem3D___DM[i]=UniMissileSystem3D___DM[i] * 0.5
+                 set UniMissileSystem3D__DamageUnit=FirstOfGroup(UniMissileSystem3D__DamageGroup)
+                 if GetUnitState(UniMissileSystem3D__DamageUnit, UNIT_STATE_LIFE) > 0.4 and ( UniMissileSystem3D__MT[i] == UniMissileSystem3D__DamageUnit or IsUnitEnemy(UniMissileSystem3D__DamageUnit, GetOwningPlayer(UniMissileSystem3D__MU[i])) ) then
+                     if RAbsBJ(height - GetUnitFlyHeight(UniMissileSystem3D__DamageUnit)) <= UniMissileSystem3D__RA[i] then
+                        call UnitDamageTarget(UniMissileSystem3D__MU[i], UniMissileSystem3D__DamageUnit, UniMissileSystem3D__DM[i], true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+                        set UniMissileSystem3D__HP[i]=UniMissileSystem3D__HP[i] - 1.
+                        set UniMissileSystem3D__DM[i]=UniMissileSystem3D__DM[i] * 0.5
                      endif
                  endif
-                 call GroupRemoveUnit(UniMissileSystem3D___DamageGroup, UniMissileSystem3D___DamageUnit)
-                 exitwhen UniMissileSystem3D___DamageUnit == null
+                 call GroupRemoveUnit(UniMissileSystem3D__DamageGroup, UniMissileSystem3D__DamageUnit)
+                 exitwhen UniMissileSystem3D__DamageUnit == null
              endloop
-             call GroupClear(UniMissileSystem3D___DamageGroup)
-             set UniMissileSystem3D___TIM[i]=UniMissileSystem3D___TIM[i] + UniMissileSystem3D___TIMOut
-            if UniMissileSystem3D___MGra[i] == 0.0 then
-            set h=0.11 + UniMissileSystem3D___SZ[i] - zLoc[2]
+             call GroupClear(UniMissileSystem3D__DamageGroup)
+             set UniMissileSystem3D__TIM[i]=UniMissileSystem3D__TIM[i] + UniMissileSystem3D__TIMOut
+            if UniMissileSystem3D__MGra[i] == 0.0 then
+            set h=0.11 + UniMissileSystem3D__SZ[i] - zLoc[2]
             endif
-            if UniMissileSystem3D___LOC[i] == 0.0 then
-             if UniMissileSystem3D___MGra[i] == 0.0 then
+            if UniMissileSystem3D__LOC[i] == 0.0 then
+             if UniMissileSystem3D__MGra[i] == 0.0 then
              else
-             set h=UniMissileSystem3D___HEMax[i] - UniMissileSystem3D___R01[i] * ( UniMissileSystem3D___TIM[i] - UniMissileSystem3D___LT[i] / 2 ) * ( UniMissileSystem3D___TIM[i] - UniMissileSystem3D___LT[i] / 2 ) + UniMissileSystem3D___TIM[i] * UniMissileSystem3D___R02[i] + UniMissileSystem3D___SZ[i] - zLoc[2]
+             set h=UniMissileSystem3D__HEMax[i] - UniMissileSystem3D__R01[i] * ( UniMissileSystem3D__TIM[i] - UniMissileSystem3D__LT[i] / 2 ) * ( UniMissileSystem3D__TIM[i] - UniMissileSystem3D__LT[i] / 2 ) + UniMissileSystem3D__TIM[i] * UniMissileSystem3D__R02[i] + UniMissileSystem3D__SZ[i] - zLoc[2]
              endif
             else
-             set UniMissileSystem3D___US[i]=UniMissileSystem3D___US[i] - UniMissileSystem3D___MGra[i]
+             set UniMissileSystem3D__US[i]=UniMissileSystem3D__US[i] - UniMissileSystem3D__MGra[i]
             endif
              set lastheight=height
-             set UniMissileSystem3D___HE[i]=UniMissileSystem3D___HE[i] * UniMissileSystem3D___LOC[i] + UniMissileSystem3D___SH[i] + UniMissileSystem3D___US[i] * UniMissileSystem3D___LOC[i] + h * ( 1 - UniMissileSystem3D___LOC[i] ) + addh
-             set height=UniMissileSystem3D___HE[i] - zLoc[2] * UniMissileSystem3D___LOC[i]
-             call SetUnitFlyHeight(UniMissileSystem3D___MU[i], height, 0.0)
+             set UniMissileSystem3D__HE[i]=UniMissileSystem3D__HE[i] * UniMissileSystem3D__LOC[i] + UniMissileSystem3D__SH[i] + UniMissileSystem3D__US[i] * UniMissileSystem3D__LOC[i] + h * ( 1 - UniMissileSystem3D__LOC[i] ) + addh
+             set height=UniMissileSystem3D__HE[i] - zLoc[2] * UniMissileSystem3D__LOC[i]
+             call SetUnitFlyHeight(UniMissileSystem3D__MU[i], height, 0.0)
              set addz=height - lastheight
              if addxy == 0. then
                 set addxy=1.
@@ -2990,11 +2990,11 @@ function UniMissileSystem3D___MLoop takes nothing returns nothing
              elseif aniI > 181 then
                 set aniI=181
              endif
-             call SetUnitAnimationByIndex(UniMissileSystem3D___MU[i], aniI)
-             set UniMissileSystem3D___DI[i]=UniMissileSystem3D___DI[i] - UniMissileSystem3D___SP[i] * UniMissileSystem3D___LOC[i]
-             set UniMissileSystem3D___US[i]=UniMissileSystem3D___US[i] - UniMissileSystem3D___MGra[i]
-             call RemoveLocation(UniMissileSystem3D___MLoc[1])
-             call RemoveLocation(UniMissileSystem3D___MLoc[2])
+             call SetUnitAnimationByIndex(UniMissileSystem3D__MU[i], aniI)
+             set UniMissileSystem3D__DI[i]=UniMissileSystem3D__DI[i] - UniMissileSystem3D__SP[i] * UniMissileSystem3D__LOC[i]
+             set UniMissileSystem3D__US[i]=UniMissileSystem3D__US[i] - UniMissileSystem3D__MGra[i]
+             call RemoveLocation(UniMissileSystem3D__MLoc[1])
+             call RemoveLocation(UniMissileSystem3D__MLoc[2])
          endif
          set i=i - 1
      endloop
@@ -3013,9 +3013,9 @@ function MissileCast takes unit caster,unit missile,real originspeed,real maxspe
      if loc == null then
         return
      endif
-     set UniMissileSystem3D___Top=UniMissileSystem3D___Top + 1
-     set i=UniMissileSystem3D___Top
-     set UniMissileSystem3D___HeroLoc=GetUnitLoc(caster)
+     set UniMissileSystem3D__Top=UniMissileSystem3D__Top + 1
+     set i=UniMissileSystem3D__Top
+     set UniMissileSystem3D__HeroLoc=GetUnitLoc(caster)
      if speed == 0. then
         set speed=0.01
      endif
@@ -3031,101 +3031,101 @@ function MissileCast takes unit caster,unit missile,real originspeed,real maxspe
      if height == 0. then
         set height=0.1
      endif
-     if GetLocationX(loc) != GetLocationX(UniMissileSystem3D___HeroLoc) or GetLocationY(loc) != GetLocationY(UniMissileSystem3D___HeroLoc) then
+     if GetLocationX(loc) != GetLocationX(UniMissileSystem3D__HeroLoc) or GetLocationY(loc) != GetLocationY(UniMissileSystem3D__HeroLoc) then
         set x=GetLocationX(loc)
         set y=GetLocationY(loc)
-        set ang=UniMissileSystem3D___AngleBetweenXY(GetUnitX(caster) , x , GetUnitY(caster) , y)
-        set dis=UniMissileSystem3D___DistanceBetweenXY(x , GetUnitX(caster) , y , GetUnitY(caster))
-        set UniMissileSystem3D___LOC[i]=0.0
+        set ang=UniMissileSystem3D__AngleBetweenXY(GetUnitX(caster) , x , GetUnitY(caster) , y)
+        set dis=UniMissileSystem3D__DistanceBetweenXY(x , GetUnitX(caster) , y , GetUnitY(caster))
+        set UniMissileSystem3D__LOC[i]=0.0
      else
         set ang=angle
         set dis=distance
-        set UniMissileSystem3D___LOC[i]=1.0
+        set UniMissileSystem3D__LOC[i]=1.0
      endif
      if gravity == true then
-        set UniMissileSystem3D___MGra[i]=UniMissileSystem3D___Gravity
+        set UniMissileSystem3D__MGra[i]=UniMissileSystem3D__Gravity
      else
-        set UniMissileSystem3D___MGra[i]=0.0
+        set UniMissileSystem3D__MGra[i]=0.0
      endif
-     set UniMissileSystem3D___MU[i]=missile
-     call UniMissileSystem3D___MRegister(UniMissileSystem3D___MU[i])
-     set UniMissileSystem3D___OH[i]=GetUnitFlyHeight(caster) + height
-     set UniMissileSystem3D___SZ[i]=GetLocationZ(UniMissileSystem3D___HeroLoc) + UniMissileSystem3D___OH[i]
+     set UniMissileSystem3D__MU[i]=missile
+     call UniMissileSystem3D__MRegister(UniMissileSystem3D__MU[i])
+     set UniMissileSystem3D__OH[i]=GetUnitFlyHeight(caster) + height
+     set UniMissileSystem3D__SZ[i]=GetLocationZ(UniMissileSystem3D__HeroLoc) + UniMissileSystem3D__OH[i]
      if originspeed == maxspeed then
         set speed=originspeed
         set accel=0.0
         set inertia=false
-        set UniMissileSystem3D___LT[i]=dis / speed
+        set UniMissileSystem3D__LT[i]=dis / speed
      else
         set inertia=true
-        set UniMissileSystem3D___LT[i]=UniMissileSystem3D___GetAcceleratedTime(dis , originspeed , accel)
+        set UniMissileSystem3D__LT[i]=UniMissileSystem3D__GetAcceleratedTime(dis , originspeed , accel)
      endif
-     set UniMissileSystem3D___SP[i]=originspeed * UniMissileSystem3D___TIMOut
-     set UniMissileSystem3D___MaxS[i]=maxspeed
-     set UniMissileSystem3D___RI[i]=( GetLocationZ(loc) - UniMissileSystem3D___SZ[i] ) / dis
-     set UniMissileSystem3D___TIM[i]=0
-     set UniMissileSystem3D___IN[i]=0
+     set UniMissileSystem3D__SP[i]=originspeed * UniMissileSystem3D__TIMOut
+     set UniMissileSystem3D__MaxS[i]=maxspeed
+     set UniMissileSystem3D__RI[i]=( GetLocationZ(loc) - UniMissileSystem3D__SZ[i] ) / dis
+     set UniMissileSystem3D__TIM[i]=0
+     set UniMissileSystem3D__IN[i]=0
      if target != null then
         if GetUnitState(target, UNIT_STATE_LIFE) > 0.4 then
-        set UniMissileSystem3D___MT[i]=target
+        set UniMissileSystem3D__MT[i]=target
         if inertia == true then
-           set UniMissileSystem3D___OS[i]=originspeed * UniMissileSystem3D___TIMOut
-           set UniMissileSystem3D___OF[i]=Deg2Rad(50)
-           set UniMissileSystem3D___SPX[i]=UniMissileSystem3D___OS[i] * Cos(ang)
-           set UniMissileSystem3D___SPY[i]=UniMissileSystem3D___OS[i] * Sin(ang)
-           set UniMissileSystem3D___MKs[i]=1 - accel * UniMissileSystem3D___TIMOut / maxspeed
+           set UniMissileSystem3D__OS[i]=originspeed * UniMissileSystem3D__TIMOut
+           set UniMissileSystem3D__OF[i]=Deg2Rad(50)
+           set UniMissileSystem3D__SPX[i]=UniMissileSystem3D__OS[i] * Cos(ang)
+           set UniMissileSystem3D__SPY[i]=UniMissileSystem3D__OS[i] * Sin(ang)
+           set UniMissileSystem3D__MKs[i]=1 - accel * UniMissileSystem3D__TIMOut / maxspeed
         endif
         endif
      endif
-     set UniMissileSystem3D___ACC[i]=accel * UniMissileSystem3D___TIMOut * UniMissileSystem3D___TIMOut
+     set UniMissileSystem3D__ACC[i]=accel * UniMissileSystem3D__TIMOut * UniMissileSystem3D__TIMOut
      if inertia == true then
-        set UniMissileSystem3D___IN[i]=1
+        set UniMissileSystem3D__IN[i]=1
      endif
-     set UniMissileSystem3D___RA[i]=range
-     set UniMissileSystem3D___DM[i]=damage
-     set UniMissileSystem3D___AN[i]=ang
-     set UniMissileSystem3D___ARC[i]=arc
-     set UniMissileSystem3D___MaxS[i]=maxspeed * UniMissileSystem3D___TIMOut
+     set UniMissileSystem3D__RA[i]=range
+     set UniMissileSystem3D__DM[i]=damage
+     set UniMissileSystem3D__AN[i]=ang
+     set UniMissileSystem3D__ARC[i]=arc
+     set UniMissileSystem3D__MaxS[i]=maxspeed * UniMissileSystem3D__TIMOut
      if arc != 0.0 then
-        set UniMissileSystem3D___HEMax[i]=dis * UniMissileSystem3D___ARC[i]
+        set UniMissileSystem3D__HEMax[i]=dis * UniMissileSystem3D__ARC[i]
      else
-        set UniMissileSystem3D___HEMax[i]=height
+        set UniMissileSystem3D__HEMax[i]=height
      endif
-     if GetLocationX(loc) == GetLocationX(UniMissileSystem3D___HeroLoc) and GetLocationY(loc) == GetLocationY(UniMissileSystem3D___HeroLoc) then
-        set UniMissileSystem3D___ANZ[i]=AtanBJ(arc)
-        set UniMissileSystem3D___US[i]=arc * UniMissileSystem3D___SP[i]
-        set UniMissileSystem3D___DI[i]=distance
+     if GetLocationX(loc) == GetLocationX(UniMissileSystem3D__HeroLoc) and GetLocationY(loc) == GetLocationY(UniMissileSystem3D__HeroLoc) then
+        set UniMissileSystem3D__ANZ[i]=AtanBJ(arc)
+        set UniMissileSystem3D__US[i]=arc * UniMissileSystem3D__SP[i]
+        set UniMissileSystem3D__DI[i]=distance
      else
-        set UniMissileSystem3D___US[i]=0
-        set UniMissileSystem3D___DI[i]=dis
+        set UniMissileSystem3D__US[i]=0
+        set UniMissileSystem3D__DI[i]=dis
      endif
-     call SetUnitX(UniMissileSystem3D___MU[i], GetLocationX(UniMissileSystem3D___HeroLoc))
-     call SetUnitY(UniMissileSystem3D___MU[i], GetLocationY(UniMissileSystem3D___HeroLoc))
-     call SetUnitOwner(UniMissileSystem3D___MU[i], GetOwningPlayer(caster), true)
-     call SetUnitFacing(UniMissileSystem3D___MU[i], UniMissileSystem3D___AN[i])
-     set UniMissileSystem3D___HE[i]=UniMissileSystem3D___OH[i] + GetLocationZ(UniMissileSystem3D___HeroLoc) + 0.11
-     set UniMissileSystem3D___SH[i]=0 * speed
-     set UniMissileSystem3D___LastX[i]=0.0
-     set UniMissileSystem3D___LastY[i]=0.0
-     set UniMissileSystem3D___R01[i]=UniMissileSystem3D___HEMax[i] / UniMissileSystem3D___LT[i] / UniMissileSystem3D___LT[i] * 4
-     set UniMissileSystem3D___R02[i]=UniMissileSystem3D___SP[i] * UniMissileSystem3D___RI[i] / UniMissileSystem3D___TIMOut
-     set UniMissileSystem3D___HP[i]=l__hp
-     set UniMissileSystem3D___DM[i]=damage
-     set UniMissileSystem3D___EF[i]=Effect
-     call SetUnitFlyHeight(UniMissileSystem3D___MU[i], UniMissileSystem3D___HE[i] - GetLocationZ(UniMissileSystem3D___HeroLoc), 0.0)
-     set UniMissileSystem3D___EFL[i]=AddSpecialEffectTarget(UniMissileSystem3D___EF[i], UniMissileSystem3D___MU[i], "chest")
-     set UniMissileSystem3D___LastOwner[i]=GetOwningPlayer(caster)
-     call RemoveLocation(UniMissileSystem3D___HeroLoc)
-     set UniMissileSystem3D___HeroLoc=null
+     call SetUnitX(UniMissileSystem3D__MU[i], GetLocationX(UniMissileSystem3D__HeroLoc))
+     call SetUnitY(UniMissileSystem3D__MU[i], GetLocationY(UniMissileSystem3D__HeroLoc))
+     call SetUnitOwner(UniMissileSystem3D__MU[i], GetOwningPlayer(caster), true)
+     call SetUnitFacing(UniMissileSystem3D__MU[i], UniMissileSystem3D__AN[i])
+     set UniMissileSystem3D__HE[i]=UniMissileSystem3D__OH[i] + GetLocationZ(UniMissileSystem3D__HeroLoc) + 0.11
+     set UniMissileSystem3D__SH[i]=0 * speed
+     set UniMissileSystem3D__LastX[i]=0.0
+     set UniMissileSystem3D__LastY[i]=0.0
+     set UniMissileSystem3D__R01[i]=UniMissileSystem3D__HEMax[i] / UniMissileSystem3D__LT[i] / UniMissileSystem3D__LT[i] * 4
+     set UniMissileSystem3D__R02[i]=UniMissileSystem3D__SP[i] * UniMissileSystem3D__RI[i] / UniMissileSystem3D__TIMOut
+     set UniMissileSystem3D__HP[i]=l__hp
+     set UniMissileSystem3D__DM[i]=damage
+     set UniMissileSystem3D__EF[i]=Effect
+     call SetUnitFlyHeight(UniMissileSystem3D__MU[i], UniMissileSystem3D__HE[i] - GetLocationZ(UniMissileSystem3D__HeroLoc), 0.0)
+     set UniMissileSystem3D__EFL[i]=AddSpecialEffectTarget(UniMissileSystem3D__EF[i], UniMissileSystem3D__MU[i], "chest")
+     set UniMissileSystem3D__LastOwner[i]=GetOwningPlayer(caster)
+     call RemoveLocation(UniMissileSystem3D__HeroLoc)
+     set UniMissileSystem3D__HeroLoc=null
 endfunction
-function UniMissileSystem3D___Init takes nothing returns nothing
-     set UniMissileSystem3D___map_max_X=GetRectMaxX(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D___map_max_Y=GetRectMaxY(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D___map_min_X=GetRectMinX(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D___map_min_Y=GetRectMinY(bj_mapInitialPlayableArea)
-     set UniMissileSystem3D___DamageGroup=CreateGroup()
-     set UniMissileSystem3D___TIMr=CreateTimer()
-     call TimerStart(UniMissileSystem3D___TIMr, UniMissileSystem3D___TIMOut, true, function UniMissileSystem3D___MLoop)
+function UniMissileSystem3D__Init takes nothing returns nothing
+     set UniMissileSystem3D__map_max_X=GetRectMaxX(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D__map_max_Y=GetRectMaxY(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D__map_min_X=GetRectMinX(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D__map_min_Y=GetRectMinY(bj_mapInitialPlayableArea)
+     set UniMissileSystem3D__DamageGroup=CreateGroup()
+     set UniMissileSystem3D__TIMr=CreateTimer()
+     call TimerStart(UniMissileSystem3D__TIMr, UniMissileSystem3D__TIMOut, true, function UniMissileSystem3D__MLoop)
 endfunction
 
 //library UniMissileSystem3D ends
@@ -5182,8 +5182,8 @@ function YDWE_PreloadSL_LoadPreFile takes player p,integer n,string strFilePath 
   
   loop
     exitwhen index > n
-    set YDWEPreloadSL__CodeHI[beg + index]=YDWE_PreloadSL_LoadInteger(index)
-    set YDWEPreloadSL__CodeLO[beg + index]=YDWE_PreloadSL_LoadInteger($200 + index)
+    set YDWEPreloadSL___CodeHI[beg + index]=YDWE_PreloadSL_LoadInteger(index)
+    set YDWEPreloadSL___CodeLO[beg + index]=YDWE_PreloadSL_LoadInteger($200 + index)
     set index=index + 1
   endloop
 endfunction
@@ -5195,8 +5195,8 @@ function YDWE_PreloadSL_SavePreFile takes player p,integer n,string strFilePath 
   call PreloadGenStart()
   loop
     exitwhen index > n
-    call YDWE_PreloadSL_SaveInteger(index , YDWEPreloadSL__CodeHI[beg + index])
-    call YDWE_PreloadSL_SaveInteger($200 + index , YDWEPreloadSL__CodeLO[beg + index])
+    call YDWE_PreloadSL_SaveInteger(index , YDWEPreloadSL___CodeHI[beg + index])
+    call YDWE_PreloadSL_SaveInteger($200 + index , YDWEPreloadSL___CodeLO[beg + index])
     set index=index + 1
   endloop
           
@@ -5279,15 +5279,15 @@ endfunction
 function YDWE_PreloadSL_GetMask takes player p returns integer
     local integer value
     local integer beg= ( 501 * GetPlayerId(p) )
-    local integer l__hi= YDWEPreloadSL__CodeHI[beg]
-    local integer l__lo= YDWEPreloadSL__CodeLO[beg]
+    local integer l__hi= YDWEPreloadSL___CodeHI[beg]
+    local integer l__lo= YDWEPreloadSL___CodeLO[beg]
     if l__hi < $8000 then
         set value=l__lo + l__hi * $10000
     else
         set l__hi=l__hi - $8000
         set value=- ( l__lo + l__hi * $10000 )
     endif
-    set YDWEPreloadSL__Code[beg]=value
+    set YDWEPreloadSL___Code[beg]=value
     return value - 'YDWE'
 endfunction
 ///
@@ -5308,18 +5308,18 @@ function YDWE_PreloadSL_Unmove takes integer beg,integer n,integer key returns n
         if value < beg then
             set value=value + n
         endif
-        set l__hi=YDWEPreloadSL__CodeHI[value]
-        set YDWEPreloadSL__CodeHI[value]=YDWEPreloadSL__CodeHI[index]
-        set YDWEPreloadSL__CodeHI[index]=l__hi
+        set l__hi=YDWEPreloadSL___CodeHI[value]
+        set YDWEPreloadSL___CodeHI[value]=YDWEPreloadSL___CodeHI[index]
+        set YDWEPreloadSL___CodeHI[index]=l__hi
         
         set value=keys - ( index - beg )
         set value=beg + value - value / n * n
         if value < beg then
             set value=value + n
         endif
-        set l__lo=YDWEPreloadSL__CodeLO[value]
-        set YDWEPreloadSL__CodeLO[value]=YDWEPreloadSL__CodeLO[index]
-        set YDWEPreloadSL__CodeLO[index]=l__lo
+        set l__lo=YDWEPreloadSL___CodeLO[value]
+        set YDWEPreloadSL___CodeLO[value]=YDWEPreloadSL___CodeLO[index]
+        set YDWEPreloadSL___CodeLO[index]=l__lo
         
         set keys=keys - key
         
@@ -5337,8 +5337,8 @@ function YDWE_PreloadSL_GetCode takes integer beg,integer n,integer key,integer 
     
     loop
         exitwhen index > end
-        set l__hi=YDWEPreloadSL__CodeHI[index]
-        set l__lo=YDWEPreloadSL__CodeLO[index]
+        set l__hi=YDWEPreloadSL___CodeHI[index]
+        set l__lo=YDWEPreloadSL___CodeLO[index]
         
         // SubKey
         set keys=keys + key
@@ -5367,7 +5367,7 @@ function YDWE_PreloadSL_GetCode takes integer beg,integer n,integer key,integer 
             set value=- ( l__lo + l__hi * $10000 )
         endif
         
-        set YDWEPreloadSL__Code[index]=value
+        set YDWEPreloadSL___Code[index]=value
         set index=index + 1
     endloop
     
@@ -5394,8 +5394,8 @@ function YDWE_PreloadSL_SetMask takes player p,integer mask returns nothing
             set l__lo=value - l__hi * $10000
             set l__hi=l__hi + $8000
     endif
-    set YDWEPreloadSL__CodeHI[beg]=l__hi
-    set YDWEPreloadSL__CodeLO[beg]=l__lo
+    set YDWEPreloadSL___CodeHI[beg]=l__hi
+    set YDWEPreloadSL___CodeLO[beg]=l__lo
 endfunction
 function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer mask returns nothing
     local integer l__hi
@@ -5408,7 +5408,7 @@ function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer 
     
     loop
         exitwhen index > end
-        set value=YDWEPreloadSL__Code[index]
+        set value=YDWEPreloadSL___Code[index]
         
         // SetCode
         if value >= 0 then
@@ -5430,8 +5430,8 @@ function YDWE_PreloadSL_SetCode takes integer beg,integer n,integer key,integer 
         set value=masks / $10000
         set l__hi=l__hi + ( value - value / $100 * $100 ) * $100
         set l__lo=l__lo + ( masks - masks / $100 * $100 ) * $10000
-        set YDWEPreloadSL__CodeHI[index]=l__hi
-        set YDWEPreloadSL__CodeLO[index]=l__lo
+        set YDWEPreloadSL___CodeHI[index]=l__hi
+        set YDWEPreloadSL___CodeLO[index]=l__lo
         set index=index + 1
     endloop
 endfunction
@@ -5457,18 +5457,18 @@ function YDWE_PreloadSL_Move takes integer beg,integer n,integer key returns not
         if value < beg then
             set value=value + n
         endif
-        set l__hi=YDWEPreloadSL__CodeHI[value]
-        set YDWEPreloadSL__CodeHI[value]=YDWEPreloadSL__CodeHI[index]
-        set YDWEPreloadSL__CodeHI[index]=l__hi
+        set l__hi=YDWEPreloadSL___CodeHI[value]
+        set YDWEPreloadSL___CodeHI[value]=YDWEPreloadSL___CodeHI[index]
+        set YDWEPreloadSL___CodeHI[index]=l__hi
         
         set value=keys - ( index - beg )
         set value=beg + value - value / n * n
         if value < beg then
             set value=value + n
         endif
-        set l__lo=YDWEPreloadSL__CodeLO[value]
-        set YDWEPreloadSL__CodeLO[value]=YDWEPreloadSL__CodeLO[index]
-        set YDWEPreloadSL__CodeLO[index]=l__lo
+        set l__lo=YDWEPreloadSL___CodeLO[value]
+        set YDWEPreloadSL___CodeLO[value]=YDWEPreloadSL___CodeLO[index]
+        set YDWEPreloadSL___CodeLO[index]=l__lo
         
         set index=index + 1
     endloop
@@ -5492,8 +5492,8 @@ function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
         set index=beg
         loop
             exitwhen index > end
-            call StoreInteger(YDWESync___m_gc, ("H" ), ( I2S(index) ), ( YDWEPreloadSL__CodeHI[index])) // INLINED!!
-            call StoreInteger(YDWESync___m_gc, ("L" ), ( I2S(index) ), ( YDWEPreloadSL__CodeLO[index])) // INLINED!!
+            call StoreInteger(YDWESync___m_gc, ("H" ), ( I2S(index) ), ( YDWEPreloadSL___CodeHI[index])) // INLINED!!
+            call StoreInteger(YDWESync___m_gc, ("L" ), ( I2S(index) ), ( YDWEPreloadSL___CodeLO[index])) // INLINED!!
             set index=index + 1
         endloop
     endif
@@ -5513,8 +5513,8 @@ function YDWE_PreloadSL_Sync takes player p,integer n returns nothing
     set index=beg
     loop
         exitwhen index > end
-        set YDWEPreloadSL__CodeHI[index]=(GetStoredInteger(YDWESync___m_gc, ("H" ), ( I2S(index)))) // INLINED!!
-        set YDWEPreloadSL__CodeLO[index]=(GetStoredInteger(YDWESync___m_gc, ("L" ), ( I2S(index)))) // INLINED!!
+        set YDWEPreloadSL___CodeHI[index]=(GetStoredInteger(YDWESync___m_gc, ("H" ), ( I2S(index)))) // INLINED!!
+        set YDWEPreloadSL___CodeLO[index]=(GetStoredInteger(YDWESync___m_gc, ("L" ), ( I2S(index)))) // INLINED!!
         set index=index + 1
     endloop
 endfunction
@@ -5542,13 +5542,13 @@ function YDWE_PreloadSL_Save takes player p,string dir,string file,integer n ret
 endfunction
  
 function YDWE_PreloadSL_Set takes player p,string s,integer n,integer value returns nothing
-    set YDWEPreloadSL__Code[n + ( 501 * GetPlayerId(p) )]=value
+    set YDWEPreloadSL___Code[n + ( 501 * GetPlayerId(p) )]=value
 endfunction
 function YDWE_PreloadSL_Get takes player p,string s,integer n returns integer
-    return YDWEPreloadSL__Code[n + ( 501 * GetPlayerId(p) )]
+    return YDWEPreloadSL___Code[n + ( 501 * GetPlayerId(p) )]
 endfunction
                                 
-function YDWEPreloadSL__Init takes nothing returns nothing
+function YDWEPreloadSL___Init takes nothing returns nothing
     local integer index= 0
     loop
         exitwhen index >= 16
@@ -6811,7 +6811,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Mon Aug 12 23:14:23 2019
+//   Date: Wed Aug 14 11:03:58 2019
 //   Map Author: 云杨 zei_kale
 // 
 //===========================================================================
@@ -24925,7 +24925,11 @@ function EverySecond_Conditions takes nothing returns boolean
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|CFF00FFFF提示：|r游戏开始2分钟内输入|CFF00EE00sw|r可激活试玩模式，一小时内不刷进攻怪|r")
     elseif passed_time == 160 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|CFF00FFFF提示：|r历练是游戏中的主线任务，想快点提升伤害，请抓紧时间历练哦|r")
+    elseif passed_time == 180 then
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|CFF00FFFF提示：|r声望是影响历练进度最重要的属性，可以通过号令天下令刷练功房提高声望获取速度|r")
     elseif passed_time == 200 then
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|CFF00FFFF提示：|r前期做|CFF00EE00辽国第一先锋|r任务、击杀|CFF00EE00林朝英|r和|CFF00EE00扫地神僧|r可以获得不错的声望|r")
+    elseif passed_time == 220 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|CFF00FFFF提示：|r|CFF00EE004个门派技能|r升级到|CFF00EE006重|r后可以获得掌门（唐门六合经为1重，明教乾坤大挪移为4重）|r")
     elseif passed_time == 240 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|CFF00FFFF提示：|r搭配某些武功到达特定重数可以获得称号，游戏中有多达|CFF00EE0060多种|r称号（|CFF00EE00新手教官|r处查看）|r")
@@ -24954,6 +24958,13 @@ function sunOfMonkey takes nothing returns nothing
     local integer i= 1
     local integer imax= GetRandomInt(5, 8)
     local unit l__ut= null
+    if GetRandomInt(1, 100) <= 50 then
+        set shengwang[i]=shengwang[i] + 100
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|cfffff000玩家" + GetPlayerName(p) + "的悟空发动了|CFF00EE00猴子猴孙|r技能，|CFF00EE00声望|r增加100点|r")
+    else
+        set shoujiajf[i]=shoujiajf[i] + 100
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 20, "|cfffff000玩家" + GetPlayerName(p) + "的悟空发动了|CFF00EE00猴子猴孙|r技能，|CFF00EE00守家积分|r增加100点|r")
+    endif
     loop
         exitwhen i > imax
         set l__ut=CreateUnit(p, 'n00X', - 768. + GetRandomReal(- 100, 100), - 768. + GetRandomReal(- 100, 100), 270.)
@@ -48252,6 +48263,47 @@ function MapStartCreateUnitsAndInitEnvironments takes nothing returns nothing
 	call CreateUnitsForPlayer_15()
 	call InitEnvironment()
 endfunction
+//===========================================================
+//被动技能范围伤害
+//attacker = 攻击者
+//attacker = 被攻击者
+//spell_id = 技能ID
+//range    = 技能范围
+//damage   = 伤害值
+//effects  = 特效
+//possibility = 概率
+//mana_cost = 蓝耗
+//===========================================================
+function UnitAttack_Conditions takes nothing returns boolean
+ local unit u= GetAttacker()
+ local unit l__ut= GetTriggerUnit()
+ local player p= GetOwningPlayer(u)
+ local integer i= 1 + GetPlayerId(p)
+ local location loc= GetUnitLoc(u)
+ local location loc2= GetUnitLoc(l__ut)
+ local location temp_loc= null
+ local group g= null
+ local integer j= 0
+ local integer k= 0
+ local real x= 0
+ local real y= 0
+ local unit dummy= null
+	call RemoveLocation(loc)
+	call RemoveLocation(loc2)
+	set u=null
+	set l__ut=null
+	set loc=null
+	set loc2=null
+	set p=null
+	set dummy=null
+	return false
+endfunction
+function UnitAttack takes nothing returns nothing
+ local trigger t= CreateTrigger()
+	call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_ATTACKED)
+	call TriggerAddCondition(t, Condition(function UnitAttack_Conditions))
+	set t=null
+endfunction
 function CunWuGong takes integer num,integer id1,integer id2,string s,integer dp1,integer fy1,integer gg1,integer jm1,integer wx1,integer ys1 returns nothing
  local integer i= StringHash("武学")
 	call SaveInteger(YDHT, i + num, 0, num)
@@ -50418,16 +50470,16 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs192768703")
+call ExecuteFunc("jasshelper__initstructs54323390")
 call ExecuteFunc("FrameLibrary__init")
-call ExecuteFunc("UniMissileSystem3D___Init")
+call ExecuteFunc("UniMissileSystem3D__Init")
 call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEBitwise__onInit")
 call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
 call ExecuteFunc("YDWELogarithm___onInit")
 call ExecuteFunc("YDWESync___onInit")
-call ExecuteFunc("YDWEPreloadSL__Init")
+call ExecuteFunc("YDWEPreloadSL___Init")
 call ExecuteFunc("YDWEStringFormula___Init")
 call ExecuteFunc("YDWETimerPattern___Init")
 call ExecuteFunc("YDWETimerSystem___Init")
@@ -50463,22 +50515,22 @@ function config takes nothing returns nothing
     call InitAllyPriorities()
 endfunction
 //===========================================================================
-//��Ծϵͳ 
-//===========================================================================
-//===========================================================================
 //修改生命
 //===========================================================================
-//===========================================================================  
-//===========================================================================  
-//�Զ����¼� 
-//===========================================================================
-//===========================================================================   
 //===========================================================================
 //ϵͳ-TimerSystem
 //===========================================================================
      
  
                  
+//===========================================================================  
+//===========================================================================  
+//�Զ����¼� 
+//===========================================================================
+//===========================================================================   
+//===========================================================================
+//��Ծϵͳ 
+//===========================================================================
 
 
 
@@ -50619,7 +50671,7 @@ function sa___prototype4_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs192768703 takes nothing returns nothing
+function jasshelper__initstructs54323390 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__ShopWeapon_onDestroy=CreateTrigger()
@@ -50649,7 +50701,7 @@ function jasshelper__initstructs192768703 takes nothing returns nothing
     call TriggerAddCondition(st___prototype4[1],Condition(function sa___prototype4_SetUnitMoveSpeedEx))
 
 
-call ExecuteFunc("s__ModSpeed_Init__onInit")
+call ExecuteFunc("s__ModSpeed_Init___onInit")
 
 
 

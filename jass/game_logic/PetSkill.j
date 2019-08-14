@@ -11,6 +11,13 @@ function sunOfMonkey takes nothing returns nothing
     local integer i = 1
     local integer imax = GetRandomInt(5, 8)
     local unit ut = null
+    if GetRandomInt(1, 100) <= 50 then
+        set shengwang[i] = shengwang[i] + 100
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|cfffff000玩家" + GetPlayerName(p) + "的悟空发动了|CFF00EE00猴子猴孙|r技能，|CFF00EE00声望|r增加100点|r")
+    else
+        set shoujiajf[i] = shoujiajf[i] + 100
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,20,"|cfffff000玩家" + GetPlayerName(p) + "的悟空发动了|CFF00EE00猴子猴孙|r技能，|CFF00EE00守家积分|r增加100点|r")
+    endif
     loop
         exitwhen i > imax
         set ut = CreateUnit(p,'n00X',-768.+GetRandomReal(-100, 100),-768.+GetRandomReal(-100, 100),270.)
