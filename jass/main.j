@@ -1339,7 +1339,7 @@ function Zw takes nothing returns nothing
 	call AddSpecialEffectTargetUnitBJ("overhead",At,"Objects\\RandomObject\\RandomObject.mdl")
 	call AddSpecialEffectTargetUnitBJ("overhead",Bt,"Objects\\RandomObject\\RandomObject.mdl")
 	call AddSpecialEffectTargetUnitBJ("overhead",gg_unit_N007_0055,"Abilities\\Spells\\Other\\TalkToMe\\TalkToMe.mdl")
-	call CreateTextTagUnitBJ("选人再选门派",Rs,.0,15.,100.,100.,.0,50.)
+	call CreateTextTagUnitBJ("双击选人再选门派",Rs,.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagUnitBJ("新手教官",SuiFeng,.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("新手教官",Location(420,-597),100.0,15.,100.,100.,.0,50.)
 	// call CreateTextTagLocBJ("地图等级福利",Location(-1500,-113),100.0,15.,100.,100.,.0,50.)
