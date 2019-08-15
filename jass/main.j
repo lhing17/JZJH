@@ -270,6 +270,7 @@ globals
 	integer array fuyuan
 	integer array danpo
 	integer array yishu
+	integer array special_attack
 	group i7=null
 	integer array udg_runamen
 	integer k7=0
@@ -2082,12 +2083,13 @@ function main1 takes nothing returns nothing
 		set deputy[i] = 0 // 副职
 		set master[i] = 0 // 大师
 
-		set wuxing[i]=9
-		set jingmai[i]=9
-		set gengu[i]=9
-		set fuyuan[i]=9
-		set danpo[i]=9
-		set yishu[i]=9
+		set wuxing[i] = 9
+		set jingmai[i] = 9
+		set gengu[i] = 9
+		set fuyuan[i] = 9
+		set danpo[i] = 9
+		set yishu[i] = 9
+		set special_attack[i] = 0
 		set udg_runamen[i]=0
 		set D7[i]=0
 		set F7[i]=0

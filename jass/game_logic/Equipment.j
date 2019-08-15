@@ -823,6 +823,7 @@ function nz takes nothing returns nothing
 	set shaguaihufui[i]=shaguaihufui[i]+LoadReal(YDHT,id,StringHash("杀怪回复"))+LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("杀怪回复"))
 	set shengminghuifu[i]=shengminghuifu[i]+LoadReal(YDHT,id,StringHash("生命回复"))+LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("生命回复"))
 	set falihuifu[i]=falihuifu[i]+LoadReal(YDHT,id,StringHash("法力回复"))+LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("法力回复"))
+	set special_attack[i]=special_attack[i]+R2I(LoadReal(YDHT,id,StringHash("特殊攻击")))+R2I(LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("特殊攻击")))
 endfunction
 //脱下装备
 function pz takes nothing returns boolean
@@ -850,6 +851,7 @@ function qz takes nothing returns nothing
 	set shaguaihufui[i]=shaguaihufui[i]-LoadReal(YDHT,id,StringHash("杀怪回复"))-LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("杀怪回复"))
 	set shengminghuifu[i]=shengminghuifu[i]-LoadReal(YDHT,id,StringHash("生命回复"))-LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("生命回复"))
 	set falihuifu[i]=falihuifu[i]-LoadReal(YDHT,id,StringHash("法力回复"))-LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("法力回复"))
+	set special_attack[i]=special_attack[i]-R2I(LoadReal(YDHT,id,StringHash("特殊攻击")))-R2I(LoadReal(YDHT,GetHandleId(GetManipulatedItem()),StringHash("特殊攻击")))
 endfunction
 
 //江湖忠
@@ -966,7 +968,7 @@ function Qz takes nothing returns nothing
 	local player p = GetOwningPlayer(u)
 	local integer i = 1+GetPlayerId(p)
 	if((F8[i]==false)and(UnitHaveItem(u,'I01L'))and(UnitHaveItem(u,'I01M')))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※精钢套装※|R\n|CFFB2FF00招式伤害+150\n暴击率+4%\n暴击伤害+30%\n杀怪回复+500\n根骨+1\n胆魄+1|R")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※精钢套装※|R\n|CFFB2FF00招式伤害+150\n暴击率+4%\n暴击伤害+30%\n杀怪回复+500\n根骨+1\n胆魄+1\n特殊攻击+15|R")
 		set F8[i]=true
 		call ModifyHeroStat(0,u,0,$96)
 		set udg_baojilv[i]=(udg_baojilv[i]+.04)
@@ -974,9 +976,10 @@ function Qz takes nothing returns nothing
 		set shaguaihufui[i]=(shaguaihufui[i]+500.)
 		set gengu[i]=(gengu[i]+1)
 		set danpo[i]=(danpo[i]+1)
+		set special_attack[i] = special_attack[i] + 15
 	endif
 	if((XNKL[i]==false)and(UnitHaveItem(u,'I0A8'))and(UnitHaveItem(u,'I0A9')))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※新年快乐套装※|R\n|CFFB2FF00全属性+1000\n全性格属性+5|R")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※新年快乐套装※|R\n|CFFB2FF00全属性+1000\n全性格属性+5\n特殊攻击+15|R")
 		set XNKL[i]=true
 		call ModifyHeroStat(0,u,0,1000)
 		call ModifyHeroStat(1,u,0,1000)
@@ -987,10 +990,11 @@ function Qz takes nothing returns nothing
 		set yishu[i]=(yishu[i]+5)
 		set gengu[i]=(gengu[i]+5)
 		set danpo[i]=(danpo[i]+5)
+		set special_attack[i] = special_attack[i] + 15
 	endif
 	// 张无忌杀猪刀I0CI,郭靖环戒I0CH，乔峰草鞋I0DO，合成大侠套装：全属性+1，三围+50
 	if((daxia[i]==false)and(UnitHaveItem(u,'I0CI'))and(UnitHaveItem(u,'I0CH')) and(UnitHaveItem(u,'I0DO')) )then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※大侠套装※|R\n|CFFB2FF00全属性+50\n全性格属性+1|R")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※大侠套装※|R\n|CFFB2FF00全属性+50\n全性格属性+1\n特殊攻击+10|R")
 		set daxia[i]=true
 		call ModifyHeroStat(0,u,0,50)
 		call ModifyHeroStat(1,u,0,50)
@@ -1001,9 +1005,10 @@ function Qz takes nothing returns nothing
 		set yishu[i]=(yishu[i]+1)
 		set gengu[i]=(gengu[i]+1)
 		set danpo[i]=(danpo[i]+1)
+		set special_attack[i] = special_attack[i] + 10
 	endif
 	if((H8[i]==false)and(UnitHaveItem(u,1227895118))and(UnitHaveItem(u,1227895119))and(UnitHaveItem(u,1227895120)))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※七星套装※|R\n|CFFB2FF00招式伤害+200\n魔法上限+15\n法力恢复+5\n气血+10000\n每秒恢复+130\n医术+1\n悟性+1|R")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※七星套装※|R\n|CFFB2FF00招式伤害+200\n魔法上限+15\n法力恢复+5\n气血+10000\n每秒恢复+130\n医术+1\n悟性+1\n特殊攻击+18|R")
 		set H8[i]=true
 		call ModifyHeroStat(0,u,0,$C8)
 		call YDWEGeneralBounsSystemUnitSetBonus(u,1,0,15)
@@ -1012,9 +1017,10 @@ function Qz takes nothing returns nothing
 		call UnitAddAbility(u,1093678425)
 		set wuxing[i]=(wuxing[i]+1)
 		set yishu[i]=(yishu[i]+1)
+		set special_attack[i] = special_attack[i] + 18
 	endif
 	if((I8[i]==false)and(UnitHaveItem(u,'I01Q'))and(UnitHaveItem(u,'I01R')))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※破军套装※|R\n|CFFB2FF00攻击速度+30%\n气血+10000\n每秒回复+400\n防御+30\n胆魄+1\n福缘+1")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※破军套装※|R\n|CFFB2FF00攻击速度+30%\n气血+10000\n每秒回复+400\n防御+30\n胆魄+1\n福缘+1\n特殊攻击+10")
 		set I8[i]=true
 		call UnitAddAbility(u,1093678426)
 		call UnitAddAbility(u,1093678640)
@@ -1022,9 +1028,10 @@ function Qz takes nothing returns nothing
 		call YDWEGeneralBounsSystemUnitSetBonus(u,2,0,30)
 		set danpo[i]=(danpo[i]+1)
 		set fuyuan[i]=(fuyuan[i]+1)
+		set special_attack[i] = special_attack[i] + 10
 	endif
 	if((l8[i]==false)and(UnitHaveItem(u,'I00X'))and(UnitHaveItem(u,'I00Y')))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※绝恋套装※|R\n|CFFB2FF00招式伤害+150\n真实伤害+100\n绝学领悟力+1\n气血+15000\n每秒回复+300\n伤害回复+300\n全性格属性+1")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※绝恋套装※|R\n|CFFB2FF00招式伤害+150\n真实伤害+100\n绝学领悟力+1\n气血+15000\n每秒回复+300\n伤害回复+300\n全性格属性+1\n特殊攻击+20")
 		set l8[i]=true
 		call ModifyHeroStat(0,u,0,$96)
 		call ModifyHeroStat(2,u,0,100)
@@ -1038,9 +1045,10 @@ function Qz takes nothing returns nothing
 		set yishu[i]=(yishu[i]+1)
 		set gengu[i]=(gengu[i]+1)
 		set danpo[i]=(danpo[i]+1)
+		set special_attack[i] = special_attack[i] + 20
 	endif
 	if((G8[i]==false)and(UnitHaveItem(u,'I00Z'))and(UnitHaveItem(u,'I010')))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※倾城套装※|R\n|CFFB2FF00防御+170\n绝学领悟力+1\n暴击率+4%\n暴击伤害+30%\n杀怪回复+600\n全性格属性+1")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※倾城套装※|R\n|CFFB2FF00防御+170\n绝学领悟力+1\n暴击率+4%\n暴击伤害+30%\n杀怪回复+600\n全性格属性+1\n特殊攻击+25")
 		set G8[i]=true
 		call YDWEGeneralBounsSystemUnitSetBonus(u,2,0,$AA)
 		set juexuelingwu[i]=(juexuelingwu[i]+1)
@@ -1053,9 +1061,10 @@ function Qz takes nothing returns nothing
 		set yishu[i]=(yishu[i]+1)
 		set gengu[i]=(gengu[i]+1)
 		set danpo[i]=(danpo[i]+1)
+		set special_attack[i] = special_attack[i] + 25
 	endif
 	if((Ee[i]==false)and(UnitHaveItem(u,'I08V'))and(UnitHaveItem(u,'I08W'))and(UnitHaveItem(u,'I08X')))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※江湖套装※|R\n|CFFB2FF00内力+300\n真实伤害+200\n暴击伤害+150%\n法力恢复+10\n暴击率+20%\n绝学领悟力+4\n全性格属性+3\n武功伤害+60%")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※江湖套装※|R\n|CFFB2FF00内力+300\n真实伤害+200\n暴击伤害+150%\n法力恢复+10\n暴击率+20%\n绝学领悟力+4\n全性格属性+3\n武功伤害+60%\n特殊攻击+40")
 		set Ee[i]=true
 		call ModifyHeroStat(1,u,0,300)
 		call ModifyHeroStat(2,u,0,$C8)
@@ -1070,9 +1079,10 @@ function Qz takes nothing returns nothing
 		set gengu[i]=(gengu[i]+3)
 		set danpo[i]=(danpo[i]+3)
 		set udg_shanghaijiacheng[i]=(udg_shanghaijiacheng[i]+.6)
+		set special_attack[i] = special_attack[i] + 40
 	endif
 	if((De[i]==false)and(UnitHaveItem(u,'I090'))and(UnitHaveItem(u,'I08Z'))and(UnitHaveItem(u,'I08Y')))then
-		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※决战套装※|R\n|CFFB2FF00招式伤害+1000\n伤害回复+600\n气血+100000\n每秒恢复+1000\n防御+1000\n绝学领悟力+4\n全性格属性+3\n伤害吸收+30%")
+		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffFF4d00※决战套装※|R\n|CFFB2FF00招式伤害+1000\n伤害回复+600\n气血+100000\n每秒恢复+1000\n防御+1000\n绝学领悟力+4\n全性格属性+3\n伤害吸收+30%\n特殊攻击+40")
 		set De[i]=true
 		call ModifyHeroStat(0,u,0,1000)
 		set shanghaihuifu[i]=(shanghaihuifu[i]+600.)
@@ -1087,6 +1097,7 @@ function Qz takes nothing returns nothing
 		set gengu[i]=(gengu[i]+3)
 		set danpo[i]=(danpo[i]+3)
 		set udg_shanghaixishou[i]=(udg_shanghaixishou[i]+.3)
+		set special_attack[i] = special_attack[i] + 40
 	endif
 	set u = null
 	set p = null
@@ -1109,6 +1120,7 @@ function Tz takes nothing returns nothing
 		set shaguaihufui[i]=(shaguaihufui[i]-500.)
 		set gengu[i]=(gengu[i]-1)
 		set danpo[i]=(danpo[i]-1)
+		set special_attack[i] = special_attack[i] - 15
 	endif
 	if((XNKL[i])and((UnitHaveItem(u,'I0A8')==false)or(UnitHaveItem(u,'I0A9')==false)))then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去新年快乐套装属性|R")
@@ -1122,6 +1134,7 @@ function Tz takes nothing returns nothing
 		set yishu[i]=(yishu[i]-5)
 		set gengu[i]=(gengu[i]-5)
 		set danpo[i]=(danpo[i]-5)
+		set special_attack[i] = special_attack[i] - 15
 	endif
 	if((daxia[i])and(UnitHaveItem(u,'I0CI')==false)or(UnitHaveItem(u,'I0CH')==false) or(UnitHaveItem(u,'I0DO')==false) )then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去大侠套装属性|R")
@@ -1135,6 +1148,7 @@ function Tz takes nothing returns nothing
 		set yishu[i]=(yishu[i]-1)
 		set gengu[i]=(gengu[i]-1)
 		set danpo[i]=(danpo[i]-1)
+		set special_attack[i] = special_attack[i] - 10
 	endif
 	if((H8[i])and((UnitHaveItem(u,1227895118)==false)or(UnitHaveItem(u,1227895119)==false)or(UnitHaveItem(u,1227895120)==false)))then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去七星套装属性|R")
@@ -1146,6 +1160,7 @@ function Tz takes nothing returns nothing
 		call UnitRemoveAbility(u,1093678425)
 		set wuxing[i]=(wuxing[i]-1)
 		set yishu[i]=(yishu[i]-1)
+		set special_attack[i] = special_attack[i] - 18
 	endif
 	if((I8[i])and((UnitHaveItem(u,'I01Q')==false)or(UnitHaveItem(u,'I01R')==false)))then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去破军套装属性|R")
@@ -1156,6 +1171,7 @@ function Tz takes nothing returns nothing
 		call YDWEGeneralBounsSystemUnitSetBonus(u,2,1,30)
 		set danpo[i]=(danpo[i]-1)
 		set fuyuan[i]=(fuyuan[i]-1)
+		set special_attack[i] = special_attack[i] - 10
 	endif
 	if((l8[i])and((UnitHaveItem(u,'I00X')==false)or(UnitHaveItem(u,'I00Y')==false)))then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去绝恋套装属性|R")
@@ -1172,6 +1188,7 @@ function Tz takes nothing returns nothing
 		set yishu[i]=(yishu[i]-1)
 		set gengu[i]=(gengu[i]-1)
 		set danpo[i]=(danpo[i]-1)
+		set special_attack[i] = special_attack[i] - 20
 	endif
 	if((G8[i])and((UnitHaveItem(u,'I00Z')==false)or(UnitHaveItem(u,'I010')==false)))then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去倾城套装属性|R")
@@ -1187,6 +1204,7 @@ function Tz takes nothing returns nothing
 		set yishu[i]=(yishu[i]-1)
 		set gengu[i]=(gengu[i]-1)
 		set danpo[i]=(danpo[i]-1)
+		set special_attack[i] = special_attack[i] - 25
 	endif
 	if((Ee[i])and((UnitHaveItem(u,'I08V')==false)or(UnitHaveItem(u,'I08W')==false)or(UnitHaveItem(u,'I08X')==false)))then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去江湖套装属性|R")
@@ -1204,6 +1222,7 @@ function Tz takes nothing returns nothing
 		set gengu[i]=(gengu[i]-3)
 		set danpo[i]=(danpo[i]-3)
 		set udg_shanghaijiacheng[i]=(udg_shanghaijiacheng[i]-.6)
+		set special_attack[i] = special_attack[i] - 40
 	endif
 	if((De[i])and((UnitHaveItem(u,'I090')==false)or(UnitHaveItem(u,'I08Z')==false)or(UnitHaveItem(u,'I08Y')==false)))then
 		call DisplayTimedTextToPlayer(p,0,0,10.,"|cffff00ff失去决战套装属性|R")
@@ -1221,6 +1240,7 @@ function Tz takes nothing returns nothing
 		set gengu[i]=(gengu[i]-3)
 		set danpo[i]=(danpo[i]-3)
 		set udg_shanghaixishou[i]=(udg_shanghaixishou[i]-.3)
+		set special_attack[i] = special_attack[i] - 40
 	endif
 	set u = null
 	set p = null

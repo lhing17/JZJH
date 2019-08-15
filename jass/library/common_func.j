@@ -1425,6 +1425,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	local real shanghai
 	local real attack //伤害因子
 	local real target_def //敌方防御因子
+	local real special_def // 特殊防御因子
 	//local real critical //暴击因子
 	local real dodge //闪避因子
 	local real random //随机因子
@@ -1434,7 +1435,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	local real int = I2R(GetHeroStatBJ(2,u,true)) // 真实伤害
 	if UnitTypeNotNull(u,UNIT_TYPE_HERO) then
 	// 神龙心法加成
-		set attack = (1+0.3*GetUnitAbilityLevel(u, 'A059')) \
+		set attack = (1 + 0.3 * GetUnitAbilityLevel(u, 'A059')) \
 		* 27 \
 		* udg_lilianxishu[i] \
 		* (w1 * (1 + str / 500) * (1 + agi / 500) + w2 * 0.01 * int) \
@@ -1472,7 +1473,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		     set attack = attack * 1.5
 	    endif
 	else
-		set attack = 750*(w1+w2)*(1.+GetUnitAbilityLevel(u,id))*shxishu
+		set attack = 750 * (w1 + w2) * (1. + GetUnitAbilityLevel(u, id)) * shxishu
 		// 难6以上敌方用先天功加超多伤害
 		if udg_nandu>=5 and id == 1093682245 then
 			set attack = attack * 10
@@ -1485,6 +1486,14 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	else
 		set target_def = 1 / (1 + 0.1 * GetUnitLevel(uc))
 	endif
+
+	if special_attack[i] >= 10 * (1 + udg_nandu) then
+	    set special_def = 1
+	else
+	    set special_def = 1 / (2 + udg_nandu - 0.1 * special_attack[i]) // 特殊防御
+	endif
+
+
 	//set critical = udg_baojishanghai[1+GetPlayerId(GetOwningPlayer(u))]
 	if uc == null then
 		set dodge = 25
@@ -1495,7 +1504,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		endif
 	endif
 	set random = GetRandomReal(0.95, 0.95+I2R(udg_xinggeB[i])/20)
-	set basic_damage = attack * target_def * random
+	set basic_damage = attack * target_def * random * special_def
 	
 	if GetRandomReal(0, 100) < dodge then
 		set shanghai = 0

@@ -25,6 +25,8 @@
 
 globals
     constant integer DENOMINATION_NUMBER = 20
+
+    boolean firstTime = true // 是否第一次选择难度
 endglobals
 
 
@@ -964,25 +966,25 @@ function ChooseNanDu takes nothing returns nothing
     if(Trig_____________u_Func002C())then
         call DialogClear(udg_nan)
         call DialogSetMessage(udg_nan,"请选择游戏难度")
-        if udg_nandu<=0 then
+        if firstTime or udg_nandu<=0 then
 			set udg_nan0=DialogAddButtonBJ(udg_nan,"|cFF00CC00初入江湖")
     	endif
-    	if udg_nandu<=1 then
+    	if firstTime or udg_nandu<=1 then
 			set udg_nan1=DialogAddButtonBJ(udg_nan,"|cFFCC0066牛刀小试")
    		endif
-   		if udg_nandu<=2 then
+   		if firstTime or udg_nandu<=2 then
 			set udg_nan2=DialogAddButtonBJ(udg_nan,"|cFFFF6600登堂入室")
         endif
-        if udg_nandu<=3 then
+        if firstTime or (udg_nandu<=3 and udg_nandu >= 1) then
 			set udg_nan3=DialogAddButtonBJ(udg_nan,"|cFF0041FF炉火纯青")
         endif
-        if udg_nandu<=4 then
+        if firstTime or (udg_nandu<=4 and udg_nandu >= 2) then
 			set udg_nan4=DialogAddButtonBJ(udg_nan,"|cFF1FBF00华山论剑")
         endif
-        if udg_nandu<=5 then
+        if firstTime or (udg_nandu<=5 and udg_nandu >= 3) then
 			set udg_nan5=DialogAddButtonBJ(udg_nan,"|cFFFF0000独孤求败")
         endif
-		if udg_nandu <= 6 then
+		if firstTime or (udg_nandu <= 6 and udg_nandu >= 4) then
 			set udg_nan7=DialogAddButtonBJ(udg_nan,"|cFF999900决战江湖")
         endif
 		call DialogDisplayBJ(true,udg_nan,Player(0))
@@ -1814,6 +1816,7 @@ function HA takes nothing returns nothing
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF0033试玩结束，开始刷怪"))
 	endif
 	if udg_boshu==5 and udg_teshushijian==true then
+	    set firstTime = false
 		call ChooseNanDu() // 第二次选择难度
 	endif
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF0033邪教势力：第"+(I2S(udg_boshu)+"|CFFFF0033波")))
