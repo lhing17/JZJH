@@ -1490,7 +1490,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if special_attack[i] >= 10 * (1 + udg_nandu) then
 	    set special_def = 1
 	else
-	    set special_def = 1 / (2 + udg_nandu - 0.1 * special_attack[i]) // 特殊防御
+	    set special_def = 1 / (3 + 2 * udg_nandu - 0.2 * special_attack[i]) // 特殊防御
 	endif
 
 
@@ -1503,7 +1503,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 			set dodge = 0.
 		endif
 	endif
-	set random = GetRandomReal(0.95, 0.95+I2R(udg_xinggeB[i])/20)
+	set random = GetRandomReal(0.95, 0.95 + I2R(udg_xinggeB[i]) / 20)
 	set basic_damage = attack * target_def * random * special_def
 	
 	if GetRandomReal(0, 100) < dodge then
