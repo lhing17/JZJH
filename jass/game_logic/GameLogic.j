@@ -25,6 +25,8 @@
 
 globals
     constant integer DENOMINATION_NUMBER = 20
+
+    boolean firstTime = true // 是否第一次选择难度
 endglobals
 
 
@@ -964,25 +966,25 @@ function ChooseNanDu takes nothing returns nothing
     if(Trig_____________u_Func002C())then
         call DialogClear(udg_nan)
         call DialogSetMessage(udg_nan,"请选择游戏难度")
-        if udg_nandu<=0 then
+        if firstTime or udg_nandu<=0 then
 			set udg_nan0=DialogAddButtonBJ(udg_nan,"|cFF00CC00初入江湖")
     	endif
-    	if udg_nandu<=1 then
+    	if firstTime or udg_nandu<=1 then
 			set udg_nan1=DialogAddButtonBJ(udg_nan,"|cFFCC0066牛刀小试")
    		endif
-   		if udg_nandu<=2 then
+   		if firstTime or udg_nandu<=2 then
 			set udg_nan2=DialogAddButtonBJ(udg_nan,"|cFFFF6600登堂入室")
         endif
-        if udg_nandu<=3 then
+        if firstTime or (udg_nandu<=3 and udg_nandu >= 1) then
 			set udg_nan3=DialogAddButtonBJ(udg_nan,"|cFF0041FF炉火纯青")
         endif
-        if udg_nandu<=4 then
+        if firstTime or (udg_nandu<=4 and udg_nandu >= 2) then
 			set udg_nan4=DialogAddButtonBJ(udg_nan,"|cFF1FBF00华山论剑")
         endif
-        if udg_nandu<=5 then
+        if firstTime or (udg_nandu<=5 and udg_nandu >= 3) then
 			set udg_nan5=DialogAddButtonBJ(udg_nan,"|cFFFF0000独孤求败")
         endif
-		if udg_nandu <= 6 then
+		if firstTime or (udg_nandu <= 6 and udg_nandu >= 4) then
 			set udg_nan7=DialogAddButtonBJ(udg_nan,"|cFF999900决战江湖")
         endif
 		call DialogDisplayBJ(true,udg_nan,Player(0))
@@ -1488,7 +1490,7 @@ function Victory takes nothing returns nothing
 	// 获胜标识
 	set is_victory = true
 
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.24的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.25的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT,id*cx,-$5E9EB4B3,40.)
@@ -1503,7 +1505,7 @@ function Victory takes nothing returns nothing
 	call TimerStart(ky,.04,true,function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.24的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.25的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
@@ -1518,7 +1520,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
 	local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.24的游戏总评分："+(I2S(ae)+"分（战败）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.25的游戏总评分："+(I2S(ae)+"分（战败）")))
 	set i = 1
 	loop
 		exitwhen i >= 6
@@ -1814,6 +1816,7 @@ function HA takes nothing returns nothing
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF0033试玩结束，开始刷怪"))
 	endif
 	if udg_boshu==5 and udg_teshushijian==true then
+	    set firstTime = false
 		call ChooseNanDu() // 第二次选择难度
 	endif
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF0033邪教势力：第"+(I2S(udg_boshu)+"|CFFFF0033波")))
@@ -1930,23 +1933,23 @@ function HA takes nothing returns nothing
 	        call IssuePointOrderByIdLoc(bj_lastCreatedUnit,$D000F,v7[4])
 	    endif
 	endif
-	call YDWEPolledWaitNull(20.)
+	call YDWEPolledWaitNull(10.)
 	if((ue>0))then
-	call ConditionalTriggerExecute(dj)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033名门高手开始进攻，大家要小心应付了！")
+        call ConditionalTriggerExecute(dj)
+        call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033名门高手开始进攻，大家要小心应付了！")
 	endif
 	call DisableTrigger(Yi)
 	call YDWEPolledWaitNull(10.)
 	if((O4>1))then
 		call DisableTrigger(Zi)
 	endif
-	set udg_boshu=udg_boshu+1
+	set udg_boshu=udg_boshu + 1
 	call StopMusic(false)
 	call PlayMusicBJ(xh)
-	if udg_sutong == false then
-		call YDWEPolledWaitNull(135-GetNumPlayer()*10)
+	if not udg_sutong then
+		call YDWEPolledWaitNull(145 - GetNumPlayer() * 10)
 	endif
-	if((udg_boshu>=29))then
+	if((udg_boshu >= 29))then
 	    call StopMusic(false)
 	    call PlayMusicBJ(zh)
 	    call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033西域势力最后BOSS即将发起最后进攻，请作好防守准备")

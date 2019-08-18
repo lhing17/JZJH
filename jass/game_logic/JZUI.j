@@ -142,6 +142,7 @@ function pressEsc takes nothing returns nothing
         else
             call zwidget[132].setText(I2S(yongdanshu[i])+" / 15")
         endif
+        call zwidget[134].setText(I2S(special_attack[i]))
 
         call zwidget[14].toggle()
     endif
@@ -340,10 +341,12 @@ function drawUI_Conditions takes nothing returns boolean
     set attrStr[30] = "0"
     set attrStr[31] = "用丹数量："
     set attrStr[32] = "0"
+    set attrStr[33] = "特殊攻击"
+    set attrStr[34] = "0"
 
     set index = 101
     loop
-        exitwhen index > 132
+        exitwhen index > 134
         set zwidget[index]= Frame.newText1(zwidget[14], attrStr[index - 100], "TXA15")
         if ModuloInteger(index, 2) == 0 then
             call zwidget[index].setPoint(TOPLEFT, zwidget[14], TOPLEFT, 0.01 + 0.07 * ModuloInteger(index - 101, 4) , (index - 97) / 4 * (-0.03))
