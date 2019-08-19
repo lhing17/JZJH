@@ -20,7 +20,7 @@ function TaiZu_Action takes nothing returns nothing
 	if UnitHaveItem(u,'I097') then
 	    set shxishu=shxishu*4
     endif
-	set shanghai=ShangHaiGongShi(u, uc, 15., 21.,shxishu,'A0C9')
+	set shanghai=ShangHaiGongShi(u, uc, 30., 42.,shxishu,'A0C9')
     call AddSpecialEffectTargetUnitBJ( "overhead",uc, "Abilities\\Spells\\Demon\\RainOfFire\\RainOfFireTarget.mdl" )
     call DestroyEffect( GetLastCreatedEffectBJ() )
     //call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,R2S(shanghai)+", "+I2S(1+GetPlayerId(GetOwningPlayer(u))))
@@ -297,7 +297,7 @@ function YeChaGun_SH takes nothing returns nothing
 	if UnitHaveItem(udg_yechadanwei,'I097') then
 	    set shxishu=shxishu*4
     endif
-    set shanghai=ShangHaiGongShi(udg_yechadanwei,GetEnumUnit(),18,12,shxishu,'A0CB')
+    set shanghai=ShangHaiGongShi(udg_yechadanwei,GetEnumUnit(),36,24,shxishu,'A0CB')
     call WuGongShangHai(udg_yechadanwei,GetEnumUnit(),shanghai)
     if GetUnitAbilityLevel(udg_yechadanwei,'A0DI')>=1 then
 	     call SetUnitDizzy(GetEnumUnit(),2.,"Abilities\\Spells\\Human\\Thunderclap\\ThunderclapTarget.mdl")
@@ -404,7 +404,7 @@ function FengMoShe takes nothing returns nothing
 	if UnitHaveItem(u,'I097') then
 	    set shxishu=shxishu*6
     endif
-	set shanghai=ShangHaiGongShi(u,uc,24.,45.,shxishu,'A0C8')
+	set shanghai=ShangHaiGongShi(u, uc, 24., 45., shxishu, 'A0C8')
 	call WuGongShangHai(u,uc,shanghai)
 	set uc=null
 	set u=null

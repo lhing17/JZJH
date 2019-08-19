@@ -975,16 +975,16 @@ function ChooseNanDu takes nothing returns nothing
    		if firstTime or udg_nandu<=2 then
 			set udg_nan2=DialogAddButtonBJ(udg_nan,"|cFFFF6600登堂入室")
         endif
-        if firstTime or (udg_nandu<=3 and udg_nandu >= 1) then
+        if firstTime or (udg_nandu<=3) then
 			set udg_nan3=DialogAddButtonBJ(udg_nan,"|cFF0041FF炉火纯青")
         endif
-        if firstTime or (udg_nandu<=4 and udg_nandu >= 2) then
+        if firstTime or (udg_nandu<=4 and udg_nandu >= 1) then
 			set udg_nan4=DialogAddButtonBJ(udg_nan,"|cFF1FBF00华山论剑")
         endif
-        if firstTime or (udg_nandu<=5 and udg_nandu >= 3) then
+        if firstTime or (udg_nandu<=5 and udg_nandu >= 2) then
 			set udg_nan5=DialogAddButtonBJ(udg_nan,"|cFFFF0000独孤求败")
         endif
-		if firstTime or (udg_nandu <= 6 and udg_nandu >= 4) then
+		if firstTime or (udg_nandu <= 6 and udg_nandu >= 3) then
 			set udg_nan7=DialogAddButtonBJ(udg_nan,"|cFF999900决战江湖")
         endif
 		call DialogDisplayBJ(true,udg_nan,Player(0))
@@ -1490,7 +1490,7 @@ function Victory takes nothing returns nothing
 	// 获胜标识
 	set is_victory = true
 
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.25的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.26的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT,id*cx,-$5E9EB4B3,40.)
@@ -1505,7 +1505,7 @@ function Victory takes nothing returns nothing
 	call TimerStart(ky,.04,true,function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.25的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.26的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
@@ -1520,7 +1520,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
 	local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.25的游戏总评分："+(I2S(ae)+"分（战败）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.26的游戏总评分："+(I2S(ae)+"分（战败）")))
 	set i = 1
 	loop
 		exitwhen i >= 6

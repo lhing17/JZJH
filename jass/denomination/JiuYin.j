@@ -71,9 +71,6 @@ library JiuYin initializer JiuYin_Init
         set loc=null
         set p=null
     endfunction
-    function func_name takes nothing returns nothing
-
-    endfunction
 
 
     function JiuYin_Init takes nothing returns nothing

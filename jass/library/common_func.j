@@ -1438,7 +1438,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		set attack = (1 + 0.3 * GetUnitAbilityLevel(u, 'A059')) \
 		* 27 \
 		* udg_lilianxishu[i] \
-		* (w1 * (1 + str / 500) * (1 + agi / 500) + w2 * 0.01 * int) \
+		* (w1 * (1 + str / 300) * (1 + agi / 300) + w2 * 0.02 * int) \
 		* (1.6 + 0.4 * GetUnitAbilityLevel(u,id)) \
 		* (udg_shanghaijiacheng[i] + 1.) \
 		* shxishu
@@ -1487,8 +1487,8 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		set target_def = 1 / (1 + 0.1 * GetUnitLevel(uc))
 	endif
 
-	if special_attack[i] >= 10 * (1 + udg_nandu) then
-	    set special_def = 1
+	if special_attack[i] >= 6 * (1 + udg_nandu) then
+	    set special_def = 1.3
 	else
 	    set special_def = 1 / (3 + 2 * udg_nandu - 0.2 * special_attack[i]) // 特殊防御
 	endif
