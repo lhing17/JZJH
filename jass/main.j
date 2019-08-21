@@ -54,6 +54,7 @@
 #include "denomination/TieZhang.j"
 #include "denomination/TaiShan.j"
 #include "denomination/SongShan.j"
+#include "denomination/WuDu.j"
 
 #include "denomination/JiangHuWuGong.j"
 #include "denomination/JueShiWuGong.j"

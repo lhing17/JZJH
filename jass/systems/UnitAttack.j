@@ -34,6 +34,15 @@ function UnitAttack_Conditions takes nothing returns boolean
 		call songShanJianFa(u, ut)
 	endif
 
+	// 千蛛手
+    if PassiveWuGongCondition(u, ut, QIAN_ZHU_SHOU) then
+        call qianZhuShou()
+    endif
+
+    // 千蛛手的蜘蛛攻击
+    if GetUnitTypeId(u) == 'n00Y' then
+        call qianZhuZhu()
+    endif
 
 
 	call RemoveLocation(loc)
