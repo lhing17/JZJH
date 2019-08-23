@@ -20,6 +20,9 @@ function UseAbility_Conditions takes nothing returns boolean
 	local group g = null
     local integer life = 0
 
+    if id == YIN_XIE_SHU then
+        call yinXieShu()
+    endif
    
 
  

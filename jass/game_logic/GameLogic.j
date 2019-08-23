@@ -1439,54 +1439,59 @@ function Victory takes nothing returns nothing
 	call SaveInteger(YDHT,id,-$3021938A,cx)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
 	if udg_yanglao then
-	    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00养老模式下无积分")
-	    return
-	endif
-	// 速通模式3倍积分
-	if tiaoZhanIndex == 1 then
-		set get_zdl = get_zdl * 3
-	endif
-	// 无技能商店3倍积分
-	if tiaoZhanIndex == 2 then
-		set get_zdl = get_zdl * 3
-	endif
-	// 全局存档，积分倍数
-	if S2I(jfBeishu) >= 1 then
-		set get_zdl = get_zdl * S2I(jfBeishu)
-	endif
-	set get_zdl = get_zdl * ( 1 + activityPointAddition)
-    set damage_jf = damage_jf * ( 1 + activityPointAddition)
+	    set i = 1
+        loop
+            exitwhen i >= 6
+	        call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00养老模式下无积分")
+	        set i = i + 1
+	    endloop
+	else
+        // 速通模式3倍积分
+        if tiaoZhanIndex == 1 then
+            set get_zdl = get_zdl * 3
+        endif
+        // 无技能商店3倍积分
+        if tiaoZhanIndex == 2 then
+            set get_zdl = get_zdl * 3
+        endif
+        // 全局存档，积分倍数
+        if S2I(jfBeishu) >= 1 then
+            set get_zdl = get_zdl * S2I(jfBeishu)
+        endif
+        set get_zdl = get_zdl * ( 1 + activityPointAddition)
+        set damage_jf = damage_jf * ( 1 + activityPointAddition)
 
-	set i = 1
-	loop
-		exitwhen i >= 6
-		if saveFlag[i-1] == false then
-		    if mall_addition[i] == 0 then
-			    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00获得战斗力和积分："+I2S(get_zdl+damage_jf))
-			 else
-			    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00开启了双倍积分，获得战斗力和积分："+I2S((get_zdl+damage_jf)* (1+mall_addition[i])))
-			 endif
-			// 计算战斗力和积分
-			set udg_zdl[i-1] = udg_zdl[i-1] + (get_zdl + damage_jf)* (1+mall_addition[i])
-			set udg_jf[i-1] = udg_jf[i-1] + (get_zdl + damage_jf)* (1+mall_addition[i])
-			set udg_success[i-1] = udg_success[i-1]+1
-			// 保存战斗力、积分、通关次数到服务器
-			call DzAPI_Map_StoreInteger(Player(i-1),"zdl",udg_zdl[i-1])
-			call DzAPI_Map_StoreInteger(Player(i-1),"jf",udg_jf[i-1])
-			call DzAPI_Map_StoreInteger(Player(i-1),"success",udg_success[i-1])
-			// 保存到房间需要判断是否读取成功，怕炸档覆盖
-			if GetPlayerServerValueSuccess(Player(i-1)) then
-				// 保存到房间
-				call DzAPI_Map_Stat_SetStat(Player(i-1),"zdl",I2S(udg_zdl[i-1]))
-				call DzAPI_Map_Stat_SetStat(Player(i-1),"jf",I2S(udg_jf[i-1]))
-				call DisplayTextToPlayer(Player(i-1),0,0,"|CFFFE890D"+GetPlayerName(Player(i-1))+"|CFF99CC00数据保存成功")
-				set saveFlag[i-1] = true // 已保存，再杀大屁股不保存
-			else
-				call DisplayTextToPlayer(Player(i-1),0,0,"|CFFFE890D"+GetPlayerName(Player(i-1))+"|CFFFF0303数据保存失败")
-			endif
-		endif
-		set i = i + 1
-	endloop
+        set i = 1
+        loop
+            exitwhen i >= 6
+            if saveFlag[i-1] == false then
+                if mall_addition[i] == 0 then
+                    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00获得战斗力和积分："+I2S(get_zdl+damage_jf))
+                 else
+                    call DisplayTextToPlayer(Player(i-1),0,0,"|CFF99CC00开启了双倍积分，获得战斗力和积分："+I2S((get_zdl+damage_jf)* (1+mall_addition[i])))
+                 endif
+                // 计算战斗力和积分
+                set udg_zdl[i-1] = udg_zdl[i-1] + (get_zdl + damage_jf)* (1+mall_addition[i])
+                set udg_jf[i-1] = udg_jf[i-1] + (get_zdl + damage_jf)* (1+mall_addition[i])
+                set udg_success[i-1] = udg_success[i-1]+1
+                // 保存战斗力、积分、通关次数到服务器
+                call DzAPI_Map_StoreInteger(Player(i-1),"zdl",udg_zdl[i-1])
+                call DzAPI_Map_StoreInteger(Player(i-1),"jf",udg_jf[i-1])
+                call DzAPI_Map_StoreInteger(Player(i-1),"success",udg_success[i-1])
+                // 保存到房间需要判断是否读取成功，怕炸档覆盖
+                if GetPlayerServerValueSuccess(Player(i-1)) then
+                    // 保存到房间
+                    call DzAPI_Map_Stat_SetStat(Player(i-1),"zdl",I2S(udg_zdl[i-1]))
+                    call DzAPI_Map_Stat_SetStat(Player(i-1),"jf",I2S(udg_jf[i-1]))
+                    call DisplayTextToPlayer(Player(i-1),0,0,"|CFFFE890D"+GetPlayerName(Player(i-1))+"|CFF99CC00数据保存成功")
+                    set saveFlag[i-1] = true // 已保存，再杀大屁股不保存
+                else
+                    call DisplayTextToPlayer(Player(i-1),0,0,"|CFFFE890D"+GetPlayerName(Player(i-1))+"|CFFFF0303数据保存失败")
+                endif
+            endif
+            set i = i + 1
+        endloop
+	endif
 	// 获胜标识
 	set is_victory = true
 

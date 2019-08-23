@@ -1203,6 +1203,8 @@ function xw takes nothing returns nothing
 	set yw=null
 	set e=null
 endfunction
+
+// 单位ww跟随单位yw
 function zw takes unit ww,unit yw,real hw,real Aw,real aw,real Bw,integer bw returns nothing
 	local timer tm=CreateTimer()
 	call SaveTimerHandle(YDHT,StringHash((I2S((GetHandleId((ww)))))),StringHash(("Timer")),(tm))
@@ -1436,10 +1438,10 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if UnitTypeNotNull(u,UNIT_TYPE_HERO) then
 	// 神龙心法加成
 		set attack = (1 + 0.3 * GetUnitAbilityLevel(u, 'A059')) \
-		* 27 \
+		* 54 \
 		* udg_lilianxishu[i] \
 		* (w1 * (1 + str / 300) * (1 + agi / 300) + w2 * 0.02 * int) \
-		* (1.6 + 0.4 * GetUnitAbilityLevel(u,id)) \
+		* (1.5 + 0.5 * GetUnitAbilityLevel(u,id)) \
 		* (udg_shanghaijiacheng[i] + 1.) \
 		* shxishu
 

@@ -1,5 +1,6 @@
 globals
     constant integer QIAN_ZHU_SHOU = 'A0BL' // 千蛛手
+    constant integer YIN_XIE_SHU = '' // 引蝎术
 
     constant integer SHUANG_SHOU = 'A07U' // 双手互搏
     constant integer KUI_HUA = 'A07W' // 葵花宝典
@@ -97,4 +98,19 @@ function qianZhuShou takes nothing returns nothing
 	set p=null
 	set u=null
 	set temp = null
+endfunction
+
+// 引蝎术
+function yinXieShu takes nothing returns nothing
+    local unit temp = null
+    local unit u = GetTriggerUnit()
+    local player p = GetOwningPlayer(u)
+    local real x = GetUnitX(u)
+    local real y = GetUnitY(u)
+    call WuGongShengChong(u, YIN_XIE_SHU, 100)
+    set temp = CreateUnit(p, id, x, y, 270)
+    call zw(temp, u, 1, 250, 1000, 1500, 75)
+
+    set temp = null
+    set u = null
 endfunction
