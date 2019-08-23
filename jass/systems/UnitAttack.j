@@ -44,6 +44,11 @@ function UnitAttack_Conditions takes nothing returns boolean
         call qianZhuZhu()
     endif
 
+    // 驭蛇奇术
+    if PassiveWuGongCondition(u, ut, YU_SHE_SHU) then
+        call yuSheShu()
+    endif
+
 
 	call RemoveLocation(loc)
 	call RemoveLocation(loc2)

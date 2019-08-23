@@ -73,6 +73,7 @@
 
 #include "systems/UnitAttack.j"
 #include "systems/UseAbility.j"
+#include "systems/UnitDamage.j"
 
 
 #include "InitialSave.j"
@@ -2347,5 +2348,6 @@ function main2 takes nothing returns nothing
 
 	call UnitAttack() // 注册单位攻击事件
 	call UseAbility() // 注册使用技能事件
+	call UnitDamage() // 注册任意单位伤害事件
 
 endfunction

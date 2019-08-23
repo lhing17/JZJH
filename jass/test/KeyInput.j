@@ -625,7 +625,13 @@ function KeyInput takes nothing returns nothing
 	if s == "next" and udg_isTest[GetPlayerId(p)] then
 		set udg_boshu=udg_boshu+1
 		call DisplayTextToPlayer(p,0,0,"|cFFFF0000已跳转至下一波")
-	endif 
+	endif
+	if s == "n7" then
+	    call setDifficultyAndExpRate(6)
+	    call SetPlayerTechResearched(Player(12),'R001',50)
+        call SetPlayerTechResearched(Player(6),'R001',50)
+        call SetPlayerTechResearched(Player(15),'R001',50)
+	endif
 	if s=="撸下一波" and udg_isTest[GetPlayerId(p)] then
 		set udg_boshu=udg_boshu+1
 		call DisplayTextToPlayer(p,0,0,"|cFFFF0000已跳转至下一波")

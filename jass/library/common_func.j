@@ -1987,5 +1987,52 @@ function addAllAttrs takes integer i, integer num returns nothing
     set fuyuan[i] = fuyuan[i] + num
 endfunction
 
+// mod 1-增加 2-设置
+// ch 增加数量
+// id 生命值修改的技能
+function LifeChange takes unit u,integer mod,integer ch,integer id returns nothing
+    local integer a
+    local integer b
+    local integer c
+    local integer d
+    local integer aid = id
+
+    if mod==1 then
+        set ch=-ch
+    elseif mod==2 then
+        set ch=ch-R2I(GetUnitState(u,UNIT_STATE_MAX_LIFE))
+    endif
+    //set YDWEADDBONUS_LIFE=YDWEADDBONUS_LIFE+ch
+    if ch>999999999 then
+        set ch=999999999
+    endif
+    if ch<-999999999 then
+        set ch=-999999999
+    endif
+    if ch<0 then
+        set a=2
+        set ch=-ch
+    else
+        set a=12
+    endif
+    set b=0
+    loop
+        exitwhen b==10
+        set c=ch-ch/10*10
+        set d=0
+        loop
+            exitwhen d==c
+            call UnitAddAbility(u,aid)
+            call SetUnitAbilityLevel(u,aid,a)
+            call UnitRemoveAbility(u,aid)
+            set d=d+1
+        endloop
+        set ch=ch/10
+        set a=a+1
+        set b=b+1
+    endloop
+
+endfunction
+
 
 #endif //CommonFuncIncluded
