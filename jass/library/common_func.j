@@ -1489,10 +1489,11 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 		set target_def = 1 / (1 + 0.1 * GetUnitLevel(uc))
 	endif
 
-	if special_attack[i] >= 6 * (1 + udg_nandu) then
+	// 特殊防御
+	if special_attack[i] >= 6 * (1 + udg_nandu) or UnitHasBuffBJ(uc, 'B022') then
 	    set special_def = 1.3
 	else
-	    set special_def = 1 / (3 + 2 * udg_nandu - 0.2 * special_attack[i]) // 特殊防御
+	    set special_def = 1 / (3 + 2 * udg_nandu - 0.2 * special_attack[i]) 
 	endif
 
 

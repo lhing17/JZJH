@@ -15,6 +15,7 @@
  * 13 中毒 处于中毒状态下，减少移动速度并且每秒扣除气血1/1000
  * 14 深度中毒 处于深度中毒状态下，减少移动速度并且每秒扣除气血3/1000
  * 15 致盲 处于致盲状态下，攻击命中率大幅下降
+ * 16 虚弱 单位的特防失效
  */
 function WanBuff_1 takes integer buffnum, integer num, unit uc, integer id, integer orderid, unit ut, string s returns nothing
 	local unit u
@@ -58,4 +59,5 @@ function WanBuff takes unit u, unit ut, integer buffnum returns nothing
 	call WanBuff_1(buffnum, 13, u, 'A074', $D022F, ut, "中毒")
 	call WanBuff_1(buffnum, 14, u, 'A074', $D022F, ut, "深度中毒")
     call WanBuff_1(buffnum, 15, u, 'A097', $D00DE, ut, "致盲")
+    call WanBuff_1(buffnum, 16, u, 'A0DV', $D00DE, ut, "虚弱")
 endfunction

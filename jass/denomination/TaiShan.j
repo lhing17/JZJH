@@ -239,16 +239,16 @@ function ShiBaPan takes nothing returns nothing
 	    set gailv = gailv + 15
   endif
 	if (GetRandomInt(1, 100) <= gailv + GetUnitAbilityLevel(u, 'A08F') + fuyuan[i] / 5 and not(UnitHasBuffBJ(u, 'B01L'))) then
-        call WuGongShengChong(u, 'A08E', 500)
-        if GetUnitAbilityLevel(u, 'A083') >= 1 then
-			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[1], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[1], 3)
-			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[2], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[2], 3)
-			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[3], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[3], 3)
-			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[4], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[4], 3)
-			call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[5], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[5], 3)
-		else
-			call maJiaUseLeveldAbilityAtTargetLoc(u, 'e000',  'A08F', abilityLevel, $D0085, u, 3)
-		endif
+      call WuGongShengChong(u, 'A08E', 500)
+      if GetUnitAbilityLevel(u, 'A083') >= 1 then
+				call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[1], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[1], 3)
+				call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[2], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[2], 3)
+				call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[3], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[3], 3)
+				call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[4], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[4], 3)
+				call maJiaUseLeveldAbilityAtTargetLoc(udg_hero[5], 'e000',  'A08F', abilityLevel, $D0085, udg_hero[5], 3)
+			else
+				call maJiaUseLeveldAbilityAtTargetLoc(u, 'e000',  'A08F', abilityLevel, $D0085, u, 3)
+			endif
 	endif
 	set u = null
 	set ut = null
