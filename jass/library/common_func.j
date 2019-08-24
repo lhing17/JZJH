@@ -1493,7 +1493,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if special_attack[i] >= 6 * (1 + udg_nandu) or UnitHasBuffBJ(uc, 'B022') then
 	    set special_def = 1.3
 	else
-	    set special_def = 1 / (3 + 2 * udg_nandu - 0.2 * special_attack[i]) 
+	    set special_def = 1 / (1 + 0.1 * ( (1 + udg_nandu) * 6 - special_attack[i])) 
 	endif
 
 

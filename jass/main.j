@@ -2091,7 +2091,9 @@ function main1 takes nothing returns nothing
 		set fuyuan[i] = 9
 		set danpo[i] = 9
 		set yishu[i] = 9
-		set special_attack[i] = 0
+		if i >= 1 and i <= 5 then
+			set special_attack[i] = DzAPI_Map_GetMapLevel(Player(i - 1))
+		endif
 		set udg_runamen[i]=0
 		set D7[i]=0
 		set F7[i]=0
