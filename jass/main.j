@@ -1196,6 +1196,10 @@ globals
 	trigger Ks=null
 	unit Ls=null
 	unit udg_ZhengPaiWL=null
+	unit GU_DONG_SHANG_REN=null
+	unit BAO_SHI_SHANG_REN=null
+	unit PING_YI_ZHI=null
+	unit SHI_PO_TIAN=null
 	unit Ns=null
 	unit Os=null
 	unit Ps=null

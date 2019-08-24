@@ -537,10 +537,10 @@ function CreateUnitsForPlayer_15 takes nothing returns nothing
 	set ft=CreateUnit(p,1865429046,-5503.8,5213.9,156.857)
 	set gt=CreateUnit(p,1865429046,-5538.1,5186.3,209.428)
 	//set u=CreateUnit(p,'o00K',-1256.,-1921.,266.75)
-	set Ts=CreateUnit(p,1865429047,1939.6,-2738.2,217.84)
+	set Ts=CreateUnit(p, 'o007',1939.6,-2738.2,217.84) // 店小二
 	set u=CreateUnit(p,1865429061,-5054.2,-3013.2,129.225)
 	//set u=CreateUnit(p,1865429049,-2209.8,459.5,295.041)
-	set nt=CreateUnit(p,1865429057,-2053.7,-339.5,181.33)
+	set nt=CreateUnit(p,'o00A',-2053.7,-339.5,181.33) // 副职郭靖
 	set ot=CreateUnit(p,1865429058,347.5,-3809.3,20.701)
 	set ht=CreateUnit(p,1865429046,-5425.9,5155.9,280.391)
 	set jt=CreateUnit(p,1865429046,-5448.9,5202.9,106.67)
@@ -584,11 +584,11 @@ function CreateUnitsForPlayer_15 takes nothing returns nothing
 	set u=CreateUnit(p,1865429328,-134.4,372.9,106.56)
 	set At=CreateUnit(p,1865429079,-1174.4,11346.6,274.031)
 	set Bt=CreateUnit(p,1865429081,4580.,419.,179.83)
-	set u=CreateUnit(p,1865429304,598.6,-2015.8,94.58)
-	set u=CreateUnit(p,1865429305,-2081.6,-1962.8,24.21)
+	set BAO_SHI_SHANG_REN=CreateUnit(p,'o018', 598.6,-2015.8,94.58)
+	set SHI_PO_TIAN=CreateUnit(p, 'o019',-2081.6,-1962.8,24.21)
 	set u=CreateUnit(p,1865429313,-4242.4,-492.4,63.2)
 	set Ct=CreateUnit(p,1865429296,-129.2,-2927.6,277.91)
-	set u=CreateUnit(p,'o011',670.9,-1270.5,175.947)
+	set GU_DONG_SHANG_REN=CreateUnit(p,'o011',670.9,-1270.5,175.947)
 	set ct=CreateUnit(p,1865429298,-11366.8,10882.4,86.53)
 	set u=CreateUnit(p,1865429299,-10757.5,-9392.7,335.57)
 	set u=CreateUnit(p,1865429300,-10267.3,-9397.,236.63)
@@ -600,7 +600,7 @@ function CreateUnitsForPlayer_15 takes nothing returns nothing
 	set Et=CreateUnit(p,1865429315,-9636.7,-400.7,28.58)
 	set Ft=CreateUnit(p,1865429320,-8902.4,-26.,141.62)
 
-	set u=CreateUnit(p,1865429322,-2032.3,-1442.2,179.83)
+	set PING_YI_ZHI=CreateUnit(p, 'o01J', -2032.3, -1442.2, 179.83)
 
 	call ShowUnitHide(gg_unit_nvl2_0005)
 	set u=null
