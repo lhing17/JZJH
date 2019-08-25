@@ -1682,6 +1682,12 @@ function InitDenominationSkills takes nothing returns nothing
     set Y7[20]='A0B0'
     set Q8[20]='A0B6'
     set P8[20]='A0B1'
+    set udg_menpainame[21]="五毒教"
+    set X7[21]='A0BL'
+    set Z7[21]='A0DU'
+    set Y7[21]='A0DT'
+    set Q8[21]='A0DS'
+    set P8[21]='A0DR'
 endfunction
 
 function InitSkillBooks takes nothing returns nothing

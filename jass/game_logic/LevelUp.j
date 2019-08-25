@@ -88,6 +88,7 @@ endfunction
  * 18 泰山
  * 19 铁掌
  * 20 唐门
+ * 21 五毒
  */
 function setChiefNumber takes integer i, integer denomination returns nothing
     set chief[i] = YDWEBitwise_OR(chief[i], YDWEBitwise_LShift(1, denomination - 1))
@@ -893,6 +894,7 @@ function WuGongShengChong takes unit u,integer id,real r returns nothing
         call becomeChief(u, 18, "泰山掌门", 320, 220, 120)
         call becomeChief(u, 19, "铁掌帮主", 300, 0, 225)
         call becomeChief(u, 20, "唐门门主", 0, 225, 300)
+        call becomeChief(u, 21, "五毒教主", 300, 225, 0)
 
         call determineShaoLinTitle(u)
         call determineGuMuTitle(u)

@@ -24,7 +24,7 @@
 
 
 globals
-    constant integer DENOMINATION_NUMBER = 20
+    constant integer DENOMINATION_NUMBER = 21
 
     boolean firstTime = true // 是否第一次选择难度
 endglobals
@@ -289,7 +289,7 @@ function ox takes nothing returns boolean
 		or(GetItemTypeId(GetManipulatedItem())==1227894841)or (GetItemTypeId(GetManipulatedItem())=='I09E') or(GetItemTypeId(GetManipulatedItem())==1227894849)		 	\
 		or (GetItemTypeId(GetManipulatedItem())=='I09N') or (GetItemTypeId(GetManipulatedItem())=='I0A2')  or (GetItemTypeId(GetManipulatedItem())=='I0CK')				\
 		or (GetItemTypeId(GetManipulatedItem())=='I0CX') or (GetItemTypeId(GetManipulatedItem())=='I0E1') or (GetItemTypeId(GetManipulatedItem())=='I0EH')\
-		or (GetItemTypeId(GetManipulatedItem())=='I0EO')))
+		or (GetItemTypeId(GetManipulatedItem())=='I0EO') or (GetItemTypeId(GetManipulatedItem())=='I0AA')  ))
 endfunction
 function JiaRuMenPai takes nothing returns nothing
 	local unit u=GetTriggerUnit()
@@ -390,7 +390,21 @@ function JiaRuMenPai takes nothing returns nothing
                     call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00尚未解锁，不能选择唐门")
                 endif
             endif
+            // 自由改投唐门
+            if GetItemTypeId(GetManipulatedItem())=='I0AA' then
+                if wudu_flag[i] == 1 then
+                    call addAllAttrs(i, 1)
+                    set udg_runamen[i] = 21
+                    call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"改拜入了〓五毒教〓，大家一起膜拜他|r")
+                    call SetPlayerName(p,"〓五毒教〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
 
+                    set udg_shuxing[i]=udg_shuxing[i]-5
+                    call AdjustPlayerStateBJ(-60, p, PLAYER_STATE_RESOURCE_LUMBER)
+                    call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00选择五毒教")
+                else
+                    call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00尚未解锁，不能选择五毒教")
+                endif
+            endif
 		else
 			call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff0000你已经加过门派了|r")
 		endif
@@ -2373,7 +2387,7 @@ function HeroLevel takes nothing returns nothing
 		set e9[i]=true
 		set d8[i]=1
 		loop
-			exitwhen d8[i]>20
+			exitwhen d8[i]>DENOMINATION_NUMBER
 			if d8[i]!=11 then
 				if((udg_runamen[i]==d8[i]))then
 					call UnitAddAbility(u,Z7[d8[i]])
@@ -2400,7 +2414,7 @@ function HeroLevel takes nothing returns nothing
 		set d9[i]=true
 		set d8[i]=1
 		loop
-			exitwhen d8[i]>20
+			exitwhen d8[i]>DENOMINATION_NUMBER
 			if d8[i]!=11 then
 				if((udg_runamen[i]==d8[i]))then
 					call UnitAddAbility(u,Y7[d8[i]])
@@ -4081,7 +4095,7 @@ function qR takes nothing returns nothing
 	    	            set O8[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]=1
 	    	            call RemoveItem(FetchUnitItem(GetTriggerUnit(),1227895642))
 	    	            set bj_forLoopBIndex=1
-	    	            set bj_forLoopBIndexEnd=20
+	    	            set bj_forLoopBIndexEnd=DENOMINATION_NUMBER
 	    	            loop
 	    	                exitwhen bj_forLoopBIndex>bj_forLoopBIndexEnd
 	    	                if((udg_runamen[LoadInteger(YDHT,id*cx,-$5E9EB4B3)]==11))then

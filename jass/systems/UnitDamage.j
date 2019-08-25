@@ -14,6 +14,10 @@ function UnitDamage_Conditions takes nothing returns boolean
         call wanChuEffect()
     endif
 
+	if damage == 5.41 then
+        call wuDuZhouDamage()
+    endif
+
 	set t = null
 	set u = null
 	set ut = null

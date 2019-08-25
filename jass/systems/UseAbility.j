@@ -20,9 +20,9 @@ function UseAbility_Conditions takes nothing returns boolean
 	local group g = null
     local integer life = 0
 
-    // 五毒教：引蝎术
-    if id == YIN_XIE_SHU then
-        call yinXieShu()
+    // 五毒教：五毒笛咒
+    if id == WU_DU_ZHOU then
+        call wuDuZhou()
     endif
 
     // 五毒教：补天心经

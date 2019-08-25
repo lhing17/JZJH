@@ -16,6 +16,29 @@ globals
 	constant integer JING_WU = 8 // 精武师
     constant integer MAX_DEPUTY = 8 // 最大副职数（根据目前的设计，这一值不能超过30）
 
+
+    constant integer QIAN_ZHU_SHOU = 'A0BL' // 千蛛手
+    constant integer WU_DU_ZHOU = 'A0DU' // 五毒笛咒
+    constant integer YU_SHE_SHU = 'A0DT' // 驭蛇奇术
+    constant integer BU_TIAN_JING = 'A0DS' // 补天心经
+    constant integer WAN_CHU_SHI_XIN = 'A0DR' // 万蜍噬心
+
+    constant integer SHUANG_SHOU = 'A07U' // 双手互搏
+    constant integer KUI_HUA = 'A07T' // 葵花宝典
+    constant integer HUA_GU = 'A06L' // 化骨绵掌
+    constant integer XI_XING = 'A07R' // 吸星大法
+    constant integer HUA_GONG = 'A07R' // 化功大法
+
+    constant integer LONG_XIANG = 'S002' // 龙象般若功
+    constant integer XIAO_WU_XIANG = 'A083' // 小无相功
+
+    constant integer POISONED_BUFF = 'BEsh' // 中毒buff
+    constant integer DEEP_POISONED_BUFF = 'B01J' // 深度中毒buff
+
+    constant integer ITEM_SHE_ZHANG = 'I09B' // 蛇杖物品
+    constant integer ITEM_HAN_SHA = 'IIII' // 含沙射影
+
+
 endglobals
 library Deputy requires YDWEBitwise
     // 判断是否具备某副职
@@ -1493,7 +1516,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if special_attack[i] >= 6 * (1 + udg_nandu) or UnitHasBuffBJ(uc, 'B022') then
 	    set special_def = 1.3
 	else
-	    set special_def = 1 / (1 + 0.1 * ( (1 + udg_nandu) * 6 - special_attack[i])) 
+	    set special_def = 1 / (1 + 0.06 * ( (1 + udg_nandu) * 6 - special_attack[i])) 
 	endif
 
 
