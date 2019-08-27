@@ -1461,7 +1461,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if UnitTypeNotNull(u,UNIT_TYPE_HERO) then
 	// 神龙心法加成
 		set attack = (1 + 0.3 * GetUnitAbilityLevel(u, 'A059')) \
-		* 54 \
+		* 200 \
 		* udg_lilianxishu[i] \
 		* (w1 * (1 + str / 300) * (1 + agi / 300) + w2 * 0.02 * int) \
 		* (1.5 + 0.5 * GetUnitAbilityLevel(u,id)) \
@@ -1514,7 +1514,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 
 	// 特殊防御
 	if special_attack[i] >= 6 * (1 + udg_nandu) or UnitHasBuffBJ(uc, 'B022') then
-	    set special_def = 1.3
+	    set special_def = RMaxBJ(1 + (special_attack[i] - 6 * (1 + udg_nandu)) * 0.06, 1)
 	else
 	    set special_def = 1 / (1 + 0.06 * ( (1 + udg_nandu) * 6 - special_attack[i])) 
 	endif

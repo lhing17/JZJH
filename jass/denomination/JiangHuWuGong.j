@@ -777,7 +777,7 @@ call SaveReal(YDHT,id*cx,-$2CEF3086,(LoadReal(YDHT,id*cx,-$2CEF3086)*10.))
 endif
 if((GetRandomReal(.0,100.)<=LoadReal(YDHT,id*cx,$2392447A)))then
 call ForGroupBJ(YDWEGetUnitsInRangeOfLocMatchingNull(LoadReal(YDHT,id*cx,$41713DA3),LoadLocationHandle(YDHT,id*cx,-$72C3E060),Condition(function PF)),function QF)
-call WuGongShengChong(GetAttacker(),'A07M',2000.)
+call WuGongShengChong(GetAttacker(),'A07M', 700.)
 endif
 call RemoveLocation(LoadLocationHandle(YDHT,id*cx,-$72C3E060))
 call RemoveLocation(LoadLocationHandle(YDHT,id*cx,-$3348E012))
