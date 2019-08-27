@@ -390,13 +390,14 @@ function JiaRuMenPai takes nothing returns nothing
                     call DisplayTimedTextToPlayer(p,0,0,5,"|cFF66CC00尚未解锁，不能选择唐门")
                 endif
             endif
-            // 自由改投唐门
+            // 自由改投五毒教
             if GetItemTypeId(GetManipulatedItem())=='I0AA' then
                 if wudu_flag[i] == 1 then
                     call addAllAttrs(i, 1)
                     set udg_runamen[i] = 21
                     call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"改拜入了〓五毒教〓，大家一起膜拜他|r")
                     call SetPlayerName(p,"〓五毒教〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
+                    call UnitAddItemById(udg_hero[i], ITEM_HAN_SHA)
 
                     set udg_shuxing[i]=udg_shuxing[i]-5
                     call AdjustPlayerStateBJ(-60, p, PLAYER_STATE_RESOURCE_LUMBER)

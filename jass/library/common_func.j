@@ -36,7 +36,7 @@ globals
     constant integer DEEP_POISONED_BUFF = 'B01J' // 深度中毒buff
 
     constant integer ITEM_SHE_ZHANG = 'I09B' // 蛇杖物品
-    constant integer ITEM_HAN_SHA = 'IIII' // 含沙射影
+    constant integer ITEM_HAN_SHA = 'I0AE' // 含沙射影
 
 
 endglobals

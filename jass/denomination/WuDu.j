@@ -33,6 +33,11 @@ function qianZhuZhu takes nothing returns nothing
         set shxishu = shxishu + 0.8
     endif
 
+    // 专属加成
+    if UnitHaveItem(u, ITEM_HAN_SHA) then
+        set shxishu = shxishu * ( 2 + 0.03 * GetItemCharges(FetchUnitItem(u, ITEM_HAN_SHA)))
+    endif
+
 	set shanghai = ShangHaiGongShi(u, uc, 64., 78., shxishu, QIAN_ZHU_SHOU)
 	call WuGongShangHai(u, uc, shanghai)
 
@@ -71,11 +76,16 @@ function qianZhuShouAoe takes nothing returns nothing
         set shxishu = shxishu + 0.8
     endif
 
+    // 专属加成
+    if UnitHaveItem(u, ITEM_HAN_SHA) then
+        set shxishu = shxishu * ( 2 + 0.03 * GetItemCharges(FetchUnitItem(u, ITEM_HAN_SHA)))
+    endif
+
 	set shanghai=ShangHaiGongShi(u, uc, 16., 20.,shxishu, QIAN_ZHU_SHOU)
 	call WuGongShangHai(u,uc,shanghai)
 
     // AOE的特效
-    call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Demon\\RainOfFire\\RainOfFireTarget.mdl", uc, "overhead"))
+    call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", uc, "origin"))
 
     // 经脉达到20有一定概率触发中毒
     if jingmai[i] >= 20 and GetRandomInt(1, 100) < 30 then
@@ -110,6 +120,7 @@ function qianZhuShou takes nothing returns nothing
     if fuyuan[i] >=20 and GetRandomInt(1, 100) <= 15 + fuyuan[i] / 5 then
         set temp = CreateUnit(p, id, GetUnitX(u), GetUnitY(u), 270)
     	call UnitApplyTimedLifeBJ(5, 'BTLF', temp)
+    	call WuGongShengChong(u, QIAN_ZHU_SHOU, 900.)
 
         // 搭配双手：双倍毒蛛效果
     	if GetUnitAbilityLevel(u, SHUANG_SHOU)>=1 then
@@ -179,6 +190,11 @@ function wuDuZhouDamage takes nothing returns nothing
         set shxishu = shxishu + 0.8
 	endif
 
+	// 专属加成
+    if UnitHaveItem(u, ITEM_HAN_SHA) then
+        set shxishu = shxishu * ( 2 + 0.03 * GetItemCharges(FetchUnitItem(u, ITEM_HAN_SHA)))
+    endif
+
     set shanghai=ShangHaiGongShi(u,uc,14,80,shxishu, WU_DU_ZHOU)
     call WuGongShangHai(u,uc,shanghai)
 
@@ -210,6 +226,12 @@ function yuSheShuExplosion takes nothing returns nothing
         set shxishu = shxishu + 2
     endif
 
+    // 专属加成
+    if UnitHaveItem(u, ITEM_HAN_SHA) then
+        set shxishu = shxishu * ( 2 + 0.03 * GetItemCharges(FetchUnitItem(u, ITEM_HAN_SHA)))
+    endif
+
+
 	set shanghai=ShangHaiGongShi(u, uc, 16., 80.,shxishu, YU_SHE_SHU)
     call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\NightElf\\EntBirthTarget\\EntBirthTarget.mdl", uc, "origin"))
 	call WuGongShangHai(u,uc,shanghai)
@@ -237,6 +259,12 @@ function yuSheShu takes nothing returns nothing
         if UnitHaveItem(u, ITEM_SHE_ZHANG) then
             set shxishu = shxishu + 2
         endif
+
+        // 专属加成
+        if UnitHaveItem(u, ITEM_HAN_SHA) then
+            set shxishu = shxishu * ( 2 + 0.03 * GetItemCharges(FetchUnitItem(u, ITEM_HAN_SHA)))
+        endif
+        
         set damage = ShangHaiGongShi(u, ut, 30, 160, shxishu, YU_SHE_SHU)
         call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Undead\\UDeathSmall\\UDeathSmall.mdl", ut, "overhead"))
         call WuGongShangHai(u, ut, damage)
@@ -386,9 +414,15 @@ function wanChuAction takes nothing returns nothing
         set jmax = jmax * 2
     endif
     
-    // 搭配 +小无相 CD减半
-    if j == 1 and GetUnitAbilityLevel(u, XIAO_WU_XIANG) >= 1 then
-        call EXSetAbilityState(EXGetUnitAbility(u, WAN_CHU_SHI_XIN), 1, EXGetAbilityState(EXGetUnitAbility(u, WAN_CHU_SHI_XIN), 1) / 2)
+    if j == 1 then
+        // 搭配 +小无相 CD减半
+        if GetUnitAbilityLevel(u, XIAO_WU_XIANG) >= 1 then
+            call EXSetAbilityState(EXGetUnitAbility(u, WAN_CHU_SHI_XIN), 1, EXGetAbilityState(EXGetUnitAbility(u, WAN_CHU_SHI_XIN), 1) / 2)
+        endif
+        // "婆婆姊姊"称号 CD为0
+        if isTitle(1 + GetPlayerId(p), 45) then
+            call EXSetAbilityState(EXGetUnitAbility(u, WAN_CHU_SHI_XIN), 1, 0)
+        endif
     endif
 
     if j < jmax then 

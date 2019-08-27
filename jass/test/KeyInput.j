@@ -247,6 +247,7 @@ function KeyInput takes nothing returns nothing
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF自由：十四天书，具体合成请看基地右边NPC随风")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF铁掌：铁掌令，周伯通处任务")
 		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF唐门：子午砂，副本2唐文亮几率掉落；观音泪，副本4南海神尼几率掉落")
+		 call DisplayTextToPlayer(p,0,0,"|cFF00FFFF五毒：选择门派时赠送")
 	endif
 
 	if s == "cx" or s == "CX" then
