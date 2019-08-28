@@ -127,7 +127,6 @@ endfunction
 function IncAbilityAndItemCharge takes unit u, integer id returns nothing
     local integer i=0
     call IncUnitAbilityLevel(u, id)
-    call SetItemCharges( GetLastCreatedItem(), 1 )
     loop
         exitwhen i >= 6
         if GetItemTypeId(UnitItemInSlot(u,i)) == ITEM_HAN_SHA then
