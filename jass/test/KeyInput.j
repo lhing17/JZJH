@@ -618,7 +618,7 @@ function KeyInput takes nothing returns nothing
 		call unitadditembyidswapped('I08Z',udg_hero[i])
 		call unitadditembyidswapped('I090',udg_hero[i])
 		set shengwang[i]=shengwang[i]+50000
-		set xiuxing[i] = 5
+		set xiuxing[i] = 6
 		set udg_lilianxishu[i]=udg_lilianxishu[i]+3
 		set udg_shuxing[i]=udg_shuxing[i]+30000
 		set shoujiajf[i]=shoujiajf[i]+10000

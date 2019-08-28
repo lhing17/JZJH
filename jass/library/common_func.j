@@ -1461,7 +1461,7 @@ function ShangHaiGongShi takes unit u, unit uc,real w1, real w2, real shxishu, i
 	if UnitTypeNotNull(u,UNIT_TYPE_HERO) then
 	// 神龙心法加成
 		set attack = (1 + 0.3 * GetUnitAbilityLevel(u, 'A059')) \
-		* 200 \
+		* 160 \
 		* udg_lilianxishu[i] \
 		* (w1 * (1 + str / 300) * (1 + agi / 300) + w2 * 0.02 * int) \
 		* (1.5 + 0.5 * GetUnitAbilityLevel(u,id)) \
@@ -1573,6 +1573,19 @@ function createPartnerAndTownPortalDummy takes integer i, location loc returns n
     set p = null
 endfunction
 
+/*
+ * 增加全属性
+ */
+function addAllAttrs takes integer i, integer num returns nothing
+    set gengu[i] = gengu[i] + num
+    set danpo[i] = danpo[i] + num
+    set jingmai[i] = jingmai[i] + num
+    set wuxing[i] = wuxing[i] + num
+    set yishu[i] = yishu[i] + num
+    set fuyuan[i] = fuyuan[i] + num
+endfunction
+
+
 /**	
  * 重随机门派后调整属性点（原先的属性点加成去掉）
  * @param i 玩家角标
@@ -1640,6 +1653,14 @@ function jianShuXingDian takes integer i, integer last_i returns nothing
 	elseif last_i==15 then
 		set wuxing[i]=(wuxing[i]-3)
 		set yishu[i]=(yishu[i]-2)
+	elseif last_i==19 then
+	    set gengu[i] = gengu[i] - 3
+        set danpo[i] = danpo[i] - 2
+	elseif last_i==20 then
+        set wuxing[i] = wuxing[i] - 3
+        set fuyuan[i] = fuyuan[i] - 2
+	elseif last_i==21 then
+	    call addAllAttrs(i, -1)
 	endif
 endfunction
 
@@ -1654,17 +1675,9 @@ function randomMenpai takes player p,integer status returns nothing
 	local integer last_i = 0
 	// 保存上一个门派id
 	set last_i = udg_runamen[i]
-	if GetRandomInt(1, 100)<=90 then
-		if GetRandomInt(1, 15)<=11 then
-			set udg_runamen[i]=GetRandomInt(1,11)
-		else
-			// 衡山，男神龙，女神龙，泰山
-			set udg_runamen[i]=GetRandomInt(15,18)
-		endif
-	else
-		// 灵鹫、慕容、明教
-		set udg_runamen[i]=GetRandomInt(12,14)
-	endif
+
+    //
+	set udg_runamen[i]=GetRandomInt(1, DENOMINATION_NUMBER)
 	if udg_runamen[i]==11 then
 		call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓自由门派〓|r")
 		call SetPlayerName(p,"〓自由门派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
@@ -1763,6 +1776,20 @@ function randomMenpai takes player p,integer status returns nothing
 		call SetPlayerName(p,"〓衡山派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
 		set wuxing[i]=(wuxing[i]+3)
 		set yishu[i]=(yishu[i]+2)
+    elseif udg_runamen[i] == 19 then
+        set gengu[i] = gengu[i] + 3
+        set danpo[i] = danpo[i] + 2
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓铁掌帮〓|r")
+        call SetPlayerName(p,"〓铁掌帮〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
+    elseif udg_runamen[i] == 20 then
+        set wuxing[i] = wuxing[i] + 3
+        set fuyuan[i] = fuyuan[i] + 2
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓唐门〓|r")
+        call SetPlayerName(p,"〓唐门〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
+    elseif udg_runamen[i] == 21 then
+        call addAllAttrs(i, 1)
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓五毒教〓|r")
+        call SetPlayerName(p,"〓五毒教〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
 	endif
 	if status == 1 then
 		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFF00FFFF提示：|r请在NPC|CFF00EE00郭靖|r处选择副职")
@@ -1999,17 +2026,7 @@ function clearTimer takes timer tm returns nothing
     call DestroyTimer(tm)
 endfunction
 
-/*
- * 增加全属性
- */
-function addAllAttrs takes integer i, integer num returns nothing
-    set gengu[i] = gengu[i] + num
-    set danpo[i] = danpo[i] + num
-    set jingmai[i] = jingmai[i] + num
-    set wuxing[i] = wuxing[i] + num
-    set yishu[i] = yishu[i] + num
-    set fuyuan[i] = fuyuan[i] + num
-endfunction
+
 
 // mod 1-增加 2-设置
 // ch 增加数量

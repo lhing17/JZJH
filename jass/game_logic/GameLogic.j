@@ -1510,7 +1510,7 @@ function Victory takes nothing returns nothing
 	// 获胜标识
 	set is_victory = true
 
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.27的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.28的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在2分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274\n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	set de=true
 	call SaveReal(YDHT,id*cx,-$5E9EB4B3,40.)
@@ -1525,7 +1525,7 @@ function Victory takes nothing returns nothing
 	call TimerStart(ky,.04,true,function IsVictory)
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.27的游戏总评分："+(I2S(ae)+"分（通关）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.28的游戏总评分："+(I2S(ae)+"分（通关）")))
 	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF00B2恭喜你们通关，游戏将在1分钟后结束\n游戏专区论坛：jzjhbbs.uuu9.com\n游戏交流QQ群：159030768  369925013  341305274 \n关注武侠，让决战江湖走得更远，期待你的参与，详情请在专区论坛查询")
 	call YDWEPolledWaitNull(60.)
 	call SaveInteger(YDHT,id,-$1317DA19,cx)
@@ -1540,7 +1540,7 @@ endfunction
 //失败动作
 function Lose takes nothing returns nothing
 	local integer i=0
-	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.27的游戏总评分："+(I2S(ae)+"分（战败）")))
+	call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,("|CFFFF00B2决战江湖1.6.28的游戏总评分："+(I2S(ae)+"分（战败）")))
 	set i = 1
 	loop
 		exitwhen i >= 6
@@ -2753,7 +2753,7 @@ endfunction
 
 //驿站传送
 function IsYiZhan takes nothing returns boolean
-	return UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO)and GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER and (GetItemTypeId(GetManipulatedItem())=='I0BP' or GetItemTypeId(GetManipulatedItem())=='I0BQ' or GetItemTypeId(GetManipulatedItem())=='I0BR' or GetItemTypeId(GetManipulatedItem())=='I0BS' or GetItemTypeId(GetManipulatedItem())=='I0BT' or GetItemTypeId(GetManipulatedItem())=='I0BU' or GetItemTypeId(GetManipulatedItem())=='I0BV' or GetItemTypeId(GetManipulatedItem())=='I0BW' or GetItemTypeId(GetManipulatedItem())=='I0BX')
+	return UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO)and GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER and (GetItemTypeId(GetManipulatedItem())=='I0BP' or GetItemTypeId(GetManipulatedItem())=='I0BQ' or GetItemTypeId(GetManipulatedItem())=='I0BR' or GetItemTypeId(GetManipulatedItem())=='I0BS' or GetItemTypeId(GetManipulatedItem())=='I0BT' or GetItemTypeId(GetManipulatedItem())=='I0BU' or GetItemTypeId(GetManipulatedItem())=='I0BV' or GetItemTypeId(GetManipulatedItem())=='I0BW' or GetItemTypeId(GetManipulatedItem())=='I0BX' or GetItemTypeId(GetManipulatedItem())=='I0AF')
 endfunction
 function YiZhanChuanSong takes nothing returns nothing
 	local unit u=GetTriggerUnit()
@@ -2803,6 +2803,12 @@ function YiZhanChuanSong takes nothing returns nothing
         call SetUnitPosition(udg_hero[i],-9000,-14000)
    		call PanCameraToTimedForPlayer(GetTriggerPlayer(),-9000,-14000,0)
         call DisplayTextToPlayer(p,0,0,"|CFF00ff33传送至聚贤庄")
+    endif
+    if GetItemTypeId(GetManipulatedItem())=='I0AF' then
+        call DisplayTextToPlayer(p,0,0,"|CFF00ff33传送至琉球岛")
+        call SetUnitPosition(udg_hero[i],10943,6760)
+        call PanCameraToTimedForPlayer(p, 10943, 6760, 0)
+        call DisplayTextToPlayer(p, 0, 0, "|cffff0000你已深入到海外琉球岛，看看有什么发现吧")
     endif
     set p = null
     set u = null
