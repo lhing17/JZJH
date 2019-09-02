@@ -60,7 +60,7 @@ function WanHuaMaJia takes nothing returns nothing
 	if UnitHaveItem(u, 'I0DU') then
 	    set shxishu = shxishu * 2
     endif
-    set shanghai=ShangHaiGongShi(u,uc,2.,2.,shxishu,'A021')
+    set shanghai=ShangHaiGongShi(u,uc,5.,5.,shxishu,'A021')
     call WuGongShangHai(u,uc,shanghai)
     call RemoveLocation(loc2)
     set u=null
@@ -107,7 +107,7 @@ function FuChenMaJia takes nothing returns nothing
 	local unit uc=GetTriggerUnit()
 	local real shxishu=1
     local real shanghai=0.
-    local real r1=GetRandomReal(1.,12.)*6.
+    local real r1=GetRandomReal(1., 24.)*6.
     if GetUnitAbilityLevel(u,'A07J')>=1 then
 		set shxishu=shxishu+1
 	endif
@@ -151,7 +151,7 @@ function TianShanZhang takes nothing returns nothing
 	call GroupEnumUnitsInRangeOfLoc(g,loc,700,function TianShan_Condition)
 	set uc=GroupPickRandomUnit(g)
 	if uc!=null then
-		call SetWidgetLife(uc,GetWidgetLife(uc)*(0.94-0.015*GetUnitAbilityLevel(u,'A0CD')*r))
+		call SetWidgetLife(uc,GetWidgetLife(uc)*(0.9 - 0.02*GetUnitAbilityLevel(u,'A0CD')*r))
 		call DestroyEffect(AddSpecialEffectTargetUnitBJ( "overhead", uc,"Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl"))
 		set loc2=GetUnitLoc(uc)
 		if GetUnitAbilityLevel(u,'A07T')>=1 then
@@ -182,7 +182,7 @@ function TianShanZhang takes nothing returns nothing
 	if GetUnitAbilityLevel(u,'A09D')>=1 then
 		set uc=GroupPickRandomUnit(g)
 		if uc!=null then
-			call SetWidgetLife(uc,GetWidgetLife(uc)*(0.94-0.015*GetUnitAbilityLevel(u,'A0CD')*r))
+			call SetWidgetLife(uc,GetWidgetLife(uc)*(0.9 - 0.02*GetUnitAbilityLevel(u,'A0CD')*r))
 			call DestroyEffect(AddSpecialEffectTargetUnitBJ( "overhead", uc,"Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl"))
 		endif
 	endif
@@ -218,7 +218,7 @@ function CiBei_Action takes nothing returns nothing
 	if UnitHaveItem(u, 'I0DU') then
 	    set shxishu = shxishu * 2
     endif
-    set shanghai=ShangHaiGongShi(u,uc,100.,50.,shxishu,'A023')
+    set shanghai=ShangHaiGongShi(u,uc,500.,250.,shxishu,'A023')
     call WuGongShangHai(u,uc,shanghai)
     call DestroyEffect(AddSpecialEffectTargetUnitBJ( "overhead", uc,"Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl"))
     if GetUnitAbilityLevel(u,'A07T')>=1 and GetRandomInt(1,100)<=30 then
@@ -291,7 +291,7 @@ function PuSaYin takes nothing returns nothing
 	    set shxishu = shxishu * 2
     endif
 	if GetRandomInt(1,100)<15+fuyuan[i]/5 then
-		set shanghai=ShangHaiGongShi(u,uc,80.,40.,shxishu,'A024')
+		set shanghai=ShangHaiGongShi(u,uc,160.,80.,shxishu,'A024')
    		call WuGongShangHai(u,uc,shanghai)
    		call WuGongShengChong(u,'A024',700)
    		if GetUnitAbilityLevel(u,'A09D')>=1 and GetRandomInt(1,100)<=20 then

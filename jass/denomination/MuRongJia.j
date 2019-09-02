@@ -19,7 +19,7 @@ function JiaChuanMaJia_1 takes nothing returns nothing
 	if UnitHaveItem(u, 'I0DS') then
 	    set shxishu = shxishu * 1.8
     endif
-    set shanghai=ShangHaiGongShi(u,uc,12.,18.,shxishu,'A02K')
+    set shanghai=ShangHaiGongShi(u,uc,18.,27.,shxishu,'A02K')
     call WuGongShangHai(u,uc,shanghai)
     if GetUnitAbilityLevel(u, 'A02V')>=1 and GetRandomInt(1,100)<=15+fuyuan[i]/5 then
 	    call WanBuff(u, uc, 6)
@@ -305,7 +305,7 @@ function IsJiaXun takes nothing returns boolean
 	return GetSpellAbilityId()=='A02V'
 endfunction
 function JiaXun takes nothing returns nothing
-	call WuGongShengChong(GetTriggerUnit(), 'A02V', 300)
+	call WuGongShengChong(GetTriggerUnit(), 'A02V', 60)
 endfunction
 function MuRongJia_Trigger takes nothing returns nothing
 	local trigger t=CreateTrigger()

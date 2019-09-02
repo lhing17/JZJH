@@ -419,7 +419,7 @@ function birdDamage takes unit u, unit ut returns nothing
     if isTitle(1 + GetPlayerId(GetOwningPlayer(u)), 33) then
         set shxishu = shxishu * 2
     endif
-    set shanghai=ShangHaiGongShi(u,ut,30,20,shxishu,'A054')
+    set shanghai=ShangHaiGongShi(u,ut,15,10,shxishu,'A054')
     call WuGongShangHai(u,ut,shanghai)
     call DestroyEffect( AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\BloodElfSpellThiefBlood.mdl", GetEnumUnit(), "overhead") )
 endfunction

@@ -225,7 +225,7 @@ function XueMo_Action takes nothing returns nothing
 			set shxishu=1.+dist/5.
 		endif
 		set shanghai=ShangHaiGongShi(u,uc,7, 7, shxishu,'A0CJ')
-		if uc!=null and IsUnitAliveBJ(uc) then
+		if uc!=null and IsUnitAliveBJ(uc) and uc != udg_ZhengPaiWL then
 		    call WuGongShangHai(u,uc,shanghai)
 		    call DestroyEffect(AddSpecialEffectTarget("Objects\\Spawnmodels\\Human\\HumanBlood\\HeroBloodElfBlood.mdl",uc,"overhead"))
 	    endif
