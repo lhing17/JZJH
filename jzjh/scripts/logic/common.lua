@@ -751,32 +751,33 @@ local function passive_ability(ability_id, source, target, action, effect,
         possibility = possibility(g.fuyuan[i])
     end
 
-    -- 搭配加成
-    if combinations then
-        for _, v in ipairs(combinations) do
-            if v.type == '增加伤害' and source:has_ability(v.id) then
-                coeff = coeff + v.value
-            end
-        end
-    end
-
-    -- 专属加成
-    if exclusive and type(exclusive) == 'function' then
-        coeff = exclusive(source, coeff)
-    end
-
-    local aoe = false
-    if range then
-        for _, v in ipairs(combinations) do
-            if v.type == '增加范围' and source:has_ability(v.id) then
-                range = range + v.value
-            end
-        end
-        target = et.selector():in_range(source:get_point(), range):get()
-        aoe = true
-    end
-
     if source:has_ability(ability_id) and math.random(1, 100) <= possibility then
+        -- 搭配加成
+        if combinations then
+            for _, v in ipairs(combinations) do
+                if v.type == '增加伤害' and source:has_ability(v.id) then
+                    coeff = coeff + v.value
+                end
+            end
+        end
+
+        -- 专属加成
+        if exclusive and type(exclusive) == 'function' then
+            coeff = exclusive(source, coeff)
+        end
+
+        local aoe = false
+        if range then
+            for _, v in ipairs(combinations) do
+                if v.type == '增加范围' and source:has_ability(v.id) then
+                    range = range + v.value
+                end
+            end
+            target = et.selector():in_range(source:get_point(), range):get()
+            aoe = true
+        end
+
+
         -- 伤害动作
         if not action then
             -- 直接造成伤害
