@@ -9,6 +9,7 @@ require 'util.general_buff'
 
 local xueshan = {}
 
+-- 雪山剑法
 xueshan.first = function(source, target)
     common_ability.passive({
         ability_id = 'A017',
@@ -29,7 +30,9 @@ xueshan.first = function(source, target)
             { type = "增加伤害", value = 0.8, id = 'A06J' },
             { type = "增加伤害", value = 0.8, id = 'A07O' },
             { type = "额外效果", id = 'A07A', value = function(s, t)
-                base.general_buff(s, t, 6)
+                if math.random(1, 100) <= 20 then
+                    base.general_buff(s, t, 6)
+                end
             end },
             { type = "增加范围", value = 700, id = 'A0D8' },
         }
@@ -37,6 +40,46 @@ xueshan.first = function(source, target)
 
 end
 
+
+-- 风沙莽莽
+xueshan.second = function(u, id, target)
+    if id == 'A018' then
+
+    --    local unit u = GetTriggerUnit()
+    --    local location loc = GetUnitLoc(u)
+    --    local integer i = 0
+    --    local location loc1 = null
+    --    call CreateNUnitsAtLoc(1,'e01D',GetOwningPlayer(u),loc,bj_UNIT_FACING)
+    --    call IssueImmediateOrderById(bj_lastCreatedUnit,$D00D1)
+    --call UnitApplyTimedLife(bj_lastCreatedUnit,'BHwe',10.)
+    --set i = 0
+    --loop
+    --exitwhen i >= 8
+    --set loc1 = PolarProjectionBJ(loc, 200, 45*i)
+    --call CreateNUnitsAtLoc(1,'e01D',GetOwningPlayer(u),loc1,bj_UNIT_FACING)
+    --call IssueImmediateOrderById(bj_lastCreatedUnit,$D00D1)
+    --call UnitApplyTimedLife(bj_lastCreatedUnit,'BHwe',10.)
+    --call RemoveLocation(loc1)
+    --set i = i + 1
+    --endloop
+    --set i = 0
+    --loop
+    --exitwhen i >= 18
+    --set loc1 = PolarProjectionBJ(loc, 350, 20*i)
+    --    call CreateNUnitsAtLoc(1,'e01D',GetOwningPlayer(u),loc1,bj_UNIT_FACING)
+    --call IssueImmediateOrderById(bj_lastCreatedUnit,$D00D1)
+    --call UnitApplyTimedLife(bj_lastCreatedUnit,'BHwe',10.)
+    --call RemoveLocation(loc1)
+    --set i = i + 1
+    --endloop
+    --call RemoveLocation(loc)
+    --    set u = null
+    --    set loc = null
+    --    set loc1 = null
+    end
+end
+
+-- 金乌刀法
 xueshan.third = function(source, target)
     --+弹指神通：|r伤害+80%|n
     --+吸星大法：|r几率造成重伤|n
@@ -67,6 +110,5 @@ xueshan.third = function(source, target)
         }
     })
 end
-
 
 return xueshan

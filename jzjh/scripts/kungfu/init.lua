@@ -19,6 +19,13 @@ function kungfu.init()
 
         xueshan.third(target, source)
     end)
+
+    --- @param u unit 施法单位
+    --- @param id string 技能ID
+    --- @param target unit|item|point 技能目标
+    et.game:event '单位-技能生效'(function(self, u, id, target)
+        xueshan.second(u, id, target)
+    end)
 end
 
 return kungfu
