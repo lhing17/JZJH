@@ -35,7 +35,7 @@ local function main()
     logic.init()
     kungfu.init()
     for k, v in pairs(require 'jass.japi') do
-        print(k)
+        log.info(k)
     end
 end
 

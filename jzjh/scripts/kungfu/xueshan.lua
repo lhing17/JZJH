@@ -6,6 +6,8 @@
 
 require 'logic.lua'
 require 'util.general_buff'
+local curve = require 'util.curve'
+require 'logic.common'
 
 local xueshan = {}
 
@@ -42,42 +44,52 @@ end
 
 
 -- 风沙莽莽
+--- @param u unit
+--- @param id string
 xueshan.second = function(u, id, target)
     if id == 'A018' then
+        local p = u:get_owner()
+        local hero = g.udg_hero[1 + p:get()] --- @type unit
+        for i = 1, 18 do
+            local angle = 20 * i
+            local x, y = curve.star(350, angle)
+            local dummy = p:create_dummy('e00S', et.point(x, y))
+            dummy:issue_order(0xD00D1)
+            local lifetime = hero:has_ability('A07O') and 20 or 10
+            dummy:set_lifetime(lifetime)
 
-    --    local unit u = GetTriggerUnit()
-    --    local location loc = GetUnitLoc(u)
-    --    local integer i = 0
-    --    local location loc1 = null
-    --    call CreateNUnitsAtLoc(1,'e01D',GetOwningPlayer(u),loc,bj_UNIT_FACING)
-    --    call IssueImmediateOrderById(bj_lastCreatedUnit,$D00D1)
-    --call UnitApplyTimedLife(bj_lastCreatedUnit,'BHwe',10.)
-    --set i = 0
-    --loop
-    --exitwhen i >= 8
-    --set loc1 = PolarProjectionBJ(loc, 200, 45*i)
-    --call CreateNUnitsAtLoc(1,'e01D',GetOwningPlayer(u),loc1,bj_UNIT_FACING)
-    --call IssueImmediateOrderById(bj_lastCreatedUnit,$D00D1)
-    --call UnitApplyTimedLife(bj_lastCreatedUnit,'BHwe',10.)
-    --call RemoveLocation(loc1)
-    --set i = i + 1
-    --endloop
-    --set i = 0
-    --loop
-    --exitwhen i >= 18
-    --set loc1 = PolarProjectionBJ(loc, 350, 20*i)
-    --    call CreateNUnitsAtLoc(1,'e01D',GetOwningPlayer(u),loc1,bj_UNIT_FACING)
-    --call IssueImmediateOrderById(bj_lastCreatedUnit,$D00D1)
-    --call UnitApplyTimedLife(bj_lastCreatedUnit,'BHwe',10.)
-    --call RemoveLocation(loc1)
-    --set i = i + 1
-    --endloop
-    --call RemoveLocation(loc)
-    --    set u = null
-    --    set loc = null
-    --    set loc1 = null
+            -- +太玄经 攻速光环
+            if hero:has_ability('A0D8') then
+                local aura_dummy = p:create_dummy('e000', et.point(x, y))
+                aura_dummy:add_ability('A0D4')
+                aura_dummy:hide()
+                aura_dummy.set_lifetime(lifetime)
+            end
+
+        end
+
+        common_ability.kungfu_levelup(u, id, 150)
     end
 end
+
+xueshan.second_damage = function(source, target)
+    local coeff = 1
+    local p = source:get_owner()
+    local hero = g.udg_hero[1 + p:get()] --- @type unit
+
+    if hero:has_ability('A06J') then
+        coeff = coeff + 0.7
+    end
+
+    if hero:has_ability('A06L') then
+        coeff = coeff + 0.8
+    end
+
+    local d, critical = common_ability.damage_formula(hero, target, 130, 150, coeff, 'A018')
+    base.apply_damage(source, target, d, critical)
+end
+
+
 
 -- 金乌刀法
 xueshan.third = function(source, target)
@@ -109,6 +121,27 @@ xueshan.third = function(source, target)
             { type = "增加伤害", value = 1.2, id = 'A0D8' },
         }
     })
+end
+
+-- 雪花六出
+--- @param u unit
+--- @param id string
+xueshan.fourth = function(u, id, target)
+
+    if id == 'A0D1' then
+        local p = u:get_owner()
+        local hero = g.udg_hero[1 + p:get()] --- @type unit
+        local point = hero:get_point()
+        for i = 1, 6 do
+            local dummy = p:create_dummy('e000', point)
+            dummy:hide()
+            dummy:add_ability('A0EV')
+            dummy:issue_order(0xD00FA, point - {math.rad(60 * i), 300})
+        end
+
+        common_ability.kungfu_levelup(u, id, 150)
+    end
+
 end
 
 return xueshan

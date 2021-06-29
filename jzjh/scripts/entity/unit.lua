@@ -1047,6 +1047,10 @@ function mt:show(flag)
     jass.ShowUnit(self.handle, flag)
 end
 
+function mt:hide()
+    return self:show(false)
+end
+
 --设置索敌范围
 function mt:set_search_range(r)
     jass.SetUnitAcquireRange(self.handle, r)

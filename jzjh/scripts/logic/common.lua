@@ -863,3 +863,6 @@ common_ability.passive = function(config)
             possibility, exclusive, damage_coefficients, levelup_coefficients, combinations, range)
 
 end
+
+common_ability.damage_formula = damage_formula
+common_ability.kungfu_levelup = kungfu_levelup

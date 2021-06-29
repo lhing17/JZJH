@@ -26,6 +26,16 @@ function kungfu.init()
     et.game:event '单位-技能生效'(function(self, u, id, target)
         xueshan.second(u, id, target)
     end)
+
+    -- 小伤害
+    --- @param source unit
+    --- @param target unit
+    --- @param damage number
+    et.game:event '单位-受到伤害'(function(self, source, target, damage)
+        if base.float_equal(damage, 0.58) then
+            xueshan.second_damage(source, target)
+        end
+    end)
 end
 
 return kungfu
