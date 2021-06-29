@@ -358,18 +358,18 @@ local function become_chief_(u)
         local denom_id = chief_table[i].denom_id
         if not is_chief(p_id, denom_id) and can_become_chief(u, denom_id) then
             force.send_message("|cff66ff00恭喜玩家" .. p_id .. "获得了称号：" .. chief_table[i].name)
+            if chief_table[i].str > 0 then
+                u:set_str(u:get_str() + chief_table[i].str)
+            end
+            if chief_table[i].agi > 0 then
+                u:set_agi(u:get_agi() + chief_table[i].agi)
+            end
+            if chief_table[i].int > 0 then
+                u:set_int(u:get_int() + chief_table[i].int)
+            end
+            p:set_name("〓" .. chief_table[i].name .. "〓" .. jass.LoadStr(g.YDHT, jass.GetHandleId(p.handle), jass.GetHandleId(p.handle)))
+            set_chief_(p_id, denom_id)
         end
-        if chief_table[i].str > 0 then
-            u:set_str(u:get_str() + chief_table[i].str)
-        end
-        if chief_table[i].agi > 0 then
-            u:set_agi(u:get_agi() + chief_table[i].agi)
-        end
-        if chief_table[i].int > 0 then
-            u:set_int(u:get_int() + chief_table[i].int)
-        end
-        p:set_name("〓" .. chief_table[i].name .. "〓" + jass.LoadStr(g.YDHT, jass.GetHandleId(p.handle), jass.GetHandleId(p.handle)))
-        set_chief_(p_id, denom_id)
     end
 end
 
@@ -404,7 +404,7 @@ local function increase_ability_and_item_charge(u, id)
     u:set_ability_level(id, u:get_ability_level(id) + 1)
     for i = 1, 6 do
         local it = u:get_item_in_slot(i)
-        if base.string2id(it:get_id()) == g.ITEM_HAN_SHA then
+        if it and base.string2id(it:get_id()) == g.ITEM_HAN_SHA then
             it:set_charges(it:get_charges() + 1)
         end
     end
@@ -432,7 +432,7 @@ end
 local function do_kungfu_levelup(u, id, r)
     local level = u:get_ability_level(id)
     local p = u:get_owner()
-    local i = 1 + p:get()
+    local i = p:get()
     local exp = 0
     if level > 0 and level < 7 then
         -- 慕容家训
@@ -440,10 +440,12 @@ local function do_kungfu_levelup(u, id, r)
             exp = (3 + g.udg_xinggeA[i])
                     * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60)))
                     * (5 + u:get_ability_level('A02V') / 2 + 2 * g.udg_jwjs[i]) * (2 + levelup_coeff(u)) / 40
+            log.debug(i, exp)
         else
             exp = (3 + g.udg_xinggeA[i])
                     * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60)))
                     * (4 + 2 * g.udg_jwjs[i]) * (2 + levelup_coeff(u)) / 40
+            log.debug(i, exp)
         end
 
         -- 天赋：天纵奇才 增加升重速度
@@ -456,7 +458,7 @@ local function do_kungfu_levelup(u, id, r)
         end
         local p_handle_id = jass.GetHandleId(u:get_owner().handle)
         jass.SaveInteger(g.YDHT, p_handle_id, id, jass.LoadInteger(g.YDHT, p_handle_id, id) + exp)
-        jass.SaveStr(g.YDHT, p_handle_id, id * 2, jass.I2S(jass.LoadInteger(g.YDHT, p_handle_id, id)) + "/" + jass.I2S(jass.R2I(r * level)))
+        jass.SaveStr(g.YDHT, p_handle_id, id * 2, jass.I2S(jass.LoadInteger(g.YDHT, p_handle_id, id)) .. "/" .. jass.I2S(jass.R2I(r * level)))
         if jass.LoadInteger(g.YDHT, p_handle_id, id) > jass.R2I(r) * level then
             jass.SaveInteger(g.YDHT, p_handle_id, id, 0)
             increase_ability_and_item_charge(u, id)
@@ -509,8 +511,8 @@ local function do_kungfu_levelup(u, id, r)
                     end
                     jass.SaveInteger(g.YDHT, p_handle_id, id, exp)
                 end
-                jass.SaveStr(g.YDHT, p_handle_id, id * 2, jass.I2S(g.LoadInteger(g.YDHT, p_handle_id, id)) + "/" + jass.I2S(jass.R2I(r * level)))
-                if g.LoadInteger(g.YDHT, p_handle_id, id) > jass.R2I(r) * level then
+                jass.SaveStr(g.YDHT, p_handle_id, id * 2, jass.I2S(jass.LoadInteger(g.YDHT, p_handle_id, id)) .. "/" .. jass.I2S(jass.R2I(r * level)))
+                if jass.LoadInteger(g.YDHT, p_handle_id, id) > jass.R2I(r) * level then
                     jass.SaveInteger(g.YDHT, p_handle_id, id, 0)
                     increase_ability_and_item_charge(u, id)
                     jass.SaveInteger(g.YDHT, p_handle_id, id * 5, u:get_ability_level(id))
@@ -529,13 +531,13 @@ local function do_kungfu_levelup(u, id, r)
                         p:send_message("|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
                         if (g.udg_jwjs[i] <= 2) and not Deputy_isMaster(i, g.JING_WU) then
                             g.udg_jwjs[i] = g.udg_jwjs[i] + 1
-                            p:send_message("|CFF66FF00恭喜您练成第" + I2S(g.udg_jwjs[i]) + "个九重武功，练成3个可获得宗师哦")
+                            p:send_message("|CFF66FF00恭喜您练成第" .. I2S(g.udg_jwjs[i]) .. "个九重武功，练成3个可获得宗师哦")
                         end
                         if (g.udg_jwjs[i] == 3) and not Deputy_isMaster(i, g.JING_WU) then
                             Deputy_setMaster(i, g.JING_WU)
                             --  SaveStr(g.YDHT, GetHandleId(p), GetHandleId(p), "〓精武宗师〓" + LoadStr(g.YDHT, GetHandleId(p), GetHandleId(p)))
                             force.send_message("|CFF66FF00恭喜" .. p:get_name() .. "获得精武宗师", 15)
-                            p:set_name("〓精武宗师〓" + jass.LoadStr(g.YDHT, p_handle_id, p_handle_id))
+                            p:set_name("〓精武宗师〓" .. jass.LoadStr(g.YDHT, p_handle_id, p_handle_id))
                         end
                     end
                 end
@@ -548,43 +550,43 @@ end
 ---@param u unit
 local function determine_titles(u)
     local p = u:get_owner()
-    local p_id = 1 + p:get()
+    local p_id = p:get()
     for i = 1, #title_table do
-        if (title_table.chief and is_chief(p_id, title_table.chief)) or not title_table.chief then
-            if title_table.cond(u, i) then
-                force.send_message("|cff66ff00恭喜玩家" .. p_id .. "获得了称号：" .. title_table.name)
-                if title_table.str then
-                    u:set_str(u:get_str() + title_table.str)
+        if (title_table[i].chief and is_chief(p_id, title_table[i].chief)) or not title_table[i].chief then
+            if title_table[i].cond(u, i) then
+                force.send_message("|cff66ff00恭喜玩家" .. p_id .. "获得了称号：" .. title_table[i].name)
+                if title_table[i].str then
+                    u:set_str(u:get_str() + title_table[i].str)
                 end
-                if title_table.agi then
-                    u:set_agi(u:get_agi() + title_table.agi)
+                if title_table[i].agi then
+                    u:set_agi(u:get_agi() + title_table[i].agi)
                 end
-                if title_table.int then
-                    u:set_int(u:get_int() + title_table.int)
+                if title_table[i].int then
+                    u:set_int(u:get_int() + title_table[i].int)
                 end
-                if title_table.item then
-                    if type(title_table.item) == "table" then
-                        for _, v in ipairs(title_table.item) do
+                if title_table[i].item then
+                    if type(title_table[i].item) == "table" then
+                        for _, v in ipairs(title_table[i].item) do
                             u:add_item(v)
                         end
                     else
-                        u:add_item(title_table.item)
+                        u:add_item(title_table[i].item)
                     end
                 end
-                if title_table.to9 then
-                    if type(title_table.to9) == "table" then
-                        for _, v in ipairs(title_table.to9) do
+                if title_table[i].to9 then
+                    if type(title_table[i].to9) == "table" then
+                        for _, v in ipairs(title_table[i].to9) do
                             set_ability_level_and_save_hashtable_(u, v, 9)
                         end
                     else
-                        set_ability_level_and_save_hashtable_(u, title_table.to9, 9)
+                        set_ability_level_and_save_hashtable_(u, title_table[i].to9, 9)
                     end
                 end
-                if title_table.extra and type(title_table.extra) == 'function' then
-                    title_table.extra(u, p_id)
+                if title_table[i].extra and type(title_table[i].extra) == 'function' then
+                    title_table[i].extra(u, p_id)
                 end
-                p:set_name("〓" .. title_table.name .. "〓" + jass.LoadStr(g.YDHT, jass.GetHandleId(p.handle), jass.GetHandleId(p.handle)))
-                set_title_(p_id, title_table.title)
+                p:set_name("〓" .. title_table[i].name .. "〓" .. jass.LoadStr(g.YDHT, jass.GetHandleId(p.handle), jass.GetHandleId(p.handle)))
+                set_title_(p_id, title_table[i].title)
             end
         end
     end
@@ -612,7 +614,7 @@ end
 --- @param id number|string 技能ID
 local function damage_formula(source, target, w1, w2, coeff, id)
     local p = source:get_owner()
-    local i = p:get() + 1
+    local i = p:get()
     local damage = 0
 
     local attack -- 伤害因子
@@ -746,7 +748,7 @@ local function passive_ability(ability_id, source, target, action, effect,
 
     -- 触发概率
     local p = source:get_owner()
-    local i = p:get() + 1
+    local i = p:get()
     if type(possibility) == 'function' then
         possibility = possibility(g.fuyuan[i])
     end
@@ -773,7 +775,13 @@ local function passive_ability(ability_id, source, target, action, effect,
                     range = range + v.value
                 end
             end
+            local x, y = source:get_point()()
+            log.debug(x, y)
             target = et.selector():in_range(source:get_point(), range):get()
+            log.debug(target)
+            for _, v in ipairs(target) do
+                log.debug(v:get_name())
+            end
             aoe = true
         end
 
@@ -783,8 +791,11 @@ local function passive_ability(ability_id, source, target, action, effect,
             -- 直接造成伤害
             if aoe then
                 -- AOE
+                log.debug("AOE伤害")
                 for _, v in ipairs(target) do
+                    log.debug("开始计算伤害")
                     local damage, critical = damage_formula(source, v, damage_coefficients[1], damage_coefficients[2], coeff, ability_id)
+                    log.debug("造成伤害", damage, critical)
                     base.apply_damage(source, v, damage, critical)
 
                     for _, eff in ipairs(combinations) do

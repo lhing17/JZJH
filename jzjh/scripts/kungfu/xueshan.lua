@@ -4,7 +4,6 @@
 --- DateTime: 2021/6/26 0026 上午 9:08
 ---
 
-require 'logic.lua'
 require 'util.general_buff'
 local curve = require 'util.curve'
 require 'logic.common'
@@ -49,7 +48,7 @@ end
 xueshan.second = function(u, id, target)
     if id == 'A018' then
         local p = u:get_owner()
-        local hero = g.udg_hero[1 + p:get()] --- @type unit
+        local hero = g.udg_hero[p:get()] --- @type unit
         for i = 1, 18 do
             local angle = 20 * i
             local x, y = curve.star(350, angle)
@@ -75,7 +74,7 @@ end
 xueshan.second_damage = function(source, target)
     local coeff = 1
     local p = source:get_owner()
-    local hero = g.udg_hero[1 + p:get()] --- @type unit
+    local hero = g.udg_hero[p:get()] --- @type unit
 
     if hero:has_ability('A06J') then
         coeff = coeff + 0.7
@@ -130,7 +129,7 @@ xueshan.fourth = function(u, id, target)
 
     if id == 'A0D1' then
         local p = u:get_owner()
-        local hero = g.udg_hero[1 + p:get()] --- @type unit
+        local hero = g.udg_hero[p:get()] --- @type unit
         local point = hero:get_point()
         for i = 1, 6 do
             local dummy = p:create_dummy('e000', point)

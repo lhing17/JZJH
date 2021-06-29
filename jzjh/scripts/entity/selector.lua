@@ -186,7 +186,7 @@ end
 
 --对选取到的单位进行过滤
 function api:do_filter(u)
-    if not self.is_allow_god and u:has_restriction '无敌' then
+    if not self.is_allow_god then
         return false
     end
     if not self.is_allow_dead and not u:is_alive() then
@@ -245,11 +245,11 @@ function api:select(select_unit)
         local u
         while true do
             u = FirstOfGroup(dummy_group)
-            if u == 0 then
+            if not u then
                 break
             end
             GroupRemoveUnit(dummy_group, u)
-            local u = et_unit(u)
+            u = et_unit(u)
             if u and u:is_in_range(p, r) and self:do_filter(u) then
                 select_unit(u)
             end
@@ -265,11 +265,11 @@ function api:select(select_unit)
         local u
         while true do
             u = FirstOfGroup(dummy_group)
-            if u == 0 then
+            if not u then
                 break
             end
             GroupRemoveUnit(dummy_group, u)
-            local u = et_unit(u)
+            u = et_unit(u)
             if u and u:is_in_range(p, r) and math_angle(angle, p / u:get_point()) <= section and self:do_filter(u) then
                 select_unit(u)
             end
@@ -293,11 +293,11 @@ function api:select(select_unit)
         local u
         while true do
             u = FirstOfGroup(dummy_group)
-            if u == 0 then
+            if not u then
                 break
             end
             GroupRemoveUnit(dummy_group, u)
-            local u = et_unit(u)
+            u = et_unit(u)
             if u and u:is_in_range(p, r) then
                 local x, y = u:get_point()()
                 local d = math_abs(a * x + b * y + c) / l
