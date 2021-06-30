@@ -58,6 +58,8 @@ mt.damaged_rate = 100
 --家当
 mt.gold = 0
 
+mt.status_list = nil
+
 --选取半径
 mt.selected_radius = 16
 
@@ -1063,6 +1065,38 @@ function mt:addSight(r)
     japi.EXSetAbilityDataReal(handle, 2, 108, -r)
     self:set_ability_level('A007', 2)
     self:remove_ability 'A007'
+end
+
+function mt:add_status(status)
+    if not self.status_list then
+        self.status_list = {}
+    end
+    table.insert(self.status_list, status)
+end
+
+function mt:has_status(status)
+    if not self.status_list then
+        return false
+    end
+    for _, v in ipairs(self.status_list) do
+        if v == status then
+            return true
+        end
+    end
+    return false
+end
+
+function mt:remove_status(status)
+    if not self.status_list then
+        return false
+    end
+    for i, v in ipairs(self.status_list) do
+        if v == status then
+            table.remove(self.status_list, i)
+            return true
+        end
+    end
+    return false
 end
 
 --特效

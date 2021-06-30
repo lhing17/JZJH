@@ -19,7 +19,7 @@ xueshan.first = function(source, target)
         target = target,
         range = 500,
         action = nil,
-        effect_str = "",
+        effect_str = "Abilities\\Spells\\Human\\Blizzard\\BlizzardTarget.mdl",
         possibility = function(i)
             return 15 + i / 5
         end,
@@ -53,7 +53,7 @@ xueshan.second = function(u, id, target)
         for i = 1, 18 do
             local angle = 20 * i
             local x, y = curve.star(350, angle)
-            local dummy = p:create_dummy('e00S', et.point(x, y))
+            local dummy = p:create_dummy('e00S', hero:get_point() + et.point(x, y))
             dummy:issue_order(0xD00D1)
             local lifetime = hero:has_ability('A07O') and 20 or 10
             dummy:set_lifetime(lifetime)
@@ -103,7 +103,7 @@ xueshan.third = function(source, target)
         target = target,
         range = 700,
         action = nil,
-        effect_str = "",
+        effect_str = "war3mapImported\\firecut.mdx",
         possibility = function(i)
             return 5 + i / 5
         end,
@@ -130,22 +130,99 @@ xueshan.fourth = function(u, id, target)
 
     if id == 'A0D1' then
         local p = u:get_owner()
-        local hero = g.udg_hero[p:get()] --- @type unit
+        local hero = et.unit(g.udg_hero[p:get()]) --- @type unit
         local point = hero:get_point()
-        for i = 1, 6 do
+        local function dummy_use_ability(i)
             local dummy = p:create_dummy('e000', point)
             dummy:hide()
             dummy:add_ability('A0EV')
-            dummy:issue_order(0xD00FA, point - {math.rad(60 * i), 300})
+            dummy:issue_order(0xD00FA, point - { math.rad(60 * i), 300 })
+        end
+        for i = 1, 6 do
+            dummy_use_ability(i)
+            -- 双手再次触发
+            if hero:has_ability('A07U') then
+                et.wait(100, function()
+                    dummy_use_ability(i)
+                end)
+            end
         end
 
         common_ability.kungfu_levelup(u, id, 150)
     end
 end
 
+xueshan.fourth_damage = function(source, target)
+    local coeff = 1
+    local p = source:get_owner()
+    local hero = et.unit(g.udg_hero[p:get()]) --- @type unit
+
+    if hero:has_ability('A06H') then
+        coeff = coeff + 0.8
+    end
+
+    if hero:has_ability('A07O') then
+        coeff = coeff + 0.9
+    end
+
+    local d, critical = common_ability.damage_formula(hero, target, 130, 150, coeff, 'A0D1')
+    base.apply_damage(source, target, d, critical)
+end
+
 --- 无妄神功
 xueshan.fifth = function(u, id, target)
+    if id == 'A0D2' then
+        local p = u:get_owner()
+        local hero = et.unit(g.udg_hero[p:get()]) --- @type unit
+        local time = hero:get_ability_level('A0D2') * 10
+        hero:add_ability('Agho')
+        hero:add_status('无妄')
+        et.wait(time * 1000, function()
+            hero:remove_ability('Agho')
+            hero:remove_status('无妄')
+        end)
+        common_ability.kungfu_levelup(u, id, 80)
+    end
+end
 
+local attr = {
+    wuxing = '悟性',
+    gengu = '根骨',
+    fuyuan = '福缘',
+    yishu = '医术',
+    danpo = '胆魄',
+    jingmai = '经脉'
+}
+
+--- @param source unit
+--- @param target unit
+xueshan.fifth_special = function(source, target)
+    if source:has_status('无妄') then
+        local p = source:get_owner()
+        local i = p:get()
+        p:add_gold(100)
+        et.effect.add_to_unit("Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", source, "overhead")
+        if jass.GetRandomInt(1, 100) <= 15 then
+            p:add_lumber(1)
+            -- +小无相：几率永久增加暴击伤害
+            if source:has_ability('A083') then
+                g.udg_baojishanghai[i] = g.udg_baojishanghai[i] + 0.01
+                et.effect.add_to_point("Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl", source:get_point()):destroy()
+            end
+            -- +易筋经：几率永久增加六围
+            if source:has_ability('A09D') then
+                local real_attr = base.getRandomKey(attr, defaultComp)
+                g[real_attr][i] = g[real_attr][i] + 1
+                et.effect.add_to_unit("war3mapImported\\frozenarmor.mdx", source, 'overhead'):destroy()
+                et.tag.create(attr[real_attr] .. '+' .. 1, source:get_point(), 14, 60, 100, 0, 0, 30, 3, 400, base.random(80, 100))
+            end
+            -- +太玄经：几率永久增加内力
+            if source:has_ability('A0D8') then
+                source:set_agi(source:get_agi() + 10)
+                et.effect.add_to_point("Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl", source:get_point()):destroy()
+            end
+        end
+    end
 end
 
 return xueshan

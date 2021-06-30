@@ -33,6 +33,7 @@ local chief_table = {
     { denom_id = 21, name = "五毒教主", str = 300, agi = 225, int = 0 },
     { denom_id = 22, name = "桃花岛主", str = 225, agi = 0, int = 300 },
     { denom_id = 23, name = "野螺掌派", str = 225, agi = 300, int = 0 },
+    { denom_id = 24, name = "雪山掌门", str = 225, agi = 0, int = 300 },
 }
 
 --[[
@@ -84,6 +85,7 @@ local chief_table = {
 45 婆婆姊姊
 46 女中诸葛
 47 爵爷
+48 石破天惊
 */
 --]]
 --- 是否有某称号
@@ -220,6 +222,8 @@ local souhun = title_cond({ abilities = { A083 = 1, A07A = 1 }, title = 36 })
 local popo = title_cond({ abilities = { S002 = 1, A07T = 1 }, title = 45 })
 local nvzhuge = title_cond({ abilities = { A07S = 1, A07L = 1 }, title = 46 })
 local dongxie = title_cond({ abilities = { A06H = 3, A018 = 3 }, items = { 'I09D' }, title = 39 })
+local shipotian = title_cond({ abilities = { A07O = 1, A0D8 = 1 }, title = 48 })
+
 ---@param u unit
 local jueye = function(u, i)
     return title_cond({ abilities = { A03N = 1 }, title = 47 })(u, i) and u:get_owner():get_gold() >= 600000
@@ -332,6 +336,7 @@ local title_table = {
     { chief = 22, cond = nvzhuge, name = "女中诸葛", extra = nvzhuge_extra, title = 46 },
     { chief = 22, cond = dongxie, name = "东邪", agi = 240, int = 300, to9 = { 'A06H', 'A018' }, item = { 'I04Q', 'I04Q' }, title = 39 },
     { chief = 23, cond = jueye, name = "爵爷", str = 400, agi = 400, int = 200, title = 47 },
+    { chief = 24, cond = shipotian, name = "石破天惊", str = 400, to9 = { 'A01A', 'A017' }, int = 200, title = 48 },
     { cond = xidu, name = "西毒", str = 600, int = 360, item = { 'I070', 'I09G' }, to9 = 'A089', title = 38 },
     { cond = nandi, name = "南帝", agi = 480, int = 600, to9 = { 'A06P', 'A0CH' }, item = 'I09H', title = 40 },
     { cond = xiami, name = "小虾米", str = 1000, agi = 1000, int = 1000, item = 'I068', to9 = 'A07I', title = 42 },
@@ -865,7 +870,7 @@ common_ability.passive = function(config)
             end
 
         elseif effect_target == 'point' then
-            et.effect.add_to_point(effect_str, effect_point)
+            et.effect.add_to_point(effect_str, effect_point):destroy()
         end
     end
     passive_ability(ability_id, source, target, action, effect,
