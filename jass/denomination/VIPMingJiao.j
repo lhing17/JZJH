@@ -13,9 +13,6 @@ function YingZhaoShangHai takes nothing returns nothing
 	local unit uc = LoadUnitHandle(YDHT, GetHandleId(t), 1)
 	local real shanghai = LoadReal(YDHT, GetHandleId(t), 2)
 	call WuGongShangHai(u,uc,shanghai)
-	if GetUnitAbilityLevel(u, 'A017')>=1 and GetRandomInt(1, 5)==1 then
-		call WanBuff(u, uc, 7)
-	endif
 	call PauseTimer(t)
 	call DestroyTimer(t)
 	set t = null
@@ -467,11 +464,6 @@ function FuYiZong takes nothing returns nothing
 	call SaveReal(YDHT, GetHandleId(t), 1, oldSpeed)
 	call SaveReal(YDHT, GetHandleId(t), 2, 700 + jingmai[i]*10)
 	call TimerStart(t, time, false, function FuYiZong_1)
-	if GetUnitAbilityLevel(u, 'A017')>=1 then
-		set tm = CreateTimer()
-		call SaveUnitHandle(YDHT, GetHandleId(tm), 0, u)
-		call TimerStart(tm, time/100, true, function FuYiZong_2)
-	endif
 	set u = null
 	set t = null
 	set tm = null

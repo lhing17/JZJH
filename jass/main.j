@@ -257,7 +257,6 @@ globals
 	integer array zhaoyangguo
 	integer array linganran
 	integer array touxiao
-	integer array bihai
 	trigger y4
 	trigger z4
 	trigger A4
@@ -2205,7 +2204,6 @@ function main1 takes nothing returns nothing
 		set zhaoyangguo[i]=0
 		set linganran[i]=0
 		set touxiao[i]=0
-		set bihai[i]=0
 		set bibo_kill[i]=0
 		set aidacishu[i]=0
 		set udg_wuqishu[i]=0

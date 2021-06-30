@@ -28,11 +28,6 @@ function luoYingZhang takes unit u returns nothing
 		set duration = duration * 2
 	endif
 
-	// +碧海潮生曲：持续时间翻倍
-	if GetUnitAbilityLevel(u, BI_HAI) >= 1 then
-		set duration = duration * 2
-	endif
-
 	// +双手互搏：额外发一个反向旋转的花盘
 	if GetUnitAbilityLevel(u, SHUANG_SHOU) >= 1 then
 		call YDWECreateEwsp( u, 'e01H', 1, radius, duration, frequency, -angleSpeed )

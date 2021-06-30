@@ -125,7 +125,7 @@ function UI takes nothing returns nothing
 		call DisplayTextToPlayer(p,0,0,("狼皮数量："+(I2S(wolfSkinCount[i])+" /10")))
 		if wolfSkinCount[i] >= 10 then
 			// 10狼皮任务可以提交
-			set wolfSkinFlag[i] = 2  
+			set wolfSkinFlag[i] = 2
 		endif
 	endif
 	set u = null
@@ -205,7 +205,7 @@ function LookForWuPin takes nothing returns nothing
 				else
 					set id = ShiPin[GetRandomInt(13, 18)]
 				endif
-				
+
 			endif
 		elseif xiuxing[i]<=4 then
 			if GetRandomInt(1, 2)==1 then
@@ -390,14 +390,14 @@ function LevelReward takes nothing returns nothing
 	local integer level=DzAPI_Map_GetMapLevel(Player(i))
 	if ( (level >= 3 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D4' ) ) and not LoadBoolean(YDHT, i, StringHash("3级奖励")) then
 		call unitadditembyidswapped(mapLevelReward[1] , u) // 养精蓄锐令牌
-		call unitadditembyidswapped(mapLevelReward[GetRandomInt(2,3)] , u) 
+		call unitadditembyidswapped(mapLevelReward[GetRandomInt(2,3)] , u)
 		call SaveBoolean(YDHT, i, StringHash("3级奖励"), true)
 	elseif ( (level >= 5 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D6' ) ) and not LoadBoolean(YDHT, i, StringHash("5级奖励")) then
 		call unitadditembyidswapped('I02T' , u) // 大雁
-		call unitadditembyidswapped(mapLevelReward[GetRandomInt(5,7)] , u) 
+		call unitadditembyidswapped(mapLevelReward[GetRandomInt(5,7)] , u)
 		call SaveBoolean(YDHT, i, StringHash("5级奖励"), true)
 	elseif ( (level >= 8 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D5' ) ) and not LoadBoolean(YDHT, i, StringHash("8级奖励")) then
-		call unitadditembyidswapped(mapLevelReward[GetRandomInt(8,10)] , u) 
+		call unitadditembyidswapped(mapLevelReward[GetRandomInt(8,10)] , u)
 		call SaveBoolean(YDHT, i, StringHash("8级奖励"), true)
 	elseif ( (level >= 10 or level_award[i+1] == 1) and ( GetItemTypeId(GetManipulatedItem()) == 'I0D7' ) ) and not LoadBoolean(YDHT, i, StringHash("10级奖励")) then
 		call unitadditembyidswapped('I019' , u) // 白虎符
@@ -432,7 +432,7 @@ function LevelReward takes nothing returns nothing
 endfunction
 
 // 扣除积分并存档方法
-function jfChange takes integer i,integer jf returns nothing 
+function jfChange takes integer i,integer jf returns nothing
 	// 累加本局可用积分
 	set jf_useMax[i] = jf_useMax[i] + jf
 	// 扣除对应的积分
@@ -462,7 +462,7 @@ function jfShop takes nothing returns nothing
 	local integer jf5 = 14
 	local integer jf6 = 10
 	local integer jf7 = 15
-	
+
 	if ((GetItemTypeId(GetManipulatedItem())=='I0DC')) and udg_jf[i] >= jf1 and (jf_useMax[i]+jf1) <= jf_max then
 		call unitadditembyidswapped('I01L',u) // 创建精钢剑给玩家
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00获取精钢剑，扣除4积分")
@@ -527,7 +527,7 @@ function jfShop takes nothing returns nothing
 		set jfQiWu[i] = jfQiWu[i] +1
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DF')) and udg_jf[i] >= jf4 and (jf_useMax[i]+jf4) <= jf_max then
 		// 桃花岛传送符，不限次数
-		call unitadditembyidswapped('I0DI',u) 
+		call unitadditembyidswapped('I0DI',u)
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00获取桃花岛传送符，扣除4积分")
 		call jfChange(i,jf4)
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DG')) and udg_jf[i] >= jf5 and (jf_useMax[i]+jf5) <= jf_max then
@@ -536,7 +536,7 @@ function jfShop takes nothing returns nothing
 		call jfChange(i,jf5)
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DH')) and udg_jf[i] >= jf6 and (jf_useMax[i]+jf6) <= jf_max then
 		// 号令
-		// call unitadditembyidswapped('I06F',u) 
+		// call unitadditembyidswapped('I06F',u)
 		if GetUnitLevel(udg_hero[i+1])<=2 then
 			call randomMenpai(p,2)
 			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00重选随机门派，扣除10积分")
@@ -544,15 +544,15 @@ function jfShop takes nothing returns nothing
 		else
 			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC003级以下才能重新随机门派")
 		endif
-		
+
 	else
 		call DisplayTimedTextToPlayer(Player(i),0,0,5,"|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
 	endif
-	
+
 	set u = null
 	set p = null
 endfunction
-/**	
+/**
 * 积分兑换永久奖励
 */
 function isJfShop2 takes nothing returns boolean
@@ -703,14 +703,14 @@ function lcyAndWcy takes nothing returns nothing
 		endif
 	elseif GetUnitTypeId(GetTriggerUnit())=='o02Q' then
 		call createitemloc('I0DP',loc)
-		
+
 		call DisplayTextToPlayer(p,0,0,"|CFF34FF00你的实力得到王重阳认可，获得|cFFFF00CC七星道袍|r")
 	endif
 	set p = null
 	set loc = null
 endfunction
 // 慕容专属任务I0DR
-function isMuRongOnly takes nothing returns boolean 
+function isMuRongOnly takes nothing returns boolean
 	return UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO) and GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER and GetItemTypeId(GetManipulatedItem())=='I0DR'
 	// return((GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER)and(GetItemTypeId(GetManipulatedItem())=='I0DR'))
 endfunction
@@ -750,7 +750,7 @@ function hengShanOnly takes nothing returns nothing
 	if hengShanOnlyFlag[i] == 0  then
 		// 必须是恒山派
 		if udg_runamen[i] == 7 then
-			// GetPlayerState(p,PLAYER_STATE_RESOURCE_GOLD) >= 200000 
+			// GetPlayerState(p,PLAYER_STATE_RESOURCE_GOLD) >= 200000
 			if  GetHeroLevel(udg_hero[i]) >= 90 then
 				set hengShanOnlyFlag[i]=1
 				// 田伯光随机出现在黄蓉、林朝英、灭绝师太附近
@@ -793,7 +793,7 @@ function huaShanOnly takes nothing returns nothing
 	if huaShanOnlyFlag[i] == 0  then
 		// 必须是华山派
 		if udg_runamen[i] == 4 then
-			if  GetUnitLevel(udg_hero[i]) >= 90 then 
+			if  GetUnitLevel(udg_hero[i]) >= 90 then
 				set huaShanOnlyFlag[i]=1
 				call CreateNUnitsAtLoc(1,'h00N',Player(12),loc,bj_UNIT_FACING)
 				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00令狐冲：|r |cFF99FFCC请开始你的历练|r\n|cFFFFCC00提示：|r |cFF99FFCC打败|cFFADFF2F令狐冲|r\n")
@@ -825,7 +825,7 @@ function hengShan2Only takes nothing returns nothing
 	if hengshan2OnlyFlag[i] == 0  then
 		// 必须是衡山派
 		if udg_runamen[i] == 15 then
-			if  GetUnitLevel(udg_hero[i]) >= 90 then 
+			if  GetUnitLevel(udg_hero[i]) >= 90 then
 				set hengshan2OnlyFlag[i]=1
 				call CreateNUnitsAtLoc(1,'n00S',Player(12),loc,bj_UNIT_FACING)
 				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00令狐冲：|r |cFF99FFCC大嵩阳手费彬出现在江南水乡，帮忙解决他|r\n|cFFFFCC00提示：|r |cFF99FFCC解决|cFFADFF2F费彬|r\n")
@@ -857,7 +857,7 @@ function taiShanOnly takes nothing returns nothing
 	if taiShanOnlyFlag[i] == 0  then
 		// 必须是泰山派
 		if udg_runamen[i] == 18 then
-			if  GetUnitLevel(udg_hero[i]) >= 90 then 
+			if  GetUnitLevel(udg_hero[i]) >= 90 then
 				set taiShanOnlyFlag[i]=1
 				call CreateNUnitsAtLoc(1,'n00T',Player(12),loc,bj_UNIT_FACING)
 				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00令狐冲：|r |cFF99FFCC玉玑子出现在雁门关，帮忙抢回掌门铁剑|r\n|cFFFFCC00提示：|r |cFF99FFCC解决|cFFADFF2F玉玑子|r\n")
@@ -923,13 +923,13 @@ function  shenLongOnly takes nothing returns nothing
 	if shenLongOnlyFlag[i] == 0  then
 		// 必须是神龙教
 		if udg_runamen[i] == 16 or udg_runamen[i] == 17 then
-			if  GetUnitLevel(udg_hero[i]) >= 40 then 
+			if  GetUnitLevel(udg_hero[i]) >= 40 then
 				set shenLongOnlyFlag[i]=1
 				// 桃花岛出现洪安通
 				call CreateNUnitsAtLoc(1,'n00R',Player(12),loc,bj_UNIT_FACING)
 				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00韦小宝：|r |cFF99FFCC洪安通要来找我麻烦，求大侠帮忙打发走，据说他从神龙岛偷渡到桃花岛了。|r\n|cFFFFCC00提示：|r |cFF99FFCC解决|cFFADFF2F洪安通（桃花岛）|r\n")
 			else
-				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00韦小宝：|r |cFF99FFCC你的等级不足40级|r\n")	
+				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00韦小宝：|r |cFF99FFCC你的等级不足40级|r\n")
 			endif
 		else
 			call DisplayTextToPlayer(GetOwningPlayer(u),0,0,"|cFFFFCC00韦小宝：|r |cFF99FFCC你不是神龙教中人，无法接此任务|r\n")
@@ -1007,7 +1007,7 @@ function WanChengYangShou takes nothing returns nothing
 	call AdjustPlayerStateBJ(5000 * (l+1), p, PLAYER_STATE_RESOURCE_GOLD)
 	call AdjustPlayerStateBJ(10 * (l+1),  p, PLAYER_STATE_RESOURCE_LUMBER)
 	//call AddHeroXP(udg_hero[i],200*GetHeroLevel(udg_hero[i])*GetHeroLevel(udg_hero[i])*(xiuxing[i]+1),true)
-	
+
 	set yangshou[i]=0
 	if GetRandomInt(1, 10)<=l+1 then
 		call unitadditembyidswapped('I04T',udg_hero[i])
@@ -1108,73 +1108,6 @@ function QiuHun_Action takes nothing returns nothing
 	set u=null
 	set p=null
 endfunction
-function IsQiuHunWan takes nothing returns boolean
-	return(UnitTypeNotNull(GetTriggerUnit(),UNIT_TYPE_HERO))and(GetPlayerController(GetOwningPlayer(GetTriggerUnit()))==MAP_CONTROL_USER) and ((qiuhun[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I02X') and UnitHaveItem(GetTriggerUnit(),'I03I'))or (touxiao[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I0A1'))or (xidujuexue[1+GetPlayerId(GetOwningPlayer(GetTriggerUnit()))]==1 and UnitHaveItem(GetTriggerUnit(),'I03C') and UnitHaveItem(GetTriggerUnit(),'I03O')))
-endfunction
-function QiuHunWanCheng takes nothing returns nothing
-	local unit u=GetTriggerUnit()
-	local player p=GetOwningPlayer(u)
-	local integer i=1+GetPlayerId(p)
-	//call BJDebugMsg("有没有？")
-	if qiuhun[i]==1 and UnitHaveItem(u,'I02X') and UnitHaveItem(u,'I03I') then
-		set L7[i] = 1
-		loop
-		exitwhen L7[i] > wugongshu[i]
-			if (I7[(i-1)*20+L7[i]]!='AEfk')then
-				if L7[i]==wugongshu[i] then
-					call RemoveItem(FetchUnitItem(u,'I02X'))
-					call RemoveItem(FetchUnitItem(u,'I03I'))
-					call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC不错小子，居然被你找到了，不能让你白跑，我把这遗忘技能的法门传给你，今后你遗忘技能就不需要遗忘之石了|r\n")
-					set udg_yiwang[i]=true
-					set qiuhun[i]=0
-				exitwhen true
-				endif
-			else
-				call UnitAddAbility(u,'A017')
-				set I7[(((i-1)*20)+L7[i])]='A017'
-				call RemoveItem(FetchUnitItem(u,'I02X'))
-				call RemoveItem(FetchUnitItem(u,'I03I'))
-				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC不错小子，居然被你找到了，不能让你白跑，我这七十二路空明拳传给你了|r\n")
-				call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033恭喜"+GetPlayerName(p)+"习得空明拳")
-				set qiuhun[i]=0
-			exitwhen true
-			endif
-			set L7[i] = L7[i] + 1
-		endloop
-	elseif xidujuexue[i]==1 and UnitHaveItem(u,'I03C') and UnitHaveItem(u,'I03O') then
-		set xidujuexue[i]=0
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC不错小子，居然被找到了|r\n")
-		call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC这个铁掌令是我上次和裘千仞老儿过招的时候得到的，就送给你了吧|r\n")
-		call unitadditembyidswapped('I0EJ',u)
-		call RemoveItem(FetchUnitItem(u , 'I03O'))
-		call RemoveItem(FetchUnitItem(u , 'I03C'))
-	elseif touxiao[i]==1 and UnitHaveItem(u,'I0A1') then
-		set L7[i] = 1
-		loop
-		exitwhen L7[i] > wugongshu[i]
-			if (I7[(i-1)*20+L7[i]]!='AEfk')then
-				if L7[i]==wugongshu[i] then
-					call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC小子，你学的武功太多了，遗忘一些再过来找我吧|r\n")
-				exitwhen true
-				endif
-			else
-				call UnitAddAbility(u,'A018')
-				set I7[(((i-1)*20)+L7[i])]='A018'
-				call RemoveItem(FetchUnitItem(u,'I0A1'))
-				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC不错小子，居然被你偷到了，不能让你白跑，我把从黄老邪那偷学的碧海潮生曲传给你|r\n")
-				call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|CFFFF0033恭喜"+GetPlayerName(p)+"习得碧海潮生曲")
-				call DisplayTextToPlayer(p,0,0,"|cFFFFCC00周伯通：|r |cFF99FFCC这把玉箫其实是一把难得的神器，就送给你了吧|r\n")
-				call unitadditembyidswapped('I09D',u)
-				set touxiao[i]=0
-			exitwhen true
-			endif
-			set L7[i] = L7[i] + 1
-		endloop
-	endif
-	set u=null
-	set p=null
-endfunction
-//---------帮郭靖求婚结束
 
 //-------任务系统-------
 //鲁有脚送信任务
@@ -2318,14 +2251,14 @@ endfunction
 
 function Tasks_Trigger takes nothing returns nothing
 	local trigger t = CreateTrigger()
-	
-	
+
+
 	set bigTalent[1] = 0
 	set bigTalent[2] = 0
 	set bigTalent[3] = 0
 	set bigTalent[4] = 0
 	set bigTalent[5] = 0
-	
+
 	set Fo=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(Fo,EVENT_PLAYER_UNIT_PICKUP_ITEM)
 	call TriggerAddCondition(Fo,Condition(function IJ))
@@ -2344,13 +2277,13 @@ function Tasks_Trigger takes nothing returns nothing
 	call TriggerAddRect(Ho,le)
 	call TriggerAddCondition(Ho,Condition(function NJ))
 	call TriggerAddAction(Ho,function OJ)
-	
+
 	// 武功秘籍兑换
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
 	call TriggerAddCondition(t, Condition(function isBuyWuGongBook))
 	call TriggerAddAction(t, function buyWuGongBook)
-	
+
 	// 速战速决任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
@@ -2406,14 +2339,6 @@ function Tasks_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH )
 	call TriggerAddCondition(t, Condition(function IsWanChengYangShou))
 	call TriggerAddAction(t, function WanChengYangShou)
-	set t=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_PICKUP_ITEM)
-	call TriggerAddCondition(t,Condition(function IsQiuHun))
-	call TriggerAddAction(t,function QiuHun_Action)
-	set t=CreateTrigger()
-	call TriggerAddRect(t,botong)
-	call TriggerAddCondition(t,Condition(function IsQiuHunWan))
-	call TriggerAddAction(t,function QiuHunWanCheng)
 	set Io=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(Io,EVENT_PLAYER_UNIT_PICKUP_ITEM)
 	call TriggerAddCondition(Io,Condition(function QJ))
@@ -2477,7 +2402,7 @@ function Tasks_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(Vo,EVENT_PLAYER_UNIT_PICKUP_ITEM)
 	call TriggerAddCondition(Vo,Condition(function HK))
 	call TriggerAddAction(Vo,function IK)
-	
+
 	//升10级自动奖励丹药
 	set Yo=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(Yo,EVENT_PLAYER_HERO_LEVEL)
@@ -2547,13 +2472,13 @@ function Tasks_Trigger takes nothing returns nothing
 	call TriggerAddRect(qp,Ye)
 	call TriggerAddCondition(qp,Condition(function DL))
 	call TriggerAddAction(qp,function EL)
-	
+
 	// 狼皮任务
 	set t=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(t,EVENT_PLAYER_UNIT_PICKUP_ITEM)
 	call TriggerAddCondition(t,Condition(function isWolfSkin))
 	call TriggerAddAction(t,function wolfSkin)
-	
+
 	// 完成狼皮任务
 	set t=CreateTrigger()
 	// -4885,424
@@ -2562,7 +2487,7 @@ function Tasks_Trigger takes nothing returns nothing
 	// call TriggerAddRect(t,Rect(-5056.,192.,-4736.,512.))
 	call TriggerAddCondition(t,Condition(function isFinishWolfSkin))
 	call TriggerAddAction(t,function finishWolfSkin)
-	
+
 	// 倚天剑任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
@@ -2572,7 +2497,7 @@ function Tasks_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH )
 	call TriggerAddCondition(t, Condition(function IsWanChengYiTian))
 	call TriggerAddAction(t, function WanChengYiTian)
-	
+
 	// 全真专属任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
@@ -2582,19 +2507,19 @@ function Tasks_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH )
 	call TriggerAddCondition(t, Condition(function isLcyAndWcy))
 	call TriggerAddAction(t, function lcyAndWcy)
-	
+
 	// 慕容专属任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
 	call TriggerAddCondition(t, Condition(function isMuRongOnly))
 	call TriggerAddAction(t, function muRongOnly)
-	
+
 	// 恒山专属任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
 	call TriggerAddCondition(t, Condition(function isHengShanOnly))
 	call TriggerAddAction(t, function hengShanOnly)
-	
+
 	// 华山专属任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
@@ -2604,24 +2529,24 @@ function Tasks_Trigger takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH )
 	call TriggerAddCondition(t, Condition(function isLingHuChongDeath))
 	call TriggerAddAction(t, function lingHuChongDeath)
-	
+
 	// 神龙教专属任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
 	call TriggerAddCondition(t, Condition(function isShenLongOnly))
 	call TriggerAddAction(t, function shenLongOnly)
-	
+
 	// 衡山派专属任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
 	call TriggerAddCondition(t, Condition(function isHengShan2Only))
 	call TriggerAddAction(t, function hengShan2Only)
-	
+
 	// 泰山派专属任务
 	set t = CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM )
 	call TriggerAddCondition(t, Condition(function isTaiShanOnly))
 	call TriggerAddAction(t, function taiShanOnly)
-	
+
 	set t = null
 endfunction

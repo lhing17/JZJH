@@ -335,12 +335,6 @@ function KeyInput takes nothing returns nothing
 	// 	endif
 	// endif
 
-	//if s=="碧海潮生" then
-	//	call UnitAddAbility(udg_hero[i],'A018')
-	//endif
-	//if s=="空明" then
-	//	call UnitAddAbility(udg_hero[i],'A017')
-	//endif
 	if s=="ck" then
 			set j = 1
 		loop

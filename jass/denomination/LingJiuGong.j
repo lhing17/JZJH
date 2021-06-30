@@ -262,9 +262,6 @@ function RuYiMaJia takes nothing returns nothing
     endif
     set shanghai=ShangHaiGongShi(u,uc,48.,48.,shxishu,'A02F')
     call WuGongShangHai(u,uc,shanghai)
-    if UnitHasBuffBJ(u,'B00Y') and GetUnitAbilityLevel(u,'A018')>=1 then
-	    call WuGongShangHai(u,uc,shanghai*30)
-    endif
     set u=null
     set uc=null
 endfunction

@@ -82,9 +82,7 @@ function yinZhenDamage takes nothing returns nothing
     if((GetUnitAbilityLevel(u,'A083')!=0))then // 加小无相功
         set shxishu = shxishu + 1.5
     endif
-    if((GetUnitAbilityLevel(u,'A018')!=0))then // 加碧海潮生曲 致盲
-        call WanBuff(u, target, 15)
-    endif
+
 
     // 专属加成
     // 子午砂

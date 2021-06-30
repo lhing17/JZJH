@@ -11,6 +11,10 @@ local g = require 'jass.globals'
 
 local xueshan = {}
 
+local function exclusive(u, coeff)
+    return u:has_item('I09S') and coeff * 4 or coeff
+end
+
 -- 雪山剑法
 xueshan.first = function(source, target)
     common_ability.passive({
@@ -23,9 +27,7 @@ xueshan.first = function(source, target)
         possibility = function(i)
             return 15 + i / 5
         end,
-        exclusive = function(u, coeff)
-            return u:has_item('I09S') and coeff * 4 or coeff
-        end,
+        exclusive = exclusive,
         damage_coefficients = { 10, 10 },
         levelup_coefficients = 1000,
         combinations = {
@@ -85,7 +87,7 @@ xueshan.second_damage = function(source, target)
         coeff = coeff + 0.8
     end
 
-    coeff = hero:has_item('I09S') and coeff * 4 or coeff
+    coeff = exclusive(hero, coeff)
 
     local d, critical = common_ability.damage_formula(hero, target, 130, 150, coeff, 'A018')
     base.apply_damage(source, target, d, critical)
@@ -109,9 +111,7 @@ xueshan.third = function(source, target)
         possibility = function(i)
             return 5 + i / 5
         end,
-        exclusive = function(u, coeff)
-            return u:has_item('I09S') and coeff * 4 or coeff
-        end,
+        exclusive = exclusive,
         damage_coefficients = { 30, 30 },
         levelup_coefficients = 700,
         combinations = {
@@ -167,9 +167,9 @@ xueshan.fourth_damage = function(source, target)
         coeff = coeff + 0.9
     end
 
-    coeff = hero:has_item('I09S') and coeff * 4 or coeff
+    coeff = exclusive(hero, coeff)
 
-    local d, critical = common_ability.damage_formula(hero, target, 130, 150, coeff, 'A0D1')
+    local d, critical = common_ability.damage_formula(hero, target, 300, 500, coeff, 'A0D1')
     base.apply_damage(source, target, d, critical)
 end
 
@@ -206,7 +206,7 @@ xueshan.fifth_special = function(source, target)
         local i = p:get()
         p:add_gold(100)
         et.effect.add_to_unit("Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", source, "overhead")
-        if jass.GetRandomInt(1, 100) <= 15 then
+        if jass.GetRandomInt(1, 100) <= 10 then
             p:add_lumber(1)
             -- +小无相：几率永久增加暴击伤害
             if source:has_ability('A083') then

@@ -829,15 +829,13 @@ function determineTaoHuaDaoTitle takes unit u returns nothing
 			call SetPlayerName(p, "〓女中诸葛〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call setTitleNumber(i, 46)
 		endif
-		if GetUnitAbilityLevel(u, 'A06H') >= 3 and GetUnitAbilityLevel(u, 'A018') >= 3 and UnitHaveItem(u , 'I09D') and not isTitle(i, 39) then
+		if GetUnitAbilityLevel(u, 'A06H') >= 3 and UnitHaveItem(u , 'I09D') and not isTitle(i, 39) then
 			call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|cff66ff00恭喜玩家" + I2S(i) + "获得了称号：东邪")
 			call SetPlayerName(p, "〓东邪〓" + LoadStr(YDHT, GetHandleId(p), GetHandleId(p)))
 			call ModifyHeroStat(1, u, 0, 240)
 			call ModifyHeroStat(2, u, 0, 300)
 			call SetUnitAbilityLevel(u, 'A06H', 9)
-			call SetUnitAbilityLevel(u, 'A018', 9)
 			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A06H' * 5, GetUnitAbilityLevel(u, 'A06H'))
-			call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A018' * 5, GetUnitAbilityLevel(u, 'A018'))
 			call unitadditembyidswapped('I04Q' , u)
 			call unitadditembyidswapped('I04Q' , u)
 			call setTitleNumber(i, 39)
@@ -915,9 +913,7 @@ function determineJiangHuTitle takes unit u returns nothing
 		call ModifyHeroStat(2, u, 0, 500)
 		call ModifyHeroStat(2, u, 0, 300)
 		call SetUnitAbilityLevel(u, 'A07E', IMinBJ(GetUnitAbilityLevel(u, 'A07E') + 3, 9))
-		call SetUnitAbilityLevel(u, 'A017', IMinBJ(GetUnitAbilityLevel(u, 'A017') + 3, 9))
 		call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A07E' * 5, GetUnitAbilityLevel(u, 'A07E'))
-		call SaveInteger(YDHT, GetHandleId(GetOwningPlayer(u)), 'A017' * 5, GetUnitAbilityLevel(u, 'A017'))
 		call setTitleNumber(i, 44)
 	endif
 	set p = null

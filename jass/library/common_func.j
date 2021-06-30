@@ -41,7 +41,6 @@ globals
 	constant integer XI_XING = 'A07R' // 吸星大法
 	constant integer HUA_GONG = 'A07R' // 化功大法
 	constant integer TAN_ZHI = 'A06H' // 弹指神通
-	constant integer BI_HAI = 'A018' // 碧海潮生曲
 	constant integer JIU_YIN = 'A07S' // 九阴真经内功
 	constant integer JIU_ZHAO = 'A07N' // 九阴白骨爪
 
