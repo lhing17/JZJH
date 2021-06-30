@@ -185,8 +185,9 @@ function api:allow_dead()
 end
 
 --对选取到的单位进行过滤
+--- @param u unit
 function api:do_filter(u)
-    if not self.is_allow_god then
+    if not self.is_allow_god and u:has_ability('Avul') then
         return false
     end
     if not self.is_allow_dead and not u:is_alive() then
@@ -249,9 +250,12 @@ function api:select(select_unit)
                 break
             end
             GroupRemoveUnit(dummy_group, u)
-            u = et_unit(u)
-            if u and u:is_in_range(p, r) and self:do_filter(u) then
-                select_unit(u)
+            local eu = et_unit(u) ---@type unit
+            log.debug("api:select", eu:get_name())
+            log.debug("api:select", not not self:do_filter(eu))
+            if eu and eu:is_in_range(p, r) and self:do_filter(eu) then
+                log.debug("api:select", "符合条件")
+                select_unit(eu)
             end
         end
     elseif self.filter_in == 1 then

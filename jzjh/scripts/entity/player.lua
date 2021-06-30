@@ -133,6 +133,7 @@ function mt:get_team()
     if not self.team_id then
         self.team_id = jass.GetPlayerTeam(self.handle) + 1
     end
+    return self.team_id
 end
 
 -- 判断目标玩家是否为敌人

@@ -440,12 +440,10 @@ local function do_kungfu_levelup(u, id, r)
             exp = (3 + g.udg_xinggeA[i])
                     * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60)))
                     * (5 + u:get_ability_level('A02V') / 2 + 2 * g.udg_jwjs[i]) * (2 + levelup_coeff(u)) / 40
-            log.debug(i, exp)
         else
             exp = (3 + g.udg_xinggeA[i])
                     * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60)))
                     * (4 + 2 * g.udg_jwjs[i]) * (2 + levelup_coeff(u)) / 40
-            log.debug(i, exp)
         end
 
         -- 天赋：天纵奇才 增加升重速度
@@ -628,7 +626,7 @@ local function damage_formula(source, target, w1, w2, coeff, id)
     local int = source:get_int() -- 真实伤害
 
     if source:is_hero() then
-        attack = 1 + 0.3 * source:get_ability_level('A059')
+        attack = (1 + 0.3 * source:get_ability_level('A059'))
                 * 160
                 * g.udg_lilianxishu[i]
                 * (w1 * (1 + str / 300) * (1 + agi / 300) + w2 * 0.02 * int)
@@ -678,8 +676,10 @@ local function damage_formula(source, target, w1, w2, coeff, id)
         end
     end
 
-    random = math.random(0.95, 0.95 + g.udg_xinggeB[i] / 20)
+    random = jass.GetRandomReal(0.95, 0.95 + g.udg_xinggeB[i] / 20)
     basic_damage = attack * target_def * random * special_def
+
+    log.debug("damage_formula", basic_damage, attack, target_def, random, special_def)
 
     -- 红怪
     if jass.LoadInteger(g.YDHT, jass.GetHandleId(target.handle), jass.StringHash("color")) == 1 then
@@ -715,7 +715,7 @@ local function damage_formula(source, target, w1, w2, coeff, id)
     end
 
     local critical = false
-    if g.udg_baojilv[i] and math.random(0, 100) <= 100 * g.udg_baojilv[i] then
+    if g.udg_baojilv[i] and jass.GetRandomReal(0, 100) <= 100 * g.udg_baojilv[i] then
         critical = true
         damage = damage * g.udg_baojishanghai[i]
     end
@@ -775,10 +775,8 @@ local function passive_ability(ability_id, source, target, action, effect,
                     range = range + v.value
                 end
             end
-            local x, y = source:get_point()()
-            log.debug(x, y)
-            target = et.selector():in_range(source:get_point(), range):get()
-            log.debug(target)
+            target = et.selector():in_range(source:get_point(), range):is_enemy(source):get()
+            log.debug(#target)
             for _, v in ipairs(target) do
                 log.debug(v:get_name())
             end
@@ -793,9 +791,9 @@ local function passive_ability(ability_id, source, target, action, effect,
                 -- AOE
                 log.debug("AOE伤害")
                 for _, v in ipairs(target) do
-                    log.debug("开始计算伤害")
+                    log.debug("passive_ability", "开始计算伤害")
                     local damage, critical = damage_formula(source, v, damage_coefficients[1], damage_coefficients[2], coeff, ability_id)
-                    log.debug("造成伤害", damage, critical)
+                    log.debug("passive_ability", "造成伤害", damage, critical)
                     base.apply_damage(source, v, damage, critical)
 
                     for _, eff in ipairs(combinations) do

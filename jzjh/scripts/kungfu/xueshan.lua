@@ -7,6 +7,7 @@
 require 'util.general_buff'
 local curve = require 'util.curve'
 require 'logic.common'
+local g = require 'jass.globals'
 
 local xueshan = {}
 
@@ -48,7 +49,7 @@ end
 xueshan.second = function(u, id, target)
     if id == 'A018' then
         local p = u:get_owner()
-        local hero = g.udg_hero[p:get()] --- @type unit
+        local hero = et.unit(g.udg_hero[p:get()]) --- @type unit
         for i = 1, 18 do
             local angle = 20 * i
             local x, y = curve.star(350, angle)
@@ -74,7 +75,7 @@ end
 xueshan.second_damage = function(source, target)
     local coeff = 1
     local p = source:get_owner()
-    local hero = g.udg_hero[p:get()] --- @type unit
+    local hero = et.unit(g.udg_hero[p:get()]) --- @type unit
 
     if hero:has_ability('A06J') then
         coeff = coeff + 0.7
@@ -140,6 +141,10 @@ xueshan.fourth = function(u, id, target)
 
         common_ability.kungfu_levelup(u, id, 150)
     end
+end
+
+--- 无妄神功
+xueshan.fifth = function(u, id, target)
 
 end
 

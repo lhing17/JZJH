@@ -1340,7 +1340,6 @@ end
 --- @param i number 第几格物品，从1开始
 --- @return item
 function mt:get_item_in_slot(i)
-    log.debug("unit:get_item_in_slot", jass.UnitItemInSlot(self.handle, i - 1))
     return et.item:get(jass.UnitItemInSlot(self.handle, i - 1))
 end
 
