@@ -131,7 +131,11 @@
 	        set udg_tiaozhanguai=null
 		// 挑战达摩，打不过可以再打
 	    elseif GetUnitTypeId(GetTriggerUnit())=='o024' then
-	        call CreateItemLoc('I0AL',loc)
+	        if udg_runamen[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]==24 then
+	            call CreateItemLoc('I09S',loc)
+	        else
+	            call CreateItemLoc('I0AL',loc)
+	        endif
 	        set udg_tiaodamo[1+GetPlayerId(GetOwningPlayer(GetKillingUnit()))]=true
 	        set udg_tiaozhanguai=null
 		// 挑战张三丰，打不过可以再打

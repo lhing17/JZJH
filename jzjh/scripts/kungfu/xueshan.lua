@@ -24,7 +24,7 @@ xueshan.first = function(source, target)
             return 15 + i / 5
         end,
         exclusive = function(u, coeff)
-            return coeff * 4
+            return u:has_item('I09S') and coeff * 4 or coeff
         end,
         damage_coefficients = { 10, 10 },
         levelup_coefficients = 1000,
@@ -85,6 +85,8 @@ xueshan.second_damage = function(source, target)
         coeff = coeff + 0.8
     end
 
+    coeff = hero:has_item('I09S') and coeff * 4 or coeff
+
     local d, critical = common_ability.damage_formula(hero, target, 130, 150, coeff, 'A018')
     base.apply_damage(source, target, d, critical)
 end
@@ -108,7 +110,7 @@ xueshan.third = function(source, target)
             return 5 + i / 5
         end,
         exclusive = function(u, coeff)
-            return coeff * 4
+            return u:has_item('I09S') and coeff * 4 or coeff
         end,
         damage_coefficients = { 30, 30 },
         levelup_coefficients = 700,
@@ -164,6 +166,8 @@ xueshan.fourth_damage = function(source, target)
     if hero:has_ability('A07O') then
         coeff = coeff + 0.9
     end
+
+    coeff = hero:has_item('I09S') and coeff * 4 or coeff
 
     local d, critical = common_ability.damage_formula(hero, target, 130, 150, coeff, 'A0D1')
     base.apply_damage(source, target, d, critical)
