@@ -15,6 +15,7 @@ local buffs = {
     { ability_id = 1093678412, order_id = 852095, name = "穴位全封" },
     { ability_id = 1093678900, order_id = 852527, name = "中毒" },
     { ability_id = 1093678900, order_id = 852527, name = "深度中毒" },
+    { ability_id = 1093682519, order_id = 852095, name = "冰冻" },
 }
 
 --- @type unit
@@ -34,16 +35,22 @@ function mt_u:apply_buff(dest, num)
     local p = self:get_owner()
     local last = p:create_unit(1697656880, dest:get_point())
     last:show(false)
-    local level = is_in(num, { 12, 14 }) and 2 or 1
+    local level = base.is_include(num, { 12, 14 }) and 2 or 1
     last:add_ability(buffs[num].ability_id, level)
     last:issue_order(buffs[num].order_id, dest)
     last:set_lifetime(2)
-    tag.create(buffs[num].name, dest:get_point(), 12, 60, 65, 55, 42, 0, 3, 100, 90)
+    et.tag.create(buffs[num].name, dest:get_point(), 12, 60, 65, 55, 42, 0, 3, 100, 90)
 end
 
 --- @param source j_unit
 --- @param dest j_unit
 --- @param num number
 function base.general_buff(source, dest, num)
-    et.unit.j_unit(source):apply_buff(et.unit(dest), num)
+    if type(source) == 'userdata' then
+        source = et.unit(source)
+    end
+    if type(dest) == 'userdata' then
+        dest = et.unit(dest)
+    end
+    source:apply_buff(dest, num)
 end

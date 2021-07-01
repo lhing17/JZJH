@@ -47,7 +47,7 @@ function kungfu.init()
             xueshan.second_damage(source, target)
         end
         if base.float_equal(damage, 0.59) then
-            xueshan.fource_damage(source, target)
+            xueshan.fourth_damage(source, target)
         end
     end)
 end

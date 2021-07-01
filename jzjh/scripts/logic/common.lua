@@ -92,6 +92,7 @@ local chief_table = {
 --- @param i number 玩家序号
 --- @param title number 称号序号
 local function has_title(i, title)
+    log.debug("has_title", i, g.title0[i], g.title1[i])
     if title <= 30 then
         return g.title0[i] & (1 << title - 1) ~= 0
     else
@@ -483,8 +484,8 @@ local function do_kungfu_levelup(u, id, r)
         if (jass.GetRandomReal(1., r * level) <= (g.wuxing[i]) / 2 * (1 + 0.6 * g.udg_jwjs[i])) or ((u:has_buff('B010') or u:has_buff('B01O')) and jass.GetRandomReal(1., r * level) <= (g.wuxing[i]) / 2 * (2 + 0.3 * u:get_ability_level('A02V') + 0.6 * g.udg_jwjs[i])) then
             if id ~= 'A07W' then
                 increase_ability_and_item_charge(u, id)
-                jass.SaveInteger(g.YDHT, p_handle_id, id * 5, u:get_ability_level(id))
-                force.send_message("|cff66ff00恭喜玩家" .. i .. "领悟了武功：" .. jass.GetObjectName(id) .. "第" .. (level + 1) .. "重")
+                jass.SaveInteger(g.YDHT, p_handle_id, base.string2id(id) * 5, u:get_ability_level(id))
+                force.send_message("|cff66ff00恭喜玩家" .. i .. "领悟了武功：" .. jass.GetObjectName(base.string2id(id)) .. "第" .. (level + 1) .. "重")
                 if level + 1 == 9 and Deputy_isDeputy(i, g.JING_WU) then
                     g.wuxuedian[i] = g.wuxuedian[i] + 2
                     p:send_message("|cff66ff00精武师有技能升级到九重，获得两个自创武学点")
@@ -504,22 +505,22 @@ local function do_kungfu_levelup(u, id, r)
             if g.udg_xinggeB[i] >= 4 or u:has_any_item('I01J', 'I0DB') or g.JYd[i] == 1 then
                 if id ~= 'A07W' then
                     if u:has_buff('B010') then
-                        exp = jass.LoadInteger(g.YDHT, p_handle_id, id) + (3 + g.udg_xinggeA[i]) * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60))) * (2 + levelup_coeff(u)) / 20 * (2 + u:get_ability_level('A02V') / 4 + g.udg_jwjs[i]) / 3 * 2
+                        exp = jass.LoadInteger(g.YDHT, p_handle_id, base.string2id(id)) + (3 + g.udg_xinggeA[i]) * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60))) * (2 + levelup_coeff(u)) / 20 * (2 + u:get_ability_level('A02V') / 4 + g.udg_jwjs[i]) / 3 * 2
                     else
-                        exp = jass.LoadInteger(g.YDHT, p_handle_id, id) + (3 + g.udg_xinggeA[i]) * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60))) * (2 + levelup_coeff(u)) / 20 * (2 + g.udg_jwjs[i]) / 3 * 2
+                        exp = jass.LoadInteger(g.YDHT, p_handle_id, base.string2id(id)) + (3 + g.udg_xinggeA[i]) * (g.wuxing[i] + 5 + jass.GetRandomInt(0, jass.R2I(r / 60))) * (2 + levelup_coeff(u)) / 20 * (2 + g.udg_jwjs[i]) / 3 * 2
                     end
                     -- 天赋：天纵奇才 增加升重速度
                     if u:has_buff('B01O') then
                         exp = jass.R2I(exp * (1.5 + g.bigTalent[i] * 0.5))
                     end
-                    jass.SaveInteger(g.YDHT, p_handle_id, id, exp)
+                    jass.SaveInteger(g.YDHT, p_handle_id, base.string2id(id), exp)
                 end
-                jass.SaveStr(g.YDHT, p_handle_id, id * 2, jass.I2S(jass.LoadInteger(g.YDHT, p_handle_id, id)) .. "/" .. jass.I2S(jass.R2I(r * level)))
-                if jass.LoadInteger(g.YDHT, p_handle_id, id) > jass.R2I(r) * level then
-                    jass.SaveInteger(g.YDHT, p_handle_id, id, 0)
+                jass.SaveStr(g.YDHT, p_handle_id, base.string2id(id) * 2, jass.I2S(jass.LoadInteger(g.YDHT, p_handle_id, base.string2id(id))) .. "/" .. jass.I2S(jass.R2I(r * level)))
+                if jass.LoadInteger(g.YDHT, p_handle_id, base.string2id(id)) > jass.R2I(r) * level then
+                    jass.SaveInteger(g.YDHT, p_handle_id, base.string2id(id), 0)
                     increase_ability_and_item_charge(u, id)
-                    jass.SaveInteger(g.YDHT, p_handle_id, id * 5, u:get_ability_level(id))
-                    force.send_message("|cff66ff00恭喜玩家" .. jass.I2S(i) .. "领悟了武功：" .. jass.GetObjectName(id) .. "第" .. (level + 1) .. "重")
+                    jass.SaveInteger(g.YDHT, p_handle_id, base.string2id(id) * 5, u:get_ability_level(id))
+                    force.send_message("|cff66ff00恭喜玩家" .. jass.I2S(i) .. "领悟了武功：" .. jass.GetObjectName(base.string2id(id)) .. "第" .. (level + 1) .. "重")
                     if id == 'A0DP' then
                         -- 归元吐纳功
                         g.fuyuan[i] = g.fuyuan[i] + 2
@@ -556,7 +557,8 @@ local function determine_titles(u)
     local p_id = p:get()
     for i = 1, #title_table do
         if (title_table[i].chief and is_chief(p_id, title_table[i].chief)) or not title_table[i].chief then
-            if title_table[i].cond(u, i) then
+            log.debug("determine_titles", i, title_table[i].cond(u, p_id))
+            if title_table[i].cond(u, p_id) then
                 force.send_message("|cff66ff00恭喜玩家" .. p_id .. "获得了称号：" .. title_table[i].name)
                 if title_table[i].str then
                     u:set_str(u:get_str() + title_table[i].str)
@@ -715,14 +717,14 @@ local function damage_formula(source, target, w1, w2, coeff, id)
         damage = basic_damage
     end
 
-    if type(id) == 'string' then
-        id = base.string2id(id)
-    end
-
     local critical = false
     if g.udg_baojilv[i] and jass.GetRandomReal(0, 100) <= 100 * g.udg_baojilv[i] then
         critical = true
         damage = damage * g.udg_baojishanghai[i]
+    end
+
+    if type(id) == 'string' then
+        id = base.string2id(id)
     end
 
     jass.SaveReal(jass.YDHT, i, id * 3, basic_damage)
@@ -803,6 +805,7 @@ local function passive_ability(ability_id, source, target, action, effect,
 
                     for _, eff in ipairs(combinations) do
                         if eff.type == "额外效果" and source:has_ability(eff.id) then
+                            log.debug("passive_ability", eff.id,"触发额外效果")
                             if type(eff.value) == 'function' then
                                 eff.value(source, v)
                             end

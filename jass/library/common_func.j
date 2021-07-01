@@ -1859,6 +1859,14 @@ function randomMenpai takes player p,integer status returns nothing
 		if Player(i - 1) == GetLocalPlayer() then
 			call bibo_image.show()
 		endif
+	elseif udg_runamen[i] == 23 then
+	    set danpo[i] = danpo[i] + 5
+    	call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓野螺派〓|r")
+    	call SetPlayerName(p,"〓野螺派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
+    elseif udg_runamen[i] == 24 then
+        call addAllAttrs(i , 1)
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,15.,"|CFFff9933玩家"+GetPlayerName(p)+"随机选择了〓雪山派〓|r")
+        call SetPlayerName(p,"〓雪山派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
 	endif
 	if status == 1 then
 		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFF00FFFF提示：|r请在NPC|CFF00EE00郭靖|r处选择副职")

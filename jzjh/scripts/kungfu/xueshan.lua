@@ -34,8 +34,8 @@ xueshan.first = function(source, target)
             { type = "增加伤害", value = 0.8, id = 'A06J' },
             { type = "增加伤害", value = 0.8, id = 'A07O' },
             { type = "额外效果", id = 'A07A', value = function(s, t)
-                if math.random(1, 100) <= 20 then
-                    base.general_buff(s, t, 6)
+                if base.random(1, 100) <= 20 then
+                    base.general_buff(s, t, 15)
                 end
             end },
             { type = "增加范围", value = 700, id = 'A0D8' },
@@ -65,7 +65,7 @@ xueshan.second = function(u, id, target)
                 local aura_dummy = p:create_dummy('e000', et.point(x, y))
                 aura_dummy:add_ability('A0D4')
                 aura_dummy:hide()
-                aura_dummy.set_lifetime(lifetime)
+                aura_dummy:set_lifetime(lifetime)
             end
 
         end
@@ -118,7 +118,9 @@ xueshan.third = function(source, target)
             { type = "增加伤害", value = 0.8, id = 'A06H' },
             { type = "增加伤害", value = 0.8, id = 'A07O' },
             { type = "额外效果", id = 'A07R', value = function(s, t)
-                base.general_buff(s, t, 6)
+                if base.random(1, 100) <= 20 then
+                    base.general_buff(s, t, 6)
+                end
             end },
             { type = "增加伤害", value = 1.2, id = 'A0D8' },
         }
@@ -144,10 +146,19 @@ xueshan.fourth = function(u, id, target)
             dummy_use_ability(i)
             -- 双手再次触发
             if hero:has_ability('A07U') then
-                et.wait(100, function()
+                et.wait(300, function()
                     dummy_use_ability(i)
                 end)
             end
+        end
+
+        -- 太玄经冲锋效果
+        if u:has_ability('A0D8') then
+            local angle = math.rad(u:get_facing())
+            et.timer(10, 200, function()
+                local dest = u:get_point() - { angle, 5 }
+                u:set_point(dest)
+            end)
         end
 
         common_ability.kungfu_levelup(u, id, 150)
@@ -178,7 +189,7 @@ xueshan.fifth = function(u, id, target)
     if id == 'A0D2' then
         local p = u:get_owner()
         local hero = et.unit(g.udg_hero[p:get()]) --- @type unit
-        local time = hero:get_ability_level('A0D2') * 10
+        local time = hero:get_ability_level('A0D2') * 2
         hero:add_ability('Agho')
         hero:add_status('无妄')
         et.wait(time * 1000, function()
