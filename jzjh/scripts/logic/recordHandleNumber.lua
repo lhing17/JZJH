@@ -16,7 +16,7 @@ function recordHandleNumber()
         --    print(k, v)
         --end
         --log.info('当前jass执行到的位置为：'..debug.currentpos())
-        print('当前jass虚拟机最大的handle为：'..debug.handlemax())
-        print('当前jass虚拟机的handle数为：'..debug.handlecount())
+        log.debug('当前jass虚拟机最大的handle为：'..debug.handlemax())
+        log.debug('当前jass虚拟机的handle数为：'..debug.handlecount())
     end)
 end

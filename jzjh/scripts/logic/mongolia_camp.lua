@@ -58,20 +58,22 @@ function initMongoliaCamp()
     --- @param it item 触发物品
     et.game:event '单位-使用物品'(function(self, u, it)
         local id = it:get_id()
-        local pId = u:get_owner():get()
-        local b, v = hasDenomWeapon(u)
+        if id == 'I0EW' then
+            local pId = u:get_owner():get()
+            local b, v = hasDenomWeapon(u)
 
-        -- 胡卜处迩 可以将专属加武功伤害的效果内化入体内
-        if g.ateDenom[pId] == 1 then
-            u:get_owner():send_message("每局限使用一次哦")
-        else
-            -- 判断是否有专属
-            if b then
-                u:remove_item(v)
-                g.ateDenom[pId] = 1
+            -- 胡卜处迩 可以将专属加武功伤害的效果内化入体内
+            if g.ateDenom[pId] == 1 then
+                u:get_owner():send_message("每局限使用一次哦")
             else
-                u:get_owner():send_message("身上没有专属")
-                u:add_item(id)
+                -- 判断是否有专属
+                if b then
+                    u:remove_item(v)
+                    g.ateDenom[pId] = 1
+                else
+                    u:get_owner():send_message("身上没有专属")
+                    u:add_item(id)
+                end
             end
         end
     end)
@@ -79,10 +81,10 @@ function initMongoliaCamp()
     --- @param killer unit 凶手
     --- @param killed unit 被杀的单位
     et.game:event '单位-死亡' (function (self, killer, killed)
-        local p = killer:get_owner()
         -- 五轮大转
-        if killer:has_ability('q01l') and math.random(0, 100) <= 15 then
-            p:create_unit('e00R', killed:get_point())
+        if killer and killer:has_ability('q01l') and math.random(0, 100) <= 15 then
+            local p = killer:get_owner()
+            p:create_unit('e01L', killed:get_point())
         end
     end)
 end

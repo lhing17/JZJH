@@ -13,9 +13,8 @@ local g = require 'jass.globals'
 local logic = {}
 
 function logic.init()
-    print()
-    --initMongoliaCamp() -- 1.7之蒙古大营
-    --recordHandleNumber()
+    initMongoliaCamp() -- 1.7之蒙古大营
+    recordHandleNumber()
 end
 
 return logic
