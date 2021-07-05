@@ -167,6 +167,8 @@ globals
 	boolean udg_shifoufomie=false
 	boolean udg_teshushijian = false
 	boolean udg_yanglao = false
+	// 返璞归真模式
+	boolean udg_fpgz = false
 	boolean udg_yunyangxianshen = false
 	boolean udg_sutong = false
 	dialog udg_index=null
@@ -188,6 +190,7 @@ globals
 	button udg_tiaoZhan0 = null // 速通模式按钮
 	button udg_tiaoZhan1 = null // 无技能商店按钮
 	button udg_tiaoZhan2 = null // 无尽BOSS战按钮
+	button udg_tiaoZhan3 = null // 返璞归真模式按钮
 
 	integer udg_gudongA=0
 	integer udg_gudongB=0
@@ -2038,12 +2041,6 @@ function InitGlobalSave takes nothing returns nothing
 		set max_damage[i]=DzAPI_Map_GetStoredReal(Player(i),"maxDamage") // 获取最高伤害
 		set bonus_wugong[i]=DzAPI_Map_GetStoredReal(Player(i),"wugong") // 获取武功伤害加成
 		set bonus_baoshang[i]=DzAPI_Map_GetStoredReal(Player(i),"baoshang") // 获取爆伤加成
-		// 积分大于战斗力视为作弊，积分清零
-		if udg_jf[i] > udg_zdl[i] or udg_jf[i] > 326 * udg_success[i] then
-			call DisplayTextToPlayer(Player(i), 0, 0, "系统检测到你作弊，积分清零")
-			set udg_jf[i] = 0
-			call DzAPI_Map_StoreInteger(Player(i),"jf",0)
-		endif
 		// 积分购买武功加成和爆伤上限30%，超过视为作弊，不加伤害
 		if bonus_wugong[i] > 0.3 then
 			set bonus_wugong[i] = 0

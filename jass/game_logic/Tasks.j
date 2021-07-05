@@ -512,19 +512,23 @@ function jfShop takes nothing returns nothing
 			call jfChange(i,jf2)
 		endif
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DE')) and udg_jf[i] >= jf3 and (jf_useMax[i]+jf3) <= jf_max then
-		if jfQiWu[i] >= jfQiWuLimit[i] then
-			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|CFFFE890D一局游戏只能兑换3本奇武，单通11个门派额外兑换1本！")
-		else
-			// 随机一本奇武，去掉珍珑棋局49
-			if GetRandomInt(42,56) < 49 then
-				call unitadditembyidswapped(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(42, 48), 1), u)
+		if not udg_fpgz then
+			if jfQiWu[i] >= jfQiWuLimit[i] then
+				call DisplayTimedTextToPlayer(Player(i),0,0,5,"|CFFFE890D一局游戏只能兑换3本奇武，单通11个门派额外兑换1本！")
 			else
-				call unitadditembyidswapped(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(50, 56), 1), u)
+				// 随机一本奇武，去掉珍珑棋局49
+				if GetRandomInt(42,56) < 49 then
+					call unitadditembyidswapped(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(42, 48), 1), u)
+				else
+					call unitadditembyidswapped(LoadInteger(YDHT, StringHash("武学")+GetRandomInt(50, 56), 1), u)
+				endif
+				call jfChange(i,jf3)
+				call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00B随机获取一本奇武，扣除4积分")
 			endif
-			call jfChange(i,jf3)
-			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00B随机获取一本奇武，扣除4积分")
+			set jfQiWu[i] = jfQiWu[i] +1
+		else
+			call DisplayTimedTextToPlayer(Player(i),0,0,5,"|cFF66CC00返璞归真模式下无法兑换奇武")
 		endif
-		set jfQiWu[i] = jfQiWu[i] +1
 	elseif ((GetItemTypeId(GetManipulatedItem())=='I0DF')) and udg_jf[i] >= jf4 and (jf_useMax[i]+jf4) <= jf_max then
 		// 桃花岛传送符，不限次数
 		call unitadditembyidswapped('I0DI',u)

@@ -837,6 +837,7 @@ function JiaRuMenPai takes nothing returns nothing
 		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff0000你的角色不能加入该门派")
 	endif
 	elseif((GetItemTypeId(GetManipulatedItem())=='I0EV'))then
+	if not udg_fpgz then
         set udg_runamen[i]=23
         call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933恭喜加入〓野螺派〓，请在NPC郭靖处选择副职|r")
         call SetPlayerName(p,"〓野螺派〓"+LoadStr(YDHT,GetHandleId(p),GetHandleId(p)))
@@ -857,7 +858,10 @@ function JiaRuMenPai takes nothing returns nothing
         call createPartnerAndTownPortalDummy(i, Q4)
         set danpo[i] = danpo[i] + 5
         call RemoveLocation(Q4)
-        call UnitAddItemByIdSwapped(1227896394,u)
+		call UnitAddItemByIdSwapped(1227896394,u)
+	else
+		call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff0000返璞归真模式不能手动选择该门派")
+	endif
     elseif((GetItemTypeId(GetManipulatedItem())=='I09M'))then
             set udg_runamen[i]=24
             call DisplayTimedTextToPlayer(p,0,0,15.,"|CFFff9933恭喜加入〓雪山派〓，请在NPC郭靖处选择副职|r")
@@ -929,6 +933,7 @@ function ChooseMoShi takes nothing returns nothing
 		call DialogSetMessage(udg_index,"请选择游戏模式，20秒时间")
 		set udg_index1=DialogAddButtonBJ(udg_index,"|cFFCC0066特殊事件模式")
 		set udg_index3 = DialogAddButtonBJ(udg_index,"|cFF6600FF挑战模式（3倍积分）")
+		set udg_index4 = DialogAddButtonBJ(udg_index,"|cff91e226返璞归真（6倍积分）")
 		set udg_index2=DialogAddButtonBJ(udg_index,"|cFFCC7766养老模式（30倍伤害，无积分）")
 		call DialogDisplayBJ(true,udg_index,Player(0))
 		// 开启计时器，20s不选模式默认选择特殊模式
@@ -1006,6 +1011,7 @@ endfunction
 
 
 function ChooseMoShi_Action takes nothing returns nothing
+	local integer i=1
 	if GetClickedButton()==udg_index1 then
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了特殊事件模式")
 		set udg_teshushijian=true
@@ -1019,6 +1025,19 @@ function ChooseMoShi_Action takes nothing returns nothing
 	if GetClickedButton()==udg_index3 then
 		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了挑战模式")
 		call TiaoZhanMoshi()
+	endif
+	if GetClickedButton()==udg_index4 then
+		call DisplayTextToForce(bj_FORCE_ALL_PLAYERS,"|cff00FFFF主机选择了返璞归真-挑战模式")
+		set udg_fpgz = true
+		loop
+			exitwhen i > 5
+			set special_attack[i] = 25
+			set i = i + 1
+		endloop
+		call TiaoZhanMoshi()
+		// 移除等级奖励
+		call RemoveUnit(gg_unit_N00F_0085)
+
 	endif
 	// 已选难度
 	set moshiFlag = true
@@ -1629,6 +1648,10 @@ function Victory takes nothing returns nothing
 			set get_zdl = 5
 			set endless_count = endless_count + 1
 			call endlessFail()
+		endif
+		// 返璞归真模式额外2倍积分
+		if udg_fpgz then
+			set get_zdl = get_zdl * 2
 		endif
 		// 全局存档，积分倍数
 		if S2I(jfBeishu) >= 1 then
@@ -2816,7 +2839,7 @@ function HeroLevel takes nothing returns nothing
 			set wuxuedian[i] = wuxuedian[i] + 2
 		endif
 		// 单通8门派奖励
-		if LoadInteger(YDHT,i,StringHash("单通门派数量")) >= 8  then
+		if LoadInteger(YDHT,i,StringHash("单通门派数量")) >= 8 and not udg_fpgz  then
 			set wuxuedian[i] = wuxuedian[i] + 10
 			call DisplayTextToPlayer(p,0,0,"|CFF34FF00单通8个门派，额外获得10个自创武学点")
 		endif
@@ -5232,8 +5255,8 @@ function vQ takes nothing returns nothing
 	local player p = GetOwningPlayer(u)
 	// 地图等级
 	local integer level=DzAPI_Map_GetMapLevel(Player(GetPlayerId(p)))
-	// 地图等级小于等级5级的额外送一个新手神器
-	if level <= 5 then
+	// 地图等级小于等级5级的或者返璞归真模式额外送一个新手神器
+	if level <= 5 or udg_fpgz then
 		call unitadditembyidswapped('I0DJ',u) // 新手神器
 		// 大侠套 张无忌杀猪刀I0CI,郭靖环戒I0CH，乔峰草鞋I0DO，
 		call unitadditembyidswapped('I0CI',u)
